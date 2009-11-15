@@ -34,6 +34,16 @@ $dbUsername = "databaseuserNameHere";
 
 $dbPassword = "databasePasswordHere";
 
+$username = $_POST('[username]');
+$password = $_POST('[password]');
+
+/*This next block is to prevent SQL injection hacks*/
+$username = stripslashes($username);
+$password = stripslashes($password);
+
+$username = mysql_real_escape_string($username);
+$password = mysql_real_escape_string($password);
+
 /*Connect to the Database*/
 
 /*$connection = @mysql_connect("localhost", $dbUsername, $dbPassword) or die(mysql_error());*/
@@ -44,8 +54,8 @@ $dbPassword = "databasePasswordHere";
 
 /*Select statement from the database to see if the user is in the system*/
 
-$sqlQuery = "SELECT * FROM $table_name WHERE username = '$_POST[username]'
-AND password = password('$_POST[password]')";
+$sqlQuery = "SELECT * FROM $table_name WHERE username = '$username'
+AND password = password('$password')";
 
 /*Create a variable to hold the results of the SQL query*/
 
@@ -58,8 +68,21 @@ AND password = password('$_POST[password]')";
 /*If the number of rows is not equal to 0 then authenticate the user*/
 
 /*if ($num != 0) 
-{
-	header("Location: ../wa_dashboard/dashboard.html");
+{	
+	//Create a session for the username and password
+	session_register($username);
+	session_register($password);
+	
+	session_start();
+	if(!session_is_registered($username))
+	{
+		header("location:login.html");
+	}
+	else
+	{
+		//because the user is authenticated move them to the dashboard
+		header("Location: ../wa_dashboard/dashboard.html");
+	}
 }
 else
 {
@@ -67,15 +90,4 @@ else
 	exit;
 }*/
 ?>
-
-
-
-
-
-
-
-
-
-
-
 

@@ -61,14 +61,12 @@ a
 }
 .boxhead h2 
 {
-	background: url(sbhead-l.gif) no-repeat top left;
 	margin: 0;
 	padding: 22px 30px 5px;
-	color: white; 
+	color: black; 
 	font-weight: bold; 
 	font-size: 1.2em; 
 	line-height: 1em;
-	text-shadow: rgba(0,0,0,.4) 0px 2px 5px; /* Safari-only, but cool */
 }
 .boxbody1
 {
@@ -84,4 +82,11 @@ a
 div.ui-datepicker
 {
  font-size:13px;
+}
+
+a.logout
+{
+	float:right;
+	color:white;
+	text-decoration:none;
 }
