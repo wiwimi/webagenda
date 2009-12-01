@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nodeSet version="1.0">
+    <view uin="iddvupkg1e1kgu2g1e2ko5c">
+        <property name="$description" value="This diagram shows the status of a shift change request, from being created by an employee, reviewed by a supervisor, and being implemented in future schedules or removed from the system."/>
+        <property name="$metaclass" value="State Diagram"/>
+        <property name="@__options" value=""/>
+        <reference df-class-name="reference" referencedUin="design:node:::iddvupkg1e1kgu2g1e2ko5c.nodeid2tes8g1e1kgu2g1e2ot9e">
+            <property name="$shortcutReference" value="true"/>
+            <property name="background_color" value="0,0,0"/>
+            <property name="bounds" value="50,50,12,12"/>
+            <reference referencedUin="design:link:::iddvupkg1e1kgu2g1e2ko5c.nodeid2tes8g1e1kgu2g1e2ot9e.linkid5h1udg1e1kgu2g1e5i7w5:iddvupkg1e1kgu2g1e2ko5c.nodeid2tes8g1e1kgu2g1e2ot9e">
+                <property name="sourceAnchor" value="62,56"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="250,56"/>
+                <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::iddvupkg1e1kgu2g1e2ko5c.nodeid2tes8g1e1kgu2g1e2ot9e.linkid5h1udg1e1kgu2g1e5i7w5:iddvupkg1e1kgu2g1e2ko5c.nodeid2tes8g1e1kgu2g1e2ot9e">
+                    <property name="bounds" value="106,66,100,16"/>
+                </reference>
+            </reference>
+        </reference>
+        <reference df-class-name="reference1" referencedUin="design:node:::iddvupkg1e1kgu2g1e2ko5c.nodeidbl5j0g1e1kgu2g1e3me1g">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="250,40,75,40"/>
+            <reference referencedUin="design:link:::iddvupkg1e1kgu2g1e2ko5c.nodeidbl5j0g1e1kgu2g1e3me1g.linkidimapqg1e1kgu2g1e5i9ru:iddvupkg1e1kgu2g1e2ko5c.nodeidbl5j0g1e1kgu2g1e3me1g">
+                <property name="sourceAnchor" value="284,80"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="284,140"/>
+                <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::iddvupkg1e1kgu2g1e2ko5c.nodeidbl5j0g1e1kgu2g1e3me1g.linkidimapqg1e1kgu2g1e5i9ru:iddvupkg1e1kgu2g1e2ko5c.nodeidbl5j0g1e1kgu2g1e3me1g">
+                    <property name="bounds" value="294,102,184,16"/>
+                </reference>
+            </reference>
+        </reference>
+        <reference df-class-name="reference7" referencedUin="design:node:::iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="70,140,450,293"/>
+            <property name="bounds_setted_by_user" value="true"/>
+            <reference referencedUin="design:node:::iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid2gy48g1e1kgu2g1e4cjec:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq">
+                <property name="bounds" value="150,50,108,40"/>
+                <reference referencedUin="design:link:::iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid2gy48g1e1kgu2g1e4cjec.linkid9ujyg1e1kgu2g1e8kzh3:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid2gy48g1e1kgu2g1e4cjec:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq">
+                    <property name="sourceAnchor" value="328,200"/>
+                    <property name="bendpoints" value="470,200"/>
+                    <property name="targetAnchor" value="470,260"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                    <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid2gy48g1e1kgu2g1e4cjec.linkid9ujyg1e1kgu2g1e8kzh3:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid2gy48g1e1kgu2g1e4cjec:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq">
+                        <property name="bounds" value="330,180,154,16"/>
+                    </reference>
+                </reference>
+                <reference referencedUin="design:link:::iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid2gy48g1e1kgu2g1e4cjec.linkid9os3wg1e1kgu2g1e8kv7v:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid2gy48g1e1kgu2g1e4cjec:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq">
+                    <property name="sourceAnchor" value="280,230"/>
+                    <property name="bendpoints" value=""/>
+                    <property name="targetAnchor" value="280,310"/>
+                    <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid2gy48g1e1kgu2g1e4cjec.linkid9os3wg1e1kgu2g1e8kv7v:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid2gy48g1e1kgu2g1e4cjec:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq">
+                        <property name="bounds" value="170,260,101,16"/>
+                    </reference>
+                </reference>
+            </reference>
+            <reference referencedUin="design:node:::iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid1659mg1e1kgu2g1e4p0eu:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq">
+                <property name="bounds" value="170,170,72,40"/>
+                <reference referencedUin="design:link:::iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid1659mg1e1kgu2g1e4p0eu.linkid3dvkzg1h18gd5g1hcbqki:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid1659mg1e1kgu2g1e4p0eu:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq">
+                    <property name="sourceAnchor" value="264,350"/>
+                    <property name="bendpoints" value=""/>
+                    <property name="targetAnchor" value="184,480"/>
+                    <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid1659mg1e1kgu2g1e4p0eu.linkid3dvkzg1h18gd5g1hcbqki:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid1659mg1e1kgu2g1e4p0eu:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq">
+                        <property name="bounds" value="90,390,140,16"/>
+                    </reference>
+                </reference>
+                <reference referencedUin="design:link:::iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid1659mg1e1kgu2g1e4p0eu.linkidb0iuhg1h18gd5g1hcbng3:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid1659mg1e1kgu2g1e4p0eu:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq">
+                    <property name="sourceAnchor" value="288,350"/>
+                    <property name="bendpoints" value=""/>
+                    <property name="targetAnchor" value="374,480"/>
+                    <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid1659mg1e1kgu2g1e4p0eu.linkidb0iuhg1h18gd5g1hcbng3:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid1659mg1e1kgu2g1e4p0eu:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq">
+                        <property name="bounds" value="330,390,134,16"/>
+                    </reference>
+                </reference>
+            </reference>
+            <reference referencedUin="design:node:::iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid28qglg1e1kgu2g1e7wcmv:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq">
+                <property name="bounds" value="290,120,136,40"/>
+                <reference referencedUin="design:link:::iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid28qglg1e1kgu2g1e7wcmv.linkidm01dg1e1kgu2g1e8l2sv:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid28qglg1e1kgu2g1e7wcmv:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq">
+                    <property name="sourceAnchor" value="360,270"/>
+                    <property name="bendpoints" value=""/>
+                    <property name="targetAnchor" value="304,230"/>
+                    <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid28qglg1e1kgu2g1e7wcmv.linkidm01dg1e1kgu2g1e8l2sv:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid28qglg1e1kgu2g1e7wcmv:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq">
+                        <property name="bounds" value="330,230,100,16"/>
+                    </reference>
+                </reference>
+            </reference>
+            <reference referencedUin="design:node:::iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeidilkqjg1e1kgu2g1e492w5:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq">
+                <property name="bounds" value="30,60,12,12"/>
+                <reference referencedUin="design:link:::iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeidilkqjg1e1kgu2g1e492w5.linkidcgeuqg1e1kgu2g1e5i3dt:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeidilkqjg1e1kgu2g1e492w5:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq">
+                    <property name="sourceAnchor" value="112,206"/>
+                    <property name="bendpoints" value=""/>
+                    <property name="targetAnchor" value="220,206"/>
+                    <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeidilkqjg1e1kgu2g1e492w5.linkidcgeuqg1e1kgu2g1e5i3dt:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeidilkqjg1e1kgu2g1e492w5:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq">
+                        <property name="bounds" value="122,216,87,16"/>
+                    </reference>
+                </reference>
+            </reference>
+        </reference>
+        <reference df-class-name="reference8" referencedUin="design:node:::iddvupkg1e1kgu2g1e2ko5c.nodeidb4nlgg1e1kgu2g1eaige2">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="150,560,92,40"/>
+            <reference referencedUin="design:link:::iddvupkg1e1kgu2g1e2ko5c.nodeidb4nlgg1e1kgu2g1eaige2.linkid5zq93g1h18gd5g1hcdcjq:iddvupkg1e1kgu2g1e2ko5c.nodeidb4nlgg1e1kgu2g1eaige2">
+                <property name="sourceAnchor" value="242,578"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="370,578"/>
+                <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::iddvupkg1e1kgu2g1e2ko5c.nodeidb4nlgg1e1kgu2g1eaige2.linkid5zq93g1h18gd5g1hcdcjq:iddvupkg1e1kgu2g1e2ko5c.nodeidb4nlgg1e1kgu2g1eaige2">
+                    <property name="bounds" value="250,590,133,16"/>
+                </reference>
+            </reference>
+            <reference referencedUin="design:link:::iddvupkg1e1kgu2g1e2ko5c.nodeidb4nlgg1e1kgu2g1eaige2.linkiddlfurg1h18gd5g1hccw6r:iddvupkg1e1kgu2g1e2ko5c.nodeidb4nlgg1e1kgu2g1eaige2">
+                <property name="sourceAnchor" value="176,600"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="266,690"/>
+            </reference>
+            <reference referencedUin="design:link:::iddvupkg1e1kgu2g1e2ko5c.nodeidb4nlgg1e1kgu2g1eaige2.linkidbhmfug1e1kgu2g1eal59x:iddvupkg1e1kgu2g1e2ko5c.nodeidb4nlgg1e1kgu2g1eaige2">
+                <property name="sourceAnchor" value="176,600"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="265,650"/>
+            </reference>
+        </reference>
+        <reference df-class-name="reference9" referencedUin="design:node:::iddvupkg1e1kgu2g1e2ko5c.nodeidb9h1ag1e1kgu2g1eajq4c">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="160,480,69,40"/>
+            <reference referencedUin="design:link:::iddvupkg1e1kgu2g1e2ko5c.nodeidb9h1ag1e1kgu2g1eajq4c.linkidih0ktg1e1kgu2g1eaku40:iddvupkg1e1kgu2g1e2ko5c.nodeidb9h1ag1e1kgu2g1eajq4c">
+                <property name="sourceAnchor" value="190,520"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="190,560"/>
+                <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::iddvupkg1e1kgu2g1e2ko5c.nodeidb9h1ag1e1kgu2g1eajq4c.linkidih0ktg1e1kgu2g1eaku40:iddvupkg1e1kgu2g1e2ko5c.nodeidb9h1ag1e1kgu2g1eajq4c">
+                    <property name="bounds" value="200,532,135,16"/>
+                </reference>
+            </reference>
+        </reference>
+        <reference df-class-name="reference10" referencedUin="design:node:::iddvupkg1e1kgu2g1e2ko5c.nodeid2i6btg1e1kgu2g1eajryr">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="340,480,68,40"/>
+            <reference referencedUin="design:link:::iddvupkg1e1kgu2g1e2ko5c.nodeid2i6btg1e1kgu2g1eajryr.linkid5vz1tg1e1kgu2g1eal1h7:iddvupkg1e1kgu2g1e2ko5c.nodeid2i6btg1e1kgu2g1eajryr">
+                <property name="sourceAnchor" value="374,520"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="270,650"/>
+            </reference>
+            <reference referencedUin="design:link:::iddvupkg1e1kgu2g1e2ko5c.nodeid2i6btg1e1kgu2g1eajryr.linkidahnlfg1h18gd5g1hcdfrm:iddvupkg1e1kgu2g1e2ko5c.nodeid2i6btg1e1kgu2g1eajryr">
+                <property name="sourceAnchor" value="378,520"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="378,570"/>
+                <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::iddvupkg1e1kgu2g1e2ko5c.nodeid2i6btg1e1kgu2g1eajryr.linkidahnlfg1h18gd5g1hcdfrm:iddvupkg1e1kgu2g1e2ko5c.nodeid2i6btg1e1kgu2g1eajryr">
+                    <property name="bounds" value="388,537,133,16"/>
+                </reference>
+            </reference>
+        </reference>
+        <reference df-class-name="reference13" referencedUin="design:node:::iddvupkg1e1kgu2g1e2ko5c.nodeidbx3sog1e1kgu2g1ealt9n">
+            <property name="$shortcutReference" value="true"/>
+            <property name="background_color" value="0,0,0"/>
+            <property name="bounds" value="370,570,15,15"/>
+        </reference>
+    </view>
+    <node uin="iddvupkg1e1kgu2g1e2ko5c.nodeid2tes8g1e1kgu2g1e2ot9e">
+        <property name="$metaclass" value="Start State"/>
+        <property name="$name" value="StartState1"/>
+        <link uin="iddvupkg1e1kgu2g1e2ko5c.nodeid2tes8g1e1kgu2g1e2ot9e.linkid5h1udg1e1kgu2g1e5i7w5">
+            <property name="$description" value="An employee desires to change the shift that they work, and has created a new request for their supervisor."/>
+            <participant role="Supplier" referencedUin="design:node:::iddvupkg1e1kgu2g1e2ko5c.nodeidbl5j0g1e1kgu2g1e3me1g"/>
+            <participant role="Client" referencedUin="design:node:::iddvupkg1e1kgu2g1e2ko5c.nodeid2tes8g1e1kgu2g1e2ot9e"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="$event_name" value="[request created]"/>
+        </link>
+    </node>
+    <node uin="iddvupkg1e1kgu2g1e2ko5c.nodeidbl5j0g1e1kgu2g1e3me1g">
+        <property name="$description" value="The shift change request has been submitted by the employee and has been created in the system."/>
+        <property name="$metaclass" value="State"/>
+        <property name="$name" value="Submitted"/>
+        <link uin="iddvupkg1e1kgu2g1e2ko5c.nodeidbl5j0g1e1kgu2g1e3me1g.linkidimapqg1e1kgu2g1e5i9ru">
+            <property name="$description" value="After entering the system, the shift change request will be sent to be handled by the supervisor."/>
+            <participant role="Supplier" referencedUin="design:node:::iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq"/>
+            <participant role="Client" referencedUin="design:node:::iddvupkg1e1kgu2g1e2ko5c.nodeidbl5j0g1e1kgu2g1e3me1g"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="$event_name" value="[Shift request sent to supervisor]"/>
+        </link>
+    </node>
+    <node uin="iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq">
+        <property name="$description" value="The request has been recieved by the supervisors account, and is in the review process."/>
+        <property name="$metaclass" value="State"/>
+        <property name="$name" value="Request Received"/>
+        <node uin="iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeidilkqjg1e1kgu2g1e492w5">
+            <property name="$metaclass" value="Start State"/>
+            <property name="$name" value="StartState2"/>
+            <link uin="iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeidilkqjg1e1kgu2g1e492w5.linkidcgeuqg1e1kgu2g1e5i3dt">
+                <property name="$description" value="The shift change request has been received and notifications have been sent to the supervisor informing them that there is a new request awaiting their review."/>
+                <participant role="Supplier" referencedUin="design:node:::iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid2gy48g1e1kgu2g1e4cjec:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq"/>
+                <participant role="Client" referencedUin="design:node:::iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeidilkqjg1e1kgu2g1e492w5:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="$event_name" value="[enters review]"/>
+            </link>
+        </node>
+        <node uin="iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid2gy48g1e1kgu2g1e4cjec">
+            <property name="$description" value="A pending shift change is one that has been sent to the supervisor including any notifications that their is a new employee request for them to view.  The supervisor has yet to view the request at this time."/>
+            <property name="$metaclass" value="State"/>
+            <property name="$name" value="Pending Review"/>
+            <link uin="iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid2gy48g1e1kgu2g1e4cjec.linkid9os3wg1e1kgu2g1e8kv7v">
+                <property name="$description" value="The request has been opened viewed by the supervisor."/>
+                <participant role="Supplier" referencedUin="design:node:::iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid1659mg1e1kgu2g1e4p0eu:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq"/>
+                <participant role="Client" referencedUin="design:node:::iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid2gy48g1e1kgu2g1e4cjec:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="$event_name" value="[request opened]"/>
+            </link>
+            <link uin="iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid2gy48g1e1kgu2g1e4cjec.linkid9ujyg1e1kgu2g1e8kzh3">
+                <property name="$description" value="When the shift change first enters pending status, it will automatically be compared to other shifts at the day(s) and time(s) that the request is for."/>
+                <participant role="Supplier" referencedUin="design:node:::iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid28qglg1e1kgu2g1e7wcmv:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq"/>
+                <participant role="Client" referencedUin="design:node:::iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid2gy48g1e1kgu2g1e4cjec:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="$event_name" value="[check against other shifts]"/>
+            </link>
+        </node>
+        <node uin="iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid1659mg1e1kgu2g1e4p0eu">
+            <property name="$description" value="The shift change is in the process of being reviewed by the supervisor, including the review of any conflicts that the system has detected with the new shift times the employee has requested.  It is awaiting a decision on whether or not the shift change will be accepted or rejected."/>
+            <property name="$metaclass" value="State"/>
+            <property name="$name" value="In Review"/>
+            <link uin="iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid1659mg1e1kgu2g1e4p0eu.linkid3dvkzg1h18gd5g1hcbqki">
+                <property name="$description" value="The supervisor has chosen to accept the shift change."/>
+                <participant role="Supplier" referencedUin="design:node:::iddvupkg1e1kgu2g1e2ko5c.nodeidb9h1ag1e1kgu2g1eajq4c"/>
+                <participant role="Client" referencedUin="design:node:::iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid1659mg1e1kgu2g1e4p0eu:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="$event_name" value="[accepted by supervisor]"/>
+            </link>
+            <link uin="iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid1659mg1e1kgu2g1e4p0eu.linkidb0iuhg1h18gd5g1hcbng3">
+                <property name="$description" value="The supervisor has chosen to reject the shift change.  Reasons for the rejection must be included, to reduce the chance of the employee simply submitting the same request again."/>
+                <participant role="Supplier" referencedUin="design:node:::iddvupkg1e1kgu2g1e2ko5c.nodeid2i6btg1e1kgu2g1eajryr"/>
+                <participant role="Client" referencedUin="design:node:::iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid1659mg1e1kgu2g1e4p0eu:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="$event_name" value="[rejected by supervisor]"/>
+            </link>
+        </node>
+        <node uin="iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid28qglg1e1kgu2g1e7wcmv">
+            <property name="$description" value="The shift request is in the process of being checked for any conflicts with any current shifts from other employees.  Conflicts include conditions such as the shift being requested not having room for an additional employee."/>
+            <property name="$metaclass" value="State"/>
+            <property name="$name" value="Checking for conflicts"/>
+            <link uin="iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid28qglg1e1kgu2g1e7wcmv.linkidm01dg1e1kgu2g1e8l2sv">
+                <property name="$description" value="Automated checks have been completed, and will be listed when the supervisor opens the request."/>
+                <participant role="Supplier" referencedUin="design:node:::iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid2gy48g1e1kgu2g1e4cjec:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq"/>
+                <participant role="Client" referencedUin="design:node:::iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq.nodeid28qglg1e1kgu2g1e7wcmv:iddvupkg1e1kgu2g1e2ko5c.nodeidg8u9g1e1kgu2g1e47ieq"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="$event_name" value="[check complete]"/>
+            </link>
+        </node>
+    </node>
+    <node uin="iddvupkg1e1kgu2g1e2ko5c.nodeidb4nlgg1e1kgu2g1eaige2">
+        <property name="$description" value="The shift change is now included within a future schedule for the employee.  Additional notifications will be sent to the employee to remind them that their work hours will be changing at this time."/>
+        <property name="$metaclass" value="State"/>
+        <property name="$name" value="Implemented"/>
+        <link uin="iddvupkg1e1kgu2g1e2ko5c.nodeidb4nlgg1e1kgu2g1eaige2.linkid5zq93g1h18gd5g1hcdcjq">
+            <property name="$description" value="When the new schedule that includes the shift change becomes active, the shift change request is no longer needed and can be removed from the system."/>
+            <participant role="Supplier" referencedUin="design:node:::iddvupkg1e1kgu2g1e2ko5c.nodeidbx3sog1e1kgu2g1ealt9n"/>
+            <participant role="Client" referencedUin="design:node:::iddvupkg1e1kgu2g1e2ko5c.nodeidb4nlgg1e1kgu2g1eaige2"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="$event_name" value="[removed from system]"/>
+        </link>
+    </node>
+    <node uin="iddvupkg1e1kgu2g1e2ko5c.nodeidb9h1ag1e1kgu2g1eajq4c">
+        <property name="$description" value="The shift change has been accepted by the supervisor.  Notifications will be sent informing the employee of the decision, and the the new shift for this employee will await inclusion in a future schedule.  The request will persist in the system until it has been included in a schedule."/>
+        <property name="$metaclass" value="State"/>
+        <property name="$name" value="Accepted"/>
+        <link uin="iddvupkg1e1kgu2g1e2ko5c.nodeidb9h1ag1e1kgu2g1eajq4c.linkidih0ktg1e1kgu2g1eaku40">
+            <property name="$description" value="A new future schedule has been created that includes the shift change."/>
+            <participant role="Supplier" referencedUin="design:node:::iddvupkg1e1kgu2g1e2ko5c.nodeidb4nlgg1e1kgu2g1eaige2"/>
+            <participant role="Client" referencedUin="design:node:::iddvupkg1e1kgu2g1e2ko5c.nodeidb9h1ag1e1kgu2g1eajq4c"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="$event_name" value="[new schedule created]"/>
+        </link>
+    </node>
+    <node uin="iddvupkg1e1kgu2g1e2ko5c.nodeid2i6btg1e1kgu2g1eajryr">
+        <property name="$description" value="The shift change has been rejected by the supervisor.  Notifications will be sent informing the employee of the decision, and the shift change will be removed from the system."/>
+        <property name="$metaclass" value="State"/>
+        <property name="$name" value="Rejected"/>
+        <link uin="iddvupkg1e1kgu2g1e2ko5c.nodeid2i6btg1e1kgu2g1eajryr.linkidahnlfg1h18gd5g1hcdfrm">
+            <property name="$description" value="The shift change request has been deleted from the system."/>
+            <participant role="Supplier" referencedUin="design:node:::iddvupkg1e1kgu2g1e2ko5c.nodeidbx3sog1e1kgu2g1ealt9n"/>
+            <participant role="Client" referencedUin="design:node:::iddvupkg1e1kgu2g1e2ko5c.nodeid2i6btg1e1kgu2g1eajryr"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="$event_name" value="[removed from system]"/>
+        </link>
+    </node>
+    <node uin="iddvupkg1e1kgu2g1e2ko5c.nodeidbx3sog1e1kgu2g1ealt9n">
+        <property name="$metaclass" value="End State"/>
+        <property name="$name" value="EndState2"/>
+    </node>
+</nodeSet>

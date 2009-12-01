@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nodeSet version="1.0">
+    <view uin="idacsyjg1i74kiig1ib1j9x">
+        <property name="$metaclass" value="Activity Diagram"/>
+        <property name="@__options" value=""/>
+        <reference df-class-name="reference" referencedUin="design:node:::idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2">
+            <property name="$shortcutReference" value="true"/>
+            <property name="background_color" value="200,200,200"/>
+            <property name="bounds" value="20,20,210,580"/>
+            <property name="bounds_setted_by_user" value="true"/>
+            <reference referencedUin="design:node:::idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2.nodeidjab05g1i74kiig1icew1w:idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2">
+                <property name="bounds" value="90,540,15,15"/>
+            </reference>
+            <reference referencedUin="design:node:::idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2.nodeid5w6j1g1i74kiig1ic07zh:idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2">
+                <property name="bounds" value="20,460,172,40"/>
+                <property name="bounds_setted_by_user" value="true"/>
+                <reference referencedUin="design:link:::idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2.nodeid5w6j1g1i74kiig1ic07zh.linkid7fe4g1i74kiig1icfqhd:idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2.nodeid5w6j1g1i74kiig1ic07zh:idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2">
+                    <property name="sourceAnchor" value="120,520"/>
+                    <property name="bendpoints" value=""/>
+                    <property name="targetAnchor" value="120,560"/>
+                </reference>
+            </reference>
+            <reference referencedUin="design:node:::idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2.nodeid2509mg1i74kiig1ibi366:idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2">
+                <property name="bounds" value="10,290,188,35"/>
+                <property name="bounds_setted_by_user" value="true"/>
+                <reference referencedUin="design:link:::idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2.nodeid2509mg1i74kiig1ibi366.linkidddzgag1i74kiig1icgsdy:idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2.nodeid2509mg1i74kiig1ibi366:idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2">
+                    <property name="sourceAnchor" value="120,345"/>
+                    <property name="bendpoints" value="120,380,30,380,30,540,100,540"/>
+                    <property name="targetAnchor" value="114,560"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                    <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2.nodeid2509mg1i74kiig1ibi366.linkidddzgag1i74kiig1icgsdy:idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2.nodeid2509mg1i74kiig1ibi366:idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2">
+                        <property name="bounds" value="40,380,67,16"/>
+                    </reference>
+                </reference>
+            </reference>
+            <reference referencedUin="design:node:::idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2.nodeid5e6qsg1i74kiig1ibkm2q:idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2">
+                <property name="bounds" value="90,40,12,12"/>
+                <reference referencedUin="design:link:::idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2.nodeid5e6qsg1i74kiig1ibkm2q.linkid922vfg1i74kiig1ibl13z:idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2.nodeid5e6qsg1i74kiig1ibkm2q:idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2">
+                    <property name="sourceAnchor" value="116,72"/>
+                    <property name="bendpoints" value=""/>
+                    <property name="targetAnchor" value="116,100"/>
+                </reference>
+            </reference>
+            <reference referencedUin="design:node:::idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2.nodeid1mqnlg1i74kiig1ib2j55:idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2">
+                <property name="bounds" value="2,80,199,23"/>
+                <reference referencedUin="design:link:::idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2.nodeid1mqnlg1i74kiig1ib2j55.linkid42v7jg1i74kiig1ib5h6f:idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2.nodeid1mqnlg1i74kiig1ib2j55:idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2">
+                    <property name="sourceAnchor" value="120,123"/>
+                    <property name="bendpoints" value="120,140,350,140"/>
+                    <property name="targetAnchor" value="350,220"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
+            </reference>
+        </reference>
+        <reference df-class-name="reference1" referencedUin="design:node:::idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry">
+            <property name="$shortcutReference" value="true"/>
+            <property name="background_color" value="200,200,200"/>
+            <property name="bounds" value="250,20,230,580"/>
+            <property name="bounds_setted_by_user" value="true"/>
+            <reference referencedUin="design:node:::idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry.nodeid9m7rpg1i74kiig1ib3t7k:idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry">
+                <property name="bounds" value="40,200,126,23"/>
+                <reference referencedUin="design:link:::idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry.nodeid9m7rpg1i74kiig1ib3t7k.linkid8d7hbg1i74kiig1icdpy9:idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry.nodeid9m7rpg1i74kiig1ib3t7k:idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry">
+                    <property name="sourceAnchor" value="340,243"/>
+                    <property name="bendpoints" value="340,260,120,260"/>
+                    <property name="targetAnchor" value="120,310"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
+                <reference referencedUin="design:link:::idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry.nodeid9m7rpg1i74kiig1ib3t7k.linkidctzh4g1i74kiig1icdt3z:idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry.nodeid9m7rpg1i74kiig1ib3t7k:idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry">
+                    <property name="sourceAnchor" value="350,243"/>
+                    <property name="bendpoints" value=""/>
+                    <property name="targetAnchor" value="350,380"/>
+                    <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry.nodeid9m7rpg1i74kiig1ib3t7k.linkidctzh4g1i74kiig1icdt3z:idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry.nodeid9m7rpg1i74kiig1ib3t7k:idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry">
+                        <property name="bounds" value="350,300,74,16"/>
+                    </reference>
+                </reference>
+                <reference referencedUin="design:link:::idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry.nodeid9m7rpg1i74kiig1ib3t7k.linkid7pukjg1i74kiig1ib5xp1:idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry.nodeid9m7rpg1i74kiig1ib3t7k:idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry">
+                    <property name="sourceAnchor" value="430,193"/>
+                    <property name="bendpoints" value=""/>
+                    <property name="targetAnchor" value="430,230"/>
+                </reference>
+            </reference>
+            <reference referencedUin="design:node:::idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry.nodeid1kvolg1i74kiig1ibmnyw:idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry">
+                <property name="bounds" value="30,360,156,23"/>
+                <reference referencedUin="design:link:::idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry.nodeid1kvolg1i74kiig1ibmnyw.linkid6ypu3g1i74kiig1ic1l76:idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry.nodeid1kvolg1i74kiig1ibmnyw:idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry">
+                    <property name="sourceAnchor" value="350,403"/>
+                    <property name="bendpoints" value="350,440,120,440"/>
+                    <property name="targetAnchor" value="120,480"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
+            </reference>
+        </reference>
+    </view>
+    <node uin="idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2">
+        <property name="$description" value="During the shift change request process, employees may only create new requests, and view the notifications that are sent as a result of the actions their supervisor takes."/>
+        <property name="$metaclass" value="Swimlane"/>
+        <property name="$name" value="Employee"/>
+        <node uin="idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2.nodeid1mqnlg1i74kiig1ib2j55">
+            <property name="$description" value="The employee creates and submits a new shift change request.  This request will include"/>
+            <property name="$metaclass" value="Activity"/>
+            <property name="$name" value="Submit Shift Change Request"/>
+            <link uin="idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2.nodeid1mqnlg1i74kiig1ib2j55.linkid42v7jg1i74kiig1ib5h6f">
+                <participant role="Supplier" referencedUin="design:node:::idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry.nodeid9m7rpg1i74kiig1ib3t7k:idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry"/>
+                <participant role="Client" referencedUin="design:node:::idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2.nodeid1mqnlg1i74kiig1ib2j55:idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2"/>
+                <property name="$metaclass" value="Transition"/>
+            </link>
+        </node>
+        <node uin="idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2.nodeid2509mg1i74kiig1ibi366">
+            <property name="$description" value="The employee is notified that a decision has been made on their request, and they may see if it was approved or rejected."/>
+            <property name="$metaclass" value="Activity"/>
+            <property name="$name" value="View Approval/Rejection Notification"/>
+            <link uin="idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2.nodeid2509mg1i74kiig1ibi366.linkidddzgag1i74kiig1icgsdy">
+                <property name="$description" value="If the shift change request was rejected, there is no more action to be taken and the shift change process is complete."/>
+                <participant role="Supplier" referencedUin="design:node:::idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2.nodeidjab05g1i74kiig1icew1w:idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2"/>
+                <participant role="Client" referencedUin="design:node:::idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2.nodeid2509mg1i74kiig1ibi366:idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="$event_name" value="[if rejected]"/>
+            </link>
+        </node>
+        <node uin="idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2.nodeid5e6qsg1i74kiig1ibkm2q">
+            <property name="$metaclass" value="Start State"/>
+            <property name="$name" value="StartState1"/>
+            <link uin="idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2.nodeid5e6qsg1i74kiig1ibkm2q.linkid922vfg1i74kiig1ibl13z">
+                <participant role="Supplier" referencedUin="design:node:::idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2.nodeid1mqnlg1i74kiig1ib2j55:idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2"/>
+                <participant role="Client" referencedUin="design:node:::idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2.nodeid5e6qsg1i74kiig1ibkm2q:idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2"/>
+                <property name="$metaclass" value="Transition"/>
+            </link>
+        </node>
+        <node uin="idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2.nodeid5w6j1g1i74kiig1ic07zh">
+            <property name="$description" value="The employee views the notifications that are sent after a new schedule is created.  These notifications include information on when the new schedule will take effect, and what the new work hours are for the employee."/>
+            <property name="$metaclass" value="Activity"/>
+            <property name="$name" value="View New Schedule and Shift Times Notifications"/>
+            <link uin="idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2.nodeid5w6j1g1i74kiig1ic07zh.linkid7fe4g1i74kiig1icfqhd">
+                <participant role="Supplier" referencedUin="design:node:::idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2.nodeidjab05g1i74kiig1icew1w:idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2"/>
+                <participant role="Client" referencedUin="design:node:::idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2.nodeid5w6j1g1i74kiig1ic07zh:idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2"/>
+                <property name="$metaclass" value="Transition"/>
+            </link>
+        </node>
+        <node uin="idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2.nodeidjab05g1i74kiig1icew1w">
+            <property name="$metaclass" value="End State"/>
+            <property name="$name" value="EndState1"/>
+        </node>
+    </node>
+    <node uin="idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry">
+        <property name="$description" value="During the shift change request process, supervisors receive requests from employees and must review them to decide whether they should be approved or rejected.  If approved, the supervisor will also need to create a new schedule that includes the new shift times for the employee."/>
+        <property name="$metaclass" value="Swimlane"/>
+        <property name="$name" value="Supervisor"/>
+        <node uin="idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry.nodeid9m7rpg1i74kiig1ib3t7k">
+            <property name="$description" value="The supervisor reviews the shift change request sent by the employee.  This includes viewing any conflicts and problems that this shift change might create if implemented, that were detected by the system when the request was submitted."/>
+            <property name="$metaclass" value="Activity"/>
+            <property name="$name" value="Review Request"/>
+            <link uin="idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry.nodeid9m7rpg1i74kiig1ib3t7k.linkid8d7hbg1i74kiig1icdpy9">
+                <participant role="Supplier" referencedUin="design:node:::idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2.nodeid2509mg1i74kiig1ibi366:idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2"/>
+                <participant role="Client" referencedUin="design:node:::idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry.nodeid9m7rpg1i74kiig1ib3t7k:idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry"/>
+                <property name="$metaclass" value="Transition"/>
+            </link>
+            <link uin="idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry.nodeid9m7rpg1i74kiig1ib3t7k.linkidctzh4g1i74kiig1icdt3z">
+                <property name="$description" value="If the shift change request was approved, a new schedule must be created that includes the new shift times for the employee."/>
+                <participant role="Supplier" referencedUin="design:node:::idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry.nodeid1kvolg1i74kiig1ibmnyw:idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry"/>
+                <participant role="Client" referencedUin="design:node:::idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry.nodeid9m7rpg1i74kiig1ib3t7k:idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="$event_name" value="[if approved]"/>
+            </link>
+        </node>
+        <node uin="idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry.nodeid1kvolg1i74kiig1ibmnyw">
+            <property name="$description" value="If the shift change request was approved, the supervisor must create a new schedule that includes the new shift times that were in the request."/>
+            <property name="$metaclass" value="Activity"/>
+            <property name="$name" value="Create New Schedule"/>
+            <link uin="idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry.nodeid1kvolg1i74kiig1ibmnyw.linkid6ypu3g1i74kiig1ic1l76">
+                <participant role="Supplier" referencedUin="design:node:::idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2.nodeid5w6j1g1i74kiig1ic07zh:idacsyjg1i74kiig1ib1j9x.nodeid18ykfg1i74kiig1ib1zp2"/>
+                <participant role="Client" referencedUin="design:node:::idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry.nodeid1kvolg1i74kiig1ibmnyw:idacsyjg1i74kiig1ib1j9x.nodeidjrz0sg1i74kiig1ib2bry"/>
+                <property name="$metaclass" value="Transition"/>
+            </link>
+        </node>
+    </node>
+</nodeSet>

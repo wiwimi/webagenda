@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nodeSet version="1.0">
+    <view uin="idh3rzpg0fh0gv0g0fh1nns">
+        <property name="$metaclass" value="Package Diagram"/>
+        <property name="@__options" value=""/>
+        <reference df-class-name="reference144" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid64v0lg1lnfw56g1lr9vgy">
+            <property name="$shortcutReference" value="true"/>
+        </reference>
+        <reference df-class-name="reference145" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid4m0og1lnfw56g1lr9vgy">
+            <property name="$shortcutReference" value="true"/>
+        </reference>
+        <reference df-class-name="reference146" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeidgdratg1lnfw56g1lr9vhe">
+            <property name="$shortcutReference" value="true"/>
+        </reference>
+        <reference df-class-name="reference150" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid1eghag1lnfw56g1lr9vhe">
+            <property name="$shortcutReference" value="true"/>
+        </reference>
+        <reference df-class-name="reference151" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid9013cg1lnfw56g1lr9vht">
+            <property name="$shortcutReference" value="true"/>
+        </reference>
+        <reference df-class-name="reference152" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid4qqalg1lnfw56g1lr9vht">
+            <property name="$shortcutReference" value="true"/>
+        </reference>
+        <reference df-class-name="reference153" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeidfec3ig1lnfw56g1lr9vi9">
+            <property name="$shortcutReference" value="true"/>
+        </reference>
+        <reference df-class-name="reference158" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid4fu80g1lnfw56g1lr9vip">
+            <property name="$shortcutReference" value="true"/>
+        </reference>
+        <reference df-class-name="reference159" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeidh91xig1lnfw56g1lr9vip">
+            <property name="$shortcutReference" value="true"/>
+        </reference>
+        <reference df-class-name="reference160" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid4rirfg1lnfw56g1lr9vip">
+            <property name="$shortcutReference" value="true"/>
+        </reference>
+        <reference df-class-name="reference161" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid40srlg1lnfw56g1lr9vj4">
+            <property name="$shortcutReference" value="true"/>
+        </reference>
+        <reference df-class-name="reference162" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeidbvllvg1lnfw56g1lr9vkf">
+            <property name="$shortcutReference" value="true"/>
+        </reference>
+        <reference df-class-name="reference163" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid7vh84g1lnfw56g1lr9vlq">
+            <property name="$shortcutReference" value="true"/>
+        </reference>
+        <reference df-class-name="reference4" referencedUin="design:view:::idf1bpkg2p7zmjhg2p85qp2">
+            <property name="$shortcutReference" value="true"/>
+            <property name="@__fqn" value="uml:package:Webagenda:src:Interface"/>
+        </reference>
+        <reference df-class-name="reference22" referencedUin="design:view:::idgjd7xg2p7zmjhg2p8asa9">
+            <property name="$shortcutReference" value="true"/>
+            <property name="@__fqn" value="uml:package:Webagenda:src:Persistance"/>
+        </reference>
+        <reference df-class-name="reference28" referencedUin="design:view:::id5ymg5g2p7zmjhg2p8uj3n">
+            <property name="$shortcutReference" value="true"/>
+            <property name="@__fqn" value="uml:package:Webagenda:src:Problem Domain"/>
+        </reference>
+        <reference df-class-name="reference30" referencedUin="design:view:::id1gm70g2p7zmjhg2p8vsns">
+            <property name="$shortcutReference" value="true"/>
+            <property name="@__fqn" value="uml:package:Webagenda:src:ProblemDomain"/>
+        </reference>
+        <property name="$defaultDiagram" value=""/>
+    </view>
+    <node uin="idh3rzpg0fh0gv0g0fh1nns.nodeid64v0lg1lnfw56g1lr9vgy">
+        <property name="$description" value="This is used to send the process signal to the system from the user to let the system know that the user wants to do something further with the report that was stored."/>
+        <property name="$metaclass" value="Activity"/>
+        <property name="$name" value="Send Process Signal"/>
+        <link uin="idh3rzpg0fh0gv0g0fh1nns.nodeid64v0lg1lnfw56g1lr9vgy.linkidi5ctkg1lnfw56g1lr9vnw">
+            <property name="$description" value="The signal is sent to the system with the type of request that the user wants, whether it be a printing request, viewing request, etc."/>
+            <participant role="Supplier" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid1eghag1lnfw56g1lr9vhe"/>
+            <participant role="Client" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid64v0lg1lnfw56g1lr9vgy"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Send Process Signal -&gt; Decision4"/>
+            <property name="$event_name" value="type of access request"/>
+        </link>
+    </node>
+    <node uin="idh3rzpg0fh0gv0g0fh1nns.nodeid4m0og1lnfw56g1lr9vgy">
+        <property name="$orientation" value="horizontal"/>
+        <property name="$description" value="The descisision statement is used to see if the user would like to do anything further with the report that was stored."/>
+        <property name="$metaclass" value="Synchronization Bar"/>
+        <property name="$name" value="Decision5"/>
+        <link uin="idh3rzpg0fh0gv0g0fh1nns.nodeid4m0og1lnfw56g1lr9vgy.linkid7of8wg1lnfw56g1lr9vnh">
+            <property name="$description" value="If the user chooses not to do anything at that time with the report that was stored then they will be terminating this section of the program. The user can always access the report at a later point if they do choose to."/>
+            <participant role="Supplier" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeidgdratg1lnfw56g1lr9vhe"/>
+            <participant role="Client" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid4m0og1lnfw56g1lr9vgy"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Decision5 -&gt; EndState1"/>
+            <property name="$event_name" value="No access request"/>
+        </link>
+        <link uin="idh3rzpg0fh0gv0g0fh1nns.nodeid4m0og1lnfw56g1lr9vgy.linkid38hwxg1lnfw56g1lr9vnw">
+            <property name="$description" value="If the user decides that they would like to do something further with the report that was stored then they can choose to send a request back to the system to process what they would like to do with the report."/>
+            <participant role="Supplier" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid64v0lg1lnfw56g1lr9vgy"/>
+            <participant role="Client" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid4m0og1lnfw56g1lr9vgy"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Decision5 -&gt; Send Process Signal"/>
+            <property name="$event_name" value="access request"/>
+        </link>
+    </node>
+    <node uin="idh3rzpg0fh0gv0g0fh1nns.nodeidgdratg1lnfw56g1lr9vhe">
+        <property name="$metaclass" value="End State"/>
+        <property name="$name" value="EndState1"/>
+    </node>
+    <node uin="idh3rzpg0fh0gv0g0fh1nns.nodeid1eghag1lnfw56g1lr9vhe">
+        <property name="$orientation" value="horizontal"/>
+        <property name="$description" value="The descision statement that parses the users request."/>
+        <property name="$metaclass" value="Synchronization Bar"/>
+        <property name="$name" value="Decision4"/>
+        <link uin="idh3rzpg0fh0gv0g0fh1nns.nodeid1eghag1lnfw56g1lr9vhe.linkid5ak7rg1lnfw56g1lr9vnh">
+            <property name="$description" value="If the type of request is a viewing request the the system will send back a view to the user."/>
+            <participant role="Supplier" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid4qqalg1lnfw56g1lr9vht"/>
+            <participant role="Client" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid1eghag1lnfw56g1lr9vhe"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Decision4 -&gt; View Report"/>
+            <property name="$event_name" value="view request"/>
+        </link>
+        <link uin="idh3rzpg0fh0gv0g0fh1nns.nodeid1eghag1lnfw56g1lr9vhe.linkid22zo1g1lnfw56g1lr9vnh">
+            <property name="$description" value="If the request that the user sent was a printing request then the system will proceed to print the report."/>
+            <participant role="Supplier" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid9013cg1lnfw56g1lr9vht"/>
+            <participant role="Client" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid1eghag1lnfw56g1lr9vhe"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Decision4 -&gt; Print Report"/>
+            <property name="$event_name" value="print request"/>
+        </link>
+    </node>
+    <node uin="idh3rzpg0fh0gv0g0fh1nns.nodeid9013cg1lnfw56g1lr9vht">
+        <property name="$description" value="The system will print the report that was stored earlier in the system."/>
+        <property name="$metaclass" value="Activity"/>
+        <property name="$name" value="Print Report"/>
+        <link uin="idh3rzpg0fh0gv0g0fh1nns.nodeid9013cg1lnfw56g1lr9vht.linkiddr3sjg1lnfw56g1lr9vnh">
+            <participant role="Supplier" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeidfec3ig1lnfw56g1lr9vi9"/>
+            <participant role="Client" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid9013cg1lnfw56g1lr9vht"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Print Report -&gt; EndState3"/>
+            <property name="$event_name" value="finished task"/>
+        </link>
+    </node>
+    <node uin="idh3rzpg0fh0gv0g0fh1nns.nodeid4qqalg1lnfw56g1lr9vht">
+        <property name="$description" value="This will send a view back to the user that requested to view the report."/>
+        <property name="$metaclass" value="Activity"/>
+        <property name="$name" value="View Report"/>
+        <link uin="idh3rzpg0fh0gv0g0fh1nns.nodeid4qqalg1lnfw56g1lr9vht.linkid5en2kg1lnfw56g1lr9vnh">
+            <participant role="Supplier" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeidfec3ig1lnfw56g1lr9vi9"/>
+            <participant role="Client" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid4qqalg1lnfw56g1lr9vht"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: View Report -&gt; EndState3"/>
+            <property name="$event_name" value="finished task"/>
+        </link>
+    </node>
+    <node uin="idh3rzpg0fh0gv0g0fh1nns.nodeidfec3ig1lnfw56g1lr9vi9">
+        <property name="$metaclass" value="End State"/>
+        <property name="$name" value="EndState3"/>
+    </node>
+    <node uin="idh3rzpg0fh0gv0g0fh1nns.nodeid4fu80g1lnfw56g1lr9vip">
+        <property name="$description" value="This is used to send the process signal to the system from the user to let the system know that the user wants to do something further with the report that was stored."/>
+        <property name="$metaclass" value="Activity"/>
+        <property name="$name" value="Send Process Signal"/>
+        <link uin="idh3rzpg0fh0gv0g0fh1nns.nodeid4fu80g1lnfw56g1lr9vip.linkidhn0frg1lnfw56g1lr9vnh">
+            <property name="$description" value="The signal is sent to the system with the type of request that the user wants, whether it be a printing request, viewing request, etc."/>
+            <participant role="Supplier" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid1eghag1lnfw56g1lr9vhe"/>
+            <participant role="Client" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid4fu80g1lnfw56g1lr9vip"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Send Process Signal -&gt; Decision4"/>
+            <property name="$event_name" value="type of access request"/>
+        </link>
+    </node>
+    <node uin="idh3rzpg0fh0gv0g0fh1nns.nodeidh91xig1lnfw56g1lr9vip">
+        <property name="$metaclass" value="End State"/>
+        <property name="$name" value="EndState2"/>
+    </node>
+    <node uin="idh3rzpg0fh0gv0g0fh1nns.nodeid4rirfg1lnfw56g1lr9vip">
+        <property name="$orientation" value="horizontal"/>
+        <property name="$description" value="The descisision statement is used to see if the user would like to do anything further with the report that was stored."/>
+        <property name="$metaclass" value="Synchronization Bar"/>
+        <property name="$name" value="Decision6"/>
+        <link uin="idh3rzpg0fh0gv0g0fh1nns.nodeid4rirfg1lnfw56g1lr9vip.linkidcw9e4g1lnfw56g1lr9voc">
+            <property name="$description" value="If the user decides that they would like to do something further with the report that was stored then they can choose to send a request back to the system to process what they would like to do with the report."/>
+            <participant role="Supplier" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid4fu80g1lnfw56g1lr9vip"/>
+            <participant role="Client" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid4rirfg1lnfw56g1lr9vip"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Decision6 -&gt; Send Process Signal"/>
+            <property name="$event_name" value="access request"/>
+        </link>
+        <link uin="idh3rzpg0fh0gv0g0fh1nns.nodeid4rirfg1lnfw56g1lr9vip.linkidayd22g1lnfw56g1lr9voc">
+            <property name="$description" value="If the user chooses not to do anything at that time with the report that was stored then they will be terminating this section of the program. The user can always access the report at a later point if they do choose to."/>
+            <participant role="Supplier" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeidh91xig1lnfw56g1lr9vip"/>
+            <participant role="Client" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid4rirfg1lnfw56g1lr9vip"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Decision6 -&gt; EndState2"/>
+            <property name="$event_name" value="no access request"/>
+        </link>
+    </node>
+    <node uin="idh3rzpg0fh0gv0g0fh1nns.nodeid40srlg1lnfw56g1lr9vj4">
+        <property name="$description" value="A Supervisor is an Object that represents a user of the system that does not have full permissions but does have the ability to create a view reports of certain items."/>
+        <property name="$metaclass" value="Swimlane"/>
+        <property name="$name" value="Supervisor"/>
+        <node uin="idh3rzpg0fh0gv0g0fh1nns.nodeid40srlg1lnfw56g1lr9vj4.nodeidcloewg1lnfw56g1lr9vfn">
+            <property name="$metaclass" value="Start State"/>
+            <property name="$name" value="StartState1"/>
+            <link uin="idh3rzpg0fh0gv0g0fh1nns.nodeid40srlg1lnfw56g1lr9vj4.nodeidcloewg1lnfw56g1lr9vfn.linkidff4trg1lnfw56g1lr9voc">
+                <participant role="Supplier" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid40srlg1lnfw56g1lr9vj4.nodeidith3ag1lnfw56g1lr9vgy:idh3rzpg0fh0gv0g0fh1nns.nodeid40srlg1lnfw56g1lr9vj4"/>
+                <participant role="Client" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid40srlg1lnfw56g1lr9vj4.nodeidcloewg1lnfw56g1lr9vfn:idh3rzpg0fh0gv0g0fh1nns.nodeid40srlg1lnfw56g1lr9vj4"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="@label" value="link: StartState1 -&gt; Create Report"/>
+            </link>
+        </node>
+        <node uin="idh3rzpg0fh0gv0g0fh1nns.nodeid40srlg1lnfw56g1lr9vj4.nodeidith3ag1lnfw56g1lr9vgy">
+            <property name="$description" value="A Report can be created by a supervisor. A report could be anything from an employee usage report to a employee availability report. For any of the reports that a supervisor chooses to generate they can choose what they want in the report as well as the export format from available options."/>
+            <property name="$metaclass" value="Activity"/>
+            <property name="$name" value="Create Report"/>
+            <link uin="idh3rzpg0fh0gv0g0fh1nns.nodeid40srlg1lnfw56g1lr9vj4.nodeidith3ag1lnfw56g1lr9vgy.linkid1lyhcg1lnfw56g1lr9voc">
+                <property name="$description" value="After a supervisor is done working with the report for the time being, or completely finished with the report they can then choose to either submit the report or simply save the report to be accessed later before submitting it to the system."/>
+                <participant role="Supplier" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid40srlg1lnfw56g1lr9vj4.nodeidhwi9tg1lnfw56g1lr9vgy:idh3rzpg0fh0gv0g0fh1nns.nodeid40srlg1lnfw56g1lr9vj4"/>
+                <participant role="Client" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid40srlg1lnfw56g1lr9vj4.nodeidith3ag1lnfw56g1lr9vgy:idh3rzpg0fh0gv0g0fh1nns.nodeid40srlg1lnfw56g1lr9vj4"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="@label" value="finishesReport"/>
+                <property name="$event_name" value="finishesReport"/>
+            </link>
+        </node>
+        <node uin="idh3rzpg0fh0gv0g0fh1nns.nodeid40srlg1lnfw56g1lr9vj4.nodeidhwi9tg1lnfw56g1lr9vgy">
+            <property name="$orientation" value="horizontal"/>
+            <property name="$description" value="Option to either submit the report to the system or save the report as a draft."/>
+            <property name="$metaclass" value="Synchronization Bar"/>
+            <property name="$name" value="Decision1"/>
+            <link uin="idh3rzpg0fh0gv0g0fh1nns.nodeid40srlg1lnfw56g1lr9vj4.nodeidhwi9tg1lnfw56g1lr9vgy.linkidf675jg1lnfw56g1lr9vnw">
+                <property name="$description" value="If the supervisor is done with the report that they generated then they can choose to submit the report at which point it will proceed into a pending state into the system."/>
+                <participant role="Supplier" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid40srlg1lnfw56g1lr9vj4.nodeid4nlycg1lnfw56g1lr9vgy:idh3rzpg0fh0gv0g0fh1nns.nodeid40srlg1lnfw56g1lr9vj4"/>
+                <participant role="Client" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid40srlg1lnfw56g1lr9vj4.nodeidhwi9tg1lnfw56g1lr9vgy:idh3rzpg0fh0gv0g0fh1nns.nodeid40srlg1lnfw56g1lr9vj4"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="@label" value="link: Decision1 -&gt; Submit Report"/>
+                <property name="$event_name" value="submitsReport"/>
+            </link>
+            <link uin="idh3rzpg0fh0gv0g0fh1nns.nodeid40srlg1lnfw56g1lr9vj4.nodeidhwi9tg1lnfw56g1lr9vgy.linkid1gvfmg1lnfw56g1lr9voc">
+                <property name="$description" value="If the supervisor is not yet completely finished with generating the report then they can choose to save it so it can be accessed later. This creates a draft that can be opened at a later point in time."/>
+                <participant role="Supplier" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid40srlg1lnfw56g1lr9vj4.nodeidith3ag1lnfw56g1lr9vgy:idh3rzpg0fh0gv0g0fh1nns.nodeid40srlg1lnfw56g1lr9vj4"/>
+                <participant role="Client" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid40srlg1lnfw56g1lr9vj4.nodeidhwi9tg1lnfw56g1lr9vgy:idh3rzpg0fh0gv0g0fh1nns.nodeid40srlg1lnfw56g1lr9vj4"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="@label" value="link: Decision1 -&gt; Create Report"/>
+                <property name="$event_name" value="savesReport"/>
+            </link>
+        </node>
+        <node uin="idh3rzpg0fh0gv0g0fh1nns.nodeid40srlg1lnfw56g1lr9vj4.nodeid4nlycg1lnfw56g1lr9vgy">
+            <property name="$description" value="At this point, the report would be submitted to the system to either be reviewed or submitted based on the supervisors permissions."/>
+            <property name="$metaclass" value="Activity"/>
+            <property name="$name" value="Submit Report"/>
+            <link uin="idh3rzpg0fh0gv0g0fh1nns.nodeid40srlg1lnfw56g1lr9vj4.nodeid4nlycg1lnfw56g1lr9vgy.linkidf97meg1lnfw56g1lr9vnw">
+                <participant role="Supplier" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeidbvllvg1lnfw56g1lr9vkf.nodeidgz0g8g1lnfw56g1lr9vhe:idh3rzpg0fh0gv0g0fh1nns.nodeidbvllvg1lnfw56g1lr9vkf"/>
+                <participant role="Client" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid40srlg1lnfw56g1lr9vj4.nodeid4nlycg1lnfw56g1lr9vgy:idh3rzpg0fh0gv0g0fh1nns.nodeid40srlg1lnfw56g1lr9vj4"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="@label" value="link: Submit Report -&gt; Stores Report"/>
+                <property name="$event_name" value="Submit Report"/>
+            </link>
+        </node>
+    </node>
+    <node uin="idh3rzpg0fh0gv0g0fh1nns.nodeidbvllvg1lnfw56g1lr9vkf">
+        <property name="$description" value="The system is the main backend that handles all the user&apos;s request&apos;s. The system is the main bulk of the program and has all priveledges when it comes to generating reports, etc."/>
+        <property name="$metaclass" value="Swimlane"/>
+        <property name="$name" value="System"/>
+        <node uin="idh3rzpg0fh0gv0g0fh1nns.nodeidbvllvg1lnfw56g1lr9vkf.nodeidgz0g8g1lnfw56g1lr9vhe">
+            <property name="$description" value="This will store the report into the database and check the permissions to see if the report will be submitted directly or if it needs to be reviewed by the supervisors boss."/>
+            <property name="$metaclass" value="Activity"/>
+            <property name="$name" value="Stores Report"/>
+            <link uin="idh3rzpg0fh0gv0g0fh1nns.nodeidbvllvg1lnfw56g1lr9vkf.nodeidgz0g8g1lnfw56g1lr9vhe.linkid73xxpg1lnfw56g1lr9vnh">
+                <property name="$description" value="This will check the permissions of the stored report. This is needed in case the supervisor is trying to generate a report that is out of their jurisdiction. For example if the supervisor is trying to view employee data the they are not allowed to view."/>
+                <participant role="Supplier" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeidbvllvg1lnfw56g1lr9vkf.nodeid5dnocg1lnfw56g1lr9vhe:idh3rzpg0fh0gv0g0fh1nns.nodeidbvllvg1lnfw56g1lr9vkf"/>
+                <participant role="Client" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeidbvllvg1lnfw56g1lr9vkf.nodeidgz0g8g1lnfw56g1lr9vhe:idh3rzpg0fh0gv0g0fh1nns.nodeidbvllvg1lnfw56g1lr9vkf"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="@label" value="checksPermissions"/>
+                <property name="$event_name" value="checksPermissions"/>
+            </link>
+        </node>
+        <node uin="idh3rzpg0fh0gv0g0fh1nns.nodeidbvllvg1lnfw56g1lr9vkf.nodeid5dnocg1lnfw56g1lr9vhe">
+            <property name="$orientation" value="horizontal"/>
+            <property name="$metaclass" value="Synchronization Bar"/>
+            <property name="$name" value="Decision2"/>
+            <link uin="idh3rzpg0fh0gv0g0fh1nns.nodeidbvllvg1lnfw56g1lr9vkf.nodeid5dnocg1lnfw56g1lr9vhe.linkida65xxg1lnfw56g1lr9voc">
+                <property name="$description" value="If the report that is wanting to be generated contains information that must be reviewed by the supervisors boss before the report can be used or viewed, then the report is sent to the supervisors boss to review and remove the report from it&apos;s pending state."/>
+                <participant role="Supplier" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid7vh84g1lnfw56g1lr9vlq.nodeidjyd96g1lnfw56g1lr9vi9:idh3rzpg0fh0gv0g0fh1nns.nodeid7vh84g1lnfw56g1lr9vlq"/>
+                <participant role="Client" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeidbvllvg1lnfw56g1lr9vkf.nodeid5dnocg1lnfw56g1lr9vhe:idh3rzpg0fh0gv0g0fh1nns.nodeidbvllvg1lnfw56g1lr9vkf"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="@label" value="link: Decision2 -&gt; reviewsReport"/>
+                <property name="$event_name" value="tooLowPermissions"/>
+            </link>
+            <link uin="idh3rzpg0fh0gv0g0fh1nns.nodeidbvllvg1lnfw56g1lr9vkf.nodeid5dnocg1lnfw56g1lr9vhe.linkid9yqdlg1lnfw56g1lr9voc">
+                <property name="$description" value="If the report that was generated was generated by a supervisor with high enough permissions that the report does not need to be reviewed by a higher authority, then the report can be submitted directly into an active state without the need for review."/>
+                <participant role="Supplier" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeidbvllvg1lnfw56g1lr9vkf.nodeid2mp97g1lnfw56g1lr9vhe:idh3rzpg0fh0gv0g0fh1nns.nodeidbvllvg1lnfw56g1lr9vkf"/>
+                <participant role="Client" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeidbvllvg1lnfw56g1lr9vkf.nodeid5dnocg1lnfw56g1lr9vhe:idh3rzpg0fh0gv0g0fh1nns.nodeidbvllvg1lnfw56g1lr9vkf"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="@label" value="link: Decision2 -&gt; Stores Report"/>
+                <property name="$event_name" value="highEnoughPermissions"/>
+            </link>
+        </node>
+        <node uin="idh3rzpg0fh0gv0g0fh1nns.nodeidbvllvg1lnfw56g1lr9vkf.nodeid2mp97g1lnfw56g1lr9vhe">
+            <property name="$metaclass" value="Activity"/>
+            <property name="$name" value="Stores Report"/>
+        </node>
+    </node>
+    <node uin="idh3rzpg0fh0gv0g0fh1nns.nodeid7vh84g1lnfw56g1lr9vlq">
+        <property name="$description" value="A Boss Object is another representation of a supervisor that has full viweing priveledges and is able to create any report."/>
+        <property name="$metaclass" value="Swimlane"/>
+        <property name="$name" value="Boss"/>
+        <node uin="idh3rzpg0fh0gv0g0fh1nns.nodeid7vh84g1lnfw56g1lr9vlq.nodeidjyd96g1lnfw56g1lr9vi9">
+            <property name="$metaclass" value="Activity"/>
+            <property name="$name" value="reviewsReport"/>
+            <link uin="idh3rzpg0fh0gv0g0fh1nns.nodeid7vh84g1lnfw56g1lr9vlq.nodeidjyd96g1lnfw56g1lr9vi9.linkid7b6aug1lnfw56g1lr9vnh">
+                <participant role="Supplier" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid7vh84g1lnfw56g1lr9vlq.nodeidh4zyag1lnfw56g1lr9vi9:idh3rzpg0fh0gv0g0fh1nns.nodeid7vh84g1lnfw56g1lr9vlq"/>
+                <participant role="Client" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid7vh84g1lnfw56g1lr9vlq.nodeidjyd96g1lnfw56g1lr9vi9:idh3rzpg0fh0gv0g0fh1nns.nodeid7vh84g1lnfw56g1lr9vlq"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="@label" value="link: reviewsReport -&gt; Decision3"/>
+            </link>
+        </node>
+        <node uin="idh3rzpg0fh0gv0g0fh1nns.nodeid7vh84g1lnfw56g1lr9vlq.nodeidh4zyag1lnfw56g1lr9vi9">
+            <property name="$orientation" value="horizontal"/>
+            <property name="$description" value="This descision block is used when the higher authority reviews the document. From this point the higher authority can either choose to change the report or simply accept the report as is without any changes necessary."/>
+            <property name="$metaclass" value="Synchronization Bar"/>
+            <property name="$name" value="Decision3"/>
+            <link uin="idh3rzpg0fh0gv0g0fh1nns.nodeid7vh84g1lnfw56g1lr9vlq.nodeidh4zyag1lnfw56g1lr9vi9.linkiddo45cg1lnfw56g1lr9vnw">
+                <property name="$description" value="If the supervisor reviews the report and decides that it is good the way it is and doesn&apos;t want to make any changes to the report, the the higher authority can choose to directly submit the report without change."/>
+                <participant role="Supplier" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid7vh84g1lnfw56g1lr9vlq.nodeid6g9kdg1lnfw56g1lr9vip:idh3rzpg0fh0gv0g0fh1nns.nodeid7vh84g1lnfw56g1lr9vlq"/>
+                <participant role="Client" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid7vh84g1lnfw56g1lr9vlq.nodeidh4zyag1lnfw56g1lr9vi9:idh3rzpg0fh0gv0g0fh1nns.nodeid7vh84g1lnfw56g1lr9vlq"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="@label" value="link: Decision3 -&gt; Accepts Report"/>
+                <property name="$event_name" value="remain the same"/>
+            </link>
+            <link uin="idh3rzpg0fh0gv0g0fh1nns.nodeid7vh84g1lnfw56g1lr9vlq.nodeidh4zyag1lnfw56g1lr9vi9.linkidpt4ug1lnfw56g1lr9vnw">
+                <property name="$description" value="If the supervisor wants to change the report, the report is taken into an active state so that the supervisor can edit the report."/>
+                <participant role="Supplier" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid7vh84g1lnfw56g1lr9vlq.nodeid1or4vg1lnfw56g1lr9vip:idh3rzpg0fh0gv0g0fh1nns.nodeid7vh84g1lnfw56g1lr9vlq"/>
+                <participant role="Client" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid7vh84g1lnfw56g1lr9vlq.nodeidh4zyag1lnfw56g1lr9vi9:idh3rzpg0fh0gv0g0fh1nns.nodeid7vh84g1lnfw56g1lr9vlq"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="@label" value="link: Decision3 -&gt; changes report"/>
+                <property name="$event_name" value="change"/>
+            </link>
+        </node>
+        <node uin="idh3rzpg0fh0gv0g0fh1nns.nodeid7vh84g1lnfw56g1lr9vlq.nodeid1or4vg1lnfw56g1lr9vip">
+            <property name="$description" value="This is the point at which the user can change the report crtieria or modify the report in any way. The user can change the report as long as it&apos;s in the active state and is able to be modified."/>
+            <property name="$metaclass" value="Activity"/>
+            <property name="$name" value="changes report"/>
+            <link uin="idh3rzpg0fh0gv0g0fh1nns.nodeid7vh84g1lnfw56g1lr9vlq.nodeid1or4vg1lnfw56g1lr9vip.linkided0vtg1lnfw56g1lr9vnw">
+                <property name="$description" value="After the user has made all the modifications necessary then the supervisor can submit the report to be stored. This occurs at the system level because the report may need to be viewed by multiple people. In order to achieve this it needs"/>
+                <participant role="Supplier" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeidbvllvg1lnfw56g1lr9vkf.nodeid2mp97g1lnfw56g1lr9vhe:idh3rzpg0fh0gv0g0fh1nns.nodeidbvllvg1lnfw56g1lr9vkf"/>
+                <participant role="Client" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid7vh84g1lnfw56g1lr9vlq.nodeid1or4vg1lnfw56g1lr9vip:idh3rzpg0fh0gv0g0fh1nns.nodeid7vh84g1lnfw56g1lr9vlq"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="@label" value="link: changes report -&gt; Stores Report"/>
+                <property name="$event_name" value="sendTostore"/>
+            </link>
+        </node>
+        <node uin="idh3rzpg0fh0gv0g0fh1nns.nodeid7vh84g1lnfw56g1lr9vlq.nodeid6g9kdg1lnfw56g1lr9vip">
+            <property name="$description" value="This action occurs if the user decides that they do not want to make any modifications to the report. After they decide that they would like to accept the report without change then they can submit the report to be stored."/>
+            <property name="$metaclass" value="Activity"/>
+            <property name="$name" value="Accepts Report"/>
+            <link uin="idh3rzpg0fh0gv0g0fh1nns.nodeid7vh84g1lnfw56g1lr9vlq.nodeid6g9kdg1lnfw56g1lr9vip.linkidcy02fg1lnfw56g1lr9vnw">
+                <property name="$description" value="If the user submits the report without change then it gets submitted to the system to be stored. This occurs at the system level because more than one person may want to review the report at any given time."/>
+                <participant role="Supplier" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeidbvllvg1lnfw56g1lr9vkf.nodeid2mp97g1lnfw56g1lr9vhe:idh3rzpg0fh0gv0g0fh1nns.nodeidbvllvg1lnfw56g1lr9vkf"/>
+                <participant role="Client" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid7vh84g1lnfw56g1lr9vlq.nodeid6g9kdg1lnfw56g1lr9vip:idh3rzpg0fh0gv0g0fh1nns.nodeid7vh84g1lnfw56g1lr9vlq"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="@label" value="link: Accepts Report -&gt; Stores Report"/>
+                <property name="$event_name" value="sendToStore"/>
+            </link>
+        </node>
+    </node>
+</nodeSet>

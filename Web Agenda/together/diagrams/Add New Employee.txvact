@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nodeSet version="1.0">
+    <view uin="id4tnpag1lnfw56g1lns02r">
+        <property name="$description" value="null"/>
+        <property name="$metaclass" value="Activity Diagram"/>
+        <property name="@__options" value=""/>
+        <reference df-class-name="reference" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeidge3rhg1lnfw56g1lnrzyu">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="255,255,255"/>
+            <property name="bounds" value="120,79,80,23"/>
+            <property name="bounds_setted_by_user" value="true"/>
+            <reference referencedUin="design:link:::id4tnpag1lnfw56g1lns02r.nodeidge3rhg1lnfw56g1lnrzyu.linkidemplrg1lnfw56g1lns0ak:id4tnpag1lnfw56g1lns02r.nodeidge3rhg1lnfw56g1lnrzyu">
+                <property name="sourceAnchor" value="150,102"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="150,120"/>
+            </reference>
+        </reference>
+        <reference df-class-name="reference23" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid78vf1g1lnfw56g1lnrzyu">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="255,255,255"/>
+            <property name="bounds" value="89,189,143,23"/>
+            <property name="bounds_setted_by_user" value="true"/>
+            <reference referencedUin="design:link:::id4tnpag1lnfw56g1lns02r.nodeid78vf1g1lnfw56g1lnrzyu.linkidbbhyyg1lnfw56g1lns0ak:id4tnpag1lnfw56g1lns02r.nodeid78vf1g1lnfw56g1lnrzyu">
+                <property name="sourceAnchor" value="160,212"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="160,249"/>
+            </reference>
+            <reference referencedUin="design:link:::id4tnpag1lnfw56g1lns02r.nodeid78vf1g1lnfw56g1lnrzyu.linkid3ab81g1lnfw56g1lns0ak:id4tnpag1lnfw56g1lns02r.nodeid78vf1g1lnfw56g1lnrzyu">
+                <property name="sourceAnchor" value="190,212"/>
+                <property name="bendpoints" value="190,230,290,230,290,280"/>
+                <property name="targetAnchor" value="324,280"/>
+                <property name="bounds_setted_by_user" value="true"/>
+                <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id4tnpag1lnfw56g1lns02r.nodeid78vf1g1lnfw56g1lnrzyu.linkid3ab81g1lnfw56g1lns0ak:id4tnpag1lnfw56g1lns02r.nodeid78vf1g1lnfw56g1lnrzyu">
+                    <property name="bounds" value="190,210,121,16"/>
+                </reference>
+            </reference>
+        </reference>
+        <reference df-class-name="reference24" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid5u6hrg1lnfw56g1lnrzza">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="255,255,255"/>
+            <property name="bounds" value="70,249,186,23"/>
+            <property name="bounds_setted_by_user" value="true"/>
+            <reference referencedUin="design:link:::id4tnpag1lnfw56g1lns02r.nodeid5u6hrg1lnfw56g1lnrzza.linkidf845ng1lnfw56g1lns0a4:id4tnpag1lnfw56g1lns02r.nodeid5u6hrg1lnfw56g1lnrzza">
+                <property name="sourceAnchor" value="210,272"/>
+                <property name="bendpoints" value="210,300"/>
+                <property name="targetAnchor" value="324,300"/>
+                <property name="bounds_setted_by_user" value="true"/>
+                <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id4tnpag1lnfw56g1lns02r.nodeid5u6hrg1lnfw56g1lnrzza.linkidf845ng1lnfw56g1lns0a4:id4tnpag1lnfw56g1lns02r.nodeid5u6hrg1lnfw56g1lnrzza">
+                    <property name="bounds" value="210,280,112,16"/>
+                </reference>
+            </reference>
+            <reference referencedUin="design:link:::id4tnpag1lnfw56g1lns02r.nodeid5u6hrg1lnfw56g1lnrzza.linkiddw4mjg1lnfw56g1lns0ak:id4tnpag1lnfw56g1lns02r.nodeid5u6hrg1lnfw56g1lnrzza">
+                <property name="sourceAnchor" value="160,272"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="160,309"/>
+            </reference>
+        </reference>
+        <reference df-class-name="reference25" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeida6yatg1lnfw56g1lnrzza">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="255,255,255"/>
+            <property name="bounds" value="90,309,150,23"/>
+            <property name="bounds_setted_by_user" value="true"/>
+            <reference referencedUin="design:link:::id4tnpag1lnfw56g1lns02r.nodeida6yatg1lnfw56g1lnrzza.linkid6df6hg1lnfw56g1lns0a4:id4tnpag1lnfw56g1lns02r.nodeida6yatg1lnfw56g1lnrzza">
+                <property name="sourceAnchor" value="240,320"/>
+                <property name="bendpoints" value="300,320"/>
+                <property name="targetAnchor" value="324,315"/>
+                <property name="bounds_setted_by_user" value="true"/>
+                <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id4tnpag1lnfw56g1lns02r.nodeida6yatg1lnfw56g1lnrzza.linkid6df6hg1lnfw56g1lns0a4:id4tnpag1lnfw56g1lns02r.nodeida6yatg1lnfw56g1lnrzza">
+                    <property name="bounds" value="214,330,112,16"/>
+                </reference>
+            </reference>
+        </reference>
+        <reference df-class-name="reference26" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid64s3sg1lnfw56g1lnrzza">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="255,255,255"/>
+            <property name="bounds" value="320,129,172,23"/>
+            <property name="bounds_setted_by_user" value="true"/>
+            <reference referencedUin="design:link:::id4tnpag1lnfw56g1lns02r.nodeid64s3sg1lnfw56g1lnrzza.linkide4vd0g1lnfw56g1lns0a4:id4tnpag1lnfw56g1lns02r.nodeid64s3sg1lnfw56g1lnrzza">
+                <property name="sourceAnchor" value="410,152"/>
+                <property name="bendpoints" value="410,200"/>
+                <property name="targetAnchor" value="232,200"/>
+                <property name="bounds_setted_by_user" value="true"/>
+                <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id4tnpag1lnfw56g1lns02r.nodeid64s3sg1lnfw56g1lnrzza.linkide4vd0g1lnfw56g1lns0a4:id4tnpag1lnfw56g1lns02r.nodeid64s3sg1lnfw56g1lnrzza">
+                    <property name="bounds" value="320,200,178,16"/>
+                </reference>
+            </reference>
+        </reference>
+        <reference df-class-name="reference27" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeidautibg1lnfw56g1lnrzza">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="255,255,255"/>
+            <property name="bounds" value="370,79,80,23"/>
+            <property name="bounds_setted_by_user" value="true"/>
+            <reference referencedUin="design:link:::id4tnpag1lnfw56g1lns02r.nodeidautibg1lnfw56g1lnrzza.linkid7c68pg1lnfw56g1lns09p:id4tnpag1lnfw56g1lns02r.nodeidautibg1lnfw56g1lnrzza">
+                <property name="sourceAnchor" value="413,79"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="413,51"/>
+            </reference>
+        </reference>
+        <reference df-class-name="reference28" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid4h8r3g1lnfw56g1lnrzzp">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="255,255,255"/>
+            <property name="bounds" value="630,79,114,23"/>
+            <property name="bounds_setted_by_user" value="true"/>
+            <reference referencedUin="design:link:::id4tnpag1lnfw56g1lns02r.nodeid4h8r3g1lnfw56g1lnrzzp.linkid7kv7vg1lnfw56g1lns0b0:id4tnpag1lnfw56g1lns02r.nodeid4h8r3g1lnfw56g1lnrzzp">
+                <property name="sourceAnchor" value="690,102"/>
+                <property name="bendpoints" value="690,170,750,170,750,250"/>
+                <property name="targetAnchor" value="720,250"/>
+                <property name="bounds_setted_by_user" value="true"/>
+            </reference>
+        </reference>
+        <reference df-class-name="reference29" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid88gs6g1lnfw56g1lnrzzp">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="255,255,255"/>
+            <property name="bounds" value="340,249,200,23"/>
+            <property name="bounds_setted_by_user" value="true"/>
+            <reference referencedUin="design:link:::id4tnpag1lnfw56g1lns02r.nodeid88gs6g1lnfw56g1lnrzzp.linkidj5bgg1lnfw56g1lns0b0:id4tnpag1lnfw56g1lns02r.nodeid88gs6g1lnfw56g1lnrzzp">
+                <property name="sourceAnchor" value="490,272"/>
+                <property name="bendpoints" value="490,360,170,360"/>
+                <property name="targetAnchor" value="170,379"/>
+                <property name="bounds_setted_by_user" value="true"/>
+                <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id4tnpag1lnfw56g1lns02r.nodeid88gs6g1lnfw56g1lnrzzp.linkidj5bgg1lnfw56g1lns0b0:id4tnpag1lnfw56g1lns02r.nodeid88gs6g1lnfw56g1lnrzzp">
+                    <property name="bounds" value="320,340,172,16"/>
+                </reference>
+            </reference>
+        </reference>
+        <reference df-class-name="reference30" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid4wsx6g1lnfw56g1lns005">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="255,255,255"/>
+            <property name="bounds" value="109,379,111,23"/>
+            <property name="bounds_setted_by_user" value="true"/>
+            <reference referencedUin="design:link:::id4tnpag1lnfw56g1lns02r.nodeid4wsx6g1lnfw56g1lns005.linkidczsdvg1lnfw56g1lns0ak:id4tnpag1lnfw56g1lns02r.nodeid4wsx6g1lnfw56g1lns005">
+                <property name="sourceAnchor" value="109,390"/>
+                <property name="bendpoints" value="40,390,40,200"/>
+                <property name="targetAnchor" value="89,200"/>
+                <property name="bounds_setted_by_user" value="true"/>
+                <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id4tnpag1lnfw56g1lns02r.nodeid4wsx6g1lnfw56g1lns005.linkidczsdvg1lnfw56g1lns0ak:id4tnpag1lnfw56g1lns02r.nodeid4wsx6g1lnfw56g1lns005">
+                    <property name="bounds" value="0,170,193,16"/>
+                </reference>
+            </reference>
+            <reference referencedUin="design:link:::id4tnpag1lnfw56g1lns02r.nodeid4wsx6g1lnfw56g1lns005.linkid39htmg1lnfw56g1lns0ak:id4tnpag1lnfw56g1lns02r.nodeid4wsx6g1lnfw56g1lns005">
+                <property name="sourceAnchor" value="220,390"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="340,390"/>
+                <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id4tnpag1lnfw56g1lns02r.nodeid4wsx6g1lnfw56g1lns005.linkid39htmg1lnfw56g1lns0ak:id4tnpag1lnfw56g1lns02r.nodeid4wsx6g1lnfw56g1lns005">
+                    <property name="bounds" value="197,400,165,16"/>
+                </reference>
+            </reference>
+            <reference referencedUin="design:link:::id4tnpag1lnfw56g1lns02r.nodeid4wsx6g1lnfw56g1lns005.linkidga2ehg1lnfw56g1lns0ak:id4tnpag1lnfw56g1lns02r.nodeid4wsx6g1lnfw56g1lns005">
+                <property name="sourceAnchor" value="120,402"/>
+                <property name="bendpoints" value="120,410,30,410,30,260"/>
+                <property name="targetAnchor" value="70,260"/>
+                <property name="bounds_setted_by_user" value="true"/>
+                <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id4tnpag1lnfw56g1lns02r.nodeid4wsx6g1lnfw56g1lns005.linkidga2ehg1lnfw56g1lns0ak:id4tnpag1lnfw56g1lns02r.nodeid4wsx6g1lnfw56g1lns005">
+                    <property name="bounds" value="40,230,188,16"/>
+                </reference>
+            </reference>
+            <reference referencedUin="design:link:::id4tnpag1lnfw56g1lns02r.nodeid4wsx6g1lnfw56g1lns005.linkid7les1g1lnfw56g1lns0ak:id4tnpag1lnfw56g1lns02r.nodeid4wsx6g1lnfw56g1lns005">
+                <property name="sourceAnchor" value="140,402"/>
+                <property name="bendpoints" value="140,420,50,420,50,320"/>
+                <property name="targetAnchor" value="90,320"/>
+                <property name="bounds_setted_by_user" value="true"/>
+                <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id4tnpag1lnfw56g1lns02r.nodeid4wsx6g1lnfw56g1lns005.linkid7les1g1lnfw56g1lns0ak:id4tnpag1lnfw56g1lns02r.nodeid4wsx6g1lnfw56g1lns005">
+                    <property name="bounds" value="60,340,193,16"/>
+                </reference>
+            </reference>
+        </reference>
+        <reference df-class-name="reference31" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeidi18jsg1lnfw56g1lns005">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="255,255,255"/>
+            <property name="bounds" value="340,379,196,23"/>
+            <property name="bounds_setted_by_user" value="true"/>
+            <reference referencedUin="design:link:::id4tnpag1lnfw56g1lns02r.nodeidi18jsg1lnfw56g1lns005.linkida8rtxg1lnfw56g1lns09p:id4tnpag1lnfw56g1lns02r.nodeidi18jsg1lnfw56g1lns005">
+                <property name="sourceAnchor" value="418,402"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="418,460"/>
+                <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id4tnpag1lnfw56g1lns02r.nodeidi18jsg1lnfw56g1lns005.linkida8rtxg1lnfw56g1lns09p:id4tnpag1lnfw56g1lns02r.nodeidi18jsg1lnfw56g1lns005">
+                    <property name="bounds" value="420,420,135,16"/>
+                </reference>
+            </reference>
+        </reference>
+        <reference df-class-name="reference32" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid3x8rig1lnfw56g1lns005">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="255,255,255"/>
+            <property name="bounds" value="620,380,136,23"/>
+            <property name="bounds_setted_by_user" value="true"/>
+            <reference referencedUin="design:link:::id4tnpag1lnfw56g1lns02r.nodeid3x8rig1lnfw56g1lns005.linkidgynbng1lnfw56g1lns09p:id4tnpag1lnfw56g1lns02r.nodeid3x8rig1lnfw56g1lns005">
+                <property name="sourceAnchor" value="690,403"/>
+                <property name="bendpoints" value="690,470"/>
+                <property name="targetAnchor" value="425,468"/>
+                <property name="bounds_setted_by_user" value="true"/>
+                <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id4tnpag1lnfw56g1lns02r.nodeid3x8rig1lnfw56g1lns005.linkidgynbng1lnfw56g1lns09p:id4tnpag1lnfw56g1lns02r.nodeid3x8rig1lnfw56g1lns005">
+                    <property name="bounds" value="550,450,132,16"/>
+                </reference>
+            </reference>
+        </reference>
+        <reference df-class-name="reference33" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid23bklg1lnfw56g1lnrzyu">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="0,0,0"/>
+            <property name="bounds" value="152,45,12,12"/>
+            <reference referencedUin="design:link:::id4tnpag1lnfw56g1lns02r.nodeid23bklg1lnfw56g1lnrzyu.linkid6ugzyg1lnfw56g1lns0ak:id4tnpag1lnfw56g1lns02r.nodeid23bklg1lnfw56g1lnrzyu">
+                <property name="sourceAnchor" value="158,57"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="158,79"/>
+            </reference>
+        </reference>
+        <reference df-class-name="reference34" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeidf602wg1lnfw56g1lnrzza">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="255,255,255"/>
+            <property name="bounds" value="120,120,60,50"/>
+            <property name="bounds_setted_by_user" value="true"/>
+            <reference referencedUin="design:link:::id4tnpag1lnfw56g1lns02r.nodeidf602wg1lnfw56g1lnrzza.linkidcdeyyg1lnfw56g1lns0a4:id4tnpag1lnfw56g1lns02r.nodeidf602wg1lnfw56g1lnrzza">
+                <property name="sourceAnchor" value="180,130"/>
+                <property name="bendpoints" value="230,120,410,120"/>
+                <property name="targetAnchor" value="410,102"/>
+                <property name="bounds_setted_by_user" value="true"/>
+                <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id4tnpag1lnfw56g1lns02r.nodeidf602wg1lnfw56g1lnrzza.linkidcdeyyg1lnfw56g1lns0a4:id4tnpag1lnfw56g1lns02r.nodeidf602wg1lnfw56g1lnrzza">
+                    <property name="bounds" value="220,100,168,16"/>
+                </reference>
+            </reference>
+            <reference referencedUin="design:link:::id4tnpag1lnfw56g1lns02r.nodeidf602wg1lnfw56g1lnrzza.linkid6s3zcg1lnfw56g1lns0a4:id4tnpag1lnfw56g1lns02r.nodeidf602wg1lnfw56g1lnrzza">
+                <property name="sourceAnchor" value="180,140"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="320,140"/>
+                <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id4tnpag1lnfw56g1lns02r.nodeidf602wg1lnfw56g1lnrzza.linkid6s3zcg1lnfw56g1lns0a4:id4tnpag1lnfw56g1lns02r.nodeidf602wg1lnfw56g1lnrzza">
+                    <property name="bounds" value="195,150,110,16"/>
+                </reference>
+            </reference>
+        </reference>
+        <reference df-class-name="reference35" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeidabuw7g1lnfw56g1lnrzzp">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="0,0,0"/>
+            <property name="bounds" value="405,36,15,15"/>
+        </reference>
+        <reference df-class-name="reference36" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid6buhjg1lnfw56g1lnrzzp">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="0,0,0"/>
+            <property name="bounds" value="664,43,12,12"/>
+            <reference referencedUin="design:link:::id4tnpag1lnfw56g1lns02r.nodeid6buhjg1lnfw56g1lnrzzp.linkid9c8ag1lnfw56g1lns09p:id4tnpag1lnfw56g1lns02r.nodeid6buhjg1lnfw56g1lnrzzp">
+                <property name="sourceAnchor" value="670,55"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="670,79"/>
+            </reference>
+        </reference>
+        <reference df-class-name="reference37" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid1nb26g1lnfw56g1lns005">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="0,0,0"/>
+            <property name="bounds" value="410,460,15,15"/>
+        </reference>
+        <reference df-class-name="reference38" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid8oy4tg1lnfw56g1lns010">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="200,200,200"/>
+            <property name="bounds" value="60,20,220,420"/>
+            <property name="bounds_setted_by_user" value="true"/>
+        </reference>
+        <reference df-class-name="reference39" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid7hztig1lnfw56g1lns010">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="200,200,200"/>
+            <property name="bounds" value="310,20,240,420"/>
+            <property name="bounds_setted_by_user" value="true"/>
+            <reference referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid7hztig1lnfw56g1lns010.nodeide7ucwg1lnfw56g1lnrzxz:id4tnpag1lnfw56g1lns02r.nodeid7hztig1lnfw56g1lns010">
+                <property name="bounds" value="14,245,6,60"/>
+                <property name="bounds_setted_by_user" value="true"/>
+                <reference referencedUin="design:link:::id4tnpag1lnfw56g1lns02r.nodeid7hztig1lnfw56g1lns010.nodeide7ucwg1lnfw56g1lnrzxz.linkidb9p3og1lnfw56g1lns09p:id4tnpag1lnfw56g1lns02r.nodeid7hztig1lnfw56g1lns010.nodeide7ucwg1lnfw56g1lnrzxz:id4tnpag1lnfw56g1lns02r.nodeid7hztig1lnfw56g1lns010">
+                    <property name="sourceAnchor" value="330,300"/>
+                    <property name="bendpoints" value="390,300"/>
+                    <property name="targetAnchor" value="390,272"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
+            </reference>
+        </reference>
+        <reference df-class-name="reference40" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid7l9i8g1lnfw56g1lns01v">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="200,200,200"/>
+            <property name="bounds" value="569,20,217,418"/>
+            <property name="bounds_setted_by_user" value="true"/>
+            <reference referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid7l9i8g1lnfw56g1lns01v.nodeiddw4nug1lnfw56g1lnrzye:id4tnpag1lnfw56g1lns02r.nodeid7l9i8g1lnfw56g1lns01v">
+                <property name="foreground_color" value="0,0,0"/>
+                <property name="background_color" value="255,255,255"/>
+                <property name="bounds" value="91,210,60,50"/>
+                <property name="bounds_setted_by_user" value="true"/>
+                <reference referencedUin="design:link:::id4tnpag1lnfw56g1lns02r.nodeid7l9i8g1lnfw56g1lns01v.nodeiddw4nug1lnfw56g1lnrzye.linkidakclsg1lnfw56g1lns0a4:id4tnpag1lnfw56g1lns02r.nodeid7l9i8g1lnfw56g1lns01v.nodeiddw4nug1lnfw56g1lnrzye:id4tnpag1lnfw56g1lns02r.nodeid7l9i8g1lnfw56g1lns01v">
+                    <property name="sourceAnchor" value="690,230"/>
+                    <property name="bendpoints" value="690,200,510,200,510,90"/>
+                    <property name="targetAnchor" value="450,90"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                    <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id4tnpag1lnfw56g1lns02r.nodeid7l9i8g1lnfw56g1lns01v.nodeiddw4nug1lnfw56g1lnrzye.linkidakclsg1lnfw56g1lns0a4:id4tnpag1lnfw56g1lns02r.nodeid7l9i8g1lnfw56g1lns01v.nodeiddw4nug1lnfw56g1lnrzye:id4tnpag1lnfw56g1lns02r.nodeid7l9i8g1lnfw56g1lns01v">
+                        <property name="bounds" value="570,180,109,16"/>
+                    </reference>
+                </reference>
+                <reference referencedUin="design:link:::id4tnpag1lnfw56g1lns02r.nodeid7l9i8g1lnfw56g1lns01v.nodeiddw4nug1lnfw56g1lnrzye.linkid2u7org1lnfw56g1lns0a4:id4tnpag1lnfw56g1lns02r.nodeid7l9i8g1lnfw56g1lns01v.nodeiddw4nug1lnfw56g1lnrzye:id4tnpag1lnfw56g1lns02r.nodeid7l9i8g1lnfw56g1lns01v">
+                    <property name="sourceAnchor" value="690,280"/>
+                    <property name="bendpoints" value=""/>
+                    <property name="targetAnchor" value="690,380"/>
+                    <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id4tnpag1lnfw56g1lns02r.nodeid7l9i8g1lnfw56g1lns01v.nodeiddw4nug1lnfw56g1lnrzye.linkid2u7org1lnfw56g1lns0a4:id4tnpag1lnfw56g1lns02r.nodeid7l9i8g1lnfw56g1lns01v.nodeiddw4nug1lnfw56g1lnrzye:id4tnpag1lnfw56g1lns02r.nodeid7l9i8g1lnfw56g1lns01v">
+                        <property name="bounds" value="590,320,102,16"/>
+                    </reference>
+                </reference>
+            </reference>
+        </reference>
+    </view>
+    <node uin="id4tnpag1lnfw56g1lns02r.nodeidge3rhg1lnfw56g1lnrzyu">
+        <property name="$description" value="Employee logs into the system"/>
+        <property name="$metaclass" value="Activity"/>
+        <property name="$name" value="Log In"/>
+        <link uin="id4tnpag1lnfw56g1lns02r.nodeidge3rhg1lnfw56g1lnrzyu.linkidemplrg1lnfw56g1lns0ak">
+            <participant role="Supplier" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeidf602wg1lnfw56g1lnrzza"/>
+            <participant role="Client" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeidge3rhg1lnfw56g1lnrzyu"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Log In -&gt; LoginCorrect"/>
+        </link>
+    </node>
+    <node uin="id4tnpag1lnfw56g1lns02r.nodeid78vf1g1lnfw56g1lnrzyu">
+        <property name="$description" value="An employee object is added (temporarily)"/>
+        <property name="$metaclass" value="Activity"/>
+        <property name="$name" value="Add New Employee"/>
+        <link uin="id4tnpag1lnfw56g1lns02r.nodeid78vf1g1lnfw56g1lnrzyu.linkid3ab81g1lnfw56g1lns0ak">
+            <participant role="Supplier" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid7hztig1lnfw56g1lns010.nodeide7ucwg1lnfw56g1lnrzxz:id4tnpag1lnfw56g1lns02r.nodeid7hztig1lnfw56g1lns010"/>
+            <participant role="Client" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid78vf1g1lnfw56g1lnrzyu"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Add New Employee -&gt; SyncBar1"/>
+            <property name="$event_name" value="[ create temp object ]"/>
+        </link>
+        <link uin="id4tnpag1lnfw56g1lns02r.nodeid78vf1g1lnfw56g1lnrzyu.linkidbbhyyg1lnfw56g1lns0ak">
+            <participant role="Supplier" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid5u6hrg1lnfw56g1lnrzza"/>
+            <participant role="Client" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid78vf1g1lnfw56g1lnrzyu"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Add New Employee -&gt; Set Employee Permissions"/>
+        </link>
+    </node>
+    <node uin="id4tnpag1lnfw56g1lns02r.nodeid5u6hrg1lnfw56g1lnrzza">
+        <property name="$description" value="The employee object has settings tweaked accordingly"/>
+        <property name="$metaclass" value="Activity"/>
+        <property name="$name" value="Set Employee Permissions"/>
+        <link uin="id4tnpag1lnfw56g1lns02r.nodeid5u6hrg1lnfw56g1lnrzza.linkidf845ng1lnfw56g1lns0a4">
+            <participant role="Supplier" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid7hztig1lnfw56g1lns010.nodeide7ucwg1lnfw56g1lnrzxz:id4tnpag1lnfw56g1lns02r.nodeid7hztig1lnfw56g1lns010"/>
+            <participant role="Client" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid5u6hrg1lnfw56g1lnrzza"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Set Employee Permissions -&gt; SyncBar1"/>
+            <property name="$event_name" value="[ mod temp object ]"/>
+        </link>
+        <link uin="id4tnpag1lnfw56g1lns02r.nodeid5u6hrg1lnfw56g1lnrzza.linkiddw4mjg1lnfw56g1lns0ak">
+            <participant role="Supplier" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeida6yatg1lnfw56g1lnrzza"/>
+            <participant role="Client" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid5u6hrg1lnfw56g1lnrzza"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Set Employee Permissions -&gt; Set Employee Job(s)"/>
+        </link>
+    </node>
+    <node uin="id4tnpag1lnfw56g1lns02r.nodeida6yatg1lnfw56g1lnrzza">
+        <property name="$description" value="Sets the jobs that the employee will be performing and opens up permissions related to that job."/>
+        <property name="$metaclass" value="Activity"/>
+        <property name="$name" value="Set Employee Job(s)"/>
+        <link uin="id4tnpag1lnfw56g1lns02r.nodeida6yatg1lnfw56g1lnrzza.linkid6df6hg1lnfw56g1lns0a4">
+            <participant role="Supplier" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid7hztig1lnfw56g1lns010.nodeide7ucwg1lnfw56g1lnrzxz:id4tnpag1lnfw56g1lns02r.nodeid7hztig1lnfw56g1lns010"/>
+            <participant role="Client" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeida6yatg1lnfw56g1lnrzza"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Set Employee Job(s) -&gt; SyncBar1"/>
+            <property name="$event_name" value="[ mod temp object ]"/>
+        </link>
+    </node>
+    <node uin="id4tnpag1lnfw56g1lns02r.nodeid64s3sg1lnfw56g1lnrzza">
+        <property name="$description" value="Successful log in displays options as a dashboard"/>
+        <property name="$metaclass" value="Activity"/>
+        <property name="$name" value="Display User Dashboard"/>
+        <link uin="id4tnpag1lnfw56g1lns02r.nodeid64s3sg1lnfw56g1lnrzza.linkide4vd0g1lnfw56g1lns0a4">
+            <participant role="Supplier" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid78vf1g1lnfw56g1lnrzyu"/>
+            <participant role="Client" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid64s3sg1lnfw56g1lnrzza"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Display User Dashboard -&gt; Add New Employee"/>
+            <property name="$event_name" value="[ goto create new emp section ]"/>
+        </link>
+    </node>
+    <node uin="id4tnpag1lnfw56g1lns02r.nodeidautibg1lnfw56g1lnrzza">
+        <property name="$description" value="User is ejected from the system via logging out. May be automated depending on circumstance."/>
+        <property name="$metaclass" value="Activity"/>
+        <property name="$name" value="Log Out"/>
+        <link uin="id4tnpag1lnfw56g1lns02r.nodeidautibg1lnfw56g1lnrzza.linkid7c68pg1lnfw56g1lns09p">
+            <participant role="Supplier" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeidabuw7g1lnfw56g1lnrzzp"/>
+            <participant role="Client" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeidautibg1lnfw56g1lnrzza"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Log Out -&gt; systemLogOut"/>
+        </link>
+    </node>
+    <node uin="id4tnpag1lnfw56g1lns02r.nodeid4h8r3g1lnfw56g1lnrzzp">
+        <property name="$description" value="User attempts to log into the system"/>
+        <property name="$metaclass" value="Activity"/>
+        <property name="$name" value="Log In Attempt"/>
+        <link uin="id4tnpag1lnfw56g1lns02r.nodeid4h8r3g1lnfw56g1lnrzzp.linkid7kv7vg1lnfw56g1lns0b0">
+            <participant role="Supplier" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid7l9i8g1lnfw56g1lns01v.nodeiddw4nug1lnfw56g1lnrzye:id4tnpag1lnfw56g1lns02r.nodeid7l9i8g1lnfw56g1lns01v"/>
+            <participant role="Client" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid4h8r3g1lnfw56g1lnrzzp"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Log In Attempt -&gt; LoginEnabled"/>
+        </link>
+    </node>
+    <node uin="id4tnpag1lnfw56g1lns02r.nodeid88gs6g1lnfw56g1lnrzzp">
+        <property name="$description" value="Sets the attributes to the temporarily created object"/>
+        <property name="$metaclass" value="Activity"/>
+        <property name="$name" value="Update New Employee Object"/>
+        <link uin="id4tnpag1lnfw56g1lns02r.nodeid88gs6g1lnfw56g1lnrzzp.linkidj5bgg1lnfw56g1lns0b0">
+            <participant role="Supplier" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid4wsx6g1lnfw56g1lns005"/>
+            <participant role="Client" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid88gs6g1lnfw56g1lnrzzp"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Update New Employee Object -&gt; Save Settings"/>
+            <property name="$event_name" value="[ give option to save temp obj ]"/>
+        </link>
+    </node>
+    <node uin="id4tnpag1lnfw56g1lns02r.nodeid4wsx6g1lnfw56g1lns005">
+        <property name="$description" value="Save explicitly writes the temporary object into a permanent state."/>
+        <property name="$metaclass" value="Activity"/>
+        <property name="$name" value="Save Settings"/>
+        <link uin="id4tnpag1lnfw56g1lns02r.nodeid4wsx6g1lnfw56g1lns005.linkidczsdvg1lnfw56g1lns0ak">
+            <participant role="Supplier" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid78vf1g1lnfw56g1lnrzyu"/>
+            <participant role="Client" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid4wsx6g1lnfw56g1lns005"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Save Settings -&gt; Add New Employee"/>
+            <property name="$event_name" value="[ can further customize temp obj ]v"/>
+        </link>
+        <link uin="id4tnpag1lnfw56g1lns02r.nodeid4wsx6g1lnfw56g1lns005.linkid7les1g1lnfw56g1lns0ak">
+            <participant role="Supplier" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeida6yatg1lnfw56g1lnrzza"/>
+            <participant role="Client" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid4wsx6g1lnfw56g1lns005"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Save Settings -&gt; Set Employee Job(s)"/>
+            <property name="$event_name" value="[ can further customize temp obj ]v"/>
+        </link>
+        <link uin="id4tnpag1lnfw56g1lns02r.nodeid4wsx6g1lnfw56g1lns005.linkidga2ehg1lnfw56g1lns0ak">
+            <participant role="Supplier" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid5u6hrg1lnfw56g1lnrzza"/>
+            <participant role="Client" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid4wsx6g1lnfw56g1lns005"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Save Settings -&gt; Set Employee Permissions"/>
+            <property name="$event_name" value="[ can further customize temp obj ]"/>
+        </link>
+        <link uin="id4tnpag1lnfw56g1lns02r.nodeid4wsx6g1lnfw56g1lns005.linkid39htmg1lnfw56g1lns0ak">
+            <participant role="Supplier" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeidi18jsg1lnfw56g1lns005"/>
+            <participant role="Client" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid4wsx6g1lnfw56g1lns005"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Save Settings -&gt; Make Employee Official in DB"/>
+            <property name="$event_name" value="[ make temp obj permanent ]"/>
+        </link>
+    </node>
+    <node uin="id4tnpag1lnfw56g1lns02r.nodeidi18jsg1lnfw56g1lns005">
+        <property name="$description" value="When saving, the saved object is not enabled. That way"/>
+        <property name="$metaclass" value="Activity"/>
+        <property name="$name" value="Make Employee Official in DB"/>
+        <link uin="id4tnpag1lnfw56g1lns02r.nodeidi18jsg1lnfw56g1lns005.linkida8rtxg1lnfw56g1lns09p">
+            <participant role="Supplier" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid1nb26g1lnfw56g1lns005"/>
+            <participant role="Client" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeidi18jsg1lnfw56g1lns005"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Make Employee Official in DB -&gt; successfulPerformedActoins"/>
+            <property name="$event_name" value="[ employee was made ]"/>
+        </link>
+    </node>
+    <node uin="id4tnpag1lnfw56g1lns02r.nodeid3x8rig1lnfw56g1lns005">
+        <property name="$description" value="User has credentials saved in the backend and can gain access."/>
+        <property name="$metaclass" value="Activity"/>
+        <property name="$name" value="View New Account"/>
+        <link uin="id4tnpag1lnfw56g1lns02r.nodeid3x8rig1lnfw56g1lns005.linkidgynbng1lnfw56g1lns09p">
+            <participant role="Supplier" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid1nb26g1lnfw56g1lns005"/>
+            <participant role="Client" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid3x8rig1lnfw56g1lns005"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: View New Account -&gt; successfulPerformedActoins"/>
+            <property name="$event_name" value="[ employee logged on ]"/>
+        </link>
+    </node>
+    <node uin="id4tnpag1lnfw56g1lns02r.nodeid23bklg1lnfw56g1lnrzyu">
+        <property name="$metaclass" value="Start State"/>
+        <property name="$name" value="employeeThatCreatesSchedule"/>
+        <link uin="id4tnpag1lnfw56g1lns02r.nodeid23bklg1lnfw56g1lnrzyu.linkid6ugzyg1lnfw56g1lns0ak">
+            <participant role="Supplier" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeidge3rhg1lnfw56g1lnrzyu"/>
+            <participant role="Client" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid23bklg1lnfw56g1lnrzyu"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: employeeThatCreatesSchedule -&gt; Log In"/>
+        </link>
+    </node>
+    <node uin="id4tnpag1lnfw56g1lns02r.nodeidf602wg1lnfw56g1lnrzza">
+        <property name="$description" value="This decision object determines if the credentials supplied are correct and user can enter the system in order to retrieve their dashboard"/>
+        <property name="$metaclass" value="Decision"/>
+        <property name="$name" value="LoginCorrect"/>
+        <link uin="id4tnpag1lnfw56g1lns02r.nodeidf602wg1lnfw56g1lnrzza.linkidcdeyyg1lnfw56g1lns0a4">
+            <participant role="Supplier" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeidautibg1lnfw56g1lnrzza"/>
+            <participant role="Client" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeidf602wg1lnfw56g1lnrzza"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: LoginCorrect -&gt; Log Out"/>
+            <property name="$event_name" value="[ wrong login or non-existing ]"/>
+        </link>
+        <link uin="id4tnpag1lnfw56g1lns02r.nodeidf602wg1lnfw56g1lnrzza.linkid6s3zcg1lnfw56g1lns0a4">
+            <participant role="Supplier" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid64s3sg1lnfw56g1lnrzza"/>
+            <participant role="Client" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeidf602wg1lnfw56g1lnrzza"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: LoginCorrect -&gt; Display User Dashboard"/>
+            <property name="$event_name" value="[ successful login ]"/>
+        </link>
+    </node>
+    <node uin="id4tnpag1lnfw56g1lns02r.nodeidabuw7g1lnfw56g1lnrzzp">
+        <property name="$description" value="The system logs out the user, not taking into account whether the objective has been completed or not. While the user could potentially just exit the program without logging out, that is not part of the scope. The system will be built so that this shouldn&apos;t be an issue."/>
+        <property name="$metaclass" value="End State"/>
+        <property name="$name" value="systemLogOut"/>
+    </node>
+    <node uin="id4tnpag1lnfw56g1lns02r.nodeid6buhjg1lnfw56g1lnrzzp">
+        <property name="$description" value="An Employee that wants to use the system to check a schedule, notifications, or perform an action of interest must first log in. This represents the start point for that employee, and it is assumed that they have an account on the system, otherwise they will not be able to perform desired operations."/>
+        <property name="$metaclass" value="Start State"/>
+        <property name="$name" value="employeeWhoUsesSystem"/>
+        <link uin="id4tnpag1lnfw56g1lns02r.nodeid6buhjg1lnfw56g1lnrzzp.linkid9c8ag1lnfw56g1lns09p">
+            <participant role="Supplier" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid4h8r3g1lnfw56g1lnrzzp"/>
+            <participant role="Client" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid6buhjg1lnfw56g1lnrzzp"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: employeeWhoUsesSystem -&gt; Log In Attempt"/>
+        </link>
+    </node>
+    <node uin="id4tnpag1lnfw56g1lns02r.nodeid1nb26g1lnfw56g1lns005">
+        <property name="$description" value="When the supervisor successfully creates an employee in the database and they access their account, the desired action has been performed. Employee can use the account for their duties."/>
+        <property name="$metaclass" value="End State"/>
+        <property name="$name" value="successfulPerformedActoins"/>
+    </node>
+    <node uin="id4tnpag1lnfw56g1lns02r.nodeid8oy4tg1lnfw56g1lns010">
+        <property name="$description" value="Represents an employee who has been provided with permissions allowing them to create an employee with lesser permissions than their own."/>
+        <property name="$metaclass" value="Swimlane"/>
+        <property name="$name" value="Employee With Create Permissions"/>
+    </node>
+    <node uin="id4tnpag1lnfw56g1lns02r.nodeid7hztig1lnfw56g1lns010">
+        <property name="$description" value="Represents automated decisions and actions based on inputs &#xA;from employees while distributing outputs back to them."/>
+        <property name="$metaclass" value="Swimlane"/>
+        <property name="$name" value="System"/>
+        <node uin="id4tnpag1lnfw56g1lns02r.nodeid7hztig1lnfw56g1lns010.nodeide7ucwg1lnfw56g1lnrzxz">
+            <property name="$orientation" value="vertical"/>
+            <property name="$metaclass" value="Synchronization Bar"/>
+            <property name="$name" value="SyncBar1"/>
+            <property name="@xmiid" value="G.40"/>
+            <link uin="id4tnpag1lnfw56g1lns02r.nodeid7hztig1lnfw56g1lns010.nodeide7ucwg1lnfw56g1lnrzxz.linkidb9p3og1lnfw56g1lns09p">
+                <participant role="Supplier" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid88gs6g1lnfw56g1lnrzzp"/>
+                <participant role="Client" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid7hztig1lnfw56g1lns010.nodeide7ucwg1lnfw56g1lnrzxz:id4tnpag1lnfw56g1lns02r.nodeid7hztig1lnfw56g1lns010"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="@label" value="link: SyncBar1 -&gt; Update New Employee Object"/>
+            </link>
+        </node>
+    </node>
+    <node uin="id4tnpag1lnfw56g1lns02r.nodeid7l9i8g1lnfw56g1lns01v">
+        <property name="$metaclass" value="Swimlane"/>
+        <property name="$name" value="Employee"/>
+        <node uin="id4tnpag1lnfw56g1lns02r.nodeid7l9i8g1lnfw56g1lns01v.nodeiddw4nug1lnfw56g1lnrzye">
+            <property name="$description" value="This decision represents whether the login credentials exist, much like the other LoginCorrect object. The results between the two are exact, but the conditions on which they are thrown are in different context."/>
+            <property name="$metaclass" value="Decision"/>
+            <property name="$name" value="LoginEnabled"/>
+            <property name="@xmiid" value="G.43"/>
+            <link uin="id4tnpag1lnfw56g1lns02r.nodeid7l9i8g1lnfw56g1lns01v.nodeiddw4nug1lnfw56g1lnrzye.linkid2u7org1lnfw56g1lns0a4">
+                <participant role="Supplier" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid3x8rig1lnfw56g1lns005"/>
+                <participant role="Client" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid7l9i8g1lnfw56g1lns01v.nodeiddw4nug1lnfw56g1lnrzye:id4tnpag1lnfw56g1lns02r.nodeid7l9i8g1lnfw56g1lns01v"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="@label" value="link: LoginEnabled -&gt; View New Account"/>
+                <property name="$event_name" value="[ user is created ]"/>
+            </link>
+            <link uin="id4tnpag1lnfw56g1lns02r.nodeid7l9i8g1lnfw56g1lns01v.nodeiddw4nug1lnfw56g1lnrzye.linkidakclsg1lnfw56g1lns0a4">
+                <participant role="Supplier" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeidautibg1lnfw56g1lnrzza"/>
+                <participant role="Client" referencedUin="design:node:::id4tnpag1lnfw56g1lns02r.nodeid7l9i8g1lnfw56g1lns01v.nodeiddw4nug1lnfw56g1lnrzye:id4tnpag1lnfw56g1lns02r.nodeid7l9i8g1lnfw56g1lns01v"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="@label" value="link: LoginEnabled -&gt; Log Out"/>
+                <property name="$event_name" value="[ user not created ]"/>
+            </link>
+        </node>
+    </node>
+</nodeSet>

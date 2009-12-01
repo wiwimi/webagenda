@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nodeSet version="1.0">
+    <view uin="id9bq6kg2o290vlg2o2ezmh">
+        <property name="$metaclass" value="Sequence Diagram"/>
+        <property name="@__options" value=""/>
+        <reference df-class-name="reference" referencedUin="design:node:::id9bq6kg2o290vlg2o2ezmh.nodeid3kfnmg2o290vlg2o2jpv6">
+            <property name="$shortcutReference" value="true"/>
+            <property name="seq_bounds" value="51,30,90,270"/>
+        </reference>
+        <reference df-class-name="reference1" referencedUin="design:node:::id9bq6kg2o290vlg2o2ezmh.nodeid8byzvg2o290vlg2o2k60m">
+            <property name="$shortcutReference" value="true"/>
+            <property name="seq_bounds" value="243,30,90,270"/>
+        </reference>
+        <reference df-class-name="reference2" referencedUin="design:node:::id9bq6kg2o290vlg2o2ezmh.nodeiddaq7ng2o290vlg2o2kcop">
+            <property name="$shortcutReference" value="true"/>
+            <property name="seq_bounds" value="418,30,107,270"/>
+        </reference>
+        <reference df-class-name="reference3" referencedUin="design:node:::id9bq6kg2o290vlg2o2ezmh.nodeidf94skg2o290vlg2o2kicb">
+            <property name="$shortcutReference" value="true"/>
+            <property name="seq_bounds" value="570,30,105,270"/>
+        </reference>
+        <reference df-class-name="reference4" referencedUin="design:node:::id9bq6kg2o290vlg2o2ezmh.nodeidap64pg2o290vlg2o2kr0p">
+            <property name="$shortcutReference" value="true"/>
+            <property name="seq_bounds" value="738,30,90,270"/>
+        </reference>
+        <reference df-class-name="reference5" referencedUin="design:node:::id9bq6kg2o290vlg2o2ezmh.nodeid41o6yg2o290vlg2o2kur2">
+            <property name="$shortcutReference" value="true"/>
+            <property name="seq_bounds" value="877,30,114,270"/>
+        </reference>
+    </view>
+    <node uin="id9bq6kg2o290vlg2o2ezmh.nodeid3kfnmg2o290vlg2o2jpv6">
+        <property name="$metaclass" value="Object"/>
+        <property name="$name" value="User"/>
+        <property name="@stereotype" value="actor"/>
+    </node>
+    <node uin="id9bq6kg2o290vlg2o2ezmh.nodeid8byzvg2o290vlg2o2k60m">
+        <property name="$metaclass" value="Object"/>
+        <property name="$name" value="WebInterface"/>
+    </node>
+    <node uin="id9bq6kg2o290vlg2o2ezmh.nodeiddaq7ng2o290vlg2o2kcop">
+        <property name="$metaclass" value="Object"/>
+        <property name="$name" value="SearchEmployee"/>
+    </node>
+    <node uin="id9bq6kg2o290vlg2o2ezmh.nodeidf94skg2o290vlg2o2kicb">
+        <property name="$metaclass" value="Object"/>
+        <property name="$name" value="EmployeeBroker"/>
+    </node>
+    <node uin="id9bq6kg2o290vlg2o2ezmh.nodeidap64pg2o290vlg2o2kr0p">
+        <property name="$metaclass" value="Object"/>
+        <property name="$name" value="Employee"/>
+    </node>
+    <node uin="id9bq6kg2o290vlg2o2ezmh.nodeid41o6yg2o290vlg2o2kur2">
+        <property name="$metaclass" value="Object"/>
+        <property name="$name" value="NotificationBroker"/>
+    </node>
+</nodeSet>

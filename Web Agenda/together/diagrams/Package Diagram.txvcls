@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nodeSet version="1.0">
+    <view uin="ideiw0ug2p7zmjhg2p84ozt">
+        <property name="$metaclass" value="Class Diagram"/>
+        <property name="@__options" value=""/>
+        <reference df-class-name="reference" referencedUin="design:view:::idf1bpkg2p7zmjhg2p85qp2">
+            <property name="$shortcutReference" value="true"/>
+            <property name="@__fqn" value="uml:package:Webagenda:src:Interface"/>
+            <property name="$imported" value=""/>
+            <property name="bounds" value="40,30,83,104"/>
+            <reference referencedUin="design:link:::idf1bpkg2p7zmjhg2p85qp2.linkid8o072g2p7zmjhg2p9ql08">
+                <property name="sourceAnchor" value="123,97"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="220,97"/>
+            </reference>
+        </reference>
+        <reference df-class-name="reference5" referencedUin="design:view:::unknown_view">
+            <property name="$shortcutReference" value="true"/>
+            <property name="@__fqn" value="&lt;oiref:#Package#:oiref&gt;"/>
+            <property name="$imported" value=""/>
+            <property name="bounds" value="40,190,113,95"/>
+        </reference>
+        <reference df-class-name="reference21" referencedUin="design:view:::idgjd7xg2p7zmjhg2p8asa9">
+            <property name="$shortcutReference" value="true"/>
+            <property name="@__fqn" value="uml:package:Webagenda:src:Persistance"/>
+            <property name="$imported" value=""/>
+            <property name="bounds" value="30,220,117,120"/>
+            <reference referencedUin="design:link:::idgjd7xg2p7zmjhg2p8asa9.linkid63m2eg2p7zmjhg2p8s555">
+                <property name="sourceAnchor" value="281,125"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="96,190"/>
+            </reference>
+        </reference>
+        <reference df-class-name="reference29" referencedUin="design:view:::id1gm70g2p7zmjhg2p8vsns">
+            <property name="$shortcutReference" value="true"/>
+            <property name="@__fqn" value="uml:package:Webagenda:src:ProblemDomain"/>
+            <property name="$imported" value=""/>
+            <property name="bounds" value="220,60,110,184"/>
+            <reference referencedUin="design:link:::id1gm70g2p7zmjhg2p8vsns.linkid2wu2lg2p7zmjhg2p9qmyz">
+                <property name="sourceAnchor" value="220,234"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="147,240"/>
+            </reference>
+        </reference>
+    </view>
+</nodeSet>

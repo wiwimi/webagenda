@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nodeSet version="1.0">
+    <link uin="idgjd7xg2p7zmjhg2p8asa9.linkid63m2eg2p7zmjhg2p8s555">
+        <property name="$metaclass" value="Dependency Link"/>
+        <participant role="Supplier" referencedUin="design:view:::idbx53dg2p7zmjhg2p86sav"/>
+        <participant role="Client" referencedUin="design:view:::idgjd7xg2p7zmjhg2p8asa9"/>
+    </link>
+    <view uin="idgjd7xg2p7zmjhg2p8asa9">
+        <property name="$metaclass" value="Package Diagram"/>
+        <property name="@__options" value=""/>
+        <reference df-class-name="reference" referencedUin="jdt:e_class:src:Persistance.ScheduleBroker">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="10,10,137,85"/>
+        </reference>
+        <reference df-class-name="reference36" referencedUin="jdt:e_class:src:Persistance.WorkgroupBroker">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="10,130,130,101"/>
+        </reference>
+        <property name="$defaultDiagram" value=""/>
+    </view>
+</nodeSet>

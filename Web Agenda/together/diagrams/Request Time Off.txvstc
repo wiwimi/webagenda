@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nodeSet version="1.0">
+    <view uin="id77mutg1lnfw56g1lqtslj">
+        <property name="$description" value="null"/>
+        <property name="$metaclass" value="State Diagram"/>
+        <property name="@__options" value=""/>
+        <reference df-class-name="reference" referencedUin="design:node:::id77mutg1lnfw56g1lqtslj.nodeidcgtl8g1lnfw56g1lqtsjt">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="0,0,0"/>
+            <property name="bounds" value="48,44,12,12"/>
+            <reference referencedUin="design:link:::id77mutg1lnfw56g1lqtslj.nodeidcgtl8g1lnfw56g1lqtsjt.linkidvmtmg1lnfw56g1lqtsp0:id77mutg1lnfw56g1lqtslj.nodeidcgtl8g1lnfw56g1lqtsjt">
+                <property name="sourceAnchor" value="60,50"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="146,50"/>
+            </reference>
+        </reference>
+        <reference df-class-name="reference62" referencedUin="design:node:::id77mutg1lnfw56g1lqtslj.nodeidh08kbg1lnfw56g1lqtsjt">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="255,255,255"/>
+            <property name="bounds" value="146,30,161,105"/>
+            <property name="bounds_setted_by_user" value="true"/>
+            <reference referencedUin="design:link:::id77mutg1lnfw56g1lqtslj.nodeidh08kbg1lnfw56g1lqtsjt.linkidhlh71g1lnfw56g1lqtsp0:id77mutg1lnfw56g1lqtslj.nodeidh08kbg1lnfw56g1lqtsjt">
+                <property name="sourceAnchor" value="226,135"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="226,220"/>
+                <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id77mutg1lnfw56g1lqtslj.nodeidh08kbg1lnfw56g1lqtsjt.linkidhlh71g1lnfw56g1lqtsp0:id77mutg1lnfw56g1lqtslj.nodeidh08kbg1lnfw56g1lqtsjt">
+                    <property name="bounds" value="236,169,168,16"/>
+                </reference>
+            </reference>
+        </reference>
+        <reference df-class-name="reference63" referencedUin="design:node:::id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="255,255,255"/>
+            <property name="bounds" value="140,220,350,300"/>
+            <property name="bounds_setted_by_user" value="true"/>
+            <reference referencedUin="design:node:::id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9.nodeid1ifpfg1lnfw56g1lqtsko:id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9">
+                <property name="foreground_color" value="0,0,0"/>
+                <property name="background_color" value="255,255,255"/>
+                <property name="bounds" value="100,180,104,96"/>
+                <property name="bounds_setted_by_user" value="true"/>
+                <reference referencedUin="design:link:::id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9.nodeid1ifpfg1lnfw56g1lqtsko.linkidf5k1g1lnfw56g1lqtsp0:id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9.nodeid1ifpfg1lnfw56g1lqtsko:id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9">
+                    <property name="sourceAnchor" value="240,437"/>
+                    <property name="bendpoints" value=""/>
+                    <property name="targetAnchor" value="194,437"/>
+                </reference>
+            </reference>
+            <reference referencedUin="design:node:::id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9.nodeidjviw1g1lnfw56g1lqtsk9:id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9">
+                <property name="bounds" value="40,60,12,12"/>
+                <reference referencedUin="design:link:::id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9.nodeidjviw1g1lnfw56g1lqtsk9.linkidayq9ig1lnfw56g1lqtsp0:id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9.nodeidjviw1g1lnfw56g1lqtsk9:id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9">
+                    <property name="sourceAnchor" value="192,286"/>
+                    <property name="bendpoints" value=""/>
+                    <property name="targetAnchor" value="249,286"/>
+                </reference>
+            </reference>
+            <reference referencedUin="design:node:::id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9.nodeid22xfug1lnfw56g1lqtsk9:id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9">
+                <property name="foreground_color" value="0,0,0"/>
+                <property name="background_color" value="255,255,255"/>
+                <property name="bounds" value="109,39,93,71"/>
+                <property name="bounds_setted_by_user" value="true"/>
+                <reference referencedUin="design:link:::id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9.nodeid22xfug1lnfw56g1lqtsk9.linkid18ralg1lnfw56g1lqtsp0:id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9.nodeid22xfug1lnfw56g1lqtsk9:id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9">
+                    <property name="sourceAnchor" value="295,330"/>
+                    <property name="bendpoints" value=""/>
+                    <property name="targetAnchor" value="295,400"/>
+                    <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9.nodeid22xfug1lnfw56g1lqtsk9.linkid18ralg1lnfw56g1lqtsp0:id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9.nodeid22xfug1lnfw56g1lqtsk9:id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9">
+                        <property name="bounds" value="305,357,182,16"/>
+                    </reference>
+                </reference>
+            </reference>
+            <reference referencedUin="design:node:::id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9.nodeid8t7kpg1lnfw56g1lqtsko:id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9">
+                <property name="bounds" value="39,209,15,15"/>
+            </reference>
+            <reference referencedUin="design:link:::id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9.linkid781zzg1lnfw56g1lqtsp0:id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9">
+                <property name="sourceAnchor" value="298,520"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="298,610"/>
+                <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9.linkid781zzg1lnfw56g1lqtsp0:id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9">
+                    <property name="bounds" value="308,557,118,16"/>
+                </reference>
+            </reference>
+        </reference>
+        <reference df-class-name="reference64" referencedUin="design:node:::id77mutg1lnfw56g1lqtslj.nodeid44rfrg1lnfw56g1lqtsko">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="255,255,255"/>
+            <property name="bounds" value="180,610,236,154"/>
+            <property name="bounds_setted_by_user" value="true"/>
+            <reference referencedUin="design:link:::id77mutg1lnfw56g1lqtslj.nodeid44rfrg1lnfw56g1lqtsko.linkidj5kv2g1lnfw56g1lqtsp0:id77mutg1lnfw56g1lqtslj.nodeid44rfrg1lnfw56g1lqtsko">
+                <property name="sourceAnchor" value="416,677"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="552,677"/>
+                <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id77mutg1lnfw56g1lqtslj.nodeid44rfrg1lnfw56g1lqtsko.linkidj5kv2g1lnfw56g1lqtsp0:id77mutg1lnfw56g1lqtslj.nodeid44rfrg1lnfw56g1lqtsko">
+                    <property name="bounds" value="433,687,102,16"/>
+                </reference>
+            </reference>
+        </reference>
+        <reference df-class-name="reference65" referencedUin="design:node:::id77mutg1lnfw56g1lqtslj.nodeid5khylg1lnfw56g1lqtsko">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="255,255,255"/>
+            <property name="bounds" value="552,611,210,132"/>
+            <property name="bounds_setted_by_user" value="true"/>
+            <reference referencedUin="design:link:::id77mutg1lnfw56g1lqtslj.nodeid5khylg1lnfw56g1lqtsko.linkid4jgadg1lnfw56g1lqtsp0:id77mutg1lnfw56g1lqtslj.nodeid5khylg1lnfw56g1lqtsko">
+                <property name="sourceAnchor" value="762,663"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="862,663"/>
+            </reference>
+        </reference>
+        <reference df-class-name="reference66" referencedUin="design:node:::id77mutg1lnfw56g1lqtslj.nodeidb2io9g1lnfw56g1lqtsl4">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="0,0,0"/>
+            <property name="bounds" value="862,655,15,15"/>
+        </reference>
+    </view>
+    <node uin="id77mutg1lnfw56g1lqtslj.nodeidcgtl8g1lnfw56g1lqtsjt">
+        <property name="$metaclass" value="Start State"/>
+        <property name="$name" value="StartState1"/>
+        <link uin="id77mutg1lnfw56g1lqtslj.nodeidcgtl8g1lnfw56g1lqtsjt.linkidvmtmg1lnfw56g1lqtsp0">
+            <property name="$description" value="The start of the state change of a shift request occurs when a user of the system requests a shift change with another individual."/>
+            <participant role="Supplier" referencedUin="design:node:::id77mutg1lnfw56g1lqtslj.nodeidh08kbg1lnfw56g1lqtsjt"/>
+            <participant role="Client" referencedUin="design:node:::id77mutg1lnfw56g1lqtslj.nodeidcgtl8g1lnfw56g1lqtsjt"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: StartState1 -&gt; Pending"/>
+        </link>
+    </node>
+    <node uin="id77mutg1lnfw56g1lqtslj.nodeidh08kbg1lnfw56g1lqtsjt">
+        <property name="$description" value="This state is when the shift change request is sent to the supervisor and it is pending approval. This can no longer be changed once the 2 weeks to start date has occured."/>
+        <property name="$metaclass" value="State"/>
+        <property name="$name" value="Pending"/>
+        <link uin="id77mutg1lnfw56g1lqtslj.nodeidh08kbg1lnfw56g1lqtsjt.linkidhlh71g1lnfw56g1lqtsp0">
+            <property name="$description" value="When the state of the shift change goes to pending, it can remain in pending until the 2 week prior to the shift date period has expired. Up until that 2 week period prior to the shift date, the shift can go into the active state for supervisor revision."/>
+            <participant role="Supplier" referencedUin="design:node:::id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9"/>
+            <participant role="Client" referencedUin="design:node:::id77mutg1lnfw56g1lqtslj.nodeidh08kbg1lnfw56g1lqtsjt"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Pending -&gt; Active"/>
+            <property name="$event_name" value="Prior to 2 Weeks to Start Date"/>
+        </link>
+    </node>
+    <node uin="id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9">
+        <property name="$description" value="This state can be achived by a supervisor taking the shift change request out of the pending state."/>
+        <property name="$metaclass" value="State"/>
+        <property name="$name" value="Active"/>
+        <node uin="id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9.nodeidjviw1g1lnfw56g1lqtsk9">
+            <property name="$metaclass" value="Start State"/>
+            <property name="$name" value="StartState2"/>
+            <property name="@xmiid" value="G.6"/>
+            <link uin="id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9.nodeidjviw1g1lnfw56g1lqtsk9.linkidayq9ig1lnfw56g1lqtsp0">
+                <participant role="Supplier" referencedUin="design:node:::id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9.nodeid22xfug1lnfw56g1lqtsk9:id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9"/>
+                <participant role="Client" referencedUin="design:node:::id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9.nodeidjviw1g1lnfw56g1lqtsk9:id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="@label" value="link: StartState2 -&gt; Scheduled"/>
+            </link>
+        </node>
+        <node uin="id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9.nodeid22xfug1lnfw56g1lqtsk9">
+            <property name="$description" value="This is an internal state inside of active. This state can be achived if the schedule is currently being viewed by a supervisor after an employee has submitted the shift change request."/>
+            <property name="$metaclass" value="State"/>
+            <property name="$name" value="Scheduled"/>
+            <property name="@xmiid" value="G.8"/>
+            <link uin="id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9.nodeid22xfug1lnfw56g1lqtsk9.linkid18ralg1lnfw56g1lqtsp0">
+                <property name="$description" value="When a supervisor submits a new schedule it then gets sent into a temporary revision stage."/>
+                <participant role="Supplier" referencedUin="design:node:::id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9.nodeid1ifpfg1lnfw56g1lqtsko:id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9"/>
+                <participant role="Client" referencedUin="design:node:::id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9.nodeid22xfug1lnfw56g1lqtsk9:id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="@label" value="link: Scheduled -&gt; revision"/>
+                <property name="$event_name" value="Supervisor Submits New Sched"/>
+            </link>
+        </node>
+        <node uin="id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9.nodeid1ifpfg1lnfw56g1lqtsko">
+            <property name="$description" value="This state can be accessed if a supervisor is viewing an schedule and decides that it should be changed. The state can then proceed to the end of a revision stage by the supervisor sending the modified schedule back."/>
+            <property name="$metaclass" value="State"/>
+            <property name="$name" value="revision"/>
+            <property name="@xmiid" value="G.10"/>
+            <link uin="id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9.nodeid1ifpfg1lnfw56g1lqtsko.linkidf5k1g1lnfw56g1lqtsp0">
+                <participant role="Supplier" referencedUin="design:node:::id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9.nodeid8t7kpg1lnfw56g1lqtsko:id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9"/>
+                <participant role="Client" referencedUin="design:node:::id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9.nodeid1ifpfg1lnfw56g1lqtsko:id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="@label" value="link: revision -&gt; EndState1"/>
+            </link>
+        </node>
+        <node uin="id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9.nodeid8t7kpg1lnfw56g1lqtsko">
+            <property name="$metaclass" value="End State"/>
+            <property name="$name" value="EndState1"/>
+            <property name="@xmiid" value="G.11"/>
+        </node>
+        <link uin="id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9.linkid781zzg1lnfw56g1lqtsp0">
+            <participant role="Supplier" referencedUin="design:node:::id77mutg1lnfw56g1lqtslj.nodeid44rfrg1lnfw56g1lqtsko"/>
+            <participant role="Client" referencedUin="design:node:::id77mutg1lnfw56g1lqtslj.nodeid2ni0fg1lnfw56g1lqtsk9"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Active -&gt; Running"/>
+            <property name="$event_name" value="Less Than 2 Weeks"/>
+        </link>
+    </node>
+    <node uin="id77mutg1lnfw56g1lqtslj.nodeid44rfrg1lnfw56g1lqtsko">
+        <property name="$description" value="A shift change request can be put into a running state after all the changes have been made and a supervisor accepts the shift change request."/>
+        <property name="$metaclass" value="State"/>
+        <property name="$name" value="Running"/>
+        <link uin="id77mutg1lnfw56g1lqtslj.nodeid44rfrg1lnfw56g1lqtsko.linkidj5kv2g1lnfw56g1lqtsp0">
+            <property name="$description" value="The state changes from running to completed at the exact day that the shift that was requested to be changed occurs."/>
+            <participant role="Supplier" referencedUin="design:node:::id77mutg1lnfw56g1lqtslj.nodeid5khylg1lnfw56g1lqtsko"/>
+            <participant role="Client" referencedUin="design:node:::id77mutg1lnfw56g1lqtslj.nodeid44rfrg1lnfw56g1lqtsko"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Running -&gt; Completed"/>
+            <property name="$event_name" value="Date of Shift Start"/>
+        </link>
+    </node>
+    <node uin="id77mutg1lnfw56g1lqtslj.nodeid5khylg1lnfw56g1lqtsko">
+        <property name="$description" value="The state of the shift change request goes to completed after the date of the shift change request has passed."/>
+        <property name="$metaclass" value="State"/>
+        <property name="$name" value="Completed"/>
+        <link uin="id77mutg1lnfw56g1lqtslj.nodeid5khylg1lnfw56g1lqtsko.linkid4jgadg1lnfw56g1lqtsp0">
+            <participant role="Supplier" referencedUin="design:node:::id77mutg1lnfw56g1lqtslj.nodeidb2io9g1lnfw56g1lqtsl4"/>
+            <participant role="Client" referencedUin="design:node:::id77mutg1lnfw56g1lqtslj.nodeid5khylg1lnfw56g1lqtsko"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Completed -&gt; EndState2"/>
+        </link>
+    </node>
+    <node uin="id77mutg1lnfw56g1lqtslj.nodeidb2io9g1lnfw56g1lqtsl4">
+        <property name="$metaclass" value="End State"/>
+        <property name="$name" value="EndState2"/>
+    </node>
+</nodeSet>

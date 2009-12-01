@@ -1,0 +1,749 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nodeSet version="1.0">
+    <view uin="id8zfn4g1lnfw56g1lrfl7n">
+        <property name="$metaclass" value="Activity Diagram"/>
+        <property name="@__options" value=""/>
+        <reference df-class-name="reference" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidjyn38g1lnfw56g1lrfl0p">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="255,255,255"/>
+            <property name="bounds" value="199,790,181,34"/>
+            <property name="bounds_setted_by_user" value="true"/>
+            <reference referencedUin="design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeidjyn38g1lnfw56g1lrfl0p.linkid31vbkg1lnfw56g1lrflel:id8zfn4g1lnfw56g1lrfl7n.nodeidjyn38g1lnfw56g1lrfl0p">
+                <property name="sourceAnchor" value="380,807"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="530,807"/>
+                <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeidjyn38g1lnfw56g1lrfl0p.linkid31vbkg1lnfw56g1lrflel:id8zfn4g1lnfw56g1lrfl7n.nodeidjyn38g1lnfw56g1lrfl0p">
+                    <property name="bounds" value="389,817,131,16"/>
+                </reference>
+            </reference>
+        </reference>
+        <reference df-class-name="reference188" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeid6jihug1lnfw56g1lrfl14">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="255,255,255"/>
+            <property name="bounds" value="179,669,79,53"/>
+            <property name="bounds_setted_by_user" value="true"/>
+            <reference referencedUin="design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeid6jihug1lnfw56g1lrfl14.linkid2ssw2g1lnfw56g1lrflel:id8zfn4g1lnfw56g1lrfl7n.nodeid6jihug1lnfw56g1lrfl14">
+                <property name="sourceAnchor" value="258,700"/>
+                <property name="bendpoints" value="300,700"/>
+                <property name="targetAnchor" value="300,790"/>
+                <property name="bounds_setted_by_user" value="true"/>
+                <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeid6jihug1lnfw56g1lrfl14.linkid2ssw2g1lnfw56g1lrflel:id8zfn4g1lnfw56g1lrfl7n.nodeid6jihug1lnfw56g1lrfl14">
+                    <property name="bounds" value="300,740,93,16"/>
+                </reference>
+            </reference>
+            <reference referencedUin="design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeid6jihug1lnfw56g1lrfl14.linkidjf66eg1lnfw56g1lrfle5:id8zfn4g1lnfw56g1lrfl7n.nodeid6jihug1lnfw56g1lrfl14">
+                <property name="sourceAnchor" value="179,690"/>
+                <property name="bendpoints" value="100,690"/>
+                <property name="targetAnchor" value="97,799"/>
+                <property name="bounds_setted_by_user" value="true"/>
+                <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeid6jihug1lnfw56g1lrfl14.linkidjf66eg1lnfw56g1lrfle5:id8zfn4g1lnfw56g1lrfl7n.nodeid6jihug1lnfw56g1lrfl14">
+                    <property name="bounds" value="100,750,112,16"/>
+                </reference>
+            </reference>
+        </reference>
+        <reference df-class-name="reference189" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeid8dkx1g1lnfw56g1lrfl14">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="255,255,255"/>
+            <property name="bounds" value="89,799,15,15"/>
+        </reference>
+        <reference df-class-name="reference190" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidhla3jg1lnfw56g1lrfl1k">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="255,255,255"/>
+            <property name="bounds" value="530,770,80,58"/>
+            <property name="bounds_setted_by_user" value="true"/>
+            <reference referencedUin="design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeidhla3jg1lnfw56g1lrfl1k.linkidh4mxgg1lnfw56g1lrfle5:id8zfn4g1lnfw56g1lrfl7n.nodeidhla3jg1lnfw56g1lrfl1k">
+                <property name="sourceAnchor" value="550,828"/>
+                <property name="bendpoints" value="550,870"/>
+                <property name="targetAnchor" value="478,919"/>
+                <property name="bounds_setted_by_user" value="true"/>
+                <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeidhla3jg1lnfw56g1lrfl1k.linkidh4mxgg1lnfw56g1lrfle5:id8zfn4g1lnfw56g1lrfl7n.nodeidhla3jg1lnfw56g1lrfl1k">
+                    <property name="bounds" value="440,880,77,16"/>
+                </reference>
+            </reference>
+            <reference referencedUin="design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeidhla3jg1lnfw56g1lrfl1k.linkid5ur9fg1lnfw56g1lrfle5:id8zfn4g1lnfw56g1lrfl7n.nodeidhla3jg1lnfw56g1lrfl1k">
+                <property name="sourceAnchor" value="590,828"/>
+                <property name="bendpoints" value="590,870"/>
+                <property name="targetAnchor" value="651,920"/>
+                <property name="bounds_setted_by_user" value="true"/>
+                <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeidhla3jg1lnfw56g1lrfl1k.linkid5ur9fg1lnfw56g1lrfle5:id8zfn4g1lnfw56g1lrfl7n.nodeidhla3jg1lnfw56g1lrfl1k">
+                    <property name="bounds" value="620,880,77,16"/>
+                </reference>
+            </reference>
+        </reference>
+        <reference df-class-name="reference191" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeid31kzug1lnfw56g1lrfl1k">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="255,255,255"/>
+            <property name="bounds" value="419,919,119,33"/>
+            <property name="bounds_setted_by_user" value="true"/>
+            <reference referencedUin="design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeid31kzug1lnfw56g1lrfl1k.linkid5uhlxg1lnfw56g1lrfle5:id8zfn4g1lnfw56g1lrfl7n.nodeid31kzug1lnfw56g1lrfl1k">
+                <property name="sourceAnchor" value="478,952"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="549,982"/>
+                <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeid31kzug1lnfw56g1lrfl1k.linkid5uhlxg1lnfw56g1lrfle5:id8zfn4g1lnfw56g1lrfl7n.nodeid31kzug1lnfw56g1lrfl1k">
+                    <property name="bounds" value="425,977,78,16"/>
+                </reference>
+            </reference>
+        </reference>
+        <reference df-class-name="reference192" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidey9rxg1lnfw56g1lrfl1k">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="255,255,255"/>
+            <property name="bounds" value="590,920,122,30"/>
+            <property name="bounds_setted_by_user" value="true"/>
+            <reference referencedUin="design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeidey9rxg1lnfw56g1lrfl1k.linkid3by11g1lnfw56g1lrfle5:id8zfn4g1lnfw56g1lrfl7n.nodeidey9rxg1lnfw56g1lrfl1k">
+                <property name="sourceAnchor" value="651,950"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="554,982"/>
+                <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeidey9rxg1lnfw56g1lrfl1k.linkid3by11g1lnfw56g1lrfle5:id8zfn4g1lnfw56g1lrfl7n.nodeidey9rxg1lnfw56g1lrfl1k">
+                    <property name="bounds" value="612,976,78,16"/>
+                </reference>
+            </reference>
+        </reference>
+        <reference df-class-name="reference193" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeid1a6h5g1lnfw56g1lrfl20">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="255,255,255"/>
+            <property name="bounds" value="544,982,15,15"/>
+        </reference>
+        <reference df-class-name="reference194" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeid37r0kg1lnfw56g1lrfl2f">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="255,255,255"/>
+            <property name="bounds" value="740,790,170,30"/>
+            <property name="bounds_setted_by_user" value="true"/>
+            <reference referencedUin="design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeid37r0kg1lnfw56g1lrfl2f.linkidfddswg1lnfw56g1lrfle5:id8zfn4g1lnfw56g1lrfl7n.nodeid37r0kg1lnfw56g1lrfl2f">
+                <property name="sourceAnchor" value="740,805"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="610,805"/>
+                <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeid37r0kg1lnfw56g1lrfl2f.linkidfddswg1lnfw56g1lrfle5:id8zfn4g1lnfw56g1lrfl7n.nodeid37r0kg1lnfw56g1lrfl2f">
+                    <property name="bounds" value="609,815,131,16"/>
+                </reference>
+            </reference>
+        </reference>
+        <reference df-class-name="reference195" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeid95sjfg1lnfw56g1lrfl2f">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="255,255,255"/>
+            <property name="bounds" value="969,789,15,15"/>
+        </reference>
+        <reference df-class-name="reference196" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidcr9nbg1lnfw56g1lrfl2f">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="255,255,255"/>
+            <property name="bounds" value="850,660,70,70"/>
+            <property name="bounds_setted_by_user" value="true"/>
+            <reference referencedUin="design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeidcr9nbg1lnfw56g1lrfl2f.linkid3k9eog1lnfw56g1lrflf0:id8zfn4g1lnfw56g1lrfl7n.nodeidcr9nbg1lnfw56g1lrfl2f">
+                <property name="sourceAnchor" value="850,690"/>
+                <property name="bendpoints" value="800,690"/>
+                <property name="targetAnchor" value="800,790"/>
+                <property name="bounds_setted_by_user" value="true"/>
+                <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeidcr9nbg1lnfw56g1lrfl2f.linkid3k9eog1lnfw56g1lrflf0:id8zfn4g1lnfw56g1lrfl7n.nodeidcr9nbg1lnfw56g1lrfl2f">
+                    <property name="bounds" value="800,730,93,16"/>
+                </reference>
+            </reference>
+            <reference referencedUin="design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeidcr9nbg1lnfw56g1lrfl2f.linkidft82yg1lnfw56g1lrflf0:id8zfn4g1lnfw56g1lrfl7n.nodeidcr9nbg1lnfw56g1lrfl2f">
+                <property name="sourceAnchor" value="920,690"/>
+                <property name="bendpoints" value="980,690"/>
+                <property name="targetAnchor" value="977,789"/>
+                <property name="bounds_setted_by_user" value="true"/>
+                <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeidcr9nbg1lnfw56g1lrfl2f.linkidft82yg1lnfw56g1lrflf0:id8zfn4g1lnfw56g1lrfl7n.nodeidcr9nbg1lnfw56g1lrfl2f">
+                    <property name="bounds" value="910,720,110,16"/>
+                </reference>
+            </reference>
+        </reference>
+        <reference df-class-name="reference197" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="200,200,200"/>
+            <property name="bounds" value="40,20,348,1030"/>
+            <property name="bounds_setted_by_user" value="true"/>
+            <reference referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeido0nlg1lnfw56g1lrfkyy:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v">
+                <property name="foreground_color" value="0,0,0"/>
+                <property name="background_color" value="255,255,255"/>
+                <property name="bounds" value="100,60,158,22"/>
+                <property name="bounds_setted_by_user" value="true"/>
+                <reference referencedUin="design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeido0nlg1lnfw56g1lrfkyy.linkid9c9gag1lnfw56g1lrflf0:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeido0nlg1lnfw56g1lrfkyy:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v">
+                    <property name="sourceAnchor" value="229,102"/>
+                    <property name="bendpoints" value=""/>
+                    <property name="targetAnchor" value="229,150"/>
+                    <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeido0nlg1lnfw56g1lrfkyy.linkid9c9gag1lnfw56g1lrflf0:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeido0nlg1lnfw56g1lrfkyy:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v">
+                        <property name="bounds" value="239,118,89,16"/>
+                    </reference>
+                </reference>
+            </reference>
+            <reference referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeidc10mgg1lnfw56g1lrfkxn:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v">
+                <property name="bounds" value="170,30,12,12"/>
+                <reference referencedUin="design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeidc10mgg1lnfw56g1lrfkxn.linkid9ojrdg1lnfw56g1lrflf0:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeidc10mgg1lnfw56g1lrfkxn:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v">
+                    <property name="sourceAnchor" value="216,62"/>
+                    <property name="bendpoints" value=""/>
+                    <property name="targetAnchor" value="216,80"/>
+                </reference>
+            </reference>
+            <reference referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeidi0gwcg1lnfw56g1lrjixn:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v">
+                <property name="bounds" value="110,580,162,30"/>
+                <reference referencedUin="design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeidi0gwcg1lnfw56g1lrjixn.linkid5jzphg1lnfw56g1lrovpb:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeidi0gwcg1lnfw56g1lrjixn:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v">
+                    <property name="sourceAnchor" value="218,630"/>
+                    <property name="bendpoints" value=""/>
+                    <property name="targetAnchor" value="218,669"/>
+                    <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeidi0gwcg1lnfw56g1lrjixn.linkid5jzphg1lnfw56g1lrovpb:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeidi0gwcg1lnfw56g1lrjixn:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v">
+                        <property name="bounds" value="228,641,119,16"/>
+                    </reference>
+                </reference>
+            </reference>
+            <reference referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeidh489xg1lnfw56g1lrfl0p:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v">
+                <property name="foreground_color" value="0,0,0"/>
+                <property name="background_color" value="255,255,255"/>
+                <property name="bounds" value="160,130,44,50"/>
+                <property name="bounds_setted_by_user" value="true"/>
+                <reference referencedUin="design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeidh489xg1lnfw56g1lrfl0p.linkid4xj0jg1lnfw56g1lrflf0:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeidh489xg1lnfw56g1lrfl0p:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v">
+                    <property name="sourceAnchor" value="200,170"/>
+                    <property name="bendpoints" value="80,170,80,90"/>
+                    <property name="targetAnchor" value="140,90"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                    <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeidh489xg1lnfw56g1lrfl0p.linkid4xj0jg1lnfw56g1lrflf0:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeidh489xg1lnfw56g1lrfl0p:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v">
+                        <property name="bounds" value="90,122,78,16"/>
+                    </reference>
+                </reference>
+                <reference referencedUin="design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeidh489xg1lnfw56g1lrfl0p.linkid7qcc5g1lnfw56g1lrflel:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeidh489xg1lnfw56g1lrfl0p:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v">
+                    <property name="sourceAnchor" value="222,200"/>
+                    <property name="bendpoints" value=""/>
+                    <property name="targetAnchor" value="222,230"/>
+                    <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeidh489xg1lnfw56g1lrfl0p.linkid7qcc5g1lnfw56g1lrflel:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeidh489xg1lnfw56g1lrfl0p:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v">
+                        <property name="bounds" value="232,207,90,16"/>
+                    </reference>
+                </reference>
+            </reference>
+            <reference referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeid43opvg1lnfw56g1lrfl0p:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v">
+                <property name="foreground_color" value="0,0,0"/>
+                <property name="background_color" value="255,255,255"/>
+                <property name="bounds" value="109,210,153,24"/>
+                <property name="bounds_setted_by_user" value="true"/>
+                <reference referencedUin="design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeid43opvg1lnfw56g1lrfl0p.linkidgdwdgg1lnfw56g1lrflel:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeid43opvg1lnfw56g1lrfl0p:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v">
+                    <property name="sourceAnchor" value="302,241"/>
+                    <property name="bendpoints" value=""/>
+                    <property name="targetAnchor" value="477,241"/>
+                    <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeid43opvg1lnfw56g1lrfl0p.linkidgdwdgg1lnfw56g1lrflel:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeid43opvg1lnfw56g1lrfl0p:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v">
+                        <property name="bounds" value="345,251,87,16"/>
+                    </reference>
+                </reference>
+            </reference>
+        </reference>
+        <reference df-class-name="reference198" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="200,200,200"/>
+            <property name="bounds" value="400,20,320,1030"/>
+            <property name="bounds_setted_by_user" value="true"/>
+            <reference referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeid4atwbg1lnfw56g1lrfl14:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l">
+                <property name="foreground_color" value="0,0,0"/>
+                <property name="background_color" value="255,255,255"/>
+                <property name="bounds" value="139,310,63,58"/>
+                <property name="bounds_setted_by_user" value="true"/>
+                <reference referencedUin="design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeid4atwbg1lnfw56g1lrfl14.linkidv212g1lnfw56g1lrflf0:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeid4atwbg1lnfw56g1lrfl14:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l">
+                    <property name="sourceAnchor" value="570,388"/>
+                    <property name="bendpoints" value=""/>
+                    <property name="targetAnchor" value="570,530"/>
+                    <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeid4atwbg1lnfw56g1lrfl14.linkidv212g1lnfw56g1lrflf0:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeid4atwbg1lnfw56g1lrfl14:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l">
+                        <property name="bounds" value="570,450,146,16"/>
+                    </reference>
+                </reference>
+                <reference referencedUin="design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeid4atwbg1lnfw56g1lrfl14.linkida10dyg1lnfw56g1lrflf0:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeid4atwbg1lnfw56g1lrfl14:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l">
+                    <property name="sourceAnchor" value="602,365"/>
+                    <property name="bendpoints" value=""/>
+                    <property name="targetAnchor" value="790,365"/>
+                    <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeid4atwbg1lnfw56g1lrfl14.linkida10dyg1lnfw56g1lrflf0:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeid4atwbg1lnfw56g1lrfl14:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l">
+                        <property name="bounds" value="600,370,119,16"/>
+                    </reference>
+                </reference>
+            </reference>
+            <reference referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeid2u86og1lnfw56g1lrfl14:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l">
+                <property name="foreground_color" value="0,0,0"/>
+                <property name="background_color" value="255,255,255"/>
+                <property name="bounds" value="77,204,177,28"/>
+                <property name="bounds_setted_by_user" value="true"/>
+                <reference referencedUin="design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeid2u86og1lnfw56g1lrfl14.linkid64ynog1lnfw56g1lrfle5:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeid2u86og1lnfw56g1lrfl14:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l">
+                    <property name="sourceAnchor" value="570,252"/>
+                    <property name="bendpoints" value=""/>
+                    <property name="targetAnchor" value="570,330"/>
+                    <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeid2u86og1lnfw56g1lrfl14.linkid64ynog1lnfw56g1lrfle5:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeid2u86og1lnfw56g1lrfl14:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l">
+                        <property name="bounds" value="580,283,118,16"/>
+                    </reference>
+                </reference>
+            </reference>
+            <reference referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeidd4sm5g1lnfw56g1lrjowh:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l">
+                <property name="bounds" value="110,580,140,30"/>
+                <reference referencedUin="design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeidd4sm5g1lnfw56g1lrjowh.linkid2h67dg1lnfw56g1lrom7a:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeidd4sm5g1lnfw56g1lrjowh:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l">
+                    <property name="sourceAnchor" value="510,615"/>
+                    <property name="bendpoints" value=""/>
+                    <property name="targetAnchor" value="312,615"/>
+                    <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeidd4sm5g1lnfw56g1lrjowh.linkid2h67dg1lnfw56g1lrom7a:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeidd4sm5g1lnfw56g1lrjowh:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l">
+                        <property name="bounds" value="359,625,104,16"/>
+                    </reference>
+                </reference>
+                <reference referencedUin="design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeidd4sm5g1lnfw56g1lrjowh.linkid59g88g1lnfw56g1lrmx6o:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeidd4sm5g1lnfw56g1lrjowh:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l">
+                    <property name="sourceAnchor" value="650,615"/>
+                    <property name="bendpoints" value=""/>
+                    <property name="targetAnchor" value="810,615"/>
+                    <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeidd4sm5g1lnfw56g1lrjowh.linkid59g88g1lnfw56g1lrmx6o:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeidd4sm5g1lnfw56g1lrjowh:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l">
+                        <property name="bounds" value="678,625,104,16"/>
+                    </reference>
+                </reference>
+            </reference>
+            <reference referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeidbft42g1lnfw56g1lrfl1k:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l">
+                <property name="foreground_color" value="0,0,0"/>
+                <property name="background_color" value="255,255,255"/>
+                <property name="bounds" value="90,510,160,34"/>
+                <property name="bounds_setted_by_user" value="true"/>
+                <reference referencedUin="design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeidbft42g1lnfw56g1lrfl1k.linkidcr8ogg1lnfw56g1lrmmik:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeidbft42g1lnfw56g1lrfl1k:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l">
+                    <property name="sourceAnchor" value="582,564"/>
+                    <property name="bendpoints" value=""/>
+                    <property name="targetAnchor" value="582,600"/>
+                    <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeidbft42g1lnfw56g1lrfl1k.linkidcr8ogg1lnfw56g1lrmmik:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeidbft42g1lnfw56g1lrfl1k:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l">
+                        <property name="bounds" value="592,574,137,16"/>
+                    </reference>
+                </reference>
+            </reference>
+        </reference>
+        <reference df-class-name="reference199" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h">
+            <property name="$shortcutReference" value="true"/>
+            <property name="foreground_color" value="0,0,0"/>
+            <property name="background_color" value="200,200,200"/>
+            <property name="bounds" value="730,20,300,1030"/>
+            <property name="bounds_setted_by_user" value="true"/>
+            <reference referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeid9xtwg1lnfw56g1lrfl20:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h">
+                <property name="foreground_color" value="0,0,0"/>
+                <property name="background_color" value="255,255,255"/>
+                <property name="bounds" value="19,470,123,26"/>
+                <property name="bounds_setted_by_user" value="true"/>
+                <reference referencedUin="design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeid9xtwg1lnfw56g1lrfl20.linkid6pwffg1lnfw56g1lrflel:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeid9xtwg1lnfw56g1lrfl20:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h">
+                    <property name="sourceAnchor" value="810,516"/>
+                    <property name="bendpoints" value="810,540"/>
+                    <property name="targetAnchor" value="650,540"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                    <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeid9xtwg1lnfw56g1lrfl20.linkid6pwffg1lnfw56g1lrflel:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeid9xtwg1lnfw56g1lrfl20:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h">
+                        <property name="bounds" value="730,520,78,16"/>
+                    </reference>
+                </reference>
+            </reference>
+            <reference referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeidar4tcg1lnfw56g1lrfl20:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h">
+                <property name="foreground_color" value="0,0,0"/>
+                <property name="background_color" value="255,255,255"/>
+                <property name="bounds" value="119,380,63,60"/>
+                <property name="bounds_setted_by_user" value="true"/>
+                <reference referencedUin="design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeidar4tcg1lnfw56g1lrfl20.linkidckscpg1lnfw56g1lrflel:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeidar4tcg1lnfw56g1lrfl20:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h">
+                    <property name="sourceAnchor" value="849,430"/>
+                    <property name="bendpoints" value="780,430"/>
+                    <property name="targetAnchor" value="780,490"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                    <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeidar4tcg1lnfw56g1lrfl20.linkidckscpg1lnfw56g1lrflel:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeidar4tcg1lnfw56g1lrfl20:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h">
+                        <property name="bounds" value="780,440,49,16"/>
+                    </reference>
+                </reference>
+                <reference referencedUin="design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeidar4tcg1lnfw56g1lrfl20.linkidhxkuug1lnfw56g1lrflel:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeidar4tcg1lnfw56g1lrfl20:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h">
+                    <property name="sourceAnchor" value="912,430"/>
+                    <property name="bendpoints" value="1000,430"/>
+                    <property name="targetAnchor" value="1000,490"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                    <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeidar4tcg1lnfw56g1lrfl20.linkidhxkuug1lnfw56g1lrflel:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeidar4tcg1lnfw56g1lrfl20:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h">
+                        <property name="bounds" value="900,450,102,16"/>
+                    </reference>
+                </reference>
+            </reference>
+            <reference referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeideld7wg1lnfw56g1lrfl20:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h">
+                <property name="foreground_color" value="0,0,0"/>
+                <property name="background_color" value="255,255,255"/>
+                <property name="bounds" value="60,330,190,30"/>
+                <property name="bounds_setted_by_user" value="true"/>
+                <reference referencedUin="design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeideld7wg1lnfw56g1lrfl20.linkidahnyag1lnfw56g1lrfle5:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeideld7wg1lnfw56g1lrfl20:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h">
+                    <property name="sourceAnchor" value="880,380"/>
+                    <property name="bendpoints" value=""/>
+                    <property name="targetAnchor" value="880,400"/>
+                </reference>
+            </reference>
+            <reference referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeidd57myg1lnfw56g1lrfl20:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h">
+                <property name="foreground_color" value="0,0,0"/>
+                <property name="background_color" value="255,255,255"/>
+                <property name="bounds" value="170,470,120,30"/>
+                <property name="bounds_setted_by_user" value="true"/>
+                <reference referencedUin="design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeidd57myg1lnfw56g1lrfl20.linkid2g0fng1lnfw56g1lrflel:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeidd57myg1lnfw56g1lrfl20:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h">
+                    <property name="sourceAnchor" value="960,520"/>
+                    <property name="bendpoints" value="960,550"/>
+                    <property name="targetAnchor" value="650,550"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                    <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeidd57myg1lnfw56g1lrfl20.linkid2g0fng1lnfw56g1lrflel:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeidd57myg1lnfw56g1lrfl20:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h">
+                        <property name="bounds" value="880,530,79,16"/>
+                    </reference>
+                </reference>
+            </reference>
+            <reference referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeid68zhog1lnfw56g1lrjtyc:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h">
+                <property name="bounds" value="80,580,162,30"/>
+                <reference referencedUin="design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeid68zhog1lnfw56g1lrjtyc.linkidfefx3g1lnfw56g1lrlsc7:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeid68zhog1lnfw56g1lrjtyc:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h">
+                    <property name="sourceAnchor" value="885,630"/>
+                    <property name="bendpoints" value=""/>
+                    <property name="targetAnchor" value="885,660"/>
+                    <reference referencedUin="linklabel:$transitionInplaceEditing:design:link:::id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeid68zhog1lnfw56g1lrjtyc.linkidfefx3g1lnfw56g1lrlsc7:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeid68zhog1lnfw56g1lrjtyc:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h">
+                        <property name="bounds" value="895,637,119,16"/>
+                    </reference>
+                </reference>
+            </reference>
+        </reference>
+    </view>
+    <node uin="id8zfn4g1lnfw56g1lrfl7n.nodeidjyn38g1lnfw56g1lrfl0p">
+        <property name="$description" value="This is used to send the process signal to the system from the user to let the system know that the user wants to do something further with the report that was stored."/>
+        <property name="$metaclass" value="Activity"/>
+        <property name="$name" value="Send Process Signal"/>
+        <link uin="id8zfn4g1lnfw56g1lrfl7n.nodeidjyn38g1lnfw56g1lrfl0p.linkid31vbkg1lnfw56g1lrflel">
+            <property name="$description" value="The signal is sent to the system with the type of request that the user wants, whether it be a printing request, viewing request, etc."/>
+            <participant role="Supplier" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidhla3jg1lnfw56g1lrfl1k"/>
+            <participant role="Client" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidjyn38g1lnfw56g1lrfl0p"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Send Process Signal -&gt; Decision4"/>
+            <property name="$event_name" value="type of access request"/>
+        </link>
+    </node>
+    <node uin="id8zfn4g1lnfw56g1lrfl7n.nodeid6jihug1lnfw56g1lrfl14">
+        <property name="$description" value="If the user receives a notification that the report was successfully stored then the user can either choose to perform an action on the report (print, etc) or just choose to terminate this section of the program."/>
+        <property name="$metaclass" value="Decision"/>
+        <property name="$name" value="Additional Supervisor Report Action"/>
+        <link uin="id8zfn4g1lnfw56g1lrfl7n.nodeid6jihug1lnfw56g1lrfl14.linkidjf66eg1lnfw56g1lrfle5">
+            <property name="$description" value="If the user chooses not to do anything at that time with the report that was stored then they will be terminating this section of the program. The user can always access the report at a later point if they do choose to."/>
+            <participant role="Supplier" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeid8dkx1g1lnfw56g1lrfl14"/>
+            <participant role="Client" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeid6jihug1lnfw56g1lrfl14"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Decision5 -&gt; EndState1"/>
+            <property name="$event_name" value="No access request"/>
+        </link>
+        <link uin="id8zfn4g1lnfw56g1lrfl7n.nodeid6jihug1lnfw56g1lrfl14.linkid2ssw2g1lnfw56g1lrflel">
+            <property name="$description" value="If the user decides that they would like to do something further with the report that was stored then they can choose to send a request back to the system to process what they would like to do with the report."/>
+            <participant role="Supplier" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidjyn38g1lnfw56g1lrfl0p"/>
+            <participant role="Client" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeid6jihug1lnfw56g1lrfl14"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Decision5 -&gt; Send Process Signal"/>
+            <property name="$event_name" value="access request"/>
+        </link>
+    </node>
+    <node uin="id8zfn4g1lnfw56g1lrfl7n.nodeid8dkx1g1lnfw56g1lrfl14">
+        <property name="$metaclass" value="End State"/>
+        <property name="$name" value="EndState1"/>
+    </node>
+    <node uin="id8zfn4g1lnfw56g1lrfl7n.nodeidhla3jg1lnfw56g1lrfl1k">
+        <property name="$description" value="This decision block translates the type of request that the user submitted. If the request type is printing the report then it will proceed with printing the report."/>
+        <property name="$metaclass" value="Decision"/>
+        <property name="$name" value="Access Request Type"/>
+        <link uin="id8zfn4g1lnfw56g1lrfl7n.nodeidhla3jg1lnfw56g1lrfl1k.linkid5ur9fg1lnfw56g1lrfle5">
+            <property name="$description" value="If the type of request is a viewing request the the system will send back a view to the user."/>
+            <participant role="Supplier" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidey9rxg1lnfw56g1lrfl1k"/>
+            <participant role="Client" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidhla3jg1lnfw56g1lrfl1k"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Decision4 -&gt; View Report"/>
+            <property name="$event_name" value="view request"/>
+        </link>
+        <link uin="id8zfn4g1lnfw56g1lrfl7n.nodeidhla3jg1lnfw56g1lrfl1k.linkidh4mxgg1lnfw56g1lrfle5">
+            <property name="$description" value="If the request that the user sent was a printing request then the system will proceed to print the report."/>
+            <participant role="Supplier" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeid31kzug1lnfw56g1lrfl1k"/>
+            <participant role="Client" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidhla3jg1lnfw56g1lrfl1k"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Decision4 -&gt; Print Report"/>
+            <property name="$event_name" value="print request"/>
+        </link>
+    </node>
+    <node uin="id8zfn4g1lnfw56g1lrfl7n.nodeid31kzug1lnfw56g1lrfl1k">
+        <property name="$description" value="The system will print the report that was stored earlier in the system."/>
+        <property name="$metaclass" value="Activity"/>
+        <property name="$name" value="Print Report"/>
+        <link uin="id8zfn4g1lnfw56g1lrfl7n.nodeid31kzug1lnfw56g1lrfl1k.linkid5uhlxg1lnfw56g1lrfle5">
+            <participant role="Supplier" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeid1a6h5g1lnfw56g1lrfl20"/>
+            <participant role="Client" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeid31kzug1lnfw56g1lrfl1k"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Print Report -&gt; EndState3"/>
+            <property name="$event_name" value="finished task"/>
+        </link>
+    </node>
+    <node uin="id8zfn4g1lnfw56g1lrfl7n.nodeidey9rxg1lnfw56g1lrfl1k">
+        <property name="$description" value="This will send a view back to the user that requested to view the report."/>
+        <property name="$metaclass" value="Activity"/>
+        <property name="$name" value="View Report"/>
+        <link uin="id8zfn4g1lnfw56g1lrfl7n.nodeidey9rxg1lnfw56g1lrfl1k.linkid3by11g1lnfw56g1lrfle5">
+            <participant role="Supplier" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeid1a6h5g1lnfw56g1lrfl20"/>
+            <participant role="Client" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidey9rxg1lnfw56g1lrfl1k"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: View Report -&gt; EndState3"/>
+            <property name="$event_name" value="finished task"/>
+        </link>
+    </node>
+    <node uin="id8zfn4g1lnfw56g1lrfl7n.nodeid1a6h5g1lnfw56g1lrfl20">
+        <property name="$metaclass" value="End State"/>
+        <property name="$name" value="EndState3"/>
+    </node>
+    <node uin="id8zfn4g1lnfw56g1lrfl7n.nodeid37r0kg1lnfw56g1lrfl2f">
+        <property name="$description" value="This is used to send the process signal to the system from the user to let the system know that the user wants to do something further with the report that was stored."/>
+        <property name="$metaclass" value="Activity"/>
+        <property name="$name" value="Send Process Signal"/>
+        <link uin="id8zfn4g1lnfw56g1lrfl7n.nodeid37r0kg1lnfw56g1lrfl2f.linkidfddswg1lnfw56g1lrfle5">
+            <property name="$description" value="The signal is sent to the system with the type of request that the user wants, whether it be a printing request, viewing request, etc."/>
+            <participant role="Supplier" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidhla3jg1lnfw56g1lrfl1k"/>
+            <participant role="Client" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeid37r0kg1lnfw56g1lrfl2f"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Send Process Signal -&gt; Decision4"/>
+            <property name="$event_name" value="type of access request"/>
+        </link>
+    </node>
+    <node uin="id8zfn4g1lnfw56g1lrfl7n.nodeid95sjfg1lnfw56g1lrfl2f">
+        <property name="$metaclass" value="End State"/>
+        <property name="$name" value="EndState2"/>
+    </node>
+    <node uin="id8zfn4g1lnfw56g1lrfl7n.nodeidcr9nbg1lnfw56g1lrfl2f">
+        <property name="$description" value="If the user receives a notification that the report was successfully stored then the user can either choose to perform an action on the report (print, etc) or just choose to terminate this section of the program."/>
+        <property name="$metaclass" value="Decision"/>
+        <property name="$name" value="Additional Employee Report Action"/>
+        <link uin="id8zfn4g1lnfw56g1lrfl7n.nodeidcr9nbg1lnfw56g1lrfl2f.linkid3k9eog1lnfw56g1lrflf0">
+            <property name="$description" value="If the user decides that they would like to do something further with the report that was stored then they can choose to send a request back to the system to process what they would like to do with the report."/>
+            <participant role="Supplier" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeid37r0kg1lnfw56g1lrfl2f"/>
+            <participant role="Client" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidcr9nbg1lnfw56g1lrfl2f"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Decision6 -&gt; Send Process Signal"/>
+            <property name="$event_name" value="access request"/>
+        </link>
+        <link uin="id8zfn4g1lnfw56g1lrfl7n.nodeidcr9nbg1lnfw56g1lrfl2f.linkidft82yg1lnfw56g1lrflf0">
+            <property name="$description" value="If the user chooses not to do anything at that time with the report that was stored then they will be terminating this section of the program. The user can always access the report at a later point if they do choose to."/>
+            <participant role="Supplier" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeid95sjfg1lnfw56g1lrfl2f"/>
+            <participant role="Client" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidcr9nbg1lnfw56g1lrfl2f"/>
+            <property name="$metaclass" value="Transition"/>
+            <property name="@label" value="link: Decision6 -&gt; EndState2"/>
+            <property name="$event_name" value="no access request"/>
+        </link>
+    </node>
+    <node uin="id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v">
+        <property name="$description" value="A Supervisor is an Object that represents a user of the system that does not have full permissions but does have the ability to create a view reports of certain items."/>
+        <property name="$metaclass" value="Swimlane"/>
+        <property name="$name" value="Supervisor"/>
+        <node uin="id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeidc10mgg1lnfw56g1lrfkxn">
+            <property name="$metaclass" value="Start State"/>
+            <property name="$name" value="StartState1"/>
+            <property name="@xmiid" value="G.4"/>
+            <link uin="id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeidc10mgg1lnfw56g1lrfkxn.linkid9ojrdg1lnfw56g1lrflf0">
+                <participant role="Supplier" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeido0nlg1lnfw56g1lrfkyy:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v"/>
+                <participant role="Client" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeidc10mgg1lnfw56g1lrfkxn:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="@label" value="link: StartState1 -&gt; Create Report"/>
+            </link>
+        </node>
+        <node uin="id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeido0nlg1lnfw56g1lrfkyy">
+            <property name="$description" value="A Report can be created by a supervisor. A report could be anything from an employee usage report to a employee availability report. For any of the reports that a supervisor chooses to generate they can choose what they want in the report as well as the export format from available options."/>
+            <property name="$metaclass" value="Activity"/>
+            <property name="$name" value="Create Report"/>
+            <property name="@xmiid" value="G.6"/>
+            <link uin="id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeido0nlg1lnfw56g1lrfkyy.linkid9c9gag1lnfw56g1lrflf0">
+                <property name="$description" value="After a supervisor is done working with the report for the time being, or completely finished with the report they can then choose to either submit the report or simply save the report to be accessed later before submitting it to the system."/>
+                <participant role="Supplier" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeidh489xg1lnfw56g1lrfl0p:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v"/>
+                <participant role="Client" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeido0nlg1lnfw56g1lrfkyy:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="@label" value="finishesReport"/>
+                <property name="$event_name" value="finishesReport"/>
+            </link>
+        </node>
+        <node uin="id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeidh489xg1lnfw56g1lrfl0p">
+            <property name="$description" value="If the supervisor finishes the report, whether it is finished for the time being or finished and would like to submit the report, then the supervisor can choose to either submit the report or to save the report until it needs to be modified again."/>
+            <property name="$metaclass" value="Decision"/>
+            <property name="$name" value="Save or Submit"/>
+            <property name="@xmiid" value="G.9"/>
+            <link uin="id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeidh489xg1lnfw56g1lrfl0p.linkid7qcc5g1lnfw56g1lrflel">
+                <property name="$description" value="If the supervisor is done with the report that they generated then they can choose to submit the report at which point it will proceed into a pending state into the system."/>
+                <participant role="Supplier" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeid43opvg1lnfw56g1lrfl0p:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v"/>
+                <participant role="Client" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeidh489xg1lnfw56g1lrfl0p:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="@label" value="link: Decision1 -&gt; Submit Report"/>
+                <property name="$event_name" value="submitsReport"/>
+            </link>
+            <link uin="id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeidh489xg1lnfw56g1lrfl0p.linkid4xj0jg1lnfw56g1lrflf0">
+                <property name="$description" value="If the supervisor is not yet completely finished with generating the report then they can choose to save it so it can be accessed later. This creates a draft that can be opened at a later point in time."/>
+                <participant role="Supplier" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeido0nlg1lnfw56g1lrfkyy:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v"/>
+                <participant role="Client" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeidh489xg1lnfw56g1lrfl0p:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="@label" value="link: Decision1 -&gt; Create Report"/>
+                <property name="$event_name" value="savesReport"/>
+            </link>
+        </node>
+        <node uin="id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeid43opvg1lnfw56g1lrfl0p">
+            <property name="$description" value="At this point, the report would be submitted to the system to either be reviewed or submitted based on the supervisors permissions."/>
+            <property name="$metaclass" value="Activity"/>
+            <property name="$name" value="Submit Report"/>
+            <property name="@xmiid" value="G.11"/>
+            <link uin="id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeid43opvg1lnfw56g1lrfl0p.linkidgdwdgg1lnfw56g1lrflel">
+                <participant role="Supplier" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeid2u86og1lnfw56g1lrfl14:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l"/>
+                <participant role="Client" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeid43opvg1lnfw56g1lrfl0p:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="@label" value="link: Submit Report -&gt; Stores Report"/>
+                <property name="$event_name" value="Submit Report"/>
+            </link>
+        </node>
+        <node uin="id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeidi0gwcg1lnfw56g1lrjixn">
+            <property name="$description" value="The supervisor receives the save notification from the system."/>
+            <property name="$metaclass" value="Signal Receipt"/>
+            <property name="$name" value="Receives Save Notification"/>
+            <link uin="id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeidi0gwcg1lnfw56g1lrjixn.linkid5jzphg1lnfw56g1lrovpb">
+                <property name="$description" value="When the user receives the notification that the report has been stored into the system, the user can then choose to do something with the report such as print it, or they can choose to terminate this section of the program."/>
+                <participant role="Supplier" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeid6jihug1lnfw56g1lrfl14"/>
+                <participant role="Client" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeidi0gwcg1lnfw56g1lrjixn:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="$event_name" value="user receives signal"/>
+            </link>
+        </node>
+    </node>
+    <node uin="id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l">
+        <property name="$description" value="The system is the main backend that handles all the user&apos;s request&apos;s. The system is the main bulk of the program and has all priveledges when it comes to generating reports, etc."/>
+        <property name="$metaclass" value="Swimlane"/>
+        <property name="$name" value="System"/>
+        <node uin="id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeid2u86og1lnfw56g1lrfl14">
+            <property name="$description" value="This will store the report into the database and check the permissions to see if the report will be submitted directly or if it needs to be reviewed by the supervisors boss."/>
+            <property name="$metaclass" value="Activity"/>
+            <property name="$name" value="Stores Report"/>
+            <property name="@xmiid" value="G.21"/>
+            <link uin="id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeid2u86og1lnfw56g1lrfl14.linkid64ynog1lnfw56g1lrfle5">
+                <property name="$description" value="This will check the permissions of the stored report. This is needed in case the supervisor is trying to generate a report that is out of their jurisdiction. For example if the supervisor is trying to view employee data the they are not allowed to view."/>
+                <participant role="Supplier" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeid4atwbg1lnfw56g1lrfl14:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l"/>
+                <participant role="Client" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeid2u86og1lnfw56g1lrfl14:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="@label" value="checksPermissions"/>
+                <property name="$event_name" value="checksPermissions"/>
+            </link>
+        </node>
+        <node uin="id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeid4atwbg1lnfw56g1lrfl14">
+            <property name="$description" value="When the system goes to store a report in the database it needs to check to see if the user that submitted the report has the appropriate permissions to view all the data in the report."/>
+            <property name="$metaclass" value="Decision"/>
+            <property name="$name" value="Permission Level"/>
+            <property name="@xmiid" value="G.24"/>
+            <link uin="id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeid4atwbg1lnfw56g1lrfl14.linkida10dyg1lnfw56g1lrflf0">
+                <property name="$description" value="If the report that is wanting to be generated contains information that must be reviewed by the supervisors boss before the report can be used or viewed, then the report is sent to the supervisors boss to review and remove the report from it&apos;s pending state."/>
+                <participant role="Supplier" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeideld7wg1lnfw56g1lrfl20:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h"/>
+                <participant role="Client" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeid4atwbg1lnfw56g1lrfl14:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="@label" value="link: Decision2 -&gt; reviewsReport"/>
+                <property name="$event_name" value="tooLowPermissions"/>
+            </link>
+            <link uin="id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeid4atwbg1lnfw56g1lrfl14.linkidv212g1lnfw56g1lrflf0">
+                <property name="$description" value="If the report that was generated was generated by a supervisor with high enough permissions that the report does not need to be reviewed by a higher authority, then the report can be submitted directly into an active state without the need for review."/>
+                <participant role="Supplier" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeidbft42g1lnfw56g1lrfl1k:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l"/>
+                <participant role="Client" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeid4atwbg1lnfw56g1lrfl14:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="@label" value="link: Decision2 -&gt; Stores Report"/>
+                <property name="$event_name" value="highEnoughPermissions"/>
+            </link>
+        </node>
+        <node uin="id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeidbft42g1lnfw56g1lrfl1k">
+            <property name="$metaclass" value="Activity"/>
+            <property name="$name" value="Stores Report"/>
+            <property name="@xmiid" value="G.26"/>
+            <link uin="id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeidbft42g1lnfw56g1lrfl1k.linkidcr8ogg1lnfw56g1lrmmik">
+                <property name="$description" value="After the report has been successfully stored in the system then the system creates a saved notification for the report and sends it to all affected members that the report affects or that are subscribed to view the report."/>
+                <participant role="Supplier" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeidd4sm5g1lnfw56g1lrjowh:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l"/>
+                <participant role="Client" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeidbft42g1lnfw56g1lrfl1k:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="$event_name" value="createsSaveNotification"/>
+            </link>
+        </node>
+        <node uin="id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeidd4sm5g1lnfw56g1lrjowh">
+            <property name="$description" value="After a notificaiton has been created the system will then send the notification to all users that have the correct permissions to view the report and users affected by the report."/>
+            <property name="$metaclass" value="Signal Sending"/>
+            <property name="$name" value="Send Save Notification"/>
+            <link uin="id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeidd4sm5g1lnfw56g1lrjowh.linkid59g88g1lnfw56g1lrmx6o">
+                <property name="$description" value="Used to send a notification to any available party that is affected by the generated report. This can also send a notification to anyone that is subscribed to the generated report notification."/>
+                <participant role="Supplier" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeid68zhog1lnfw56g1lrjtyc:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h"/>
+                <participant role="Client" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeidd4sm5g1lnfw56g1lrjowh:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="$event_name" value="sendsNotification"/>
+            </link>
+            <link uin="id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeidd4sm5g1lnfw56g1lrjowh.linkid2h67dg1lnfw56g1lrom7a">
+                <property name="$description" value="Used to send a notification to any available party that is affected by the generated report. This can also send a notification to anyone that is subscribed to the generated report notification."/>
+                <participant role="Supplier" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v.nodeidi0gwcg1lnfw56g1lrjixn:id8zfn4g1lnfw56g1lrfl7n.nodeid9ixirg1lnfw56g1lrfl2v"/>
+                <participant role="Client" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeidd4sm5g1lnfw56g1lrjowh:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="$event_name" value="sendsNotification"/>
+            </link>
+        </node>
+    </node>
+    <node uin="id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h">
+        <property name="$description" value="A Boss Object is another representation of a supervisor that has full viweing priveledges and is able to create any report."/>
+        <property name="$metaclass" value="Swimlane"/>
+        <property name="$name" value="Boss"/>
+        <node uin="id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeideld7wg1lnfw56g1lrfl20">
+            <property name="$description" value="When a supervisor’s boss is flagged to review a report that was generated then this object is used to display the report that was generated and allow all the options to modify the report."/>
+            <property name="$metaclass" value="Activity"/>
+            <property name="$name" value="reviewsReport"/>
+            <property name="@xmiid" value="G.39"/>
+            <link uin="id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeideld7wg1lnfw56g1lrfl20.linkidahnyag1lnfw56g1lrfle5">
+                <participant role="Supplier" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeidar4tcg1lnfw56g1lrfl20:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h"/>
+                <participant role="Client" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeideld7wg1lnfw56g1lrfl20:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="@label" value="link: reviewsReport -&gt; Decision3"/>
+            </link>
+        </node>
+        <node uin="id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeidar4tcg1lnfw56g1lrfl20">
+            <property name="$description" value="When the supervisor’s boss receives the report they can choose to either modify the report or to simply save the report back to the system as is."/>
+            <property name="$metaclass" value="Decision"/>
+            <property name="$name" value="Change Or Accept Report"/>
+            <property name="@xmiid" value="G.42"/>
+            <link uin="id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeidar4tcg1lnfw56g1lrfl20.linkidhxkuug1lnfw56g1lrflel">
+                <property name="$description" value="If the supervisor reviews the report and decides that it is good the way it is and doesn&apos;t want to make any changes to the report, the the higher authority can choose to directly submit the report without change."/>
+                <participant role="Supplier" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeidd57myg1lnfw56g1lrfl20:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h"/>
+                <participant role="Client" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeidar4tcg1lnfw56g1lrfl20:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="@label" value="link: Decision3 -&gt; Accepts Report"/>
+                <property name="$event_name" value="remain the same"/>
+            </link>
+            <link uin="id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeidar4tcg1lnfw56g1lrfl20.linkidckscpg1lnfw56g1lrflel">
+                <property name="$description" value="If the supervisor wants to change the report, the report is taken into an active state so that the supervisor can edit the report."/>
+                <participant role="Supplier" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeid9xtwg1lnfw56g1lrfl20:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h"/>
+                <participant role="Client" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeidar4tcg1lnfw56g1lrfl20:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="@label" value="link: Decision3 -&gt; changes report"/>
+                <property name="$event_name" value="change"/>
+            </link>
+        </node>
+        <node uin="id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeid9xtwg1lnfw56g1lrfl20">
+            <property name="$description" value="This is the point at which the user can change the report crtieria or modify the report in any way. The user can change the report as long as it&apos;s in the active state and is able to be modified."/>
+            <property name="$metaclass" value="Activity"/>
+            <property name="$name" value="changes report"/>
+            <property name="@xmiid" value="G.44"/>
+            <link uin="id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeid9xtwg1lnfw56g1lrfl20.linkid6pwffg1lnfw56g1lrflel">
+                <property name="$description" value="After the user has made all the modifications necessary then the supervisor can submit the report to be stored. This occurs at the system level because the report may need to be viewed by multiple people. In order to achieve this it needs"/>
+                <participant role="Supplier" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeidbft42g1lnfw56g1lrfl1k:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l"/>
+                <participant role="Client" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeid9xtwg1lnfw56g1lrfl20:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="@label" value="link: changes report -&gt; Stores Report"/>
+                <property name="$event_name" value="sendTostore"/>
+            </link>
+        </node>
+        <node uin="id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeidd57myg1lnfw56g1lrfl20">
+            <property name="$description" value="This action occurs if the user decides that they do not want to make any modifications to the report. After they decide that they would like to accept the report without change then they can submit the report to be stored."/>
+            <property name="$metaclass" value="Activity"/>
+            <property name="$name" value="Accepts Report"/>
+            <property name="@xmiid" value="G.46"/>
+            <link uin="id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeidd57myg1lnfw56g1lrfl20.linkid2g0fng1lnfw56g1lrflel">
+                <property name="$description" value="If the user submits the report without change then it gets submitted to the system to be stored. This occurs at the system level because more than one person may want to review the report at any given time."/>
+                <participant role="Supplier" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l.nodeidbft42g1lnfw56g1lrfl1k:id8zfn4g1lnfw56g1lrfl7n.nodeidblznog1lnfw56g1lrfl4l"/>
+                <participant role="Client" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeidd57myg1lnfw56g1lrfl20:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="@label" value="link: Accepts Report -&gt; Stores Report"/>
+                <property name="$event_name" value="sendToStore"/>
+            </link>
+        </node>
+        <node uin="id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeid68zhog1lnfw56g1lrjtyc">
+            <property name="$description" value="The employee receives the save notification from the system."/>
+            <property name="$metaclass" value="Signal Receipt"/>
+            <property name="$name" value="Receives Save Notification"/>
+            <link uin="id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeid68zhog1lnfw56g1lrjtyc.linkidfefx3g1lnfw56g1lrlsc7">
+                <property name="$description" value="When the user receives the notification that the report has been stored into the system, the user can then choose to do something with the report such as print it, or they can choose to terminate this section of the program."/>
+                <participant role="Supplier" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidcr9nbg1lnfw56g1lrfl2f"/>
+                <participant role="Client" referencedUin="design:node:::id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h.nodeid68zhog1lnfw56g1lrjtyc:id8zfn4g1lnfw56g1lrfl7n.nodeidgz8wgg1lnfw56g1lrfl5h"/>
+                <property name="$metaclass" value="Transition"/>
+                <property name="$event_name" value="user receives signal"/>
+            </link>
+        </node>
+    </node>
+</nodeSet>
