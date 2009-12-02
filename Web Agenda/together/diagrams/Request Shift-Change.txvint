@@ -268,7 +268,7 @@
             <property name="normalizedIndex" value="0.8333333"/>
             <property name="@operationNameAsText" value="&apos;logOutOfSystem():void&apos;"/>
         </link>
-        <link uin="L1b7x3ig2pbqhlt-dpe0jj">
+        <link uin="L1b7x3ig2qka7n9jz9uqi">
             <participant role="Client" referencedUin="design:node:::id78fgfg1b4zphlg1b8gj28.nodeid5q58yg1b4zphlg1b8gizm"/>
             <participant role="Supplier" referencedUin="design:node:::id78fgfg1b4zphlg1b8gj28.nodeidj0e2rg1b4zphlg1b8gizm"/>
             <property name="$metaclass" value="Messages Link"/>
@@ -358,7 +358,7 @@
             <property name="normalizedIndex" value="0.6666667"/>
             <property name="@operationNameAsText" value="&apos;addShift():void&apos;"/>
         </link>
-        <link uin="L1b7x3ig2pbqhlthdvbhe">
+        <link uin="L1b7x3ig2qka7n9dvlkji">
             <participant role="Client" referencedUin="design:node:::id78fgfg1b4zphlg1b8gj28.nodeidan5xhg1b4zphlg1b8gj01"/>
             <participant role="Supplier" referencedUin="design:node:::id78fgfg1b4zphlg1b8gj28.nodeidj0e2rg1b4zphlg1b8gizm"/>
             <property name="$metaclass" value="Messages Link"/>
@@ -399,7 +399,7 @@
             <property name="normalizedIndex" value="0.5"/>
             <property name="@minProcessingDuration" value="45"/>
         </link>
-        <link uin="L1b7x3ig2pbqhltomqf5p">
+        <link uin="L1b7x3ig2qka7n9-4qgdk4">
             <participant role="Client" referencedUin="design:node:::id78fgfg1b4zphlg1b8gj28.nodeidqlmgg1b4zphlg1b8gj0h"/>
             <participant role="Supplier" referencedUin="design:node:::id78fgfg1b4zphlg1b8gj28.nodeidan5xhg1b4zphlg1b8gj01"/>
             <property name="$metaclass" value="Messages Link"/>
@@ -434,7 +434,7 @@
             <participant role="Client" referencedUin="design:node:::id78fgfg1b4zphlg1b8gj28.nodeidg7y2tg1b4zphlg1b8gj0h"/>
             <property name="$metaclass" value="Dependency Link"/>
         </link>
-        <link uin="L1b7x3ig2pbqhltod00zp">
+        <link uin="L1b7x3ig2qka7n9vsy3z0">
             <participant role="Client" referencedUin="design:node:::id78fgfg1b4zphlg1b8gj28.nodeidg7y2tg1b4zphlg1b8gj0h"/>
             <participant role="Supplier" referencedUin="design:node:::id78fgfg1b4zphlg1b8gj28.nodeidan5xhg1b4zphlg1b8gj01"/>
             <property name="$metaclass" value="Messages Link"/>

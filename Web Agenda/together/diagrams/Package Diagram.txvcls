@@ -24,7 +24,7 @@
             <property name="$shortcutReference" value="true"/>
             <property name="@__fqn" value="uml:package:Webagenda:src:Persistance"/>
             <property name="$imported" value=""/>
-            <property name="bounds" value="30,220,117,120"/>
+            <property name="bounds" value="40,270,117,120"/>
             <reference referencedUin="design:link:::idgjd7xg2p7zmjhg2p8asa9.linkid63m2eg2p7zmjhg2p8s555">
                 <property name="sourceAnchor" value="281,125"/>
                 <property name="bendpoints" value=""/>
@@ -35,11 +35,11 @@
             <property name="$shortcutReference" value="true"/>
             <property name="@__fqn" value="uml:package:Webagenda:src:ProblemDomain"/>
             <property name="$imported" value=""/>
-            <property name="bounds" value="220,60,110,184"/>
+            <property name="bounds" value="220,30,110,184"/>
             <reference referencedUin="design:link:::id1gm70g2p7zmjhg2p8vsns.linkid2wu2lg2p7zmjhg2p9qmyz">
-                <property name="sourceAnchor" value="220,234"/>
+                <property name="sourceAnchor" value="275,214"/>
                 <property name="bendpoints" value=""/>
-                <property name="targetAnchor" value="147,240"/>
+                <property name="targetAnchor" value="108,270"/>
             </reference>
         </reference>
     </view>
