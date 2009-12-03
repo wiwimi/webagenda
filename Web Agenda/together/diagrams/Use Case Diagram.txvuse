@@ -12,14 +12,14 @@
                 <property name="bounds" value="50,750,132,26"/>
             </reference>
             <reference referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeidb2usg0fh0gv0g0fhq5wq:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
-                <property name="bounds" value="50,450,190,26"/>
+                <property name="bounds" value="50,830,190,26"/>
             </reference>
             <reference referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeidf3adwg0h4q0log0h64jp3:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
                 <property name="bounds" value="60,190,370,30"/>
                 <property name="bounds_setted_by_user" value="true"/>
             </reference>
             <reference referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid3xcyxg0h4q0log0h6r21b:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
-                <property name="bounds" value="320,580,146,26"/>
+                <property name="bounds" value="320,530,146,26"/>
                 <reference referencedUin="design:link:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid3xcyxg0h4q0log0h6r21b.linkidbdlsjg0h4q0log0h6xfra:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid3xcyxg0h4q0log0h6r21b:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
                     <property name="sourceAnchor" value="710,653"/>
                     <property name="bendpoints" value=""/>
@@ -32,11 +32,11 @@
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
                 <reference referencedUin="design:link:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid3xcyxg0h4q0log0h6r21b.linkiddvtmjg0h4q0log0h6xc7o:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid3xcyxg0h4q0log0h6r21b:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
-                    <property name="sourceAnchor" value="570,613"/>
+                    <property name="sourceAnchor" value="570,563"/>
                     <property name="bendpoints" value=""/>
-                    <property name="targetAnchor" value="530,613"/>
+                    <property name="targetAnchor" value="530,563"/>
                     <reference referencedUin="linklabel:&lt;&lt;extend&gt;&gt;:design:link:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid3xcyxg0h4q0log0h6r21b.linkiddvtmjg0h4q0log0h6xc7o:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid3xcyxg0h4q0log0h6r21b:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
-                        <property name="bounds" value="514,593,72,16"/>
+                        <property name="bounds" value="514,543,72,16"/>
                         <property name="bounds_setted_by_user" value="true"/>
                     </reference>
                 </reference>
@@ -49,7 +49,7 @@
                 <property name="bounds_setted_by_user" value="true"/>
             </reference>
             <reference referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid7si0gg0h4q0log0h6l0my:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
-                <property name="bounds" value="50,580,230,30"/>
+                <property name="bounds" value="50,530,230,30"/>
                 <property name="bounds_setted_by_user" value="true"/>
                 <reference referencedUin="design:link:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid7si0gg0h4q0log0h6l0my.linkid99k38g0h4q0log0h6s8uz:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid7si0gg0h4q0log0h6l0my:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
                     <property name="sourceAnchor" value="480,670"/>
@@ -70,11 +70,11 @@
                 <property name="bounds_setted_by_user" value="true"/>
             </reference>
             <reference referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeidh9iwvg0fh0gv0g0fk7tpl:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
-                <property name="bounds" value="50,490,190,28"/>
+                <property name="bounds" value="50,450,190,28"/>
                 <property name="bounds_setted_by_user" value="true"/>
             </reference>
             <reference referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid6pncrg0fu49ceg0fyawev:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
-                <property name="bounds" value="50,540,218,26"/>
+                <property name="bounds" value="50,490,218,26"/>
             </reference>
             <reference referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeidbjwddg0h4q0log0h613tx:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
                 <property name="bounds" value="60,160,190,26"/>
@@ -220,6 +220,12 @@
                 <property name="targetAnchor" value="300,740"/>
                 <property name="bounds_setted_by_user" value="true"/>
             </reference>
+            <reference referencedUin="design:link:::id9e19kg0fh0gv0g0fh1np3.nodeidbpth6g0fh0gv0g0fh7yoj.linkidaagizg0u9s02cg0ucvj2p:id9e19kg0fh0gv0g0fh1np3.nodeidbpth6g0fh0gv0g0fh7yoj">
+                <property name="sourceAnchor" value="58,807"/>
+                <property name="bendpoints" value="190,860"/>
+                <property name="targetAnchor" value="300,860"/>
+                <property name="bounds_setted_by_user" value="true"/>
+            </reference>
             <reference referencedUin="design:link:::id9e19kg0fh0gv0g0fh1np3.nodeidbpth6g0fh0gv0g0fh7yoj.linkid6e3eqg0fh0gv0g0fjybtv:id9e19kg0fh0gv0g0fh1np3.nodeidbpth6g0fh0gv0g0fh7yoj">
                 <property name="sourceAnchor" value="86,796"/>
                 <property name="bendpoints" value="190,820"/>
@@ -242,16 +248,10 @@
                 <property name="targetAnchor" value="300,360"/>
                 <property name="bounds_setted_by_user" value="true"/>
             </reference>
-            <reference referencedUin="design:link:::id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z.linkidaagizg0u9s02cg0ucvj2p:id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z">
-                <property name="sourceAnchor" value="87,480"/>
-                <property name="bendpoints" value="190,480"/>
-                <property name="targetAnchor" value="300,480"/>
-                <property name="bounds_setted_by_user" value="true"/>
-            </reference>
             <reference referencedUin="design:link:::id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z.linkid5t5y0g23mn0vcg23n4xor:id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z">
-                <property name="sourceAnchor" value="61,497"/>
-                <property name="bendpoints" value="190,610"/>
-                <property name="targetAnchor" value="300,610"/>
+                <property name="sourceAnchor" value="67,497"/>
+                <property name="bendpoints" value="190,560"/>
+                <property name="targetAnchor" value="300,560"/>
                 <property name="bounds_setted_by_user" value="true"/>
             </reference>
             <reference referencedUin="design:link:::id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z.linkid79allg0u9s02cg0ucvght:id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z">
@@ -278,16 +278,16 @@
                 <property name="targetAnchor" value="380,680"/>
                 <property name="bounds_setted_by_user" value="true"/>
             </reference>
-            <reference referencedUin="design:link:::id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z.linkidfsgxfg23mn0vcg23n537z:id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z">
-                <property name="sourceAnchor" value="62,537"/>
-                <property name="bendpoints" value="190,650"/>
-                <property name="targetAnchor" value="300,650"/>
-                <property name="bounds_setted_by_user" value="true"/>
-            </reference>
             <reference referencedUin="design:link:::id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z.linkidiq1qyg0h4q0log0h5xuu7:id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z">
                 <property name="sourceAnchor" value="80,837"/>
                 <property name="bendpoints" value="260,970"/>
                 <property name="targetAnchor" value="370,970"/>
+                <property name="bounds_setted_by_user" value="true"/>
+            </reference>
+            <reference referencedUin="design:link:::id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z.linkidfsgxfg23mn0vcg23n537z:id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z">
+                <property name="sourceAnchor" value="62,537"/>
+                <property name="bendpoints" value="190,650"/>
+                <property name="targetAnchor" value="300,650"/>
                 <property name="bounds_setted_by_user" value="true"/>
             </reference>
             <reference referencedUin="design:link:::id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z.linkidifrlkg0u9s02cg0ucvbww:id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z">
@@ -297,9 +297,9 @@
                 <property name="bounds_setted_by_user" value="true"/>
             </reference>
             <reference referencedUin="design:link:::id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z.linkid4o490g0u9s02cg0ucvlhi:id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z">
-                <property name="sourceAnchor" value="87,488"/>
-                <property name="bendpoints" value="190,520"/>
-                <property name="targetAnchor" value="300,520"/>
+                <property name="sourceAnchor" value="87,480"/>
+                <property name="bendpoints" value="190,480"/>
+                <property name="targetAnchor" value="300,480"/>
                 <property name="bounds_setted_by_user" value="true"/>
             </reference>
             <reference referencedUin="design:link:::id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z.linkid3nbpig0h4q0log0h4tw3t:id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z">
@@ -337,9 +337,9 @@
                 <property name="bounds_setted_by_user" value="true"/>
             </reference>
             <reference referencedUin="design:link:::id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z.linkidcwweig0u9s02cg0ucvny2:id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z">
-                <property name="sourceAnchor" value="74,497"/>
-                <property name="bendpoints" value="190,570"/>
-                <property name="targetAnchor" value="300,570"/>
+                <property name="sourceAnchor" value="87,488"/>
+                <property name="bendpoints" value="190,520"/>
+                <property name="targetAnchor" value="300,520"/>
                 <property name="bounds_setted_by_user" value="true"/>
             </reference>
             <reference referencedUin="design:link:::id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z.linkidh9aaqg0u9s02cg0ucve7d:id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z">
@@ -542,6 +542,12 @@
             <property name="$metaclass" value="Association Link"/>
             <property name="@stereotype" value="communicate"/>
         </link>
+        <link uin="id9e19kg0fh0gv0g0fh1np3.nodeidbpth6g0fh0gv0g0fh7yoj.linkidaagizg0u9s02cg0ucvj2p">
+            <participant role="Supplier" referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeidb2usg0fh0gv0g0fhq5wq:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j"/>
+            <participant role="Client" referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeidbpth6g0fh0gv0g0fh7yoj"/>
+            <property name="$metaclass" value="Association Link"/>
+            <property name="@stereotype" value="communicate"/>
+        </link>
     </node>
     <node uin="id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z">
         <property name="$description" value="Supervisors are responsible for managing the schedules of multiple employees, and are the people who will have the most interaction with the system. &#xA;&#xA;They are able to add new employees to the system or disable current ones.  Once employees have been added, new schedules can be generated for them.  Generated schedules can be modified before they are accepted and become active, and new schedules can be created manually. &#xA;&#xA;Supervisors will have access to various reports that can be used to monitor employee use of the system, past/future schedules, and overviews of all employee and timeslot information."/>
@@ -560,12 +566,6 @@
         </link>
         <link uin="id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z.linkidh9aaqg0u9s02cg0ucve7d">
             <participant role="Supplier" referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid8vc4rg0fh0gv0g0fhekm5:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j"/>
-            <participant role="Client" referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z"/>
-            <property name="$metaclass" value="Association Link"/>
-            <property name="@stereotype" value="communicate"/>
-        </link>
-        <link uin="id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z.linkidaagizg0u9s02cg0ucvj2p">
-            <participant role="Supplier" referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeidb2usg0fh0gv0g0fhq5wq:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j"/>
             <participant role="Client" referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z"/>
             <property name="$metaclass" value="Association Link"/>
             <property name="@stereotype" value="communicate"/>
