@@ -70,7 +70,7 @@
                 <property name="bounds_setted_by_user" value="true"/>
             </reference>
             <reference referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeidh9iwvg0fh0gv0g0fk7tpl:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
-                <property name="bounds" value="50,490,310,28"/>
+                <property name="bounds" value="50,490,190,28"/>
                 <property name="bounds_setted_by_user" value="true"/>
             </reference>
             <reference referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid6pncrg0fu49ceg0fyawev:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
@@ -397,7 +397,7 @@
         <node uin="id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeidh9iwvg0fh0gv0g0fk7tpl">
             <property name="$description" value="Custom announcements can be created that will be sent to specific employees, employee types, or all employees working under the supervisor."/>
             <property name="$metaclass" value="Use Case"/>
-            <property name="$name" value="Send Internal Annoucements to Staff"/>
+            <property name="$name" value="Send Annoucement"/>
         </node>
         <node uin="id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid5lbqxg0fh0gv0g0fkb1gp">
             <property name="$description" value="Created schedules must be implemented before they will be active in the system.  Supervisors can choose when the new schedule should start, with a minimum of two weeks from the current date to allow all employees adequate time to prepare for the changes. &#xA;&#xA;Once a schedule has been implemented, all employees that the schedule applies to will be sent notifications so they will know about the changes as soon as possible."/>
