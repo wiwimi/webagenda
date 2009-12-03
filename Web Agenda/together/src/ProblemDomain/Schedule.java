@@ -30,21 +30,6 @@ public class Schedule {
     public void implementSchedule() {
     }
 
-    /**
-     * Gets the default schedule for this supervisor, showing all employees that the supervisor is in charge of. 
-     */
-    public Schedule fetchDefaultSchedule(){}
-
-    /**
-     * Gets the schedule for a specific workgroup, showing the schedules of only the employees within it rather than all employees that the supervisor has access to. 
-     */
-    public Schedule fetchWorkgroupSched(){}
-
-    /**
-     * The getAvailabilityTemplate is a method that returns a blank schedule: Not blank as in a fresh, untampered date schedule, but it returns a schedule that includes the names of the days of the week and nothing else. It represents a typical week of shifts that a user can populate with shifts they can work; The schedule itself isn't blank either. When a user sets their availability, it is saved to the backend so this method returns what they saved so they can re-edit it. If a user wants to change their schedule, they will send a COPY of it to their supervisor. 
-     */
-    public Schedule fetchAvailabilityTemplate(){ return null; }
-
     public void getAllShifts(){}
 
     /**
@@ -55,7 +40,7 @@ public class Schedule {
     /**
      * Holds references to all shifts that are active for this schedule. 
      */
-    private shift[] employeeShifts;
+    private Shift[][] employeeShifts;
 
     /**
      * A schedule is composed of one or more shifts.

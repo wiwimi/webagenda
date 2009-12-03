@@ -1,16 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <nodeSet version="1.0">
     <link uin="idf1bpkg2p7zmjhg2p85qp2.linkid8o072g2p7zmjhg2p9ql08">
-        <property name="$metaclass" value="Dependency Link"/>
         <participant role="Supplier" referencedUin="design:view:::id1gm70g2p7zmjhg2p8vsns"/>
         <participant role="Client" referencedUin="design:view:::idf1bpkg2p7zmjhg2p85qp2"/>
+        <property name="$metaclass" value="Dependency Link"/>
     </link>
     <view uin="idf1bpkg2p7zmjhg2p85qp2">
         <property name="$metaclass" value="Package Diagram"/>
         <property name="@__options" value=""/>
-        <reference df-class-name="reference" referencedUin="jdt:e_class:src:Interface.WebUI">
+        <reference df-class-name="reference2" referencedUin="jdt:e_class:src:Interface.WidgetInterface">
             <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="10,10,164,149"/>
+            <property name="bounds" value="370,20,103,117"/>
+        </reference>
+        <reference df-class-name="reference3" referencedUin="jdt:e_class:src:Interface.ScheduleWidget">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="340,370,167,133"/>
+            <reference referencedUin="jdt:l_gnt:src:Interface.ScheduleWidget:Interface.Widget">
+                <property name="sourceAnchor" value="422,370"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="422,281"/>
+            </reference>
+        </reference>
+        <reference df-class-name="reference4" referencedUin="jdt:e_class:src:Interface.CalendarWidget">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="130,190,103,82"/>
+            <reference referencedUin="jdt:l_gnt:src:Interface.CalendarWidget:Interface.Widget">
+                <property name="sourceAnchor" value="233,231"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="380,231"/>
+            </reference>
+        </reference>
+        <reference df-class-name="reference5" referencedUin="jdt:e_class:src:Interface.EventWidget">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="210,350,83,82"/>
+            <reference referencedUin="jdt:l_gnt:src:Interface.EventWidget:Interface.Widget">
+                <property name="sourceAnchor" value="251,350"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="401,281"/>
+            </reference>
+        </reference>
+        <reference df-class-name="reference6" referencedUin="jdt:e_class:src:Interface.SettingsWidget">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="560,350,99,82"/>
+            <reference referencedUin="jdt:l_gnt:src:Interface.SettingsWidget:Interface.Widget">
+                <property name="sourceAnchor" value="609,350"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="437,281"/>
+            </reference>
+        </reference>
+        <reference df-class-name="reference7" referencedUin="jdt:e_class:src:Interface.MessageWidget">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="610,190,104,82"/>
+            <reference referencedUin="jdt:l_gnt:src:Interface.MessageWidget:Interface.Widget">
+                <property name="sourceAnchor" value="610,231"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="464,231"/>
+            </reference>
+        </reference>
+        <reference df-class-name="reference14" referencedUin="jdt:e_class:src:Interface.Dashboard">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="20,20,110,110"/>
+            <property name="bounds_setted_by_user" value="true"/>
+        </reference>
+        <reference df-class-name="reference" referencedUin="jdt:e_class:src:Interface.Widget">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="380,180,84,101"/>
+            <reference referencedUin="jdt:l_impl:src:Interface.Widget:Interface.WidgetInterface">
+                <property name="sourceAnchor" value="422,180"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="422,137"/>
+            </reference>
         </reference>
         <property name="$defaultDiagram" value=""/>
     </view>

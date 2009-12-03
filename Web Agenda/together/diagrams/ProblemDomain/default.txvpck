@@ -1,30 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <nodeSet version="1.0">
     <link uin="id1gm70g2p7zmjhg2p8vsns.linkid2wu2lg2p7zmjhg2p9qmyz">
-        <property name="$metaclass" value="Dependency Link"/>
         <participant role="Supplier" referencedUin="design:view:::idgjd7xg2p7zmjhg2p8asa9"/>
         <participant role="Client" referencedUin="design:view:::id1gm70g2p7zmjhg2p8vsns"/>
+        <property name="$metaclass" value="Dependency Link"/>
     </link>
     <view uin="id1gm70g2p7zmjhg2p8vsns">
         <property name="$metaclass" value="Package Diagram"/>
         <property name="@__options" value=""/>
         <reference df-class-name="reference" referencedUin="jdt:e_class:src:ProblemDomain.Employee">
             <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="283,292,166,302"/>
+            <reference referencedUin="jdt:l_ast:src:ProblemDomain.Employee:lnkShift">
+                <property name="sourceAnchor" value="366,292"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="366,168"/>
+            </reference>
+            <reference referencedUin="jdt:l_ast:src:ProblemDomain.Employee:lnkNotification">
+                <property name="sourceAnchor" value="308,594"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="308,648"/>
+            </reference>
         </reference>
         <reference df-class-name="reference31" referencedUin="jdt:e_class:src:ProblemDomain.Notification">
             <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="225,648,135,126"/>
         </reference>
         <reference df-class-name="reference32" referencedUin="jdt:e_class:src:ProblemDomain.Schedule">
             <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="10,10,170,174"/>
+            <reference referencedUin="jdt:l_ast:src:ProblemDomain.Schedule:lnkShift">
+                <property name="sourceAnchor" value="180,89"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="290,89"/>
+            </reference>
+            <reference referencedUin="jdt:l_ast:src:ProblemDomain.Schedule:employeeShifts">
+                <property name="sourceAnchor" value="180,49"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="290,49"/>
+            </reference>
         </reference>
         <reference df-class-name="reference33" referencedUin="jdt:e_class:src:ProblemDomain.Shift">
             <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="290,10,152,158"/>
         </reference>
         <reference df-class-name="reference34" referencedUin="jdt:e_class:src:ProblemDomain.Supervisor">
             <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="440,648,158,126"/>
+            <reference referencedUin="jdt:l_gnt:src:ProblemDomain.Supervisor:ProblemDomain.Employee">
+                <property name="sourceAnchor" value="501,648"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="378,594"/>
+            </reference>
+            <reference referencedUin="jdt:l_ast:src:ProblemDomain.Supervisor:lnkWorkgroup">
+                <property name="sourceAnchor" value="563,648"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="563,450"/>
+            </reference>
+            <reference referencedUin="jdt:l_ast:src:ProblemDomain.Supervisor:lnkNotification">
+                <property name="sourceAnchor" value="440,711"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="360,711"/>
+            </reference>
         </reference>
         <reference df-class-name="reference35" referencedUin="jdt:e_class:src:ProblemDomain.Workgroup">
             <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="529,292,145,158"/>
+            <reference referencedUin="jdt:l_ast:src:ProblemDomain.Workgroup:lnkEmployee">
+                <property name="sourceAnchor" value="529,363"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="449,363"/>
+            </reference>
         </reference>
         <property name="$defaultDiagram" value=""/>
     </view>

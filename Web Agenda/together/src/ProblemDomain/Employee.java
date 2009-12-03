@@ -43,6 +43,8 @@ public class Employee {
     public void addSchedule() {
     }
 
+    public date[][] getShiftTimes(){}
+
     /**
      * The username that the employee uses to log into the system. 
      */

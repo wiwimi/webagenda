@@ -11,7 +11,9 @@ public class Workgroup {
      */
     public Object fetchWorkgroup(){}
 
-    public void getShifts(){}
+    public Shift[] getShifts(Workgroup wg){}
+
+    public Schedule getSched(){}
 
     /**
      * A list of the employees that are in the workgroup. 

@@ -3,5 +3,5 @@
 package Persistance;
 
 public class ScheduleBroker {
-    public void getDefaultSched(){}
+    public Schedule getDefault(String p0, String p1){}
 }
