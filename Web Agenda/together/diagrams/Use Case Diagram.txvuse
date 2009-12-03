@@ -42,7 +42,7 @@
                 </reference>
             </reference>
             <reference referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeidi18jsg2f7lqiwg2f9t11l:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
-                <property name="bounds" value="50,710,156,26"/>
+                <property name="bounds" value="50,710,178,26"/>
             </reference>
             <reference referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid16328g0fh0gv0g0fkoq7p:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
                 <property name="bounds" value="50,330,190,30"/>
@@ -465,7 +465,7 @@
         </node>
         <node uin="id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeidi18jsg2f7lqiwg2f9t11l">
             <property name="$metaclass" value="Use Case"/>
-            <property name="$name" value="Create Workgroup"/>
+            <property name="$name" value="Maintain Workgroups"/>
         </node>
     </node>
     <node uin="id9e19kg0fh0gv0g0fh1np3.nodeidbqo5ig0fh0gv0g0fh7ly7">
