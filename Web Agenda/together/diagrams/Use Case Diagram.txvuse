@@ -96,33 +96,6 @@
             <reference referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid8vc4rg0fh0gv0g0fhekm5:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
                 <property name="bounds" value="50,410,161,26"/>
             </reference>
-            <reference referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid5lbqxg0fh0gv0g0fkb1gp:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
-                <property name="bounds" value="290,350,180,30"/>
-                <property name="bounds_setted_by_user" value="true"/>
-                <reference referencedUin="design:link:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid5lbqxg0fh0gv0g0fkb1gp.linkid9lvzag25fstzmg25j0xyc:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid5lbqxg0fh0gv0g0fkb1gp:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
-                    <property name="sourceAnchor" value="540,390"/>
-                    <property name="bendpoints" value=""/>
-                    <property name="targetAnchor" value="500,400"/>
-                    <reference referencedUin="linklabel:&lt;&lt;extend&gt;&gt;:design:link:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid5lbqxg0fh0gv0g0fkb1gp.linkid9lvzag25fstzmg25j0xyc:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid5lbqxg0fh0gv0g0fkb1gp:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
-                        <property name="bounds" value="444,375,72,16"/>
-                        <property name="bounds_setted_by_user" value="true"/>
-                    </reference>
-                </reference>
-                <reference referencedUin="design:link:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid5lbqxg0fh0gv0g0fkb1gp.linkiddprn2g0fh0gv0g0fkblpf:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid5lbqxg0fh0gv0g0fkb1gp:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
-                    <property name="sourceAnchor" value="1015,910"/>
-                    <property name="bendpoints" value=""/>
-                    <property name="targetAnchor" value="1015,860"/>
-                </reference>
-                <reference referencedUin="design:link:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid5lbqxg0fh0gv0g0fkb1gp.linkid1o44jg25fstzmg25j0v0g:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid5lbqxg0fh0gv0g0fkb1gp:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
-                    <property name="sourceAnchor" value="540,380"/>
-                    <property name="bendpoints" value=""/>
-                    <property name="targetAnchor" value="490,370"/>
-                    <reference referencedUin="linklabel:&lt;&lt;extend&gt;&gt;:design:link:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid5lbqxg0fh0gv0g0fkb1gp.linkid1o44jg25fstzmg25j0v0g:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid5lbqxg0fh0gv0g0fkb1gp:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
-                        <property name="bounds" value="519,355,72,16"/>
-                        <property name="bounds_setted_by_user" value="true"/>
-                    </reference>
-                </reference>
-            </reference>
             <reference referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeidbbbb5g0fh0gv0g0fkq9eo:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
                 <property name="bounds" value="50,670,170,30"/>
                 <property name="bounds_setted_by_user" value="true"/>
@@ -398,21 +371,6 @@
             <property name="$description" value="Custom announcements can be created that will be sent to specific employees, employee types, or all employees working under the supervisor."/>
             <property name="$metaclass" value="Use Case"/>
             <property name="$name" value="Send Annoucement"/>
-        </node>
-        <node uin="id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid5lbqxg0fh0gv0g0fkb1gp">
-            <property name="$description" value="Created schedules must be implemented before they will be active in the system.  Supervisors can choose when the new schedule should start, with a minimum of two weeks from the current date to allow all employees adequate time to prepare for the changes. &#xA;&#xA;Once a schedule has been implemented, all employees that the schedule applies to will be sent notifications so they will know about the changes as soon as possible."/>
-            <property name="$metaclass" value="Use Case"/>
-            <property name="$name" value="Implement Schedule"/>
-            <link uin="id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid5lbqxg0fh0gv0g0fkb1gp.linkid1o44jg25fstzmg25j0v0g">
-                <participant role="Supplier" referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid16328g0fh0gv0g0fkoq7p:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j"/>
-                <participant role="Client" referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid5lbqxg0fh0gv0g0fkb1gp:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j"/>
-                <property name="$metaclass" value="Extends Link"/>
-            </link>
-            <link uin="id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid5lbqxg0fh0gv0g0fkb1gp.linkid9lvzag25fstzmg25j0xyc">
-                <participant role="Supplier" referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid5by07g0fh0gv0g0fkm238:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j"/>
-                <participant role="Client" referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid5lbqxg0fh0gv0g0fkb1gp:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j"/>
-                <property name="$metaclass" value="Extends Link"/>
-            </link>
         </node>
         <node uin="id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid5by07g0fh0gv0g0fkm238">
             <property name="$description" value="Saved schedules can be accessed at any time and be modified by a supervisor.  Once modifications are complete, they can be saved again, or implemented and made active in the system."/>
