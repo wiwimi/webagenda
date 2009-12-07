@@ -33,6 +33,10 @@ public class Workgroup {
     /**
      * An employee may be part of multiple workgroups, which must be assigned by that employee's supervisor.
      * @link aggregation 
+     * @clientCardinality 1..*
+     * @supplierCardinality 0..*
+     * @clientQualifier is part of
+     * @supplierQualifier contains
      */
     private Employee lnkEmployee;
 }

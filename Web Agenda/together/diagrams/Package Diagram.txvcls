@@ -7,11 +7,11 @@
             <property name="$shortcutReference" value="true"/>
             <property name="@__fqn" value="uml:package:Webagenda:src:Interface"/>
             <property name="$imported" value=""/>
-            <property name="bounds" value="40,30,83,104"/>
+            <property name="bounds" value="40,30,111,232"/>
             <reference referencedUin="design:link:::idf1bpkg2p7zmjhg2p85qp2.linkid8o072g2p7zmjhg2p9ql08">
-                <property name="sourceAnchor" value="123,97"/>
+                <property name="sourceAnchor" value="151,122"/>
                 <property name="bendpoints" value=""/>
-                <property name="targetAnchor" value="220,97"/>
+                <property name="targetAnchor" value="270,122"/>
             </reference>
         </reference>
         <reference df-class-name="reference5" referencedUin="design:view:::unknown_view">
@@ -24,7 +24,7 @@
             <property name="$shortcutReference" value="true"/>
             <property name="@__fqn" value="uml:package:Webagenda:src:Persistance"/>
             <property name="$imported" value=""/>
-            <property name="bounds" value="40,270,117,120"/>
+            <property name="bounds" value="40,330,118,184"/>
             <reference referencedUin="design:link:::idgjd7xg2p7zmjhg2p8asa9.linkid63m2eg2p7zmjhg2p8s555">
                 <property name="sourceAnchor" value="281,125"/>
                 <property name="bendpoints" value=""/>
@@ -35,11 +35,11 @@
             <property name="$shortcutReference" value="true"/>
             <property name="@__fqn" value="uml:package:Webagenda:src:ProblemDomain"/>
             <property name="$imported" value=""/>
-            <property name="bounds" value="220,30,110,184"/>
+            <property name="bounds" value="270,30,110,184"/>
             <reference referencedUin="design:link:::id1gm70g2p7zmjhg2p8vsns.linkid2wu2lg2p7zmjhg2p9qmyz">
-                <property name="sourceAnchor" value="275,214"/>
+                <property name="sourceAnchor" value="325,214"/>
                 <property name="bendpoints" value=""/>
-                <property name="targetAnchor" value="108,270"/>
+                <property name="targetAnchor" value="99,330"/>
             </reference>
         </reference>
     </view>

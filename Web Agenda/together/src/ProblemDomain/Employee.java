@@ -89,11 +89,19 @@ public class Employee {
 
     /**
      * Employees will receive and view notifications that are sent automatically, or manually sent by their supervisor. 
+     * @clientCardinality 0..1
+     * @supplierCardinality 0..*
+     * @clientQualifier is sent to
+     * @supplierQualifier receives
      */
     private Notification lnkNotification;
 
     /**
      * Multiple employees can work the same shift, and an employee can work multiple shifts. 
+     * @clientCardinality 1
+     * @supplierCardinality 0..*
+     * @clientQualifier belongs to
+     * @supplierQualifier has
      */
     private Shift lnkShift;
 }

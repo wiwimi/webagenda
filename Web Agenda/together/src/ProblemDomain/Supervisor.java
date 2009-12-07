@@ -21,11 +21,19 @@ public class Supervisor extends Employee {
 
     /**
      * A supervisor may be in charge of multiple workgroups, which they have created for their employees. 
+     * @clientCardinality 1
+     * @supplierCardinality 1..*
+     * @clientQualifier has
+     * @supplierQualifier supervises
      */
     private Workgroup lnkWorkgroup;
 
     /**
      * Supervisors may view notifications created by the system, as well as manually create notifications to send to their employees. 
+     * @clientCardinality 0..1
+     * @supplierCardinality 0..*
+     * @clientQualifier is sent to
+     * @supplierQualifier receives
      */
     private Notification lnkNotification;
 }

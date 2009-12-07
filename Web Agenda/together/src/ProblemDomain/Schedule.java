@@ -45,6 +45,9 @@ public class Schedule {
     /**
      * A schedule is composed of one or more shifts.
      * @link aggregation 
-     */
+     * @clientCardinality 0..*
+     * @supplierCardinality 1..*
+     * @supplierQualifier contains
+     * @clientQualifier belongs to*/
     private Shift lnkShift;
 }
