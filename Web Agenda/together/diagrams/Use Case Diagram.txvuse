@@ -12,7 +12,7 @@
                 <property name="bounds" value="50,750,132,26"/>
             </reference>
             <reference referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeidb2usg0fh0gv0g0fhq5wq:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
-                <property name="bounds" value="50,830,190,26"/>
+                <property name="bounds" value="50,790,190,26"/>
             </reference>
             <reference referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeidf3adwg0h4q0log0h64jp3:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
                 <property name="bounds" value="60,190,370,30"/>
@@ -45,7 +45,7 @@
                 <property name="bounds" value="50,710,178,26"/>
             </reference>
             <reference referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid16328g0fh0gv0g0fkoq7p:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
-                <property name="bounds" value="50,330,190,30"/>
+                <property name="bounds" value="50,370,190,30"/>
                 <property name="bounds_setted_by_user" value="true"/>
             </reference>
             <reference referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid7si0gg0h4q0log0h6l0my:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
@@ -56,10 +56,6 @@
                     <property name="bendpoints" value=""/>
                     <property name="targetAnchor" value="443,668"/>
                 </reference>
-            </reference>
-            <reference referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid5by07g0fh0gv0g0fkm238:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
-                <property name="bounds" value="50,370,200,30"/>
-                <property name="bounds_setted_by_user" value="true"/>
             </reference>
             <reference referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid2v0reg0fh0gv0g0fhady1:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
                 <property name="bounds" value="60,70,190,26"/>
@@ -81,7 +77,7 @@
                 <property name="bounds_setted_by_user" value="true"/>
             </reference>
             <reference referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeidb3cicg0fh0gv0g0fhdv53:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
-                <property name="bounds" value="50,290,234,26"/>
+                <property name="bounds" value="50,330,234,26"/>
             </reference>
             <reference referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeidboopdg2f7lqiwg2f9haz6:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
                 <property name="bounds" value="60,30,186,26"/>
@@ -89,9 +85,6 @@
             </reference>
             <reference referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeidamvcog0fh0gv0g0fjj39y:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
                 <property name="bounds" value="60,100,193,26"/>
-            </reference>
-            <reference referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeidf4ychg0fh0gv0g0fjy2cq:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
-                <property name="bounds" value="50,790,263,26"/>
             </reference>
             <reference referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid8vc4rg0fh0gv0g0fhekm5:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
                 <property name="bounds" value="50,410,161,26"/>
@@ -194,9 +187,9 @@
                 <property name="bounds_setted_by_user" value="true"/>
             </reference>
             <reference referencedUin="design:link:::id9e19kg0fh0gv0g0fh1np3.nodeidbpth6g0fh0gv0g0fh7yoj.linkidaagizg0u9s02cg0ucvj2p:id9e19kg0fh0gv0g0fh1np3.nodeidbpth6g0fh0gv0g0fh7yoj">
-                <property name="sourceAnchor" value="58,807"/>
-                <property name="bendpoints" value="190,860"/>
-                <property name="targetAnchor" value="300,860"/>
+                <property name="sourceAnchor" value="86,796"/>
+                <property name="bendpoints" value="190,820"/>
+                <property name="targetAnchor" value="300,820"/>
                 <property name="bounds_setted_by_user" value="true"/>
             </reference>
             <reference referencedUin="design:link:::id9e19kg0fh0gv0g0fh1np3.nodeidbpth6g0fh0gv0g0fh7yoj.linkid6e3eqg0fh0gv0g0fjybtv:id9e19kg0fh0gv0g0fh1np3.nodeidbpth6g0fh0gv0g0fh7yoj">
@@ -216,9 +209,9 @@
             <property name="$shortcutReference" value="true"/>
             <property name="bounds" value="20,420,67,77"/>
             <reference referencedUin="design:link:::id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z.linkid675og257pcivg257rtft:id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z">
-                <property name="sourceAnchor" value="69,420"/>
-                <property name="bendpoints" value="190,360"/>
-                <property name="targetAnchor" value="300,360"/>
+                <property name="sourceAnchor" value="87,433"/>
+                <property name="bendpoints" value="190,400"/>
+                <property name="targetAnchor" value="300,400"/>
                 <property name="bounds_setted_by_user" value="true"/>
             </reference>
             <reference referencedUin="design:link:::id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z.linkid5t5y0g23mn0vcg23n4xor:id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z">
@@ -264,9 +257,9 @@
                 <property name="bounds_setted_by_user" value="true"/>
             </reference>
             <reference referencedUin="design:link:::id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z.linkidifrlkg0u9s02cg0ucvbww:id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z">
-                <property name="sourceAnchor" value="52,420"/>
-                <property name="bendpoints" value="190,320"/>
-                <property name="targetAnchor" value="300,320"/>
+                <property name="sourceAnchor" value="61,420"/>
+                <property name="bendpoints" value="190,360"/>
+                <property name="targetAnchor" value="300,360"/>
                 <property name="bounds_setted_by_user" value="true"/>
             </reference>
             <reference referencedUin="design:link:::id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z.linkid4o490g0u9s02cg0ucvlhi:id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z">
@@ -362,25 +355,15 @@
             <property name="$metaclass" value="Use Case"/>
             <property name="$name" value="Update Shift Availability"/>
         </node>
-        <node uin="id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeidf4ychg0fh0gv0g0fjy2cq">
-            <property name="$description" value="Supervisors can be removed by disabling them in the system, or by demoting them to employee status."/>
-            <property name="$metaclass" value="Use Case"/>
-            <property name="$name" value="Update Supervisor Permissions"/>
-        </node>
         <node uin="id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeidh9iwvg0fh0gv0g0fk7tpl">
             <property name="$description" value="Custom announcements can be created that will be sent to specific employees, employee types, or all employees working under the supervisor."/>
             <property name="$metaclass" value="Use Case"/>
             <property name="$name" value="Send Annoucement"/>
         </node>
-        <node uin="id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid5by07g0fh0gv0g0fkm238">
-            <property name="$description" value="Saved schedules can be accessed at any time and be modified by a supervisor.  Once modifications are complete, they can be saved again, or implemented and made active in the system."/>
-            <property name="$metaclass" value="Use Case"/>
-            <property name="$name" value="Modify Saved Schedule"/>
-        </node>
         <node uin="id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid16328g0fh0gv0g0fkoq7p">
             <property name="$description" value="New schedules can be created by allowing the system to generate a schedule, or one be started as a blank schedule.  Once the schedule exists it can be modified freely by the supervisor to fit any needs they may have.  New schedules can be saved to be used at a later date, or implemented if desired."/>
             <property name="$metaclass" value="Use Case"/>
-            <property name="$name" value="Create New Schedule"/>
+            <property name="$name" value="Maintain Schedule"/>
         </node>
         <node uin="id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeidbbbb5g0fh0gv0g0fkq9eo">
             <property name="$description" value="Managers will be able to view the shift schedules for all employees and groups, outside of the employees they are directly responsible for."/>
@@ -477,12 +460,6 @@
             <property name="$metaclass" value="Association Link"/>
             <property name="@stereotype" value="communicate"/>
         </link>
-        <link uin="id9e19kg0fh0gv0g0fh1np3.nodeidbpth6g0fh0gv0g0fh7yoj.linkid6e3eqg0fh0gv0g0fjybtv">
-            <participant role="Supplier" referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeidf4ychg0fh0gv0g0fjy2cq:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j"/>
-            <participant role="Client" referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeidbpth6g0fh0gv0g0fh7yoj"/>
-            <property name="$metaclass" value="Association Link"/>
-            <property name="@stereotype" value="communicate"/>
-        </link>
         <link uin="id9e19kg0fh0gv0g0fh1np3.nodeidbpth6g0fh0gv0g0fh7yoj.linkidrkflg0fh0gv0g0fkr16o">
             <participant role="Supplier" referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeidbbbb5g0fh0gv0g0fkq9eo:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j"/>
             <participant role="Client" referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeidbpth6g0fh0gv0g0fh7yoj"/>
@@ -548,12 +525,6 @@
         </link>
         <link uin="id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z.linkid675og257pcivg257rtft">
             <participant role="Supplier" referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid16328g0fh0gv0g0fkoq7p:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j"/>
-            <participant role="Client" referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z"/>
-            <property name="$metaclass" value="Association Link"/>
-            <property name="@stereotype" value="communicate"/>
-        </link>
-        <link uin="id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z.linkid1k26dg257pcivg257rwyk">
-            <participant role="Supplier" referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid5by07g0fh0gv0g0fkm238:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j"/>
             <participant role="Client" referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeidh0lh6g0fh0gv0g0fjfm2z"/>
             <property name="$metaclass" value="Association Link"/>
             <property name="@stereotype" value="communicate"/>
