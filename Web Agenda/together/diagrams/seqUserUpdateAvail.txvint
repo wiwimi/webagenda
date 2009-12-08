@@ -1,0 +1,1044 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nodeSet version="1.0">
+    <view uin="idd9pqwg2xqhdjsg2xui3gp">
+        <property name="$description" value=""/>
+        <property name="$metaclass" value="Sequence Diagram"/>
+        <property name="@__options" value=""/>
+        <reference df-class-name="reference" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk">
+            <property name="$shortcutReference" value="true"/>
+            <property name="seq_bounds" value="30,30,139,1006"/>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkidfe3tog2xqhdjsg2xuk6l4:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk">
+                <property name="seq_sourceAnchor" value="106,170"/>
+                <property name="seq_bendpoints" value=""/>
+                <property name="seq_targetAnchor" value="272,170"/>
+                <reference referencedUin="linklabel:$messageInplaceEditing:design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkidfe3tog2xqhdjsg2xuk6l4:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk">
+                    <property name="seq_bounds" value="110,150,211,16"/>
+                    <property name="seq_bounds_setted_by_user" value="true"/>
+                </reference>
+                <property name="sendingInstant" value="170"/>
+                <property name="processingDuration" value="163"/>
+            </reference>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkid8pgxxg2xqhdjsg2xvdl5k:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk">
+                <property name="seq_sourceAnchor" value="124,739"/>
+                <property name="seq_bendpoints" value=""/>
+                <property name="seq_targetAnchor" value="272,739"/>
+                <reference referencedUin="linklabel:$messageInplaceEditing:design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkid8pgxxg2xqhdjsg2xvdl5k:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk">
+                    <property name="seq_bounds" value="128,719,152,16"/>
+                    <property name="seq_bounds_setted_by_user" value="true"/>
+                </reference>
+                <property name="sendingInstant" value="739"/>
+                <property name="processingDuration" value="83"/>
+            </reference>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkid48vsog2xqhdjsg2xujb76:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk">
+                <property name="seq_sourceAnchor" value="106,115"/>
+                <property name="seq_bendpoints" value=""/>
+                <property name="seq_targetAnchor" value="272,115"/>
+                <reference referencedUin="linklabel:$messageInplaceEditing:design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkid48vsog2xqhdjsg2xujb76:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk">
+                    <property name="seq_bounds" value="110,95,129,16"/>
+                    <property name="seq_bounds_setted_by_user" value="true"/>
+                </reference>
+                <property name="sendingInstant" value="115"/>
+                <property name="processingDuration" value="35"/>
+            </reference>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkidj4om2g2xqhdjsg2xviqyl:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk">
+                <property name="seq_sourceAnchor" value="124,483"/>
+                <property name="seq_bendpoints" value=""/>
+                <property name="seq_targetAnchor" value="272,483"/>
+                <reference referencedUin="linklabel:$messageInplaceEditing:design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkidj4om2g2xqhdjsg2xviqyl:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk">
+                    <property name="seq_bounds" value="128,463,188,16"/>
+                    <property name="seq_bounds_setted_by_user" value="true"/>
+                </reference>
+                <property name="sendingInstant" value="483"/>
+                <property name="processingDuration" value="62"/>
+            </reference>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkidawgu2g2xqhdjsg2xv8u2z:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk">
+                <property name="seq_sourceAnchor" value="149,585"/>
+                <property name="seq_bendpoints" value=""/>
+                <property name="seq_targetAnchor" value="272,585"/>
+                <reference referencedUin="linklabel:$messageInplaceEditing:design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkidawgu2g2xqhdjsg2xv8u2z:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk">
+                    <property name="seq_bounds" value="153,565,221,16"/>
+                    <property name="seq_bounds_setted_by_user" value="true"/>
+                </reference>
+                <property name="sendingInstant" value="585"/>
+                <property name="processingDuration" value="41"/>
+            </reference>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkidal5r7g2xqhdjsg2xuqtj9:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk">
+                <property name="seq_sourceAnchor" value="106,642"/>
+                <property name="seq_bendpoints" value=""/>
+                <property name="seq_targetAnchor" value="272,642"/>
+                <reference referencedUin="linklabel:$messageInplaceEditing:design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkidal5r7g2xqhdjsg2xuqtj9:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk">
+                    <property name="seq_bounds" value="110,622,149,16"/>
+                    <property name="seq_bounds_setted_by_user" value="true"/>
+                </reference>
+                <property name="sendingInstant" value="642"/>
+                <property name="deliveryTime" value="0"/>
+                <property name="processingDuration" value="92"/>
+            </reference>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkidi7bo1g2xqhdjsg2xunast:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk">
+                <property name="seq_sourceAnchor" value="106,338"/>
+                <property name="seq_bendpoints" value=""/>
+                <property name="seq_targetAnchor" value="272,338"/>
+                <reference referencedUin="linklabel:$messageInplaceEditing:design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkidi7bo1g2xqhdjsg2xunast:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk">
+                    <property name="seq_bounds" value="110,318,286,16"/>
+                    <property name="seq_bounds_setted_by_user" value="true"/>
+                </reference>
+                <property name="sendingInstant" value="338"/>
+                <property name="processingDuration" value="140"/>
+            </reference>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkid714geg2xqhdjsg2xujb76:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk"/>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkidgq2ylg2xqhdjsg2xuzvn6:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk">
+                <property name="seq_sourceAnchor" value="106,827"/>
+                <property name="seq_bendpoints" value=""/>
+                <property name="seq_targetAnchor" value="272,827"/>
+                <reference referencedUin="linklabel:$messageInplaceEditing:design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkidgq2ylg2xqhdjsg2xuzvn6:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk">
+                    <property name="seq_bounds" value="110,807,136,16"/>
+                    <property name="seq_bounds_setted_by_user" value="true"/>
+                </reference>
+                <property name="sendingInstant" value="827"/>
+                <property name="processingDuration" value="129"/>
+            </reference>
+        </reference>
+        <reference df-class-name="reference7" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+            <property name="$shortcutReference" value="true"/>
+            <property name="seq_bounds" value="234,30,90,1006"/>
+            <reference referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeidhhh1g2xqhdjsg2xva609:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                <property name="seq_bounds" value="281,596,14,20"/>
+            </reference>
+            <reference referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeid8yfxg2xqhdjsg2xussm8:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                <property name="seq_bounds" value="290,428,14,20"/>
+            </reference>
+            <reference referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeidxmh5g2xqhdjsg2xuove7:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                <property name="seq_bounds" value="281,388,14,70"/>
+            </reference>
+            <reference referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeidfveeg2xqhdjsg2xv8u39:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                <property name="seq_bounds" value="272,585,14,41"/>
+            </reference>
+            <reference referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeidyphog2xqhdjsg2xujppb:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                <property name="seq_bounds" value="281,120,14,20"/>
+            </reference>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkidpwlzg2xqhdjsg2xva5zf:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                <property name="seq_sourceAnchor" value="286,596"/>
+                <property name="seq_bendpoints" value="286,590,326,590,326,602"/>
+                <property name="seq_targetAnchor" value="295,602"/>
+                <property name="seq_bounds_setted_by_user" value="true"/>
+                <reference referencedUin="linklabel:$messageInplaceEditing:design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkidpwlzg2xqhdjsg2xva5zf:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                    <property name="seq_bounds" value="299,602,400,16"/>
+                    <property name="seq_bounds_setted_by_user" value="true"/>
+                </reference>
+                <property name="sendingInstant" value="596"/>
+                <property name="processingDuration" value="20"/>
+            </reference>
+            <reference referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeid2p20pg2xqhdjsg2xuzkoq:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                <property name="seq_bounds" value="281,704,14,20"/>
+            </reference>
+            <reference referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeidfrvzcg2xqhdjsg2xumk4j:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                <property name="seq_bounds" value="290,238,14,20"/>
+            </reference>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkidgplycg2xqhdjsg2xum7k8:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                <property name="seq_sourceAnchor" value="295,263"/>
+                <property name="seq_bendpoints" value="295,257,335,257,335,269"/>
+                <property name="seq_targetAnchor" value="304,269"/>
+                <property name="seq_bounds_setted_by_user" value="true"/>
+                <reference referencedUin="linklabel:$messageInplaceEditing:design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkidgplycg2xqhdjsg2xum7k8:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                    <property name="seq_bounds" value="308,269,196,16"/>
+                    <property name="seq_bounds_setted_by_user" value="true"/>
+                </reference>
+                <property name="sendingInstant" value="263"/>
+                <property name="processingDuration" value="20"/>
+            </reference>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkidff65cg2xqhdjsg2xvja51:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                <property name="seq_sourceAnchor" value="286,492"/>
+                <property name="seq_bendpoints" value=""/>
+                <property name="seq_targetAnchor" value="466,492"/>
+                <reference referencedUin="linklabel:$messageInplaceEditing:design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkidff65cg2xqhdjsg2xvja51:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                    <property name="seq_bounds" value="290,472,141,16"/>
+                    <property name="seq_bounds_setted_by_user" value="true"/>
+                </reference>
+                <property name="sendingInstant" value="492"/>
+                <property name="processingDuration" value="43"/>
+            </reference>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkidfnz42g2xqhdjsg2xussm8:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                <property name="seq_sourceAnchor" value="295,428"/>
+                <property name="seq_bendpoints" value="295,422,335,422,335,434"/>
+                <property name="seq_targetAnchor" value="304,434"/>
+                <property name="seq_bounds_setted_by_user" value="true"/>
+                <reference referencedUin="linklabel:$messageInplaceEditing:design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkidfnz42g2xqhdjsg2xussm8:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                    <property name="seq_bounds" value="308,434,184,16"/>
+                    <property name="seq_bounds_setted_by_user" value="true"/>
+                </reference>
+                <property name="sendingInstant" value="428"/>
+                <property name="processingDuration" value="20"/>
+            </reference>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkidfcf2xg2xqhdjsg2xuku2j:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                <property name="seq_sourceAnchor" value="286,184"/>
+                <property name="seq_bendpoints" value=""/>
+                <property name="seq_targetAnchor" value="466,184"/>
+                <reference referencedUin="linklabel:$messageInplaceEditing:design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkidfcf2xg2xqhdjsg2xuku2j:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                    <property name="seq_bounds" value="290,164,256,16"/>
+                    <property name="seq_bounds_setted_by_user" value="true"/>
+                </reference>
+                <property name="sendingInstant" value="184"/>
+                <property name="processingDuration" value="139"/>
+            </reference>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkid3r7p7g2xqhdjsg2xv59ab:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <reference referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeidjlssgg2xqhdjsg2xviqyv:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                <property name="seq_bounds" value="272,483,14,62"/>
+            </reference>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkidd7xrdg2xqhdjsg2xveof7:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                <property name="seq_sourceAnchor" value="286,754"/>
+                <property name="seq_bendpoints" value=""/>
+                <property name="seq_targetAnchor" value="466,754"/>
+                <reference referencedUin="linklabel:$messageInplaceEditing:design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkidd7xrdg2xqhdjsg2xveof7:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                    <property name="seq_bounds" value="290,734,342,16"/>
+                    <property name="seq_bounds_setted_by_user" value="true"/>
+                </reference>
+                <property name="sendingInstant" value="754"/>
+                <property name="processingDuration" value="58"/>
+            </reference>
+            <reference referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeid9t15lg2xqhdjsg2xuq56g:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                <property name="seq_bounds" value="290,403,14,20"/>
+            </reference>
+            <reference referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeidfujlmg2xqhdjsg2xum7ki:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                <property name="seq_bounds" value="290,263,14,20"/>
+            </reference>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkidh96m5g2xqhdjsg2xumk4j:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                <property name="seq_sourceAnchor" value="295,238"/>
+                <property name="seq_bendpoints" value="295,232,335,232,335,244"/>
+                <property name="seq_targetAnchor" value="304,244"/>
+                <property name="seq_bounds_setted_by_user" value="true"/>
+                <reference referencedUin="linklabel:$messageInplaceEditing:design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkidh96m5g2xqhdjsg2xumk4j:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                    <property name="seq_bounds" value="308,244,208,16"/>
+                    <property name="seq_bounds_setted_by_user" value="true"/>
+                </reference>
+                <property name="sendingInstant" value="238"/>
+                <property name="processingDuration" value="20"/>
+            </reference>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkid4o4xgg2xqhdjsg2xuzkog:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                <property name="seq_sourceAnchor" value="286,704"/>
+                <property name="seq_bendpoints" value="286,698,326,698,326,710"/>
+                <property name="seq_targetAnchor" value="295,710"/>
+                <property name="seq_bounds_setted_by_user" value="true"/>
+                <reference referencedUin="linklabel:$messageInplaceEditing:design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkid4o4xgg2xqhdjsg2xuzkog:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                    <property name="seq_bounds" value="299,710,400,16"/>
+                    <property name="seq_bounds_setted_by_user" value="true"/>
+                </reference>
+                <property name="sendingInstant" value="704"/>
+                <property name="processingDuration" value="20"/>
+            </reference>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkida9bo5g2xqhdjsg2xv4spw:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                <property name="seq_sourceAnchor" value="286,838"/>
+                <property name="seq_bendpoints" value=""/>
+                <property name="seq_targetAnchor" value="466,838"/>
+                <reference referencedUin="linklabel:$messageInplaceEditing:design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkida9bo5g2xqhdjsg2xv4spw:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                    <property name="seq_bounds" value="290,818,230,16"/>
+                    <property name="seq_bounds_setted_by_user" value="true"/>
+                </reference>
+                <property name="sendingInstant" value="838"/>
+                <property name="processingDuration" value="52"/>
+            </reference>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkid8gaypg2xqhdjsg2xv5983:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                <property name="seq_sourceAnchor" value="286,926"/>
+                <property name="seq_bendpoints" value=""/>
+                <property name="seq_targetAnchor" value="775,926"/>
+                <reference referencedUin="linklabel:$messageInplaceEditing:design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkid8gaypg2xqhdjsg2xv5983:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                    <property name="seq_bounds" value="290,906,382,16"/>
+                    <property name="seq_bounds_setted_by_user" value="true"/>
+                </reference>
+                <property name="sendingInstant" value="926"/>
+                <property name="deliveryTime" value="0"/>
+                <property name="processingDuration" value="20"/>
+            </reference>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkidiswyrg2xqhdjsg2xuku2j:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <reference referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeidfqb2yg2xqhdjsg2xvdl6f:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                <property name="seq_bounds" value="272,739,14,83"/>
+            </reference>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkid56a58g2xqhdjsg2xuvzjs:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                <property name="seq_sourceAnchor" value="286,647"/>
+                <property name="seq_bendpoints" value=""/>
+                <property name="seq_targetAnchor" value="466,647"/>
+                <reference referencedUin="linklabel:$messageInplaceEditing:design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkid56a58g2xqhdjsg2xuvzjs:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                    <property name="seq_bounds" value="290,627,336,16"/>
+                    <property name="seq_bounds_setted_by_user" value="true"/>
+                </reference>
+                <property name="sendingInstant" value="647"/>
+                <property name="processingDuration" value="52"/>
+            </reference>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkid143j6g2xqhdjsg2xujppl:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <reference referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeid97ot1g2xqhdjsg2xuqtj9:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                <property name="seq_bounds" value="272,642,14,92"/>
+            </reference>
+            <reference referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeid7guqpg2xqhdjsg2xunast:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                <property name="seq_bounds" value="272,338,14,140"/>
+            </reference>
+            <reference referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeidiv5d0g2xqhdjsg2xuzvng:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                <property name="seq_bounds" value="272,827,14,129"/>
+                <property name="seq_bounds_setted_by_user" value="true"/>
+            </reference>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkid2quqxg2xqhdjsg2xujppb:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                <property name="seq_sourceAnchor" value="286,120"/>
+                <property name="seq_bendpoints" value="286,114,326,114,326,126"/>
+                <property name="seq_targetAnchor" value="295,126"/>
+                <property name="seq_bounds_setted_by_user" value="true"/>
+                <reference referencedUin="linklabel:$messageInplaceEditing:design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkid2quqxg2xqhdjsg2xujppb:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                    <property name="seq_bounds" value="299,126,199,16"/>
+                    <property name="seq_bounds_setted_by_user" value="true"/>
+                </reference>
+                <property name="sendingInstant" value="120"/>
+                <property name="processingDuration" value="20"/>
+            </reference>
+            <reference referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeidjynt2g2xqhdjsg2xujb76:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                <property name="seq_bounds" value="272,115,14,35"/>
+            </reference>
+            <reference referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeid11o69g2xqhdjsg2xulmtw:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                <property name="seq_bounds" value="281,232,14,61"/>
+            </reference>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkid6yi4yg2xqhdjsg2xuofus:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                <property name="seq_sourceAnchor" value="286,350"/>
+                <property name="seq_bendpoints" value=""/>
+                <property name="seq_targetAnchor" value="466,350"/>
+                <reference referencedUin="linklabel:$messageInplaceEditing:design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkid6yi4yg2xqhdjsg2xuofus:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                    <property name="seq_bounds" value="290,330,263,16"/>
+                    <property name="seq_bounds_setted_by_user" value="true"/>
+                </reference>
+                <property name="sendingInstant" value="350"/>
+                <property name="processingDuration" value="118"/>
+            </reference>
+            <reference referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeidgz7bpg2xqhdjsg2xuk6l4:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                <property name="seq_bounds" value="272,170,14,163"/>
+            </reference>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkid80q44g2xqhdjsg2xuq566:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                <property name="seq_sourceAnchor" value="295,403"/>
+                <property name="seq_bendpoints" value="295,397,335,397,335,409"/>
+                <property name="seq_targetAnchor" value="304,409"/>
+                <property name="seq_bounds_setted_by_user" value="true"/>
+                <reference referencedUin="linklabel:$messageInplaceEditing:design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkid80q44g2xqhdjsg2xuq566:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+                    <property name="seq_bounds" value="308,409,400,16"/>
+                    <property name="seq_bounds_setted_by_user" value="true"/>
+                </reference>
+                <property name="sendingInstant" value="403"/>
+                <property name="processingDuration" value="20"/>
+            </reference>
+        </reference>
+        <reference df-class-name="reference8" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y">
+            <property name="$shortcutReference" value="true"/>
+            <property name="seq_bounds" value="422,30,103,1006"/>
+            <reference referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.nodeidk4hxg2xqhdjsg2xv4sq6:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y">
+                <property name="seq_bounds" value="466,838,14,52"/>
+            </reference>
+            <reference referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.nodeid6zjhag2xqhdjsg2xuldq7:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y">
+                <property name="seq_bounds" value="475,220,14,83"/>
+            </reference>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkid8a83xg2xqhdjsg2xvjoad:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y">
+                <property name="seq_sourceAnchor" value="480,505"/>
+                <property name="seq_bendpoints" value=""/>
+                <property name="seq_targetAnchor" value="619,505"/>
+                <reference referencedUin="linklabel:$messageInplaceEditing:design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkid8a83xg2xqhdjsg2xvjoad:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y">
+                    <property name="seq_bounds" value="484,485,145,16"/>
+                    <property name="seq_bounds_setted_by_user" value="true"/>
+                </reference>
+                <property name="sendingInstant" value="505"/>
+                <property name="processingDuration" value="20"/>
+            </reference>
+            <reference referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.nodeidd54wng2xqhdjsg2xuku2j:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y">
+                <property name="seq_bounds" value="466,184,14,139"/>
+            </reference>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkidjdspwg2xqhdjsg2xvfgdn:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y">
+                <property name="seq_sourceAnchor" value="480,782"/>
+                <property name="seq_bendpoints" value=""/>
+                <property name="seq_targetAnchor" value="619,782"/>
+                <reference referencedUin="linklabel:$messageInplaceEditing:design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkidjdspwg2xqhdjsg2xvfgdn:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y">
+                    <property name="seq_bounds" value="484,762,136,16"/>
+                    <property name="seq_bounds_setted_by_user" value="true"/>
+                </reference>
+                <property name="sendingInstant" value="782"/>
+                <property name="processingDuration" value="20"/>
+            </reference>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkidgyrvpg2xqhdjsg2xul4o7:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkidi9dyjg2xqhdjsg2xuwe46:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y">
+                <property name="seq_sourceAnchor" value="480,669"/>
+                <property name="seq_bendpoints" value=""/>
+                <property name="seq_targetAnchor" value="619,669"/>
+                <reference referencedUin="linklabel:$messageInplaceEditing:design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkidi9dyjg2xqhdjsg2xuwe46:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y">
+                    <property name="seq_bounds" value="484,649,292,16"/>
+                    <property name="seq_bounds_setted_by_user" value="true"/>
+                </reference>
+                <property name="sendingInstant" value="669"/>
+                <property name="processingDuration" value="20"/>
+            </reference>
+            <reference referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.nodeid5u60vg2xqhdjsg2xvja5b:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y">
+                <property name="seq_bounds" value="466,492,14,43"/>
+            </reference>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkidh3z77g2xqhdjsg2xul4nx:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y">
+                <property name="seq_sourceAnchor" value="480,200"/>
+                <property name="seq_bendpoints" value=""/>
+                <property name="seq_targetAnchor" value="619,200"/>
+                <reference referencedUin="linklabel:$messageInplaceEditing:design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkidh3z77g2xqhdjsg2xul4nx:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y">
+                    <property name="seq_bounds" value="484,180,179,16"/>
+                    <property name="seq_bounds_setted_by_user" value="true"/>
+                </reference>
+                <property name="sendingInstant" value="200"/>
+                <property name="processingDuration" value="113"/>
+            </reference>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkidbrgyjg2xqhdjsg2xuove7:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y">
+                <property name="seq_sourceAnchor" value="466,388"/>
+                <property name="seq_bendpoints" value=""/>
+                <property name="seq_targetAnchor" value="295,388"/>
+                <reference referencedUin="linklabel:$messageInplaceEditing:design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkidbrgyjg2xqhdjsg2xuove7:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y">
+                    <property name="seq_bounds" value="262,368,200,16"/>
+                    <property name="seq_bounds_setted_by_user" value="true"/>
+                </reference>
+                <property name="sendingInstant" value="388"/>
+                <property name="processingDuration" value="70"/>
+            </reference>
+            <reference referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.nodeidflviig2xqhdjsg2xuofv2:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y">
+                <property name="seq_bounds" value="466,350,14,118"/>
+            </reference>
+            <reference referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.nodeid89urfg2xqhdjsg2xveofh:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y">
+                <property name="seq_bounds" value="466,754,14,58"/>
+            </reference>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkidbk57qg2xqhdjsg2xv52u1:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y">
+                <property name="seq_sourceAnchor" value="480,860"/>
+                <property name="seq_bendpoints" value=""/>
+                <property name="seq_targetAnchor" value="619,860"/>
+                <reference referencedUin="linklabel:$messageInplaceEditing:design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkidbk57qg2xqhdjsg2xv52u1:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y">
+                    <property name="seq_bounds" value="484,840,151,16"/>
+                    <property name="seq_bounds_setted_by_user" value="true"/>
+                </reference>
+                <property name="sendingInstant" value="860"/>
+                <property name="processingDuration" value="20"/>
+            </reference>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkid8j4pmg2xqhdjsg2xup8yy:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y">
+                <property name="seq_sourceAnchor" value="480,363"/>
+                <property name="seq_bendpoints" value=""/>
+                <property name="seq_targetAnchor" value="619,363"/>
+                <reference referencedUin="linklabel:$messageInplaceEditing:design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkid8j4pmg2xqhdjsg2xup8yy:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y">
+                    <property name="seq_bounds" value="484,343,372,16"/>
+                    <property name="seq_bounds_setted_by_user" value="true"/>
+                </reference>
+                <property name="sendingInstant" value="363"/>
+                <property name="processingDuration" value="20"/>
+            </reference>
+            <reference referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.nodeid1f5dsg2xqhdjsg2xuvzjs:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y">
+                <property name="seq_bounds" value="466,647,14,52"/>
+            </reference>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkid6tnctg2xqhdjsg2xulmtw:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y">
+                <property name="seq_sourceAnchor" value="475,232"/>
+                <property name="seq_bendpoints" value=""/>
+                <property name="seq_targetAnchor" value="295,232"/>
+                <reference referencedUin="linklabel:$messageInplaceEditing:design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkid6tnctg2xqhdjsg2xulmtw:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y">
+                    <property name="seq_bounds" value="286,212,185,16"/>
+                    <property name="seq_bounds_setted_by_user" value="true"/>
+                </reference>
+                <property name="sendingInstant" value="232"/>
+                <property name="processingDuration" value="61"/>
+            </reference>
+        </reference>
+        <reference df-class-name="reference9" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa">
+            <property name="$shortcutReference" value="true"/>
+            <property name="seq_bounds" value="581,30,90,1006"/>
+            <reference referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa.nodeid936ijg2xqhdjsg2xuwe4g:idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa">
+                <property name="seq_bounds" value="619,669,14,20"/>
+            </reference>
+            <reference referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa.nodeid5ugxbg2xqhdjsg2xv52ub:idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa">
+                <property name="seq_bounds" value="619,860,14,20"/>
+            </reference>
+            <reference referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa.nodeidj07pdg2xqhdjsg2xvjoan:idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa">
+                <property name="seq_bounds" value="619,505,14,20"/>
+            </reference>
+            <reference referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa.nodeid6i1nag2xqhdjsg2xup8yy:idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa">
+                <property name="seq_bounds" value="619,363,14,20"/>
+            </reference>
+            <reference referencedUin="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa.linkid321yfg2xqhdjsg2xuldpx:idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa">
+                <property name="seq_sourceAnchor" value="619,220"/>
+                <property name="seq_bendpoints" value=""/>
+                <property name="seq_targetAnchor" value="489,220"/>
+                <reference referencedUin="linklabel:$messageInplaceEditing:design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa.linkid321yfg2xqhdjsg2xuldpx:idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa">
+                    <property name="seq_bounds" value="440,200,175,16"/>
+                    <property name="seq_bounds_setted_by_user" value="true"/>
+                </reference>
+                <property name="sendingInstant" value="220"/>
+                <property name="processingDuration" value="83"/>
+            </reference>
+            <reference referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa.nodeidgssndg2xqhdjsg2xul4nx:idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa">
+                <property name="seq_bounds" value="619,200,14,113"/>
+            </reference>
+            <reference referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa.nodeidbo969g2xqhdjsg2xvfgdn:idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa">
+                <property name="seq_bounds" value="619,782,14,20"/>
+            </reference>
+        </reference>
+        <reference df-class-name="reference10" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid4e7v1g2xqhdjsg2xuyfvc">
+            <property name="$shortcutReference" value="true"/>
+            <property name="seq_bounds" value="737,30,90,1006"/>
+            <reference referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid4e7v1g2xqhdjsg2xuyfvc.nodeid4h0xtg2xqhdjsg2xv59ab:idd9pqwg2xqhdjsg2xui3gp.nodeid4e7v1g2xqhdjsg2xuyfvc">
+                <property name="seq_bounds" value="775,926,14,20"/>
+            </reference>
+        </reference>
+    </view>
+    <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk">
+        <property name="$metaclass" value="Object"/>
+        <property name="$name" value="User"/>
+        <property name="@stereotype" value="actor"/>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkid48vsog2xqhdjsg2xujb76">
+            <property name="$metaclass" value="Message Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk"/>
+            <property name="sequenceNumber" value="1"/>
+            <property name="diagram_uniqe_name" value="design:view:::idd9pqwg2xqhdjsg2xui3gp"/>
+            <property name="$name" value="Clicks on Users tab"/>
+            <property name="normalizedIndex" value="0.11111111"/>
+            <property name="activationUid" value="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeidjynt2g2xqhdjsg2xujb76:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+        </link>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkid714geg2xqhdjsg2xujb76">
+            <property name="$metaclass" value="Messages Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk"/>
+        </link>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkidfe3tog2xqhdjsg2xuk6l4">
+            <property name="$metaclass" value="Message Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk"/>
+            <property name="sequenceNumber" value="2"/>
+            <property name="diagram_uniqe_name" value="design:view:::idd9pqwg2xqhdjsg2xui3gp"/>
+            <property name="$name" value="Clicks on availability link in sidebar"/>
+            <property name="normalizedIndex" value="0.22222222"/>
+            <property name="activationUid" value="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeidgz7bpg2xqhdjsg2xuk6l4:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+        </link>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkidi7bo1g2xqhdjsg2xunast">
+            <property name="$metaclass" value="Message Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk"/>
+            <property name="sequenceNumber" value="3"/>
+            <property name="diagram_uniqe_name" value="design:view:::idd9pqwg2xqhdjsg2xui3gp"/>
+            <property name="$condition" value="LOOP"/>
+            <property name="$name" value="Clicks on a Day column at a specific row"/>
+            <property name="normalizedIndex" value="0.33333334"/>
+            <property name="activationUid" value="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeid7guqpg2xqhdjsg2xunast:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+        </link>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkidal5r7g2xqhdjsg2xuqtj9">
+            <property name="$metaclass" value="Message Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk"/>
+            <property name="sequenceNumber" value="6"/>
+            <property name="diagram_uniqe_name" value="design:view:::idd9pqwg2xqhdjsg2xui3gp"/>
+            <property name="$name" value="Clicks Complete button"/>
+            <property name="@minProcessingDuration" value="20"/>
+            <property name="normalizedIndex" value="0.6666667"/>
+            <property name="hasDeliveryTime" value="true"/>
+            <property name="activationUid" value="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeid97ot1g2xqhdjsg2xuqtj9:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+        </link>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkidgq2ylg2xqhdjsg2xuzvn6">
+            <property name="$metaclass" value="Message Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk"/>
+            <property name="sequenceNumber" value="8"/>
+            <property name="diagram_uniqe_name" value="design:view:::idd9pqwg2xqhdjsg2xui3gp"/>
+            <property name="$name" value="Clicks Activate button"/>
+            <property name="@minProcessingDuration" value="113"/>
+            <property name="normalizedIndex" value="0.8888889"/>
+            <property name="activationUid" value="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeidiv5d0g2xqhdjsg2xuzvng:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+        </link>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkidawgu2g2xqhdjsg2xv8u2z">
+            <property name="$metaclass" value="Message Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk"/>
+            <property name="sequenceNumber" value="5"/>
+            <property name="diagram_uniqe_name" value="design:view:::idd9pqwg2xqhdjsg2xui3gp"/>
+            <property name="branchingAnchorUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkidi7bo1g2xqhdjsg2xunast:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk"/>
+            <property name="$name" value="User clicks on button with arrow icon"/>
+            <property name="normalizedIndex" value="0.5555556"/>
+            <property name="activationUid" value="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeidfveeg2xqhdjsg2xv8u39:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+        </link>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkid8pgxxg2xqhdjsg2xvdl5k">
+            <property name="$metaclass" value="Message Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk"/>
+            <property name="sequenceNumber" value="7"/>
+            <property name="diagram_uniqe_name" value="design:view:::idd9pqwg2xqhdjsg2xui3gp"/>
+            <property name="$name" value="User clicks Clear button"/>
+            <property name="branchingAnchorUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkidal5r7g2xqhdjsg2xuqtj9:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk"/>
+            <property name="normalizedIndex" value="0.7777778"/>
+            <property name="activationUid" value="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeidfqb2yg2xqhdjsg2xvdl6f:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+        </link>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkidj4om2g2xqhdjsg2xviqyl">
+            <property name="$metaclass" value="Message Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk"/>
+            <property name="sequenceNumber" value="4"/>
+            <property name="diagram_uniqe_name" value="design:view:::idd9pqwg2xqhdjsg2xui3gp"/>
+            <property name="$name" value="User extends or shrinks a shift"/>
+            <property name="branchingAnchorUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkidi7bo1g2xqhdjsg2xunast:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk"/>
+            <property name="normalizedIndex" value="0.44444445"/>
+            <property name="activationUid" value="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeidjlssgg2xqhdjsg2xviqyv:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+        </link>
+    </node>
+    <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919">
+        <property name="$metaclass" value="Object"/>
+        <property name="$name" value="Dashboard"/>
+        <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeidjynt2g2xqhdjsg2xujb76">
+            <property name="$metaclass" value="Activation"/>
+            <property name="$name" value="Activation1"/>
+            <property name="messageUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkid48vsog2xqhdjsg2xujb76:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk"/>
+        </node>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkid2quqxg2xqhdjsg2xujppb">
+            <property name="$metaclass" value="Message Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <property name="sequenceNumber" value="1.1"/>
+            <property name="diagram_uniqe_name" value="design:view:::idd9pqwg2xqhdjsg2xui3gp"/>
+            <property name="$name" value="Displays widgets for Users tab"/>
+            <property name="normalizedIndex" value="0.5"/>
+            <property name="predecessorUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkid48vsog2xqhdjsg2xujb76:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk"/>
+            <property name="activationUid" value="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeidyphog2xqhdjsg2xujppb:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+        </link>
+        <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeidyphog2xqhdjsg2xujppb">
+            <property name="$metaclass" value="Activation"/>
+            <property name="$name" value="Activation2"/>
+            <property name="messageUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkid2quqxg2xqhdjsg2xujppb:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+        </node>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkid143j6g2xqhdjsg2xujppl">
+            <property name="$metaclass" value="Messages Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+        </link>
+        <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeidgz7bpg2xqhdjsg2xuk6l4">
+            <property name="$metaclass" value="Activation"/>
+            <property name="$name" value="Activation3"/>
+            <property name="messageUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkidfe3tog2xqhdjsg2xuk6l4:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk"/>
+        </node>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkidfcf2xg2xqhdjsg2xuku2j">
+            <property name="$metaclass" value="Message Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <property name="sequenceNumber" value="2.1"/>
+            <property name="diagram_uniqe_name" value="design:view:::idd9pqwg2xqhdjsg2xui3gp"/>
+            <property name="$name" value="Retrieve a blank week schedule template"/>
+            <property name="normalizedIndex" value="0.5"/>
+            <property name="predecessorUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkidfe3tog2xqhdjsg2xuk6l4:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk"/>
+            <property name="activationUid" value="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.nodeidd54wng2xqhdjsg2xuku2j:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+        </link>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkidiswyrg2xqhdjsg2xuku2j">
+            <property name="$metaclass" value="Messages Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+        </link>
+        <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeid11o69g2xqhdjsg2xulmtw">
+            <property name="$metaclass" value="Activation"/>
+            <property name="$name" value="Activation7"/>
+            <property name="messageUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkid6tnctg2xqhdjsg2xulmtw:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+        </node>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkidgplycg2xqhdjsg2xum7k8">
+            <property name="$metaclass" value="Message Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <property name="sequenceNumber" value="2.1.1.1.1.2"/>
+            <property name="diagram_uniqe_name" value="design:view:::idd9pqwg2xqhdjsg2xui3gp"/>
+            <property name="$name" value="Display blank template"/>
+            <property name="normalizedIndex" value="0.6666667"/>
+            <property name="predecessorUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkid6tnctg2xqhdjsg2xulmtw:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+            <property name="activationUid" value="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeidfujlmg2xqhdjsg2xum7ki:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+        </link>
+        <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeidfujlmg2xqhdjsg2xum7ki">
+            <property name="$metaclass" value="Activation"/>
+            <property name="$name" value="Activation8"/>
+            <property name="messageUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkidgplycg2xqhdjsg2xum7k8:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+        </node>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkidh96m5g2xqhdjsg2xumk4j">
+            <property name="$metaclass" value="Message Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <property name="sequenceNumber" value="2.1.1.1.1.1"/>
+            <property name="diagram_uniqe_name" value="design:view:::idd9pqwg2xqhdjsg2xui3gp"/>
+            <property name="$name" value="Disable Complete button"/>
+            <property name="normalizedIndex" value="0.33333334"/>
+            <property name="predecessorUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkid6tnctg2xqhdjsg2xulmtw:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+            <property name="activationUid" value="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeidfrvzcg2xqhdjsg2xumk4j:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+        </link>
+        <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeidfrvzcg2xqhdjsg2xumk4j">
+            <property name="$metaclass" value="Activation"/>
+            <property name="$name" value="Activation9"/>
+            <property name="messageUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkidh96m5g2xqhdjsg2xumk4j:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+        </node>
+        <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeid7guqpg2xqhdjsg2xunast">
+            <property name="$metaclass" value="Activation"/>
+            <property name="$name" value="Activation10"/>
+            <property name="messageUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkidi7bo1g2xqhdjsg2xunast:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk"/>
+        </node>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkid6yi4yg2xqhdjsg2xuofus">
+            <property name="$metaclass" value="Message Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <property name="sequenceNumber" value="3.1"/>
+            <property name="diagram_uniqe_name" value="design:view:::idd9pqwg2xqhdjsg2xui3gp"/>
+            <property name="$name" value="Communicates with broker for functionality"/>
+            <property name="normalizedIndex" value="0.5"/>
+            <property name="predecessorUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkidi7bo1g2xqhdjsg2xunast:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk"/>
+            <property name="activationUid" value="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.nodeidflviig2xqhdjsg2xuofv2:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+        </link>
+        <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeidxmh5g2xqhdjsg2xuove7">
+            <property name="$metaclass" value="Activation"/>
+            <property name="$name" value="Activation12"/>
+            <property name="messageUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkidbrgyjg2xqhdjsg2xuove7:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+        </node>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkid80q44g2xqhdjsg2xuq566">
+            <property name="$metaclass" value="Message Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <property name="sequenceNumber" value="3.1.2.1"/>
+            <property name="diagram_uniqe_name" value="design:view:::idd9pqwg2xqhdjsg2xui3gp"/>
+            <property name="$name" value="If minimum number of shifts and_or hours are met, drop out of loop else wait for more"/>
+            <property name="normalizedIndex" value="0.33333334"/>
+            <property name="predecessorUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkidbrgyjg2xqhdjsg2xuove7:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+            <property name="activationUid" value="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeid9t15lg2xqhdjsg2xuq56g:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+        </link>
+        <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeid9t15lg2xqhdjsg2xuq56g">
+            <property name="$metaclass" value="Activation"/>
+            <property name="$name" value="Activation14"/>
+            <property name="messageUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkid80q44g2xqhdjsg2xuq566:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+        </node>
+        <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeid97ot1g2xqhdjsg2xuqtj9">
+            <property name="$metaclass" value="Activation"/>
+            <property name="$name" value="Activation15"/>
+            <property name="messageUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkidal5r7g2xqhdjsg2xuqtj9:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk"/>
+        </node>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkidfnz42g2xqhdjsg2xussm8">
+            <property name="$metaclass" value="Message Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <property name="sequenceNumber" value="3.1.2.2"/>
+            <property name="diagram_uniqe_name" value="design:view:::idd9pqwg2xqhdjsg2xui3gp"/>
+            <property name="$name" value="Enable Complete button"/>
+            <property name="normalizedIndex" value="0.6666667"/>
+            <property name="predecessorUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkidbrgyjg2xqhdjsg2xuove7:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+            <property name="activationUid" value="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeid8yfxg2xqhdjsg2xussm8:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+        </link>
+        <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeid8yfxg2xqhdjsg2xussm8">
+            <property name="$metaclass" value="Activation"/>
+            <property name="$name" value="Activation16"/>
+            <property name="messageUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkidfnz42g2xqhdjsg2xussm8:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+        </node>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkid56a58g2xqhdjsg2xuvzjs">
+            <property name="$metaclass" value="Message Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <property name="sequenceNumber" value="6.1"/>
+            <property name="diagram_uniqe_name" value="design:view:::idd9pqwg2xqhdjsg2xui3gp"/>
+            <property name="$name" value="Notifies schedule broker that schedule should be saved"/>
+            <property name="normalizedIndex" value="0.33333334"/>
+            <property name="predecessorUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkidal5r7g2xqhdjsg2xuqtj9:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk"/>
+            <property name="activationUid" value="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.nodeid1f5dsg2xqhdjsg2xuvzjs:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+        </link>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkid4o4xgg2xqhdjsg2xuzkog">
+            <property name="$metaclass" value="Message Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <property name="sequenceNumber" value="6.2"/>
+            <property name="diagram_uniqe_name" value="design:view:::idd9pqwg2xqhdjsg2xui3gp"/>
+            <property name="$name" value="Displays message asking user to activate schedule by presenting a message and Activate button"/>
+            <property name="normalizedIndex" value="0.6666667"/>
+            <property name="predecessorUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkidal5r7g2xqhdjsg2xuqtj9:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk"/>
+            <property name="activationUid" value="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeid2p20pg2xqhdjsg2xuzkoq:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+        </link>
+        <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeid2p20pg2xqhdjsg2xuzkoq">
+            <property name="$metaclass" value="Activation"/>
+            <property name="$name" value="Activation19"/>
+            <property name="messageUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkid4o4xgg2xqhdjsg2xuzkog:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+        </node>
+        <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeidiv5d0g2xqhdjsg2xuzvng">
+            <property name="$metaclass" value="Activation"/>
+            <property name="$name" value="Activation20"/>
+            <property name="messageUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkidgq2ylg2xqhdjsg2xuzvn6:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk"/>
+        </node>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkida9bo5g2xqhdjsg2xv4spw">
+            <property name="$metaclass" value="Message Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <property name="sequenceNumber" value="8.1"/>
+            <property name="diagram_uniqe_name" value="design:view:::idd9pqwg2xqhdjsg2xui3gp"/>
+            <property name="$name" value="Sets the schedule as Active Pending"/>
+            <property name="normalizedIndex" value="0.33333334"/>
+            <property name="predecessorUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkidgq2ylg2xqhdjsg2xuzvn6:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk"/>
+            <property name="activationUid" value="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.nodeidk4hxg2xqhdjsg2xv4sq6:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+        </link>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkid8gaypg2xqhdjsg2xv5983">
+            <property name="$metaclass" value="Message Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid4e7v1g2xqhdjsg2xuyfvc"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <property name="sequenceNumber" value="8.2"/>
+            <property name="diagram_uniqe_name" value="design:view:::idd9pqwg2xqhdjsg2xui3gp"/>
+            <property name="@minProcessingDuration" value="20"/>
+            <property name="$name" value="Supervisor of User is notified that a new availability was filled out"/>
+            <property name="normalizedIndex" value="0.6666667"/>
+            <property name="predecessorUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkidgq2ylg2xqhdjsg2xuzvn6:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk"/>
+            <property name="hasDeliveryTime" value="true"/>
+            <property name="activationUid" value="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid4e7v1g2xqhdjsg2xuyfvc.nodeid4h0xtg2xqhdjsg2xv59ab:idd9pqwg2xqhdjsg2xui3gp.nodeid4e7v1g2xqhdjsg2xuyfvc"/>
+        </link>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkid3r7p7g2xqhdjsg2xv59ab">
+            <property name="$metaclass" value="Messages Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid4e7v1g2xqhdjsg2xuyfvc"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+        </link>
+        <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeidfveeg2xqhdjsg2xv8u39">
+            <property name="$metaclass" value="Activation"/>
+            <property name="$name" value="Activation24"/>
+            <property name="messageUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkidawgu2g2xqhdjsg2xv8u2z:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk"/>
+        </node>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkidpwlzg2xqhdjsg2xva5zf">
+            <property name="$metaclass" value="Message Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <property name="sequenceNumber" value="5.1"/>
+            <property name="diagram_uniqe_name" value="design:view:::idd9pqwg2xqhdjsg2xui3gp"/>
+            <property name="$name" value="Work through Step 3 until four weeks have individually been filled out by looping Step 4 three times"/>
+            <property name="normalizedIndex" value="0.5"/>
+            <property name="predecessorUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkidawgu2g2xqhdjsg2xv8u2z:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk"/>
+            <property name="activationUid" value="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeidhhh1g2xqhdjsg2xva609:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+        </link>
+        <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeidhhh1g2xqhdjsg2xva609">
+            <property name="$metaclass" value="Activation"/>
+            <property name="$name" value="Activation25"/>
+            <property name="messageUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkidpwlzg2xqhdjsg2xva5zf:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+        </node>
+        <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeidfqb2yg2xqhdjsg2xvdl6f">
+            <property name="$metaclass" value="Activation"/>
+            <property name="$name" value="Activation26"/>
+            <property name="messageUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkid8pgxxg2xqhdjsg2xvdl5k:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk"/>
+        </node>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkidd7xrdg2xqhdjsg2xveof7">
+            <property name="$metaclass" value="Message Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <property name="sequenceNumber" value="7.1"/>
+            <property name="diagram_uniqe_name" value="design:view:::idd9pqwg2xqhdjsg2xui3gp"/>
+            <property name="$name" value="Schedule broker removes all shifts that have been added"/>
+            <property name="normalizedIndex" value="0.5"/>
+            <property name="predecessorUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkid8pgxxg2xqhdjsg2xvdl5k:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk"/>
+            <property name="activationUid" value="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.nodeid89urfg2xqhdjsg2xveofh:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+        </link>
+        <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeidjlssgg2xqhdjsg2xviqyv">
+            <property name="$metaclass" value="Activation"/>
+            <property name="$name" value="Activation29"/>
+            <property name="messageUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkidj4om2g2xqhdjsg2xviqyl:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk"/>
+        </node>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkidff65cg2xqhdjsg2xvja51">
+            <property name="$metaclass" value="Message Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <property name="sequenceNumber" value="4.1"/>
+            <property name="diagram_uniqe_name" value="design:view:::idd9pqwg2xqhdjsg2xui3gp"/>
+            <property name="$name" value="Modify selected shift"/>
+            <property name="normalizedIndex" value="0.5"/>
+            <property name="predecessorUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk.linkidj4om2g2xqhdjsg2xviqyl:idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk"/>
+            <property name="activationUid" value="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.nodeid5u60vg2xqhdjsg2xvja5b:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+        </link>
+        <link uin="L1b7x3ig2xvlj88hnxfkf">
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid22rfwg2xqhdjsg2xui6dk"/>
+            <property name="$metaclass" value="Messages Link"/>
+            <property name="$name" value="Messages Link"/>
+        </link>
+    </node>
+    <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y">
+        <property name="$metaclass" value="Object"/>
+        <property name="$name" value="ScheduleBroker"/>
+        <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.nodeidd54wng2xqhdjsg2xuku2j">
+            <property name="$metaclass" value="Activation"/>
+            <property name="$name" value="Activation4"/>
+            <property name="messageUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkidfcf2xg2xqhdjsg2xuku2j:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+        </node>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkidh3z77g2xqhdjsg2xul4nx">
+            <property name="$metaclass" value="Message Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+            <property name="sequenceNumber" value="2.1.1"/>
+            <property name="diagram_uniqe_name" value="design:view:::idd9pqwg2xqhdjsg2xui3gp"/>
+            <property name="$name" value="Get blank week schedule"/>
+            <property name="normalizedIndex" value="0.5"/>
+            <property name="predecessorUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkidfcf2xg2xqhdjsg2xuku2j:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <property name="activationUid" value="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa.nodeidgssndg2xqhdjsg2xul4nx:idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa"/>
+        </link>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkidgyrvpg2xqhdjsg2xul4o7">
+            <property name="$metaclass" value="Messages Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+        </link>
+        <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.nodeid6zjhag2xqhdjsg2xuldq7">
+            <property name="$metaclass" value="Activation"/>
+            <property name="$name" value="Activation6"/>
+            <property name="messageUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa.linkid321yfg2xqhdjsg2xuldpx:idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa"/>
+        </node>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkid6tnctg2xqhdjsg2xulmtw">
+            <property name="$metaclass" value="Message Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+            <property name="sequenceNumber" value="2.1.1.1.1"/>
+            <property name="diagram_uniqe_name" value="design:view:::idd9pqwg2xqhdjsg2xui3gp"/>
+            <property name="$name" value="Return blank schedule"/>
+            <property name="normalizedIndex" value="0.5"/>
+            <property name="predecessorUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa.linkid321yfg2xqhdjsg2xuldpx:idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa"/>
+            <property name="activationUid" value="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeid11o69g2xqhdjsg2xulmtw:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+        </link>
+        <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.nodeidflviig2xqhdjsg2xuofv2">
+            <property name="$metaclass" value="Activation"/>
+            <property name="$name" value="Activation11"/>
+            <property name="messageUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkid6yi4yg2xqhdjsg2xuofus:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+        </node>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkidbrgyjg2xqhdjsg2xuove7">
+            <property name="$metaclass" value="Message Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+            <property name="sequenceNumber" value="3.1.2"/>
+            <property name="diagram_uniqe_name" value="design:view:::idd9pqwg2xqhdjsg2xui3gp"/>
+            <property name="$name" value="Displays effect of click on day"/>
+            <property name="normalizedIndex" value="0.6666667"/>
+            <property name="predecessorUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkid6yi4yg2xqhdjsg2xuofus:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <property name="activationUid" value="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.nodeidxmh5g2xqhdjsg2xuove7:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+        </link>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkid8j4pmg2xqhdjsg2xup8yy">
+            <property name="$metaclass" value="Message Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+            <property name="sequenceNumber" value="3.1.1"/>
+            <property name="diagram_uniqe_name" value="design:view:::idd9pqwg2xqhdjsg2xui3gp"/>
+            <property name="$name" value="Adds shift at row for duration of minimum allowable shift size"/>
+            <property name="normalizedIndex" value="0.33333334"/>
+            <property name="predecessorUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkid6yi4yg2xqhdjsg2xuofus:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <property name="activationUid" value="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa.nodeid6i1nag2xqhdjsg2xup8yy:idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa"/>
+        </link>
+        <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.nodeid1f5dsg2xqhdjsg2xuvzjs">
+            <property name="$metaclass" value="Activation"/>
+            <property name="$name" value="Activation17"/>
+            <property name="messageUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkid56a58g2xqhdjsg2xuvzjs:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+        </node>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkidi9dyjg2xqhdjsg2xuwe46">
+            <property name="$metaclass" value="Message Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+            <property name="sequenceNumber" value="6.1.1"/>
+            <property name="diagram_uniqe_name" value="design:view:::idd9pqwg2xqhdjsg2xui3gp"/>
+            <property name="$name" value="Writes schedule to backend alongside current"/>
+            <property name="normalizedIndex" value="0.5"/>
+            <property name="predecessorUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkid56a58g2xqhdjsg2xuvzjs:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <property name="activationUid" value="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa.nodeid936ijg2xqhdjsg2xuwe4g:idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa"/>
+        </link>
+        <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.nodeidk4hxg2xqhdjsg2xv4sq6">
+            <property name="$metaclass" value="Activation"/>
+            <property name="$name" value="Activation21"/>
+            <property name="messageUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkida9bo5g2xqhdjsg2xv4spw:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+        </node>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkidbk57qg2xqhdjsg2xv52u1">
+            <property name="$metaclass" value="Message Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+            <property name="sequenceNumber" value="8.1.1"/>
+            <property name="diagram_uniqe_name" value="design:view:::idd9pqwg2xqhdjsg2xui3gp"/>
+            <property name="$name" value="Schedule is marked"/>
+            <property name="normalizedIndex" value="0.5"/>
+            <property name="predecessorUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkida9bo5g2xqhdjsg2xv4spw:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <property name="activationUid" value="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa.nodeid5ugxbg2xqhdjsg2xv52ub:idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa"/>
+        </link>
+        <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.nodeid89urfg2xqhdjsg2xveofh">
+            <property name="$metaclass" value="Activation"/>
+            <property name="$name" value="Activation27"/>
+            <property name="messageUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkidd7xrdg2xqhdjsg2xveof7:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+        </node>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkidjdspwg2xqhdjsg2xvfgdn">
+            <property name="$metaclass" value="Message Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+            <property name="sequenceNumber" value="7.1.1"/>
+            <property name="diagram_uniqe_name" value="design:view:::idd9pqwg2xqhdjsg2xui3gp"/>
+            <property name="$name" value="Remove all shifts"/>
+            <property name="normalizedIndex" value="0.5"/>
+            <property name="predecessorUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkidd7xrdg2xqhdjsg2xveof7:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <property name="activationUid" value="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa.nodeidbo969g2xqhdjsg2xvfgdn:idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa"/>
+        </link>
+        <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.nodeid5u60vg2xqhdjsg2xvja5b">
+            <property name="$metaclass" value="Activation"/>
+            <property name="$name" value="Activation30"/>
+            <property name="messageUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkidff65cg2xqhdjsg2xvja51:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+        </node>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkid8a83xg2xqhdjsg2xvjoad">
+            <property name="$metaclass" value="Message Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+            <property name="sequenceNumber" value="4.1.1"/>
+            <property name="diagram_uniqe_name" value="design:view:::idd9pqwg2xqhdjsg2xui3gp"/>
+            <property name="$name" value="Change shift times"/>
+            <property name="normalizedIndex" value="0.5"/>
+            <property name="predecessorUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkidff65cg2xqhdjsg2xvja51:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <property name="activationUid" value="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa.nodeidj07pdg2xqhdjsg2xvjoan:idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa"/>
+        </link>
+        <link uin="L1b7x3ig2xvlj88ulsnrt">
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <property name="$metaclass" value="Messages Link"/>
+            <property name="$name" value="Messages Link"/>
+        </link>
+    </node>
+    <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa">
+        <property name="$metaclass" value="Object"/>
+        <property name="$name" value="Schedule"/>
+        <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa.nodeidgssndg2xqhdjsg2xul4nx">
+            <property name="$metaclass" value="Activation"/>
+            <property name="$name" value="Activation5"/>
+            <property name="messageUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkidh3z77g2xqhdjsg2xul4nx:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+        </node>
+        <link uin="idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa.linkid321yfg2xqhdjsg2xuldpx">
+            <property name="$metaclass" value="Message Link"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa"/>
+            <property name="sequenceNumber" value="2.1.1.1"/>
+            <property name="diagram_uniqe_name" value="design:view:::idd9pqwg2xqhdjsg2xui3gp"/>
+            <property name="$name" value="Return blank schedule"/>
+            <property name="normalizedIndex" value="0.5"/>
+            <property name="predecessorUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkidh3z77g2xqhdjsg2xul4nx:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+            <property name="activationUid" value="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.nodeid6zjhag2xqhdjsg2xuldq7:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+        </link>
+        <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa.nodeid6i1nag2xqhdjsg2xup8yy">
+            <property name="$metaclass" value="Activation"/>
+            <property name="$name" value="Activation13"/>
+            <property name="messageUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkid8j4pmg2xqhdjsg2xup8yy:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+        </node>
+        <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa.nodeid936ijg2xqhdjsg2xuwe4g">
+            <property name="$metaclass" value="Activation"/>
+            <property name="$name" value="Activation18"/>
+            <property name="messageUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkidi9dyjg2xqhdjsg2xuwe46:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+        </node>
+        <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa.nodeid5ugxbg2xqhdjsg2xv52ub">
+            <property name="$metaclass" value="Activation"/>
+            <property name="$name" value="Activation22"/>
+            <property name="messageUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkidbk57qg2xqhdjsg2xv52u1:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+        </node>
+        <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa.nodeidbo969g2xqhdjsg2xvfgdn">
+            <property name="$metaclass" value="Activation"/>
+            <property name="$name" value="Activation28"/>
+            <property name="messageUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkidjdspwg2xqhdjsg2xvfgdn:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+        </node>
+        <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa.nodeidj07pdg2xqhdjsg2xvjoan">
+            <property name="$metaclass" value="Activation"/>
+            <property name="$name" value="Activation31"/>
+            <property name="messageUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y.linkid8a83xg2xqhdjsg2xvjoad:idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+        </node>
+        <link uin="L1b7x3ig2xvlj88-3xbhcu">
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeidfc4bhg2xqhdjsg2xukoqa"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeiddmrwug2xqhdjsg2xukk8y"/>
+            <property name="$metaclass" value="Messages Link"/>
+            <property name="$name" value="Messages Link"/>
+        </link>
+    </node>
+    <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeid4e7v1g2xqhdjsg2xuyfvc">
+        <property name="$metaclass" value="Object"/>
+        <property name="$name" value="Notification"/>
+        <node uin="idd9pqwg2xqhdjsg2xui3gp.nodeid4e7v1g2xqhdjsg2xuyfvc.nodeid4h0xtg2xqhdjsg2xv59ab">
+            <property name="$metaclass" value="Activation"/>
+            <property name="$name" value="Activation23"/>
+            <property name="messageUid" value="design:link:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919.linkid8gaypg2xqhdjsg2xv5983:idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+        </node>
+        <link uin="L1b7x3ig2xvlj88-nqyk3b">
+            <participant role="Client" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid4e7v1g2xqhdjsg2xuyfvc"/>
+            <participant role="Supplier" referencedUin="design:node:::idd9pqwg2xqhdjsg2xui3gp.nodeid3zbfsg2xqhdjsg2xui919"/>
+            <property name="$metaclass" value="Messages Link"/>
+            <property name="$name" value="Messages Link"/>
+        </link>
+    </node>
+</nodeSet>
