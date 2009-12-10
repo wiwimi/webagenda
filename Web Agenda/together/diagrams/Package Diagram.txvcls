@@ -12,6 +12,10 @@
                 <property name="sourceAnchor" value="151,122"/>
                 <property name="bendpoints" value=""/>
                 <property name="targetAnchor" value="270,122"/>
+                <reference referencedUin="linklabel:stereotype:design:link:::idf1bpkg2p7zmjhg2p85qp2.linkid8o072g2p7zmjhg2p9ql08">
+                    <property name="bounds" value="172,102,76,16"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
             </reference>
         </reference>
         <reference df-class-name="reference5" referencedUin="design:view:::unknown_view">
@@ -40,6 +44,10 @@
                 <property name="sourceAnchor" value="325,214"/>
                 <property name="bendpoints" value=""/>
                 <property name="targetAnchor" value="99,330"/>
+                <reference referencedUin="linklabel:stereotype:design:link:::id1gm70g2p7zmjhg2p8vsns.linkid2wu2lg2p7zmjhg2p9qmyz">
+                    <property name="bounds" value="168,234,76,16"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
             </reference>
         </reference>
     </view>

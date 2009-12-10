@@ -10,31 +10,31 @@
         <property name="@__options" value=""/>
         <reference df-class-name="reference" referencedUin="jdt:e_class:src:Persistance.ScheduleBroker">
             <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="10,20,132,85"/>
+            <property name="bounds" value="20,20,158,101"/>
         </reference>
         <reference df-class-name="reference36" referencedUin="jdt:e_class:src:Persistance.WorkgroupBroker">
             <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="10,150,130,101"/>
+            <property name="bounds" value="30,160,130,101"/>
         </reference>
         <reference df-class-name="reference8" referencedUin="jdt:e_class:src:Persistance.EmployeeBroker">
             <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="232,167,122,85"/>
+            <property name="bounds" value="220,20,135,101"/>
         </reference>
         <reference df-class-name="reference9" referencedUin="jdt:e_class:src:Persistance.NotificationBroker">
             <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="402,175,115,82"/>
+            <property name="bounds" value="400,160,115,82"/>
         </reference>
         <reference df-class-name="reference10" referencedUin="jdt:e_class:src:Persistance.ShiftBroker">
             <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="91,338,83,82"/>
+            <property name="bounds" value="420,20,83,82"/>
         </reference>
         <reference df-class-name="reference11" referencedUin="jdt:e_class:src:Persistance.SupervisorBroker">
             <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="271,356,159,85"/>
+            <property name="bounds" value="210,160,159,85"/>
             <reference referencedUin="jdt:l_gnt:src:Persistance.SupervisorBroker:Persistance.EmployeeBroker">
-                <property name="sourceAnchor" value="312,356"/>
+                <property name="sourceAnchor" value="287,160"/>
                 <property name="bendpoints" value=""/>
-                <property name="targetAnchor" value="312,252"/>
+                <property name="targetAnchor" value="287,121"/>
             </reference>
         </reference>
         <property name="$defaultDiagram" value=""/>

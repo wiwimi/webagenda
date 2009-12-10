@@ -3,4 +3,33 @@
 package Interface;
 
 public class ReportWidget extends Widget {
+    public void showTypeList(){}
+
+    public void genSchRep(){}
+
+    public void genResRep(){}
+
+    public void genUseRep(){}
+
+    public void dispReport(){}
+
+    public void genSchStats(){}
+
+    public void genResStats(){}
+
+    public void getUseStats(){}
+
+    public void dispDistOpt(){}
+
+    public void genPrintRep(){}
+
+    public void initPrint(){}
+
+    public void dispEmail(){}
+
+    public void validateEmail(){}
+
+    public void enableSend(){}
+
+    public void sendEmail(){}
 }

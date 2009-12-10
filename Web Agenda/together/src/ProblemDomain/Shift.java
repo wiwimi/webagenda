@@ -9,8 +9,10 @@ public class Shift {
     /**
      * This method is used to create a shift object that is attached to a specific employee's schedule. However this is a temporary shift object and is not actually added to an employee schedule until a supervisor confirms the entire schedule. 
      */
-    public Object createShiftObject() {
+    public Shift newShift() {
     }
+
+    public date[] getTimes(){}
 
     /**
      * The time at which work begins for the employees assigned to the shift. 

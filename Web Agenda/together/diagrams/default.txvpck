@@ -278,17 +278,21 @@
         <reference df-class-name="reference4" referencedUin="design:view:::idf1bpkg2p7zmjhg2p85qp2">
             <property name="$shortcutReference" value="true"/>
             <property name="@__fqn" value="uml:package:Webagenda:src:Interface"/>
-            <property name="bounds" value="1847,10,83,104"/>
+            <property name="bounds" value="1847,10,111,232"/>
             <reference referencedUin="design:link:::idf1bpkg2p7zmjhg2p85qp2.linkid8o072g2p7zmjhg2p9ql08">
-                <property name="sourceAnchor" value="1930,62"/>
+                <property name="sourceAnchor" value="1958,102"/>
                 <property name="bendpoints" value=""/>
-                <property name="targetAnchor" value="2010,62"/>
+                <property name="targetAnchor" value="2010,102"/>
+                <reference referencedUin="linklabel:stereotype:design:link:::idf1bpkg2p7zmjhg2p85qp2.linkid8o072g2p7zmjhg2p9ql08">
+                    <property name="bounds" value="1946,82,76,16"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
             </reference>
         </reference>
         <reference df-class-name="reference22" referencedUin="design:view:::idgjd7xg2p7zmjhg2p8asa9">
             <property name="$shortcutReference" value="true"/>
             <property name="@__fqn" value="uml:package:Webagenda:src:Persistance"/>
-            <property name="bounds" value="2006,264,117,120"/>
+            <property name="bounds" value="2006,264,118,184"/>
         </reference>
         <reference df-class-name="reference30" referencedUin="design:view:::id1gm70g2p7zmjhg2p8vsns">
             <property name="$shortcutReference" value="true"/>
@@ -298,7 +302,16 @@
                 <property name="sourceAnchor" value="2065,194"/>
                 <property name="bendpoints" value=""/>
                 <property name="targetAnchor" value="2065,264"/>
+                <reference referencedUin="linklabel:stereotype:design:link:::id1gm70g2p7zmjhg2p8vsns.linkid2wu2lg2p7zmjhg2p9qmyz">
+                    <property name="bounds" value="1985,219,76,16"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
             </reference>
+        </reference>
+        <reference df-class-name="reference" referencedUin="design:view:::id2kqkvg2y2f9cug2y3acvs">
+            <property name="$shortcutReference" value="true"/>
+            <property name="$imported" value=""/>
+            <property name="bounds" value="425,100,172,200"/>
         </reference>
         <property name="$defaultDiagram" value=""/>
     </view>

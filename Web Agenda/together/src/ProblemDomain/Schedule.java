@@ -9,7 +9,10 @@ public class Schedule {
     /**
      * The createNewSchedule() method is used to create a blank schedule and by default will include any time booked off by any of the employees he is scheduling. This can be turned off if the supervisor does not want to include the dates that the employees are on vacation/sick/absent. 
      */
-    public Object createNewSchedule() {
+    public Schedule newSched() {
+    }
+
+    public void removeShift() {
     }
 
     /**
@@ -18,19 +21,7 @@ public class Schedule {
     public void addShift() {
     }
 
-    /**
-     * This method is used in an action event when the save button is pressed. This will save the schedule however unless the supervisor also chooses to implement the schedule(send the schedule to all employees) then it will just save into the database to be accessed later if any modifications are necessary. 
-     */
-    public Boolean saveSchedule() {
-    }
-
-    /**
-     * Implementing the schedule can also be triggered by the same action event as the saveSchedule() method, however this method will be called if the option to implement the schedule is selected. This will begin the implementation process for sending notifications to employees letting them know that a new schedule is up and running. 
-     */
-    public void implementSchedule() {
-    }
-
-    public void getAllShifts(){}
+    public Shift[] getAllShifts(){}
 
     /**
      * Holds references to the IDs of all employees that this schedule applies to. 

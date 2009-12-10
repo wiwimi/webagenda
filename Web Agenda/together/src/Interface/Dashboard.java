@@ -4,4 +4,6 @@ package Interface;
 
 public class Dashboard {
     public void dispSchedView(){}
+
+    public void dispReportView(){}
 }

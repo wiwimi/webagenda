@@ -4,4 +4,6 @@ package Persistance;
 
 public class EmployeeBroker {
     public Employee getEmp(){}
+
+    public Employee[] getEmps(Supervisor supervisor){}
 }

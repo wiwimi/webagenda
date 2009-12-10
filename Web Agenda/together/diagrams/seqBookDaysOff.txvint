@@ -291,6 +291,7 @@
             <reference referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidhq20wg2xqhdjsg2xxsp1q.nodeid1c2b9g2xqhdjsg2y0b3kd:id2dgu6g2xqhdjsg2xxsjw6.nodeidhq20wg2xqhdjsg2xxsp1q">
                 <property name="seq_bounds" value="189,960,14,56"/>
             </reference>
+            <reference referencedUin="design:link:::L1b7x3ig2y12kzw-163gda:id2dgu6g2xqhdjsg2xxsjw6.nodeidhq20wg2xqhdjsg2xxsp1q"/>
         </reference>
         <reference df-class-name="reference16" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07">
             <property name="$shortcutReference" value="true"/>
@@ -466,6 +467,7 @@
             <reference referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07.nodeid609bqg2xqhdjsg2y0jvt2:id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07">
                 <property name="seq_bounds" value="652,530,14,50"/>
             </reference>
+            <reference referencedUin="design:link:::L1b7x3ig2y12kzw-vf2gfs:id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
         </reference>
         <reference df-class-name="reference17" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid2besvg2xqhdjsg2y00v7p">
             <property name="$shortcutReference" value="true"/>
@@ -501,7 +503,7 @@
             <reference referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid2besvg2xqhdjsg2y00v7p.nodeide1pjgg2xqhdjsg2y0yncm:id2dgu6g2xqhdjsg2xxsjw6.nodeid2besvg2xqhdjsg2y00v7p">
                 <property name="seq_bounds" value="1028,1230,14,60"/>
             </reference>
-            <reference referencedUin="design:link:::id2dgu6g2xqhdjsg2xxsjw6.nodeid2besvg2xqhdjsg2y00v7p.linkidj3dlbg2xqhdjsg2y0x1x6:id2dgu6g2xqhdjsg2xxsjw6.nodeid2besvg2xqhdjsg2y00v7p"/>
+            <reference referencedUin="design:link:::L1b7x3ig2y12kzw-6i4teh:id2dgu6g2xqhdjsg2xxsjw6.nodeid2besvg2xqhdjsg2y00v7p"/>
         </reference>
         <reference df-class-name="reference18" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid5bq3ug2xqhdjsg2y01apz">
             <property name="$shortcutReference" value="true"/>
@@ -583,7 +585,6 @@
             <reference referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs.nodeidcwlp6g2xqhdjsg2y10l4k:id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs">
                 <property name="seq_bounds" value="1172,1295,14,43"/>
             </reference>
-            <reference referencedUin="design:link:::id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs.linkid8lyrig2xqhdjsg2y0tj3b:id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs"/>
             <reference referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs.nodeid44t7mg2xqhdjsg2y0rc47:id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs">
                 <property name="seq_bounds" value="1172,827,14,103"/>
             </reference>
@@ -636,7 +637,6 @@
                 <property name="sendingInstant" value="1205"/>
                 <property name="processingDuration" value="143"/>
             </reference>
-            <reference referencedUin="design:link:::id2dgu6g2xqhdjsg2xxsjw6.nodeidcotpsg2xqhdjsg2y0qw2p.linkidasi89g2xqhdjsg2y0uvye:id2dgu6g2xqhdjsg2xxsjw6.nodeidcotpsg2xqhdjsg2y0qw2p"/>
             <reference referencedUin="design:link:::id2dgu6g2xqhdjsg2xxsjw6.nodeidcotpsg2xqhdjsg2y0qw2p.linkid5x19yg2xqhdjsg2y0s9om:id2dgu6g2xqhdjsg2xxsjw6.nodeidcotpsg2xqhdjsg2y0qw2p">
                 <property name="seq_sourceAnchor" value="1332,860"/>
                 <property name="seq_bendpoints" value=""/>
@@ -739,9 +739,9 @@
             <property name="activationUid" value="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidhq20wg2xqhdjsg2xxsp1q.nodeid6k1yog2xqhdjsg2y0bhzq:id2dgu6g2xqhdjsg2xxsjw6.nodeidhq20wg2xqhdjsg2xxsp1q"/>
         </link>
         <link uin="id2dgu6g2xqhdjsg2xxsjw6.nodeidi8hnvg2xqhdjsg2xxsm0y.linkidj11bag2xqhdjsg2y0hh8e">
-            <property name="$metaclass" value="Message Link"/>
             <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidhq20wg2xqhdjsg2xxsp1q"/>
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidi8hnvg2xqhdjsg2xxsm0y"/>
+            <property name="$metaclass" value="Message Link"/>
             <property name="sequenceNumber" value="4"/>
             <property name="diagram_uniqe_name" value="design:view:::id2dgu6g2xqhdjsg2xxsjw6"/>
             <property name="$name" value="Changes schedule view to month"/>
@@ -932,9 +932,9 @@
             <property name="messageUid" value="design:link:::id2dgu6g2xqhdjsg2xxsjw6.nodeidi8hnvg2xqhdjsg2xxsm0y.linkidj11bag2xqhdjsg2y0hh8e:id2dgu6g2xqhdjsg2xxsjw6.nodeidi8hnvg2xqhdjsg2xxsm0y"/>
         </node>
         <link uin="id2dgu6g2xqhdjsg2xxsjw6.nodeidhq20wg2xqhdjsg2xxsp1q.linkidal7k0g2xqhdjsg2y0ixhy">
-            <property name="$metaclass" value="Message Link"/>
             <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidhq20wg2xqhdjsg2xxsp1q"/>
+            <property name="$metaclass" value="Message Link"/>
             <property name="sequenceNumber" value="4.1"/>
             <property name="diagram_uniqe_name" value="design:view:::id2dgu6g2xqhdjsg2xxsjw6"/>
             <property name="$name" value="Send current blank schedule back to broker requesting different view"/>
@@ -948,9 +948,9 @@
             <property name="messageUid" value="design:link:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07.linkid2lkjcg2xqhdjsg2y0k6d1:id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
         </node>
         <link uin="id2dgu6g2xqhdjsg2xxsjw6.nodeidhq20wg2xqhdjsg2xxsp1q.linkidh339og2xqhdjsg2y0pp0g">
-            <property name="$metaclass" value="Message Link"/>
             <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidhq20wg2xqhdjsg2xxsp1q"/>
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidhq20wg2xqhdjsg2xxsp1q"/>
+            <property name="$metaclass" value="Message Link"/>
             <property name="sequenceNumber" value="6.1.1.1.1.1"/>
             <property name="diagram_uniqe_name" value="design:view:::id2dgu6g2xqhdjsg2xxsjw6"/>
             <property name="$name" value="Set counter back to original value"/>
@@ -964,9 +964,9 @@
             <property name="messageUid" value="design:link:::id2dgu6g2xqhdjsg2xxsjw6.nodeidhq20wg2xqhdjsg2xxsp1q.linkidh339og2xqhdjsg2y0pp0g:id2dgu6g2xqhdjsg2xxsjw6.nodeidhq20wg2xqhdjsg2xxsp1q"/>
         </node>
         <link uin="id2dgu6g2xqhdjsg2xxsjw6.nodeidhq20wg2xqhdjsg2xxsp1q.linkid3ud17g2xqhdjsg2y0rc29">
-            <property name="$metaclass" value="Message Link"/>
             <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs"/>
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidhq20wg2xqhdjsg2xxsp1q"/>
+            <property name="$metaclass" value="Message Link"/>
             <property name="sequenceNumber" value="7.1"/>
             <property name="diagram_uniqe_name" value="design:view:::id2dgu6g2xqhdjsg2xxsjw6"/>
             <property name="$name" value="Retrieve User&apos;s supervisor"/>
@@ -975,9 +975,9 @@
             <property name="activationUid" value="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs.nodeid44t7mg2xqhdjsg2y0rc47:id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs"/>
         </link>
         <link uin="id2dgu6g2xqhdjsg2xxsjw6.nodeidhq20wg2xqhdjsg2xxsp1q.linkidaq4m0g2xqhdjsg2y0rh4q">
-            <property name="$metaclass" value="Messages Link"/>
             <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs"/>
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidhq20wg2xqhdjsg2xxsp1q"/>
+            <property name="$metaclass" value="Messages Link"/>
         </link>
         <node uin="id2dgu6g2xqhdjsg2xxsjw6.nodeidhq20wg2xqhdjsg2xxsp1q.nodeidhq1etg2xqhdjsg2y0wv58">
             <property name="$metaclass" value="Activation"/>
@@ -990,15 +990,15 @@
             <property name="$name" value="Activation41"/>
             <property name="messageUid" value="design:link:::id2dgu6g2xqhdjsg2xxsjw6.nodeid2besvg2xqhdjsg2y00v7p.linkidbzrqag2xqhdjsg2y0z6dh:id2dgu6g2xqhdjsg2xxsjw6.nodeid2besvg2xqhdjsg2y00v7p"/>
         </node>
-        <link uin="L1b7x3ig2y12kzme4nwya">
+        <link uin="L1b7x3ig2y12kzw-163gda">
+            <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid2besvg2xqhdjsg2y00v7p"/>
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidhq20wg2xqhdjsg2xxsp1q"/>
-            <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidi8hnvg2xqhdjsg2xxsm0y"/>
             <property name="$metaclass" value="Messages Link"/>
             <property name="$name" value="Messages Link"/>
         </link>
-        <link uin="L1b7x3ig2y12kzw-163gda">
+        <link uin="L1b7x3ig2zalna3-qa03rl">
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidhq20wg2xqhdjsg2xxsp1q"/>
-            <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid2besvg2xqhdjsg2y00v7p"/>
+            <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidi8hnvg2xqhdjsg2xxsm0y"/>
             <property name="$metaclass" value="Messages Link"/>
             <property name="$name" value="Messages Link"/>
         </link>
@@ -1083,9 +1083,9 @@
             <property name="messageUid" value="design:link:::id2dgu6g2xqhdjsg2xxsjw6.nodeidhq20wg2xqhdjsg2xxsp1q.linkidal7k0g2xqhdjsg2y0ixhy:id2dgu6g2xqhdjsg2xxsjw6.nodeidhq20wg2xqhdjsg2xxsp1q"/>
         </node>
         <link uin="id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07.linkidetollg2xqhdjsg2y0jazn">
-            <property name="$metaclass" value="Message Link"/>
             <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid5bq3ug2xqhdjsg2y01apz"/>
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
+            <property name="$metaclass" value="Message Link"/>
             <property name="sequenceNumber" value="4.1.1"/>
             <property name="diagram_uniqe_name" value="design:view:::id2dgu6g2xqhdjsg2xxsjw6"/>
             <property name="$name" value="Requests 3 more blank week schedules"/>
@@ -1099,9 +1099,9 @@
             <property name="messageUid" value="design:link:::id2dgu6g2xqhdjsg2xxsjw6.nodeid5bq3ug2xqhdjsg2y01apz.linkid70yzjg2xqhdjsg2y0jkfl:id2dgu6g2xqhdjsg2xxsjw6.nodeid5bq3ug2xqhdjsg2y01apz"/>
         </node>
         <link uin="id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07.linkidcjrd2g2xqhdjsg2y0jvss">
-            <property name="$metaclass" value="Message Link"/>
             <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
+            <property name="$metaclass" value="Message Link"/>
             <property name="sequenceNumber" value="4.1.1.1.1"/>
             <property name="diagram_uniqe_name" value="design:view:::id2dgu6g2xqhdjsg2xxsjw6"/>
             <property name="$name" value="Generates month schedule using existing booked off days"/>
@@ -1115,14 +1115,14 @@
             <property name="messageUid" value="design:link:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07.linkidcjrd2g2xqhdjsg2y0jvss:id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
         </node>
         <link uin="id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07.linkidjt5b9g2xqhdjsg2y0jvt2">
-            <property name="$metaclass" value="Messages Link"/>
             <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
+            <property name="$metaclass" value="Messages Link"/>
         </link>
         <link uin="id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07.linkid2lkjcg2xqhdjsg2y0k6d1">
-            <property name="$metaclass" value="Message Link"/>
             <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidhq20wg2xqhdjsg2xxsp1q"/>
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
+            <property name="$metaclass" value="Message Link"/>
             <property name="sequenceNumber" value="4.1.1.1.1.1"/>
             <property name="diagram_uniqe_name" value="design:view:::id2dgu6g2xqhdjsg2xxsjw6"/>
             <property name="$name" value="Returns Month view"/>
@@ -1137,9 +1137,9 @@
             <property name="diagram_uniqe_name" value="design:view:::id2dgu6g2xqhdjsg2xxsjw6"/>
         </node>
         <link uin="id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07.linkidda9ulg2xqhdjsg2y0v2rq">
-            <property name="$metaclass" value="Message Link"/>
             <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
+            <property name="$metaclass" value="Message Link"/>
             <property name="sequenceNumber" value="9.1"/>
             <property name="diagram_uniqe_name" value="design:view:::id2dgu6g2xqhdjsg2xxsjw6"/>
             <property name="$name" value="Writes days off to User&apos;s schedule"/>
@@ -1153,9 +1153,9 @@
             <property name="messageUid" value="design:link:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07.linkidda9ulg2xqhdjsg2y0v2rq:id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
         </node>
         <link uin="id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07.linkidjitjdg2xqhdjsg2y0vclk">
-            <property name="$metaclass" value="Message Link"/>
             <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid5bq3ug2xqhdjsg2y01apz"/>
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
+            <property name="$metaclass" value="Message Link"/>
             <property name="sequenceNumber" value="9.1.1"/>
             <property name="diagram_uniqe_name" value="design:view:::id2dgu6g2xqhdjsg2xxsjw6"/>
             <property name="$name" value="Get schedule"/>
@@ -1169,9 +1169,9 @@
             <property name="messageUid" value="design:link:::id2dgu6g2xqhdjsg2xxsjw6.nodeid5bq3ug2xqhdjsg2y01apz.linkidjh1gpg2xqhdjsg2y0vluk:id2dgu6g2xqhdjsg2xxsjw6.nodeid5bq3ug2xqhdjsg2y01apz"/>
         </node>
         <link uin="id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07.linkid25uqsg2xqhdjsg2y0vxsc">
-            <property name="$metaclass" value="Message Link"/>
             <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid2besvg2xqhdjsg2y00v7p"/>
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
+            <property name="$metaclass" value="Message Link"/>
             <property name="sequenceNumber" value="9.1.1.1.1"/>
             <property name="diagram_uniqe_name" value="design:view:::id2dgu6g2xqhdjsg2xxsjw6"/>
             <property name="$name" value="Create notification that User&apos;s days have been booked off"/>
@@ -1180,9 +1180,9 @@
             <property name="activationUid" value="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid2besvg2xqhdjsg2y00v7p.nodeid3bt6jg2xqhdjsg2y0vxsm:id2dgu6g2xqhdjsg2xxsjw6.nodeid2besvg2xqhdjsg2y00v7p"/>
         </link>
         <link uin="id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07.linkidfvlzjg2xqhdjsg2y0vxt6">
-            <property name="$metaclass" value="Messages Link"/>
             <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid2besvg2xqhdjsg2y00v7p"/>
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
+            <property name="$metaclass" value="Messages Link"/>
         </link>
         <node uin="id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07.nodeid5ka1cg2xqhdjsg2y0xnzy">
             <property name="$metaclass" value="Activation"/>
@@ -1190,9 +1190,9 @@
             <property name="messageUid" value="design:link:::id2dgu6g2xqhdjsg2xxsjw6.nodeidcotpsg2xqhdjsg2y0qw2p.linkidjhfj3g2xqhdjsg2y0xnxp:id2dgu6g2xqhdjsg2xxsjw6.nodeidcotpsg2xqhdjsg2y0qw2p"/>
         </node>
         <link uin="id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07.linkidgooq4g2xqhdjsg2y0yncc">
-            <property name="$metaclass" value="Message Link"/>
             <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid2besvg2xqhdjsg2y00v7p"/>
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
+            <property name="$metaclass" value="Message Link"/>
             <property name="sequenceNumber" value="10.1"/>
             <property name="diagram_uniqe_name" value="design:view:::id2dgu6g2xqhdjsg2xxsjw6"/>
             <property name="$name" value="Create notification of refusal"/>
@@ -1201,9 +1201,9 @@
             <property name="activationUid" value="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid2besvg2xqhdjsg2y00v7p.nodeide1pjgg2xqhdjsg2y0yncm:id2dgu6g2xqhdjsg2xxsjw6.nodeid2besvg2xqhdjsg2y00v7p"/>
         </link>
         <link uin="id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07.linkid89snwg2xqhdjsg2y10l40">
-            <property name="$metaclass" value="Message Link"/>
             <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs"/>
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
+            <property name="$metaclass" value="Message Link"/>
             <property name="sequenceNumber" value="10.2"/>
             <property name="diagram_uniqe_name" value="design:view:::id2dgu6g2xqhdjsg2xxsjw6"/>
             <property name="$name" value="Return days off counters back to user"/>
@@ -1212,19 +1212,19 @@
             <property name="activationUid" value="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs.nodeidcwlp6g2xqhdjsg2y10l4k:id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs"/>
         </link>
         <link uin="id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07.linkid7vb03g2xqhdjsg2y11mz2">
-            <property name="$metaclass" value="Messages Link"/>
             <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs"/>
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
+            <property name="$metaclass" value="Messages Link"/>
         </link>
-        <link uin="L1b7x3ig2y12kzw-pyapxp">
+        <link uin="L1b7x3ig2y12kzw-vf2gfs">
+            <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidcotpsg2xqhdjsg2y0qw2p"/>
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
-            <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidhq20wg2xqhdjsg2xxsp1q"/>
             <property name="$metaclass" value="Messages Link"/>
             <property name="$name" value="Messages Link"/>
         </link>
-        <link uin="L1b7x3ig2y12kzw-vf2gfs">
+        <link uin="L1b7x3ig2zalna3za0zod">
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
-            <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidcotpsg2xqhdjsg2y0qw2p"/>
+            <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidhq20wg2xqhdjsg2xxsp1q"/>
             <property name="$metaclass" value="Messages Link"/>
             <property name="$name" value="Messages Link"/>
         </link>
@@ -1244,9 +1244,9 @@
             <property name="messageUid" value="design:link:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07.linkid25uqsg2xqhdjsg2y0vxsc:id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
         </node>
         <link uin="id2dgu6g2xqhdjsg2xxsjw6.nodeid2besvg2xqhdjsg2y00v7p.linkid69pw1g2xqhdjsg2y0wv58">
-            <property name="$metaclass" value="Message Link"/>
             <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidhq20wg2xqhdjsg2xxsp1q"/>
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid2besvg2xqhdjsg2y00v7p"/>
+            <property name="$metaclass" value="Message Link"/>
             <property name="sequenceNumber" value="9.1.1.1.1.1"/>
             <property name="diagram_uniqe_name" value="design:view:::id2dgu6g2xqhdjsg2xxsjw6"/>
             <property name="$name" value="Notify user"/>
@@ -1254,20 +1254,15 @@
             <property name="predecessorUid" value="design:link:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07.linkid25uqsg2xqhdjsg2y0vxsc:id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
             <property name="activationUid" value="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidhq20wg2xqhdjsg2xxsp1q.nodeidhq1etg2xqhdjsg2y0wv58:id2dgu6g2xqhdjsg2xxsjw6.nodeidhq20wg2xqhdjsg2xxsp1q"/>
         </link>
-        <link uin="id2dgu6g2xqhdjsg2xxsjw6.nodeid2besvg2xqhdjsg2y00v7p.linkidj3dlbg2xqhdjsg2y0x1x6">
-            <property name="$metaclass" value="Messages Link"/>
-            <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidhq20wg2xqhdjsg2xxsp1q"/>
-            <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid2besvg2xqhdjsg2y00v7p"/>
-        </link>
         <node uin="id2dgu6g2xqhdjsg2xxsjw6.nodeid2besvg2xqhdjsg2y00v7p.nodeide1pjgg2xqhdjsg2y0yncm">
             <property name="$metaclass" value="Activation"/>
             <property name="$name" value="Activation40"/>
             <property name="messageUid" value="design:link:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07.linkidgooq4g2xqhdjsg2y0yncc:id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
         </node>
         <link uin="id2dgu6g2xqhdjsg2xxsjw6.nodeid2besvg2xqhdjsg2y00v7p.linkidbzrqag2xqhdjsg2y0z6dh">
-            <property name="$metaclass" value="Message Link"/>
             <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidhq20wg2xqhdjsg2xxsp1q"/>
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid2besvg2xqhdjsg2y00v7p"/>
+            <property name="$metaclass" value="Message Link"/>
             <property name="sequenceNumber" value="10.1.1"/>
             <property name="diagram_uniqe_name" value="design:view:::id2dgu6g2xqhdjsg2xxsjw6"/>
             <property name="$name" value="Notify user"/>
@@ -1275,15 +1270,21 @@
             <property name="predecessorUid" value="design:link:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07.linkidgooq4g2xqhdjsg2y0yncc:id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
             <property name="activationUid" value="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidhq20wg2xqhdjsg2xxsp1q.nodeidd1xfag2xqhdjsg2y0z6dr:id2dgu6g2xqhdjsg2xxsjw6.nodeidhq20wg2xqhdjsg2xxsp1q"/>
         </link>
-        <link uin="L1b7x3ig2y12kzw-5hbz3c">
+        <link uin="L1b7x3ig2y12kzw-6i4teh">
+            <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs"/>
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid2besvg2xqhdjsg2y00v7p"/>
-            <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
             <property name="$metaclass" value="Messages Link"/>
             <property name="$name" value="Messages Link"/>
         </link>
-        <link uin="L1b7x3ig2y12kzw-6i4teh">
+        <link uin="L1b7x3ig2zalna3-o0xkl0">
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid2besvg2xqhdjsg2y00v7p"/>
-            <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs"/>
+            <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidhq20wg2xqhdjsg2xxsp1q"/>
+            <property name="$metaclass" value="Messages Link"/>
+            <property name="$name" value="Messages Link"/>
+        </link>
+        <link uin="L1b7x3ig2zalna3-uw084i">
+            <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid2besvg2xqhdjsg2y00v7p"/>
+            <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
             <property name="$metaclass" value="Messages Link"/>
             <property name="$name" value="Messages Link"/>
         </link>
@@ -1329,9 +1330,9 @@
             <property name="messageUid" value="design:link:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07.linkidetollg2xqhdjsg2y0jazn:id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
         </node>
         <link uin="id2dgu6g2xqhdjsg2xxsjw6.nodeid5bq3ug2xqhdjsg2y01apz.linkid70yzjg2xqhdjsg2y0jkfl">
-            <property name="$metaclass" value="Message Link"/>
             <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid5bq3ug2xqhdjsg2y01apz"/>
+            <property name="$metaclass" value="Message Link"/>
             <property name="sequenceNumber" value="4.1.1.1"/>
             <property name="diagram_uniqe_name" value="design:view:::id2dgu6g2xqhdjsg2xxsjw6"/>
             <property name="$name" value="Returns three more blank weeks"/>
@@ -1345,9 +1346,9 @@
             <property name="messageUid" value="design:link:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07.linkidjitjdg2xqhdjsg2y0vclk:id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
         </node>
         <link uin="id2dgu6g2xqhdjsg2xxsjw6.nodeid5bq3ug2xqhdjsg2y01apz.linkidjh1gpg2xqhdjsg2y0vluk">
-            <property name="$metaclass" value="Message Link"/>
             <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid5bq3ug2xqhdjsg2y01apz"/>
+            <property name="$metaclass" value="Message Link"/>
             <property name="sequenceNumber" value="9.1.1.1"/>
             <property name="diagram_uniqe_name" value="design:view:::id2dgu6g2xqhdjsg2xxsjw6"/>
             <property name="$name" value="Write and save schedule"/>
@@ -1355,7 +1356,7 @@
             <property name="predecessorUid" value="design:link:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07.linkidjitjdg2xqhdjsg2y0vclk:id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
             <property name="activationUid" value="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07.nodeid7qhiog2xqhdjsg2y0vluu:id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
         </link>
-        <link uin="L1b7x3ig2y12kzwlmu6d4">
+        <link uin="L1b7x3ig2zalna3-awug1x">
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid5bq3ug2xqhdjsg2y01apz"/>
             <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
             <property name="$metaclass" value="Messages Link"/>
@@ -1372,9 +1373,9 @@
             <property name="diagram_uniqe_name" value="design:view:::id2dgu6g2xqhdjsg2xxsjw6"/>
         </node>
         <link uin="id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs.linkid419tug2xqhdjsg2y0rw9p">
-            <property name="$metaclass" value="Message Link"/>
             <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidcotpsg2xqhdjsg2y0qw2p"/>
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs"/>
+            <property name="$metaclass" value="Message Link"/>
             <property name="sequenceNumber" value="7.1.1"/>
             <property name="diagram_uniqe_name" value="design:view:::id2dgu6g2xqhdjsg2xxsjw6"/>
             <property name="$name" value="Get supervisor employee"/>
@@ -1383,9 +1384,9 @@
             <property name="activationUid" value="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidcotpsg2xqhdjsg2y0qw2p.nodeid1prprg2xqhdjsg2y0rwa9:id2dgu6g2xqhdjsg2xxsjw6.nodeidcotpsg2xqhdjsg2y0qw2p"/>
         </link>
         <link uin="id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs.linkidfbcf6g2xqhdjsg2y0rwa9">
-            <property name="$metaclass" value="Messages Link"/>
             <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidcotpsg2xqhdjsg2y0qw2p"/>
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs"/>
+            <property name="$metaclass" value="Messages Link"/>
         </link>
         <node uin="id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs.nodeidb2135g2xqhdjsg2y0s9ow">
             <property name="$metaclass" value="Activation"/>
@@ -1393,20 +1394,15 @@
             <property name="messageUid" value="design:link:::id2dgu6g2xqhdjsg2xxsjw6.nodeidcotpsg2xqhdjsg2y0qw2p.linkid5x19yg2xqhdjsg2y0s9om:id2dgu6g2xqhdjsg2xxsjw6.nodeidcotpsg2xqhdjsg2y0qw2p"/>
         </node>
         <link uin="id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs.linkidiqnrlg2xqhdjsg2y0sksw">
-            <property name="$metaclass" value="Message Link"/>
             <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid2besvg2xqhdjsg2y00v7p"/>
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs"/>
+            <property name="$metaclass" value="Message Link"/>
             <property name="sequenceNumber" value="7.1.1.1.1"/>
             <property name="diagram_uniqe_name" value="design:view:::id2dgu6g2xqhdjsg2xxsjw6"/>
             <property name="$name" value="Send notification with list of booked off days"/>
             <property name="normalizedIndex" value="0.5"/>
             <property name="predecessorUid" value="design:link:::id2dgu6g2xqhdjsg2xxsjw6.nodeidcotpsg2xqhdjsg2y0qw2p.linkid5x19yg2xqhdjsg2y0s9om:id2dgu6g2xqhdjsg2xxsjw6.nodeidcotpsg2xqhdjsg2y0qw2p"/>
             <property name="activationUid" value="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid2besvg2xqhdjsg2y00v7p.nodeidcoms1g2xqhdjsg2y0skuk:id2dgu6g2xqhdjsg2xxsjw6.nodeid2besvg2xqhdjsg2y00v7p"/>
-        </link>
-        <link uin="id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs.linkid8lyrig2xqhdjsg2y0tj3b">
-            <property name="$metaclass" value="Messages Link"/>
-            <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid2besvg2xqhdjsg2y00v7p"/>
-            <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs"/>
         </link>
         <node uin="id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs.nodeidcwlp6g2xqhdjsg2y10l4k">
             <property name="$metaclass" value="Activation"/>
@@ -1415,9 +1411,9 @@
             <property name="diagram_uniqe_name" value="design:view:::id2dgu6g2xqhdjsg2xxsjw6"/>
         </node>
         <link uin="id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs.linkid3z19xg2xqhdjsg2y11u6m">
-            <property name="$metaclass" value="Message Link"/>
             <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidcotpsg2xqhdjsg2y0qw2p"/>
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs"/>
+            <property name="$metaclass" value="Message Link"/>
             <property name="sequenceNumber" value="10.2.1"/>
             <property name="diagram_uniqe_name" value="design:view:::id2dgu6g2xqhdjsg2xxsjw6"/>
             <property name="$name" value="Write counter back to original value for user"/>
@@ -1425,15 +1421,21 @@
             <property name="predecessorUid" value="design:link:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07.linkid89snwg2xqhdjsg2y10l40:id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
             <property name="activationUid" value="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidcotpsg2xqhdjsg2y0qw2p.nodeida2qblg2xqhdjsg2y11w1y:id2dgu6g2xqhdjsg2xxsjw6.nodeidcotpsg2xqhdjsg2y0qw2p"/>
         </link>
-        <link uin="L1b7x3ig2y12kzw-l25k8l">
+        <link uin="L1b7x3ig2zalna3-ep50kp">
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs"/>
             <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidhq20wg2xqhdjsg2xxsp1q"/>
             <property name="$metaclass" value="Messages Link"/>
             <property name="$name" value="Messages Link"/>
         </link>
-        <link uin="L1b7x3ig2y12kzwu3k1pb">
+        <link uin="L1b7x3ig2zalna3-bbk4xv">
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs"/>
             <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
+            <property name="$metaclass" value="Messages Link"/>
+            <property name="$name" value="Messages Link"/>
+        </link>
+        <link uin="L1b7x3ig2zalna3orrilu">
+            <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs"/>
+            <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid2besvg2xqhdjsg2y00v7p"/>
             <property name="$metaclass" value="Messages Link"/>
             <property name="$name" value="Messages Link"/>
         </link>
@@ -1447,9 +1449,9 @@
             <property name="messageUid" value="design:link:::id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs.linkid419tug2xqhdjsg2y0rw9p:id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs"/>
         </node>
         <link uin="id2dgu6g2xqhdjsg2xxsjw6.nodeidcotpsg2xqhdjsg2y0qw2p.linkid5x19yg2xqhdjsg2y0s9om">
-            <property name="$metaclass" value="Message Link"/>
             <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs"/>
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidcotpsg2xqhdjsg2y0qw2p"/>
+            <property name="$metaclass" value="Message Link"/>
             <property name="sequenceNumber" value="7.1.1.1"/>
             <property name="diagram_uniqe_name" value="design:view:::id2dgu6g2xqhdjsg2xxsjw6"/>
             <property name="$name" value="Return supervisor employee"/>
@@ -1458,24 +1460,19 @@
             <property name="activationUid" value="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs.nodeidb2135g2xqhdjsg2y0s9ow:id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs"/>
         </link>
         <link uin="id2dgu6g2xqhdjsg2xxsjw6.nodeidcotpsg2xqhdjsg2y0qw2p.linkidlvxfg2xqhdjsg2y0uer6">
-            <property name="$metaclass" value="Message Link"/>
             <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidcotpsg2xqhdjsg2y0qw2p"/>
+            <property name="$metaclass" value="Message Link"/>
             <property name="sequenceNumber" value="9"/>
             <property name="diagram_uniqe_name" value="design:view:::id2dgu6g2xqhdjsg2xxsjw6"/>
             <property name="$name" value="Supervisor approves schedule"/>
             <property name="normalizedIndex" value="0.8181818"/>
             <property name="activationUid" value="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07.nodeidj80n4g2xqhdjsg2y0uer6:id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
         </link>
-        <link uin="id2dgu6g2xqhdjsg2xxsjw6.nodeidcotpsg2xqhdjsg2y0qw2p.linkidasi89g2xqhdjsg2y0uvye">
-            <property name="$metaclass" value="Messages Link"/>
-            <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
-            <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidcotpsg2xqhdjsg2y0qw2p"/>
-        </link>
         <link uin="id2dgu6g2xqhdjsg2xxsjw6.nodeidcotpsg2xqhdjsg2y0qw2p.linkidjhfj3g2xqhdjsg2y0xnxp">
-            <property name="$metaclass" value="Message Link"/>
             <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidcotpsg2xqhdjsg2y0qw2p"/>
+            <property name="$metaclass" value="Message Link"/>
             <property name="sequenceNumber" value="10"/>
             <property name="diagram_uniqe_name" value="design:view:::id2dgu6g2xqhdjsg2xxsjw6"/>
             <property name="$name" value="Supervisor refuses to grant days off"/>
@@ -1487,7 +1484,13 @@
             <property name="$name" value="Activation43"/>
             <property name="messageUid" value="design:link:::id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs.linkid3z19xg2xqhdjsg2y11u6m:id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs"/>
         </node>
-        <link uin="L1b7x3ig2y12kzwx9ta6j">
+        <link uin="L1b7x3ig2zalna3-yfim9d">
+            <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidcotpsg2xqhdjsg2y0qw2p"/>
+            <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeid7stjg2xqhdjsg2y00q07"/>
+            <property name="$metaclass" value="Messages Link"/>
+            <property name="$name" value="Messages Link"/>
+        </link>
+        <link uin="L1b7x3ig2zalna3irl6qa">
             <participant role="Client" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidcotpsg2xqhdjsg2y0qw2p"/>
             <participant role="Supplier" referencedUin="design:node:::id2dgu6g2xqhdjsg2xxsjw6.nodeidd2enbg2xqhdjsg2y0qlgs"/>
             <property name="$metaclass" value="Messages Link"/>

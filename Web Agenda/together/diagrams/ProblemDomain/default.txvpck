@@ -4,81 +4,85 @@
         <participant role="Supplier" referencedUin="design:view:::idgjd7xg2p7zmjhg2p8asa9"/>
         <participant role="Client" referencedUin="design:view:::id1gm70g2p7zmjhg2p8vsns"/>
         <property name="$metaclass" value="Dependency Link"/>
+        <property name="@stereotype" value="access"/>
     </link>
     <view uin="id1gm70g2p7zmjhg2p8vsns">
         <property name="$metaclass" value="Package Diagram"/>
         <property name="@__options" value=""/>
         <reference df-class-name="reference" referencedUin="jdt:e_class:src:ProblemDomain.Employee">
             <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="280,280,166,302"/>
+            <property name="bounds" value="280,280,166,334"/>
             <reference referencedUin="jdt:l_ast:src:ProblemDomain.Employee:lnkShift">
-                <property name="sourceAnchor" value="372,280"/>
+                <property name="sourceAnchor" value="357,280"/>
                 <property name="bendpoints" value=""/>
-                <property name="targetAnchor" value="372,168"/>
+                <property name="targetAnchor" value="357,194"/>
                 <reference referencedUin="linklabel:clientQualifier:jdt:l_ast:src:ProblemDomain.Employee:lnkShift">
-                    <property name="bounds" value="376,260,66,16"/>
+                    <property name="bounds" value="361,260,66,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
                 <reference referencedUin="linklabel:supplierQualifier:jdt:l_ast:src:ProblemDomain.Employee:lnkShift">
-                    <property name="bounds" value="376,168,29,16"/>
+                    <property name="bounds" value="361,194,29,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
                 <reference referencedUin="linklabel:clientCardinality:jdt:l_ast:src:ProblemDomain.Employee:lnkShift">
-                    <property name="bounds" value="353,260,15,16"/>
+                    <property name="bounds" value="338,260,15,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
                 <reference referencedUin="linklabel:supplierCardinality:jdt:l_ast:src:ProblemDomain.Employee:lnkShift">
-                    <property name="bounds" value="342,168,26,16"/>
+                    <property name="bounds" value="327,194,26,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
             </reference>
             <reference referencedUin="jdt:l_ast:src:ProblemDomain.Employee:lnkNotification">
-                <property name="sourceAnchor" value="335,582"/>
+                <property name="sourceAnchor" value="280,433"/>
                 <property name="bendpoints" value=""/>
-                <property name="targetAnchor" value="247,690"/>
+                <property name="targetAnchor" value="165,433"/>
                 <reference referencedUin="linklabel:clientQualifier:jdt:l_ast:src:ProblemDomain.Employee:lnkNotification">
-                    <property name="bounds" value="339,582,58,16"/>
+                    <property name="bounds" value="218,433,58,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
                 <reference referencedUin="linklabel:supplierQualifier:jdt:l_ast:src:ProblemDomain.Employee:lnkNotification">
-                    <property name="bounds" value="267,670,54,16"/>
+                    <property name="bounds" value="169,433,54,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
                 <reference referencedUin="linklabel:clientCardinality:jdt:l_ast:src:ProblemDomain.Employee:lnkNotification">
-                    <property name="bounds" value="287,582,28,16"/>
+                    <property name="bounds" value="248,413,28,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
                 <reference referencedUin="linklabel:supplierCardinality:jdt:l_ast:src:ProblemDomain.Employee:lnkNotification">
-                    <property name="bounds" value="217,670,26,16"/>
+                    <property name="bounds" value="169,413,26,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
             </reference>
         </reference>
         <reference df-class-name="reference31" referencedUin="jdt:e_class:src:ProblemDomain.Notification">
             <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="180,690,135,126"/>
+            <property name="bounds" value="30,360,135,126"/>
+            <reference referencedUin="jdt:e_field:src:ProblemDomain.Notification.message">
+                <property name="bounds" value="140,390,129,16"/>
+            </reference>
         </reference>
         <reference df-class-name="reference32" referencedUin="jdt:e_class:src:ProblemDomain.Schedule">
             <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="10,10,170,174"/>
+            <property name="bounds" value="20,20,142,158"/>
             <reference referencedUin="jdt:l_ast:src:ProblemDomain.Schedule:lnkShift">
-                <property name="sourceAnchor" value="180,89"/>
+                <property name="sourceAnchor" value="162,99"/>
                 <property name="bendpoints" value=""/>
-                <property name="targetAnchor" value="330,89"/>
+                <property name="targetAnchor" value="300,99"/>
                 <reference referencedUin="linklabel:clientQualifier:jdt:l_ast:src:ProblemDomain.Schedule:lnkShift">
-                    <property name="bounds" value="184,89,66,16"/>
+                    <property name="bounds" value="166,99,66,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
                 <reference referencedUin="linklabel:supplierQualifier:jdt:l_ast:src:ProblemDomain.Schedule:lnkShift">
-                    <property name="bounds" value="271,89,55,16"/>
+                    <property name="bounds" value="241,99,55,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
                 <reference referencedUin="linklabel:clientCardinality:jdt:l_ast:src:ProblemDomain.Schedule:lnkShift">
-                    <property name="bounds" value="184,69,26,16"/>
+                    <property name="bounds" value="166,79,26,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
                 <reference referencedUin="linklabel:supplierCardinality:jdt:l_ast:src:ProblemDomain.Schedule:lnkShift">
-                    <property name="bounds" value="300,69,26,16"/>
+                    <property name="bounds" value="270,79,26,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
             </reference>
@@ -90,80 +94,101 @@
         </reference>
         <reference df-class-name="reference33" referencedUin="jdt:e_class:src:ProblemDomain.Shift">
             <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="330,10,152,158"/>
+            <property name="bounds" value="300,20,114,174"/>
         </reference>
         <reference df-class-name="reference34" referencedUin="jdt:e_class:src:ProblemDomain.Supervisor">
             <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="480,660,158,126"/>
-            <reference referencedUin="jdt:l_ast:src:ProblemDomain.Supervisor:lnkWorkgroup">
-                <property name="sourceAnchor" value="585,660"/>
+            <property name="bounds" value="260,730,158,126"/>
+            <reference referencedUin="jdt:l_ast:src:ProblemDomain.Supervisor:lnkEmployee">
+                <property name="sourceAnchor" value="353,730"/>
                 <property name="bendpoints" value=""/>
-                <property name="targetAnchor" value="648,448"/>
+                <property name="targetAnchor" value="335,614"/>
+                <reference referencedUin="linklabel:clientQualifier:jdt:l_ast:src:ProblemDomain.Supervisor:lnkEmployee">
+                    <property name="bounds" value="357,710,29,16"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
+                <reference referencedUin="linklabel:supplierQualifier:jdt:l_ast:src:ProblemDomain.Supervisor:lnkEmployee">
+                    <property name="bounds" value="342,614,85,16"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
+                <reference referencedUin="linklabel:clientCardinality:jdt:l_ast:src:ProblemDomain.Supervisor:lnkEmployee">
+                    <property name="bounds" value="331,710,15,16"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
+                <reference referencedUin="linklabel:supplierCardinality:jdt:l_ast:src:ProblemDomain.Supervisor:lnkEmployee">
+                    <property name="bounds" value="305,614,26,16"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
+            </reference>
+            <reference referencedUin="jdt:l_ast:src:ProblemDomain.Supervisor:lnkWorkgroup">
+                <property name="sourceAnchor" value="413,730"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="638,508"/>
                 <reference referencedUin="linklabel:clientQualifier:jdt:l_ast:src:ProblemDomain.Supervisor:lnkWorkgroup">
-                    <property name="bounds" value="594,640,29,16"/>
+                    <property name="bounds" value="432,716,29,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
                 <reference referencedUin="linklabel:supplierQualifier:jdt:l_ast:src:ProblemDomain.Supervisor:lnkWorkgroup">
-                    <property name="bounds" value="652,448,69,16"/>
+                    <property name="bounds" value="642,508,69,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
                 <reference referencedUin="linklabel:clientCardinality:jdt:l_ast:src:ProblemDomain.Supervisor:lnkWorkgroup">
-                    <property name="bounds" value="566,640,15,16"/>
+                    <property name="bounds" value="394,710,15,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
                 <reference referencedUin="linklabel:supplierCardinality:jdt:l_ast:src:ProblemDomain.Supervisor:lnkWorkgroup">
-                    <property name="bounds" value="613,448,26,16"/>
+                    <property name="bounds" value="588,508,26,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
             </reference>
             <reference referencedUin="jdt:l_gnt:src:ProblemDomain.Supervisor:ProblemDomain.Employee">
-                <property name="sourceAnchor" value="532,660"/>
+                <property name="sourceAnchor" value="390,730"/>
                 <property name="bendpoints" value=""/>
-                <property name="targetAnchor" value="402,582"/>
+                <property name="targetAnchor" value="429,614"/>
             </reference>
             <reference referencedUin="jdt:l_ast:src:ProblemDomain.Supervisor:lnkNotification">
-                <property name="sourceAnchor" value="480,733"/>
+                <property name="sourceAnchor" value="296,730"/>
                 <property name="bendpoints" value=""/>
-                <property name="targetAnchor" value="315,733"/>
+                <property name="targetAnchor" value="97,486"/>
                 <reference referencedUin="linklabel:clientQualifier:jdt:l_ast:src:ProblemDomain.Supervisor:lnkNotification">
-                    <property name="bounds" value="418,733,58,16"/>
+                    <property name="bounds" value="300,710,58,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
                 <reference referencedUin="linklabel:supplierQualifier:jdt:l_ast:src:ProblemDomain.Supervisor:lnkNotification">
-                    <property name="bounds" value="319,733,54,16"/>
+                    <property name="bounds" value="117,486,54,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
                 <reference referencedUin="linklabel:clientCardinality:jdt:l_ast:src:ProblemDomain.Supervisor:lnkNotification">
-                    <property name="bounds" value="448,713,28,16"/>
+                    <property name="bounds" value="248,710,28,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
                 <reference referencedUin="linklabel:supplierCardinality:jdt:l_ast:src:ProblemDomain.Supervisor:lnkNotification">
-                    <property name="bounds" value="319,713,26,16"/>
+                    <property name="bounds" value="67,486,26,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
             </reference>
         </reference>
         <reference df-class-name="reference35" referencedUin="jdt:e_class:src:ProblemDomain.Workgroup">
             <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="580,290,145,158"/>
+            <property name="bounds" value="570,350,145,158"/>
             <reference referencedUin="jdt:l_ast:src:ProblemDomain.Workgroup:lnkEmployee">
-                <property name="sourceAnchor" value="580,369"/>
+                <property name="sourceAnchor" value="570,429"/>
                 <property name="bendpoints" value=""/>
-                <property name="targetAnchor" value="446,369"/>
+                <property name="targetAnchor" value="446,429"/>
                 <reference referencedUin="linklabel:clientQualifier:jdt:l_ast:src:ProblemDomain.Workgroup:lnkEmployee">
-                    <property name="bounds" value="521,369,55,16"/>
+                    <property name="bounds" value="511,429,55,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
                 <reference referencedUin="linklabel:supplierQualifier:jdt:l_ast:src:ProblemDomain.Workgroup:lnkEmployee">
-                    <property name="bounds" value="450,369,55,16"/>
+                    <property name="bounds" value="450,429,55,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
                 <reference referencedUin="linklabel:clientCardinality:jdt:l_ast:src:ProblemDomain.Workgroup:lnkEmployee">
-                    <property name="bounds" value="550,349,26,16"/>
+                    <property name="bounds" value="540,409,26,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
                 <reference referencedUin="linklabel:supplierCardinality:jdt:l_ast:src:ProblemDomain.Workgroup:lnkEmployee">
-                    <property name="bounds" value="450,349,26,16"/>
+                    <property name="bounds" value="450,409,26,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
             </reference>

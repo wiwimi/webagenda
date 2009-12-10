@@ -2,6 +2,9 @@
 
 package Persistance;
 
+import ProblemDomain.Schedule;
 public class ScheduleBroker {
     public Schedule getDefault(String p0, String p1){}
+
+    public Schedule[] getSchedules(String startDate, String endDate){}
 }

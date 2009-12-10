@@ -36,4 +36,12 @@ public class Supervisor extends Employee {
      * @supplierQualifier receives
      */
     private Notification lnkNotification;
+
+    /**
+     * @clientCardinality 1
+     * @supplierCardinality 1..*
+     * @clientQualifier has
+     * @supplierQualifier is in charge of 
+     */
+    private Employee lnkEmployee;
 }
