@@ -9,7 +9,7 @@ public class Workgroup {
     /**
      * Retrieves a specific workgroup. 
      */
-    public Object fetchWorkgroup(){}
+    public Workgroup getWorkgroup(){}
 
     public Shift[] getShifts(Workgroup wg){}
 
@@ -18,12 +18,12 @@ public class Workgroup {
     /**
      * A list of the employees that are in the workgroup. 
      */
-    private Object[] employees;
+    private Employee[] employees;
 
     /**
      * The supervisor that is in charge of this employee workgroup. 
      */
-    private Object supervisor;
+    private Supervisor supervisor;
 
     /**
      * The name of the workgroup, assigned by the supervisor who created it. 

@@ -89,7 +89,7 @@ public class Employee {
     /**
      * The supervisor that the employee works for.
      */
-    private Object supervisor;
+    private Supervisor supervisor;
 
     /**
      * Employees will receive and view notifications that are sent automatically, or manually sent by their supervisor. 
@@ -108,4 +108,12 @@ public class Employee {
      * @supplierQualifier has
      */
     private Shift lnkShift;
+
+    /**
+     * @clientCardinality 0..*
+     * @supplierCardinality 1
+     * @clientQualifier applies to
+     * @supplierQualifier hsa 
+     */
+    private JobType lnkEmployeeType;
 }

@@ -7,17 +7,10 @@ package ProblemDomain;
  */
 public class Supervisor extends Employee {
     /**
-     * Gets a list of all employee workgroups that the supervisor is in charge of. 
-     */
-    public Object[] fetchWorkgroups(){}
-
-    public void getWorkgroupList(){}
-
-    /**
      * A collection of all employees that the supervisor is in charge of, stored as a list of the ID's of those employees. 
      */
     private int[] employees;
-    private Object[] workgroupList;
+    private Workgroup[] workgroupList;
 
     /**
      * A supervisor may be in charge of multiple workgroups, which they have created for their employees. 

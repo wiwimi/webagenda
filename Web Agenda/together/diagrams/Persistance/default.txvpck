@@ -14,7 +14,7 @@
         </reference>
         <reference df-class-name="reference36" referencedUin="jdt:e_class:src:Persistance.WorkgroupBroker">
             <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="30,160,130,101"/>
+            <property name="bounds" value="30,160,159,117"/>
         </reference>
         <reference df-class-name="reference8" referencedUin="jdt:e_class:src:Persistance.EmployeeBroker">
             <property name="$shortcutReference" value="true"/>
@@ -36,6 +36,14 @@
                 <property name="bendpoints" value=""/>
                 <property name="targetAnchor" value="287,121"/>
             </reference>
+        </reference>
+        <reference df-class-name="reference5" referencedUin="jdt:e_class:src:Persistance.EventBroker">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="60,310,110,101"/>
+        </reference>
+        <reference df-class-name="reference12" referencedUin="jdt:e_class:src:Persistance.JobTypeBroker">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="220,310,145,85"/>
         </reference>
         <property name="$defaultDiagram" value=""/>
     </view>

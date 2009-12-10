@@ -17,12 +17,12 @@ public class Shift {
     /**
      * The time at which work begins for the employees assigned to the shift. 
      */
-    private Object StartTime;
+    private date StartTime;
 
     /**
      * The time at which work ends for the employees assigned to the shift. 
      */
-    private Object EndTime;
+    private date EndTime;
 
     /**
      * The job titles or duties associated with the shift. 
@@ -39,5 +39,5 @@ public class Shift {
      * @label
      * @undirected 
      */
-    private Object supervisor;
+    private Supervisor supervisor;
 }

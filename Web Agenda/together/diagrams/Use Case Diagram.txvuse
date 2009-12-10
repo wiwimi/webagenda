@@ -66,7 +66,7 @@
                 <property name="bounds_setted_by_user" value="true"/>
             </reference>
             <reference referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeidh9iwvg0fh0gv0g0fk7tpl:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
-                <property name="bounds" value="50,450,190,28"/>
+                <property name="bounds" value="50,450,160,28"/>
                 <property name="bounds_setted_by_user" value="true"/>
             </reference>
             <reference referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid6pncrg0fu49ceg0fyawev:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
@@ -358,7 +358,7 @@
         <node uin="id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeidh9iwvg0fh0gv0g0fk7tpl">
             <property name="$description" value="Custom announcements can be created that will be sent to specific employees, employee types, or all employees working under the supervisor."/>
             <property name="$metaclass" value="Use Case"/>
-            <property name="$name" value="Send Annoucement"/>
+            <property name="$name" value="Send Event"/>
         </node>
         <node uin="id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid16328g0fh0gv0g0fkoq7p">
             <property name="$description" value="New schedules can be created by allowing the system to generate a schedule, or one be started as a blank schedule.  Once the schedule exists it can be modified freely by the supervisor to fit any needs they may have.  New schedules can be saved to be used at a later date, or implemented if desired."/>

@@ -6,4 +6,6 @@ public class WorkgroupBroker {
     public void getWorkgroup(){}
 
     public void getWorkgroups(){}
+
+    public String[] getWorkgroupList(Supervisor supervisor){}
 }

@@ -3,4 +3,13 @@
 package Interface;
 
 public class EventWidget extends Widget {
+    public void dispTypeView(){}
+
+    public void workgroupEvent(){}
+
+    public void loadWorkgroupList(){}
+
+    public void jobTypeEvent(){}
+
+    public void loadJobTypeList(){}
 }
