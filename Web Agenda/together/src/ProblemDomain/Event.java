@@ -7,4 +7,20 @@ public class Event {
 
     private JobType empType;
     private Workgroup workgroup;
+
+    /**
+     * @clientCardinality 0..*
+     * @supplierCardinality 0..*
+     * @clientQualifier may have
+     * @supplierQualifier applies to 
+     */
+    private JobType lnkJobType;
+
+    /**
+     * @clientCardinality 0..*
+     * @supplierCardinality 0..*
+     * @clientQualifier may have
+     * @supplierQualifier applies to 
+     */
+    private Workgroup lnkWorkgroup;
 }

@@ -45,6 +45,10 @@
             <property name="$shortcutReference" value="true"/>
             <property name="bounds" value="220,310,145,85"/>
         </reference>
+        <reference df-class-name="reference2" referencedUin="jdt:e_class:src:Persistance.PermissionLevelBroker">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="400,310,146,82"/>
+        </reference>
         <property name="$defaultDiagram" value=""/>
     </view>
 </nodeSet>

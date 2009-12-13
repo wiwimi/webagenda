@@ -26,7 +26,7 @@ public class Schedule {
     /**
      * Holds references to the IDs of all employees that this schedule applies to. 
      */
-    private int[] employeeId;
+    private Employee[] employees;
 
     /**
      * Holds references to all shifts that are active for this schedule. 
