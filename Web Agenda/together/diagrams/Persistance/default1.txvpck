@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nodeSet version="1.0">
+    <view uin="id91yq5g34sj4ckg34sj92e">
+        <property name="$metaclass" value="Package Diagram"/>
+        <property name="@__options" value=""/>
+        <reference df-class-name="reference" referencedUin="jdt:e_class:src:Persistance.JobTypeBroker">
+            <property name="$shortcutReference" value="true"/>
+        </reference>
+        <reference df-class-name="reference51" referencedUin="jdt:e_class:src:Persistance.ScheduleBroker">
+            <property name="$shortcutReference" value="true"/>
+        </reference>
+        <reference df-class-name="reference52" referencedUin="jdt:e_class:src:Persistance.EventBroker">
+            <property name="$shortcutReference" value="true"/>
+        </reference>
+        <reference df-class-name="reference53" referencedUin="jdt:e_class:src:Persistance.WorkgroupBroker">
+            <property name="$shortcutReference" value="true"/>
+        </reference>
+        <reference df-class-name="reference54" referencedUin="jdt:e_class:src:Persistance.NotificationBroker">
+            <property name="$shortcutReference" value="true"/>
+        </reference>
+        <reference df-class-name="reference55" referencedUin="jdt:e_class:src:Persistance.ShiftBroker">
+            <property name="$shortcutReference" value="true"/>
+        </reference>
+        <reference df-class-name="reference56" referencedUin="jdt:e_class:src:Persistance.EmployeeBroker">
+            <property name="$shortcutReference" value="true"/>
+        </reference>
+        <reference df-class-name="reference57" referencedUin="jdt:e_class:src:Persistance.SupervisorBroker">
+            <property name="$shortcutReference" value="true"/>
+        </reference>
+        <property name="$defaultDiagram" value=""/>
+    </view>
+</nodeSet>

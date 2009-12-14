@@ -3,4 +3,6 @@
 package Persistance;
 
 public class ShiftBroker {
+    public Shift[] getShifts() {
+    }
 }

@@ -3,4 +3,15 @@
 package Interface;
 
 public class SettingsWidget extends Widget {
+    public void addSupervisor() {
+    }
+
+    public void createEmpType() {
+    }
+
+    public void promote() {
+    }
+
+    public void insertEmpType() {
+    }
 }

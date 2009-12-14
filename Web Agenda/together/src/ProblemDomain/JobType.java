@@ -3,6 +3,9 @@
 package ProblemDomain;
 
 public class JobType {
+    public void addJobType() {
+    }
+
     private String jobName;
     private String jobDescription;
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nodeSet version="1.0">
+    <view uin="idwoztg34sj4ckg34sj7dq">
+        <property name="$metaclass" value="Package Diagram"/>
+        <property name="@__options" value=""/>
+        <reference df-class-name="reference" referencedUin="design:view:::id683pdg2z9ycxjg2z9ygqo">
+            <property name="$shortcutReference" value="true"/>
+            <property name="@__fqn" value="uml:package:Webagenda:src:ProblemDomain"/>
+            <property name="bounds" value="10,10,110,216"/>
+        </reference>
+        <reference df-class-name="reference58" referencedUin="design:view:::id91yq5g34sj4ckg34sj92e">
+            <property name="$shortcutReference" value="true"/>
+            <property name="@__fqn" value="uml:package:Webagenda:src:Persistance"/>
+            <property name="bounds" value="140,10,118,216"/>
+        </reference>
+        <reference df-class-name="reference59" referencedUin="design:view:::idf1bpkg2p7zmjhg2p85qp2">
+            <property name="$shortcutReference" value="true"/>
+            <property name="@__fqn" value="uml:package:Webagenda:src:Interface"/>
+            <property name="bounds" value="10,270,111,248"/>
+        </reference>
+        <property name="$defaultDiagram" value=""/>
+    </view>
+</nodeSet>

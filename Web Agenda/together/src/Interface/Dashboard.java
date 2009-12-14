@@ -8,4 +8,7 @@ public class Dashboard {
     public void dispReportView(){}
 
     public void dispEventView(){}
+
+    public void dispDashboard() {
+    }
 }

@@ -10,4 +10,7 @@ public class ScheduleWidget extends Widget {
     public void disableWorkgroupList(){}
 
     public void dispDailySched(){}
+
+    public void displayNotification() {
+    }
 }

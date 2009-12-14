@@ -2,7 +2,7 @@
 
 package Interface;
 
-public class Widget implements WidgetInterface {
+public class Widget extends Request_Widget implements WidgetInterface {
     public void load() {
     }
 
