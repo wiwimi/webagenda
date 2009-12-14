@@ -150,6 +150,10 @@
                 <property name="sourceAnchor" value="91,178"/>
                 <property name="bendpoints" value=""/>
                 <property name="targetAnchor" value="331,240"/>
+                <reference referencedUin="linklabel:supplierCardinality:jdt:l_ast:src:ProblemDomain.Schedule:employees">
+                    <property name="bounds" value="0,0,26,16"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
                 <property name="$hidden" value="true"/>
                 <property name="@$hidden" value="true"/>
             </reference>
@@ -225,6 +229,10 @@
                 <property name="sourceAnchor" value="415,730"/>
                 <property name="bendpoints" value=""/>
                 <property name="targetAnchor" value="721,508"/>
+                <reference referencedUin="linklabel:supplierCardinality:jdt:l_ast:src:ProblemDomain.Supervisor:workgroupList">
+                    <property name="bounds" value="0,0,26,16"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
                 <property name="$hidden" value="true"/>
                 <property name="@$hidden" value="true"/>
             </reference>
@@ -257,6 +265,10 @@
                 <property name="sourceAnchor" value="570,470"/>
                 <property name="bendpoints" value=""/>
                 <property name="targetAnchor" value="446,470"/>
+                <reference referencedUin="linklabel:supplierCardinality:jdt:l_ast:src:ProblemDomain.Workgroup:employees">
+                    <property name="bounds" value="0,0,26,16"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
                 <property name="$hidden" value="true"/>
                 <property name="@$hidden" value="true"/>
             </reference>
@@ -309,7 +321,7 @@
             <reference referencedUin="jdt:l_ast:src:ProblemDomain.Event:lnkJobType">
                 <property name="sourceAnchor" value="633,170"/>
                 <property name="bendpoints" value=""/>
-                <property name="targetAnchor" value="633,127"/>
+                <property name="targetAnchor" value="633,130"/>
                 <reference referencedUin="linklabel:clientQualifier:jdt:l_ast:src:ProblemDomain.Event:lnkJobType">
                     <property name="bounds" value="637,150,60,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
@@ -319,11 +331,11 @@
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
                 <reference referencedUin="linklabel:supplierQualifier:jdt:l_ast:src:ProblemDomain.Event:lnkJobType">
-                    <property name="bounds" value="637,127,62,16"/>
+                    <property name="bounds" value="637,130,62,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
                 <reference referencedUin="linklabel:supplierCardinality:jdt:l_ast:src:ProblemDomain.Event:lnkJobType">
-                    <property name="bounds" value="603,127,26,16"/>
+                    <property name="bounds" value="603,130,26,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
             </reference>
@@ -351,7 +363,7 @@
         </reference>
         <reference df-class-name="reference8" referencedUin="jdt:e_class:src:ProblemDomain.JobType">
             <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="570,20,133,107"/>
+            <property name="bounds" value="570,20,133,110"/>
             <reference referencedUin="jdt:e_field:src:ProblemDomain.JobType.jobName">
                 <property name="bounds" value="0,180,127,16"/>
             </reference>
@@ -364,10 +376,5 @@
             <property name="bounds" value="60,240,107,91"/>
         </reference>
         <property name="$defaultDiagram" value=""/>
-        <reference referencedUin="MemberLink#">
-            <property name="$shortcutReference" value="true"/>
-            <property name="$hidden" value="true"/>
-            <property name="@$hidden" value="true"/>
-        </reference>
     </view>
 </nodeSet>

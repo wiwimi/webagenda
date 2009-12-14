@@ -2,7 +2,7 @@
 
 package Interface;
 
-public class Request_Widget {
+public class Request_Widget extends Widget {
     public Requests[] loadEmpRequests() {
     }
 
