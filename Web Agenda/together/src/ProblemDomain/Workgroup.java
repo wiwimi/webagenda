@@ -11,10 +11,6 @@ public class Workgroup {
      */
     public Workgroup getWorkgroup(){}
 
-    public Shift[] getShifts(Workgroup wg){}
-
-    public Schedule getSched(){}
-
     /**
      * A list of the employees that are in the workgroup. 
      */
@@ -33,7 +29,7 @@ public class Workgroup {
     /**
      * An employee may be part of multiple workgroups, which must be assigned by that employee's supervisor.
      * @link aggregation 
-     * @clientCardinality 1..*
+     * @clientCardinality 1
      * @supplierCardinality 0..*
      * @clientQualifier is part of
      * @supplierQualifier contains

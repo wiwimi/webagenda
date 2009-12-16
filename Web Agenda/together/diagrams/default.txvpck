@@ -2,7 +2,7 @@
 <nodeSet version="1.0">
     <view uin="idh3rzpg0fh0gv0g0fh1nns">
         <property name="$metaclass" value="Package Diagram"/>
-        <property name="@__options" value=""/>
+        <property name="@__options" value="option.controlbars = false"/>
         <reference df-class-name="reference144" referencedUin="design:node:::idh3rzpg0fh0gv0g0fh1nns.nodeid64v0lg1lnfw56g1lr9vgy">
             <property name="$shortcutReference" value="true"/>
             <property name="bounds" value="708,220,152,23"/>
@@ -278,13 +278,13 @@
         <reference df-class-name="reference4" referencedUin="design:view:::idf1bpkg2p7zmjhg2p85qp2">
             <property name="$shortcutReference" value="true"/>
             <property name="@__fqn" value="uml:package:Webagenda:src:Interface"/>
-            <property name="bounds" value="1847,10,111,232"/>
+            <property name="bounds" value="1847,10,120,254"/>
             <reference referencedUin="design:link:::idf1bpkg2p7zmjhg2p85qp2.linkid8o072g2p7zmjhg2p9ql08">
-                <property name="sourceAnchor" value="1958,102"/>
+                <property name="sourceAnchor" value="1967,134"/>
                 <property name="bendpoints" value=""/>
-                <property name="targetAnchor" value="2010,102"/>
+                <property name="targetAnchor" value="2010,134"/>
                 <reference referencedUin="linklabel:stereotype:design:link:::idf1bpkg2p7zmjhg2p85qp2.linkid8o072g2p7zmjhg2p9ql08">
-                    <property name="bounds" value="1946,82,76,16"/>
+                    <property name="bounds" value="1950,114,76,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
             </reference>
@@ -292,18 +292,18 @@
         <reference df-class-name="reference22" referencedUin="design:view:::idgjd7xg2p7zmjhg2p8asa9">
             <property name="$shortcutReference" value="true"/>
             <property name="@__fqn" value="uml:package:Webagenda:src:Persistance"/>
-            <property name="bounds" value="2006,264,118,184"/>
+            <property name="bounds" value="2006,264,143,222"/>
         </reference>
         <reference df-class-name="reference30" referencedUin="design:view:::id1gm70g2p7zmjhg2p8vsns">
             <property name="$shortcutReference" value="true"/>
             <property name="@__fqn" value="uml:package:Webagenda:src:ProblemDomain"/>
-            <property name="bounds" value="2010,10,110,184"/>
+            <property name="bounds" value="2010,10,110,222"/>
             <reference referencedUin="design:link:::id1gm70g2p7zmjhg2p8vsns.linkid2wu2lg2p7zmjhg2p9qmyz">
-                <property name="sourceAnchor" value="2065,194"/>
+                <property name="sourceAnchor" value="2065,232"/>
                 <property name="bendpoints" value=""/>
                 <property name="targetAnchor" value="2065,264"/>
                 <reference referencedUin="linklabel:stereotype:design:link:::id1gm70g2p7zmjhg2p8vsns.linkid2wu2lg2p7zmjhg2p9qmyz">
-                    <property name="bounds" value="1985,219,76,16"/>
+                    <property name="bounds" value="1985,238,76,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
             </reference>

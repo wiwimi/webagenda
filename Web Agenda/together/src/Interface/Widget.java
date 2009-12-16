@@ -2,10 +2,19 @@
 
 package Interface;
 
-public class Widget implements WidgetInterface {
+/**
+ * Default widget that can not itself be loaded, but must be extended by all other widgets so that they all contain the same base functionality. 
+ */
+public abstract class Widget implements WidgetInterface {
+    /**
+     * Creates a new widget instance and allows it to be referenced and displayed. 
+     */
     public void load() {
     }
 
+    /**
+     * Removes a widget from the system, releasing all resources it is using and saving any related data. 
+     */
     public void unload() {
     }
 }

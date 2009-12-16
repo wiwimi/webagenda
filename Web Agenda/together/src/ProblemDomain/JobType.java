@@ -2,10 +2,29 @@
 
 package ProblemDomain;
 
+/**
+ * A position that an employee can hold within the business, including the name of the position and a short description of it. 
+ */
 public class JobType {
+    /**
+     * Saves a new job type so that it can be assigned to employees. 
+     */
     public void addJobType() {
     }
 
+    /**
+     * Removes a job type from the system 
+     */
+    public void removeJobType() {
+    }
+
+    /**
+     * The name of the job type. 
+     */
     private String jobName;
+
+    /**
+     * A short description of the job type. 
+     */
     private String jobDescription;
 }

@@ -12,20 +12,23 @@ public class Shift {
     public Shift newShift() {
     }
 
+    /**
+     * Get the start and end times for which this shift takes place. 
+     */
     public date[] getTimes(){}
 
     /**
      * The time at which work begins for the employees assigned to the shift. 
      */
-    private date StartTime;
+    private Date StartTime;
 
     /**
      * The time at which work ends for the employees assigned to the shift. 
      */
-    private date EndTime;
+    private Date EndTime;
 
     /**
-     * The job titles or duties associated with the shift. 
+     * The duties associated with this specific shift. 
      */
     private String job;
 
@@ -33,11 +36,4 @@ public class Shift {
      * The building or room where the shift work is taking place.  Primarily for organizaional purposes. 
      */
     private String Location;
-
-    /**
-     * The supervisor who is in charge of the employees working that shift.
-     * @label
-     * @undirected 
-     */
-    private Supervisor supervisor;
 }

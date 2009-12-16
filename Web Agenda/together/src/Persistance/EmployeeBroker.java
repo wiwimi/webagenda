@@ -2,8 +2,22 @@
 
 package Persistance;
 
+/**
+ * Provides functionality for accessing employee data from the database. 
+ */
 public class EmployeeBroker {
+    /**
+     * Gets an employee object from the database. 
+     */
     public Employee getEmp(){}
 
+    /**
+     * Gets a collection of all employees that are currently working under a given supervisor. 
+     */
     public Employee[] getEmps(Supervisor supervisor){}
+
+    /**
+     * Gets a collection of all employees that work under a given supervisor, limited only to those who are currently available to be assigned to new shifts. 
+     */
+    public Employee[] getAvailable(){}
 }

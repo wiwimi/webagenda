@@ -2,8 +2,17 @@
 
 package Interface;
 
+/**
+ * Interface object that determines what methods all widgets must have in the system. 
+ */
 public interface WidgetInterface {
+    /**
+     * Creates a new widget instance and allows it to be referenced and displayed. 
+     */
     void load();
 
+    /**
+     * Removes a widget from the system, releasing all resources it is using and saving any related data. 
+     */
     void unload();
 }

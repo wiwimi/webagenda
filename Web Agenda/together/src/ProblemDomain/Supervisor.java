@@ -10,6 +10,10 @@ public class Supervisor extends Employee {
      * A collection of all employees that the supervisor is in charge of, stored as a list of the ID's of those employees. 
      */
     private int[] employees;
+
+    /**
+     * A list of employee workgroups that the supervisor is in charge of.  This will include the super workgroup that all of the employees for that supervisor are a part of, and all workgroups that those employees have been divided into. 
+     */
     private Workgroup[] workgroupList;
 
     /**

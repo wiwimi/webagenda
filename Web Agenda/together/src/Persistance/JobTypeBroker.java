@@ -4,7 +4,14 @@ package Persistance;
 
 import ProblemDomain.Supervisor;
 import ProblemDomain.JobType;
+
+/**
+ * Provides functionality for accessing job type data from the database. 
+ */
 public class JobTypeBroker {
+    /**
+     * Returns a list of all job types that currently exist within the system. 
+     */
     public String[] getJobTypeList(Supervisor supervisor) {
     }
 }

@@ -2,13 +2,28 @@
 
 package Interface;
 
+/**
+ * The main interface object of the system that provides access to all other main sections, such as schedule or report views.  Available sections will be determined by the permissions of the employee that is currently logged in. 
+ */
 public class Dashboard {
+    /**
+     * Displays the report view, loading and displaying the expanded version of the Schedule Widget that provides all functionality for managing schedules. 
+     */
     public void dispSchedView(){}
 
+    /**
+     * Displays the report view, loading and displaying the Report Widget that provides all report functionality. 
+     */
     public void dispReportView(){}
 
+    /**
+     * Displays the report view, loading and displaying the Event Widget that allows new events to be created and sent to workgroups and job types. 
+     */
     public void dispEventView(){}
 
+    /**
+     * Displays the dashboard itself. 
+     */
     public void dispDashboard() {
     }
 }

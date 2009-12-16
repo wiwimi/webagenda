@@ -3,8 +3,18 @@
 package Persistance;
 
 import ProblemDomain.Schedule;
+
+/**
+ * Provides functionality for accessing schedule data from the database. 
+ */
 public class ScheduleBroker {
+    /**
+     * Gets the default schedule for a specified date range for all employees that work under the supervisor. 
+     */
     public Schedule getDefault(String p0, String p1){}
 
+    /**
+     * Gets a collection of all schedules that currently exist for the supervisor, limited to a given date range. 
+     */
     public Schedule[] getSchedules(String startDate, String endDate){}
 }

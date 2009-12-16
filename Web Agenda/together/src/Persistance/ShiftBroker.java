@@ -2,7 +2,13 @@
 
 package Persistance;
 
+/**
+ * Provides functionality for accessing shift data from the database. 
+ */
 public class ShiftBroker {
+    /**
+     * Gets a collection of all shifts that the logged in supervisor is responsible for. 
+     */
     public Shift[] getShifts() {
     }
 }

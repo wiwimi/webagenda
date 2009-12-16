@@ -2,16 +2,31 @@
 
 package Interface;
 
+/**
+ * Provides the user interface that will verify employee credentials and provides access to the system. 
+ */
 public class LogInWidget extends Widget {
+    /**
+     * Retrieves the username that was entered by the user. 
+     */
     public void getLogInUsername() {
     }
 
+    /**
+     * Retrieves the password that was entered by the user. 
+     */
     public void getLogInPassword() {
     }
 
+    /**
+     * Activates when the the log in button is clicked by the user, initiating validation procedures. 
+     */
     public void logInButtonAction() {
     }
 
+    /**
+     * Verifies the given username and password by checking it against employees that currently exist within the system. 
+     */
     public Boolean checkEmps() {
     }
 }

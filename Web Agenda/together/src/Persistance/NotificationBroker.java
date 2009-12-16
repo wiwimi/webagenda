@@ -2,5 +2,8 @@
 
 package Persistance;
 
+/**
+ * Provides functionality for accessing notification data from the database. 
+ */
 public class NotificationBroker {
 }

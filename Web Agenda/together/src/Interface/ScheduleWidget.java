@@ -2,13 +2,28 @@
 
 package Interface;
 
+/**
+ * Provides the user interface for creating and managing schedules that exist within the system. 
+ */
 public class ScheduleWidget extends Widget {
+    /**
+     * Loads all shifts that are contained within a given schedule. 
+     */
     public void loadShifts(){}
 
+    /**
+     * Displays the schedule in a weekly format. 
+     */
     public void dispWeeklySched(){}
 
+    /**
+     * Disables the workgroup list, used when there are no custom workgroups that can be accessed. 
+     */
     public void disableWorkgroupList(){}
 
+    /**
+     * Displays the schedule in a daily format. 
+     */
     public void dispDailySched(){}
 
     public void displayNotification() {

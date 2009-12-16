@@ -12,6 +12,9 @@ public class Schedule {
     public Schedule newSched() {
     }
 
+    /**
+     * Removes a shift from a schedule. 
+     */
     public void removeShift() {
     }
 
@@ -21,17 +24,35 @@ public class Schedule {
     public void addShift() {
     }
 
-    public Shift[] getAllShifts(){}
-
     /**
-     * Holds references to the IDs of all employees that this schedule applies to. 
+     * Gets a collection including all shifts that the schedule contains. 
      */
-    private Employee[] employees;
+    public Shift[] getAllShifts(){}
 
     /**
      * Holds references to all shifts that are active for this schedule. 
      */
-    private Shift[][] employeeShifts;
+    private Shift[] shifts;
+
+    /**
+     * The date and time at which the schedule is set to become active, and all affected employees will be expected to follow the shifts it contains. 
+     */
+    private Date activeDate;
+
+    /**
+     * The duration in days that the schedule will be active for. 
+     */
+    private int duration;
+
+    /**
+     * The supervisor who created the schedule. 
+     */
+    private Supervisor creator;
+
+    /**
+     * A description of the schedule, if one is desired.  This is not required to create a schedule. 
+     */
+    private String description;
 
     /**
      * A schedule is composed of one or more shifts.

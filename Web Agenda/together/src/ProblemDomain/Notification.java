@@ -7,9 +7,27 @@ package ProblemDomain;
  */
 public class Notification {
     /**
-     * This method just creates a new notificaiton object and sends it out to every employee that has a new schedule implemented. 
+     * Creates a new notification and sends it to a specific employee.
      */
-    public void sendNotification() {
+    public void sendNotification(Employee p0) {
+    }
+
+    /**
+     * Creates a new notification and sends it to every employee within a specific workgroup.
+     */
+    public void sendNotification(Workgroup p0) {
+    }
+
+    /**
+     * Creates a new notification and sends it to every employee within a specific job type.
+     */
+    public void sendNotification(JobType p0) {
+    }
+
+    /**
+     * Creates a new notification and sends it to every employee within a specific schedule.
+     */
+    public void sendNotification(Schedule p0) {
     }
 
     /**
@@ -25,5 +43,5 @@ public class Notification {
     /**
      * Contains the type of notification that this object represents, such as an accept/reject notification for an employee request, or a general notification sent by the supervisor. 
      */
-    private String typeOfNotifier;
+    private String type;
 }
