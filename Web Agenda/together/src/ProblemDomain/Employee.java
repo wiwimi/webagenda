@@ -36,6 +36,10 @@ public class Employee {
      */
     private int empId;
 
+    public int getDaysOff(){}
+
+    public void setDaysOff(int p0){}
+
     /**
      * The first name of the employee. 
      */

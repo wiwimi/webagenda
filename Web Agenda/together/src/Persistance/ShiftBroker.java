@@ -11,4 +11,21 @@ public class ShiftBroker {
      */
     public Shift[] getShifts() {
     }
+
+    /**
+     * Places a shift into the pool.
+     */
+    public void placeInPool(Shift p0){}
+
+    /**
+     * Gets a shift that is from the pool.
+     */
+    public void getPoolShift(Shift p0){}
+
+    /**
+     * Removes a shift that was placed in the pool into the pool. Current logged in user must have the id of the shift in order to remove, or user must have a higher permission level. 
+     */
+    public void removeFromPool(int p0, Shift p1){}
+
+    public void acceptPoolShift(int p0, Shift p1){}
 }

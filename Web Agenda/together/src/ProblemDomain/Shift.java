@@ -36,4 +36,9 @@ public class Shift {
      * The building or room where the shift work is taking place.  Primarily for organizaional purposes. 
      */
     private String Location;
+
+    /**
+     * The supervisor who is in charge of the employees working that shift.
+     */
+    private Supervisor supervisor;
 }

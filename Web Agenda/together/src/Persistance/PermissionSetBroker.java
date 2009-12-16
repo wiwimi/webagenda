@@ -6,4 +6,8 @@ package Persistance;
  * Provides functionality for accessing permission set data from the database. 
  */
 public class PermissionSetBroker {
+    /**
+     * Fetches a string detaling an employees permission set. 
+     */
+    public String getPermission(String p0){}
 }
