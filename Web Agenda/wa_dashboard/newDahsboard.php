@@ -17,7 +17,9 @@
 			</div>
 			<div id="sidebar">
 				<div id="sidebarSection">
-					<div id="sidebarHeader">First Header</div>
+					<div id="sidebarHeader">
+						<div id="sidebarTitle">First Header</div>
+					</div>
 					<div id="sidebarContent">
 						<ul>
 							<li>First Link</li>
@@ -28,7 +30,9 @@
 				</div>
 				
 				<div id="sidebarSection">
-					<div id="sidebarHeader">First Header</div>
+					<div id="sidebarHeader">
+						<div id="sidebarTitle">First Header</div>
+					</div>
 					<div id="sidebarContent">
 						<ul>
 							<li>First Link</li>
@@ -38,7 +42,32 @@
 					</div>
 				</div>
 			</div>
-			<div id="mainContentArea"></div>
+			<div id="mainContentArea">
+				<div id="column">
+					<div id="widget">
+						<div id="widgetHeader">
+							<div id="widgetTitle">Widget Title</div>
+						</div>
+						<div id="widgetBody">test data</div>
+					</div>
+				</div>
+				
+				<div id="column">
+					<div id="widget">
+						<div id="widgetHeader">
+							<div id="widgetTitle">Widget Title</div>
+						</div>
+						<div id="widgetBody">test data</div>
+					</div>
+					
+					<div id="widget">
+						<div id="widgetHeader">
+							<div id="widgetTitle">Widget Title</div>
+						</div>
+						<div id="widgetBody">test data</div>
+					</div>
+				</div>
+			</div>
 			<div id="footer"></div>
 		</div>
 	</body>
