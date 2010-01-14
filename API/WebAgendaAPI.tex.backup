@@ -1,0 +1,273 @@
+\documentclass[letterpaper,12pt]{report}
+\usepackage[top=3cm, bottom=2.5cm, left=2cm, right=2cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{colortbl}
+\usepackage{lscape}
+\usepackage{array}
+\usepackage{color}
+% Block Comment Package
+\usepackage{verbatim} 
+% Page Style for beautiful headers and footers
+\pagestyle{fancy}
+
+\definecolor{custom}{gray}{0.35} % Used for Headers
+% For API templates
+\definecolor{codetxt}{rgb}{0,0,1}
+\definecolor{errortxt}{rgb}{0.7,0,0}
+\definecolor{warntxt}{rgb}{0.9,0.4,0.1}
+\definecolor{datetxt}{gray}{0.2}
+
+% Header customization
+\lhead{\textcolor{custom}{\nouppercase{\rightmark} }}
+\chead{}
+\rhead{\textcolor{custom}{\nouppercase{\leftmark} }}
+
+% \par tag length set
+\setlength{\parindent}{1cm}
+\setlength{\parskip}{1cm} 
+
+% Need this statement in order to remove bad height warnings
+\setlength{\headheight}{15pt}
+
+
+% Begin Document
+
+\begin{document}
+% Begin document title structure block
+{
+  \centering
+    % Title Page
+    \title{WebAgenda API Version 0.1 \linebreak
+	    \begin{small} \linebreak
+		Daniel Kettle, Mark Hazlett, Daniel Wehr 
+	    \end{small}}
+
+    % Keep author blank, has been set in the title, aligned properly. 
+    \author{}
+
+    % Generate the title into the document
+    \maketitle
+}
+% End document title structure block
+
+
+% Comment out the Template so that it may be duplicated throughout the document
+\begin{comment}
+  \section{API Web Template}\index{API}
+  \texttt{\linebreak
+  <h2>Title Of API Method</h2>\linebreak
+  \hspace*{0.5cm}<h3>Description</h3>\linebreak
+  \hspace*{1cm}<p>The destiption of the API method goes here</p>\linebreak
+  \newline
+  \hspace*{0.5cm}<h3>Usage</h3>\linebreak
+  \hspace*{1cm}<p>Usage Description if required</p>\linebreak
+  \hspace*{1.5cm}<code>Code Goes Here for an example</code>\linebreak
+  \newline
+  \hspace*{0.5cm}<h3>Parameters</h3>\linebreak
+  \hspace*{1cm}<p>Parameter Descriptions if required</p>\linebreak
+  \hspace*{2.0cm}<ul>\linebreak
+  \hspace*{2.5cm}<li>Parameter 1 - Parameter description</li>\linebreak
+  \hspace*{2.5cm}<li>Parameter 2 - Parameter description</li>\linebreak
+  \hspace*{2.5cm}<li>Parameter 3 - Parameter description</li>\linebreak
+  \hspace*{2cm}</ul>\linebreak
+  \newline
+  \hspace*{0.5cm}<h3>Examples</h3>\linebreak
+  \hspace*{1cm}<p>Example description if required</p>\linebreak
+  \hspace*{1.5cm}<code>Code Goes Here for an example on how to use it in a real life \newline \hspace*{2.6cm} scenario</code>\linebreak
+  \newline
+  \hspace*{0.5cm}<h3>Notes</h3>\linebreak
+  \hspace*{1cm}<p>Notes go here</p>\linebreak
+  \newline
+  \hspace*{0.5cm}<h3>Pre-Condition</h3>\linebreak
+  \hspace*{1cm}<p>Pre conditions go here</p>\linebreak
+  \newline
+  \hspace*{0.5cm}<h3>Post-Conditions</h3>\linebreak
+  \hspace*{1cm}<p>Post conditions go here</p>\linebreak
+  \newline
+  \hspace*{0.5cm}<h3>Errors</h3>\linebreak
+  \hspace*{1cm}<p>Errors go here</p>\linebreak
+  \newline
+  \hspace*{0.5cm}<h3>Related Methods</h3>\linebreak
+  \hspace*{1cm}<p><a href="\#">Related Method 1 Link</a></p>\linebreak }
+\end{comment}
+
+% Introduction Page
+{
+\chapter{Introduction to the API}
+\pagebreak
+}
+
+% API method calls that are not visible to the programmer
+{
+\chapter{Private Method Calls}
+  \pagebreak
+  \section{Introduction to Private Method Calls}
+  \par \noindent
+    % Description
+    \hspace*{1cm} The following method calls are hidden from the programmer and are called automatically from other usable method calls. Generally they consist of security functions such as permission checking and omitting unnecessary data from database requests.
+    \par These method calls with contain less information compared to the higher level method calls as they are straightfoward and interact less with other objects. The pre- and post-conditions for accessing these private methods are not covered as they are out of scope. When a private method is invoked, it is safe to assume that the proper conditions have been met and the result has been properly delivered.
+
+}
+
+% API Pages as a collection of Sections -- each section must have a prefix pagebreak and be surrounded in brackets
+{
+\pagebreak
+\section{Cache(Integer)}
+    \begin{description}
+      \item[] \textbf{Description}
+	  \newline \hspace*{1cm} Places an employee's permission information into memory so that it can be retrieved quickly when performing actions that require access to multiple and/or consecutive retrieval calls. 
+      \item[] \textbf{Usage}
+	  \newline \hspace*{1cm} N/A
+      \item[] \textbf{Parameters}
+	  \begin{itemize}
+	   \item Integer - Identification Number for the referenced object that resides in the Broker`s internal memory
+	  \end{itemize}
+      \item[] \textbf{Examples}
+	  \newline \hspace*{1cm} N/A
+      \item[] \textbf{Notes}
+	  \par \noindent
+	  \textit{Multiple Cache Access}
+	  \par \noindent \hspace*{1cm} Only one cache per object can exist when dealing with permissions. Multiple caches would not only introduce inconsistencies between permissions if edited simultaneously, but would also be more difficult to control. When dealing with cache control, the employee with the highest permission level will gain cache access: no user can override the higher permission employee`s changes. A user with cache control overrides users from making conflicting changes while cache changes have not been saved back to the database. Other users will be notified that another employee is making changes to applicable values and will disable their ability to edit those values. 
+	  \par \noindent
+	  \textit{Cache Flushing and Write Persistence}
+	  \par \noindent \hspace*{1cm} Whenever an employee makes changes to permissions and saves them, the cache is written back to the database through the Broker. If multiple users have access to the cache, all changes that do not conflict with the cache control user`s decisions will be written as well. Cache control will be passed on to the user with the next-highest permission level. If a user chooses to discard changes made, or does not save changes, the Broker will automatically check periodically for unflushed caches and write them provided (1) changes have been made, and (2) the cache has been marked as `old`. A cache, once retrieved or edited, will stamp itself with an `old` date, approximately 20 minutes ahead of the current time. The Broker checks this date and if past, will flush data. Once a cache has been flushed by the last remaining user, it is destroyed and only another request for access will regenerate it. If a user is in the middle of editing a cache and it was flushed because another user saves their work, the old date stamp is reset, control is given to the user who has the next highest permission level and previously disabled fields become enabled with newest data. If a higher permissioned user starts editing a field being edited by another user, the higher permissioned user is reminded if a field is being accessed by another user. If they choose to overwrite currently edited data, the lower permissioned user will have their fields disabled.
+	  \par \noindent
+	  \textit{Monitoring Cache Access}
+	  \par \noindent \hspace*{1cm} Caches are monitored by a temporary object in memory:
+	  \begin{itemize}
+	   \item Boolean value that represents whether the cache has been modified. Any changes that occur via methods that access the cache will set that value to true.
+	   \item String or Date value that represents when the cache should be deleted and the next request get from the database.
+	   \item String or Date value that represents the least-recent existing cache (the `old` cache date) closest to the current time, which sets the timer for the next FlushPermissionCache() call.
+	  \end{itemize}
+
+      \item[] \textbf{Pre-Conditions}
+	  \begin{enumerate}
+	   \item The Object being requested to load up the cache with must exist. If the Object does not exist, the cache request will fail. This is checked by the object`s Broker.
+	   \item There must be enough room in the server`s memory to retrieve and store the returned data. This event is out of scope and not covered.
+	  \end{enumerate}
+      \item[] \textbf{Post-Conditions}
+	  \begin{enumerate}
+	   \item Cache is saved in memory and any access to the broker`s object will be redirected to it.
+	   \item `Old` date stamp is assigned
+	  \end{enumerate}
+      \item[] \textbf{Errors}
+	  \newline \hspace*{1cm} N/A
+      \item[] \textbf{Related Methods}
+	  \begin{itemize}
+	   \item FlushCache(Integer) : writes data to the database if a change has been made, otherwise will do nothing and exit
+	   \item ClearCache(Integer) : removes all data that exists in a cache
+	  \end{itemize}
+
+     \end{description}
+}
+
+{
+\pagebreak
+\section{FlushCache(Integer)}
+    \begin{description}
+     \item \textbf{Description}
+	\newline \hspace*{1cm} Checks for the modification date and a boolean value if cache has been saved; if there has been any modifications done to the cache, changes will be written, otherwise the date is looked at. If the date is past, cache is deleted.
+     \item \textbf{Usage}
+	\newline \hspace*{1cm} N/A
+     \item \textbf{Parameters}
+	\begin{itemize}
+	   \item Integer - Identification Number for the referenced object that resides in the Broker`s internal memory
+	  \end{itemize}
+     \item \textbf{Examples}
+	\newline \hspace*{1cm} N/A
+     \item \textbf{Notes}
+	\par \noindent 
+	\textit{Use of this Method} 
+	\par \noindent \hspace*{1cm} Broker classes start monitoring caches once they are used; They will routinely call this method periodically until the number of caches being monitored drop to zero. The calls are dynamic, the first-initialized cache date is saved in the temporary table and that date minus the current date is when the next call is made. After the call is made, if the cache is deleted (if it hasn't been reset by another user), the next cache is assigned to the next call date. There must be a minimum wait time, such as a one minute period, for the timer to wait before another call is made.
+	\par \noindent
+	\textit{Reason for Using a Cache} 
+	\par \noindent \hspace*{1cm} Broker classes control how caches are initialized and maintained. A database may also include caches as a performance enabler, but it does not take authority (user permissions) into account for the purpose of this software. 
+	\par \noindent
+	\textit{How Caches are Referenced and Called}
+	\par \noindent \hspace*{1cm} As a broker controls access to the database, it can (and does) effectively control user access to the data. When a broker is given a request, the broker will load up a table of id`s for the particular broker`s content. For an Employee Broker, a table of employee id`s will be placed into memory alongside the temporary statistics required (See CachePermission(Employee) method). When a request is sent to to the broker, it searches for the requested id in its id cache table, returning those values instead of making a database call. As the id`s can be in sorted order, an algorithm to find the exact placement of an id would greatly speed up access to the cache table, negating overall access time. If no id is found, a regular database call is made and that id is saved to the cache table, as are the values. 
+     \item \textbf{Pre-Conditions}
+	\begin{enumerate}
+	   \item The Object-based cache must exist. If the Object does not exist, the cache flush will do nothing.
+	   \item Broker must be able to modify the database if a change must be written. If the database does not exist, a harddrive write of modified data may be utilized for restoration later.
+	  \end{enumerate}
+     \item \textbf{Post-Conditions}
+	\begin{enumerate}
+	 \item Temporary data is written back to the database
+	 \item Temporary data is removed from memory
+	 \item Reference to cache data is removed from the employee id cache list
+	\end{enumerate}
+     \item[] \textbf{Errors}
+	\par \noindent \hspace*{1cm} N/A
+     \item \textbf{Related Methods} 
+     \begin{itemize}
+      \item Cache(Integer)
+      \item ClearCache(Integer)
+     \end{itemize}
+
+    \end{description}
+}
+
+{
+\pagebreak
+\section{ClearCache(Integer)}
+    \begin{description}
+     \item \textbf{Description}
+	\newline \hspace*{1cm} Removes all data from temporary memory from a specific cache based on the employee specified.
+     \item \textbf{Usage}
+	\newline \hspace*{1cm} N/A
+     \item \textbf{Parameters}
+	 \begin{itemize}
+	   \item Integer - Identification Number for the referenced object that resides in the Broker`s internal memory
+	  \end{itemize}
+     \item \textbf{Examples}
+	\newline \hspace*{1cm} N/A
+     \item \textbf{Notes}
+	\par \noindent 
+	\textit{Use of this Method} 
+	\par \noindent \hspace*{1cm} Broker classes start monitoring caches once they are used; They will routinely call this method periodically until the number of caches being monitored drop to zero. The calls are dynamic, the first-initialized cache date is saved in the temporary table and that date minus the current date is when the next call is made. After the call is made, if the cache is deleted (if it hasn't been reset by another user), the next cache is assigned to the next call date. There must be a minimum wait time, such as a one minute period, for the timer to wait before another call is made.
+	\par \noindent
+	\textit{Reason for Using a Cache} 
+	\par \noindent \hspace*{1cm} Broker classes control how caches are initialized and maintained. A database may also include caches as a performance enabler, but it does not take authority (user permissions) into account for the purpose of this software. 
+	\par \noindent
+	\textit{How Caches are Referenced and Called}
+	\par \noindent \hspace*{1cm} As a broker controls access to the database, it can (and does) effectively control user access to the data. When a broker is given a request, the broker will load up a table of id`s for the particular broker`s content. For an Employee Broker, a table of employee id`s will be placed into memory alongside the temporary statistics required (See CachePermission(Object) method). When a request is sent to to the broker, it searches for the requested id in its id cache table, returning those values instead of making a database call. As the id`s can be in sorted order, an algorithm to find the exact placement of an id would greatly speed up access to the cache table, negating overall access time. If no id is found, a regular database call is made and that id is saved to the cache table, as are the values. 
+      \item \textbf{Pre-Conditions}
+      \begin{enumerate}
+       \item The cache must exist or the method may fail if cache id not found, or do nothing if the cache has not been modified
+      \end{enumerate}
+      \item \textbf{Post-Conditions}
+      \begin{enumerate}
+       \item All temporary data is removed from the cache object
+       \item The table holding all the cache id`s removes the specified id
+      \end{enumerate}
+      \item[] \textbf{Errors}
+	\par \noindent \hspace*{1cm} N/A
+      \item \textbf{Related Methods} 
+      \begin{itemize}
+       \item Cache(Integer)
+       \item FlushCache(Integer)
+      \end{itemize}
+    \end{description}
+}
+
+{
+\pagebreak
+\section{QueueCache(Integer)}
+    \begin{description}
+     \item \textbf{Description} 
+	\newline \hspace*{1cm} A broker method to take an identification number, check the internal id table, and add the id if it's not found
+     \item \textbf{Usage}
+	\newline \hspace*{1cm} N/A
+     \item \textbf{Parameters}
+	\begin{itemize}
+	   \item Integer - Identification Number for the referenced object that resides in the Broker`s internal memory
+	\end{itemize}
+     \item \textbf{Examples}
+	\newline \hspace*{1cm} N/A
+    \end{description}
+
+}
+
+
+\end{document}          
