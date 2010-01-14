@@ -1,0 +1,571 @@
+\indexentry{Deerfoot Inn and Casino}{1}
+\indexentry{Preface}{12}
+\indexentry{Requirements Documentation}{12}
+\indexentry{system}{12}
+\indexentry{system}{12}
+\indexentry{Project}{12}
+\indexentry{licensing}{12}
+\indexentry{Project}{12}
+\indexentry{Deerfoot Inn and Casino}{12}
+\indexentry{system}{12}
+\indexentry{General Public Licence}{12}
+\indexentry{WebBrowser}{12}
+\indexentry{source code}{12}
+\indexentry{Deerfoot Inn and Casino}{12}
+\indexentry{Deerfoot Inn and Casino}{12}
+\indexentry{testing}{12}
+\indexentry{Deployment}{12}
+\indexentry{Department}{12}
+\indexentry{system}{13}
+\indexentry{WebAgenda}{13}
+\indexentry{server}{13}
+\indexentry{system}{13}
+\indexentry{server}{13}
+\indexentry{Internet}{13}
+\indexentry{testing}{13}
+\indexentry{project}{13}
+\indexentry{source code}{13}
+\indexentry{WebAgenda}{13}
+\indexentry{security}{13}
+\indexentry{encrypted}{13}
+\indexentry{system}{13}
+\indexentry{project}{13}
+\indexentry{project}{13}
+\indexentry{system}{13}
+\indexentry{Document Formatting}{14}
+\indexentry{project}{14}
+\indexentry{Header}{14}
+\indexentry{Footer}{14}
+\indexentry{figure}{14}
+\indexentry{Latex}{15}
+\indexentry{User Requirements}{17}
+\indexentry{Business Overviews and Objectives}{17}
+\indexentry{Deerfoot Inn and Casino}{17}
+\indexentry{Statement of the Problem}{18}
+\indexentry{Deerfoot Inn and Casino}{18}
+\indexentry{schedules}{18}
+\indexentry{system}{18}
+\indexentry{system}{18}
+\indexentry{Department}{18}
+\indexentry{system}{18}
+\indexentry{system}{18}
+\indexentry{System Environment}{19}
+\indexentry{Deerfoot Inn and Casino}{19}
+\indexentry{system}{19}
+\indexentry{server}{19}
+\indexentry{Aloha}{19}
+\indexentry{human resources}{19}
+\indexentry{Department}{19}
+\indexentry{Aloha}{19}
+\indexentry{Current System}{19}
+\indexentry{system}{19}
+\indexentry{format}{19}
+\indexentry{System Requirements}{20}
+\indexentry{Functional Requirements}{20}
+\indexentry{Information Systems}{20}
+\indexentry{system}{20}
+\indexentry{Database}{20}
+\indexentry{Backup}{20}
+\indexentry{Database}{20}
+\indexentry{export}{22}
+\indexentry{export}{22}
+\indexentry{format}{22}
+\indexentry{system}{23}
+\indexentry{RSS}{23}
+\indexentry{Mac OS X iCal}{23}
+\indexentry{system}{23}
+\indexentry{Sub Domain}{23}
+\indexentry{Permissions}{23}
+\indexentry{WebAgenda}{23}
+\indexentry{General Public Licence}{23}
+\indexentry{source code}{23}
+\indexentry{Non-Functional Requirements}{23}
+\indexentry{system}{23}
+\indexentry{Deerfoot Inn and Casino}{23}
+\indexentry{Department}{23}
+\indexentry{Deerfoot Inn and Casino}{24}
+\indexentry{system}{24}
+\indexentry{WebAgenda}{24}
+\indexentry{Department}{24}
+\indexentry{Department}{24}
+\indexentry{system}{24}
+\indexentry{Department}{24}
+\indexentry{system}{24}
+\indexentry{system}{24}
+\indexentry{Department}{24}
+\indexentry{system}{25}
+\indexentry{server}{25}
+\indexentry{server}{25}
+\indexentry{project}{25}
+\indexentry{server}{25}
+\indexentry{Backup}{25}
+\indexentry{Database}{25}
+\indexentry{System Interface Requirements}{26}
+\indexentry{Deerfoot Inn and Casino}{26}
+\indexentry{system}{26}
+\indexentry{javascript}{26}
+\indexentry{interface}{26}
+\indexentry{Database}{26}
+\indexentry{export}{26}
+\indexentry{system}{26}
+\indexentry{interface}{26}
+\indexentry{system}{26}
+\indexentry{Deerfoot Inn and Casino}{26}
+\indexentry{system}{26}
+\indexentry{export}{26}
+\indexentry{format}{26}
+\indexentry{Microsoft Outlook}{26}
+\indexentry{Mac OS X iCal}{26}
+\indexentry{interface}{26}
+\indexentry{export}{26}
+\indexentry{system}{26}
+\indexentry{GNU/Linux KCal}{26}
+\indexentry{interface}{26}
+\indexentry{WebAgenda}{26}
+\indexentry{Deerfoot Inn and Casino}{26}
+\indexentry{system}{26}
+\indexentry{Mobile Web}{27}
+\indexentry{interface}{27}
+\indexentry{Deerfoot Inn and Casino}{27}
+\indexentry{Aloha}{27}
+\indexentry{system}{27}
+\indexentry{interface}{27}
+\indexentry{project}{27}
+\indexentry{system}{27}
+\indexentry{export}{27}
+\indexentry{interface}{27}
+\indexentry{WebAgenda}{27}
+\indexentry{system}{27}
+\indexentry{WebAgenda}{27}
+\indexentry{server}{27}
+\indexentry{Maintainability and Administration Requirements}{28}
+\indexentry{WebAgenda}{28}
+\indexentry{Deerfoot Inn and Casino}{28}
+\indexentry{project}{28}
+\indexentry{Database}{28}
+\indexentry{WebAgenda}{28}
+\indexentry{system}{28}
+\indexentry{Backup}{28}
+\indexentry{system}{28}
+\indexentry{Aloha}{28}
+\indexentry{SMS}{28}
+\indexentry{system}{28}
+\indexentry{WebAgenda}{28}
+\indexentry{system}{28}
+\indexentry{system}{28}
+\indexentry{WebAgenda}{28}
+\indexentry{WebAgenda}{28}
+\indexentry{WebAgenda}{28}
+\indexentry{Usability Requirements}{29}
+\indexentry{system}{29}
+\indexentry{system}{29}
+\indexentry{interface}{29}
+\indexentry{project}{29}
+\indexentry{Requirements Models}{31}
+\indexentry{Use Case Diagram}{31}
+\indexentry{WebAgenda}{32}
+\indexentry{Use Case}{32}
+\indexentry{system}{32}
+\indexentry{Extended Use Case Diagrams}{33}
+\indexentry{Use Case}{33}
+\indexentry{system}{33}
+\indexentry{actor}{33}
+\indexentry{WebAgenda}{33}
+\indexentry{actor}{33}
+\indexentry{system}{33}
+\indexentry{system}{33}
+\indexentry{actor}{34}
+\indexentry{system}{34}
+\indexentry{system}{34}
+\indexentry{Database}{34}
+\indexentry{Database}{34}
+\indexentry{actor}{34}
+\indexentry{system}{34}
+\indexentry{system}{34}
+\indexentry{Use Case}{35}
+\indexentry{actor}{35}
+\indexentry{system}{35}
+\indexentry{WebAgenda}{35}
+\indexentry{actor}{35}
+\indexentry{system}{35}
+\indexentry{system}{35}
+\indexentry{actor}{35}
+\indexentry{system}{35}
+\indexentry{system}{35}
+\indexentry{Use Case}{36}
+\indexentry{system}{36}
+\indexentry{Actor}{36}
+\indexentry{actor}{36}
+\indexentry{system}{36}
+\indexentry{system}{36}
+\indexentry{Database}{36}
+\indexentry{API}{36}
+\indexentry{actor}{37}
+\indexentry{system}{37}
+\indexentry{system}{37}
+\indexentry{Database}{37}
+\indexentry{actor}{37}
+\indexentry{system}{37}
+\indexentry{actor}{37}
+\indexentry{system}{37}
+\indexentry{actor}{37}
+\indexentry{system}{37}
+\indexentry{actor}{37}
+\indexentry{system}{37}
+\indexentry{Database}{37}
+\indexentry{actor}{38}
+\indexentry{system}{38}
+\indexentry{actor}{38}
+\indexentry{system}{38}
+\indexentry{Database}{38}
+\indexentry{Use Case}{39}
+\indexentry{system}{39}
+\indexentry{actor}{39}
+\indexentry{actor}{39}
+\indexentry{system}{39}
+\indexentry{actor}{39}
+\indexentry{actor}{39}
+\indexentry{system}{39}
+\indexentry{actor}{39}
+\indexentry{actor}{39}
+\indexentry{system}{39}
+\indexentry{actor}{39}
+\indexentry{actor}{40}
+\indexentry{system}{40}
+\indexentry{actor}{40}
+\indexentry{Use Case}{40}
+\indexentry{Use Case}{41}
+\indexentry{WebAgenda}{41}
+\indexentry{interface}{41}
+\indexentry{system}{41}
+\indexentry{actor}{41}
+\indexentry{actor}{41}
+\indexentry{system}{41}
+\indexentry{actor}{42}
+\indexentry{system}{42}
+\indexentry{system}{42}
+\indexentry{system}{42}
+\indexentry{actor}{42}
+\indexentry{system}{42}
+\indexentry{system}{42}
+\indexentry{actor}{42}
+\indexentry{system}{42}
+\indexentry{system}{43}
+\indexentry{actor}{43}
+\indexentry{actor}{43}
+\indexentry{system}{43}
+\indexentry{actor}{44}
+\indexentry{system}{44}
+\indexentry{system}{44}
+\indexentry{actor}{45}
+\indexentry{system}{45}
+\indexentry{actor}{45}
+\indexentry{system}{45}
+\indexentry{system}{45}
+\indexentry{system}{46}
+\indexentry{actor}{46}
+\indexentry{actor}{46}
+\indexentry{system}{46}
+\indexentry{system}{46}
+\indexentry{actor}{47}
+\indexentry{system}{47}
+\indexentry{actor}{47}
+\indexentry{system}{47}
+\indexentry{actor}{48}
+\indexentry{system}{48}
+\indexentry{actor}{48}
+\indexentry{system}{48}
+\indexentry{actor}{48}
+\indexentry{system}{48}
+\indexentry{system}{49}
+\indexentry{actor}{49}
+\indexentry{actor}{49}
+\indexentry{system}{49}
+\indexentry{system}{49}
+\indexentry{actor}{50}
+\indexentry{system}{50}
+\indexentry{system}{50}
+\indexentry{actor}{50}
+\indexentry{system}{50}
+\indexentry{actor}{50}
+\indexentry{system}{50}
+\indexentry{actor}{51}
+\indexentry{system}{51}
+\indexentry{system}{52}
+\indexentry{actor}{52}
+\indexentry{system}{52}
+\indexentry{actor}{52}
+\indexentry{system}{52}
+\indexentry{system}{52}
+\indexentry{actor}{53}
+\indexentry{system}{53}
+\indexentry{actor}{53}
+\indexentry{system}{53}
+\indexentry{actor}{54}
+\indexentry{system}{54}
+\indexentry{system}{54}
+\indexentry{actor}{54}
+\indexentry{system}{54}
+\indexentry{actor}{54}
+\indexentry{system}{54}
+\indexentry{actor}{55}
+\indexentry{system}{55}
+\indexentry{actor}{55}
+\indexentry{system}{55}
+\indexentry{actor}{55}
+\indexentry{system}{55}
+\indexentry{actor}{56}
+\indexentry{system}{56}
+\indexentry{actor}{57}
+\indexentry{actor}{57}
+\indexentry{system}{57}
+\indexentry{system}{57}
+\indexentry{project}{57}
+\indexentry{actor}{58}
+\indexentry{system}{58}
+\indexentry{system}{58}
+\indexentry{Use Case}{58}
+\indexentry{actor}{58}
+\indexentry{system}{58}
+\indexentry{Use Case}{58}
+\indexentry{system}{59}
+\indexentry{system}{59}
+\indexentry{actor}{59}
+\indexentry{actor}{59}
+\indexentry{system}{59}
+\indexentry{actor}{60}
+\indexentry{system}{60}
+\indexentry{Use Case}{60}
+\indexentry{actor}{60}
+\indexentry{system}{60}
+\indexentry{Use Case}{60}
+\indexentry{actor}{61}
+\indexentry{actor}{61}
+\indexentry{system}{61}
+\indexentry{actor}{62}
+\indexentry{system}{62}
+\indexentry{Use Case}{62}
+\indexentry{actor}{62}
+\indexentry{system}{62}
+\indexentry{Use Case}{62}
+\indexentry{actor}{62}
+\indexentry{system}{62}
+\indexentry{Use Case}{62}
+\indexentry{actor}{63}
+\indexentry{system}{63}
+\indexentry{Use Case}{63}
+\indexentry{actor}{64}
+\indexentry{actor}{64}
+\indexentry{system}{64}
+\indexentry{actor}{65}
+\indexentry{system}{65}
+\indexentry{Use Case}{65}
+\indexentry{actor}{66}
+\indexentry{actor}{66}
+\indexentry{system}{66}
+\indexentry{actor}{66}
+\indexentry{system}{66}
+\indexentry{Use Case}{66}
+\indexentry{actor}{67}
+\indexentry{system}{67}
+\indexentry{Use Case}{67}
+\indexentry{system}{69}
+\indexentry{State Machine Diagrams}{70}
+\indexentry{Schedule}{71}
+\indexentry{system}{71}
+\indexentry{Shift Change}{76}
+\indexentry{system}{76}
+\indexentry{system}{78}
+\indexentry{Activity Diagrams}{80}
+\indexentry{WebAgenda}{81}
+\indexentry{system}{81}
+\indexentry{system}{83}
+\indexentry{system}{88}
+\indexentry{Database}{88}
+\indexentry{interface}{88}
+\indexentry{system}{88}
+\indexentry{system}{88}
+\indexentry{interface}{88}
+\indexentry{Database}{88}
+\indexentry{WebAgenda}{94}
+\indexentry{system}{96}
+\indexentry{Schedule}{98}
+\indexentry{Data Dictionary}{122}
+\indexentry{Project Management}{163}
+\indexentry{Schedule}{163}
+\indexentry{WebAgenda}{164}
+\indexentry{WebAgenda}{165}
+\indexentry{WebAgenda}{166}
+\indexentry{WebAgenda}{167}
+\indexentry{Requirements Documentation}{168}
+\indexentry{WebAgenda}{168}
+\indexentry{WebAgenda}{168}
+\indexentry{project}{168}
+\indexentry{System Requirements}{168}
+\indexentry{system interface}{168}
+\indexentry{project}{168}
+\indexentry{system}{168}
+\indexentry{project scope}{168}
+\indexentry{system}{168}
+\indexentry{Functional Requirements}{168}
+\indexentry{Beta Release}{168}
+\indexentry{project}{168}
+\indexentry{system}{168}
+\indexentry{System Requirements}{168}
+\indexentry{Fact-Finding Methodology}{168}
+\indexentry{System Requirements}{168}
+\indexentry{Use Case}{168}
+\indexentry{Use Case}{168}
+\indexentry{actor}{168}
+\indexentry{System Interface Requirements}{168}
+\indexentry{Maintainability}{168}
+\indexentry{Administration Requirements}{168}
+\indexentry{Backup}{168}
+\indexentry{Requirements Analysis}{169}
+\indexentry{project}{169}
+\indexentry{Design Documentation}{169}
+\indexentry{project}{169}
+\indexentry{system}{169}
+\indexentry{interface}{169}
+\indexentry{system}{169}
+\indexentry{Alpha Release}{170}
+\indexentry{Beta Release}{170}
+\indexentry{bug}{170}
+\indexentry{interface}{170}
+\indexentry{Beta Release}{170}
+\indexentry{bug}{170}
+\indexentry{Final Release}{170}
+\indexentry{Final Release}{170}
+\indexentry{system}{170}
+\indexentry{project}{170}
+\indexentry{Alpha Release}{170}
+\indexentry{Beta Release}{170}
+\indexentry{bug}{170}
+\indexentry{encryption}{170}
+\indexentry{SSL}{170}
+\indexentry{Deployment}{170}
+\indexentry{Team Configuration}{171}
+\indexentry{project}{171}
+\indexentry{Members And Roles}{171}
+\indexentry{project}{171}
+\indexentry{project}{171}
+\indexentry{project}{172}
+\indexentry{project}{172}
+\indexentry{source code}{172}
+\indexentry{Reporting Relationships and Procedures}{172}
+\indexentry{project}{172}
+\indexentry{Contact Information}{173}
+\indexentry{Project Standards and Procedures}{174}
+\indexentry{LaTeX2E}{174}
+\indexentry{LaTeX}{174}
+\indexentry{system}{174}
+\indexentry{WebAgenda}{174}
+\indexentry{General Public Licence}{174}
+\indexentry{source code}{174}
+\indexentry{server}{174}
+\indexentry{Date Formats}{174}
+\indexentry{interface}{174}
+\indexentry{system}{174}
+\indexentry{API}{175}
+\indexentry{system}{175}
+\indexentry{interface}{175}
+\indexentry{API}{175}
+\indexentry{system}{175}
+\indexentry{Database}{175}
+\indexentry{system}{176}
+\indexentry{system}{176}
+\indexentry{server}{176}
+\indexentry{Database}{176}
+\indexentry{system}{176}
+\indexentry{server}{176}
+\indexentry{HTTP}{176}
+\indexentry{HTTPS}{176}
+\indexentry{server}{176}
+\indexentry{system}{176}
+\indexentry{Database}{176}
+\indexentry{server}{176}
+\indexentry{system}{176}
+\indexentry{MySQL}{176}
+\indexentry{General Public Licence}{176}
+\indexentry{system}{177}
+\indexentry{testing}{177}
+\indexentry{System Requirements}{177}
+\indexentry{HTTP}{177}
+\indexentry{server}{177}
+\indexentry{Database}{177}
+\indexentry{server}{178}
+\indexentry{PHP}{178}
+\indexentry{Apache}{178}
+\indexentry{MySQL}{178}
+\indexentry{Javascript}{178}
+\indexentry{system}{179}
+\indexentry{system}{179}
+\indexentry{System Requirements}{179}
+\indexentry{system}{180}
+\indexentry{system}{181}
+\indexentry{system}{182}
+\indexentry{system}{183}
+\indexentry{bug}{183}
+\indexentry{WebAgenda}{183}
+\indexentry{HTTP}{183}
+\indexentry{API}{183}
+\indexentry{API}{184}
+\indexentry{system}{184}
+\indexentry{system}{184}
+\indexentry{system}{184}
+\indexentry{system}{185}
+\indexentry{system}{185}
+\indexentry{system}{185}
+\indexentry{system}{185}
+\indexentry{system}{185}
+\indexentry{system}{185}
+\indexentry{system}{185}
+\indexentry{system}{185}
+\indexentry{system}{186}
+\indexentry{system}{186}
+\indexentry{system}{186}
+\indexentry{system}{186}
+\indexentry{system}{186}
+\indexentry{system}{186}
+\indexentry{bug}{187}
+\indexentry{current scheduling procedures}{189}
+\indexentry{system}{189}
+\indexentry{scheduling procedures}{189}
+\indexentry{Department}{189}
+\indexentry{current system}{189}
+\indexentry{Department}{189}
+\indexentry{system}{189}
+\indexentry{system}{189}
+\indexentry{Department}{189}
+\indexentry{system}{189}
+\indexentry{system}{189}
+\indexentry{system}{190}
+\indexentry{requirements}{190}
+\indexentry{system}{190}
+\indexentry{budget}{190}
+\indexentry{Microsoft Outlook}{190}
+\indexentry{system}{190}
+\indexentry{security}{190}
+\indexentry{encryption}{190}
+\indexentry{passwords}{190}
+\indexentry{vacations}{190}
+\indexentry{holidays}{191}
+\indexentry{management structure}{191}
+\indexentry{Department}{191}
+\indexentry{system}{191}
+\indexentry{API}{192}
+\indexentry{API}{193}
+\indexentry{API}{193}
+\indexentry{API}{194}
+\indexentry{system}{195}
+\indexentry{system}{204}
+\indexentry{system}{205}
+\indexentry{export}{205}
+\indexentry{system}{205}
+\indexentry{system}{205}
+\indexentry{system}{206}
+\indexentry{Database}{206}
+\indexentry{system}{206}
+\indexentry{WebAgenda}{206}
+\indexentry{system}{206}
+\indexentry{testing}{211}
