@@ -40,7 +40,7 @@
     % Title Page
     \title{WebAgenda API Version 0.1 \linebreak
 	    \begin{small} \linebreak
-		Daniel Kettle, Mark Hazlett, Daniel Wehr 
+		Daniel Kettle, Mark Hazlett, Daniel Wehr, Noorin Mohammed
 	    \end{small}}
 
     % Keep author blank, has been set in the title, aligned properly. 
@@ -92,23 +92,23 @@
   \hspace*{1cm}<p><a href="\#">Related Method 1 Link</a></p>\linebreak }
 \end{comment}
 
-% Introduction Page
-{
-\chapter{Introduction to the API}
-\pagebreak
-}
 
 % API method calls that are not visible to the programmer
 {
-\chapter{Private Method Calls}
+\part{Private Method Calls}
   \pagebreak
-  \section{Introduction to Private Method Calls}
+  \section*{Introduction to Private Method Calls}
   \par \noindent
     % Description
     \hspace*{1cm} The following method calls are hidden from the programmer and are called automatically from other usable method calls. Generally they consist of security functions such as permission checking and omitting unnecessary data from database requests.
     \par These method calls with contain less information compared to the higher level method calls as they are straightfoward and interact less with other objects. The pre- and post-conditions for accessing these private methods are not covered as they are out of scope. When a private method is invoked, it is safe to assume that the proper conditions have been met and the result has been properly delivered.
 
 }
+
+{
+\chapter{Brokers}
+}
+
 
 % API Pages as a collection of Sections -- each section must have a prefix pagebreak and be surrounded in brackets
 {
@@ -156,7 +156,7 @@
       \item[] \textbf{Related Methods}
 	  \begin{itemize}
 	   \item FlushCache(Integer) : writes data to the database if a change has been made, otherwise will do nothing and exit
-	   \item ClearCache(Integer) : removes all data that exists in a cache
+	   \item ClearCache() : removes all data that exists in a cache
 	  \end{itemize}
 
      \end{description}
@@ -202,7 +202,7 @@
      \item \textbf{Related Methods} 
      \begin{itemize}
       \item Cache(Integer)
-      \item ClearCache(Integer)
+      \item ClearCache()
      \end{itemize}
 
     \end{description}
@@ -210,15 +210,15 @@
 
 {
 \pagebreak
-\section{ClearCache(Integer)}
+\section{ClearCache()}
     \begin{description}
      \item \textbf{Description}
-	\newline \hspace*{1cm} Removes all data from temporary memory from a specific cache based on the employee specified.
+	\newline \hspace*{1cm} Removes all data from temporary memory from all caches that have not been accessed recently, received a request to save data, or have been opened for a duration of time.
      \item \textbf{Usage}
 	\newline \hspace*{1cm} N/A
      \item \textbf{Parameters}
 	 \begin{itemize}
-	   \item Integer - Identification Number for the referenced object that resides in the Broker`s internal memory
+	   \item N/A
 	  \end{itemize}
      \item \textbf{Examples}
 	\newline \hspace*{1cm} N/A
@@ -234,7 +234,7 @@
 	\par \noindent \hspace*{1cm} As a broker controls access to the database, it can (and does) effectively control user access to the data. When a broker is given a request, the broker will load up a table of id`s for the particular broker`s content. For an Employee Broker, a table of employee id`s will be placed into memory alongside the temporary statistics required (See CachePermission(Object) method). When a request is sent to to the broker, it searches for the requested id in its id cache table, returning those values instead of making a database call. As the id`s can be in sorted order, an algorithm to find the exact placement of an id would greatly speed up access to the cache table, negating overall access time. If no id is found, a regular database call is made and that id is saved to the cache table, as are the values. 
       \item \textbf{Pre-Conditions}
       \begin{enumerate}
-       \item The cache must exist or the method may fail if cache id not found, or do nothing if the cache has not been modified
+       \item A cache must be initialized for this method to have any effect, data must be modified for cache to be written back to the database
       \end{enumerate}
       \item \textbf{Post-Conditions}
       \begin{enumerate}
@@ -271,5 +271,50 @@
 
 }
 
+{
+\pagebreak
+\section{* FetchBrokerObject(Integer)}
+    \begin{description}
+     \item \textbf{Description} 
+	\newline \hspace*{1cm} Decription Here
+    \end{description}
+
+}
+
+{
+\pagebreak
+\section{Fetch(Integer)}
+    \begin{description}
+     \item \textbf{Description} 
+	\newline \hspace*{1cm} Decription Here
+    \end{description}
+
+}
+
+{
+\chapter{Broker CacheTable}
+}
+
+% CacheTable class methods
+
+{
+\pagebreak
+\section{FindNearestFlushTime()}
+    \begin{description}
+     \item \textbf{Description} 
+	\newline \hspace*{1cm} Decription Here
+    \end{description}
+
+}
+
+{
+\pagebreak
+\section{}
+    \begin{description}
+     \item \textbf{Description} 
+	\newline \hspace*{1cm} Decription Here
+    \end{description}
+
+}
 
 \end{document}          

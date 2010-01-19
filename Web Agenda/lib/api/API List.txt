@@ -4,9 +4,9 @@
 
 # PRIVATE METHOD CALLS
 
-Cache( ... )
-Flush()
-ClearCache( ... )
+Cache( ... ) D.K.
+Flush() D.K.
+ClearCache( ... ) D.K.
 
 
 
