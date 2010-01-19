@@ -25,9 +25,9 @@ DROP TABLE IF EXISTS `WebAgenda`.`PermissionSet` ;
 
 CREATE  TABLE IF NOT EXISTS `WebAgenda`.`PermissionSet` (
   `plevel` INT NOT NULL ,
+  `canEditSched` BOOLEAN NOT NULL DEFAULT 0 ,
   `canReadSched` BOOLEAN NOT NULL DEFAULT 1 ,
   `canReadOldSched` BOOLEAN NOT NULL DEFAULT 0 ,
-  `canEdit` BOOLEAN NOT NULL DEFAULT 0 ,
   `canViewResources` BOOLEAN NOT NULL DEFAULT 0 ,
   `canChangePermissions` BOOLEAN NOT NULL DEFAULT 0 ,
   `canReadLogs` BOOLEAN NOT NULL DEFAULT 0 ,
