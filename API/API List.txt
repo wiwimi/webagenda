@@ -1,0 +1,17 @@
+# List of API Method calls go here.
+# Be sure to put your name beside the ones you create, as well as in the actual api entry
+#
+# Getters and Setters for all classes are assumed. Not every attribute will have one
+
+Broker Class
+    RemoveCachedObjectsAfter(Date remove_past) D.K.
+    CacheObject(CachableObject object) D.K.
+    FetchObject(int id) D.K.
+    FlushCache() D.K. # Flushes the entire cache, all dirty or modified objects
+    FlushCache(int id) D.K. # Just one object, useful for direct saving, but will use io
+
+    CacheTable Inner Class # Holds cached data
+	Remove(int id) D.K.
+	Write(int id) D.K.
+	Access(int id) D.K.
+	
