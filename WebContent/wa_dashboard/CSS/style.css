@@ -1,0 +1,58 @@
+body {
+	
+}
+
+label {
+	color: white;
+	font-family: cochin;
+}
+
+#container {
+	min-width: 1000px;
+	width: 1000px;
+	margin: 0 auto;
+}
+
+#header {
+	background-color: #282828;
+	width: 100%;
+	height: 100px;
+}
+
+#headerTitle {
+	position: relative;
+	top: 65px;
+	left: 20px;
+	color: white;
+	font-family: Cochin;
+	font-size: 2.5em;
+}
+
+#loginArea {
+	width: 550px;
+	height: 100px;
+	position: fixed;
+	margin-top: -30px;
+	margin-left: 450px;
+}
+
+#rememberMe {
+	color: white;
+	font-family: cochin;
+	margin-left: 90px;
+}
+
+#middle {
+	color: #282828;
+	font-family: cochin;
+	min-height: 100px;
+	padding: 20px;
+}
+
+#footer {
+	position: relative;
+	top: 2em;
+	background-color: #282828;
+	width: 100%;
+	height: 100px;
+}
