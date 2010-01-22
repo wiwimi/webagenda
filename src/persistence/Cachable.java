@@ -29,17 +29,20 @@ public abstract class Cachable implements Serializable {
 	 * TODO
 	 * @return boolean true if user can edit this object.
 	 */
-	public boolean canEdit()
-	{
-		return false;
-	}
+	public abstract boolean canEdit();
 	
 	/**
 	 * TODO (like canEdit, but even managers cannot delete an employee object. Only disable.)
 	 * @return boolean true if user can delete the business object from the cache (henceforth the database)
 	 */
-	public boolean canDelete()
-	{
-		return false;
-	}
+	public abstract boolean canDelete();
+	
+	/**
+	 * TODO
+	 * @return boolean true if user can read the cachable object
+	 */
+	public abstract boolean canRead();
+	
+	
+	
 }

@@ -25,4 +25,30 @@ public class CacheTable {
 	private Date flush_stamp											= null;
 	
 	
+	/**
+	 * Method to remove an item from cache. Probably won't be used while the system is in a work environment because it's
+	 * undesirable to not have items cached when they are used.
+	 * 
+	 * @param id int id to remove from cache
+	 * @return error code int<br />
+	 * -1: Method failed, Error occured.
+	 * 0 : Item successfully removed from cache
+	 * 1 : ID specified not found
+	 * 
+	 */
+	private int removeFromCache(int id)
+	{
+		return -1;
+	}
+	
+	/**
+	 * 
+	 * @param cache_obj
+	 * @return
+	 */
+	private int persist(Cachable cache_obj)
+	{
+		return -1;
+	}
+	
 }
