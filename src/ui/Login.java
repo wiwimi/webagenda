@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class Login
@@ -49,6 +50,10 @@ public class Login extends HttpServlet
 
             if(username.equals("admin") && password.equals("password"))
             {
+            	//Login is successful
+            	HttpSession loginSession = request.getSession(true);
+            	loginSession.setAttribute("username", username);
+            	
                 dispatcher = context.getRequestDispatcher("/wa_dashboard/dashboard.jsp");
                 dispatcher.forward(request, response);
             }

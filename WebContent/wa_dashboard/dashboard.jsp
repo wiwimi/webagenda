@@ -7,6 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="CSS/style.css" type="text/css"
 	media="screen" />
+	
+<link type="text/javascript" src="js/dashboard.js"></link>
 
 <title>Web Agenda - Dashboard</title>
 </head>
@@ -14,14 +16,8 @@
 <div id="container">
 <div id="header">
 <div id="headerTitle">Deerfoot Inn and Casino</div>
-<div id="loginArea">
-<div id="rememberMe"><input type="checkbox" name="rememberMe"
-	value="rememberMe" />Remember me?</div>
-<form action="login" method="POST"><label for="username">Username:</label><input
-	name="username" type="text" size="20" /> <label for="password">Password:</label><input
-	name="password" type="password" size="20" />
-<button type="submit" value="submit">Login</button>
-</form>
+<div id="userArea">
+	<h6>Welcome: <%session.getAttribute("username"); %> | <a href="#">Settings</a> | Logout</h6>
 </div>
 </div>
 
@@ -30,7 +26,7 @@
 <div id="sidebar">
 	<!-- Gray colour for rectangles -->
 		
-		<div id= "dashboardUpperRectangle" class="upperDashboard">
+		<div id= "dashboardUpperRectangle" class="upperRectangle">
 		
 			<b>Dashboard</b>
 		
@@ -117,84 +113,6 @@
 			<b> <a href =" " >  Contact Admin </a> </b> <br>
 			<b> <a href =" " > Online Help </a> </b> <br>
 		</div>
-<script type = "text/javascript">
-
-		$(function()
-		{
-			    $('#helpUpperRectangle').click(function()
-				{
-					if($('#helpLowerRectangle').is(":hidden"))
-					{
-				
-						$('#helpLowerRectangle').slideDown('fast');
-					}
-					else
-					{
-						$('#helpLowerRectangle').slideUp('fast');
-					
-					}
-				
-				});
-				
-				$('#usersUpperRectangle').click(function()
-				{
-					if($('#usersLowerRectangle').is(":hidden"))
-					{
-				
-						$('#usersLowerRectangle').slideDown('fast');
-					}
-					else
-					{
-						$('#usersLowerRectangle').slideUp('fast');
-					}
-				
-				});
-				$('#mailUpperRectangle').click(function()
-				{
-					if($('#mailLowerRectangle').is(":hidden"))
-					{
-				
-						$('#mailLowerRectangle').slideDown('fast');
-					}
-					else
-					{
-					
-						$('#mailLowerRectangle').slideUp('fast');
-					
-					}
-				
-				});
-				$('#scheduleUpperRectangle').click(function()
-				{
-					if($('#scheduleLowerRectangle').is(":hidden"))
-					{
-				
-						$('#scheduleLowerRectangle').slideDown('fast');
-					}
-					else
-					{
-						$('#scheduleLowerRectangle').slideUp('fast');
-					
-					}
-				
-				});
-				$('#dashboardUpperRectangle').click(function()
-				{
-					if($('#dashboardLowerRectangle').is(":hidden"))
-					{
-				
-						$('#dashboardLowerRectangle').slideDown('fast');
-					}
-					else
-					{
-						$('#dashboardLowerRectangle').slideUp('fast');
-					
-					}
-				
-				});
-		});
-
-		</script>
 	
 	</div>
 </div>

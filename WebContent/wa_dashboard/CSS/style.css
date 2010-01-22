@@ -57,6 +57,24 @@ label {
 	height: 100px;
 }
 
+#userArea
+{
+	width: 550px;
+	height: 100px;
+	position: relative;
+	margin-top: -70px;
+	margin-left: 750px;
+	color:white;
+	font-family: cochin;
+	font-size:1.5em;
+}
+
+#userArea a
+{
+	color:white;
+	text-decoration:none;
+}
+
 //Noorin
 /* Gray colour for rectangles */
 
@@ -98,10 +116,6 @@ label {
 		height : 50 px;
 		text-align: left;
 		position:relative;
-		
-		
-		-webkit-border-top-left-radius:10px; 
-		-webkit-border-top-right-radius:10px;
 		-webkit-border-bottom-left-radius:10px; 
 		-webkit-border-bottom-right-radius:10px
 
@@ -109,7 +123,7 @@ label {
 	
 	/* Dark gray Background for dash-board upper rectangle */
 
-	#sidebar .upperDashboard
+	#sidebar .upperRectangle
 	{
 		font-size: 90%;
 	    line-height: 1.0 em;
@@ -123,11 +137,8 @@ label {
 		height : 20 px;
 		text-align: center;
 		position:relative;
-		
 		-webkit-border-top-left-radius:10px; 
 		-webkit-border-top-right-radius:10px;
-		-webkit-border-bottom-left-radius:10px; 
-		-webkit-border-bottom-right-radius:10px
 
 	}
 	
@@ -136,17 +147,12 @@ label {
 	{
 		position: relative;
 		top:100;
-		
 		float : left;
 		width: 200 px;
-		background-color: #C0C0C0;
 		color: black;
 		margin : 0;
 		padding : 0;
 		text-align:center;
-		border-style: solid;
-		border-width: 2px;
-		border-color: gray;
 		height: 500px;
 	}
 	
