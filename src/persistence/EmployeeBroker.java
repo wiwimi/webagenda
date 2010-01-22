@@ -10,4 +10,7 @@ package persistence;
  */
 public class EmployeeBroker {
 
+	/** Collection of Employees to be cached in memory	*/
+	private CacheTable employee_cache 								= null;
+	
 }

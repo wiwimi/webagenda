@@ -42,7 +42,9 @@ public class CacheTable {
 	}
 	
 	/**
-	 * 
+	 * TODO: Write a modification to cache. Will check against all different parts to the business object
+	 * so an edited object won't be overwritten with another edited object while discarding changes of the first.
+	 * Conflicts will lean towards highest permission level
 	 * @param cache_obj
 	 * @return
 	 */
@@ -50,5 +52,36 @@ public class CacheTable {
 	{
 		return -1;
 	}
+	
+	/**
+	 * TODO: Write data to the database. This method call must check permissions before doing so
+	 * @param cache_obj
+	 * @return
+	 */
+	private int writeToDatabase(Cachable cache_obj)
+	{
+		return -1;
+	}
+	
+	/**
+	 * Overloaded method to loop through cachable array and write changes to database
+	 * @param cache_objects
+	 * @return
+	 */
+	private int[] writeToDatabase(Cachable[] cache_objects)
+	{
+		return new int[]{-1,-1,-1,-1};
+	}
+	
+	/**
+	 * Returns all the objects required to flush with each call. Should be called via a thread in each Broker
+	 * object. 
+	 * @return Array of objects to save in backend. 
+	 */
+	private Cachable[] getCachablesToFlush()
+	{
+		return null;
+	}
+	
 	
 }
