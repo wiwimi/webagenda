@@ -49,7 +49,7 @@ public class Login extends HttpServlet
 
             if(username.equals("admin") && password.equals("password"))
             {
-                dispatcher = context.getRequestDispatcher("wa_dashboard/dashboard.jsp");
+                dispatcher = context.getRequestDispatcher("/wa_dashboard/dashboard.jsp");
                 dispatcher.forward(request, response);
             }
             else
