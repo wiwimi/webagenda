@@ -69,8 +69,7 @@ public class Login extends HttpServlet
             	HttpSession loginSession = request.getSession(true);
             	loginSession.setAttribute("username", username);
             	
-                dispatcher = context.getRequestDispatcher("/wa_dashboard/dashboard.jsp");
-                dispatcher.forward(request, response);
+            	response.sendRedirect("wa_dashboard/dashboard.jsp");
             }
             else
             {

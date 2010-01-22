@@ -46,7 +46,7 @@ label {
 	color: black;
 	font-family: cochin;
 	min-height: 100px;
-	padding: 20px;
+	padding-top:20px;
 }
 
 #footer {
@@ -74,9 +74,30 @@ label {
 	color:white;
 	text-decoration:none;
 }
-
 //Noorin
-/* Gray colour for rectangles */
+	
+	/* Dark gray Background for dash-board upper rectangle */
+
+	#sidebar .upperDashboard
+	{
+		font-size: 90%;
+	    line-height: 1.0 em;
+		padding: 10px;
+		color: white;
+		background-color: gray;
+		border-style: solid;
+		border-width: 2px;
+		border-color: gray;
+		width : 140px;
+		height : 20 px;
+		text-align: center;
+		position:relative;
+		-webkit-border-top-left-radius:10px; 
+		-webkit-border-top-right-radius:10px;
+
+	}
+	
+	/* Gray colour for rectangles */
 
 	#sidebar .upperRectangle
 	{
@@ -94,8 +115,6 @@ label {
 		position: relative;
 		-webkit-border-top-left-radius:10px; 
 		-webkit-border-top-right-radius:10px;
-		-webkit-border-bottom-left-radius:10px; 
-		-webkit-border-bottom-right-radius:10px
 	}
 	
 
@@ -121,39 +140,25 @@ label {
 
 	}
 	
-	/* Dark gray Background for dash-board upper rectangle */
-
-	#sidebar .upperRectangle
-	{
-		font-size: 90%;
-	    line-height: 1.0 em;
-		padding: 10px;
-		color: white;
-		background-color: gray;
-		border-style: solid;
-		border-width: 2px;
-		border-color: gray;
-		width : 140px;
-		height : 20 px;
-		text-align: center;
-		position:relative;
-		-webkit-border-top-left-radius:10px; 
-		-webkit-border-top-right-radius:10px;
-
-	}
 	
 	/*Sidebar*/
 	#sidebar
 	{
 		position: relative;
-		top:100;
-		float : left;
 		width: 200 px;
 		color: black;
 		margin : 0;
-		padding : 0;
 		text-align:center;
-		height: 500px;
+	}
+	
+	#sidebar a
+	{
+		text-decoration:none;
+		color:black;
+	}
+	#sidebar a:hover
+	{
+		text-decoration:underline;
 	}
 	
 	table.sortable
