@@ -5,8 +5,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<!--  CSS files -->
 <link rel="stylesheet" href="CSS/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../CSS/style.css" type="text/css" media="screen" />
+
+<!-- Libraries -->
 <script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>	
+
+<!-- Javascript Files -->
 <script type="text/javascript" src="js/dashboard.js"></script>
 
 <title>Web Agenda - Dashboard</title>
@@ -25,9 +32,9 @@
 <div id="sidebar">
 	<!-- Gray colour for rectangles -->
 		
-		<div id= "dashboardUpperRectangle" class="upperRectangle">
+		<div id= "dashboardUpperRectangle" class="upperRectangleCurrent">
 		
-			<b>Dashboard</b>
+			<div class="sidebarTitle" id="dashboardTitle">Dashboard</div>
 		
 		</div>
 		
@@ -45,7 +52,7 @@
 		
 		<div id = "scheduleUpperRectangle" class="upperRectangle">
 		
-			<b>Schedule</b>
+			<div class="sidebarTitle" id="scheduleTitle">Schedule</div>
 		
 		</div>
 		
@@ -64,7 +71,7 @@
 		
 		<div id ="usersUpperRectangle" class="upperRectangle">
 		
-			<b>Users</b>
+			<div class="sidebarTitle" id="usersTitle">Users</div>
 		
 		</div>
 		
@@ -82,7 +89,7 @@
 		
 		<div id="mailUpperRectangle" class="upperRectangle">
 		
-			<b>Mail</b>
+			<div class="sidebarTitle" id="mailTitle">Mail</div>
 		
 		</div>
 		
@@ -100,7 +107,7 @@
 		
 		<div id= "helpUpperRectangle" class="upperRectangle">
 		
-			<b>Help</b>
+			<div class="sidebarTitle" id="helpTitle">Help</div>
 		
 		</div>
 		
@@ -114,6 +121,55 @@
 		</div>
 	
 	</div>
+	<!-- End sidebar div -->
+	
+	<!-- Start middle Content div -->
+	<div id="middleContent">
+		<div id="quickLinksWidget" class="fullWidget">
+			<div class="widgetUpperRectangle">
+				<div class="widgetTitle" id="quickLinksTitle">Quick Links</div>
+			</div>
+			
+			<div class="widgetLowerRectangle">
+				some widget data here
+			</div>
+		</div>
+		
+		<div id="scheduleWidget" class="fullWidget">
+			<div class="widgetUpperRectangle">
+				<div class="widgetTitle" id="scheduleWidgetTitle">Schedule</div>
+			</div>
+			
+			<div class="widgetLowerRectangle">
+				some widget data here
+			</div>
+		</div>
+		<div id="firstColumn" class="column">
+			<div id="notificationsWidget" class="halfWidget">
+				<div class="widgetUpperRectangle">
+					<div class="widgetTitle" id="notificationsWidgetTitle">Notifications</div>
+				</div>
+			
+				<div class="widgetLowerRectangle">
+					some widget data here
+				</div>
+			</div>
+		</div>
+		
+		<div id="secondColumn" class="column">
+			<div id="mailWidget" class="halfWidget">
+				<div class="widgetUpperRectangle">
+					<div class="widgetTitle" id="mailWidgetTitle">Mail(1)</div>
+				</div>
+			
+				<div class="widgetLowerRectangle">
+					some widget data here
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<!-- End middle content div -->
 </div>
 
 <div id="footer"></div>
