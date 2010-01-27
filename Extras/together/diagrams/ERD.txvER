@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nodeSet version="1.0">
+    <view uin="id5ap3qg4rjkiskg4rkcist">
+        <property name="$metaclass" value="ERDiagram"/>
+        <property name="@erNotation" value="IE_notation"/>
+        <property name="@__options" value=""/>
+        <reference df-class-name="reference" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidjj3u2g4rjkiskg4rkdnp1">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="340,270,70,69"/>
+            <reference referencedUin="design:link:::id5ap3qg4rjkiskg4rkcist.nodeidjj3u2g4rjkiskg4rkdnp1.linkid30pvlg4rjkiskg4rkomxb:id5ap3qg4rjkiskg4rkcist.nodeidjj3u2g4rjkiskg4rkdnp1">
+                <property name="sourceAnchor" value="340,290"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="172,290"/>
+                <reference referencedUin="linklabel:$rdbLogicalName:design:link:::id5ap3qg4rjkiskg4rkcist.nodeidjj3u2g4rjkiskg4rkdnp1.linkid30pvlg4rjkiskg4rkomxb:id5ap3qg4rjkiskg4rkcist.nodeidjj3u2g4rjkiskg4rkdnp1">
+                    <property name="bounds" value="290,300,36,16"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
+            </reference>
+            <reference referencedUin="design:link:::id5ap3qg4rjkiskg4rkcist.nodeidjj3u2g4rjkiskg4rkdnp1.linkid7wp94g4s0x0qtg4s10laf:id5ap3qg4rjkiskg4rkcist.nodeidjj3u2g4rjkiskg4rkdnp1">
+                <property name="sourceAnchor" value="340,320"/>
+                <property name="bendpoints" value="240,320"/>
+                <property name="targetAnchor" value="240,440"/>
+                <property name="bounds_setted_by_user" value="true"/>
+                <reference referencedUin="linklabel:$rdbLogicalName:design:link:::id5ap3qg4rjkiskg4rkcist.nodeidjj3u2g4rjkiskg4rkdnp1.linkid7wp94g4s0x0qtg4s10laf:id5ap3qg4rjkiskg4rkcist.nodeidjj3u2g4rjkiskg4rkdnp1">
+                    <property name="bounds" value="250,330,92,16"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
+            </reference>
+            <reference referencedUin="design:link:::id5ap3qg4rjkiskg4rkcist.nodeidjj3u2g4rjkiskg4rkdnp1.linkidhc1xwg4s0x0qtg4s1if9j:id5ap3qg4rjkiskg4rkcist.nodeidjj3u2g4rjkiskg4rkdnp1">
+                <property name="sourceAnchor" value="390,339"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="561,440"/>
+                <reference referencedUin="linklabel:$rdbLogicalName:design:link:::id5ap3qg4rjkiskg4rkcist.nodeidjj3u2g4rjkiskg4rkdnp1.linkidhc1xwg4s0x0qtg4s1if9j:id5ap3qg4rjkiskg4rkcist.nodeidjj3u2g4rjkiskg4rkdnp1">
+                    <property name="bounds" value="420,340,92,16"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
+            </reference>
+        </reference>
+        <reference df-class-name="reference3" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidep9oxg4rjkiskg4rkdou9">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="350,20,69,69"/>
+            <reference referencedUin="design:link:::id5ap3qg4rjkiskg4rkcist.nodeidep9oxg4rjkiskg4rkdou9.linkidge0m7g4s0x0qtg4s1iyrd:id5ap3qg4rjkiskg4rkcist.nodeidep9oxg4rjkiskg4rkdou9">
+                <property name="sourceAnchor" value="419,54"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="530,54"/>
+                <reference referencedUin="linklabel:$rdbLogicalName:design:link:::id5ap3qg4rjkiskg4rkcist.nodeidep9oxg4rjkiskg4rkdou9.linkidge0m7g4s0x0qtg4s1iyrd:id5ap3qg4rjkiskg4rkcist.nodeidep9oxg4rjkiskg4rkdou9">
+                    <property name="bounds" value="436,34,77,16"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
+            </reference>
+        </reference>
+        <reference df-class-name="reference4" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid53rgfg4rjkiskg4rkdpzx">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="70,250,102,69"/>
+        </reference>
+        <reference df-class-name="reference5" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid8x9dlg4rjkiskg4rkdrcz">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="210,440,67,69"/>
+        </reference>
+        <reference df-class-name="reference6" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidh13shg4rjkiskg4rkdt26">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="350,450,41,69"/>
+            <reference referencedUin="design:link:::id5ap3qg4rjkiskg4rkcist.nodeidh13shg4rjkiskg4rkdt26.linkidgj5ng4rjkiskg4rkqdbu:id5ap3qg4rjkiskg4rkcist.nodeidh13shg4rjkiskg4rkdt26">
+                <property name="sourceAnchor" value="370,450"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="370,339"/>
+                <reference referencedUin="linklabel:$rdbLogicalName:design:link:::id5ap3qg4rjkiskg4rkcist.nodeidh13shg4rjkiskg4rkdt26.linkidgj5ng4rjkiskg4rkqdbu:id5ap3qg4rjkiskg4rkcist.nodeidh13shg4rjkiskg4rkdt26">
+                    <property name="bounds" value="370,380,60,16"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
+            </reference>
+        </reference>
+        <reference df-class-name="reference7" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid7sgzug4rjkiskg4rkdug3">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="180,110,87,69"/>
+            <reference referencedUin="design:link:::id5ap3qg4rjkiskg4rkcist.nodeid7sgzug4rjkiskg4rkdug3.linkidh6il1g4s0x0qtg4s1szpa:id5ap3qg4rjkiskg4rkcist.nodeid7sgzug4rjkiskg4rkdug3">
+                <property name="sourceAnchor" value="230,179"/>
+                <property name="bendpoints" value="230,240,350,240"/>
+                <property name="targetAnchor" value="350,270"/>
+                <property name="bounds_setted_by_user" value="true"/>
+                <reference referencedUin="linklabel:$rdbLogicalName:design:link:::id5ap3qg4rjkiskg4rkcist.nodeid7sgzug4rjkiskg4rkdug3.linkidh6il1g4s0x0qtg4s1szpa:id5ap3qg4rjkiskg4rkcist.nodeid7sgzug4rjkiskg4rkdug3">
+                    <property name="bounds" value="240,190,58,16"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
+            </reference>
+        </reference>
+        <reference df-class-name="reference9" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeiddwdhqg4rjkiskg4rke0o1">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="30,380,111,69"/>
+        </reference>
+        <reference df-class-name="reference10" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid8623gg4rjkiskg4rke2ga">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="530,20,101,69"/>
+        </reference>
+        <reference df-class-name="reference11" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="530,440,63,69"/>
+            <reference referencedUin="design:link:::id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc.linkidic8d9g4s0x0qtg4s21qv7:id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc">
+                <property name="sourceAnchor" value="530,479"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="391,479"/>
+                <reference referencedUin="linklabel:$rdbLogicalName:design:link:::id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc.linkidic8d9g4s0x0qtg4s21qv7:id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc">
+                    <property name="bounds" value="400,460,54,16"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
+            </reference>
+            <reference referencedUin="design:link:::id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc.linkidhbuv1g4yc3mpzg4yc49aw:id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc">
+                <property name="sourceAnchor" value="580,440"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="580,329"/>
+                <reference referencedUin="linklabel:$rdbLogicalName:design:link:::id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc.linkidhbuv1g4yc3mpzg4yc49aw:id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc">
+                    <property name="bounds" value="590,340,54,16"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
+            </reference>
+        </reference>
+        <reference df-class-name="reference12" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid1ovyhg4rjkiskg4rkqdbu">
+            <property name="$shortcutReference" value="true"/>
+            <property name="sourceAnchor" value="80,364"/>
+            <property name="bendpoints" value=""/>
+            <property name="targetAnchor" value="385,271"/>
+            <reference referencedUin="design:link:::id5ap3qg4rjkiskg4rkcist.nodeid1ovyhg4rjkiskg4rkqdbu.linkidfez2jg4rjkiskg4rkqdbu:id5ap3qg4rjkiskg4rkcist.nodeid1ovyhg4rjkiskg4rkqdbu">
+                <property name="sourceAnchor" value="80,364"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="385,271"/>
+            </reference>
+            <reference referencedUin="design:link:::id5ap3qg4rjkiskg4rkcist.nodeid1ovyhg4rjkiskg4rkqdbu.linkiddms09g4rjkiskg4rkqdbu:id5ap3qg4rjkiskg4rkcist.nodeid1ovyhg4rjkiskg4rkqdbu">
+                <property name="sourceAnchor" value="80,364"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="385,271"/>
+            </reference>
+        </reference>
+        <reference df-class-name="reference1" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidj6l9hg4s0x0qtg4s1inh4">
+            <property name="$shortcutReference" value="true"/>
+            <property name="sourceAnchor" value="576,316"/>
+            <property name="bendpoints" value=""/>
+            <property name="targetAnchor" value="403,459"/>
+            <reference referencedUin="design:link:::id5ap3qg4rjkiskg4rkcist.nodeidj6l9hg4s0x0qtg4s1inh4.linkidkx2xg4s0x0qtg4s1inhj:id5ap3qg4rjkiskg4rkcist.nodeidj6l9hg4s0x0qtg4s1inh4">
+                <property name="sourceAnchor" value="576,316"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="403,459"/>
+            </reference>
+            <reference referencedUin="design:link:::id5ap3qg4rjkiskg4rkcist.nodeidj6l9hg4s0x0qtg4s1inh4.linkidj1vn4g4s0x0qtg4s1inhj:id5ap3qg4rjkiskg4rkcist.nodeidj6l9hg4s0x0qtg4s1inh4">
+                <property name="sourceAnchor" value="576,316"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="403,459"/>
+            </reference>
+        </reference>
+        <reference df-class-name="reference2" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidea45mg4s0x0qtg4s1vihi">
+            <property name="$shortcutReference" value="true"/>
+            <property name="sourceAnchor" value="375,262"/>
+            <property name="bendpoints" value=""/>
+            <property name="targetAnchor" value="447,143"/>
+            <reference referencedUin="design:link:::id5ap3qg4rjkiskg4rkcist.nodeidea45mg4s0x0qtg4s1vihi.linkid1dqf3g4s0x0qtg4s1vihy:id5ap3qg4rjkiskg4rkcist.nodeidea45mg4s0x0qtg4s1vihi">
+                <property name="sourceAnchor" value="375,262"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="447,143"/>
+            </reference>
+            <reference referencedUin="design:link:::id5ap3qg4rjkiskg4rkcist.nodeidea45mg4s0x0qtg4s1vihi.linkid9v716g4s0x0qtg4s1vihy:id5ap3qg4rjkiskg4rkcist.nodeidea45mg4s0x0qtg4s1vihi">
+                <property name="sourceAnchor" value="375,262"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="447,143"/>
+            </reference>
+        </reference>
+        <reference df-class-name="reference8" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid3c0s9g4s0x0qtg4s21qv7">
+            <property name="$shortcutReference" value="true"/>
+            <property name="sourceAnchor" value="570,263"/>
+            <property name="bendpoints" value=""/>
+            <property name="targetAnchor" value="502,387"/>
+            <reference referencedUin="design:link:::id5ap3qg4rjkiskg4rkcist.nodeid3c0s9g4s0x0qtg4s21qv7.linkidgm0jyg4s0x0qtg4s21qv7:id5ap3qg4rjkiskg4rkcist.nodeid3c0s9g4s0x0qtg4s21qv7">
+                <property name="sourceAnchor" value="570,263"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="502,387"/>
+            </reference>
+            <reference referencedUin="design:link:::id5ap3qg4rjkiskg4rkcist.nodeid3c0s9g4s0x0qtg4s21qv7.linkid7ndrug4s0x0qtg4s21qvn:id5ap3qg4rjkiskg4rkcist.nodeid3c0s9g4s0x0qtg4s21qv7">
+                <property name="sourceAnchor" value="570,263"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="502,387"/>
+            </reference>
+        </reference>
+        <reference df-class-name="reference13" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidiwn8ng4wa5e4pg4wbc64d">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="560,260,40,69"/>
+            <reference referencedUin="design:link:::id5ap3qg4rjkiskg4rkcist.nodeidiwn8ng4wa5e4pg4wbc64d.linkidbcjevg4ybajy8g4ybd7ry:id5ap3qg4rjkiskg4rkcist.nodeidiwn8ng4wa5e4pg4wbc64d">
+                <property name="sourceAnchor" value="580,260"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="580,89"/>
+                <reference referencedUin="linklabel:$rdbLogicalName:design:link:::id5ap3qg4rjkiskg4rkcist.nodeidiwn8ng4wa5e4pg4wbc64d.linkidbcjevg4ybajy8g4ybd7ry:id5ap3qg4rjkiskg4rkcist.nodeidiwn8ng4wa5e4pg4wbc64d">
+                    <property name="bounds" value="590,90,55,16"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
+            </reference>
+        </reference>
+        <reference df-class-name="reference14" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidbr7vgg4wa5e4pg4wbcbex">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="330,130,96,69"/>
+            <reference referencedUin="design:link:::id5ap3qg4rjkiskg4rkcist.nodeidbr7vgg4wa5e4pg4wbcbex.linkid7191gg4yc3mpzg4yc80xl:id5ap3qg4rjkiskg4rkcist.nodeidbr7vgg4wa5e4pg4wbcbex">
+                <property name="sourceAnchor" value="375,199"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="375,270"/>
+                <reference referencedUin="linklabel:$rdbLogicalName:design:link:::id5ap3qg4rjkiskg4rkcist.nodeidbr7vgg4wa5e4pg4wbcbex.linkid7191gg4yc3mpzg4yc80xl:id5ap3qg4rjkiskg4rkcist.nodeidbr7vgg4wa5e4pg4wbcbex">
+                    <property name="bounds" value="390,200,55,16"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
+            </reference>
+            <reference referencedUin="design:link:::id5ap3qg4rjkiskg4rkcist.nodeidbr7vgg4wa5e4pg4wbcbex.linkid9uacgg4yc3mpzg4yc7pr9:id5ap3qg4rjkiskg4rkcist.nodeidbr7vgg4wa5e4pg4wbcbex">
+                <property name="sourceAnchor" value="384,130"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="384,89"/>
+                <reference referencedUin="linklabel:$rdbLogicalName:design:link:::id5ap3qg4rjkiskg4rkcist.nodeidbr7vgg4wa5e4pg4wbcbex.linkid9uacgg4yc3mpzg4yc7pr9:id5ap3qg4rjkiskg4rkcist.nodeidbr7vgg4wa5e4pg4wbcbex">
+                    <property name="bounds" value="390,90,55,16"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
+            </reference>
+        </reference>
+        <reference df-class-name="reference15" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid5vltmg4yc3mpzg4yc49bb">
+            <property name="$shortcutReference" value="true"/>
+            <property name="sourceAnchor" value="581,423"/>
+            <property name="bendpoints" value=""/>
+            <property name="targetAnchor" value="590,244"/>
+            <reference referencedUin="design:link:::id5ap3qg4rjkiskg4rkcist.nodeid5vltmg4yc3mpzg4yc49bb.linkidjecqgg4yc3mpzg4yc49bb:id5ap3qg4rjkiskg4rkcist.nodeid5vltmg4yc3mpzg4yc49bb">
+                <property name="sourceAnchor" value="581,423"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="590,244"/>
+            </reference>
+            <reference referencedUin="design:link:::id5ap3qg4rjkiskg4rkcist.nodeid5vltmg4yc3mpzg4yc49bb.linkid8z4nyg4yc3mpzg4yc49br:id5ap3qg4rjkiskg4rkcist.nodeid5vltmg4yc3mpzg4yc49bb">
+                <property name="sourceAnchor" value="581,423"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="590,244"/>
+            </reference>
+        </reference>
+        <reference df-class-name="reference16" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid5ufxqg4yc3mpzg4yc80xl">
+            <property name="$shortcutReference" value="true"/>
+            <property name="sourceAnchor" value="391,177"/>
+            <property name="bendpoints" value=""/>
+            <property name="targetAnchor" value="387,255"/>
+            <reference referencedUin="design:link:::id5ap3qg4rjkiskg4rkcist.nodeid5ufxqg4yc3mpzg4yc80xl.linkid3e1hag4yc3mpzg4yc80y1:id5ap3qg4rjkiskg4rkcist.nodeid5ufxqg4yc3mpzg4yc80xl">
+                <property name="sourceAnchor" value="391,177"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="387,255"/>
+            </reference>
+            <reference referencedUin="design:link:::id5ap3qg4rjkiskg4rkcist.nodeid5ufxqg4yc3mpzg4yc80xl.linkidedgbsg4yc3mpzg4yc80y1:id5ap3qg4rjkiskg4rkcist.nodeid5ufxqg4yc3mpzg4yc80xl">
+                <property name="sourceAnchor" value="391,177"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="387,255"/>
+            </reference>
+        </reference>
+    </view>
+    <node uin="id5ap3qg4rjkiskg4rkcist.nodeidjj3u2g4rjkiskg4rkdnp1">
+        <property name="$metaclass" value="erEntity"/>
+        <property name="$name" value="EMPLOYEE"/>
+        <link uin="id5ap3qg4rjkiskg4rkcist.nodeidjj3u2g4rjkiskg4rkdnp1.linkid30pvlg4rjkiskg4rkomxb">
+            <participant role="Supplier" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid53rgfg4rjkiskg4rkdpzx"/>
+            <participant role="Client" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidjj3u2g4rjkiskg4rkdnp1"/>
+            <property name="$metaclass" value="erRelationship"/>
+            <property name="$name" value="uses"/>
+            <property name="@internalIdentifying" value=""/>
+        </link>
+        <link uin="id5ap3qg4rjkiskg4rkcist.nodeidjj3u2g4rjkiskg4rkdnp1.linkid7wp94g4s0x0qtg4s10laf">
+            <participant role="Supplier" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid8x9dlg4rjkiskg4rkdrcz"/>
+            <participant role="Client" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidjj3u2g4rjkiskg4rkdnp1"/>
+            <property name="$metaclass" value="erRelationship"/>
+            <property name="@internalIdentifying" value=""/>
+            <property name="$name" value="has a preferred"/>
+        </link>
+        <link uin="id5ap3qg4rjkiskg4rkcist.nodeidjj3u2g4rjkiskg4rkdnp1.linkidhc1xwg4s0x0qtg4s1if9j">
+            <participant role="Supplier" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc"/>
+            <participant role="Client" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidjj3u2g4rjkiskg4rkdnp1"/>
+            <property name="$metaclass" value="erRelationship"/>
+            <property name="@internalIdentifying" value=""/>
+            <property name="$name" value="has a preferred"/>
+        </link>
+    </node>
+    <node uin="id5ap3qg4rjkiskg4rkcist.nodeidep9oxg4rjkiskg4rkdou9">
+        <property name="$metaclass" value="erEntity"/>
+        <property name="$name" value="SCHEDULE"/>
+        <link uin="id5ap3qg4rjkiskg4rkcist.nodeidep9oxg4rjkiskg4rkdou9.linkidge0m7g4s0x0qtg4s1iyrd">
+            <participant role="Supplier" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid8623gg4rjkiskg4rke2ga"/>
+            <participant role="Client" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidep9oxg4rjkiskg4rkdou9"/>
+            <property name="$metaclass" value="erRelationship"/>
+            <property name="@internalIdentifying" value=""/>
+            <property name="$name" value="is defined by"/>
+        </link>
+    </node>
+    <node uin="id5ap3qg4rjkiskg4rkcist.nodeid53rgfg4rjkiskg4rkdpzx">
+        <property name="$metaclass" value="erEntity"/>
+        <property name="$name" value="PERMISSIONSET"/>
+    </node>
+    <node uin="id5ap3qg4rjkiskg4rkcist.nodeid8x9dlg4rjkiskg4rkdrcz">
+        <property name="$metaclass" value="erEntity"/>
+        <property name="$name" value="LOCATION"/>
+    </node>
+    <node uin="id5ap3qg4rjkiskg4rkcist.nodeidh13shg4rjkiskg4rkdt26">
+        <property name="$metaclass" value="erEntity"/>
+        <property name="$name" value="SKILL"/>
+        <link uin="id5ap3qg4rjkiskg4rkcist.nodeidh13shg4rjkiskg4rkdt26.linkidgj5ng4rjkiskg4rkqdbu">
+            <participant role="Supplier" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidjj3u2g4rjkiskg4rkdnp1"/>
+            <participant role="Client" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidh13shg4rjkiskg4rkdt26"/>
+            <property name="$metaclass" value="erManyToManyRelationship"/>
+            <property name="$name" value="Is held by"/>
+            <property name="@crossReferencedEntity" value="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid1ovyhg4rjkiskg4rkqdbu"/>
+        </link>
+    </node>
+    <node uin="id5ap3qg4rjkiskg4rkcist.nodeid7sgzug4rjkiskg4rkdug3">
+        <property name="$metaclass" value="erEntity"/>
+        <property name="$name" value="NOTIFICATION"/>
+        <link uin="id5ap3qg4rjkiskg4rkcist.nodeid7sgzug4rjkiskg4rkdug3.linkidh6il1g4s0x0qtg4s1szpa">
+            <participant role="Supplier" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidjj3u2g4rjkiskg4rkdnp1"/>
+            <participant role="Client" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid7sgzug4rjkiskg4rkdug3"/>
+            <property name="$metaclass" value="erRelationship"/>
+            <property name="$name" value="is sent to"/>
+            <property name="@internalIdentifying" value=""/>
+        </link>
+    </node>
+    <node uin="id5ap3qg4rjkiskg4rkcist.nodeiddwdhqg4rjkiskg4rke0o1">
+        <property name="$metaclass" value="erEntity"/>
+        <property name="$name" value="GLOBALSETTINGS"/>
+    </node>
+    <node uin="id5ap3qg4rjkiskg4rkcist.nodeid8623gg4rjkiskg4rke2ga">
+        <property name="$metaclass" value="erEntity"/>
+        <property name="$name" value="SHIFTTEMPLATE"/>
+    </node>
+    <node uin="id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc">
+        <property name="$metaclass" value="erEntity"/>
+        <property name="$name" value="POSITION"/>
+        <link uin="id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc.linkidic8d9g4s0x0qtg4s21qv7">
+            <participant role="Supplier" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidh13shg4rjkiskg4rkdt26"/>
+            <participant role="Client" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc"/>
+            <property name="$metaclass" value="erManyToManyRelationship"/>
+            <property name="$name" value="requires"/>
+            <property name="@crossReferencedEntity" value="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid3c0s9g4s0x0qtg4s21qv7"/>
+        </link>
+        <link uin="id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc.linkidhbuv1g4yc3mpzg4yc49aw">
+            <property name="$metaclass" value="erManyToManyRelationship"/>
+            <participant role="Supplier" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidiwn8ng4wa5e4pg4wbc64d"/>
+            <participant role="Client" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc"/>
+            <property name="$name" value="requires"/>
+            <property name="@crossReferencedEntity" value="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid5vltmg4yc3mpzg4yc49bb"/>
+        </link>
+    </node>
+    <node uin="id5ap3qg4rjkiskg4rkcist.nodeid1ovyhg4rjkiskg4rkqdbu">
+        <property name="$metaclass" value="erEntity"/>
+        <property name="$name" value="SKILL_EMPLOYEE1"/>
+        <property name="@manyToManyLink" value="design:link:::id5ap3qg4rjkiskg4rkcist.nodeidh13shg4rjkiskg4rkdt26.linkidgj5ng4rjkiskg4rkqdbu:id5ap3qg4rjkiskg4rkcist.nodeidh13shg4rjkiskg4rkdt26"/>
+        <link uin="id5ap3qg4rjkiskg4rkcist.nodeid1ovyhg4rjkiskg4rkqdbu.linkidfez2jg4rjkiskg4rkqdbu">
+            <participant role="Supplier" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidjj3u2g4rjkiskg4rkdnp1"/>
+            <participant role="Client" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid1ovyhg4rjkiskg4rkqdbu"/>
+            <property name="$metaclass" value="erRelationship"/>
+            <property name="$name" value="relationship2"/>
+            <property name="@manyToManyLink" value="design:link:::id5ap3qg4rjkiskg4rkcist.nodeidh13shg4rjkiskg4rkdt26.linkidgj5ng4rjkiskg4rkqdbu:id5ap3qg4rjkiskg4rkcist.nodeidh13shg4rjkiskg4rkdt26"/>
+            <property name="@internalIdentifying" value=""/>
+        </link>
+        <link uin="id5ap3qg4rjkiskg4rkcist.nodeid1ovyhg4rjkiskg4rkqdbu.linkiddms09g4rjkiskg4rkqdbu">
+            <participant role="Supplier" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidh13shg4rjkiskg4rkdt26"/>
+            <participant role="Client" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid1ovyhg4rjkiskg4rkqdbu"/>
+            <property name="$metaclass" value="erRelationship"/>
+            <property name="$name" value="relationship3"/>
+            <property name="@manyToManyLink" value="design:link:::id5ap3qg4rjkiskg4rkcist.nodeidh13shg4rjkiskg4rkdt26.linkidgj5ng4rjkiskg4rkqdbu:id5ap3qg4rjkiskg4rkcist.nodeidh13shg4rjkiskg4rkdt26"/>
+            <property name="@internalIdentifying" value=""/>
+        </link>
+    </node>
+    <node uin="id5ap3qg4rjkiskg4rkcist.nodeidj6l9hg4s0x0qtg4s1inh4">
+        <property name="$metaclass" value="erEntity"/>
+        <property name="$name" value="SHIFTREQS_POSITION1"/>
+        <property name="@manyToManyLink" value="design:link:::id5ap3qg4rjkiskg4rkcist.nodeid8623gg4rjkiskg4rke2ga.linkid24tdmg4s0x0qtg4s1inh4:id5ap3qg4rjkiskg4rkcist.nodeid8623gg4rjkiskg4rke2ga"/>
+        <link uin="id5ap3qg4rjkiskg4rkcist.nodeidj6l9hg4s0x0qtg4s1inh4.linkidj1vn4g4s0x0qtg4s1inhj">
+            <participant role="Supplier" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc"/>
+            <participant role="Client" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidj6l9hg4s0x0qtg4s1inh4"/>
+            <property name="$metaclass" value="erRelationship"/>
+            <property name="$name" value="relationship1"/>
+            <property name="@manyToManyLink" value="design:link:::id5ap3qg4rjkiskg4rkcist.nodeid8623gg4rjkiskg4rke2ga.linkid24tdmg4s0x0qtg4s1inh4:id5ap3qg4rjkiskg4rkcist.nodeid8623gg4rjkiskg4rke2ga"/>
+            <property name="@internalIdentifying" value=""/>
+        </link>
+        <link uin="id5ap3qg4rjkiskg4rkcist.nodeidj6l9hg4s0x0qtg4s1inh4.linkidkx2xg4s0x0qtg4s1inhj">
+            <participant role="Supplier" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid8623gg4rjkiskg4rke2ga"/>
+            <participant role="Client" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidj6l9hg4s0x0qtg4s1inh4"/>
+            <property name="$metaclass" value="erRelationship"/>
+            <property name="$name" value="relationship4"/>
+            <property name="@manyToManyLink" value="design:link:::id5ap3qg4rjkiskg4rkcist.nodeid8623gg4rjkiskg4rke2ga.linkid24tdmg4s0x0qtg4s1inh4:id5ap3qg4rjkiskg4rkcist.nodeid8623gg4rjkiskg4rke2ga"/>
+            <property name="@internalIdentifying" value=""/>
+        </link>
+    </node>
+    <node uin="id5ap3qg4rjkiskg4rkcist.nodeidea45mg4s0x0qtg4s1vihi">
+        <property name="$metaclass" value="erEntity"/>
+        <property name="$name" value="EMPLOYEE_SCHEDULE1"/>
+        <property name="@manyToManyLink" value="design:link:::id5ap3qg4rjkiskg4rkcist.nodeidjj3u2g4rjkiskg4rkdnp1.linkid2pjm1g4s0x0qtg4s1vihi:id5ap3qg4rjkiskg4rkcist.nodeidjj3u2g4rjkiskg4rkdnp1"/>
+        <link uin="id5ap3qg4rjkiskg4rkcist.nodeidea45mg4s0x0qtg4s1vihi.linkid1dqf3g4s0x0qtg4s1vihy">
+            <participant role="Supplier" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidep9oxg4rjkiskg4rkdou9"/>
+            <participant role="Client" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidea45mg4s0x0qtg4s1vihi"/>
+            <property name="$metaclass" value="erRelationship"/>
+            <property name="$name" value="relationship5"/>
+            <property name="@manyToManyLink" value="design:link:::id5ap3qg4rjkiskg4rkcist.nodeidjj3u2g4rjkiskg4rkdnp1.linkid2pjm1g4s0x0qtg4s1vihi:id5ap3qg4rjkiskg4rkcist.nodeidjj3u2g4rjkiskg4rkdnp1"/>
+            <property name="@internalIdentifying" value=""/>
+        </link>
+        <link uin="id5ap3qg4rjkiskg4rkcist.nodeidea45mg4s0x0qtg4s1vihi.linkid9v716g4s0x0qtg4s1vihy">
+            <participant role="Supplier" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidjj3u2g4rjkiskg4rkdnp1"/>
+            <participant role="Client" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidea45mg4s0x0qtg4s1vihi"/>
+            <property name="$metaclass" value="erRelationship"/>
+            <property name="$name" value="relationship6"/>
+            <property name="@manyToManyLink" value="design:link:::id5ap3qg4rjkiskg4rkcist.nodeidjj3u2g4rjkiskg4rkdnp1.linkid2pjm1g4s0x0qtg4s1vihi:id5ap3qg4rjkiskg4rkcist.nodeidjj3u2g4rjkiskg4rkdnp1"/>
+            <property name="@internalIdentifying" value=""/>
+        </link>
+    </node>
+    <node uin="id5ap3qg4rjkiskg4rkcist.nodeid3c0s9g4s0x0qtg4s21qv7">
+        <property name="$metaclass" value="erEntity"/>
+        <property name="$name" value="POSITION_SKILL1"/>
+        <property name="@manyToManyLink" value="design:link:::id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc.linkidic8d9g4s0x0qtg4s21qv7:id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc"/>
+        <link uin="id5ap3qg4rjkiskg4rkcist.nodeid3c0s9g4s0x0qtg4s21qv7.linkidgm0jyg4s0x0qtg4s21qv7">
+            <participant role="Supplier" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidh13shg4rjkiskg4rkdt26"/>
+            <participant role="Client" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid3c0s9g4s0x0qtg4s21qv7"/>
+            <property name="$metaclass" value="erRelationship"/>
+            <property name="$name" value="relationship7"/>
+            <property name="@manyToManyLink" value="design:link:::id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc.linkidic8d9g4s0x0qtg4s21qv7:id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc"/>
+            <property name="@internalIdentifying" value=""/>
+        </link>
+        <link uin="id5ap3qg4rjkiskg4rkcist.nodeid3c0s9g4s0x0qtg4s21qv7.linkid7ndrug4s0x0qtg4s21qvn">
+            <participant role="Supplier" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc"/>
+            <participant role="Client" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid3c0s9g4s0x0qtg4s21qv7"/>
+            <property name="$metaclass" value="erRelationship"/>
+            <property name="$name" value="relationship8"/>
+            <property name="@manyToManyLink" value="design:link:::id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc.linkidic8d9g4s0x0qtg4s21qv7:id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc"/>
+            <property name="@internalIdentifying" value=""/>
+        </link>
+    </node>
+    <node uin="id5ap3qg4rjkiskg4rkcist.nodeidiwn8ng4wa5e4pg4wbc64d">
+        <property name="$metaclass" value="erEntity"/>
+        <property name="$name" value="SHIFT"/>
+        <link uin="id5ap3qg4rjkiskg4rkcist.nodeidiwn8ng4wa5e4pg4wbc64d.linkidbcjevg4ybajy8g4ybd7ry">
+            <participant role="Supplier" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid8623gg4rjkiskg4rke2ga"/>
+            <participant role="Client" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidiwn8ng4wa5e4pg4wbc64d"/>
+            <property name="$metaclass" value="erRelationship"/>
+            <property name="@internalIdentifying" value=""/>
+            <property name="$name" value="contains"/>
+        </link>
+    </node>
+    <node uin="id5ap3qg4rjkiskg4rkcist.nodeidbr7vgg4wa5e4pg4wbcbex">
+        <property name="$metaclass" value="erEntity"/>
+        <property name="$name" value="WORKINGSHIFT"/>
+        <link uin="id5ap3qg4rjkiskg4rkcist.nodeidbr7vgg4wa5e4pg4wbcbex.linkid9uacgg4yc3mpzg4yc7pr9">
+            <property name="$metaclass" value="erRelationship"/>
+            <participant role="Supplier" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidep9oxg4rjkiskg4rkdou9"/>
+            <participant role="Client" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidbr7vgg4wa5e4pg4wbcbex"/>
+            <property name="@internalIdentifying" value=""/>
+            <property name="$name" value="contains"/>
+        </link>
+        <link uin="id5ap3qg4rjkiskg4rkcist.nodeidbr7vgg4wa5e4pg4wbcbex.linkid7191gg4yc3mpzg4yc80xl">
+            <property name="$metaclass" value="erManyToManyRelationship"/>
+            <participant role="Supplier" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidjj3u2g4rjkiskg4rkdnp1"/>
+            <participant role="Client" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidbr7vgg4wa5e4pg4wbcbex"/>
+            <property name="$name" value="includes"/>
+            <property name="@crossReferencedEntity" value="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid5ufxqg4yc3mpzg4yc80xl"/>
+        </link>
+    </node>
+    <node uin="id5ap3qg4rjkiskg4rkcist.nodeid5vltmg4yc3mpzg4yc49bb">
+        <property name="$metaclass" value="erEntity"/>
+        <property name="$name" value="POSITION_SHIFT1"/>
+        <property name="@manyToManyLink" value="design:link:::id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc.linkidhbuv1g4yc3mpzg4yc49aw:id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc"/>
+        <link uin="id5ap3qg4rjkiskg4rkcist.nodeid5vltmg4yc3mpzg4yc49bb.linkidjecqgg4yc3mpzg4yc49bb">
+            <property name="$metaclass" value="erRelationship"/>
+            <participant role="Supplier" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidiwn8ng4wa5e4pg4wbc64d"/>
+            <participant role="Client" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid5vltmg4yc3mpzg4yc49bb"/>
+            <property name="$name" value="relationship9"/>
+            <property name="@manyToManyLink" value="design:link:::id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc.linkidhbuv1g4yc3mpzg4yc49aw:id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc"/>
+            <property name="@internalIdentifying" value=""/>
+        </link>
+        <link uin="id5ap3qg4rjkiskg4rkcist.nodeid5vltmg4yc3mpzg4yc49bb.linkid8z4nyg4yc3mpzg4yc49br">
+            <property name="$metaclass" value="erRelationship"/>
+            <participant role="Supplier" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc"/>
+            <participant role="Client" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid5vltmg4yc3mpzg4yc49bb"/>
+            <property name="$name" value="relationship10"/>
+            <property name="@manyToManyLink" value="design:link:::id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc.linkidhbuv1g4yc3mpzg4yc49aw:id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc"/>
+            <property name="@internalIdentifying" value=""/>
+        </link>
+    </node>
+    <node uin="id5ap3qg4rjkiskg4rkcist.nodeid5ufxqg4yc3mpzg4yc80xl">
+        <property name="$metaclass" value="erEntity"/>
+        <property name="$name" value="WORKINGSHIFT_EMPLOYEE1"/>
+        <property name="@manyToManyLink" value="design:link:::id5ap3qg4rjkiskg4rkcist.nodeidbr7vgg4wa5e4pg4wbcbex.linkid7191gg4yc3mpzg4yc80xl:id5ap3qg4rjkiskg4rkcist.nodeidbr7vgg4wa5e4pg4wbcbex"/>
+        <link uin="id5ap3qg4rjkiskg4rkcist.nodeid5ufxqg4yc3mpzg4yc80xl.linkid3e1hag4yc3mpzg4yc80y1">
+            <property name="$metaclass" value="erRelationship"/>
+            <participant role="Supplier" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidjj3u2g4rjkiskg4rkdnp1"/>
+            <participant role="Client" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid5ufxqg4yc3mpzg4yc80xl"/>
+            <property name="$name" value="relationship11"/>
+            <property name="@manyToManyLink" value="design:link:::id5ap3qg4rjkiskg4rkcist.nodeidbr7vgg4wa5e4pg4wbcbex.linkid7191gg4yc3mpzg4yc80xl:id5ap3qg4rjkiskg4rkcist.nodeidbr7vgg4wa5e4pg4wbcbex"/>
+            <property name="@internalIdentifying" value=""/>
+        </link>
+        <link uin="id5ap3qg4rjkiskg4rkcist.nodeid5ufxqg4yc3mpzg4yc80xl.linkidedgbsg4yc3mpzg4yc80y1">
+            <property name="$metaclass" value="erRelationship"/>
+            <participant role="Supplier" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidbr7vgg4wa5e4pg4wbcbex"/>
+            <participant role="Client" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid5ufxqg4yc3mpzg4yc80xl"/>
+            <property name="$name" value="relationship12"/>
+            <property name="@manyToManyLink" value="design:link:::id5ap3qg4rjkiskg4rkcist.nodeidbr7vgg4wa5e4pg4wbcbex.linkid7191gg4yc3mpzg4yc80xl:id5ap3qg4rjkiskg4rkcist.nodeidbr7vgg4wa5e4pg4wbcbex"/>
+            <property name="@internalIdentifying" value=""/>
+        </link>
+    </node>
+</nodeSet>
