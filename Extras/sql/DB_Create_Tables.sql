@@ -2,8 +2,8 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
-CREATE SCHEMA IF NOT EXISTS `WebAgenda` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
-USE `WebAgenda`;
+DROP SCHEMA IF EXISTS `WebAgenda` ;
+CREATE SCHEMA IF NOT EXISTS `WebAgenda` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ;
 
 -- -----------------------------------------------------
 -- Table `WebAgenda`.`PERMISSIONSET`
@@ -12,21 +12,21 @@ DROP TABLE IF EXISTS `WebAgenda`.`PERMISSIONSET` ;
 
 CREATE  TABLE IF NOT EXISTS `WebAgenda`.`PERMISSIONSET` (
   `plevel` INT NOT NULL ,
-  `canEditSched` BOOLEAN NOT NULL DEFAULT 0 ,
-  `canReadSched` BOOLEAN NOT NULL DEFAULT 1 ,
-  `canReadOldSched` BOOLEAN NOT NULL DEFAULT 0 ,
-  `canViewResources` BOOLEAN NOT NULL DEFAULT 0 ,
-  `canChangePermissions` BOOLEAN NOT NULL DEFAULT 0 ,
-  `canReadLogs` BOOLEAN NOT NULL DEFAULT 0 ,
-  `canAccessReports` BOOLEAN NOT NULL DEFAULT 0 ,
-  `canRequestDaysOff` BOOLEAN NOT NULL DEFAULT 0 ,
+  `canEditSched` TINYINT(1) NOT NULL DEFAULT 0 ,
+  `canReadSched` TINYINT(1) NOT NULL DEFAULT 1 ,
+  `canReadOldSched` TINYINT(1) NOT NULL DEFAULT 0 ,
+  `canViewResources` TINYINT(1) NOT NULL DEFAULT 0 ,
+  `canChangePermissions` TINYINT(1) NOT NULL DEFAULT 0 ,
+  `canReadLogs` TINYINT(1) NOT NULL DEFAULT 0 ,
+  `canAccessReports` TINYINT(1) NOT NULL DEFAULT 0 ,
+  `canRequestDaysOff` TINYINT(1) NOT NULL DEFAULT 0 ,
   `maxDaysOff` INT NOT NULL ,
-  `canTakeVacations` BOOLEAN NOT NULL DEFAULT 0 ,
+  `canTakeVacations` TINYINT(1) NOT NULL DEFAULT 0 ,
   `maxVacationDays` INT NOT NULL ,
-  `canTakeEmergencyDays` BOOLEAN NOT NULL DEFAULT 0 ,
-  `canViewInactiveEmps` BOOLEAN NOT NULL DEFAULT 0 ,
-  `canSendNotifications` BOOLEAN NOT NULL DEFAULT 0 ,
-  `trusted` BOOLEAN NOT NULL DEFAULT 0 ,
+  `canTakeEmergencyDays` TINYINT(1) NOT NULL DEFAULT 0 ,
+  `canViewInactiveEmps` TINYINT(1) NOT NULL DEFAULT 0 ,
+  `canSendNotifications` TINYINT(1) NOT NULL DEFAULT 0 ,
+  `trusted` TINYINT(1) NOT NULL DEFAULT 0 ,
   `preferredRank` INT NOT NULL ,
   PRIMARY KEY (`plevel`) )
 ENGINE = InnoDB;
@@ -72,17 +72,17 @@ CREATE  TABLE IF NOT EXISTS `WebAgenda`.`EMPLOYEE` (
   `prefPosition` VARCHAR(45) NULL ,
   `prefLocation` VARCHAR(45) NULL ,
   `plevel` INT NOT NULL ,
-  `active` BOOLEAN NOT NULL DEFAULT 1 ,
+  `active` TINYINT(1) NOT NULL DEFAULT 1 ,
   PRIMARY KEY (`empID`) ,
-  INDEX `fk_Employee_PermissionSet` (`plevel` ASC) ,
-  INDEX `fk_Employee_LOCATION` (`prefLocation` ASC) ,
+  INDEX `fk_EMPLOYEE_PERMISSIONSET` (`plevel` ASC) ,
+  INDEX `fk_EMPLOYEE_LOCATION` (`prefLocation` ASC) ,
   INDEX `fk_EMPLOYEE_POSITION` (`prefPosition` ASC) ,
-  CONSTRAINT `fk_Employee_PermissionSet`
+  CONSTRAINT `fk_EMPLOYEE_PERMISSIONSET`
     FOREIGN KEY (`plevel` )
     REFERENCES `WebAgenda`.`PERMISSIONSET` (`plevel` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Employee_LOCATION`
+  CONSTRAINT `fk_EMPLOYEE_LOCATION`
     FOREIGN KEY (`prefLocation` )
     REFERENCES `WebAgenda`.`LOCATION` (`locName` )
     ON DELETE NO ACTION
@@ -96,17 +96,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `WebAgenda`.`NotificationType`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `WebAgenda`.`NotificationType` ;
-
-CREATE  TABLE IF NOT EXISTS `WebAgenda`.`NotificationType` (
-  `type` VARCHAR(20) NOT NULL ,
-  PRIMARY KEY (`type`) )
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `WebAgenda`.`NOTIFICATION`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `WebAgenda`.`NOTIFICATION` ;
@@ -116,20 +105,20 @@ CREATE  TABLE IF NOT EXISTS `WebAgenda`.`NOTIFICATION` (
   `senderID` INT NULL ,
   `recipientID` INT NOT NULL ,
   `sentTime` DATETIME NOT NULL ,
-  `viewed` BOOLEAN NOT NULL DEFAULT 0 ,
+  `viewed` TINYINT(1) NOT NULL DEFAULT 0 ,
   `message` VARCHAR(300) NOT NULL ,
   `type` VARCHAR(20) NOT NULL ,
   PRIMARY KEY (`notificationID`) ,
-  INDEX `fk_Notification_Employee` (`senderID` ASC, `recipientID` ASC) ,
-  INDEX `fk_Notification_NotificationType` (`type` ASC) ,
-  CONSTRAINT `fk_Notification_Employee`
-    FOREIGN KEY (`senderID` , `recipientID` )
-    REFERENCES `WebAgenda`.`EMPLOYEE` (`empID` , `empID` )
+  INDEX `fk_NOTIFICATION_EMPLOYEE_sender` (`senderID` ASC) ,
+  INDEX `fk_NOTIFICATION_EMPLOYEE_recipient` (`recipientID` ASC) ,
+  CONSTRAINT `fk_NOTIFICATION_EMPLOYEE_sender`
+    FOREIGN KEY (`senderID` )
+    REFERENCES `WebAgenda`.`EMPLOYEE` (`empID` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Notification_NotificationType`
-    FOREIGN KEY (`type` )
-    REFERENCES `WebAgenda`.`NotificationType` (`type` )
+  CONSTRAINT `fk_NOTIFICATION_EMPLOYEE_recipient`
+    FOREIGN KEY (`recipientID` )
+    REFERENCES `WebAgenda`.`EMPLOYEE` (`empID` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -156,9 +145,9 @@ CREATE  TABLE IF NOT EXISTS `WebAgenda`.`EMPSKILL` (
   `empID` INT NOT NULL ,
   `skillName` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`empID`, `skillName`) ,
-  INDEX `fk_EMPSKILL_Employee` (`empID` ASC) ,
+  INDEX `fk_EMPSKILL_EMPLOYEE` (`empID` ASC) ,
   INDEX `fk_EMPSKILL_SKILL` (`skillName` ASC) ,
-  CONSTRAINT `fk_EMPSKILL_Employee`
+  CONSTRAINT `fk_EMPSKILL_EMPLOYEE`
     FOREIGN KEY (`empID` )
     REFERENCES `WebAgenda`.`EMPLOYEE` (`empID` )
     ON DELETE NO ACTION
@@ -216,7 +205,7 @@ CREATE  TABLE IF NOT EXISTS `WebAgenda`.`SHIFT` (
   `shiftReqID` INT NOT NULL ,
   `startTime` TIME NOT NULL ,
   `endTime` TIME NOT NULL ,
-  PRIMARY KEY (`shiftID`) ,
+  PRIMARY KEY (`shiftID`, `shiftReqID`) ,
   INDEX `fk_SHIFT_SHIFTREQS` (`shiftReqID` ASC) ,
   CONSTRAINT `fk_SHIFT_SHIFTREQS`
     FOREIGN KEY (`shiftReqID` )
@@ -274,7 +263,7 @@ CREATE  TABLE IF NOT EXISTS `WebAgenda`.`WORKINGSHIFT` (
   `scheduleID` INT NOT NULL ,
   `startTime` TIME NOT NULL ,
   `endTime` TIME NOT NULL ,
-  PRIMARY KEY (`workingShiftID`) ,
+  PRIMARY KEY (`workingShiftID`, `scheduleID`) ,
   INDEX `fk_WORKINGSHIFT_SCHEDULE` (`scheduleID` ASC) ,
   CONSTRAINT `fk_WORKINGSHIFT_SCHEDULE`
     FOREIGN KEY (`scheduleID` )
@@ -314,8 +303,8 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `WebAgenda`.`GLOBALSETTINGS` ;
 
 CREATE  TABLE IF NOT EXISTS `WebAgenda`.`GLOBALSETTINGS` (
-  `???` INT NOT NULL ,
-  PRIMARY KEY (`???`) )
+  `tempKey` INT NOT NULL ,
+  PRIMARY KEY (`tempKey`) )
 ENGINE = InnoDB;
 
 
