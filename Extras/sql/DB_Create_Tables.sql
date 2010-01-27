@@ -6,24 +6,11 @@ CREATE SCHEMA IF NOT EXISTS `WebAgenda` DEFAULT CHARACTER SET latin1 COLLATE lat
 USE `WebAgenda`;
 
 -- -----------------------------------------------------
--- Table `WebAgenda`.`jobType`
+-- Table `WebAgenda`.`PERMISSIONSET`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `WebAgenda`.`jobType` ;
+DROP TABLE IF EXISTS `WebAgenda`.`PERMISSIONSET` ;
 
-CREATE  TABLE IF NOT EXISTS `WebAgenda`.`jobType` (
-  `jobTypeID` INT NOT NULL ,
-  `jobTitle` VARCHAR(20) NOT NULL ,
-  `jobDescription` VARCHAR(500) NOT NULL ,
-  PRIMARY KEY (`jobTypeID`) )
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `WebAgenda`.`PermissionSet`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `WebAgenda`.`PermissionSet` ;
-
-CREATE  TABLE IF NOT EXISTS `WebAgenda`.`PermissionSet` (
+CREATE  TABLE IF NOT EXISTS `WebAgenda`.`PERMISSIONSET` (
   `plevel` INT NOT NULL ,
   `canEditSched` BOOLEAN NOT NULL DEFAULT 0 ,
   `canReadSched` BOOLEAN NOT NULL DEFAULT 1 ,
@@ -46,57 +33,63 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `WebAgenda`.`Workgroup`
+-- Table `WebAgenda`.`LOCATION`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `WebAgenda`.`Workgroup` ;
+DROP TABLE IF EXISTS `WebAgenda`.`LOCATION` ;
 
-CREATE  TABLE IF NOT EXISTS `WebAgenda`.`Workgroup` (
-  `wkgpID` INT NOT NULL ,
-  `wkgpName` VARCHAR(20) NOT NULL ,
-  `supervisorID` INT NULL ,
-  PRIMARY KEY (`wkgpID`) ,
-  INDEX `fk_Workgroup_Employee` (`supervisorID` ASC) ,
-  CONSTRAINT `fk_Workgroup_Employee`
-    FOREIGN KEY (`supervisorID` )
-    REFERENCES `WebAgenda`.`Employee` (`empID` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+CREATE  TABLE IF NOT EXISTS `WebAgenda`.`LOCATION` (
+  `locName` VARCHAR(45) NOT NULL ,
+  `locDescription` VARCHAR(200) NULL ,
+  PRIMARY KEY (`locName`) )
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `WebAgenda`.`Employee`
+-- Table `WebAgenda`.`POSITION`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `WebAgenda`.`Employee` ;
+DROP TABLE IF EXISTS `WebAgenda`.`POSITION` ;
 
-CREATE  TABLE IF NOT EXISTS `WebAgenda`.`Employee` (
+CREATE  TABLE IF NOT EXISTS `WebAgenda`.`POSITION` (
+  `positionName` VARCHAR(45) NOT NULL ,
+  `positionDescription` VARCHAR(200) NULL ,
+  PRIMARY KEY (`positionName`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `WebAgenda`.`EMPLOYEE`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `WebAgenda`.`EMPLOYEE` ;
+
+CREATE  TABLE IF NOT EXISTS `WebAgenda`.`EMPLOYEE` (
   `empID` INT NOT NULL ,
+  `supervisorID` INT NULL ,
   `givenName` VARCHAR(70) NOT NULL ,
   `familyName` VARCHAR(70) NOT NULL ,
   `email` VARCHAR(50) NULL ,
   `username` VARCHAR(20) NOT NULL ,
   `password` VARCHAR(8) NOT NULL ,
-  `jobTypeID` INT NOT NULL ,
-  `wkgpID` INT NULL ,
+  `prefPosition` VARCHAR(45) NULL ,
+  `prefLocation` VARCHAR(45) NULL ,
   `plevel` INT NOT NULL ,
   `active` BOOLEAN NOT NULL DEFAULT 1 ,
   PRIMARY KEY (`empID`) ,
-  INDEX `fk_Employee_jobType` (`jobTypeID` ASC) ,
   INDEX `fk_Employee_PermissionSet` (`plevel` ASC) ,
-  INDEX `fk_Employee_Workgroup` (`wkgpID` ASC) ,
-  CONSTRAINT `fk_Employee_jobType`
-    FOREIGN KEY (`jobTypeID` )
-    REFERENCES `WebAgenda`.`jobType` (`jobTypeID` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+  INDEX `fk_Employee_LOCATION` (`prefLocation` ASC) ,
+  INDEX `fk_EMPLOYEE_POSITION` (`prefPosition` ASC) ,
   CONSTRAINT `fk_Employee_PermissionSet`
     FOREIGN KEY (`plevel` )
-    REFERENCES `WebAgenda`.`PermissionSet` (`plevel` )
+    REFERENCES `WebAgenda`.`PERMISSIONSET` (`plevel` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Employee_Workgroup`
-    FOREIGN KEY (`wkgpID` )
-    REFERENCES `WebAgenda`.`Workgroup` (`wkgpID` )
+  CONSTRAINT `fk_Employee_LOCATION`
+    FOREIGN KEY (`prefLocation` )
+    REFERENCES `WebAgenda`.`LOCATION` (`locName` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_EMPLOYEE_POSITION`
+    FOREIGN KEY (`prefPosition` )
+    REFERENCES `WebAgenda`.`POSITION` (`positionName` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -114,14 +107,15 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `WebAgenda`.`Notification`
+-- Table `WebAgenda`.`NOTIFICATION`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `WebAgenda`.`Notification` ;
+DROP TABLE IF EXISTS `WebAgenda`.`NOTIFICATION` ;
 
-CREATE  TABLE IF NOT EXISTS `WebAgenda`.`Notification` (
+CREATE  TABLE IF NOT EXISTS `WebAgenda`.`NOTIFICATION` (
   `notificationID` INT NOT NULL ,
   `senderID` INT NULL ,
   `recipientID` INT NOT NULL ,
+  `sentTime` DATETIME NOT NULL ,
   `viewed` BOOLEAN NOT NULL DEFAULT 0 ,
   `message` VARCHAR(300) NOT NULL ,
   `type` VARCHAR(20) NOT NULL ,
@@ -130,7 +124,7 @@ CREATE  TABLE IF NOT EXISTS `WebAgenda`.`Notification` (
   INDEX `fk_Notification_NotificationType` (`type` ASC) ,
   CONSTRAINT `fk_Notification_Employee`
     FOREIGN KEY (`senderID` , `recipientID` )
-    REFERENCES `WebAgenda`.`Employee` (`empID` , `empID` )
+    REFERENCES `WebAgenda`.`EMPLOYEE` (`empID` , `empID` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Notification_NotificationType`
@@ -142,137 +136,186 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `WebAgenda`.`Event`
+-- Table `WebAgenda`.`SKILL`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `WebAgenda`.`Event` ;
+DROP TABLE IF EXISTS `WebAgenda`.`SKILL` ;
 
-CREATE  TABLE IF NOT EXISTS `WebAgenda`.`Event` (
-  `eventID` INT NOT NULL ,
-  `jobTypeID` INT NULL ,
-  `wkgpID` INT NULL ,
-  `startTime` DATETIME NOT NULL ,
-  `endTime` DATETIME NOT NULL ,
-  `name` VARCHAR(20) NOT NULL ,
-  `description` VARCHAR(300) NULL ,
-  PRIMARY KEY (`eventID`) ,
-  INDEX `fk_Event_jobType` (`jobTypeID` ASC) ,
-  INDEX `fk_Event_Workgroup` (`wkgpID` ASC) ,
-  CONSTRAINT `fk_Event_jobType`
-    FOREIGN KEY (`jobTypeID` )
-    REFERENCES `WebAgenda`.`jobType` (`jobTypeID` )
+CREATE  TABLE IF NOT EXISTS `WebAgenda`.`SKILL` (
+  `skillName` VARCHAR(45) NOT NULL ,
+  `skillDescription` VARCHAR(200) NULL ,
+  PRIMARY KEY (`skillName`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `WebAgenda`.`EMPSKILL`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `WebAgenda`.`EMPSKILL` ;
+
+CREATE  TABLE IF NOT EXISTS `WebAgenda`.`EMPSKILL` (
+  `empID` INT NOT NULL ,
+  `skillName` VARCHAR(45) NOT NULL ,
+  PRIMARY KEY (`empID`, `skillName`) ,
+  INDEX `fk_EMPSKILL_Employee` (`empID` ASC) ,
+  INDEX `fk_EMPSKILL_SKILL` (`skillName` ASC) ,
+  CONSTRAINT `fk_EMPSKILL_Employee`
+    FOREIGN KEY (`empID` )
+    REFERENCES `WebAgenda`.`EMPLOYEE` (`empID` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Event_Workgroup`
-    FOREIGN KEY (`wkgpID` )
-    REFERENCES `WebAgenda`.`Workgroup` (`wkgpID` )
+  CONSTRAINT `fk_EMPSKILL_SKILL`
+    FOREIGN KEY (`skillName` )
+    REFERENCES `WebAgenda`.`SKILL` (`skillName` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `WebAgenda`.`Schedule`
+-- Table `WebAgenda`.`POSSKILL`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `WebAgenda`.`Schedule` ;
+DROP TABLE IF EXISTS `WebAgenda`.`POSSKILL` ;
 
-CREATE  TABLE IF NOT EXISTS `WebAgenda`.`Schedule` (
+CREATE  TABLE IF NOT EXISTS `WebAgenda`.`POSSKILL` (
+  `positionName` VARCHAR(45) NOT NULL ,
+  `skillName` VARCHAR(45) NOT NULL ,
+  PRIMARY KEY (`positionName`, `skillName`) ,
+  INDEX `fk_POSSKILL_POSITION` (`positionName` ASC) ,
+  INDEX `fk_POSSKILL_SKILL` (`skillName` ASC) ,
+  CONSTRAINT `fk_POSSKILL_POSITION`
+    FOREIGN KEY (`positionName` )
+    REFERENCES `WebAgenda`.`POSITION` (`positionName` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_POSSKILL_SKILL`
+    FOREIGN KEY (`skillName` )
+    REFERENCES `WebAgenda`.`SKILL` (`skillName` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `WebAgenda`.`SHIFTTEMPLATE`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `WebAgenda`.`SHIFTTEMPLATE` ;
+
+CREATE  TABLE IF NOT EXISTS `WebAgenda`.`SHIFTTEMPLATE` (
+  `shiftReqID` INT NOT NULL ,
+  PRIMARY KEY (`shiftReqID`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `WebAgenda`.`SHIFT`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `WebAgenda`.`SHIFT` ;
+
+CREATE  TABLE IF NOT EXISTS `WebAgenda`.`SHIFT` (
+  `shiftID` INT NOT NULL ,
+  `shiftReqID` INT NOT NULL ,
+  `startTime` TIME NOT NULL ,
+  `endTime` TIME NOT NULL ,
+  PRIMARY KEY (`shiftID`) ,
+  INDEX `fk_SHIFT_SHIFTREQS` (`shiftReqID` ASC) ,
+  CONSTRAINT `fk_SHIFT_SHIFTREQS`
+    FOREIGN KEY (`shiftReqID` )
+    REFERENCES `WebAgenda`.`SHIFTTEMPLATE` (`shiftReqID` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `WebAgenda`.`SHIFTPOS`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `WebAgenda`.`SHIFTPOS` ;
+
+CREATE  TABLE IF NOT EXISTS `WebAgenda`.`SHIFTPOS` (
+  `shiftID` INT NOT NULL ,
+  `positionName` VARCHAR(45) NOT NULL ,
+  `posCount` INT NOT NULL ,
+  PRIMARY KEY (`shiftID`, `positionName`) ,
+  INDEX `fk_SHIFTPOS_SHIFT` (`shiftID` ASC) ,
+  INDEX `fk_SHIFTPOS_POSITION` (`positionName` ASC) ,
+  CONSTRAINT `fk_SHIFTPOS_SHIFT`
+    FOREIGN KEY (`shiftID` )
+    REFERENCES `WebAgenda`.`SHIFT` (`shiftID` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_SHIFTPOS_POSITION`
+    FOREIGN KEY (`positionName` )
+    REFERENCES `WebAgenda`.`POSITION` (`positionName` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `WebAgenda`.`SCHEDULE`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `WebAgenda`.`SCHEDULE` ;
+
+CREATE  TABLE IF NOT EXISTS `WebAgenda`.`SCHEDULE` (
   `scheduleID` INT NOT NULL ,
-  `activeDate` DATE NOT NULL ,
+  `startDate` DATE NOT NULL ,
   `endDate` DATE NOT NULL ,
-  `description` VARCHAR(100) NULL ,
   PRIMARY KEY (`scheduleID`) )
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `WebAgenda`.`ShiftLocation`
+-- Table `WebAgenda`.`WORKINGSHIFT`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `WebAgenda`.`ShiftLocation` ;
+DROP TABLE IF EXISTS `WebAgenda`.`WORKINGSHIFT` ;
 
-CREATE  TABLE IF NOT EXISTS `WebAgenda`.`ShiftLocation` (
-  `location` VARCHAR(20) NOT NULL ,
-  PRIMARY KEY (`location`) )
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `WebAgenda`.`Shift`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `WebAgenda`.`Shift` ;
-
-CREATE  TABLE IF NOT EXISTS `WebAgenda`.`Shift` (
-  `shiftID` INT NOT NULL ,
-  `empID` INT NOT NULL ,
-  `mon_start` TIME NULL ,
-  `mon_end` TIME NULL ,
-  `tue_start` TIME NULL ,
-  `tue_end` TIME NULL ,
-  `wed_start` TIME NULL ,
-  `wed_end` TIME NULL ,
-  `thu_start` TIME NULL ,
-  `thu_end` TIME NULL ,
-  `fri_start` TIME NULL ,
-  `fri_end` TIME NULL ,
-  `sat_start` TIME NULL ,
-  `sat_end` TIME NULL ,
-  `sun_start` TIME NULL ,
-  `sun_end` TIME NULL ,
-  `location` VARCHAR(20) NOT NULL ,
-  PRIMARY KEY (`shiftID`) ,
-  INDEX `fk_Shift_Employee` (`empID` ASC) ,
-  INDEX `fk_Shift_Location` (`location` ASC) ,
-  CONSTRAINT `fk_Shift_Employee`
-    FOREIGN KEY (`empID` )
-    REFERENCES `WebAgenda`.`Employee` (`empID` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Shift_Location`
-    FOREIGN KEY (`location` )
-    REFERENCES `WebAgenda`.`ShiftLocation` (`location` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `WebAgenda`.`ShiftSched`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `WebAgenda`.`ShiftSched` ;
-
-CREATE  TABLE IF NOT EXISTS `WebAgenda`.`ShiftSched` (
+CREATE  TABLE IF NOT EXISTS `WebAgenda`.`WORKINGSHIFT` (
+  `workingShiftID` INT NOT NULL ,
   `scheduleID` INT NOT NULL ,
-  `shiftID` INT NOT NULL ,
-  PRIMARY KEY (`scheduleID`, `shiftID`) ,
-  INDEX `fk_ShiftSched_Shift` (`shiftID` ASC) ,
-  INDEX `fk_ShiftSched_Schedule` (`scheduleID` ASC) ,
-  CONSTRAINT `fk_ShiftSched_Shift`
-    FOREIGN KEY (`shiftID` )
-    REFERENCES `WebAgenda`.`Shift` (`shiftID` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_ShiftSched_Schedule`
+  `startTime` TIME NOT NULL ,
+  `endTime` TIME NOT NULL ,
+  PRIMARY KEY (`workingShiftID`) ,
+  INDEX `fk_WORKINGSHIFT_SCHEDULE` (`scheduleID` ASC) ,
+  CONSTRAINT `fk_WORKINGSHIFT_SCHEDULE`
     FOREIGN KEY (`scheduleID` )
-    REFERENCES `WebAgenda`.`Schedule` (`scheduleID` )
+    REFERENCES `WebAgenda`.`SCHEDULE` (`scheduleID` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `WebAgenda`.`WorkgroupRelation`
+-- Table `WebAgenda`.`WORKINGEMP`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `WebAgenda`.`WorkgroupRelation` ;
+DROP TABLE IF EXISTS `WebAgenda`.`WORKINGEMP` ;
 
-CREATE  TABLE IF NOT EXISTS `WebAgenda`.`WorkgroupRelation` (
-  `wkgpID` INT NOT NULL ,
-  `childWkgpID` INT NOT NULL ,
-  PRIMARY KEY (`wkgpID`, `childWkgpID`) ,
-  INDEX `fk_WorkgroupRelation_Workgroup` (`wkgpID` ASC, `childWkgpID` ASC) ,
-  CONSTRAINT `fk_WorkgroupRelation_Workgroup`
-    FOREIGN KEY (`wkgpID` , `childWkgpID` )
-    REFERENCES `WebAgenda`.`Workgroup` (`wkgpID` , `wkgpID` )
+CREATE  TABLE IF NOT EXISTS `WebAgenda`.`WORKINGEMP` (
+  `workingShiftID` INT NOT NULL ,
+  `empID` INT NOT NULL ,
+  PRIMARY KEY (`workingShiftID`, `empID`) ,
+  INDEX `fk_WORKINGEMP_EMPLOYEE` (`empID` ASC) ,
+  INDEX `fk_WORKINGEMP_WORKINGSHIFT` (`workingShiftID` ASC) ,
+  CONSTRAINT `fk_WORKINGEMP_EMPLOYEE`
+    FOREIGN KEY (`empID` )
+    REFERENCES `WebAgenda`.`EMPLOYEE` (`empID` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_WORKINGEMP_WORKINGSHIFT`
+    FOREIGN KEY (`workingShiftID` )
+    REFERENCES `WebAgenda`.`WORKINGSHIFT` (`workingShiftID` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `WebAgenda`.`GLOBALSETTINGS`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `WebAgenda`.`GLOBALSETTINGS` ;
+
+CREATE  TABLE IF NOT EXISTS `WebAgenda`.`GLOBALSETTINGS` (
+  `???` INT NOT NULL ,
+  PRIMARY KEY (`???`) )
 ENGINE = InnoDB;
 
 
