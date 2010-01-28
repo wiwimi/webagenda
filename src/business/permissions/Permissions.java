@@ -1,7 +1,7 @@
 /**
  * business - Permissions.java
  */
-package business;
+package business.permissions;
 
 /**
  * Permissions are based on the DB_Create_Tables.sql Rev 120 script posted on 1/27/10 (dd/MM/YY)
