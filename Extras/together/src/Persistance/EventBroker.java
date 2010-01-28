@@ -2,7 +2,7 @@
 
 package Persistance;
 
-import ProblemDomain.Workgroup;
+import ProblemDomain.Skill;
 
 /**
  * Provides functionality for accessing event data from the database. 
@@ -11,7 +11,7 @@ public class EventBroker {
     /**
      * Creates an event that will apply to all employees within a specified workgroup. 
      */
-    public void createEvent(Workgroup wrkgp, String message, date start, date end){}
+    public void createEvent(Skill wrkgp, String message, date start, date end){}
 
     /**
      * Creates an event that will apply to all employees within a specified job type. 

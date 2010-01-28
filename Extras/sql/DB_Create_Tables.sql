@@ -66,6 +66,7 @@ CREATE  TABLE IF NOT EXISTS `WebAgenda`.`EMPLOYEE` (
   `supervisorID` INT NULL ,
   `givenName` VARCHAR(70) NOT NULL ,
   `familyName` VARCHAR(70) NOT NULL ,
+  `birthDate` DATE NULL ,
   `email` VARCHAR(50) NULL ,
   `username` VARCHAR(20) NOT NULL ,
   `password` VARCHAR(8) NOT NULL ,

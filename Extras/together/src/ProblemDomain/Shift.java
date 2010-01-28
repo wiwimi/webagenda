@@ -7,38 +7,21 @@ package ProblemDomain;
  */
 public class Shift {
     /**
-     * This method is used to create a shift object that is attached to a specific employee's schedule. However this is a temporary shift object and is not actually added to an employee schedule until a supervisor confirms the entire schedule. 
-     */
-    public Shift newShift() {
-    }
-
-    /**
-     * Get the start and end times for which this shift takes place. 
-     */
-    public date[] getTimes(){}
-
-    /**
      * The time at which work begins for the employees assigned to the shift. 
      */
-    private Date StartTime;
+    private Time startTime;
 
     /**
      * The time at which work ends for the employees assigned to the shift. 
      */
-    private Date EndTime;
+    private Time endTime;
+    private ShiftPos[] positions;
 
     /**
-     * The duties associated with this specific shift. 
+     * @clientQualifier contains
+     * @supplierCardinality 1..*
+     * @supplierQualifier required by
+     * @clientCardinality 1 
      */
-    private String job;
-
-    /**
-     * The building or room where the shift work is taking place.  Primarily for organizaional purposes. 
-     */
-    private String Location;
-
-    /**
-     * The supervisor who is in charge of the employees working that shift.
-     */
-    private Supervisor supervisor;
+    private ShiftPos lnkShiftPos;
 }

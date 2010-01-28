@@ -7,73 +7,17 @@ package ProblemDomain;
  */
 public class Schedule {
     /**
-     * The createNewSchedule() method is used to create a blank schedule and by default will include any time booked off by any of the employees he is scheduling. This can be turned off if the supervisor does not want to include the dates that the employees are on vacation/sick/absent. 
-     */
-    public Schedule newSched() {
-    }
-
-    /**
-     * Removes a specified shift from the schedule. 
-     */
-    public void removeShift() {
-    }
-
-    /**
-     * This method is used to actually assign a shift to a schedule for a specific employee. This method can be used for as many shifts as the supervisor wants to have to as many employees as he/she wants. Error checking will take place every time a supervisor tries to create a schedule that goes outside normal bounds of employment. 
-     */
-    public void addShift() {
-    }
-
-    /**
-     * Gets a collection including all shifts that the schedule contains. 
-     */
-    public Shift[] getAllShifts(){}
-
-    /**
      * Holds references to all shifts that are active for this schedule. 
      */
-    private Shift[] shifts;
-
-    public Schedule[] newSched(int p0){}
-
-    /**
-     * Removes all shifts from the schedule 
-     */
-    public void removeAllShifts(Shift p0){}
-
-    /**
-     * Takes a day's worth of shifts and replaces it with another day's worth of shifts. 
-     */
-    public void replaceShift(Schedule p0, String p1, Shift[] p2){}
-
-    public void setAvailability(Schedule p0){}
+    private Date startDate;
 
     /**
      * The date and time at which the schedule is set to become active, and all affected employees will be expected to follow the shifts it contains. 
      */
-    private Date activeDate;
-
-    /**
-     * The duration in days that the schedule will be active for. 
-     */
-    private int duration;
-
-    /**
-     * The supervisor who created the schedule. 
-     */
-    private Supervisor creator;
+    private Date endDate;
 
     /**
      * A description of the schedule, if one is desired.  This is not required to create a schedule. 
      */
-    private String description;
-
-    /**
-     * A schedule is composed of one or more shifts.
-     * @link aggregation 
-     * @clientCardinality 0..*
-     * @supplierCardinality 1..*
-     * @supplierQualifier contains
-     * @clientQualifier belongs to*/
-    private Shift lnkShift;
+    private WorkingShift[] workingShifts;
 }

@@ -85,7 +85,7 @@ public class PermissionSet {
     /**
      * Similar to a permission promotion (which canot be given by self), trusted is a permission that allows any employee to perform actions that affect the next highest level without requiring authorization from a superior.  However, a notification will be sent notifying the supervisor (n/a if highest plevel) explaining actions.  This only applies to permissions that are currently enabled. Ex: If an employee cannot book days off, a trusted employee canot book days off either. 
      */
-    private boolean trusted;
+    private int trusted;
 
     /**
      * Starting with 0 as the highest priority employee and then incrementing, this differentiates seniority within the same plevel. 

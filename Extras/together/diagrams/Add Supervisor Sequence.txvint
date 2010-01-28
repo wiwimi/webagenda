@@ -7,7 +7,6 @@
             <property name="$shortcutReference" value="true"/>
             <property name="seq_bounds" value="30,30,130,334"/>
             <property name="seq_bounds_setted_by_user" value="true"/>
-            <reference referencedUin="design:link:::idh3q0dg34vcus5g36acr32.nodeid2e7zsg34vcus5g36acuhw.linkid308gdg34vcus5g36ay4kg:idh3q0dg34vcus5g36acr32.nodeid2e7zsg34vcus5g36acuhw"/>
             <reference referencedUin="design:link:::idh3q0dg34vcus5g36acr32.nodeid2e7zsg34vcus5g36acuhw.linkidcvmj1g34vcus5g36ay4kg:idh3q0dg34vcus5g36acr32.nodeid2e7zsg34vcus5g36acuhw">
                 <property name="seq_sourceAnchor" value="102,123"/>
                 <property name="seq_bendpoints" value=""/>
@@ -24,7 +23,6 @@
             <property name="$shortcutReference" value="true"/>
             <property name="seq_bounds" value="183,30,154,334"/>
             <property name="seq_bounds_setted_by_user" value="true"/>
-            <reference referencedUin="design:link:::idh3q0dg34vcus5g36acr32.nodeidilbbmg34vcus5g36ahgs0.linkid7utipg34vcus5g36b6nfr:idh3q0dg34vcus5g36acr32.nodeidilbbmg34vcus5g36ahgs0"/>
             <reference referencedUin="design:link:::idh3q0dg34vcus5g36acr32.nodeidilbbmg34vcus5g36ahgs0.linkidj3hh4g34vcus5g36b29su:idh3q0dg34vcus5g36acr32.nodeidilbbmg34vcus5g36ahgs0">
                 <property name="seq_sourceAnchor" value="267,164"/>
                 <property name="seq_bendpoints" value="267,158,307,158,307,170"/>
@@ -37,7 +35,6 @@
                 <property name="sendingInstant" value="164"/>
                 <property name="processingDuration" value="105"/>
             </reference>
-            <reference referencedUin="design:link:::idh3q0dg34vcus5g36acr32.nodeidilbbmg34vcus5g36ahgs0.linkidfyacig34vcus5g36b29ta:idh3q0dg34vcus5g36acr32.nodeidilbbmg34vcus5g36ahgs0"/>
             <reference referencedUin="design:link:::idh3q0dg34vcus5g36acr32.nodeidilbbmg34vcus5g36ahgs0.linkidg8yzfg34vcus5g36b6nfb:idh3q0dg34vcus5g36acr32.nodeidilbbmg34vcus5g36ahgs0">
                 <property name="seq_sourceAnchor" value="276,220"/>
                 <property name="seq_bendpoints" value=""/>
@@ -50,17 +47,16 @@
                 <property name="processingDuration" value="39"/>
             </reference>
             <reference referencedUin="design:node:::idh3q0dg34vcus5g36acr32.nodeidilbbmg34vcus5g36ahgs0.nodeid63r74g34vcus5g36b29ta:idh3q0dg34vcus5g36acr32.nodeidilbbmg34vcus5g36ahgs0">
-                <property name="seq_bounds" value="262,164,14,105"/>
+                <property name="seq_bounds" value="445,194,14,105"/>
             </reference>
             <reference referencedUin="design:node:::idh3q0dg34vcus5g36acr32.nodeidilbbmg34vcus5g36ahgs0.nodeid2ns5pg34vcus5g36ay4kg:idh3q0dg34vcus5g36acr32.nodeidilbbmg34vcus5g36ahgs0">
-                <property name="seq_bounds" value="253,123,14,20"/>
+                <property name="seq_bounds" value="436,153,14,20"/>
             </reference>
         </reference>
         <reference df-class-name="reference75" referencedUin="design:node:::idh3q0dg34vcus5g36acr32.nodeid74n75g34vcus5g36b66g7">
             <property name="$shortcutReference" value="true"/>
             <property name="seq_bounds" value="360,30,130,334"/>
             <property name="seq_bounds_setted_by_user" value="true"/>
-            <reference referencedUin="design:link:::idh3q0dg34vcus5g36acr32.nodeid74n75g34vcus5g36b66g7.linkidfma2xg34vcus5g36b7ez3:idh3q0dg34vcus5g36acr32.nodeid74n75g34vcus5g36b66g7"/>
             <reference referencedUin="design:link:::idh3q0dg34vcus5g36acr32.nodeid74n75g34vcus5g36b66g7.linkid4edodg34vcus5g36b7ez3:idh3q0dg34vcus5g36acr32.nodeid74n75g34vcus5g36b66g7">
                 <property name="seq_sourceAnchor" value="432,229"/>
                 <property name="seq_bendpoints" value=""/>
@@ -73,14 +69,13 @@
                 <property name="processingDuration" value="20"/>
             </reference>
             <reference referencedUin="design:node:::idh3q0dg34vcus5g36acr32.nodeid74n75g34vcus5g36b66g7.nodeidamwmqg34vcus5g36b6nfr:idh3q0dg34vcus5g36acr32.nodeid74n75g34vcus5g36b66g7">
-                <property name="seq_bounds" value="418,220,14,39"/>
+                <property name="seq_bounds" value="778,250,14,39"/>
             </reference>
         </reference>
         <reference df-class-name="reference76" referencedUin="design:node:::idh3q0dg34vcus5g36acr32.nodeid4cmuyg34vcus5g36b73r0">
             <property name="$shortcutReference" value="true"/>
             <property name="seq_bounds" value="513,30,150,334"/>
             <property name="seq_bounds_setted_by_user" value="true"/>
-            <reference referencedUin="design:link:::idh3q0dg34vcus5g36acr32.nodeid4cmuyg34vcus5g36b73r0.linkidhqntg34vcus5g36cubyj:idh3q0dg34vcus5g36acr32.nodeid4cmuyg34vcus5g36b73r0"/>
             <reference referencedUin="design:link:::idh3q0dg34vcus5g36acr32.nodeid4cmuyg34vcus5g36b73r0.linkidfw8ivg34vcus5g36cubyj:idh3q0dg34vcus5g36acr32.nodeid4cmuyg34vcus5g36b73r0">
                 <property name="seq_sourceAnchor" value="595,264"/>
                 <property name="seq_bendpoints" value=""/>
@@ -93,7 +88,7 @@
                 <property name="processingDuration" value="20"/>
             </reference>
             <reference referencedUin="design:node:::idh3q0dg34vcus5g36acr32.nodeid4cmuyg34vcus5g36b73r0.nodeidd4fqfg34vcus5g36b7ez3:idh3q0dg34vcus5g36acr32.nodeid4cmuyg34vcus5g36b73r0">
-                <property name="seq_bounds" value="581,229,14,20"/>
+                <property name="seq_bounds" value="1094,259,14,20"/>
             </reference>
         </reference>
         <reference df-class-name="reference77" referencedUin="design:node:::idh3q0dg34vcus5g36acr32.nodeidev4y9g34vcus5g36bs18v">
@@ -101,7 +96,7 @@
             <property name="seq_bounds" value="686,30,124,334"/>
             <property name="seq_bounds_setted_by_user" value="true"/>
             <reference referencedUin="design:node:::idh3q0dg34vcus5g36acr32.nodeidev4y9g34vcus5g36bs18v.nodeide37q1g34vcus5g36cubyj:idh3q0dg34vcus5g36acr32.nodeidev4y9g34vcus5g36bs18v">
-                <property name="seq_bounds" value="741,264,14,20"/>
+                <property name="seq_bounds" value="1427,294,14,20"/>
             </reference>
         </reference>
     </view>
@@ -189,7 +184,7 @@
             <participant role="Client" referencedUin="design:node:::idh3q0dg34vcus5g36acr32.nodeidilbbmg34vcus5g36ahgs0"/>
             <property name="$metaclass" value="Messages Link"/>
         </link>
-        <link uin="L1b7x3ig39k34zfntje40">
+        <link uin="L1b7x3ig4ykwf0g-otu3f8">
             <participant role="Client" referencedUin="design:node:::idh3q0dg34vcus5g36acr32.nodeidilbbmg34vcus5g36ahgs0"/>
             <participant role="Supplier" referencedUin="design:node:::idh3q0dg34vcus5g36acr32.nodeid2e7zsg34vcus5g36acuhw"/>
             <property name="$metaclass" value="Messages Link"/>
@@ -230,7 +225,7 @@
             <participant role="Client" referencedUin="design:node:::idh3q0dg34vcus5g36acr32.nodeid74n75g34vcus5g36b66g7"/>
             <property name="$metaclass" value="Messages Link"/>
         </link>
-        <link uin="L1b7x3ig39k34zfn31oqs">
+        <link uin="L1b7x3ig4ykwf0gmtys16">
             <participant role="Client" referencedUin="design:node:::idh3q0dg34vcus5g36acr32.nodeid74n75g34vcus5g36b66g7"/>
             <participant role="Supplier" referencedUin="design:node:::idh3q0dg34vcus5g36acr32.nodeidilbbmg34vcus5g36ahgs0"/>
             <property name="$metaclass" value="Messages Link"/>
@@ -259,7 +254,7 @@
             <link uin="idh3q0dg34vcus5g36acr32.nodeid4cmuyg34vcus5g36b73r0.linkidfw8ivg34vcus5g36cubyj.operation">
                 <property name="$metaclass" value="Dependency Link"/>
                 <participant role="Client" referencedUin="design:node:::idh3q0dg34vcus5g36acr32.nodeid4cmuyg34vcus5g36b73r0.linkidfw8ivg34vcus5g36cubyj:idh3q0dg34vcus5g36acr32.nodeid4cmuyg34vcus5g36b73r0"/>
-                <participant role="Supplier" referencedUin="jdt:e_method:src:ProblemDomain.Employee.getCredentials:getCredentials"/>
+                <participant role="Supplier" referencedUin=""/>
             </link>
             <property name="@operationNameAsText" value="&apos;getCredentials():String&apos;"/>
             <property name="normalizedIndex" value="0.75"/>
@@ -270,7 +265,7 @@
             <participant role="Client" referencedUin="design:node:::idh3q0dg34vcus5g36acr32.nodeid4cmuyg34vcus5g36b73r0"/>
             <property name="$metaclass" value="Messages Link"/>
         </link>
-        <link uin="L1b7x3ig39k34zf5iw7uq">
+        <link uin="L1b7x3ig4ykwf0gb1vfbh">
             <participant role="Client" referencedUin="design:node:::idh3q0dg34vcus5g36acr32.nodeid4cmuyg34vcus5g36b73r0"/>
             <participant role="Supplier" referencedUin="design:node:::idh3q0dg34vcus5g36acr32.nodeid74n75g34vcus5g36b66g7"/>
             <property name="$metaclass" value="Messages Link"/>
@@ -290,7 +285,7 @@
             <property name="$name" value="Activation5"/>
             <property name="messageUid" value="design:link:::idh3q0dg34vcus5g36acr32.nodeid4cmuyg34vcus5g36b73r0.linkidfw8ivg34vcus5g36cubyj:idh3q0dg34vcus5g36acr32.nodeid4cmuyg34vcus5g36b73r0"/>
         </node>
-        <link uin="L1b7x3ig39k34zf765a8i">
+        <link uin="L1b7x3ig4ykwf0g-sa8vty">
             <participant role="Client" referencedUin="design:node:::idh3q0dg34vcus5g36acr32.nodeidev4y9g34vcus5g36bs18v"/>
             <participant role="Supplier" referencedUin="design:node:::idh3q0dg34vcus5g36acr32.nodeid4cmuyg34vcus5g36b73r0"/>
             <property name="$metaclass" value="Messages Link"/>

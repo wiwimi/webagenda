@@ -331,9 +331,9 @@
             <property name="@crossReferencedEntity" value="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid3c0s9g4s0x0qtg4s21qv7"/>
         </link>
         <link uin="id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc.linkidhbuv1g4yc3mpzg4yc49aw">
-            <property name="$metaclass" value="erManyToManyRelationship"/>
             <participant role="Supplier" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidiwn8ng4wa5e4pg4wbc64d"/>
             <participant role="Client" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc"/>
+            <property name="$metaclass" value="erManyToManyRelationship"/>
             <property name="$name" value="requires"/>
             <property name="@crossReferencedEntity" value="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid5vltmg4yc3mpzg4yc49bb"/>
         </link>
@@ -437,16 +437,16 @@
         <property name="$metaclass" value="erEntity"/>
         <property name="$name" value="WORKINGSHIFT"/>
         <link uin="id5ap3qg4rjkiskg4rkcist.nodeidbr7vgg4wa5e4pg4wbcbex.linkid9uacgg4yc3mpzg4yc7pr9">
-            <property name="$metaclass" value="erRelationship"/>
             <participant role="Supplier" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidep9oxg4rjkiskg4rkdou9"/>
             <participant role="Client" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidbr7vgg4wa5e4pg4wbcbex"/>
+            <property name="$metaclass" value="erRelationship"/>
             <property name="@internalIdentifying" value=""/>
             <property name="$name" value="contains"/>
         </link>
         <link uin="id5ap3qg4rjkiskg4rkcist.nodeidbr7vgg4wa5e4pg4wbcbex.linkid7191gg4yc3mpzg4yc80xl">
-            <property name="$metaclass" value="erManyToManyRelationship"/>
             <participant role="Supplier" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidjj3u2g4rjkiskg4rkdnp1"/>
             <participant role="Client" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidbr7vgg4wa5e4pg4wbcbex"/>
+            <property name="$metaclass" value="erManyToManyRelationship"/>
             <property name="$name" value="includes"/>
             <property name="@crossReferencedEntity" value="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid5ufxqg4yc3mpzg4yc80xl"/>
         </link>
@@ -456,17 +456,17 @@
         <property name="$name" value="POSITION_SHIFT1"/>
         <property name="@manyToManyLink" value="design:link:::id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc.linkidhbuv1g4yc3mpzg4yc49aw:id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc"/>
         <link uin="id5ap3qg4rjkiskg4rkcist.nodeid5vltmg4yc3mpzg4yc49bb.linkidjecqgg4yc3mpzg4yc49bb">
-            <property name="$metaclass" value="erRelationship"/>
             <participant role="Supplier" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidiwn8ng4wa5e4pg4wbc64d"/>
             <participant role="Client" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid5vltmg4yc3mpzg4yc49bb"/>
+            <property name="$metaclass" value="erRelationship"/>
             <property name="$name" value="relationship9"/>
             <property name="@manyToManyLink" value="design:link:::id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc.linkidhbuv1g4yc3mpzg4yc49aw:id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc"/>
             <property name="@internalIdentifying" value=""/>
         </link>
         <link uin="id5ap3qg4rjkiskg4rkcist.nodeid5vltmg4yc3mpzg4yc49bb.linkid8z4nyg4yc3mpzg4yc49br">
-            <property name="$metaclass" value="erRelationship"/>
             <participant role="Supplier" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc"/>
             <participant role="Client" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid5vltmg4yc3mpzg4yc49bb"/>
+            <property name="$metaclass" value="erRelationship"/>
             <property name="$name" value="relationship10"/>
             <property name="@manyToManyLink" value="design:link:::id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc.linkidhbuv1g4yc3mpzg4yc49aw:id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc"/>
             <property name="@internalIdentifying" value=""/>
@@ -477,17 +477,17 @@
         <property name="$name" value="WORKINGSHIFT_EMPLOYEE1"/>
         <property name="@manyToManyLink" value="design:link:::id5ap3qg4rjkiskg4rkcist.nodeidbr7vgg4wa5e4pg4wbcbex.linkid7191gg4yc3mpzg4yc80xl:id5ap3qg4rjkiskg4rkcist.nodeidbr7vgg4wa5e4pg4wbcbex"/>
         <link uin="id5ap3qg4rjkiskg4rkcist.nodeid5ufxqg4yc3mpzg4yc80xl.linkid3e1hag4yc3mpzg4yc80y1">
-            <property name="$metaclass" value="erRelationship"/>
             <participant role="Supplier" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidjj3u2g4rjkiskg4rkdnp1"/>
             <participant role="Client" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid5ufxqg4yc3mpzg4yc80xl"/>
+            <property name="$metaclass" value="erRelationship"/>
             <property name="$name" value="relationship11"/>
             <property name="@manyToManyLink" value="design:link:::id5ap3qg4rjkiskg4rkcist.nodeidbr7vgg4wa5e4pg4wbcbex.linkid7191gg4yc3mpzg4yc80xl:id5ap3qg4rjkiskg4rkcist.nodeidbr7vgg4wa5e4pg4wbcbex"/>
             <property name="@internalIdentifying" value=""/>
         </link>
         <link uin="id5ap3qg4rjkiskg4rkcist.nodeid5ufxqg4yc3mpzg4yc80xl.linkidedgbsg4yc3mpzg4yc80y1">
-            <property name="$metaclass" value="erRelationship"/>
             <participant role="Supplier" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeidbr7vgg4wa5e4pg4wbcbex"/>
             <participant role="Client" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid5ufxqg4yc3mpzg4yc80xl"/>
+            <property name="$metaclass" value="erRelationship"/>
             <property name="$name" value="relationship12"/>
             <property name="@manyToManyLink" value="design:link:::id5ap3qg4rjkiskg4rkcist.nodeidbr7vgg4wa5e4pg4wbcbex.linkid7191gg4yc3mpzg4yc80xl:id5ap3qg4rjkiskg4rkcist.nodeidbr7vgg4wa5e4pg4wbcbex"/>
             <property name="@internalIdentifying" value=""/>
