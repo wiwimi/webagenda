@@ -9,8 +9,6 @@ label {
 
 #container {
 	min-width: 1200px;
-	/*width: 1000px;
-	margin: 0 auto;*/
 }
 
 #header {
@@ -50,7 +48,7 @@ label {
 	min-height: 100px;
 	padding-top: 20px;
 	float:left;
-
+	width:100%;
 }
 
 #footer 

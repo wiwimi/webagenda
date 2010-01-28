@@ -43,7 +43,7 @@
 		<div id = "dashboardLowerRectangle" class = "lowerRectangle">
 			
 			<b> <a href ="" > Dashboard  </a> </b> <br>
-			<b> <a href ="" > Statistics </a> </b> <br>
+			<b> <a href ="" > Reports </a> </b> <br>
 		</div>
 		
 		<br>
@@ -123,34 +123,40 @@
 	</div>
 	<!-- End sidebar div -->
 	
+	<div id="notification">
+		<div id="notificationText">This is a test notification</div>
+		<div id="notificationCloseButton">Close</div>
+	</div>
+	
 	<!-- Start middle Content div -->
-	<div id="middleContent">
+	<div id="middleContent">	
+	
 		<div id="quickLinksWidget" class="fullWidget">
-			<div class="widgetUpperRectangle">
+			<div class="widgetUpperRectangle" id="quickLinksUpperRectangle">
 				<div class="widgetTitle" id="quickLinksTitle">Quick Links</div>
 			</div>
 			
-			<div class="widgetLowerRectangle">
+			<div class="widgetLowerRectangle" id="quickLinksLowerRectangle">
 				some widget data here
 			</div>
 		</div>
 		
 		<div id="scheduleWidget" class="fullWidget">
-			<div class="widgetUpperRectangle">
+			<div class="widgetUpperRectangle" id="scheduleUpperRectangle">
 				<div class="widgetTitle" id="scheduleWidgetTitle">Schedule</div>
 			</div>
 			
-			<div class="widgetLowerRectangle">
+			<div class="widgetLowerRectangle" id="scheduleLowerRectangle">
 				some widget data here
 			</div>
 		</div>
 		<div id="firstColumn" class="column">
 			<div id="notificationsWidget" class="halfWidget">
-				<div class="widgetUpperRectangle">
+				<div class="widgetUpperRectangle" id="notificationsUpperRectangle">
 					<div class="widgetTitle" id="notificationsWidgetTitle">Notifications</div>
 				</div>
 			
-				<div class="widgetLowerRectangle">
+				<div class="widgetLowerRectangle" id="notificationsLowerRectangle">
 					some widget data here
 				</div>
 			</div>
@@ -158,11 +164,11 @@
 		
 		<div id="secondColumn" class="column">
 			<div id="mailWidget" class="halfWidget">
-				<div class="widgetUpperRectangle">
+				<div class="widgetUpperRectangle" id="mailUpperRectangle">
 					<div class="widgetTitle" id="mailWidgetTitle">Mail(1)</div>
 				</div>
 			
-				<div class="widgetLowerRectangle">
+				<div class="widgetLowerRectangle" id="mailLowerRectangle">
 					some widget data here
 				</div>
 			</div>

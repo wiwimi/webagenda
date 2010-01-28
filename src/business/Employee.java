@@ -5,6 +5,8 @@ package business;
 
 import java.util.Date;
 
+/*Ignore the error for now :D*/
+
 
 /**
  * @author peon-dev

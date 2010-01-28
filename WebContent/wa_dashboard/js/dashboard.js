@@ -1,5 +1,5 @@
 $(document).ready(function()
-{
+{	
 	    $('#helpUpperRectangle').click(function()
 		{
 			if($('#helpLowerRectangle').is(":hidden"))
@@ -70,5 +70,60 @@ $(document).ready(function()
 			
 			}
 		
+		});
+		
+		$('#quickLinksUpperRectangle').click(function(){
+			if($('#quickLinksLowerRectangle').is(":hidden"))
+			{
+				$('#quickLinksLowerRectangle').slideDown('fast');
+			}
+			else
+			{
+				$('#quickLinksLowerRectangle').slideUp('fast');
+			}
+		});
+		
+		$('#scheduleUpperRectangle').click(function(){
+			if($('#scheduleLowerRectangle').is(":hidden"))
+			{
+				$('#scheduleLowerRectangle').slideDown('fast');
+			}
+			else
+			{
+				$('#scheduleLowerRectangle').slideUp('fast');
+			}
+		});
+		
+		$('#notificationsUpperRectangle').click(function(){
+			if($('#notificationsLowerRectangle').is(":hidden"))
+			{
+				$('#notificationsLowerRectangle').slideDown('fast');
+			}
+			else
+			{
+				$('#notificationsLowerRectangle').slideUp('fast');
+			}
+		});	
+
+		$('#mailUpperRectangle').click(function(){
+			if($('#mailLowerRectangle').is(":hidden"))
+			{
+				$('#mailLowerRectangle').slideDown('fast');
+			}
+			else
+			{
+				$('#mailLowerRectangle').slideUp('fast');
+			}
+		});
+		
+		$('#notificationCloseButton').click(function(){
+			if($('#notification').is(":hidden"))
+			{
+				$('#notification').slideDown('fast');
+			}
+			else
+			{
+				$('#notification').slideUp('fast');
+			}
 		});
 });
