@@ -1,0 +1,98 @@
+@CHARSET "ISO-8859-1";
+#addUser input, select
+
+{
+	background-color: #FFFFFF;
+	font-family: cochin,Verdana, Times,helvetica,sans-serif;
+	border: 1px solid #000080;
+	border:solid 1px #aacfe4;
+}
+#addUser input:focus
+{
+	background-color:#E3E4FA;
+}
+
+#addUser form
+{
+	 background-color: #FFFFFF;  
+	 color: #000000;   
+	 font-family: cochin ,Times, Verdana, helvetica,sans-serif;
+	 border: 2px solid #000080;  
+	 border-collapse: collapse;
+	 padding: 1em 0;
+}
+#addUser
+{
+	
+	float:left;
+	width:70%;
+	padding-bottom:1em;
+	pading-top:0;
+}
+#work
+{
+	padding-left:275px;
+}
+#personal
+{
+	float:left;
+}
+
+#addUser label
+{
+	width: 7em;
+	float: left;
+	text-align: right;
+	margin-right: 2.0em;
+	display: block;
+	display: inline-block;
+	line-height: 1.8;
+	vertical-align: top;
+	width:140px;
+	font: cochin, Times, Verdana, helvetica,sans-serif;
+	font-weight:bold;
+
+}
+.asterisk
+{
+	font-weight: bold;
+	font-style: normal;
+	color: #f00;
+}
+
+#addUser input.button
+{ 
+	  color:003366; 
+	  font: bold 100% cochin, Times, Verdana, helvetica,sans-serif;
+	  margin-left:220px;
+	  margin-top:4px;
+}
+
+fieldset
+{
+	height:75%;
+}
+#addUser legend
+{
+	color:#151B54; 
+	font: bold 110% cochin, Times, Verdana, helvetica,sans-serif;
+}
+.highlight {
+background-color: gray;
+}
+/* over class will be used later for highlight effect when the cursor moves over a row */
+	form.alt input
+	{
+		background: #ecf6fc;
+	}
+	
+	form.over input
+	{
+	
+		background: #bcd4ec;
+	
+	}
+
+
+ 
+

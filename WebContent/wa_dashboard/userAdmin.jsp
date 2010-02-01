@@ -4,23 +4,128 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+
+
+<jsp:include page="pageLayout.jsp"/>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<style type="text/css">@import "../lib/js/jquery.datepick.css";</style> 
+<script type="text/javascript" src="../lib/js/jquery.datepick.js"></script>
+<link rel="stylesheet" href="CSS/userAddStyle.css" type="text/css"></link>
+
+<title>Adding User</title>
 </head>
 <body>
 
 
+Fields marked with <em class="asterisk" > *</em> are required.
+<br></br>
+Randomly generated passwords are going to be sent to employee's e-mail or your e-mail.
+<br></br>
+<br></br>
 
-<b> Instructions: </br> Please fill in all the fields available. 
-An asterisk indicates that the fields are mandatory</b>
+<div id ="addUser">
 
-
-
-
-
-
-
-
-
-
+	 <form class="addUserForm" method="post">
+	 
+	 
+	 <div id="personal">
+	
+		 <fieldset>
+			<legend > Personal <br></br><br></br>
+			<p>
+						<label> Given Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="givenName" size ="20"> <br></br><br></br>
+						<label> Family Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="familyName" size ="20"> <br></br><br></br>
+						<label> Date of Birth: <em class="asterisk"> * </em> </label> <input type="text" name ="dob" id="dob" size ="20"><br></br><br></br>
+			
+						<label> Personal E-mail: </label> <input type="text"  name ="email" size ="20"> <br></br>
+			 </p>
+			</legend>
+				 
+		</fieldset>
+	
+	</div>
+	
+	
+	
+	<div id="work">
+	<fieldset>
+		<legend> Working Preferences <br></br><br></br>
+		<p>
+				<label> Status: <em class="asterisk"> * </em> </label> 
+					        <select name="status" >
+									<option value="enabled" > Enabled</option> 
+									<option value="disabled" >Disabled</option>  
+							</select>
+							<br></br>
+							<br></br>
+					<!--This should be populated from MaintainJobType use case -->
+					
+					<label id="theSelect" class="theSelect"> Preferred Positions: </label>  
+							<select name="positions" size=3 multiple>
+									<option value="1">Bartender</option>
+									<option value="2">Waitress</option>
+									<option value="3">Other</option>
+							</select>
+							<br></br>
+							<br></br>
+					
+					<!--This should be populated from MaintainLocation use case -->
+					
+					<label id="theSelect" class="theSelect"> Preferred Locations: </label>  
+							<select name="locaions" size=3 multiple>
+									<option value="1">Hotel A</option>
+									<option value="2">Hotel B</option>
+									<option value="3">Basement</option>
+							</select>
+							<br></br>
+							<br></br>
+					
+						<!--This should be populated from MaintainSkills use case -->
+					
+					<label id="theSelect" class="theSelect"> Preferred Skills: </label>  
+							<select name="skills" size=3 multiple>
+									<option value="1">Accounting</option>
+									<option value="2">Cooking</option>
+									<option value="3">Event Planning</option>
+							</select>
+							<br></br>
+							<br></br>
+					
+						<!--This should be populated from MaintainSkills use case -->
+					
+					<label id="theSelect" class="theSelect"> Permission level: </label>  
+							<select name="plevel" size=3>
+									<option value="1">Level 1</option>
+									<option value="2">Level 1a</option>
+									<option value="3">Level 2</option>
+							</select>
+							<br></br>
+							<br></br>
+	    </p>
+		</legend>
+		</fieldset>	
+		
+		</div>
+		
+				<input type="submit" name="submit" class="button" value="Save"> 
+				<input type="submit" name="clear" class="button" value="Clear Screen"> 
+				<br></br>
+		</form>
+</div>
+<script type="text/javascript">
+        $(function()
+		{
+                
+			
+			$("#dob").datepick({showOn: 'button', buttonImageOnly: true, buttonImage:'../lib/images/icons/Color/calendar.gif'});
+			
+			$(".addUserForm fieldset").mouseover(function()
+			{
+				$(this).addClass("over");
+			});
+			
+        });
+		
+</script>
 </body>
 </html>

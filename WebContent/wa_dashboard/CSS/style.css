@@ -1,6 +1,6 @@
 label 
 {
-	color: white;
+	/*color: white;*/
 	font-family: cochin;
 }
 
@@ -14,13 +14,12 @@ label
 	min-width:130px;
 	margin: 0px 12px 0px;
 }
-
 #userArea a
 {
 	color:white;
 	text-decoration:none;
 }
-//Noorin
+/*author: Noorin*/
 	
 	/* Dark gray Background for dash-board upper rectangle */
 
@@ -113,7 +112,6 @@ label
 		position: relative;
 		color: black;
 		float:left;
-		margin-left:0px;
 		min-width:200px;
 		width:10%;
 	}
