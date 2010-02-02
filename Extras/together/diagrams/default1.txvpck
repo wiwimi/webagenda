@@ -5,7 +5,7 @@
         <property name="@__options" value=""/>
         <reference df-class-name="reference" referencedUin="design:view:::unknown_view">
             <property name="$shortcutReference" value="true"/>
-            <property name="@__fqn" value="uml:package:Webagenda:src:ProblemDomain"/>
+            <property name="@__fqn" value="uml:package:Webagenda:src:Business"/>
         </reference>
         <reference df-class-name="reference59" referencedUin="design:view:::idf1bpkg2p7zmjhg2p85qp2">
             <property name="$shortcutReference" value="true"/>

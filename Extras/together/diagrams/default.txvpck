@@ -291,12 +291,12 @@
         </reference>
         <reference df-class-name="reference22" referencedUin="design:view:::idgjd7xg2p7zmjhg2p8asa9">
             <property name="$shortcutReference" value="true"/>
-            <property name="@__fqn" value="uml:package:Webagenda:src:Persistance"/>
+            <property name="@__fqn" value="uml:package:Webagenda:src:Persistence"/>
             <property name="bounds" value="2006,264,143,222"/>
         </reference>
         <reference df-class-name="reference30" referencedUin="design:view:::id1gm70g2p7zmjhg2p8vsns">
             <property name="$shortcutReference" value="true"/>
-            <property name="@__fqn" value="uml:package:Webagenda:src:ProblemDomain"/>
+            <property name="@__fqn" value="uml:package:Webagenda:src:Business"/>
             <property name="bounds" value="2010,10,110,222"/>
             <reference referencedUin="design:link:::id1gm70g2p7zmjhg2p8vsns.linkid2wu2lg2p7zmjhg2p9qmyz">
                 <property name="sourceAnchor" value="2065,232"/>

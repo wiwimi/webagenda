@@ -8,44 +8,44 @@
     <view uin="idgjd7xg2p7zmjhg2p8asa9">
         <property name="$metaclass" value="Package Diagram"/>
         <property name="@__options" value=""/>
-        <reference df-class-name="reference" referencedUin="jdt:e_class:src:Persistance.ScheduleBroker">
+        <reference df-class-name="reference" referencedUin="jdt:e_class:src:Persistence.ScheduleBroker">
             <property name="$shortcutReference" value="true"/>
             <property name="bounds" value="10,10,260,485"/>
             <property name="bounds_setted_by_user" value="true"/>
         </reference>
-        <reference df-class-name="reference8" referencedUin="jdt:e_class:src:Persistance.EmployeeBroker">
+        <reference df-class-name="reference8" referencedUin="jdt:e_class:src:Persistence.EmployeeBroker">
             <property name="$shortcutReference" value="true"/>
             <property name="bounds" value="280,10,198,197"/>
         </reference>
-        <reference df-class-name="reference9" referencedUin="jdt:e_class:src:Persistance.NotificationBroker">
+        <reference df-class-name="reference9" referencedUin="jdt:e_class:src:Persistence.NotificationBroker">
             <property name="$shortcutReference" value="true"/>
             <property name="bounds" value="280,320,135,85"/>
         </reference>
-        <reference df-class-name="reference10" referencedUin="jdt:e_class:src:Persistance.ShiftBroker">
+        <reference df-class-name="reference10" referencedUin="jdt:e_class:src:Persistence.ShiftBroker">
             <property name="$shortcutReference" value="true"/>
             <property name="bounds" value="490,100,141,149"/>
         </reference>
-        <reference df-class-name="reference2" referencedUin="jdt:e_class:src:Persistance.PermissionSetBroker">
+        <reference df-class-name="reference2" referencedUin="jdt:e_class:src:Persistence.PermissionSetBroker">
             <property name="$shortcutReference" value="true"/>
             <property name="bounds" value="280,220,137,85"/>
         </reference>
-        <reference df-class-name="reference1" referencedUin="jdt:e_class:src:Persistance.LocationBroker">
+        <reference df-class-name="reference1" referencedUin="jdt:e_class:src:Persistence.LocationBroker">
             <property name="$shortcutReference" value="true"/>
             <property name="bounds" value="430,260,100,82"/>
         </reference>
-        <reference df-class-name="reference3" referencedUin="jdt:e_class:src:Persistance.PositionBroker">
+        <reference df-class-name="reference3" referencedUin="jdt:e_class:src:Persistence.PositionBroker">
             <property name="$shortcutReference" value="true"/>
             <property name="bounds" value="430,350,97,82"/>
         </reference>
-        <reference df-class-name="reference4" referencedUin="jdt:e_class:src:Persistance.ScheduleTemplateBroker">
+        <reference df-class-name="reference4" referencedUin="jdt:e_class:src:Persistence.ScheduleTemplateBroker">
             <property name="$shortcutReference" value="true"/>
             <property name="bounds" value="490,10,157,82"/>
         </reference>
-        <reference df-class-name="reference5" referencedUin="jdt:e_class:src:Persistance.SkillBroker">
+        <reference df-class-name="reference5" referencedUin="jdt:e_class:src:Persistence.SkillBroker">
             <property name="$shortcutReference" value="true"/>
             <property name="bounds" value="540,260,83,82"/>
         </reference>
-        <reference df-class-name="reference6" referencedUin="jdt:e_class:src:Persistance.GlobalSettingsBroker">
+        <reference df-class-name="reference6" referencedUin="jdt:e_class:src:Persistence.GlobalSettingsBroker">
             <property name="$shortcutReference" value="true"/>
             <property name="bounds" value="280,410,133,82"/>
         </reference>
