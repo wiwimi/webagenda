@@ -4,6 +4,7 @@
 package business;
 
 import java.util.Date;
+import business.schedule.*;
 
 /*Ignore the error for now :D*/
 
@@ -48,10 +49,22 @@ public class Employee {
 	/** Position is the job that an Employee prefers to work at. This assumes that multiple positions for work are
 	 * available. May influence the automatically generated schedule. */
 	private Position preferred_position							= null;
-	/** The permission set as its character array. Both level and version can be parsed from it and  */
+	/** The permission set as its character array. Both level and version can be parsed from it and represents the
+	 * entirety of the user's permissions. Can only be changed in the broker by a user with higher permission levels
+	 * and explicit permissions. */
 	private char[] permission_level								= new char[3]; // Must be synced with business.permissions.PermissionLevel
+	/** Boolean value that represents if the user can access their account; all accounts are saved in the database
+	 * and can only be deleted when explicitly requested; since some records cannot be deleted (see tax records), 
+	 * employee entries will be kept and searches will generally only return active employees. An exception is
+	 * when someone with proper permissions wants to browse inactive user, or generate reports on active/inactive
+	 * users. */
 	private boolean active										= false;
+	/** Self-explainatory: the date of birth for the employee. While not required by the system for general use, it can
+	 * be made required by certain positions that may require users to be over the age of 16/18/21. */
 	private Date birth_date										= null;
+	/** An object that contains the personal visual settings of a user; loaded upon login to set up their dashboard,
+	 * retrieved by broker. Value can be null, in which case it will be set to the default built-in view. May
+	 * not apply through mobile device/browser views (mobile device meaning native mobile apps.) */
 	private Settings user_settings								= null;
 	
 	
