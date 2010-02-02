@@ -9,7 +9,7 @@
 }
 #addUser input:focus
 {
-	background-color:#E3E4FA;
+	background-color:#E0E0E0;
 }
 
 #addUser form
@@ -17,7 +17,8 @@
 	 background-color: #FFFFFF;  
 	 color: #000000;   
 	 font-family: cochin ,Times, Verdana, helvetica,sans-serif;
-	 border: 2px solid #000080;  
+	 border: 2px outset gray;  
+	 border-width:15px;
 	 border-collapse: collapse;
 	 padding: 1em 0;
 }
@@ -31,11 +32,13 @@
 }
 #work
 {
-	padding-left:275px;
+	//padding-left:275px;
+	position:realtive;
 }
 #personal
 {
-	float:left;
+	//float:left;
+	position:realtive;
 }
 
 #addUser label
@@ -62,36 +65,38 @@
 
 #addUser input.button
 { 
-	  color:003366; 
-	  font: bold 100% cochin, Times, Verdana, helvetica,sans-serif;
+	  color:#000061; 
+	  font: cochin, Times, Verdana, helvetica,sans-serif;
 	  margin-left:220px;
+	  font-weight:bold;
+	  border: 1px solid #000061;
 	  margin-top:4px;
+}
+#addUser input.button:hover
+{
+	color:white;
+	background:#000061
 }
 
 fieldset
 {
 	height:75%;
+	margin-left:10px;
+	margin-right:10px;
+	border:white;
+	border-top:1px solid gray;
+	
+	
 }
+fieldset.focussed {
+ border: 1px solid #000061;
+}
+
 #addUser legend
 {
 	color:#151B54; 
 	font: bold 110% cochin, Times, Verdana, helvetica,sans-serif;
 }
-.highlight {
-background-color: gray;
-}
-/* over class will be used later for highlight effect when the cursor moves over a row */
-	form.alt input
-	{
-		background: #ecf6fc;
-	}
-	
-	form.over input
-	{
-	
-		background: #bcd4ec;
-	
-	}
 
 
  

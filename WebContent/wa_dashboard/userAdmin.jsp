@@ -19,7 +19,7 @@
 
 Fields marked with <em class="asterisk" > *</em> are required.
 <br></br>
-Randomly generated passwords are going to be sent to employee's e-mail or your e-mail.
+Randomly generated passwords are going to be sent to the employee's e-mail. If that field was missing it will be sent to your e-mail.
 <br></br>
 <br></br>
 
@@ -31,57 +31,55 @@ Randomly generated passwords are going to be sent to employee's e-mail or your e
 	 <div id="personal">
 	
 		 <fieldset>
-			<legend > Personal <br></br><br></br>
-			<p>
-						<label> Given Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="givenName" size ="20"> <br></br><br></br>
-						<label> Family Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="familyName" size ="20"> <br></br><br></br>
-						<label> Date of Birth: <em class="asterisk"> * </em> </label> <input type="text" name ="dob" id="dob" size ="20"><br></br><br></br>
+			<legend > Personal 
 			
-						<label> Personal E-mail: </label> <input type="text"  name ="email" size ="20"> <br></br>
-			 </p>
+					<p>	<label> Given Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="givenName" size ="30"> </p>
+					<p>	<label> Family Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="familyName" size ="30"> </p>
+					<p>	<label> Date of Birth: <em class="asterisk"> * </em> </label> <input type="text" name ="dob" id="dob" size ="10"></p>
+			
+					<p>	<label> Personal E-mail: </label> <input type="text"  name ="email" size ="30"> </p>
+			
 			</legend>
 				 
 		</fieldset>
 	
+	
 	</div>
 	
-	
-	
 	<div id="work">
+    <p>
 	<fieldset>
-		<legend> Working Preferences <br></br><br></br>
-		<p>
-				<label> Status: <em class="asterisk"> * </em> </label> 
+		<legend> Working Preferences 
+			<p>	<label> Status: <em class="asterisk"> * </em> </label> 
 					        <select name="status" >
 									<option value="enabled" > Enabled</option> 
 									<option value="disabled" >Disabled</option>  
-							</select>
-							<br></br>
-							<br></br>
+							</select> 
+			</p>
+							
 					<!--This should be populated from MaintainJobType use case -->
-					
+			<p>		
 					<label id="theSelect" class="theSelect"> Preferred Positions: </label>  
 							<select name="positions" size=3 multiple>
 									<option value="1">Bartender</option>
 									<option value="2">Waitress</option>
 									<option value="3">Other</option>
 							</select>
-							<br></br>
-							<br></br>
+							
+			</p>
 					
 					<!--This should be populated from MaintainLocation use case -->
-					
+			<p>		
 					<label id="theSelect" class="theSelect"> Preferred Locations: </label>  
 							<select name="locaions" size=3 multiple>
 									<option value="1">Hotel A</option>
 									<option value="2">Hotel B</option>
 									<option value="3">Basement</option>
 							</select>
-							<br></br>
-							<br></br>
-					
+							
+			</p>	
 						<!--This should be populated from MaintainSkills use case -->
-					
+			<p>
 					<label id="theSelect" class="theSelect"> Preferred Skills: </label>  
 							<select name="skills" size=3 multiple>
 									<option value="1">Accounting</option>
@@ -90,21 +88,21 @@ Randomly generated passwords are going to be sent to employee's e-mail or your e
 							</select>
 							<br></br>
 							<br></br>
-					
+			</p>		
 						<!--This should be populated from MaintainSkills use case -->
-					
+			
+			<p>
 					<label id="theSelect" class="theSelect"> Permission level: </label>  
 							<select name="plevel" size=3>
 									<option value="1">Level 1</option>
 									<option value="2">Level 1a</option>
-									<option value="3">Level 2</option>
+									<option value="3">Level 2b</option>
 							</select>
-							<br></br>
-							<br></br>
-	    </p>
+	
+	   
 		</legend>
 		</fieldset>	
-		
+		</p>
 		</div>
 		
 				<input type="submit" name="submit" class="button" value="Save"> 
@@ -127,5 +125,8 @@ Randomly generated passwords are going to be sent to employee's e-mail or your e
         });
 		
 </script>
+
+<div id="footer"></div>
+</div>
 </body>
 </html>
