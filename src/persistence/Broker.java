@@ -12,6 +12,13 @@ package persistence;
  */
 public abstract class Broker {
 	
+	/** The database username that contains access to webagenda data */
+	private String db_username							= null;
+	/** Password for the user found in db_username that connects to the webagenda database */
+	private String db_password							= null;
+	/** Hostname where the webagenda database is located. This defaults to localhost.*/
+	private String db_hostname							= "localhost";
+	
 	public abstract Object getBrokerObject(Object o);
 	
 	public abstract int flushCache();

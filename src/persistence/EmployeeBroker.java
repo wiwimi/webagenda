@@ -8,9 +8,33 @@ package persistence;
  * @version 0.01.00
  *
  */
-public class EmployeeBroker {
+public class EmployeeBroker extends Broker {
 
 	/** Collection of Employees to be cached in memory	*/
 	private CacheTable employee_cache 								= null;
+
+	@Override
+	public int cache(Cachable cacheObj) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int clearCache() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int flushCache() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Object getBrokerObject(Object o) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }
