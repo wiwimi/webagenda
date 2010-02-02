@@ -313,6 +313,10 @@
             <property name="$imported" value=""/>
             <property name="bounds" value="425,100,172,200"/>
         </reference>
+        <reference df-class-name="reference2" referencedUin="design:view:::idiazwsg57cbh5ag57cckie">
+            <property name="$shortcutReference" value="true"/>
+            <property name="@__fqn" value="uml:package:Webagenda:src:Application"/>
+        </reference>
         <property name="$defaultDiagram" value=""/>
     </view>
     <node uin="idh3rzpg0fh0gv0g0fh1nns.nodeid64v0lg1lnfw56g1lr9vgy">

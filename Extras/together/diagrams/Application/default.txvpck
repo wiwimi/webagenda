@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nodeSet version="1.0">
+    <link uin="idiazwsg57cbh5ag57cckie.linkidd6bu6g57cbh5ag57ceysr">
+        <property name="$metaclass" value="Dependency Link"/>
+        <participant role="Supplier" referencedUin="design:view:::idgjd7xg2p7zmjhg2p8asa9"/>
+        <participant role="Client" referencedUin="design:view:::idiazwsg57cbh5ag57cckie"/>
+        <property name="@stereotype" value="access"/>
+    </link>
+    <link uin="idiazwsg57cbh5ag57cckie.linkid5ahq0g57cbh5ag57cf7ar">
+        <property name="$metaclass" value="Dependency Link"/>
+        <participant role="Supplier" referencedUin="design:view:::id1gm70g2p7zmjhg2p8vsns"/>
+        <participant role="Client" referencedUin="design:view:::idiazwsg57cbh5ag57cckie"/>
+        <property name="@stereotype" value="access"/>
+    </link>
+    <view uin="idiazwsg57cbh5ag57cckie">
+        <property name="$metaclass" value="Package Diagram"/>
+        <property name="@__options" value=""/>
+        <property name="$defaultDiagram" value=""/>
+    </view>
+</nodeSet>

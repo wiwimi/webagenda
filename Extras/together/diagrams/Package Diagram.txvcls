@@ -7,13 +7,22 @@
             <property name="$shortcutReference" value="true"/>
             <property name="@__fqn" value="uml:package:Webagenda:src:Interface"/>
             <property name="$imported" value=""/>
-            <property name="bounds" value="40,30,113,264"/>
+            <property name="bounds" value="140,10,113,264"/>
             <reference referencedUin="design:link:::idf1bpkg2p7zmjhg2p85qp2.linkid8o072g2p7zmjhg2p9ql08">
-                <property name="sourceAnchor" value="153,157"/>
+                <property name="sourceAnchor" value="196,274"/>
                 <property name="bendpoints" value=""/>
-                <property name="targetAnchor" value="270,157"/>
+                <property name="targetAnchor" value="72,310"/>
                 <reference referencedUin="linklabel:stereotype:design:link:::idf1bpkg2p7zmjhg2p85qp2.linkid8o072g2p7zmjhg2p9ql08">
-                    <property name="bounds" value="173,137,76,16"/>
+                    <property name="bounds" value="49,273,76,16"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
+            </reference>
+            <reference referencedUin="design:link:::idf1bpkg2p7zmjhg2p85qp2.linkid41asyg57cbh5ag57ceoaq">
+                <property name="sourceAnchor" value="241,274"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="241,310"/>
+                <reference referencedUin="linklabel:stereotype:design:link:::idf1bpkg2p7zmjhg2p85qp2.linkid41asyg57cbh5ag57ceoaq">
+                    <property name="bounds" value="161,282,76,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
             </reference>
@@ -28,7 +37,7 @@
             <property name="$shortcutReference" value="true"/>
             <property name="@__fqn" value="uml:package:Webagenda:src:Persistence"/>
             <property name="$imported" value=""/>
-            <property name="bounds" value="40,330,161,248"/>
+            <property name="bounds" value="110,630,161,248"/>
             <reference referencedUin="design:link:::idgjd7xg2p7zmjhg2p8asa9.linkid63m2eg2p7zmjhg2p8s555">
                 <property name="sourceAnchor" value="281,125"/>
                 <property name="bendpoints" value=""/>
@@ -39,13 +48,37 @@
             <property name="$shortcutReference" value="true"/>
             <property name="@__fqn" value="uml:package:Webagenda:src:Business"/>
             <property name="$imported" value=""/>
-            <property name="bounds" value="270,30,125,280"/>
+            <property name="bounds" value="40,310,125,280"/>
             <reference referencedUin="design:link:::id1gm70g2p7zmjhg2p8vsns.linkid2wu2lg2p7zmjhg2p9qmyz">
-                <property name="sourceAnchor" value="270,285"/>
+                <property name="sourceAnchor" value="142,590"/>
                 <property name="bendpoints" value=""/>
-                <property name="targetAnchor" value="201,362"/>
+                <property name="targetAnchor" value="142,630"/>
                 <reference referencedUin="linklabel:stereotype:design:link:::id1gm70g2p7zmjhg2p8vsns.linkid2wu2lg2p7zmjhg2p9qmyz">
-                    <property name="bounds" value="169,288,76,16"/>
+                    <property name="bounds" value="62,600,76,16"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
+            </reference>
+        </reference>
+        <reference df-class-name="reference1" referencedUin="design:view:::idiazwsg57cbh5ag57cckie">
+            <property name="$shortcutReference" value="true"/>
+            <property name="@__fqn" value="uml:package:Webagenda:src:Application"/>
+            <property name="$imported" value=""/>
+            <property name="bounds" value="230,310,83,95"/>
+            <reference referencedUin="design:link:::idiazwsg57cbh5ag57cckie.linkidd6bu6g57cbh5ag57ceysr">
+                <property name="sourceAnchor" value="245,405"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="245,630"/>
+                <reference referencedUin="linklabel:stereotype:design:link:::idiazwsg57cbh5ag57cckie.linkidd6bu6g57cbh5ag57ceysr">
+                    <property name="bounds" value="250,510,76,16"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
+            </reference>
+            <reference referencedUin="design:link:::idiazwsg57cbh5ag57cckie.linkid5ahq0g57cbh5ag57cf7ar">
+                <property name="sourceAnchor" value="230,357"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="165,357"/>
+                <reference referencedUin="linklabel:stereotype:design:link:::idiazwsg57cbh5ag57cckie.linkid5ahq0g57cbh5ag57cf7ar">
+                    <property name="bounds" value="159,337,76,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
             </reference>
