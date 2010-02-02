@@ -56,7 +56,7 @@
                 <property name="seq_bendpoints" value=""/>
                 <property name="seq_targetAnchor" value="615,247"/>
                 <reference referencedUin="linklabel:$messageInplaceEditing:design:link:::idcijcpg34vcus5g350ufni.nodeid5df4ig34vcus5g352ro85.linkidnlihg34vcus5g352w6hq:idcijcpg34vcus5g350ufni.nodeid5df4ig34vcus5g352ro85">
-                    <property name="seq_bounds" value="383,227,218,16"/>
+                    <property name="seq_bounds" value="383,227,163,16"/>
                     <property name="seq_bounds_setted_by_user" value="true"/>
                 </reference>
                 <property name="sendingInstant" value="247"/>
@@ -171,7 +171,7 @@
             <property name="$metaclass" value="Messages Link"/>
             <property name="$name" value="Messages Link"/>
         </link>
-        <link uin="L1b7x3ig4ykv10p-mlcdfo">
+        <link uin="L1b7x3ig569thhv-bvqsyp">
             <participant role="Client" referencedUin="design:node:::idcijcpg34vcus5g350ufni.nodeid9r2usg34vcus5g350v24z"/>
             <participant role="Supplier" referencedUin="design:node:::idcijcpg34vcus5g350ufni.nodeid5bp2yg34vcus5g350uhr1"/>
             <property name="$metaclass" value="Messages Link"/>
@@ -217,7 +217,7 @@
             <link uin="idcijcpg34vcus5g350ufni.nodeid5df4ig34vcus5g352ro85.linkidnlihg34vcus5g352w6hq.operation">
                 <property name="$metaclass" value="Dependency Link"/>
                 <participant role="Client" referencedUin="design:node:::idcijcpg34vcus5g350ufni.nodeid5df4ig34vcus5g352ro85.linkidnlihg34vcus5g352w6hq:idcijcpg34vcus5g350ufni.nodeid5df4ig34vcus5g352ro85"/>
-                <participant role="Supplier" referencedUin=""/>
+                <participant role="Supplier" referencedUin="jdt:e_method:src:ProblemDomain.Notification.sendNotification:sendNotification"/>
             </link>
             <property name="@operationNameAsText" value="&apos;sendNotification():void&apos;"/>
             <property name="normalizedIndex" value="0.5"/>
@@ -229,7 +229,7 @@
             <participant role="Client" referencedUin="design:node:::idcijcpg34vcus5g350ufni.nodeid5df4ig34vcus5g352ro85"/>
             <property name="$metaclass" value="Messages Link"/>
         </link>
-        <link uin="L1b7x3ig4ykv10pdiera8">
+        <link uin="L1b7x3ig569thhv-42qvnm">
             <participant role="Client" referencedUin="design:node:::idcijcpg34vcus5g350ufni.nodeid5df4ig34vcus5g352ro85"/>
             <participant role="Supplier" referencedUin="design:node:::idcijcpg34vcus5g350ufni.nodeid9r2usg34vcus5g350v24z"/>
             <property name="$metaclass" value="Messages Link"/>
@@ -266,13 +266,13 @@
             <property name="predecessorUid" value="design:link:::idcijcpg34vcus5g350ufni.nodeid5df4ig34vcus5g352ro85.linkidnlihg34vcus5g352w6hq:idcijcpg34vcus5g350ufni.nodeid5df4ig34vcus5g352ro85"/>
             <property name="activationUid" value="design:node:::idcijcpg34vcus5g350ufni.nodeid9r2usg34vcus5g350v24z.nodeid1uacng34vcus5g3650fk0:idcijcpg34vcus5g350ufni.nodeid9r2usg34vcus5g350v24z"/>
         </link>
-        <link uin="L1b7x3ig4ykv10p6now2x">
+        <link uin="L1b7x3ig569thhv31basp">
             <participant role="Client" referencedUin="design:node:::idcijcpg34vcus5g350ufni.nodeid4grz7g34vcus5g352vvn4"/>
             <participant role="Supplier" referencedUin="design:node:::idcijcpg34vcus5g350ufni.nodeid9r2usg34vcus5g350v24z"/>
             <property name="$metaclass" value="Messages Link"/>
             <property name="$name" value="Messages Link"/>
         </link>
-        <link uin="L1b7x3ig4ykv10p54idw4">
+        <link uin="L1b7x3ig569thhv-1fz9b3">
             <participant role="Client" referencedUin="design:node:::idcijcpg34vcus5g350ufni.nodeid4grz7g34vcus5g352vvn4"/>
             <participant role="Supplier" referencedUin="design:node:::idcijcpg34vcus5g350ufni.nodeid5df4ig34vcus5g352ro85"/>
             <property name="$metaclass" value="Messages Link"/>

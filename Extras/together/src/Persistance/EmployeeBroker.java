@@ -42,4 +42,6 @@ public class EmployeeBroker {
      * Get an array of employees using their id numbers in an array as parameters.
      */
     public void getEmps(int[] p0){}
+
+    public Employee getSupervisor(){}
 }

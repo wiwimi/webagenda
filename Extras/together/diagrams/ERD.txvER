@@ -90,7 +90,7 @@
         </reference>
         <reference df-class-name="reference10" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid8623gg4rjkiskg4rke2ga">
             <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="530,20,101,69"/>
+            <property name="bounds" value="530,20,130,69"/>
         </reference>
         <reference df-class-name="reference11" referencedUin="design:node:::id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc">
             <property name="$shortcutReference" value="true"/>
@@ -318,7 +318,7 @@
     </node>
     <node uin="id5ap3qg4rjkiskg4rkcist.nodeid8623gg4rjkiskg4rke2ga">
         <property name="$metaclass" value="erEntity"/>
-        <property name="$name" value="SHIFTTEMPLATE"/>
+        <property name="$name" value="SCHEDULETEMPLATE"/>
     </node>
     <node uin="id5ap3qg4rjkiskg4rkcist.nodeid3vwcg4rjkiskg4rke4tc">
         <property name="$metaclass" value="erEntity"/>

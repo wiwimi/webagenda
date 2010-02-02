@@ -2,7 +2,7 @@
 
 package ProblemDomain;
 
-public class ShiftTemplate {
+public class ScheduleTemplate {
     private Shift[] shifts;
 
     /**

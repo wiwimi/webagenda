@@ -6,6 +6,8 @@ package ProblemDomain;
  * An Event is used to mark real-world occurrences of importance that will happen at a specific time, such as an employee meeting or a business provided lunch event.  Events may be sent to all employees within a workgroup, or a within a job type. 
  */
 public class WorkingShift {
+    public Time[] getTimes(){}
+
     private Time startTime;
     private Time endTime;
     private Employee[] employees;

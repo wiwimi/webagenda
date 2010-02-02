@@ -3,7 +3,7 @@
 package Interface;
 
 /**
- * The main interface object of the system that provides access to all other main sections, such as schedule or report views.  Available sections will be determined by the permissions of the employee that is currently logged in. 
+ * The main interface object of the system that provides access to all other pages and widgets, such as schedule or report widgets.  Available sections will be determined by the permissions of the employee that is currently logged in.
  */
 public class Dashboard {
     /**

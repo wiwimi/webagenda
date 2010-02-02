@@ -6,6 +6,8 @@ package ProblemDomain;
  * A collection of shifts of multiple employees, grouped together by the workgroup or supervisor that those employees share. 
  */
 public class Schedule {
+    public void getWorkingShifts(){}
+
     /**
      * Holds references to all shifts that are active for this schedule. 
      */

@@ -186,13 +186,13 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `WebAgenda`.`SHIFTTEMPLATE`
+-- Table `WebAgenda`.`SCHEDULETEMPLATE`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `WebAgenda`.`SHIFTTEMPLATE` ;
+DROP TABLE IF EXISTS `WebAgenda`.`SCHEDULETEMPLATE` ;
 
-CREATE  TABLE IF NOT EXISTS `WebAgenda`.`SHIFTTEMPLATE` (
-  `shiftReqID` INT NOT NULL ,
-  PRIMARY KEY (`shiftReqID`) )
+CREATE  TABLE IF NOT EXISTS `WebAgenda`.`SCHEDULETEMPLATE` (
+  `scheduleTemplateID` INT NOT NULL ,
+  PRIMARY KEY (`scheduleTemplateID`) )
 ENGINE = InnoDB;
 
 
@@ -210,7 +210,7 @@ CREATE  TABLE IF NOT EXISTS `WebAgenda`.`SHIFT` (
   INDEX `fk_SHIFT_SHIFTREQS` (`shiftReqID` ASC) ,
   CONSTRAINT `fk_SHIFT_SHIFTREQS`
     FOREIGN KEY (`shiftReqID` )
-    REFERENCES `WebAgenda`.`SHIFTTEMPLATE` (`shiftReqID` )
+    REFERENCES `WebAgenda`.`SCHEDULETEMPLATE` (`scheduleTemplateID` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

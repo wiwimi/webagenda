@@ -53,7 +53,7 @@
                 <property name="seq_bendpoints" value=""/>
                 <property name="seq_targetAnchor" value="683,320"/>
                 <reference referencedUin="linklabel:$messageInplaceEditing:design:link:::id7r3meg34vcus5g350fhht.nodeiddnb9vg34vcus5g350fqqa.linkid6mcb9g34vcus5g350rb19:id7r3meg34vcus5g350fhht.nodeiddnb9vg34vcus5g350fqqa">
-                    <property name="seq_bounds" value="307,300,208,16"/>
+                    <property name="seq_bounds" value="307,300,153,16"/>
                     <property name="seq_bounds_setted_by_user" value="true"/>
                 </reference>
                 <property name="sendingInstant" value="320"/>
@@ -287,7 +287,7 @@
             <link uin="id7r3meg34vcus5g350fhht.nodeiddnb9vg34vcus5g350fqqa.linkid6mcb9g34vcus5g350rb19.operation">
                 <property name="$metaclass" value="Dependency Link"/>
                 <participant role="Client" referencedUin="design:node:::id7r3meg34vcus5g350fhht.nodeiddnb9vg34vcus5g350fqqa.linkid6mcb9g34vcus5g350rb19:id7r3meg34vcus5g350fhht.nodeiddnb9vg34vcus5g350fqqa"/>
-                <participant role="Supplier" referencedUin=""/>
+                <participant role="Supplier" referencedUin="jdt:e_method:src:ProblemDomain.Notification.sendNotification:sendNotification"/>
             </link>
             <property name="@operationNameAsText" value="&apos;sendNotification():void&apos;"/>
             <property name="normalizedIndex" value="0.5"/>
@@ -299,7 +299,7 @@
             <participant role="Client" referencedUin="design:node:::id7r3meg34vcus5g350fhht.nodeiddnb9vg34vcus5g350fqqa"/>
             <property name="$metaclass" value="Messages Link"/>
         </link>
-        <link uin="L1b7x3ig4ykv10pcxlacp">
+        <link uin="L1b7x3ig569thg5-xj1y9u">
             <participant role="Client" referencedUin="design:node:::id7r3meg34vcus5g350fhht.nodeiddnb9vg34vcus5g350fqqa"/>
             <participant role="Supplier" referencedUin="design:node:::id7r3meg34vcus5g350fhht.nodeidjfkreg34vcus5g350fmj8"/>
             <property name="$metaclass" value="Messages Link"/>
@@ -318,7 +318,7 @@
             <property name="$name" value="Activation3"/>
             <property name="messageUid" value="design:link:::id7r3meg34vcus5g350fhht.nodeiddnb9vg34vcus5g350fqqa.linkid286h6g34vcus5g350jry5:id7r3meg34vcus5g350fhht.nodeiddnb9vg34vcus5g350fqqa"/>
         </node>
-        <link uin="L1b7x3ig4ykv10pkhlxok">
+        <link uin="L1b7x3ig569thg58pwhzr">
             <participant role="Client" referencedUin="design:node:::id7r3meg34vcus5g350fhht.nodeidq5e7g34vcus5g350jh3i"/>
             <participant role="Supplier" referencedUin="design:node:::id7r3meg34vcus5g350fhht.nodeiddnb9vg34vcus5g350fqqa"/>
             <property name="$metaclass" value="Messages Link"/>
@@ -327,6 +327,7 @@
     </node>
     <node uin="id7r3meg34vcus5g350fhht.nodeid9c111g34vcus5g350q8m0">
         <property name="$metaclass" value="Object"/>
+        <property name="$name" value="Notification"/>
         <node uin="id7r3meg34vcus5g350fhht.nodeid9c111g34vcus5g350q8m0.nodeid8spcvg34vcus5g350rb19">
             <property name="$metaclass" value="Activation"/>
             <property name="$name" value="Activation7"/>
@@ -337,7 +338,7 @@
             <participant role="Client" referencedUin="design:node:::id7r3meg34vcus5g350fhht.nodeid9c111g34vcus5g350q8m0"/>
             <property name="$metaclass" value="Dependency Link"/>
         </link>
-        <link uin="L1b7x3ig4ykv10p-hp8rlc">
+        <link uin="L1b7x3ig569thg5-ev433k">
             <participant role="Client" referencedUin="design:node:::id7r3meg34vcus5g350fhht.nodeid9c111g34vcus5g350q8m0"/>
             <participant role="Supplier" referencedUin="design:node:::id7r3meg34vcus5g350fhht.nodeiddnb9vg34vcus5g350fqqa"/>
             <property name="$metaclass" value="Messages Link"/>
@@ -357,7 +358,7 @@
             <property name="$name" value="Activation6"/>
             <property name="messageUid" value="design:link:::id7r3meg34vcus5g350fhht.nodeiddnb9vg34vcus5g350fqqa.linkid7tokmg34vcus5g350r27k:id7r3meg34vcus5g350fhht.nodeiddnb9vg34vcus5g350fqqa"/>
         </node>
-        <link uin="L1b7x3ig4ykv10p-c0pqla">
+        <link uin="L1b7x3ig569thg58kgsd9">
             <participant role="Client" referencedUin="design:node:::id7r3meg34vcus5g350fhht.nodeidd0u0mg34vcus5g350qo6s"/>
             <participant role="Supplier" referencedUin="design:node:::id7r3meg34vcus5g350fhht.nodeiddnb9vg34vcus5g350fqqa"/>
             <property name="$metaclass" value="Messages Link"/>

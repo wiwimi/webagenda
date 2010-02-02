@@ -6,6 +6,12 @@ package ProblemDomain;
  * Contains information on an employee within the system including username and passwords to log in, and basic employee information such as first and last name. 
  */
 public class Employee {
+    public WorkingShift[] getWorkingTimes(){}
+
+    public void getLoginTime(){}
+
+    public void getViewTimes(){}
+
     /**
      * The ID number of the employee within the system. 
      */

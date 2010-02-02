@@ -13,46 +13,41 @@
             <property name="bounds" value="10,10,260,485"/>
             <property name="bounds_setted_by_user" value="true"/>
         </reference>
-        <reference df-class-name="reference36" referencedUin="jdt:e_class:src:Persistance.WorkgroupBroker">
-            <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="490,10,159,165"/>
-        </reference>
         <reference df-class-name="reference8" referencedUin="jdt:e_class:src:Persistance.EmployeeBroker">
             <property name="$shortcutReference" value="true"/>
             <property name="bounds" value="280,10,198,197"/>
         </reference>
         <reference df-class-name="reference9" referencedUin="jdt:e_class:src:Persistance.NotificationBroker">
             <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="160,500,135,85"/>
+            <property name="bounds" value="280,320,135,85"/>
         </reference>
         <reference df-class-name="reference10" referencedUin="jdt:e_class:src:Persistance.ShiftBroker">
             <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="450,220,141,149"/>
-        </reference>
-        <reference df-class-name="reference11" referencedUin="jdt:e_class:src:Persistance.SupervisorBroker">
-            <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="280,230,159,85"/>
-            <reference referencedUin="jdt:l_gnt:src:Persistance.SupervisorBroker:Persistance.EmployeeBroker">
-                <property name="sourceAnchor" value="359,230"/>
-                <property name="bendpoints" value=""/>
-                <property name="targetAnchor" value="359,207"/>
-            </reference>
-        </reference>
-        <reference df-class-name="reference5" referencedUin="jdt:e_class:src:Persistance.EventBroker">
-            <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="430,380,110,101"/>
-        </reference>
-        <reference df-class-name="reference12" referencedUin="jdt:e_class:src:Persistance.JobTypeBroker">
-            <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="10,500,145,85"/>
+            <property name="bounds" value="490,100,141,149"/>
         </reference>
         <reference df-class-name="reference2" referencedUin="jdt:e_class:src:Persistance.PermissionSetBroker">
             <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="280,320,137,85"/>
+            <property name="bounds" value="280,220,137,85"/>
         </reference>
-        <reference df-class-name="reference3" referencedUin="jdt:e_class:src:Persistance.SystemSettingsBroker">
+        <reference df-class-name="reference1" referencedUin="jdt:e_class:src:Persistance.LocationBroker">
             <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="280,410,141,82"/>
+            <property name="bounds" value="430,260,100,82"/>
+        </reference>
+        <reference df-class-name="reference3" referencedUin="jdt:e_class:src:Persistance.PositionBroker">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="430,350,97,82"/>
+        </reference>
+        <reference df-class-name="reference4" referencedUin="jdt:e_class:src:Persistance.ScheduleTemplateBroker">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="490,10,157,82"/>
+        </reference>
+        <reference df-class-name="reference5" referencedUin="jdt:e_class:src:Persistance.SkillBroker">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="540,260,83,82"/>
+        </reference>
+        <reference df-class-name="reference6" referencedUin="jdt:e_class:src:Persistance.GlobalSettingsBroker">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="280,410,133,82"/>
         </reference>
         <property name="$defaultDiagram" value=""/>
     </view>

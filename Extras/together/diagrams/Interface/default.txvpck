@@ -22,16 +22,6 @@
                 <property name="targetAnchor" value="352,301"/>
             </reference>
         </reference>
-        <reference df-class-name="reference5" referencedUin="jdt:e_class:src:Interface.EventWidget">
-            <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="10,320,150,149"/>
-            <reference referencedUin="jdt:l_gnt:src:Interface.EventWidget:Interface.Widget">
-                <property name="sourceAnchor" value="160,330"/>
-                <property name="bendpoints" value="200,330"/>
-                <property name="targetAnchor" value="310,285"/>
-                <property name="bounds_setted_by_user" value="true"/>
-            </reference>
-        </reference>
         <reference df-class-name="reference6" referencedUin="jdt:e_class:src:Interface.SettingsWidget">
             <property name="$shortcutReference" value="true"/>
             <property name="bounds" value="600,480,132,133"/>
@@ -65,16 +55,6 @@
                 <property name="targetAnchor" value="394,250"/>
             </reference>
         </reference>
-        <reference df-class-name="reference8" referencedUin="jdt:e_class:src:Interface.WorkgroupWidget">
-            <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="30,510,133,165"/>
-            <reference referencedUin="jdt:l_gnt:src:Interface.WorkgroupWidget:Interface.Widget">
-                <property name="sourceAnchor" value="163,520"/>
-                <property name="bendpoints" value="230,520,230,340,290,340"/>
-                <property name="targetAnchor" value="324,301"/>
-                <property name="bounds_setted_by_user" value="true"/>
-            </reference>
-        </reference>
         <reference df-class-name="reference9" referencedUin="jdt:e_class:src:Interface.LogInWidget">
             <property name="$shortcutReference" value="true"/>
             <property name="bounds" value="180,560,153,133"/>
@@ -95,13 +75,40 @@
                 <property name="bounds_setted_by_user" value="true"/>
             </reference>
         </reference>
-        <reference df-class-name="reference11" referencedUin="jdt:e_class:src:Interface.TabWidget">
+        <reference df-class-name="reference8" referencedUin="jdt:e_class:src:Interface.SkillsWidget">
             <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="480,120,83,82"/>
-            <reference referencedUin="jdt:l_gnt:src:Interface.TabWidget:Interface.Widget">
-                <property name="sourceAnchor" value="480,186"/>
-                <property name="bendpoints" value=""/>
-                <property name="targetAnchor" value="394,216"/>
+            <property name="bounds" value="50,320,83,82"/>
+            <reference referencedUin="jdt:l_gnt:src:Interface.SkillsWidget:Interface.Widget">
+                <property name="sourceAnchor" value="133,340"/>
+                <property name="bendpoints" value="180,340"/>
+                <property name="targetAnchor" value="310,285"/>
+                <property name="bounds_setted_by_user" value="true"/>
+            </reference>
+        </reference>
+        <reference df-class-name="reference12" referencedUin="jdt:e_class:src:Interface.LocationsWidget">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="30,520,108,82"/>
+            <reference referencedUin="jdt:l_gnt:src:Interface.LocationsWidget:Interface.Widget">
+                <property name="sourceAnchor" value="138,540"/>
+                <property name="bendpoints" value="230,540,230,360"/>
+                <property name="targetAnchor" value="326,301"/>
+                <property name="bounds_setted_by_user" value="true"/>
+            </reference>
+        </reference>
+        <reference df-class-name="reference13" referencedUin="jdt:e_class:src:Interface.PositionsWidget">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="30,420,105,82"/>
+            <reference referencedUin="jdt:l_gnt:src:Interface.PositionsWidget:Interface.Widget">
+                <property name="sourceAnchor" value="135,430"/>
+                <property name="bendpoints" value="190,430,190,370"/>
+                <property name="targetAnchor" value="318,301"/>
+                <property name="bounds_setted_by_user" value="true"/>
+            </reference>
+            <reference referencedUin="jdt:l_ast:src:Interface.PositionsWidget:lnkSkillsWidget">
+                <property name="sourceAnchor" value="30,430"/>
+                <property name="bendpoints" value="10,430,10,370"/>
+                <property name="targetAnchor" value="50,370"/>
+                <property name="bounds_setted_by_user" value="true"/>
             </reference>
         </reference>
         <property name="$defaultDiagram" value=""/>
