@@ -166,6 +166,8 @@ The system\index{system} is going to be able to be easily installed on any \inde
 Schedule-by-request feature, where employees can request work on a schedule that is optional (provided by higher-ups in the company, for non-essential work opportunities)
 The \index{WebAgenda}WebAgenda © program will be licensed under the \index{General Public Licence}General Public Licence 2 so that the company is free to utilize the software to their purposes. Documentation as well as source code\index{source code} will be available to one and all who download/request it.
 
+\pagebreak
+
 \section{Non-Functional Requirements}\index{Non-Functional Requirements}
 
 \hspace{1cm}The scheduling system\index{system} does not monitor employee attendance or payroll functionality, although a stat holiday pay estimate feature will be implemented at the behest of the \index{Deerfoot Inn and Casino}Deerfoot Inn and Casino Manager. \index{WebAgenda}WebAgenda is purely a scheduling, report generating, reference, and distribution system until functionality is extended at a later date.
@@ -1828,8 +1830,8 @@ Employee Usage Reports will allow supervisors to see statistics on how employees
 \chapter{Persistence Model}
 \section{Textual Description Document}
 \subsection*{Control Classes}
-\paragraph*{}\hspace{0.6cm}Our system\index{system} will have control classes, or brokers, that will be in charge of directly interacting with the database\index{Database}. Any insertion, deletion or updating of data occurs with the assistance of these classes. The control classes are also used to perform any interaction with the interface\index{interface} and problem domain layers. Basically they are the link between the physical data in the database and what the user sees in the end. The broker classes are in place to put forth an application programming interface to allow developers to get data from the database without directly interacting with the data. This is in place to ensure that the data integrity of the database stays consistent throughout system\index{system} use. Ensuring data integrity is a key aspect of a system\index{system} with a tri-architecture. Allowing the developers to access direct data and information from the database without physically letting them grab the data is the key point of having the control classes.\newline
-\paragraph*{}\hspace{0.6cm}The interface\index{interface} classes will be used to communicate with the users in an easy to use fashion. The interface classes will then interpret the user interaction and send that parsed information to the broker classes to get the information that the user requested. From there the interface class will parse the information received from the broker classes back into a format that the user can understand and interact with.\newline
+\paragraph*{}\hspace{0.6cm}Our system\index{system} will have control classes and brokers that will be in charge of directly interacting with the database\index{Database}. The control pattern will implement the application logic layer of our system. Any insertion, deletion or updating of data occurs with the assistance of these classes. The control classes are also used to perform any interaction with the interface\index{interface} and problem domain layers. Basically they are the link between the physical data in the database and what the user sees in the end. The broker classes are in place to put forth an application programming interface to allow developers to get data from the database without directly interacting with the data. This is in place to ensure that the data integrity of the database stays consistent throughout system\index{system} use. Ensuring data integrity is a key aspect of a system\index{system} with a four-tier architecture. Allowing the developers to access direct data and information from the database without physically letting them grab the data is the key point of having the control classes.\newline
+\paragraph*{}\hspace{0.6cm}The presentation layer is implemented in the interface\index{interface} classes which will be used to communicate with the users in an easy to use fashion. The interface classes will then interpret the user interaction and send that parsed information to the broker classes to get the information that the user requested. From there the interface class will parse the information received from the broker classes back into a format that the user can understand and interact with.\newline
 \paragraph*{}\hspace{0.6cm}The persistence classes will be used as direct data from the database\index{Database}. Mostly consists of objects that are persisted into the database as actual data. The persistence classes will be hidden from the developers due to the broker classes. So in fact, the developers will not be able to directly interact with these classes without first going through the broker classes. This again, is to ensure data integrity in the persistence layer and at the physical data layer.
 \pagebreak
 \section{Entity Relationship Diagrams}
@@ -2237,18 +2239,19 @@ Daniel Wehr
 
 \chapter{Project Standards And Procedures}\index{Project Standards and Procedures}
 
-\textbf{LaTeX2E} \index{LaTeX2E}, also known as \index{LaTeX}LaTeX, is a document preparation system\index{system} for high-quality typesetting. It has been used in various academic institutions and produces standardized and consistant pages based on tags specified in the LaTeX files. It is not a word processor; appearance is generated from the source file the user creates. Final documents will be generated as a pdf file.
+\paragraph{}\hspace{0.6cm}\textbf{LaTeX2E} \index{LaTeX2E}, also known as \index{LaTeX}LaTeX, is a document preparation system\index{system} for high-quality typesetting. It has been used in various academic institutions and produces standardized and consistant pages based on tags specified in the LaTeX files. It is not a word processor; appearance is generated from the source file the user creates. Final documents will be generated as a pdf file.
 LaTeX is also free and available for Windows, Mac, and Linux-Unix systems. The current version is 2E; it will be used for generating all digital-based final documentation. Since WebAgenda\index{WebAgenda} © is licensed under the \index{General Public Licence}GPL 2, source code\index{source code} for the documentation in LaTeX will be available.
 LaTeX will be used for developing the documentation required by the system in forms of both manuals (instructions, support, and overviews) as well as documents we will upload on the server\index{server}, which should include troubleshooting, tutorials and Frequently Asked Questions for a variety of basic tasks, downloadable copies of the perviously mentioned document manuals, and the scheduling system documents (WebAgenda`s plugin and compatibility documents).
 
-\textbf{Date Formats} \index{Date Formats} Dates, when inputted or displayed to the user, should be in a DD-MM-YYYY format. Regardless of whether the code beneath the user translates this to another format, it is irrelevant. (This is subject to change, but allows for a common understanding of dates to this point.)
+\textbf{Date Formats} \index{Date Formats} Dates, when inputted or displayed to the user, should be in a Mon-DD-YYYY format. Regardless of whether the code beneath the user translates this to another format, it is irrelevant. (This is subject to change, but allows for a common understanding of dates to this point.)
 
 
 \paragraph{}\hspace{0.6cm}\textbf{Interface:}\index{interface} This layer of the architecture will handle all user related events, interface requirements, displaying functional data, etc. User events are handled through the use of text boxes, buttons, links, radio buttons and other event handlers to accept user input into the system\index{system}. The user interface handles everything that the user sees and interacts with. The user interface provides a method to send items to the problem domain so that they can be persisted and manipulated. Error messages are also displayed using this layer.
 \pagebreak
-\paragraph{}\hspace{0.6cm}\textbf{Problem Domain:} This layer handles all the \textbf{API}\index{API} calls for the system\index{system}. The API calls allow the interface to grab specific pieces of data to be displayed by the interface. Through the use of API calls, the interface\index{interface} will be able to grab data from the persistence layer and display it using the interface layer. (Refer to Appendix B for full API documentation).
+\paragraph{}\hspace{0.6cm}\textbf{Problem Domain:} This layer handles all the \textbf{API}\index{API} calls for the system\index{system}. The API calls allow the interface to grab specific pieces of data to be displayed by the interface. Through the use of API calls, the interface\index{interface} will be able to grab data from the persistence layer and display it using the \index{interface layer}\textbf{interface layer}. (Refer to Appendix B for full API documentation).
 \paragraph{}\hspace{0.6cm}\textbf{API:}\index{API} The application programming interface is the main method to access the persistence layer. The API is a set of pre-defined methods that have specific functions to the program. Only developers can add API methods as to keep the integrity of the system\index{system}. 
 \paragraph{}\hspace{0.6cm}\textbf{Persistence:} The persistence layer is the layer that handles all database\index{Database} access and storage. The database access, inserting, deleting, copying, etc will all be handled by this layer. This layer will be the only layer of the architecture that will handle directly touching and accessing the database. 
+\paragraph{}\hspace{0.6cm}\textbf{Application Logic:} This layer of architecture will handle the manipulation of entities in the system. It will consist of all the controller classes. It will handle the maintain classes as well as any interaction between the presentation and domain layers.
 
 \pagebreak
 \section{Hardware Architecture}
@@ -2272,8 +2275,8 @@ The database\index{Database} needed for the development system should reflect th
 \section{Software Platform}
 \subsection{Server Software}\index{server}
 \begin{itemize}
- \item \textbf{J2EE} 1.5+ \index{J2EE}
- \item \textbf{JSP} \index{JSP}
+ \item \index{J2EE}\textbf{J2EE} 1.5+ of the \index{Java EE}\textbf{Java EE} libraries \index{J2EE}
+ \item \textbf{JSP} and \textbf{Servlet} technologies \index{JSP} \index{Servlet}
  \item \textbf{Apache} 2.0+\index{Apache}
  \item MySql 5.0+ \index{MySQL}
  \item Storage Space dependent on usage
@@ -2299,6 +2302,7 @@ The database\index{Database} needed for the development system should reflect th
  \item Linux 2.6.x -based
  \item RIM (Blackberry OS)
  \item Unix \& BSD
+ \item iPhone OS
 \end{enumerate}
 
 
@@ -2525,17 +2529,53 @@ We currently run a paper based scheduling system\index{system}. We have some che
 \hspace*{1cm}<p><a href="\#">Related Method 1 Link</a></p>\linebreak }
 
 
+\chapter{Prototypes - Second Edition}
+\paragraph*{}\hspace{0.6cm}The following prototypes have been build upon the first edition prototype and include a more recent snapshot of how the final product will look and act like.
 
+\begin{landscape}
+\section{Adding a User Screen}
+\begin{center}
+ \includegraphics[scale=0.3]{prototypes/p2addUser.jpeg}
+\end{center}
 
+\section{Dashboard View Screen}
+\begin{center}
+ \includegraphics[scale=0.3]{prototypes/p2dashboard.jpeg}
+\end{center}
+
+\section{Login Screen}
+\begin{center}
+ \includegraphics[scale=0.3]{prototypes/p2LoginScreen.jpeg}
+\end{center}
+
+\section{Internal Mail Screen}
+\begin{center}
+ \includegraphics[scale=0.3]{prototypes/p2mailScreen.jpeg}
+\end{center}
+
+\section{Update User Screen}
+\begin{center}
+ \includegraphics[scale=0.3]{prototypes/p2updateUserScreen.jpeg}
+\end{center}
+
+\end{landscape}
 \chapter{Prototypes - First Edition}
 \paragraph*{}\hspace{0.6cm}The following prototypes are the first conceptual drawings of the system\index{system} and there is no effort put towards consistency at this point.
 
-\begin{landscape}
+
 \section{Creating a Schedule Prototype Screens}
+\begin{landscape}
 \begin{center}
  \includegraphics[scale=0.3]{prototypes/createScheduleClickEmp.jpg}
  \includegraphics[scale=0.3]{prototypes/createSchedDrag.jpg}
 \end{center}
+
+\section{}
+\begin{center}
+ \includegraphics[scale=0.3]{prototypes/createScheduleClickEmp.jpg}
+ \includegraphics[scale=0.3]{prototypes/createSchedDrag.jpg}
+\end{center}
+
 
 \newpage
 \begin{center}
@@ -2629,10 +2669,12 @@ In any case, once the permission levels are set up, it makes monitoring employee
 \paragraph{Alpha Release} A basic release of the software for testing\index{testing} purposes.
 \paragraph{Apache} An open source HTTP (and HTTPS) server for *nix, Windows NT, and other computing platforms.
 \paragraph{API} The Application Programming Interface is a set of methods for interacting with data of all types in the database. This item is mostly used for getting data from the database and storing data in the database.
+\paragraph{Application Layer} All classes specifically related to application specific processes.
 \section*{B}
 \paragraph{Backup} A copy made of existing information and data that is stored in a separate location. Should a failure result in the loss of the original source, the information and data can be restored from the backup to reduce the impact of the failure, and the time it takes to recover from it.
 \paragraph{Beta Release} A feature rich release of the software. This release may still have errors that need to be fixed.
 \paragraph{Bug} An error or unexpected / undesired behaviour in a program. Bugs can have large, small, or negligable impacts.
+\paragraph{Business Layer} All classes that are specifically related to business processes.
 \section*{D}
 \paragraph{Database} A Method of storing data on a computer/server that allows access of that data in an extremely efficient manner.
 \paragraph{Department} A specific unit or section of a company that performs or monitors a specific company-related task, such as food-service, cleaning, IT, etc.
@@ -2653,6 +2695,8 @@ In any case, once the permission levels are set up, it makes monitoring employee
 \paragraph{GNU/Linux KCal} A calendar plugin used by KOrganizer, part of the personal information management suite found in the K Desktop Environment, one of the two most popular GNU/Linux system desktop managers.
 \section*{J}
 \paragraph{J2EE} Also known as Java 2 Platform Enterprise Edition, Java EE is an enterprise mainframe programming language derived from java to provide simple application development for thin clients, or low-powered computers.
+\paragraph{Java} An object-oriented programming language written for cross-compatibility and server-side speed
+\paragraph{Java EE} The server side libraries from the Java language.
 \paragraph{JSP} Java Server Page is a server-side technology that integrate html code from webpages into the Java and Java EE programming languages.
 \section*{H}
 \paragraph{HTTP (Hyper Text Transfer Protocol)} Used by web servers to transfer web pages and web applications so that users can use them.
@@ -2660,6 +2704,7 @@ In any case, once the permission levels are set up, it makes monitoring employee
 \paragraph{Javascript} A simple, cross-platform, World-Wide Web scripting language created by Netscape that is used on browsers and servers to provide additional functionality.
 \section*{I}
 \paragraph{Interface} The presentation of communications between application and user.
+\paragraph{Interface Layer} All classes related to the display of content and data.
 \section*{L}
 \paragraph{LaTeX} A programming language and word processor that is used for typesetting technical data into professional documents.
 \section*{M}
@@ -2671,6 +2716,7 @@ In any case, once the permission levels are set up, it makes monitoring employee
 \section*{N}
 \paragraph{Non-Functional Requirements} Requirements placed on a system that focus on the quality of the actions it provides and any constraints they must function within.
 \section*{P}
+\paragraph{Persistence Layer} All classes responsible for persisting data to a database.
 \paragraph{Project} A temporary process, that provides a product to a client.
 \paragraph{Project Scope} Defines the limits of what a project will and will not cover.  Elements determined to be outside of the project scope will not be addressed by the project team, though they may need to be covered by an outside party if the elements are desired.
 
@@ -2679,6 +2725,7 @@ In any case, once the permission levels are set up, it makes monitoring employee
 \section*{S}
 \paragraph{SSL} (Secure Sockets Layer) Provides a method to send data across a network securely.
 \paragraph{Server} A very powerful computer that hosts a variety of services to clients.
+\paragraph{Servlet} A server-side java program and / or applet
 \paragraph{SMS} Short Message Service, a cellphone-based messaging system that can send 160 character messages delivered by the digital cellular system.
 \paragraph{Source Code} Groupings of text that a computer can understand and create a product as result.
 \paragraph{Sub Domain} A domain that resides in a larger domain that is seen on a network. Is generally used to separate tasks that perform a function for clarity and purpose.
