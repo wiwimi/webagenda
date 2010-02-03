@@ -192,7 +192,14 @@ DROP TABLE IF EXISTS `WebAgenda`.`SCHEDULETEMPLATE` ;
 
 CREATE  TABLE IF NOT EXISTS `WebAgenda`.`SCHEDULETEMPLATE` (
   `scheduleTemplateID` INT NOT NULL ,
-  PRIMARY KEY (`scheduleTemplateID`) )
+  `creatorID` INT NOT NULL ,
+  PRIMARY KEY (`scheduleTemplateID`) ,
+  INDEX `fk_SCHEDULETEMPLATE_EMPLOYEE1` (`creatorID` ASC) ,
+  CONSTRAINT `fk_SCHEDULETEMPLATE_EMPLOYEE1`
+    FOREIGN KEY (`creatorID` )
+    REFERENCES `WebAgenda`.`EMPLOYEE` (`empID` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -250,7 +257,14 @@ CREATE  TABLE IF NOT EXISTS `WebAgenda`.`SCHEDULE` (
   `scheduleID` INT NOT NULL ,
   `startDate` DATE NOT NULL ,
   `endDate` DATE NOT NULL ,
-  PRIMARY KEY (`scheduleID`) )
+  `creatorID` INT NOT NULL ,
+  PRIMARY KEY (`scheduleID`) ,
+  INDEX `fk_SCHEDULE_EMPLOYEE1` (`creatorID` ASC) ,
+  CONSTRAINT `fk_SCHEDULE_EMPLOYEE1`
+    FOREIGN KEY (`creatorID` )
+    REFERENCES `WebAgenda`.`EMPLOYEE` (`empID` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
