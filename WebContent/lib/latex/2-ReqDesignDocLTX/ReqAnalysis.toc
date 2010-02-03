@@ -1,186 +1,196 @@
-\contentsline {part}{I\hspace {1em}Preface}{11}
-\contentsline {chapter}{\numberline {1}Document Purpose}{12}
-\contentsline {section}{\numberline {1.1}Introduction}{12}
-\contentsline {paragraph}{WHAT }{13}
-\contentsline {paragraph}{WHERE}{13}
-\contentsline {paragraph}{WHEN }{13}
-\contentsline {paragraph}{WHY }{13}
-\contentsline {chapter}{\numberline {2}Document Standards}{14}
-\contentsline {section}{\numberline {2.1}Document Standards List}{14}
-\contentsline {part}{II\hspace {1em}User Requirements}{16}
-\contentsline {chapter}{\numberline {3}Business Overviews and Objectives}{17}
-\contentsline {section}{\numberline {3.1}Statement of the Problem}{18}
-\contentsline {paragraph}{}{18}
-\contentsline {paragraph}{}{18}
-\contentsline {section}{\numberline {3.2}System Environment}{19}
-\contentsline {section}{\numberline {3.3}Current System}{19}
-\contentsline {chapter}{\numberline {4}System Requirements}{20}
-\contentsline {section}{\numberline {4.1}Functional Requirements}{20}
-\contentsline {section}{\numberline {4.2}Non-Functional Requirements}{23}
-\contentsline {section}{\numberline {4.3}System Interface Requirements}{26}
-\contentsline {section}{\numberline {4.4}Maintainability and Administration Requirements}{28}
-\contentsline {section}{\numberline {4.5}Usability Requirements}{29}
-\contentsline {part}{III\hspace {1em}Requirements Models}{30}
-\contentsline {chapter}{\numberline {5}Use Case Diagram}{31}
-\contentsline {chapter}{\numberline {6}Extended Use Case Diagrams}{33}
-\contentsline {section}{\numberline {6.1}Log-In System}{33}
-\contentsline {section}{\numberline {6.2}Access Schedule}{35}
-\contentsline {section}{\numberline {6.3}Review Employee Request}{36}
-\contentsline {section}{\numberline {6.4}Add Supervisor}{39}
-\contentsline {section}{\numberline {6.5}Booking Emergency Days Off}{41}
-\contentsline {section}{\numberline {6.6}Update User Availability}{43}
-\contentsline {section}{\numberline {6.7}Manager Viewing All Schedules}{46}
-\contentsline {section}{\numberline {6.8}Book Days Off}{49}
-\contentsline {section}{\numberline {6.9}Request Shift Change}{52}
-\contentsline {section}{\numberline {6.10}Distribute Reports}{57}
-\contentsline {section}{\numberline {6.11}Generate Reports}{59}
-\contentsline {section}{\numberline {6.12}Maintain Workgroups}{61}
-\contentsline {section}{\numberline {6.13}Send Announcement}{64}
-\contentsline {section}{\numberline {6.14}View Workgroup Schedule}{66}
-\contentsline {chapter}{\numberline {7}Problem Domain Class Diagram}{68}
-\contentsline {section}{\numberline {7.1}Problem Domain}{68}
-\contentsline {chapter}{\numberline {8}State Machine Diagrams}{70}
-\contentsline {section}{\numberline {8.1}State Machines}{70}
-\contentsline {chapter}{\numberline {9}Activity Diagrams}{80}
-\contentsline {section}{\numberline {9.1}Activity Diagrams}{81}
-\contentsline {part}{IV\hspace {1em}System Design}{85}
-\contentsline {chapter}{\numberline {10}Layered Architecture}{86}
-\contentsline {section}{\numberline {10.1}Package Diagram}{86}
-\contentsline {chapter}{\numberline {11}Persistence Model}{88}
-\contentsline {section}{\numberline {11.1}Textual Description Document}{88}
-\contentsline {section}{\numberline {11.2}Entity Relationship Diagrams}{90}
-\contentsline {section}{\numberline {11.3}Expected Persistent Class Sizes}{91}
-\contentsline {chapter}{\numberline {12}Class Diagram}{93}
-\contentsline {section}{\numberline {12.1}Interface, Persistence, and Problem Domain}{93}
-\contentsline {chapter}{\numberline {13}Interaction Sequence Diagrams}{97}
-\contentsline {section}{\numberline {13.1}New Schedule Sequence Diagram}{98}
-\contentsline {section}{\numberline {13.2}Request Shift Change Sequence Diagram}{99}
-\contentsline {section}{\numberline {13.3}Viewing Schedule Sequence Diagram}{100}
-\contentsline {section}{\numberline {13.4}Book Days Off Sequence Diagram}{101}
-\contentsline {section}{\numberline {13.5}Administrative Schedule Viewing Sequence Diagram}{102}
-\contentsline {section}{\numberline {13.6}Request Shift Change Sequence Diagram}{103}
-\contentsline {section}{\numberline {13.7}Update Availability Sequence Diagram}{104}
-\contentsline {section}{\numberline {13.8}Access Schedule Sequence Diagram}{105}
-\contentsline {section}{\numberline {13.9}Add Supervisor Sequence Diagram}{106}
-\contentsline {section}{\numberline {13.10}Create Employee Type Sequence Diagram}{107}
-\contentsline {section}{\numberline {13.11}Create New Employee Sequence Diagram}{108}
-\contentsline {section}{\numberline {13.12}Distribute Report Schedule Sequence Diagram}{109}
-\contentsline {section}{\numberline {13.13}Generate Report Schedule Sequence Diagram}{110}
-\contentsline {section}{\numberline {13.14}System Log In Sequence Diagram}{111}
-\contentsline {section}{\numberline {13.15}Maintain Workgroup Sequence Diagram}{112}
-\contentsline {section}{\numberline {13.16}Maintain Employee Sequence Diagram}{113}
-\contentsline {section}{\numberline {13.17}Review Request Sequence Diagram}{114}
-\contentsline {section}{\numberline {13.18}Send Event Sequence Diagram}{115}
-\contentsline {section}{\numberline {13.19}Book Days Off Sequence Diagram}{116}
-\contentsline {section}{\numberline {13.20}Manager View Schedules Sequence Diagram}{117}
-\contentsline {section}{\numberline {13.21}Request Shift Change Sequence Diagram}{118}
-\contentsline {section}{\numberline {13.22}Update Availability Sequence Diagram}{119}
-\contentsline {section}{\numberline {13.23}Send Emergency Notification Sequence Diagram}{120}
-\contentsline {section}{\numberline {13.24}View Workgroup Schedule Sequence Diagram}{121}
-\contentsline {chapter}{\numberline {14}Data Dictionary}{122}
-\contentsline {section}{\numberline {14.1}Interface Dictionary}{123}
-\contentsline {section}{\numberline {14.2}Persistence}{136}
-\contentsline {section}{\numberline {14.3}Problem Domain}{146}
-\contentsline {part}{V\hspace {1em}Project Management}{162}
-\contentsline {chapter}{\numberline {15}Schedule}{163}
-\contentsline {section}{\numberline {15.1}Gantt Chart}{163}
-\contentsline {section}{\numberline {15.2}2009 -10-08 – Requirements Documentation}{168}
-\contentsline {section}{\numberline {15.3}2009-11-05 – Requirements Analysis}{169}
-\contentsline {section}{\numberline {15.4}2009-12-17 – Design Documentation}{169}
-\contentsline {section}{\numberline {15.5}2009-01-30 – Alpha Release}{170}
-\contentsline {section}{\numberline {15.6}2009-02-28 – Beta Release}{170}
-\contentsline {section}{\numberline {15.7}2009-04-15 – Final Release}{170}
-\contentsline {chapter}{\numberline {16}Team Configuration}{171}
-\contentsline {section}{\numberline {16.1}Members And Roles}{171}
-\contentsline {section}{\numberline {16.2}Reporting Relationships and Procedures}{172}
-\contentsline {section}{\numberline {16.3}Contact Information}{173}
-\contentsline {chapter}{\numberline {17}Project Standards And Procedures}{174}
-\contentsline {paragraph}{}{174}
-\contentsline {paragraph}{}{175}
-\contentsline {paragraph}{}{175}
-\contentsline {paragraph}{}{175}
-\contentsline {section}{\numberline {17.1}Hardware Architecture}{176}
-\contentsline {subsection}{\numberline {17.1.1}Hardware Platform for Production System}{176}
-\contentsline {section}{\numberline {17.2}Hardware Platform for Development System}{177}
-\contentsline {section}{\numberline {17.3}Software Platform}{178}
-\contentsline {subsection}{\numberline {17.3.1}Server Software}{178}
-\contentsline {subsection}{\numberline {17.3.2}Client Software}{178}
-\contentsline {paragraph}{Browsers}{178}
-\contentsline {paragraph}{Operating Systems}{178}
-\contentsline {section}{\numberline {17.4}Interaction Model}{180}
-\contentsline {subsection}{\numberline {17.4.1}Style}{180}
-\contentsline {subsection}{\numberline {17.4.2}General Style Guidelines}{180}
-\contentsline {subsection}{\numberline {17.4.3}System Feedback Style}{181}
-\contentsline {subsection}{\numberline {17.4.4}Standards}{182}
-\contentsline {paragraph}{NOTE}{182}
-\contentsline {section}{\numberline {17.5}Desired User Support}{183}
-\contentsline {section}{\numberline {17.6}Screen Descriptions}{184}
-\contentsline {subsection}{\numberline {17.6.1}Widgets}{184}
-\contentsline {subsection}{\numberline {17.6.2}Screens}{185}
-\contentsline {section}{\numberline {17.7}Developer Contact}{187}
-\contentsline {part}{VI\hspace {1em}Appendix}{188}
-\contentsline {chapter}{\numberline {A}Interview Questions}{189}
-\contentsline {chapter}{\numberline {B}API Documentation}{192}
-\contentsline {section}{\numberline {B.1}API Document Template}{193}
-\contentsline {section}{\numberline {B.2}API Web Template}{194}
-\contentsline {chapter}{\numberline {C}Prototypes - First Edition}{195}
-\contentsline {section}{\numberline {C.1}Creating a Schedule Prototype Screens}{196}
-\contentsline {section}{\numberline {C.2}Maintaining an Employee}{198}
-\contentsline {section}{\numberline {C.3}Creating a New Employee}{200}
-\contentsline {section}{\numberline {C.4}Taking Emergency Leave}{202}
-\contentsline {section}{\numberline {C.5}Viewing the Schedule}{203}
-\contentsline {chapter}{\numberline {D}Permission Reference Documentation}{204}
-\contentsline {section}{\numberline {D.1}Permissions Overview}{204}
-\contentsline {section}{\numberline {D.2}Permission Set}{207}
-\contentsline {chapter}{\numberline {E}Glossary}{211}
-\contentsline {paragraph}{Actor}{211}
-\contentsline {paragraph}{Administration Requirements}{211}
-\contentsline {paragraph}{Aloha}{211}
-\contentsline {paragraph}{Alpha Release}{211}
-\contentsline {paragraph}{Apache}{211}
-\contentsline {paragraph}{API}{211}
-\contentsline {paragraph}{Backup}{211}
-\contentsline {paragraph}{Beta Release}{212}
-\contentsline {paragraph}{Bug}{212}
-\contentsline {paragraph}{Database}{212}
-\contentsline {paragraph}{Department}{212}
-\contentsline {paragraph}{Deployment}{212}
-\contentsline {paragraph}{Deerfoot Inn and Casino}{212}
-\contentsline {paragraph}{Encrypted}{212}
-\contentsline {paragraph}{Encryption}{212}
-\contentsline {paragraph}{Export}{212}
-\contentsline {paragraph}{Format}{212}
-\contentsline {paragraph}{Functional Requirements}{212}
-\contentsline {paragraph}{Fact-Finding Methodology}{212}
-\contentsline {paragraph}{Final Release}{212}
-\contentsline {paragraph}{GPL (General Public License)}{213}
-\contentsline {paragraph}{GNU/Linux KCal}{213}
-\contentsline {paragraph}{HTTP (Hyper Text Transfer Protocol)}{213}
-\contentsline {paragraph}{HTTPS (Hyper Text Transfer Protocol)}{213}
-\contentsline {paragraph}{Javascript}{213}
-\contentsline {paragraph}{Interface}{213}
-\contentsline {paragraph}{LaTeX}{213}
-\contentsline {paragraph}{Mac OS X ICal}{213}
-\contentsline {paragraph}{Maintainability}{213}
-\contentsline {paragraph}{Microsoft Outlook}{214}
-\contentsline {paragraph}{Mobile Web}{214}
-\contentsline {paragraph}{MySQL}{214}
-\contentsline {paragraph}{Non-Functional Requirements}{214}
-\contentsline {paragraph}{Project}{214}
-\contentsline {paragraph}{Project Scope}{214}
-\contentsline {paragraph}{PHP}{214}
-\contentsline {paragraph}{RSS}{214}
-\contentsline {paragraph}{SSL}{214}
-\contentsline {paragraph}{Server}{214}
-\contentsline {paragraph}{SMS}{214}
-\contentsline {paragraph}{Source Code}{214}
-\contentsline {paragraph}{Sub Domain}{215}
-\contentsline {paragraph}{System}{215}
-\contentsline {paragraph}{System Interface}{215}
-\contentsline {paragraph}{System Interface Requirements}{215}
-\contentsline {paragraph}{System Requirements}{215}
-\contentsline {paragraph}{Testing}{215}
-\contentsline {paragraph}{TSL}{215}
-\contentsline {paragraph}{Use Case}{215}
-\contentsline {paragraph}{WebAgenda}{215}
-\contentsline {chapter}{\numberline {F}Index}{216}
+\contentsline {part}{I\hspace {1em}Preface}{12}
+\contentsline {chapter}{\numberline {1}Document Purpose}{13}
+\contentsline {section}{\numberline {1.1}Introduction}{13}
+\contentsline {paragraph}{WHAT }{14}
+\contentsline {paragraph}{WHERE}{14}
+\contentsline {paragraph}{WHEN }{14}
+\contentsline {paragraph}{WHY }{14}
+\contentsline {chapter}{\numberline {2}Document Standards}{15}
+\contentsline {section}{\numberline {2.1}Document Standards List}{15}
+\contentsline {part}{II\hspace {1em}User Requirements}{17}
+\contentsline {chapter}{\numberline {3}Business Overviews and Objectives}{18}
+\contentsline {section}{\numberline {3.1}Statement of the Problem}{19}
+\contentsline {paragraph}{}{19}
+\contentsline {paragraph}{}{19}
+\contentsline {section}{\numberline {3.2}System Environment}{20}
+\contentsline {section}{\numberline {3.3}Current System}{20}
+\contentsline {chapter}{\numberline {4}System Requirements}{21}
+\contentsline {section}{\numberline {4.1}Functional Requirements}{21}
+\contentsline {section}{\numberline {4.2}Non-Functional Requirements}{25}
+\contentsline {section}{\numberline {4.3}System Interface Requirements}{28}
+\contentsline {section}{\numberline {4.4}Maintainability and Administration Requirements}{30}
+\contentsline {section}{\numberline {4.5}Usability Requirements}{31}
+\contentsline {part}{III\hspace {1em}Requirements Models}{32}
+\contentsline {chapter}{\numberline {5}Use Case Diagram}{33}
+\contentsline {chapter}{\numberline {6}Extended Use Case Diagrams}{35}
+\contentsline {section}{\numberline {6.1}Log-In System}{35}
+\contentsline {section}{\numberline {6.2}Access Schedule}{37}
+\contentsline {section}{\numberline {6.3}Review Employee Request}{38}
+\contentsline {section}{\numberline {6.4}Add Supervisor}{41}
+\contentsline {section}{\numberline {6.5}Booking Emergency Days Off}{43}
+\contentsline {section}{\numberline {6.6}Update User Availability}{45}
+\contentsline {section}{\numberline {6.7}Manager Viewing All Schedules}{48}
+\contentsline {section}{\numberline {6.8}Book Days Off}{51}
+\contentsline {section}{\numberline {6.9}Request Shift Change}{54}
+\contentsline {section}{\numberline {6.10}Distribute Reports}{59}
+\contentsline {section}{\numberline {6.11}Generate Reports}{61}
+\contentsline {section}{\numberline {6.12}Maintain Workgroups}{63}
+\contentsline {section}{\numberline {6.13}Send Announcement}{66}
+\contentsline {section}{\numberline {6.14}View Workgroup Schedule}{68}
+\contentsline {section}{\numberline {6.15}Maintain Locations}{70}
+\contentsline {section}{\numberline {6.16}Maintain Positions}{73}
+\contentsline {section}{\numberline {6.17}Maintain Skills}{76}
+\contentsline {chapter}{\numberline {7}Problem Domain Class Diagram}{79}
+\contentsline {section}{\numberline {7.1}Problem Domain}{79}
+\contentsline {chapter}{\numberline {8}State Machine Diagrams}{81}
+\contentsline {section}{\numberline {8.1}State Machines}{81}
+\contentsline {chapter}{\numberline {9}Activity Diagrams}{91}
+\contentsline {section}{\numberline {9.1}Activity Diagrams}{92}
+\contentsline {part}{IV\hspace {1em}System Design}{96}
+\contentsline {chapter}{\numberline {10}Layered Architecture}{97}
+\contentsline {section}{\numberline {10.1}Package Diagram}{97}
+\contentsline {chapter}{\numberline {11}Persistence Model}{99}
+\contentsline {section}{\numberline {11.1}Textual Description Document}{99}
+\contentsline {section}{\numberline {11.2}Entity Relationship Diagrams}{101}
+\contentsline {section}{\numberline {11.3}Expected Persistent Class Sizes}{102}
+\contentsline {chapter}{\numberline {12}Class Diagram}{104}
+\contentsline {section}{\numberline {12.1}Interface, Persistence, and Problem Domain}{104}
+\contentsline {chapter}{\numberline {13}Interaction Sequence Diagrams}{108}
+\contentsline {section}{\numberline {13.1}New Schedule Sequence Diagram}{109}
+\contentsline {section}{\numberline {13.2}Request Shift Change Sequence Diagram}{110}
+\contentsline {section}{\numberline {13.3}Viewing Schedule Sequence Diagram}{111}
+\contentsline {section}{\numberline {13.4}Book Days Off Sequence Diagram}{112}
+\contentsline {section}{\numberline {13.5}Administrative Schedule Viewing Sequence Diagram}{113}
+\contentsline {section}{\numberline {13.6}Request Shift Change Sequence Diagram}{114}
+\contentsline {section}{\numberline {13.7}Update Availability Sequence Diagram}{115}
+\contentsline {section}{\numberline {13.8}Access Schedule Sequence Diagram}{116}
+\contentsline {section}{\numberline {13.9}Add Supervisor Sequence Diagram}{117}
+\contentsline {section}{\numberline {13.10}Create Employee Type Sequence Diagram}{118}
+\contentsline {section}{\numberline {13.11}Create New Employee Sequence Diagram}{119}
+\contentsline {section}{\numberline {13.12}Distribute Report Schedule Sequence Diagram}{120}
+\contentsline {section}{\numberline {13.13}Generate Report Schedule Sequence Diagram}{121}
+\contentsline {section}{\numberline {13.14}System Log In Sequence Diagram}{122}
+\contentsline {section}{\numberline {13.15}Maintain Workgroup Sequence Diagram}{123}
+\contentsline {section}{\numberline {13.16}Maintain Employee Sequence Diagram}{124}
+\contentsline {section}{\numberline {13.17}Review Request Sequence Diagram}{125}
+\contentsline {section}{\numberline {13.18}Send Event Sequence Diagram}{126}
+\contentsline {section}{\numberline {13.19}Book Days Off Sequence Diagram}{127}
+\contentsline {section}{\numberline {13.20}Manager View Schedules Sequence Diagram}{128}
+\contentsline {section}{\numberline {13.21}Request Shift Change Sequence Diagram}{129}
+\contentsline {section}{\numberline {13.22}Update Availability Sequence Diagram}{130}
+\contentsline {section}{\numberline {13.23}Send Emergency Notification Sequence Diagram}{131}
+\contentsline {section}{\numberline {13.24}View Workgroup Schedule Sequence Diagram}{132}
+\contentsline {chapter}{\numberline {14}Data Dictionary}{133}
+\contentsline {section}{\numberline {14.1}Interface Dictionary}{134}
+\contentsline {section}{\numberline {14.2}Persistence}{147}
+\contentsline {section}{\numberline {14.3}Problem Domain}{157}
+\contentsline {part}{V\hspace {1em}Project Management}{173}
+\contentsline {chapter}{\numberline {15}Schedule}{174}
+\contentsline {section}{\numberline {15.1}Gantt Chart}{174}
+\contentsline {section}{\numberline {15.2}2009 -10-08 – Requirements Documentation}{179}
+\contentsline {section}{\numberline {15.3}2009-11-05 – Requirements Analysis}{180}
+\contentsline {section}{\numberline {15.4}2009-12-17 – Design Documentation}{180}
+\contentsline {section}{\numberline {15.5}2009-01-30 – Alpha Release}{181}
+\contentsline {section}{\numberline {15.6}2009-02-28 – Beta Release}{181}
+\contentsline {section}{\numberline {15.7}2009-04-15 – Final Release}{181}
+\contentsline {chapter}{\numberline {16}Team Configuration}{182}
+\contentsline {section}{\numberline {16.1}Members And Roles}{182}
+\contentsline {section}{\numberline {16.2}Reporting Relationships and Procedures}{183}
+\contentsline {section}{\numberline {16.3}Contact Information}{184}
+\contentsline {chapter}{\numberline {17}Project Standards And Procedures}{185}
+\contentsline {paragraph}{}{185}
+\contentsline {paragraph}{}{186}
+\contentsline {paragraph}{}{186}
+\contentsline {paragraph}{}{186}
+\contentsline {section}{\numberline {17.1}Hardware Architecture}{187}
+\contentsline {subsection}{\numberline {17.1.1}Hardware Platform for Production System}{187}
+\contentsline {section}{\numberline {17.2}Hardware Platform for Development System}{188}
+\contentsline {section}{\numberline {17.3}Software Platform}{189}
+\contentsline {subsection}{\numberline {17.3.1}Server Software}{189}
+\contentsline {subsection}{\numberline {17.3.2}Client Software}{189}
+\contentsline {paragraph}{Browsers}{189}
+\contentsline {paragraph}{Operating Systems}{189}
+\contentsline {section}{\numberline {17.4}Interaction Model}{191}
+\contentsline {subsection}{\numberline {17.4.1}Style}{191}
+\contentsline {subsection}{\numberline {17.4.2}General Style Guidelines}{191}
+\contentsline {subsection}{\numberline {17.4.3}System Feedback Style}{192}
+\contentsline {subsection}{\numberline {17.4.4}Standards}{193}
+\contentsline {paragraph}{NOTE}{193}
+\contentsline {section}{\numberline {17.5}Desired User Support}{194}
+\contentsline {section}{\numberline {17.6}Screen Descriptions}{195}
+\contentsline {subsection}{\numberline {17.6.1}Widgets}{195}
+\contentsline {subsection}{\numberline {17.6.2}Screens}{196}
+\contentsline {section}{\numberline {17.7}Manual Procedures}{198}
+\contentsline {subsection}{\numberline {17.7.1}Security}{198}
+\contentsline {subsection}{\numberline {17.7.2}Operation}{198}
+\contentsline {subsection}{\numberline {17.7.3}Backup and Restore}{198}
+\contentsline {subsection}{\numberline {17.7.4}Data Archival}{199}
+\contentsline {section}{\numberline {17.8}Developer Contact}{199}
+\contentsline {part}{VI\hspace {1em}Appendix}{200}
+\contentsline {chapter}{\numberline {A}Interview Questions}{201}
+\contentsline {chapter}{\numberline {B}API Documentation}{204}
+\contentsline {section}{\numberline {B.1}API Document Template}{205}
+\contentsline {section}{\numberline {B.2}API Web Template}{206}
+\contentsline {chapter}{\numberline {C}Prototypes - First Edition}{207}
+\contentsline {section}{\numberline {C.1}Creating a Schedule Prototype Screens}{208}
+\contentsline {section}{\numberline {C.2}Maintaining an Employee}{210}
+\contentsline {section}{\numberline {C.3}Creating a New Employee}{212}
+\contentsline {section}{\numberline {C.4}Taking Emergency Leave}{214}
+\contentsline {section}{\numberline {C.5}Viewing the Schedule}{215}
+\contentsline {chapter}{\numberline {D}Permission Reference Documentation}{216}
+\contentsline {section}{\numberline {D.1}Permissions Overview}{216}
+\contentsline {section}{\numberline {D.2}Permission Set}{219}
+\contentsline {chapter}{\numberline {E}Glossary}{223}
+\contentsline {paragraph}{Actor}{223}
+\contentsline {paragraph}{Administration Requirements}{223}
+\contentsline {paragraph}{Aloha}{223}
+\contentsline {paragraph}{Alpha Release}{223}
+\contentsline {paragraph}{Apache}{223}
+\contentsline {paragraph}{API}{223}
+\contentsline {paragraph}{Backup}{223}
+\contentsline {paragraph}{Beta Release}{224}
+\contentsline {paragraph}{Bug}{224}
+\contentsline {paragraph}{Database}{224}
+\contentsline {paragraph}{Department}{224}
+\contentsline {paragraph}{Deployment}{224}
+\contentsline {paragraph}{Deerfoot Inn and Casino}{224}
+\contentsline {paragraph}{Document Viewers}{224}
+\contentsline {paragraph}{Encrypted}{224}
+\contentsline {paragraph}{Encryption}{224}
+\contentsline {paragraph}{Export}{224}
+\contentsline {paragraph}{Format}{224}
+\contentsline {paragraph}{Functional Requirements}{224}
+\contentsline {paragraph}{Fact-Finding Methodology}{225}
+\contentsline {paragraph}{Final Release}{225}
+\contentsline {paragraph}{GPL (General Public License)}{225}
+\contentsline {paragraph}{GNU/Linux KCal}{225}
+\contentsline {paragraph}{J2EE}{225}
+\contentsline {paragraph}{JSP}{225}
+\contentsline {paragraph}{HTTP (Hyper Text Transfer Protocol)}{225}
+\contentsline {paragraph}{HTTPS (Hyper Text Transfer Protocol)}{225}
+\contentsline {paragraph}{Javascript}{225}
+\contentsline {paragraph}{Interface}{225}
+\contentsline {paragraph}{LaTeX}{226}
+\contentsline {paragraph}{Mac OS X ICal}{226}
+\contentsline {paragraph}{Maintainability}{226}
+\contentsline {paragraph}{Microsoft Outlook}{226}
+\contentsline {paragraph}{Mobile Web}{226}
+\contentsline {paragraph}{MySQL}{226}
+\contentsline {paragraph}{Non-Functional Requirements}{226}
+\contentsline {paragraph}{Project}{226}
+\contentsline {paragraph}{Project Scope}{226}
+\contentsline {paragraph}{RSS}{226}
+\contentsline {paragraph}{SSL}{227}
+\contentsline {paragraph}{Server}{227}
+\contentsline {paragraph}{SMS}{227}
+\contentsline {paragraph}{Source Code}{227}
+\contentsline {paragraph}{Sub Domain}{227}
+\contentsline {paragraph}{System}{227}
+\contentsline {paragraph}{System Interface}{227}
+\contentsline {paragraph}{System Interface Requirements}{227}
+\contentsline {paragraph}{System Requirements}{227}
+\contentsline {paragraph}{Testing}{227}
+\contentsline {paragraph}{TSL}{227}
+\contentsline {paragraph}{Use Case}{227}
+\contentsline {paragraph}{WebAgenda}{228}
+\contentsline {chapter}{\numberline {F}Index}{229}
