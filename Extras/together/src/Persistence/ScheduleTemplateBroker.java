@@ -2,5 +2,8 @@
 
 package Persistence;
 
-public class ScheduleTemplateBroker {
+/**
+ * Provides functionality for retrieving, creating, updating and deleting ScheduleTemplate data from the database. 
+ */
+public class ScheduleTemplateBroker implements Broker {
 }

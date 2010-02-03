@@ -70,7 +70,7 @@
                 <property name="bounds_setted_by_user" value="true"/>
             </reference>
             <reference referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeidbex5lg4ybajy8g4ybqdri:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
-                <property name="bounds" value="50,360,195,26"/>
+                <property name="bounds" value="50,360,235,26"/>
             </reference>
             <reference referencedUin="design:node:::id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeidb3cicg0fh0gv0g0fhdv53:id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j">
                 <property name="bounds" value="50,330,224,26"/>
@@ -298,7 +298,7 @@
         <node uin="id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid2v0reg0fh0gv0g0fhady1">
             <property name="$description" value="All employees will be able to access and view their personal schedule at any time, as well as any future schedules that have been set by a supervisor. &#xA;&#xA;Includes printing schedule, or exporting file that can be used with other devices/programs."/>
             <property name="$metaclass" value="Use Case"/>
-            <property name="$name" value="View/Maintain Schedule"/>
+            <property name="$name" value="View Schedule"/>
         </node>
         <node uin="id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeidb6oiqg0fh0gv0g0fhcezb">
             <property name="$description" value="Employees can request work shifts other than those assigned to them by the system or by their supervisor.  These requests must be reviewed and approved before they will be in effect."/>
@@ -369,7 +369,7 @@
         </node>
         <node uin="id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeidbex5lg4ybajy8g4ybqdri">
             <property name="$metaclass" value="Use Case"/>
-            <property name="$name" value="Maintain Shift Template"/>
+            <property name="$name" value="Maintain Schedule Template"/>
         </node>
         <node uin="id9e19kg0fh0gv0g0fh1np3.nodeid4gujlg0fh0gv0g0fh7f4j.nodeid5vm3eg4ybajy8g4ybtd1x">
             <property name="$metaclass" value="Use Case"/>

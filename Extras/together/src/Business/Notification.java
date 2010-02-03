@@ -6,10 +6,19 @@ package Business;
  * A notification is a type of message object that is sent to employees.  These can be sent out automatically to inform an employee of the status of requests they have made, and can also be sent manually if a supervisor wishes to send a message to his/her employees. 
  */
 public class Notification {
-    public void sendNotification(){}
-
+    /**
+     * The ID of the employee that sent the notification, or 0 if sent by the system. 
+     */
     private int senderID;
+
+    /**
+     * The ID of the employee that the notification is being sent to. 
+     */
     private int recipientID;
+
+    /**
+     * The time and day that the notificaiton was sent. 
+     */
     private Date sentTime;
 
     /**

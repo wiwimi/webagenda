@@ -63,13 +63,13 @@
             <property name="$shortcutReference" value="true"/>
             <property name="@__fqn" value="uml:package:Webagenda:src:Application"/>
             <property name="$imported" value=""/>
-            <property name="bounds" value="230,310,83,95"/>
+            <property name="bounds" value="230,310,122,232"/>
             <reference referencedUin="design:link:::idiazwsg57cbh5ag57cckie.linkidd6bu6g57cbh5ag57ceysr">
-                <property name="sourceAnchor" value="245,405"/>
+                <property name="sourceAnchor" value="250,542"/>
                 <property name="bendpoints" value=""/>
-                <property name="targetAnchor" value="245,630"/>
+                <property name="targetAnchor" value="250,630"/>
                 <reference referencedUin="linklabel:stereotype:design:link:::idiazwsg57cbh5ag57cckie.linkidd6bu6g57cbh5ag57ceysr">
-                    <property name="bounds" value="250,510,76,16"/>
+                    <property name="bounds" value="170,576,76,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
             </reference>

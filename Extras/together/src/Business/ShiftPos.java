@@ -2,8 +2,18 @@
 
 package Business;
 
+/**
+ * Used by Shifts to record what positions they required, as well as a count of how many of each unique position they require. 
+ */
 public class ShiftPos {
+    /**
+     * The position that is required. 
+     */
     private Position position;
+
+    /**
+     * The number of people that must fill this position for the containing shift. 
+     */
     private int count;
 
     /**

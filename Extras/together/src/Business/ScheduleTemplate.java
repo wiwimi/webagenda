@@ -2,8 +2,19 @@
 
 package Business;
 
+/**
+ * A grouping of shifts that serve as a template for new schedules, determining what positions and how many are required for given times during the week.  This is used as the basis for auto-generating a new schedule. 
+ */
 public class ScheduleTemplate {
+    /**
+     * The collection of shifts that belong to the Schedule Template. 
+     */
     private Shift[] shifts;
+
+    /**
+     * The employee who created the Schedule Template. 
+     */
+    private int creatorID;
 
     /**
      * @clientQualifier contains
@@ -12,4 +23,12 @@ public class ScheduleTemplate {
      * @clientCardinality 1 
      */
     private Shift lnkShift;
+
+    /**
+     * @clientCardinality 0..*
+     * @clientQualifier is created by
+     * @supplierCardinality 1
+     * @supplierQualifier may create 
+     */
+    private Employee lnkEmployee;
 }

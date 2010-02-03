@@ -3,23 +3,32 @@
 package Business;
 
 /**
- * A collection of shifts of multiple employees, grouped together by the workgroup or supervisor that those employees share. 
+ * A group of working shifts that apply within a given range of dates.
  */
 public class Schedule {
-    public void getWorkingShifts(){}
+    public WorkingShift[] getWorkingShifts(){}
 
     /**
-     * Holds references to all shifts that are active for this schedule. 
+     * The start date for when this schedule will be in effect for all applicable employees.
      */
     private Date startDate;
 
     /**
-     * The date and time at which the schedule is set to become active, and all affected employees will be expected to follow the shifts it contains. 
+     * The end date for when this schedule will no longer be in effect for all applicable employees.
      */
     private Date endDate;
 
     /**
-     * A description of the schedule, if one is desired.  This is not required to create a schedule. 
+     * The collection of working shifts that will be active between the dates set by the schedule.
      */
     private WorkingShift[] workingShifts;
+    private int creatorID;
+
+    /**
+     * @clientCardinality 0..*
+     * @supplierCardinality 1
+     * @supplierQualifier may create
+     * @clientQualifier is created by 
+     */
+    private Employee lnkEmployee;
 }

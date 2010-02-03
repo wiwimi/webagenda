@@ -3,11 +3,7 @@
 package Persistence;
 
 /**
- * Provides functionality for accessing notification data from the database. 
+ * Provides functionality for retrieving, creating, updating and deleting Notification data from the database.
  */
-public class NotificationBroker {
-    /**
-     * Sends a basic notification with a message. This method will send a notification message to the recipients mailbox (determined by int employee id parameter) as well as a popup on their dashboard in the MessageWidget. 
-     */
-    public void sendNotification(int p0, String p1){}
+public class NotificationBroker implements Broker {
 }

@@ -2,5 +2,12 @@
 
 package Business;
 
+/**
+ * Used to keep track of global attributes that apply system-wide to every employee or schedule.  There is only ever one Global Settings object stored in the database. 
+ */
 public class GlobalSettings {
+    /**
+     * The maximum number of days off that any employee can take. 
+     */
+    private int allowableDaysOff;
 }

@@ -2,8 +2,18 @@
 
 package Business;
 
+/**
+ * The primary object used to match an employee with a shift.  Positions will in most cases be equivalent to a specific job title in the business. 
+ */
 public class Position {
+    /**
+     * The name of the position, uniquely identifying it apart from other positions. 
+     */
     private String name;
+
+    /**
+     * The description of the position, if desired. 
+     */
     private String description;
 
     /**

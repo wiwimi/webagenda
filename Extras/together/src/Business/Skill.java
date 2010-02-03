@@ -3,9 +3,16 @@
 package Business;
 
 /**
- * A workgroup is a collection of employees, grouped together by a supervisor.  It can be used to view workgroup specific schedules, or to print reports on a specific set of employees rather than all that the supervisor is in charge of. 
+ * Skills are assigned to both Employees and Positions.  Together, they keep track of what skills an employee must have to work a certain position, and are checked against an employee's skill list when an attempt is made to assign a preferred position to them.
  */
 public class Skill {
+    /**
+     * The name of the skill, uniquely identifying it apart from other skills. 
+     */
     private String name;
+
+    /**
+     * The description of the skill, if desired. 
+     */
     private String description;
 }

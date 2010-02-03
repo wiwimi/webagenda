@@ -7,9 +7,9 @@
         <property name="@stereotype" value="access"/>
     </link>
     <link uin="idf1bpkg2p7zmjhg2p85qp2.linkid41asyg57cbh5ag57ceoaq">
-        <property name="$metaclass" value="Dependency Link"/>
         <participant role="Supplier" referencedUin="design:view:::idiazwsg57cbh5ag57cckie"/>
         <participant role="Client" referencedUin="design:view:::idf1bpkg2p7zmjhg2p85qp2"/>
+        <property name="$metaclass" value="Dependency Link"/>
         <property name="@stereotype" value="access"/>
     </link>
     <view uin="idf1bpkg2p7zmjhg2p85qp2">

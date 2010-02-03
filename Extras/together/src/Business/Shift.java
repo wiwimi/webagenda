@@ -3,7 +3,7 @@
 package Business;
 
 /**
- * A shift contains information on the specific time and place that one or more employees will be working. 
+ * Contains a list of what positions must be filled by employees within a given range of time.
  */
 public class Shift {
     /**
@@ -15,6 +15,10 @@ public class Shift {
      * The time at which work ends for the employees assigned to the shift. 
      */
     private Time endTime;
+
+    /**
+     * The positions that are required for the shift. 
+     */
     private ShiftPos[] positions;
 
     /**

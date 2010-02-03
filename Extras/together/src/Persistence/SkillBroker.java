@@ -2,5 +2,10 @@
 
 package Persistence;
 
-public class SkillBroker {
+import Business.Skill;
+
+/**
+ * Provides functionality for retrieving, creating, updating and deleting Position data from the database. 
+ */
+public class SkillBroker implements Broker {
 }

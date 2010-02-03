@@ -2,5 +2,8 @@
 
 package Persistence;
 
-public class LocationBroker {
+/**
+ * Provides functionality for retrieving, creating, updating and deleting Location data from the database. 
+ */
+public class LocationBroker implements Broker {
 }

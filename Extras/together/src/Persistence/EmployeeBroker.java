@@ -3,45 +3,8 @@
 package Persistence;
 
 /**
- * Provides functionality for accessing employee data from the database. 
+ * Provides functionality for retrieving, creating, updating and deleting Employee data from the database.
  */
-public class EmployeeBroker {
-    /**
-     * Gets an employee object from the database. 
-     */
-    public Employee getEmp(){}
-
-    /**
-     * Gets a collection of all employees that are currently working under a given supervisor. 
-     */
-    public Employee[] getEmps(Supervisor supervisor){}
-
-    /**
-     * Gets a collection of all employees that work under a given supervisor, limited only to those who are currently available to be assigned to new shifts. 
-     */
-    public Employee[] getAvailable(){}
-	
-    /**
-     * Writes or discards any pending or temporary data, refuses any method calls to acess the object's methods. 
-     */
-    public void closeBroker(){}
-
-    /**
-     * Get the supervisor of the employee with id as the parameter.
-     */
-    public void getEmpSupervisor(int p0){}
-
-    public int getEmpPermissionLevel(){}
-
-    /**
-     * Compares the current employee's permissions with another employee's permissions, returning the number of levels that user is above (+) or below (-), 0 if the same. Note that permission levels can have variations on what is assigned. 
-     */
-    public boolean permissionCompareTo(Employee p0, String p1){}
-
-    /**
-     * Get an array of employees using their id numbers in an array as parameters.
-     */
-    public void getEmps(int[] p0){}
-
-    public Employee getSupervisor(){}
+public class EmployeeBroker implements Broker {
+    public Employee[] getSupervisorEmps(){}
 }

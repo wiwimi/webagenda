@@ -6,28 +6,45 @@ package Business;
  * Contains information on an employee within the system including username and passwords to log in, and basic employee information such as first and last name. 
  */
 public class Employee {
+    /**
+     * Retrieves the list of active working shifts that the employee is currently scheduled for. 
+     */
     public WorkingShift[] getWorkingTimes(){}
 
-    public void getLoginTime(){}
-
-    public void getViewTimes(){}
+    /**
+     * Retrieves the last time that the employee logged into the system. 
+     */
+    public Date getLoginTime(){}
 
     /**
      * The ID number of the employee within the system. 
      */
     private int empID;
+
+    /**
+     * The supervisor of the employee. 
+     */
     private int supervisorID;
 
     /**
-     * The first name of the employee. 
+     * The given name of the employee.
      */
     private String givenName;
 
     /**
-     * The last name of the employee. 
+     * The family name of the employee.
      */
     private String familyName;
+
+    /**
+     * The birthday of the employee.  Not required by default. 
+     */
     private Date birthDate;
+
+    /**
+     * The email at which the employee can be contacted. 
+     */
+    private String email;
 
     /**
      * The username that the employee uses to log into the system. 
@@ -38,7 +55,20 @@ public class Employee {
      * The password that the employee uses to log into the system. 
      */
     private String password;
+
+    /**
+     * Holds the last day and time that the employee logged in. 
+     */
+    private Date lastLogin;
+
+    /**
+     * The preferred position that the employee will be working in. 
+     */
     private Position prefPosition;
+
+    /**
+     * The preferred location within the business that the employee will be working in. 
+     */
     private Location prefLocation;
 
     /**

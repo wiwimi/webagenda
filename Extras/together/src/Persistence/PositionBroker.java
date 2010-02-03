@@ -2,5 +2,10 @@
 
 package Persistence;
 
-public class PositionBroker {
+import Business.Position;
+
+/**
+ * Provides functionality for retrieving, creating, updating and deleting Position data from the database. 
+ */
+public class PositionBroker implements Broker {
 }

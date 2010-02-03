@@ -69,6 +69,7 @@ CREATE  TABLE IF NOT EXISTS `WebAgenda`.`EMPLOYEE` (
   `birthDate` DATE NULL ,
   `email` VARCHAR(50) NULL ,
   `username` VARCHAR(20) NOT NULL ,
+  `lastLogin` DATE NULL ,
   `password` VARCHAR(8) NOT NULL ,
   `prefPosition` VARCHAR(45) NULL ,
   `prefLocation` VARCHAR(45) NULL ,

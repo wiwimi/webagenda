@@ -3,13 +3,24 @@
 package Business;
 
 /**
- * An Event is used to mark real-world occurrences of importance that will happen at a specific time, such as an employee meeting or a business provided lunch event.  Events may be sent to all employees within a workgroup, or a within a job type. 
+ * Working shifts determine which employees are working at what times for a specific schedule.
  */
 public class WorkingShift {
     public Time[] getTimes(){}
 
+    /**
+     * The starting time of this working shift. 
+     */
     private Time startTime;
+
+    /**
+     * The end time of this working shift. 
+     */
     private Time endTime;
+
+    /**
+     * The employees that will be working during the times set by the working shift. 
+     */
     private Employee[] employees;
 
     /**
