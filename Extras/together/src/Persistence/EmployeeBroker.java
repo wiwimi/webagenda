@@ -6,5 +6,5 @@ package Persistence;
  * Provides functionality for retrieving, creating, updating and deleting Employee data from the database.
  */
 public class EmployeeBroker implements Broker {
-    public Employee[] getSupervisorEmps(){}
+    public Employee[] getSupervisorEmps(Employee parameter0){}
 }

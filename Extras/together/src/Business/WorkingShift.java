@@ -6,6 +6,9 @@ package Business;
  * Working shifts determine which employees are working at what times for a specific schedule.
  */
 public class WorkingShift {
+    /**
+     * Returns an array containing the start and end time of a working shift. 
+     */
     public Time[] getTimes(){}
 
     /**

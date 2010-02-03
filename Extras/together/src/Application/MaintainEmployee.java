@@ -3,7 +3,14 @@
 package Application;
 
 import Business.Schedule;
+
+/**
+ * Provides functionality for all actions used by the Maintain Employee use case. 
+ */
 public class MaintainEmployee {
+    /**
+     * Sets an employee's availability with a new value. 
+     */
     public void setAvailability(Schedule p0){}
 
     /**

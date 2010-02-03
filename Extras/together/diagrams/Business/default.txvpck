@@ -204,6 +204,10 @@
                 <property name="sourceAnchor" value="490,111"/>
                 <property name="bendpoints" value=""/>
                 <property name="targetAnchor" value="443,111"/>
+                <reference referencedUin="linklabel:supplierCardinality:jdt:l_ast:src:Business.Schedule:workingShifts">
+                    <property name="bounds" value="0,0,26,16"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
                 <property name="$hidden" value="true"/>
                 <property name="@$hidden" value="true"/>
             </reference>
@@ -218,6 +222,10 @@
                 <property name="sourceAnchor" value="624,433"/>
                 <property name="bendpoints" value=""/>
                 <property name="targetAnchor" value="624,510"/>
+                <reference referencedUin="linklabel:supplierCardinality:jdt:l_ast:src:Business.Shift:positions">
+                    <property name="bounds" value="0,0,26,16"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
                 <property name="$hidden" value="true"/>
                 <property name="@$hidden" value="true"/>
             </reference>
@@ -281,23 +289,23 @@
                 <property name="@$hidden" value="true"/>
             </reference>
             <reference referencedUin="jdt:l_ast:src:Business.WorkingShift:lnkEmployee">
-                <property name="sourceAnchor" value="371,176"/>
+                <property name="sourceAnchor" value="340,176"/>
                 <property name="bendpoints" value=""/>
-                <property name="targetAnchor" value="371,300"/>
+                <property name="targetAnchor" value="340,300"/>
                 <reference referencedUin="linklabel:clientQualifier:jdt:l_ast:src:Business.WorkingShift:lnkEmployee">
-                    <property name="bounds" value="375,176,55,16"/>
+                    <property name="bounds" value="340,180,55,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
                 <reference referencedUin="linklabel:supplierQualifier:jdt:l_ast:src:Business.WorkingShift:lnkEmployee">
-                    <property name="bounds" value="375,280,41,16"/>
+                    <property name="bounds" value="300,280,41,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
                 <reference referencedUin="linklabel:clientCardinality:jdt:l_ast:src:Business.WorkingShift:lnkEmployee">
-                    <property name="bounds" value="341,176,26,16"/>
+                    <property name="bounds" value="310,180,26,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
                 <reference referencedUin="linklabel:supplierCardinality:jdt:l_ast:src:Business.WorkingShift:lnkEmployee">
-                    <property name="bounds" value="341,280,26,16"/>
+                    <property name="bounds" value="340,280,26,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
             </reference>
@@ -371,6 +379,10 @@
                 <property name="sourceAnchor" value="630,281"/>
                 <property name="bendpoints" value=""/>
                 <property name="targetAnchor" value="630,330"/>
+                <reference referencedUin="linklabel:supplierCardinality:jdt:l_ast:src:Business.ScheduleTemplate:shifts">
+                    <property name="bounds" value="0,0,26,16"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
                 <property name="$hidden" value="true"/>
                 <property name="@$hidden" value="true"/>
             </reference>

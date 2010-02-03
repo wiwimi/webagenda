@@ -6,4 +6,33 @@ package Interface;
  * Provides functionality for adding, editing and deleting skills. 
  */
 public class SkillsWidget extends Widget {
+    /**
+     * Populates the existing skills list with skills from the database. 
+     */
+    public void loadSkills(){}
+
+    /**
+     * Shows the edit skill view with all fields blank for the user to create a new skill. 
+     */
+    public void showEditView(){}
+
+    /**
+     * Shows the edit skill view with all fields filled with data from the chosen skill. 
+     */
+    public void showEditView(Skill p0){}
+
+    /**
+     * Display an alert, showing the user that the skill was saved or created. 
+     */
+    public void showSkillSaved(){}
+
+    /**
+     * Prompts the user to confirm that they wish to delete the skill. 
+     */
+    public void confirmDelete(){}
+
+    /**
+     * Display an alert, showing the user that the chosen skill was deleted. 
+     */
+    public void showSkillDeleted(){}
 }

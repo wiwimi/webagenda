@@ -6,4 +6,33 @@ package Interface;
  * Provides functionality for adding, editing and deleting locations. 
  */
 public class LocationsWidget extends Widget {
+    /**
+     * Populates the existing locations list with positions from the database. 
+     */
+    public void loadLocations(){}
+
+    /**
+     * Shows the edit location view with all fields blank for the user to create a new location. 
+     */
+    public void showEditView(){}
+
+    /**
+     * Shows the edit location view with all fields filled with data from the chosen location. 
+     */
+    public void showEditView(Location p0){}
+
+    /**
+     * Display an alert, showing the user that the locations was saved or created. 
+     */
+    public void showLocSaved(){}
+
+    /**
+     * Prompts the user to confirm that they wish to delete the location. 
+     */
+    public void confirmDelete(){}
+
+    /**
+     * Display an alert, showing the user that the chosen location was deleted. 
+     */
+    public void showLocDeleted(){}
 }

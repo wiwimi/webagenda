@@ -2,5 +2,12 @@
 
 package Application;
 
+/**
+ * Provides functionality for all actions used by the LogIn use case. 
+ */
 public class LogIn {
+    /**
+     * Verifies the employee credentials, comparing the entered username and password against what was in the database. 
+     */
+    public boolean checkEmps(){}
 }

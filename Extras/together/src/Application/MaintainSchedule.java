@@ -3,11 +3,15 @@
 package Application;
 
 import Business.Schedule;
+
+/**
+ * Provides functionality for all actions used by the Maintain Schedule use case. 
+ */
 public class MaintainSchedule {
     /**
-     * Returns a schedule that is saved but not active. Returns null if no edited schedule exists. 
+     * Returns a schedule that is saved but not active. Returns null if no future schedule exists.
      */
-    public void getEditedSchedule(int p0){}
+    public void getFutureSchedule(int p0){}
 
     /**
      * Takes an array of schedules and adds the shifts of all into one, which is returned. 
@@ -17,10 +21,10 @@ public class MaintainSchedule {
     /**
      * Sets the schedule for a certain day (the string param is a date) with the shift[] 's specified. 
      */
-    protected void setSchedule(String p0, Shift[] p1){}
+    protected void createSchedule(String p0, Shift[] p1){}
 
     /**
-     * Clears a schedule by removing all shifts 
+     * Clears a schedule by removing all shifts.
      */
     public void clearSchedule(Schedule p0){}
 }

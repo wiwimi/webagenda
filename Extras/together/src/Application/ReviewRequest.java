@@ -2,5 +2,8 @@
 
 package Application;
 
+/**
+ * Provides functionality for all actions used by the Review Employee Requests use case. 
+ */
 public class ReviewRequest {
 }

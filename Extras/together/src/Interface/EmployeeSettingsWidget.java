@@ -5,7 +5,7 @@ package Interface;
 /**
  * Provides the user interface that will be used to change employee specific permission settings. 
  */
-public class SettingsWidget extends Widget {
+public class EmployeeSettingsWidget extends Widget {
     /**
      * Adds an employee as a supervisor within the system, and sets their permissions accordingly. 
      */

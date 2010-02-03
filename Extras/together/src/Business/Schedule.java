@@ -6,6 +6,9 @@ package Business;
  * A group of working shifts that apply within a given range of dates.
  */
 public class Schedule {
+    /**
+     * Retrieves an array of all working shifts held by the schedule. 
+     */
     public WorkingShift[] getWorkingShifts(){}
 
     /**
@@ -22,6 +25,10 @@ public class Schedule {
      * The collection of working shifts that will be active between the dates set by the schedule.
      */
     private WorkingShift[] workingShifts;
+
+    /**
+     * The ID of the employee that created the schedule. 
+     */
     private int creatorID;
 
     /**

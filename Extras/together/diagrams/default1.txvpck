@@ -3,14 +3,22 @@
     <view uin="idwoztg34sj4ckg34sj7dq">
         <property name="$metaclass" value="Package Diagram"/>
         <property name="@__options" value=""/>
-        <reference df-class-name="reference" referencedUin="design:view:::unknown_view">
-            <property name="$shortcutReference" value="true"/>
-            <property name="@__fqn" value="uml:package:Webagenda:src:Business"/>
-        </reference>
         <reference df-class-name="reference59" referencedUin="design:view:::idf1bpkg2p7zmjhg2p85qp2">
             <property name="$shortcutReference" value="true"/>
             <property name="@__fqn" value="uml:package:Webagenda:src:Interface"/>
             <property name="bounds" value="10,270,111,248"/>
+        </reference>
+        <reference df-class-name="reference" referencedUin="design:view:::idiazwsg57cbh5ag57cckie">
+            <property name="$shortcutReference" value="true"/>
+            <property name="@__fqn" value="uml:package:Webagenda:src:Application"/>
+        </reference>
+        <reference df-class-name="reference4" referencedUin="design:view:::id1gm70g2p7zmjhg2p8vsns">
+            <property name="$shortcutReference" value="true"/>
+            <property name="@__fqn" value="uml:package:Webagenda:src:Business"/>
+        </reference>
+        <reference df-class-name="reference5" referencedUin="design:view:::idgjd7xg2p7zmjhg2p8asa9">
+            <property name="$shortcutReference" value="true"/>
+            <property name="@__fqn" value="uml:package:Webagenda:src:Persistence"/>
         </reference>
         <property name="$defaultDiagram" value=""/>
     </view>

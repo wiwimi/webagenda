@@ -2,6 +2,12 @@
 
 package Application;
 
+/**
+ * Provides functionality for all actions used by the Send Notification use case. 
+ */
 public class SendNotification {
+    /**
+     * Prepares a new notification object to be sent to an employee. 
+     */
     public boolean sendNotification(Notification parameter0){}
 }

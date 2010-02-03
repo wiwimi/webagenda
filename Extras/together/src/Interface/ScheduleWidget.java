@@ -17,15 +17,7 @@ public class ScheduleWidget extends Widget {
     public void dispWeeklySched(){}
 
     /**
-     * Disables the workgroup list, used when there are no custom workgroups that can be accessed. 
-     */
-    public void disableWorkgroupList(){}
-
-    /**
      * Displays the schedule in a daily format. 
      */
     public void dispDailySched(){}
-
-    public void displayNotification() {
-    }
 }
