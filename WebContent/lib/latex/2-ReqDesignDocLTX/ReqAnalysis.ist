@@ -1,4 +1,4 @@
-% makeindex style file created by LaTeX for document "ReqAnalysis" on 2010-2-2
+% makeindex style file created by LaTeX for document "ReqAnalysis" on 2010-2-3
 keyword "\\glossaryentry"
 preamble "\\begin{theglossary}"
 postamble "\n\\end{theglossary}\n"

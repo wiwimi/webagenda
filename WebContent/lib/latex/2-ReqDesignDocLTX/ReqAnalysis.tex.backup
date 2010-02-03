@@ -30,7 +30,7 @@
 \begin{document}
 
 \title{Design Document\linebreak WebAgenda\linebreak \linebreak 
-	\begin{small}\textbf{Project Team:} Daniel Kettle, Daniel Wehr, Mark Hazlett\linebreak
+	\begin{small}\textbf{Project Team:} Daniel Kettle, Daniel Wehr, Mark Hazlett, Noorin Hasan\linebreak
 	\textbf{Client:} Deerfoot Inn and Casino, Robin Featherstone\index{Deerfoot Inn and Casino}\linebreak
 	\textbf{Instructor:} Pauline Turnbull\end{small}}
 
@@ -2272,7 +2272,8 @@ The database\index{Database} needed for the development system should reflect th
 \section{Software Platform}
 \subsection{Server Software}\index{server}
 \begin{itemize}
- \item \textbf{PHP} 4.0+ \index{PHP}
+ \item \textbf{J2EE} 1.5+ \index{J2EE}
+ \item \textbf{JSP} \index{JSP}
  \item \textbf{Apache} 2.0+\index{Apache}
  \item MySql 5.0+ \index{MySQL}
  \item Storage Space dependent on usage
@@ -2651,6 +2652,8 @@ In any case, once the permission levels are set up, it makes monitoring employee
 \paragraph{GPL (General Public License)} A widely used free software license, originally written by Richard Stallman that provides free access to software published under its terms. Users are allowed to copy, modify, and redistribute GPL software as long as its conditions are met.
 \paragraph{GNU/Linux KCal} A calendar plugin used by KOrganizer, part of the personal information management suite found in the K Desktop Environment, one of the two most popular GNU/Linux system desktop managers.
 \section*{J}
+\paragraph{J2EE} Also known as Java 2 Platform Enterprise Edition, Java EE is an enterprise mainframe programming language derived from java to provide simple application development for thin clients, or low-powered computers.
+\paragraph{JSP} Java Server Page is a server-side technology that integrate html code from webpages into the Java and Java EE programming languages.
 \section*{H}
 \paragraph{HTTP (Hyper Text Transfer Protocol)} Used by web servers to transfer web pages and web applications so that users can use them.
 \paragraph{HTTPS (Hyper Text Transfer Protocol)} Secure is a protocol used to securely transfer data such as passwords to the server. 
@@ -2670,7 +2673,7 @@ In any case, once the permission levels are set up, it makes monitoring employee
 \section*{P}
 \paragraph{Project} A temporary process, that provides a product to a client.
 \paragraph{Project Scope} Defines the limits of what a project will and will not cover.  Elements determined to be outside of the project scope will not be addressed by the project team, though they may need to be covered by an outside party if the elements are desired.
-\paragraph{PHP} (PHP Hypertext Processor) Server side scripting language to dynamically produce websites.
+
 \section*{R}
 \paragraph{RSS} (Really simple Syndication) Familly of web feed formats to publish frequent updates.
 \section*{S}
