@@ -39,6 +39,7 @@ label
 		position:relative;
 		-webkit-border-top-left-radius:10px; 
 		-webkit-border-top-right-radius:10px;
+		-moz-border-radius:10px;
 
 	}
 	
@@ -62,6 +63,7 @@ label
 		position: relative;
 		-webkit-border-top-left-radius:10px; 
 		-webkit-border-top-right-radius:10px;
+		-moz-border-radius:4px;
 	}
 	
 		/* Gray colour for rectangles */
@@ -81,6 +83,7 @@ label
 		position: relative;
 		-webkit-border-top-left-radius:10px; 
 		-webkit-border-top-right-radius:10px;
+		-moz-border-radius:4px;
 	}
 	
 
@@ -102,6 +105,7 @@ label
 		height : 50 px;
 		text-align: left;
 		position:relative;
+		
 
 	}
 	
