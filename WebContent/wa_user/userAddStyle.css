@@ -20,7 +20,8 @@
 	 border: 2px outset gray;  
 	 border-width:15px;
 	 border-collapse: collapse;
-	 padding: 1em 0;
+	 padding: 1em 1em;
+	 width:134%;
 }
 #addUser
 {
