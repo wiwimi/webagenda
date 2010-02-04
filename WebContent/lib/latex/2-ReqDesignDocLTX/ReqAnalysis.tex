@@ -228,7 +228,7 @@ All employee and scheduling information will be stored in a database\index{Datab
 \newpage
 
 \begin{figure}[htp]
- \includegraphics[scale=0.8, trim=0mm 30mm 0mm 30mm]{externals/UseCaseDiagram.pdf}
+ \includegraphics[scale=0.8]{externals/UseCaseDiagram.png}
  \caption{\small
 \textbf{\index{WebAgenda}WebAgenda \index{Use Case}Use Case Diagram }\newline A graphical overview of the interactions between users and the system\index{system}.}\label{fig:usecase}
 
@@ -1822,7 +1822,7 @@ Employee Usage Reports will allow supervisors to see statistics on how employees
 \pagebreak
 \begin{figure}[packageDiagram]
  \centering
- \includegraphics[scale=0.8,trim=10mm 30mm 25mm 25mm]{externals/PackageDiagram.pdf}
+ \includegraphics[scale=0.8]{externals/PackageDiagram.png}
  \caption{\small
 \textbf{Package Diagram}\newline This diagram shows all the packages and objects included in the system }\label{fig:packageDiagram}
 \end{figure}
@@ -1837,51 +1837,78 @@ Employee Usage Reports will allow supervisors to see statistics on how employees
 \paragraph*{}\hspace{0.6cm}The application layer contains classes that control the flow of how the interface and business objects interact. While the Broker manages back-end processes, application manages front-end proceses including validation.
 \pagebreak
 \section{Entity Relationship Diagrams}
+\pagebreak
+{
 \begin{figure}[ConceptualERD]
  \centering
- \includegraphics[scale=0.6,trim=0mm 10mm 25mm 0mm]{diagrams/WebAgendaERDconceptual.png}
+ \includegraphics[scale=0.8,trim=30mm 00mm 20mm 10mm]{externals/ConceptualERD.png}
  \caption{\small
 \textbf{Conceptual ERD Diagram}}\label{fig:conceptERD}
 \end{figure}
-
+\pagebreak
 \newpage
 \begin{figure}[ImplementationERD]
  \centering
- \includegraphics[scale=0.6,trim=20mm 10mm 25mm 0mm]{diagrams/WebAgendaERDimplementation.png}
+ \includegraphics[scale=0.8,trim=25mm 00mm 25mm 20mm]{externals/InternalERD.pdf}
  \caption{\small
 \textbf{Implementation ERD Diagram}}\label{fig:implemERD}
 \end{figure}
+}
+\chapter{Expected Persistent Class Sizes}
+\newpage
+\includegraphics[trim=30mm 20mm 25mm 30mm]{ExternalFiles/DocumentStuff/datasizes1.pdf}
 
+\newpage
+\includegraphics[trim=30mm 10mm 25mm 30mm]{ExternalFiles/DocumentStuff/datasizes2.pdf}
 
-\pagebreak
-\section{Expected Persistent Class Sizes}
-\includegraphics[trim=20mm 10mm 25mm 20mm]{externals/ExpectedPersistentClassSizes.pdf}
+\newpage
+\includegraphics[trim=30mm 10mm 25mm 30mm]{ExternalFiles/DocumentStuff/datasizes3.pdf}
+
+\newpage
+\includegraphics[trim=30mm 10mm 25mm 30mm]{ExternalFiles/DocumentStuff/datasizes4.pdf}
+
+\newpage
+\includegraphics[trim=30mm 10mm 25mm 30mm]{ExternalFiles/DocumentStuff/datasizes5.pdf}
+
+\newpage
+\includegraphics[trim=30mm 10mm 25mm 30mm]{ExternalFiles/DocumentStuff/datasizes6.pdf}
+
+\newpage
+\includegraphics[trim=30mm 10mm 25mm 30mm]{ExternalFiles/DocumentStuff/datasizes7.pdf}
 
 \chapter{Class Diagram}
-\section{Interface, Persistence, and Problem Domain}
+\section{Interface, Persistence, Business and Problem Domain}
 \newpage
 
 \begin{figure}[interfaceClassDia]
  \centering
- \includegraphics[scale=0.7,trim=20mm 40mm 25mm 50mm]{externals/InterfaceClassDiagram.pdf}
+ \includegraphics[scale=0.8]{externals/InterfaceClassDiagram.png}
  \caption{\small
 \textbf{Interface Class Diagram}\newline This diagram shows the objects that make up the interface for WebAgenda\index{WebAgenda} and methods associated with them. }\label{fig:intclassdia}
 \end{figure}
 \newpage
 \begin{figure}[persistdomainClassDia]
  \centering
- \includegraphics[scale=0.7,trim=20mm 40mm 25mm 50mm]{externals/PersistenceClassDiagram.pdf}
+ \includegraphics[scale=0.8]{externals/PersistenceClassDiagram.png}
  \caption{\small
 \textbf{Persistence Class Diagram}\newline This diagram shows the objects that make up the persistence layer, the classes and objects that utilize backend or data objects}\label{fig:persclassdia}
 \end{figure}
 \newpage
-\begin{figure}[problemdomainClassDia]
+\begin{figure}[applicationClassDia]
  \centering
- \includegraphics[scale=0.7,trim=30mm 40mm 25mm 50mm]{externals/ProblemDomainClassDiagram.pdf}
+ \includegraphics[scale=0.8]{externals/ApplicationClassDiagram.png}
  \caption{\small
-\textbf{Problem Domain Class Diagram}\newline This diagram shows the objects that make up the problem domain, or all the representation objects of data the system\index{system} used.}\label{fig:pdclassdia}
+\textbf{Application Class Diagram}\newline This diagram shows the objects that make up the application-side real world objects.\index{application}}\label{fig:pdclassdia}
 \end{figure}
 \newpage
+\begin{figure}[businessClassDia]
+ \centering
+ \includegraphics[scale=0.8]{externals/BusinessClassDiagram.png}
+ \caption{\small
+\textbf{Business Class Diagram}\newline Similar to the problem domain, this diagram displays the business classes. Business classes contain data that reflect real world objects that are used and modified in a business.}\label{fig:buisclassdia}
+\end{figure}
+\newpage
+
 
 \clearpage
 \chapter{Interaction Sequence Diagrams}
@@ -1966,42 +1993,49 @@ Employee Usage Reports will allow supervisors to see statistics on how employees
 \newpage
 \begin{figure}[hbp]
  \section{Distribute Report Schedule Sequence Diagram}
- \includegraphics[scale=0.65]{externals/SequenceDiagrams5.pdf}
+ \includegraphics[scale=0.8]{externals/DistributeReportSequence.png}
  \caption{\small
 \textbf{Distribute Report Sequence Diagram}\newline A representation of the proper sequence for distributing reports that are created}\label{fig:seqAccessSched}
 \end{figure}
 \newpage
 \begin{figure}[hbp]
  \section{Generate Report Schedule Sequence Diagram}
- \includegraphics[scale=0.65]{externals/SequenceDiagrams6.pdf}
+ \includegraphics[scale=0.5]{externals/GenerateReportSequence.png}
  \caption{\small
 \textbf{Generate Report Schedule Sequence Diagram}\newline A representation of the proper sequence for generating reports}\label{fig:seqGenReport}
 \end{figure}
 \newpage
 \begin{figure}[hbp]
  \section{System Log In Sequence Diagram}
- \includegraphics[scale=0.65]{externals/SequenceDiagrams7.pdf}
+ \includegraphics[scale=0.8]{externals/LogInSequence.png}
  \caption{\small
 \textbf{System Log In Sequence Diagram}\newline A representation of the proper sequence for logging into the system}\label{fig:seqLogInSys}
 \end{figure}
 \newpage
 \begin{figure}[hbp]
  \section{Maintain Workgroup Sequence Diagram}
- \includegraphics[scale=0.65]{externals/SequenceDiagrams8.pdf}
+ \includegraphics[scale=0.5]{externals/MaintainLocationSequence.png}
  \caption{\small
 \textbf{Maintain Workgroup Sequence Diagram}\newline A representation of the proper sequence for editing workgroups to the desired situation}\label{fig:seqMaintainWkgrp}
 \end{figure}
 \newpage
 \begin{figure}[hbp]
- \section{Maintain Employee Sequence Diagram}
- \includegraphics[scale=0.65]{externals/SequenceDiagrams9.pdf}
+ \section{Maintain Position Sequence Diagram}
+ \includegraphics[scale=0.45]{externals/MaintainPositionSequence.png}
  \caption{\small
-\textbf{Maintain Employee Sequence Diagram}\newline A representation of the proper sequence for editing an employee to the desired situation}\label{fig:seqMaintEmp}
+\textbf{Maintain Employee Sequence Diagram}\newline A representation of the proper sequence for editing an employee`s position to the desired situation}\label{fig:seqMaintEmp}
+\end{figure}
+\newpage
+\begin{figure}[hbp]
+ \section{Maintain Skill Sequence Diagram}
+ \includegraphics[scale=0.45]{externals/MaintainSkillSequence.png}
+ \caption{\small
+\textbf{Maintain Employee Sequence Diagram}\newline A representation of the proper sequence for editing an employee`s skills regarding the desired situation}\label{fig:seqMaintEmp}
 \end{figure}
 \newpage
 \begin{figure}[hbp]
  \section{Review Request Sequence Diagram}
- \includegraphics[scale=0.65]{externals/SequenceDiagrams10.pdf}
+ \includegraphics[scale=0.85]{externals/ReviewEmployeeRequestSequence.png}
  \caption{\small
 \textbf{Review Request Sequence Diagram}\newline A representation of the proper sequence for reviewing an employee request by an authoritative employee}\label{fig:seqMaintEmp}
 \end{figure}
@@ -2060,130 +2094,87 @@ Employee Usage Reports will allow supervisors to see statistics on how employees
 
 \chapter{Data Dictionary}\index{Data Dictionary}
 \newpage
-\section{Interface Dictionary}
-\includegraphics[scale=0.9,trim=10mm 30mm 25mm 35mm]{externals/InterfaceDataDictionary1.pdf}
+\section{Interface}
+\includegraphics[scale=0.9,trim=10mm 30mm 25mm 35mm]{externals/di1.pdf}
 \newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/InterfaceDataDictionary2.pdf}
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/di2.pdf}
 \newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/InterfaceDataDictionary3.pdf}
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/di3.pdf}
 \newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/InterfaceDataDictionary4.pdf}
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/di4.pdf}
 \newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/InterfaceDataDictionary5.pdf}
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/di5.pdf}
 \newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/InterfaceDataDictionary6.pdf}
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/di6.pdf}
 \newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/InterfaceDataDictionary7.pdf}
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/di7.pdf}
 \newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/InterfaceDataDictionary8.pdf}
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/di8.pdf}
 \newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/InterfaceDataDictionary9.pdf}
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/di9.pdf}
 \newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/InterfaceDataDictionary10.pdf}
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/di10.pdf}
 \newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/InterfaceDataDictionary11.pdf}
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/di11.pdf}
 \newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/InterfaceDataDictionary12.pdf}
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/di12.pdf}
 \newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/InterfaceDataDictionary13.pdf}
-\pagebreak
 \section{Persistence}
-\includegraphics[scale=0.9,trim=10mm 30mm 25mm 35mm]{externals/PersistanceDataDictionary1.pdf}
+\includegraphics[scale=0.9,trim=10mm 30mm 25mm 35mm]{externals/dp1.pdf}
 \newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/PersistanceDataDictionary2.pdf}
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/dp2.pdf}
 \newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/PersistanceDataDictionary3.pdf}
-\newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/PersistanceDataDictionary4.pdf}
-\newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/PersistanceDataDictionary5.pdf}
-\newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/PersistanceDataDictionary6.pdf}
-\newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/PersistanceDataDictionary7.pdf}
-\newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/PersistanceDataDictionary8.pdf}
-\newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/PersistanceDataDictionary9.pdf}
-\newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/PersistanceDataDictionary10.pdf}
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/dp3.pdf}
 \newpage
 
-\section{Problem Domain}
-\includegraphics[scale=0.9,trim=10mm 30mm 25mm 25mm]{externals/ProblemDomainDataDictionary1.pdf}
+\section{Application Domain}
+
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/dd1.pdf}
 \newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/ProblemDomainDataDictionary2.pdf}
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 0mm]{externals/dd2.pdf}
 \newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/ProblemDomainDataDictionary3.pdf}
+\includegraphics[scale=0.9,trim=20mm 40mm 25mm 9mm]{externals/dd3.pdf}
 \newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/ProblemDomainDataDictionary4.pdf}
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 0mm]{externals/dd4.pdf}
 \newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/ProblemDomainDataDictionary5.pdf}
-\newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/ProblemDomainDataDictionary6.pdf}
-\newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/ProblemDomainDataDictionary7.pdf}
-\newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/ProblemDomainDataDictionary8.pdf}
-\newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/ProblemDomainDataDictionary9.pdf}
-\newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/ProblemDomainDataDictionary10.pdf}
-\newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/ProblemDomainDataDictionary11.pdf}
-\newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/ProblemDomainDataDictionary12.pdf}
-\newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/ProblemDomainDataDictionary13.pdf}
-\newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/ProblemDomainDataDictionary14.pdf}
-\newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/ProblemDomainDataDictionary15.pdf}
-\newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/ProblemDomainDataDictionary16.pdf}
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 0mm]{externals/dd5.pdf}
 \newpage
 
-
-
-
+\section{Business Domain}
+\includegraphics[scale=0.9,trim=10mm 30mm 25mm 10mm]{externals/db1.pdf}
+\newpage
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 8mm]{externals/db2.pdf}
+\newpage
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 0mm]{externals/db3.pdf}
+\newpage
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 0mm]{externals/db4.pdf}
+\newpage
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 8mm]{externals/db5.pdf}
+\newpage
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 8mm]{externals/db6.pdf}
+\newpage
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 8mm]{externals/db7.pdf}
+\newpage
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 0mm]{externals/db8.pdf}
+\newpage
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 0mm]{externals/db9.pdf}
+\newpage
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 8mm]{externals/db10.pdf}
+\newpage
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 8mm]{externals/db11.pdf}
+\newpage
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 8mm]{externals/db12.pdf}
+\newpage
 
 \part{Project Management}\index{Project Management}
 
 \chapter{Schedule}\index{Schedule}
 \section{Gantt Chart}
-\begin{landscape}
+
 \begin{figure}[htp]
-  \includegraphics[scale=0.7]{externals/gantt1.pdf}
- %\includegraphics[viewport=1in 7in 7.5in 10in]{externals/milestones.pdf}
- \caption{\small
-\textbf{WebAgenda Milestones}\newline \space A quick look at the major foreseeable events in the project`s timeline, page 1}\index{WebAgenda}
+  \includegraphics[scale=0.9, trim=10mm 10mm 10mm 15mm]{externals/webagenda_gantt.pdf}
 \label{fig:gantt1}
 \end{figure}
-\newpage
-\begin{figure}[htp]
-  \includegraphics[scale=0.7]{externals/gantt2.pdf}
- %\includegraphics[viewport=1in 7in 7.5in 10in]{externals/milestones.pdf}
- \caption{\small
-\textbf{WebAgenda Milestones}\newline \space A quick look at the major foreseeable events in the project`s timeline, page 2}\index{WebAgenda}
-\label{fig:gantt2}
-\end{figure}
-\newpage
-\begin{figure}[htp]
-  \includegraphics[scale=0.7]{externals/gantt3.pdf}
- %\includegraphics[viewport=1in 7in 7.5in 10in]{externals/milestones.pdf}
- \caption{\small
-\textbf{WebAgenda Milestones}\newline \space A quick look at the major foreseeable events in the project`s timeline, page 3}\index{WebAgenda}
-\label{fig:gantt3}
-\end{figure}
-\newpage
-\begin{figure}[htp]
-  \includegraphics[scale=0.7]{externals/gantt4.pdf}
- %\includegraphics[viewport=1in 7in 7.5in 10in]{externals/milestones.pdf}
- \caption{\small
-\textbf{WebAgenda Milestones}\newline \space A quick look at the major foreseeable events in the project`s timeline, page 4}\index{WebAgenda}
-\label{fig:gantt4}
-\end{figure}
-\end{landscape}
 
 \pagebreak
 
