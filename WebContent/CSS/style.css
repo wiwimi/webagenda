@@ -141,6 +141,24 @@ label {
 	content: url(../lib/images/icons/Color/001_43.png);
 }
 
+#contentHolder
+{
+	margin-left:20px;
+	width:100%;
+	height:82px;
+	overflow:hidden;
+}
+
+#quickLinksWidget
+{
+	
+}
+
+#quickLinksLowerRectangle
+{
+	overflow:hidden;
+}
+
 #scheduleWidgetTitle:before
 {
 	position:relative;

@@ -144,7 +144,27 @@ if(session.getAttribute("username") != null)
 			</div>
 			
 			<div class="widgetLowerRectangle" id="quickLinksLowerRectangle">
-				some widget data here
+			<div id="contentHolder">
+				<a href="#"><div class="linkBox">test</div></a>
+				<a href="#"><div class="linkBox">test</div></a>
+				<a href="#"><div class="linkBox">test</div></a>
+				<a href="#"><div class="linkBox">test</div></a>
+				<a href="#"><div class="linkBox">test</div></a>
+				<a href="#"><div class="linkBox">test</div></a>
+				<a href="#"><div class="linkBox">test</div></a>
+				<a href="#"><div class="linkBox">test</div></a>
+				<a href="#"><div class="linkBox">test</div></a>
+				<a href="#"><div class="linkBox">test</div></a>
+				<a href="#"><div class="linkBox">test</div></a>
+				<a href="#"><div class="linkBox">test</div></a>
+				<a href="#"><div class="linkBox">test</div></a>
+				<a href="#"><div class="linkBox">test</div></a>
+				<a href="#"><div class="linkBox">test</div></a>
+				<a href="#"><div class="linkBox">test</div></a>
+				<a href="#"><div class="linkBox">test</div></a>
+				<a href="#"><div class="linkBox">test</div></a>
+				<a href="#"><div class="linkBox">test</div></a>
+				<a href="#"><div class="linkBox">test</div></a>
 			</div>
 		</div>
 		
