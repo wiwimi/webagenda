@@ -1,4 +1,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<% 
+if(session.getAttribute("username") != null)
+{
+%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     	               "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -24,7 +29,7 @@
 <div id="header">
 <div id="headerTitle">Deerfoot Inn and Casino</div>
 <div id="userArea">
-	<h6>Welcome: <%session.getAttribute("username"); %> | <a href="#">Settings</a> | Logout</h6>
+	<h6>Welcome: <%out.println(session.getAttribute("username")); %> | <a href="#">Settings</a> | <a href="../logout">Logout</a></h6>
 </div>
 </div>
 
@@ -183,3 +188,11 @@
 </div>
 </body>
 </html>
+
+<%
+}
+else
+{
+	response.sendRedirect("../wa_login/login.jsp");
+}
+%>

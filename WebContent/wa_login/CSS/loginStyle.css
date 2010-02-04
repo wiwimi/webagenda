@@ -65,6 +65,18 @@ label
 	font-size:0.8em;	
 }
 
+#errorMessage
+{
+	margin: 0 auto;
+	margin-top:25px;
+	background-color:#FCDED9;
+	border:solid;
+	border-color:red;
+	border-width:1px;
+	width:90%;
+	text-align:center;
+}
+
 input
 {
 	font-size:1.2em;

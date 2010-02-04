@@ -20,8 +20,19 @@
 	<div id="loginBox">
 		<div id="loginBoxTitle">Web Agenda Login</div>
 		<div id="loginLine"></div>
+		
+		<% 
+			if(request.getParameter("LoginAttempt") != null)
+			{
+				out.println("<div id=\"errorMessage\">");
+				out.println("There was an error with your username and password combination. Please try again");
+				out.println("</div>");
+			}
+		%>
+		
 		<div id="loginArea">
-			<form action="login" method="POST">
+			<form action="../login" method="POST">
+			
 				<label for="username">Username:</label>
 				<input type="text" name="username" size=20/><br>
 				<label for="password">Password: </label>
