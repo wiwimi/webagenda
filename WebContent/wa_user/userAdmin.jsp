@@ -5,10 +5,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
 
-<jsp:include page="pageLayout.jsp"/>
+<jsp:include page="../wa_includes/pageLayout.jsp"/>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <style type="text/css">@import "../lib/js/jquery.datepick.css";</style> 
 <script type="text/javascript" src="../lib/js/jquery.datepick.js"></script>
+<script type="text/javascript" src="../lib/js/dashboard.js"></script>
+
+
 <link rel="stylesheet" href="userAddStyle.css" type="text/css"></link>
 
 <title>Adding User</title>
