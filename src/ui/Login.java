@@ -56,6 +56,8 @@ public class Login extends HttpServlet
         
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        
+        HttpSession loginSession = request.getSession();
 
         PrintWriter out = response.getWriter();
         try 
@@ -66,15 +68,14 @@ public class Login extends HttpServlet
             if(username.equals("admin") && password.equals("password"))
             {
             	//Login is successful
-            	HttpSession loginSession = request.getSession(true);
             	loginSession.setAttribute("username", username);
             	
             	response.sendRedirect("wa_dashboard/dashboard.jsp");
             }
             else
             {
-                dispatcher = context.getRequestDispatcher("/index.jsp?error=You entered an invalid username or password");
-                dispatcher.forward(request, response);
+                response.sendRedirect(("wa_login/login.jsp?LoginAttempt=1"));
+                
             }
         } 
         finally
