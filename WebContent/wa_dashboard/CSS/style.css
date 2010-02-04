@@ -24,10 +24,17 @@ label
 	table.sortable
 	{
 		clear: right;
-		width: 600px;
 		line-height: 1.4 em;
-		border: 4px solid gray;
-	}
+		font-family: cochin ,Times, Verdana, helvetica,sans-serif;
+	 	width:100%;
+	 	border: 2px outset gray;  
+	 	border-width:5px;
+	 }
+	 
+	 #center
+	 {
+	 	margin:0 auto;
+	 }
 	
 	table.sortable th
 	{

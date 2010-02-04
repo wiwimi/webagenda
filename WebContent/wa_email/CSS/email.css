@@ -1,0 +1,13 @@
+@CHARSET "ISO-8859-1";
+
+
+
+#emailOptions
+{
+	float:left;
+	color:black;
+	font-family: cochin;
+	font-size:1.5em;
+	min-width:130px;
+	margin: 0px 12px 0px;
+}
