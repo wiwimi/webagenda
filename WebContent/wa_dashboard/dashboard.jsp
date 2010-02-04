@@ -20,7 +20,7 @@ if(session.getAttribute("username") != null)
 <script src="../lib/js/jquery-ui-1.7.2.custom.min.js" type="text/javascript"></script>
 
 <!-- Javascript Files -->
-<script type="text/javascript" src="js/dashboard.js"></script>
+<script type="text/javascript" src="../lib/js/dashboard.js"></script>
 
 <title>Web Agenda - Dashboard</title>
 </head>
