@@ -144,8 +144,8 @@
 \contentsline {section}{\numberline {C.6}Redirect Login Screen}{213}
 \contentsline {section}{\numberline {C.7}Redirect Login Error}{213}
 \contentsline {chapter}{\numberline {D}Prototypes - First Edition}{214}
-\contentsline {section}{\numberline {D.1}Creating a Schedule Prototype Screens}{214}
-\contentsline {section}{\numberline {D.2}}{216}
+\contentsline {section}{\numberline {D.1}Creating a Schedule}{214}
+\contentsline {section}{\numberline {D.2}Creating a Shift for an Employee}{216}
 \contentsline {section}{\numberline {D.3}Maintaining an Employee}{218}
 \contentsline {section}{\numberline {D.4}Creating a New Employee}{220}
 \contentsline {section}{\numberline {D.5}Taking Emergency Leave}{222}
