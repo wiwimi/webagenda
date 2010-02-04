@@ -1,5 +1,7 @@
 $(document).ready(function()
 {	
+	//$('#quickLinksWidget').draggable({ snapMode: 'outer' });
+	
 	    $('#helpUpperRectangle').click(function()
 		{
 			if($('#helpLowerRectangle').is(":hidden"))
@@ -43,16 +45,16 @@ $(document).ready(function()
 			}
 		
 		});
-		$('#scheduleUpperRectangle').click(function()
+		$('#scheduleWidgetUpperRectangle').click(function()
 		{
-			if($('#scheduleLowerRectangle').is(":hidden"))
+			if($('#scheduleWidgetLowerRectangle').is(":hidden"))
 			{
 		
-				$('#scheduleLowerRectangle').slideDown('fast');
+				$('#scheduleWidgetLowerRectangle').slideDown('fast');
 			}
 			else
 			{
-				$('#scheduleLowerRectangle').slideUp('fast');
+				$('#scheduleWidgetLowerRectangle').slideUp('fast');
 			
 			}
 		
@@ -105,14 +107,14 @@ $(document).ready(function()
 			}
 		});	
 
-		$('#mailUpperRectangle').click(function(){
-			if($('#mailLowerRectangle').is(":hidden"))
+		$('#mailWidgetUpperRectangle').click(function(){
+			if($('#mailWidgetLowerRectangle').is(":hidden"))
 			{
-				$('#mailLowerRectangle').slideDown('fast');
+				$('#mailWidgetLowerRectangle').slideDown('fast');
 			}
 			else
 			{
-				$('#mailLowerRectangle').slideUp('fast');
+				$('#mailWidgetLowerRectangle').slideUp('fast');
 			}
 		});
 		

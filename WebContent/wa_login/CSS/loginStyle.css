@@ -1,0 +1,72 @@
+#loginBox
+{
+	margin: 0 auto;
+	width:600px;
+	height:300px;
+	border-width:1px;
+	border-color: #696969;
+	border:solid;
+}
+
+#loginBoxTitle
+{
+	position:relative;
+	top:10px;
+	left:10px;
+	font-size:2.0em;
+}
+
+#loginLine
+{
+	position:relative;
+	top:20px;
+	margin:0 auto;
+	width:90%;
+	height:1px;
+	background-color:#363636;
+}
+
+#loginArea
+{
+	margin:0 auto;
+	top:50px;
+	color:#363636;
+	font-size:1.2em;
+	
+}
+
+label
+{
+	width: 4em;
+	float: left;
+	text-align: right;
+	margin-right: 0.5em;
+	display: block;
+	margin-top:5px;
+}
+
+.submit input
+{
+	float:right;
+	margin-right:170px;
+}
+
+#rememberMe
+{
+	color:#363636;
+}
+
+#forgotPassword
+{
+	position:relative;
+	float:left;
+	top:120px;
+	left:20px;
+	font-size:0.8em;	
+}
+
+input
+{
+	font-size:1.2em;
+	color:#363636;
+}
