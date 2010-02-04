@@ -45,7 +45,7 @@
 		
 		<div id = "dashboardLowerRectangle" class = "lowerRectangle">
 			
-			<b> <a href ="" > Dashboard  </a> </b> <br>
+			<b> <a href ="../wa_dashboard/dashboard.jsp" > Dashboard  </a> </b> <br>
 			<b> <a href ="" > Reports </a> </b> <br>
 		</div>
 		

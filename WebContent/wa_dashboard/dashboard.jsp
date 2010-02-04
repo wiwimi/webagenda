@@ -29,7 +29,7 @@ if(session.getAttribute("username") != null)
 <div id="header">
 <div id="headerTitle">Deerfoot Inn and Casino</div>
 <div id="userArea">
-	<h6>Welcome: <%out.println(session.getAttribute("username")); %> | <a href="#">Settings</a> | <a href="../logout">Logout</a></h6>
+	<h6>Welcome: <% out.println(session.getAttribute("username")); %> | <a href="#">Settings</a> | <a href="../logout">Logout</a></h6>
 </div>
 </div>
 
@@ -48,7 +48,7 @@ if(session.getAttribute("username") != null)
 		
 		<div id = "dashboardLowerRectangle" class = "lowerRectangle">
 			
-			<b> <a href ="" > Dashboard  </a> </b> <br>
+			<b> <a href ="../wa_dashboard/dashboard.jsp" > Dashboard  </a> </b> <br>
 			<b> <a href ="" > Reports </a> </b> <br>
 		</div>
 		
@@ -85,7 +85,7 @@ if(session.getAttribute("username") != null)
 		
 		<div id= "usersLowerRectangle" class = "lowerRectangle">
 			
-			<b> <a href =" " > Add </a> </b> <br>
+			<b> <a href ="../wa_user/userAdmin.jsp" > Add </a> </b> <br>
 			<b> <a href =" " > Delete </a> </b> <br>
 			<b> <a href =" " > Update </a> </b> <br>
 		</div>
@@ -128,6 +128,7 @@ if(session.getAttribute("username") != null)
 	
 	</div>
 	<!-- End sidebar div -->
+	<!-- End of Header file -->
 	
 	<div id="notification">
 		<div id="notificationText">This is a test notification</div>
@@ -135,7 +136,7 @@ if(session.getAttribute("username") != null)
 	</div>
 	
 	<!-- Start middle Content div -->
-	<div id="middleContent">	
+	<div id="middleContent">
 	
 		<div id="quickLinksWidget" class="fullWidget">
 			<div class="widgetUpperRectangle" id="quickLinksUpperRectangle">
@@ -181,6 +182,7 @@ if(session.getAttribute("username") != null)
 		</div>
 		
 	</div>
+	
 	<!-- End middle content div -->
 </div>
 

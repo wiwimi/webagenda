@@ -64,8 +64,323 @@ label {
 }
 	 	
 	
-	 	
+/*This starts the widgets section, full widgets take up the 2 columns where as half widgets take up half the column*/
+
+#middleContent
+{
+	position:relative;
+	float:left;
+	min-width:400px;
+	width:80%;
+}
+
+.fullWidget
+{
+	position:relative;
+	width:99%;
+	float:left;
+	padding-bottom:20px;
+}
+
+.column
+{
+	float:left;
+	width:48%;
+	margin:0 5px;
+}
+
+.halfWidget
+{
+	float:left;
+	width:100%;
+}
+
+.widgetUpperRectangle
+{
+		float:left;
+		font-size: 1.2em;
+	    line-height: 1.0 em;
+		padding: 2px;
+		color: Black;
+		background-image:url(../lib/images/content/sideBarHeaderCurrentBack.png);
+		background-repeat:x-repeat;
+		border-style: solid;
+		border-width: 1px;
+		border-color: gray;
+		width : 100%;
+		text-align: center;
+		position: relative;
+		-webkit-border-top-left-radius:10px; 
+		-webkit-border-top-right-radius:10px;	
+}
+.widgetLowerRectangle
+{
+		float:left;
+	    line-height: 1.0 em;
+		padding: 2px;
+		color: Black;
+		background-color: white;
+		border-style: solid;
+		border-width: 1px;
+		border-color: gray;
+		width : 100%;
+		min-height : 50 px;
+		text-align: left;
+		position:relative;
+}
+
+.widgetTitle
+{
+	float:center;
+}
+
+#quickLinksTitle:before
+{
+	position:relative;
+	top:5px;
+	content: url(../lib/images/icons/Color/001_43.png);
+}
+
+#scheduleWidgetTitle:before
+{
+	position:relative;
+	top:5px;
+	content: url(../lib/images/icons/Color/001_44.png);
+}
+
+#notificationsWidgetTitle:before
+{
+	position:relative;
+	top:5px;
+	content: url(../lib/images/icons/Color/001_11.png);
+}
+
+#mailWidgetTitle:before
+{
+	position:relative;
+	top:5px;
+	content: url(../lib/images/icons/Color/001_45.png);
+}
+
+#notification
+{
+	position:relative;
+	top:-31px;
+	background-color:#fdfcd8;
+	float:left;
+	width:80%;
+	border-bottom:solid;
+	border-width:1px;
+	border-color:#8B8B8B;
+	text-align:center;
+	font-size:1.2em;
+	padding-top:5px;
+	padding-bottom:5px;
+}
+
+#notificationText:before
+{
+	position:relative;
+	top:5px;
+	content:url(../lib/images/icons/Color/001_11.png);
+}
+
+#notificationCloseButton
+{
+	position:absolute;
+	float:right;
+	right:40px;
+	top:14px;
+	height:20px;
+	padding:2px;
+	background-image:url(../lib/images/content/HeaderGradient.png);
+	background-repeat:x-repeat;
+	border:solid;
+	border-width:1px;
+	border-color:#8B8B8B;
+	-webkit-border-top-left-radius:5px; 
+	-webkit-border-top-right-radius:5px;
+}
+	
+/*author: Noorin*/
+	
+	/* Dark gray Background for dash-board upper rectangle */
+
+	#sidebar .upperDashboard
+	{
+		font-size: 90%;
+	    line-height: 1.0 em;
+		padding: 10px;
+		color: white;
+		background-color: gray;
+		border-style: solid;
+		border-width: 1px;
+		border-color: gray;
+		width : 140px;
+		height : 20 px;
+		text-align: left;
+		position:relative;
+		-webkit-border-top-left-radius:10px; 
+		-webkit-border-top-right-radius:10px;
+		-moz-border-radius:10px;
+
+	}
+	
+	/* Gray colour for rectangles */
+
+	#sidebar .upperRectangle
+	{
+		font-size: 90%;
+	    line-height: 1.0 em;
+		padding: 1px;
+		padding-left:10px;
+		color: Black;
+		background-image:url(../lib/images/content/HeaderGradient.png);
+		background-repeat:x-repeat;
+		border-style: solid;
+		border-width: 1px;
+		border-color: gray;
+		width : 140px;
+		height : 20 px;
+		text-align: left;
+		position: relative;
+		-webkit-border-top-left-radius:10px; 
+		-webkit-border-top-right-radius:10px;
+		-moz-border-radius:4px;
+	}
+	
+		/* Gray colour for rectangles */
+
+	#sidebar .upperRectangleCurrent
+	{
+		font-size: 90%;
+	    line-height: 1.0 em;
+		padding: 1px;
+		padding-left:12px;
+		color: Black;
+		background-image:url(../lib/images/content/sideBarHeaderCurrentBack.png);
+		background-repeat:x-repeat;
+		width : 140px;
+		height : 20 px;
+		text-align: left;
+		position: relative;
+		-webkit-border-top-left-radius:10px; 
+		-webkit-border-top-right-radius:10px;
+		-moz-border-radius:4px;
+	}
 	
 
+
+/* White Background for boxes */
+
+	#sidebar .lowerRectangle
+	{
+		font-size: 90%;
+	    line-height: 1.0 em;
+		padding: 1px;
+		padding-left:10px;
+		color: Black;
+		background-color: white;
+		border-style: solid;
+		border-width: 1px;
+		border-color: #8B8B8B;
+		width : 140px;
+		height : 50 px;
+		text-align: left;
+		position:relative;
+		
+
+	}
+	
+	
+	/*Sidebar*/
+	#sidebar
+	{
+		position: relative;
+		color: black;
+		float:left;
+		min-width:200px;
+		width:10%;
+	}
+	
+	#sidebar a
+	{
+		text-decoration:none;
+		color:black;
+	}
+	#sidebar a:hover
+	{
+		text-decoration:underline;
+	}
+	
+	.sidebarTitle
+	{
+		
+	}
+	
+	#dashboardTitle
+	{
+		font-weight:bold;
+		font-size:1.2em;
+	}
+	
+	#dashboardTitle:before
+	{
+		position:relative;
+		top:5px;
+		content:url(../lib/images/icons/Color/001_20.png);
+	}
+	
+	#scheduleTitle
+	{
+		font-weight:bold;
+		font-size:1.2em;
+	}
+	
+	#scheduleTitle:before
+	{
+		position:relative;
+		top:5px;
+		content:url(../lib/images/icons/BlckWhite/001_45.png);
+	}
+	
+	#usersTitle
+	{
+		font-weight:bold;
+		font-size:1.2em;
+	}
+	
+	#usersTitle:before
+	{
+		position:relative;
+		top:5px;
+		content:url(../lib/images/icons/BlckWhite/001_55.png);
+	}
+	
+	#mailTitle
+	{
+		font-weight:bold;
+		font-size:1.2em;
+	}
+	
+	#mailTitle:before
+	{
+		position:relative;
+		top:5px;
+		content:url(../lib/images/icons/BlckWhite/001_46.png);
+	}
+	
+	#helpTitle
+	{
+		font-weight:bold;
+		font-size:1.2em;
+	}
+	
+	#helpTitle:before
+	{
+		position:relative;
+		top:5px;
+		content:url(../lib/images/icons/BlckWhite/001_39.png);
+	}
 
 	
