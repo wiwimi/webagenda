@@ -10,5 +10,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="src/lib/DoubleLinkedList-DK.jar"/>
+	<classpathentry kind="lib" path="/home/dann/workspace/WebAgendaNew/src/lib/mysql-connector-java-5.1.11-bin.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

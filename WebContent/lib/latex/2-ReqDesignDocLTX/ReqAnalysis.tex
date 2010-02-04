@@ -171,16 +171,20 @@ The \index{WebAgenda}WebAgenda © program will be licensed under the \index{Gene
 \section{Non-Functional Requirements}\index{Non-Functional Requirements}
 
 \hspace{1cm}The scheduling system\index{system} does not monitor employee attendance or payroll functionality, although a stat holiday pay estimate feature will be implemented at the behest of the \index{Deerfoot Inn and Casino}Deerfoot Inn and Casino Manager. \index{WebAgenda}WebAgenda is purely a scheduling, report generating, reference, and distribution system until functionality is extended at a later date.
-Scheduling is done by department\index{Department} or by a specific unit of the company.\pagebreak
+Scheduling is done by department\index{Department} or by a specific unit of the company.
 \paragraph*{}
-\hspace{0.6cm}The \index{Deerfoot Inn and Casino}Deerfoot Inn and Casino needs to provide schedules for a minimum of 500 employees. In a worst-case scenario, the system\index{system} must be able to provide 500 constant connections reliably. At full capacity, the system should be able to respond to a user within 2000 milliseconds of a request to view a schedule. For more intensive tasks such as searching for an employee or group of employees in addition to additional filtering, anywhere from 3000 to 5000 milliseconds maximum is reasonable under full load. While there may be potential for a company to include more than 500 employees, the system is designed for optimal performance at 500 or less. WebAgenda does not guarentee accuracy above that limit. Multiple \index{WebAgenda}WebAgenda scheduling systems can be run in parallel to manage certain departments\index{Department} independantly if one scheduler becomes difficult to manage and the hardware is available. System responsiveness will not be guarenteed if more than one system is running at a time. However, it is assumed the hardware will be powerful enough to reach those statistics in such a situation. If multiple scheduling systems are running, staff in one department\index{Department} will only be able to log into the system that holds their department; WebAgenda currently can not communicate with other WebAgenda systems unless data is explicitly exported and imported from database to database. In large corporations, having one scheduling system\index{system} per department could be effective, provided higher management has access to information they need and maintenance support is available; either in the form of official, paid support or staff / IT department.
+\hspace{0.6cm}The \index{Deerfoot Inn and Casino}Deerfoot Inn and Casino needs to provide schedules for a minimum of 500 employees. In a worst-case scenario, the system\index{system} must be able to provide 500 constant connections reliably. At full capacity, the system should be able to respond to a user within 2000 milliseconds of a request to view a schedule. For more intensive tasks such as searching for an employee or group of employees in addition to additional filtering, anywhere from 3000 to 5000 milliseconds maximum is reasonable under full load. 
+\paragraph*{}\hspace{0.6cm}While there may be potential for a company to include more than 500 employees, the system is designed for optimal performance at 500 or less. WebAgenda does not guarentee accuracy above that limit. Multiple \index{WebAgenda}WebAgenda scheduling systems can be run in parallel to manage certain departments\index{Department} independantly if one scheduler becomes difficult to manage and the hardware is available. System responsiveness will not be guarenteed if more than one system is running at a time. However, it is assumed the hardware will be powerful enough to reach those statistics in such a situation. If multiple scheduling systems are running, staff in one department\index{Department} will only be able to log into the system that holds their department; WebAgenda currently can not communicate with other WebAgenda systems unless data is explicitly exported and imported from database to database. 
+\paragraph*{}\hspace{0.6cm}In large corporations, having one scheduling system\index{system} per department could be effective, provided higher management has access to information they need and maintenance support is available; either in the form of official, paid support or staff / IT department.
 \paragraph*{}\hspace{0.6cm}
 It is up to the supervisors, departments\index{Department}, and administrators to ensure that the schedule is indeed accurate and to their liking. They will have the ability to change things as they desire; a generated schedule will not automatically be uploaded and viewable to all. Rather, it will be saved until it is activated. An active schedule can be seen by anyone with schedule read permissions, and will be seen as official when the schedule`s date coincides with the current date.
 The scheduling system\index{system} will also feature a reporting function, which can list employee and schedule data in different ways. This will also be used to test the system for integrity and stability, although it may be restricted to administrators and maintenance staff. The system must have zero tolerance for data loss during operation. This does not account for human error.
+\pagebreak
 \paragraph*{}\hspace{0.6cm}
-Most, if not all, of the actions performed on the scheduling system\index{system} are governed by permissions. An employee will have enough permissions to retrieve their schedule, request modifications, book days off within an certain time period from the current date, and change their availability. Depending on the type of employee, permissions may be restricted or granted. A contractor will not be able to book days off or change availability; They can be given an account to remain in contact with the required administration through the messaging system. Supervisors are basically employees with higher  permissions including those that allow them to modify the schedule and to some degree, authorize it. \textbf{Department}\index{Department} leaders, Managers, and administration will have even higher permissions and ultimately be able to approve or modify a supervisor`s decisions in order to suit their needs. Permissions will reflect duty, not overall authority. For maintenance and support of the system, a technician can have access to the system internals while an administrator will have access to creating employees of any type: a permission set that no other employee should have.\pagebreak
+Most, if not all, of the actions performed on the scheduling system\index{system} are governed by permissions. An employee will have enough permissions to retrieve their schedule, request modifications, book days off within an certain time period from the current date, and change their availability. Depending on the type of employee, permissions may be restricted or granted. A contractor will not be able to book days off or change availability; They can be given an account to remain in contact with the required administration through the messaging system. Supervisors are basically employees with higher  permissions including those that allow them to modify the schedule and to some degree, authorize it. \textbf{Department}\index{Department} leaders, Managers, and administration will have even higher permissions and ultimately be able to approve or modify a supervisor`s decisions in order to suit their needs. Permissions will reflect duty, not overall authority. For maintenance and support of the system, a technician can have access to the system internals while an administrator will have access to creating employees of any type: a permission set that no other employee should have.
 \paragraph*{}\hspace{0.6cm}
 We will not be selling the software. The system\index{system} also does not monitor anything outside of employees and date-related events; equipment, rooms, and other commonly monitored items are not within the scope of this software. Additional functionality can be built on this software for no cost provided it is licensed similarly. Employee shifts that are scheduled will be measured in time, currently to the nearest quarter of the hour.
+\paragraph*{}\hspace{0.6cm}
 Setting up the server\index{server} and performing administrative or \index{server}server-related tasks is in the scope of this project\index{project}, but exists in another document. As the system is running on a \index{server}server, uptime is very important and a backup\index{Backup} server may be of interest to the client. The general consensus for desired server uptime is 99.9\%, which is approximately 364/365 days in the year that the system needs to be accessible. Backing up should not interrupt the function of the server, although restoring a previously backed up database\index{Database} may cause some time for the system to be inaccessible or partially functional.
 
 \newpage
@@ -450,57 +454,57 @@ User enters data into the fields that do not match the database\index{Database} 
 }
 % Another Extended Use Case please
 
-\section{Add Supervisor}
-\begin{description}
- \item \textbf{Description:} \newline This use case\index{Use Case} is used when promoting an employee to a supervisor position. accepting it, deleting it, or updating it.
- \item \textbf{Pre Condition:} \newline A manager must be logged into the system\index{system} and on the maintain employees screen
- \item \textbf{Post-Condition:} \newline Success message telling the logged in user that the employee’s permissions were successfully changed
- \item \textbf{Actor:}\index{actor} \newline User with Permission Level higher than an employee considered to have supervisor authority
-\end{description}
-{\centering \textbf{Normal Flow}
-\begin{center}
-\xuchead
-\begin{tabular}{| p{8.5cm} | p{8.5cm} |}
-\hline
-\textbf{1.} \index{actor}Actor presses the promote button & \\
-\hline
-& \textbf{2.} System produces a message that asks the user if they are sure they want to promote the user to supervisor. \\
-\hline
-\textbf{3.} \index{actor}Actor Clicks the Confirm button (A 3.1) & \\
-\hline
-& \textbf{4.} System\index{system} raises the permission level of the user that is promoted by 1. (A 4.1) \\
-\hline
-& \textbf{5.} System displays a confirmation box displaying the employee`s current permission level and an overview of their now current permissions. \\
-\hline
-\end{tabular}
-\end{center}
-}
+%\section{Add Supervisor}
+%\begin{description}
+% \item \textbf{Description:} \newline This use case\index{Use Case} is used when promoting an employee to a supervisor position. accepting it, deleting it, or updating it.
+% \item \textbf{Pre Condition:} \newline A manager must be logged into the system\index{system} and on the maintain employees screen
+% \item \textbf{Post-Condition:} \newline Success message telling the logged in user that the employee’s permissions were successfully changed
+% \item \textbf{Actor:}\index{actor} \newline User with Permission Level higher than an employee considered to have supervisor authority
+%\end{description}
+%{\centering \textbf{Normal Flow}
+%\begin{center}
+%\xuchead
+%\begin{tabular}{| p{8.5cm} | p{8.5cm} |}
+%\hline
+%\textbf{1.} \index{actor}Actor presses the promote button & \\
+%\hline
+%& \textbf{2.} System produces a message that asks the user if they are sure they want to promote the user to supervisor. \\
+%\hline
+%\textbf{3.} \index{actor}Actor Clicks the Confirm button (A 3.1) & \\
+%\hline
+%& \textbf{4.} System\index{system} raises the permission level of the user that is promoted by 1. (A 4.1) \\
+%\hline
+%& \textbf{5.} System displays a confirmation box displaying the employee`s current permission level and an overview of their now current permissions. \\
+%\hline
+%\end{tabular}
+%\end{center}
+%}
 
-{\centering \textbf{Alternate Path 3.1}
-\linebreak \index{actor}Actor Clicks the Cancel button
-\begin{center}
-\xuchead
-\begin{tabular}{| p{8.5cm} | p{8.5cm} |}
-\hline
-\textbf{3.1.1} \index{actor}Actor Clicks the Cancel Button & \\
-\hline
-& \textbf{3.1.2} Return to Normal Flow Step 1. \\
-\hline
-\end{tabular}
-\end{center}
-\pagebreak
-\centering \textbf{Alternate Path 4.1}
-\linebreak Employee does not have a workgroup
-\begin{center}
-\xuchead
-\begin{tabular}{| p{8.5cm} | p{8.5cm} |}
-\hline
-& \textbf{4.1.1} \index{actor}Actor is Redirected to the Maintain Employee screen (See Maintain Employee extended use case\index{Use Case})  \\
-\hline
-\end{tabular}
-\end{center}
-}
-\pagebreak
+%{\centering \textbf{Alternate Path 3.1}
+%\linebreak \index{actor}Actor Clicks the Cancel button
+%\begin{center}
+%\xuchead
+%\begin{tabular}{| p{8.5cm} | p{8.5cm} |}
+%\hline
+%\textbf{3.1.1} \index{actor}Actor Clicks the Cancel Button & \\
+%\hline
+%& \textbf{3.1.2} Return to Normal Flow Step 1. \\
+%\hline
+%\end{tabular}
+%\end{center}
+%\pagebreak
+%\centering \textbf{Alternate Path 4.1}
+%\linebreak Employee does not have a workgroup
+%\begin{center}
+%\xuchead
+%\begin{tabular}{| p{8.5cm} | p{8.5cm} |}
+%\hline
+%& \textbf{4.1.1} \index{actor}Actor is Redirected to the Maintain Employee screen (See Maintain Employee extended use case\index{Use Case})  \\
+%\hline
+%\end{tabular}
+%\end{center}
+%}
+%\pagebreak
 
 \section{Booking Emergency Days Off}
 \begin{description}
@@ -1186,122 +1190,123 @@ Employee Usage Reports will allow supervisors to see statistics on how employees
 
 }
 
-\pagebreak
-\section{Maintain Workgroups}
-\begin{description}
- \item \textbf{Description:} \newline Managers are able to create, edit and delete employee workgroups.  When a new workgroup is created, the manager may choose to assign employees to the workgroup, or leave it empty for employees to be added at a later date.
- \item \textbf{Pre Condition:} \newline  The manager has successfully logged in; Dashboard is displayed.
- \item \textbf{Post Condition:} \newline The manager has finished creating/editing/deleting a workgroup, and has returned to the available workgroups list.
- \item \textbf{Actor:}\index{actor} \newline An Employee who has Manager permissions.
-\end{description}
-{ \centering \textbf{Normal Flow}
-\begin{center}
-\xuchead
-\begin{tabular}{| p{8.5cm} | p{8.5cm} |}
-\hline
-\textbf{1.} User clicks the Administration tab. & \\
-\hline
-\textbf{2.} User clicks maintain workgroups link in sidebar. & \\
-\hline
-& \textbf{3.} Load maintain workgroups widget. \\
-\hline
-& \textbf{4.} Populate available workgroups list. \\
-\hline
-\textbf{5.} Presses create new workgroup button. (A 4.1, A 4.2) & \\
-\hline
-& \textbf{6.} Creates new workgroup. \\
-\hline
-& \textbf{7.} Populate available employees list. \\
-\hline
-& \textbf{8.} Display edit workgroup view. \\
-\hline
-\textbf{9.} Enters new workgroup name. \\
-\hline
-\textbf{10.} Selects employees to add to workgroup. & \\
-\hline
-\textbf{11.}  Clicks add employees to workgroup button. & \\
-\hline
-& \textbf{12.} Show dialog requesting confirmation and displaying employee info. \\
-\hline
-\textbf{13.} Clicks accept changes button (A 13.1.) & \\
-\hline
-& \textbf{14.} Save workgroup. \\
-\hline
-& \textbf{15.} Return to available workgroups list. \\
-\hline
-\end{tabular}
-\end{center}
-
-\pagebreak
-
-\centering \textbf{Alternate Path 4.1}
-\linebreak Manager edits workgroup
-\begin{center}
-\xuchead
-\begin{tabular}{| p{8.5cm} | p{8.5cm} |}
-\hline
-\textbf{4.1.1.} Selects workgroup from available workgroup list. & \\
-\hline
-\textbf{4.1.2.} Clicks edit workgroup button. & \\
-\hline
-& \textbf{4.1.3.} Load selected workgroup. \\
-\hline
-& \textbf{4.1.4.} Populate available employees list. \\
-\hline
-\textbf{4.1.5.} Selects employees to add to workgroup. (A 4.1.4.1.) & \\
-\hline
-\textbf{4.1.6.} Clicks add employees to workgroup button. & \\
-\hline
-& \textbf{4.1.7.} Use case\index{Use Case} resumes at Step 11. \\
-\hline
-\end{tabular}
-\end{center}
-
-\centering \textbf{Alternate Path 4.1.4.1.}
-\linebreak Manager edits workgroup
-\begin{center}
-\xuchead
-\begin{tabular}{| p{8.5cm} | p{8.5cm} |}
-\hline
-\textbf{4.1.4.1.1.} Clicks remove employees button. & \\
-\hline
-& \textbf{4.1.4.1.2.} Use case\index{Use Case} resumes from Step 11. \\
-\hline
-\end{tabular}
-\end{center}
+%\pagebreak
+%\section{Maintain Workgroups}
+%\begin{description}
+% \item \textbf{Description:} \newline Managers are able to create, edit and delete employee workgroups.  When a new workgroup is created, the manager may choose to assign employees to the workgroup, or leave it empty for employees to be added at a later date.
+% \item \textbf{Pre Condition:} \newline  The manager has successfully logged in; Dashboard is displayed.
+% \item \textbf{Post Condition:} \newline The manager has finished creating/editing/deleting a workgroup, and has returned to the available workgroups list.
+% \item \textbf{Actor:}\index{actor} \newline An Employee who has Manager permissions.
+%\end{description}
+%{ \centering \textbf{Normal Flow}
+%\begin{center}
+%\xuchead
+%\begin{tabular}{| p{8.5cm} | p{8.5cm} |}
+%\hline
+%\textbf{1.} User clicks the Administration tab. & \\
+%\hline
+%\textbf{2.} User clicks maintain workgroups link in sidebar. & \\
+%\hline
+%& \textbf{3.} Load maintain workgroups widget. \\
+%\hline
+%& \textbf{4.} Populate available workgroups list. \\
+%\hline
+%\textbf{5.} Presses create new workgroup button. (A 4.1, A 4.2) & \\
+%\hline
+%& \textbf{6.} Creates new workgroup. \\
+%\hline
+%& \textbf{7.} Populate available employees list. \\
+%\hline
+%& \textbf{8.} Display edit workgroup view. \\
+%\hline
+%\textbf{9.} Enters new workgroup name. \\
+%\hline
+%\textbf{10.} Selects employees to add to workgroup. & \\
+%\hline
+%\textbf{11.}  Clicks add employees to workgroup button. & \\
+%\hline
+%& \textbf{12.} Show dialog requesting confirmation and displaying employee info. \\
+%\hline
+%\textbf{13.} Clicks accept changes button (A 13.1.) & \\
+%\hline
+%& \textbf{14.} Save workgroup. \\
+%\hline
+%& \textbf{15.} Return to available workgroups list. \\
+%\hline
+%\end{tabular}
+%\end{center}
 
 
-\centering \textbf{Alternate Path 4.2.}
-\linebreak Manager deletes workgroup
-\begin{center}
-\xuchead
-\begin{tabular}{| p{8.5cm} | p{8.5cm} |}
-\hline
-\textbf{4.2.1.} Selects workgroup from available workgroup list. & \\
-\hline
-\textbf{4.2.2.} Clicks delete workgroup button. & \\
-\hline
-& \textbf{4.2.3.} Use case\index{Use Case} resumes from Step 11. \\
-\hline
-\end{tabular}
-\end{center}
+%\pagebreak
 
-\pagebreak
+%\centering \textbf{Alternate Path 4.1}
+%\linebreak Manager edits workgroup
+%\begin{center}
+%\xuchead
+%\begin{tabular}{| p{8.5cm} | p{8.5cm} |}
+%\hline
+%\textbf{4.1.1.} Selects workgroup from available workgroup list. & \\
+%\hline
+%\textbf{4.1.2.} Clicks edit workgroup button. & \\
+%\hline
+%& \textbf{4.1.3.} Load selected workgroup. \\
+%\hline
+%& \textbf{4.1.4.} Populate available employees list. \\
+%\hline
+%\textbf{4.1.5.} Selects employees to add to workgroup. (A 4.1.4.1.) & \\
+%\hline
+%\textbf{4.1.6.} Clicks add employees to workgroup button. & \\
+%\hline
+%& \textbf{4.1.7.} Use case\index{Use Case} resumes at Step 11. \\
+%\hline
+%\end{tabular}
+%\end{center}
 
-\centering \textbf{Alternate Path 12.1.}
-\linebreak Manager clicks cancel changes button.
-\begin{center}
-\xuchead
-\begin{tabular}{| p{8.5cm} | p{8.5cm} |}
-\hline
-& \textbf{12.1.1.} Undo changes, deselect employees. \\
-\hline
-& \textbf{12.1.2.} Use case\index{Use Case} resumes from Step 9. \\
-\hline
-\end{tabular}
-\end{center}
+%\centering \textbf{Alternate Path 4.1.4.1.}
+%\linebreak Manager edits workgroup
+%\begin{center}
+%\xuchead
+%\begin{tabular}{| p{8.5cm} | p{8.5cm} |}
+%\hline
+%\textbf{4.1.4.1.1.} Clicks remove employees button. & \\
+%\hline
+%& \textbf{4.1.4.1.2.} Use case\index{Use Case} resumes from Step 11. \\
+%\hline
+%\end{tabular}
+%\end{center}
 
-}
+
+%\centering \textbf{Alternate Path 4.2.}
+%\linebreak Manager deletes workgroup
+%\begin{center}
+%\xuchead
+%\begin{tabular}{| p{8.5cm} | p{8.5cm} |}
+%\hline
+%\textbf{4.2.1.} Selects workgroup from available workgroup list. & \\
+%\hline
+%\textbf{4.2.2.} Clicks delete workgroup button. & \\
+%\hline
+%& \textbf{4.2.3.} Use case\index{Use Case} resumes from Step 11. \\
+%\hline
+%\end{tabular}
+%\end{center}
+
+%\pagebreak
+
+%\centering \textbf{Alternate Path 12.1.}
+%\linebreak Manager clicks cancel changes button.
+%\begin{center}
+%\xuchead
+%\begin{tabular}{| p{8.5cm} | p{8.5cm} |}
+%\hline
+%& \textbf{12.1.1.} Undo changes, deselect employees. \\
+%\hline
+%& \textbf{12.1.2.} Use case\index{Use Case} resumes from Step 9. \\
+%\hline
+%\end{tabular}
+%\end{center}
+
+%}
 
 \pagebreak
 \section{Send Announcement}
@@ -2095,49 +2100,49 @@ Employee Usage Reports will allow supervisors to see statistics on how employees
 \chapter{Data Dictionary}\index{Data Dictionary}
 \newpage
 \section{Interface}
-\includegraphics[scale=0.9,trim=10mm 30mm 25mm 35mm]{externals/di1.pdf}
+\includegraphics[scale=0.9,trim=20mm 20mm 25mm 15mm]{externals/di1.pdf}
 \newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/di2.pdf}
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 10mm]{externals/di2.pdf}
 \newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/di3.pdf}
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 5mm]{externals/di3.pdf}
 \newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/di4.pdf}
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 5mm]{externals/di4.pdf}
 \newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/di5.pdf}
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 5mm]{externals/di5.pdf}
 \newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/di6.pdf}
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 5mm]{externals/di6.pdf}
 \newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/di7.pdf}
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 5mm]{externals/di7.pdf}
 \newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/di8.pdf}
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 5mm]{externals/di8.pdf}
 \newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/di9.pdf}
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 5mm]{externals/di9.pdf}
 \newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/di10.pdf}
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 5mm]{externals/di10.pdf}
 \newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/di11.pdf}
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 5mm]{externals/di11.pdf}
 \newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/di12.pdf}
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 5mm]{externals/di12.pdf}
 \newpage
 \section{Persistence}
-\includegraphics[scale=0.9,trim=10mm 30mm 25mm 35mm]{externals/dp1.pdf}
+\includegraphics[scale=0.9,trim=10mm 30mm 25mm 15mm]{externals/dp1.pdf}
 \newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/dp2.pdf}
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 8mm]{externals/dp2.pdf}
 \newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/dp3.pdf}
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 8mm]{externals/dp3.pdf}
 \newpage
 
 \section{Application Domain}
 
 \includegraphics[scale=0.9,trim=20mm 30mm 25mm 25mm]{externals/dd1.pdf}
 \newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 0mm]{externals/dd2.pdf}
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 8mm]{externals/dd2.pdf}
 \newpage
-\includegraphics[scale=0.9,trim=20mm 40mm 25mm 9mm]{externals/dd3.pdf}
+\includegraphics[scale=0.9,trim=20mm 40mm 25mm 8mm]{externals/dd3.pdf}
 \newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 0mm]{externals/dd4.pdf}
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 8mm]{externals/dd4.pdf}
 \newpage
-\includegraphics[scale=0.9,trim=20mm 30mm 25mm 0mm]{externals/dd5.pdf}
+\includegraphics[scale=0.9,trim=20mm 30mm 25mm 8mm]{externals/dd5.pdf}
 \newpage
 
 \section{Business Domain}
@@ -2209,6 +2214,11 @@ Mark Hazlett
 \begin{itemize}
 \item Team Leader – Ensures all team members understand their roles and what work is required from them each week.
 \item Meeting Organizer – Schedules future meetings and ensures all team members are aware and able to attend.
+\end{itemize}
+Noorin Hasan
+\begin{itemize}
+ \item Interface Specialist - Ensures all interfaces are up to standard and coded properly. 
+ \item Quality Assurance Specialist - Ensures all code in all areas are up to the team standards as well as up to the companies standards.
 \end{itemize}
 Daniel Kettle
 \begin{itemize}
@@ -2565,65 +2575,65 @@ We currently run a paper based scheduling system\index{system}. We have some che
 
 
 \end{landscape}
-\chapter{Prototypes - First Edition}
-\paragraph*{}\hspace{0.6cm}The following prototypes are the first conceptual drawings of the system\index{system} and there is no effort put towards consistency at this point.
-\section{Creating a Schedule}
-\begin{landscape}
-\begin{center}
- \includegraphics[scale=0.3]{prototypes/createScheduleClickEmp.jpg}
- \includegraphics[scale=0.3]{prototypes/createSchedDrag.jpg}
-\end{center}
+%\chapter{Prototypes - First Edition}
+%\paragraph*{}\hspace{0.6cm}The following prototypes are the first conceptual drawings of the system\index{system} and there is no effort put towards consistency at this point.
+%\section{Creating a Schedule}
+%\begin{landscape}
+%\begin{center}
+% \includegraphics[scale=0.3]{prototypes/createScheduleClickEmp.jpg}
+% \includegraphics[scale=0.3]{prototypes/createSchedDrag.jpg}
+%\end{center}
+%
+%\section{Creating a Shift for an Employee}
+%\begin{center}
+% \includegraphics[scale=0.3]{prototypes/createScheduleClickEmp.jpg}
+% \includegraphics[scale=0.3]{prototypes/createSchedDrag.jpg}
+%\end{center}
 
-\section{Creating a Shift for an Employee}
-\begin{center}
- \includegraphics[scale=0.3]{prototypes/createScheduleClickEmp.jpg}
- \includegraphics[scale=0.3]{prototypes/createSchedDrag.jpg}
-\end{center}
 
+%\newpage
+%\begin{center}
+% \includegraphics[scale=0.3]{prototypes/scheduleClickFillInfo.jpg}
+%\end{center}
 
-\newpage
-\begin{center}
- \includegraphics[scale=0.3]{prototypes/scheduleClickFillInfo.jpg}
-\end{center}
+%\newpage
+%\section{Maintaining an Employee}
+%\begin{center}
+% \includegraphics[scale=0.3]{prototypes/Screen1.jpg}
+% \includegraphics[scale=0.3]{prototypes/Screen3.png}
+%\end{center}
 
-\newpage
-\section{Maintaining an Employee}
-\begin{center}
- \includegraphics[scale=0.3]{prototypes/Screen1.jpg}
- \includegraphics[scale=0.3]{prototypes/Screen3.png}
-\end{center}
+%\newpage
+%\begin{center}
+% \includegraphics[scale=0.3]{prototypes/Screen2.jpg}
+%\end{center}
+%\newpage
 
-\newpage
-\begin{center}
- \includegraphics[scale=0.3]{prototypes/Screen2.jpg}
-\end{center}
-\newpage
+%\section{Creating a New Employee}
+%\begin{center}
+% \includegraphics[scale=0.3]{prototypes/Screen4.png}
+% \includegraphics[scale=0.3]{prototypes/Screen5.png}
+%\end{center}
+%\newpage
 
-\section{Creating a New Employee}
-\begin{center}
- \includegraphics[scale=0.3]{prototypes/Screen4.png}
- \includegraphics[scale=0.3]{prototypes/Screen5.png}
-\end{center}
-\newpage
+%\begin{center}
+% \includegraphics[scale=0.3]{prototypes/Screen6.png}
+%\end{center}
+%\newpage
 
-\begin{center}
- \includegraphics[scale=0.3]{prototypes/Screen6.png}
-\end{center}
-\newpage
+%\section{Taking Emergency Leave}
+%\begin{center}
+% \includegraphics[scale=0.3]{prototypes/Screen7.png}
+% \includegraphics[scale=0.3]{prototypes/Screen8.png}
+%\end{center}
+%\newpage
 
-\section{Taking Emergency Leave}
-\begin{center}
- \includegraphics[scale=0.3]{prototypes/Screen7.png}
- \includegraphics[scale=0.3]{prototypes/Screen8.png}
-\end{center}
-\newpage
+%\section{Viewing the Schedule}
+%\begin{center}
+% \includegraphics[scale=0.3]{prototypes/workgroup_schedule.png}
+%\end{center}
 
-\section{Viewing the Schedule}
-\begin{center}
- \includegraphics[scale=0.3]{prototypes/workgroup_schedule.png}
-\end{center}
-
-\end{landscape}
+%\end{landscape}
 
 \chapter{Permission Reference Documentation}
 
