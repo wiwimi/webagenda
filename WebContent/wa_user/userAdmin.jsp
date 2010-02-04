@@ -22,6 +22,15 @@ Randomly generated passwords are going to be sent to the employee's e-mail. If t
 <br></br>
 <br></br>
 
+		<div id="quickLinksWidget" class="fullWidget">
+			<div class="widgetUpperRectangle" id="quickLinksUpperRectangle">
+				<div class="widgetTitle" id="quickLinksTitle">Quick Links</div>
+			</div>
+			
+			<div class="widgetLowerRectangle" id="quickLinksLowerRectangle">
+				
+
+
 <div id ="addUser">
 
 	 <form class="addUserForm" method="post">
@@ -109,6 +118,8 @@ Randomly generated passwords are going to be sent to the employee's e-mail. If t
 				<br></br>
 		</form>
 </div>
+			</div>
+		</div>
 <script type="text/javascript">
         $(function()
 		{
