@@ -97,7 +97,7 @@ if(session.getAttribute("username") != null)
 		
 		<div id="mailUpperRectangle" class="upperRectangle">
 		
-			<div class="sidebarTitle" id="mailTitle">Mail</div>
+			<div class="sidebarTitle" id="mailTitle"> Mail</div>
 		
 		</div>
 		
@@ -105,10 +105,12 @@ if(session.getAttribute("username") != null)
 		
 		<div id="mailLowerRectangle" class = "lowerRectangle">
 			
-			<b> <a href =" " > Inbox </a> </b> <br>
-			<b> <a href =" " > Compose </a> </b> <br>
+			<b> <a href ="../wa_email/email.jsp" > Inbox </a> </b> <br>
+			<b> <a href ="../wa_email/compose.jsp"> Compose </a> </b> <br>
 			<b> <a href =" " > Drafts </a> </b> <br>
 			<b> <a href =" " > Notifications </a> </b> <br>
+			
+		
 		</div>
 		
 		<br>

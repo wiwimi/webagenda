@@ -11,3 +11,62 @@
 	min-width:130px;
 	margin: 0px 12px 0px;
 }
+
+#messageDetails label
+{
+	
+	text-align: right;
+	margin-right: 2.0em;
+	display: block;
+	display: inline-block;
+	line-height: 1.8;
+	vertical-align: top;
+	width:140px;
+	font: cochin, Times, Verdana, helvetica,sans-serif;
+	font-weight:bold;
+	position:absolute;
+	left:120px;
+}
+
+#messageDetails input
+{
+	margin-left:80px;
+	width:675px;
+}
+
+#message input:focus
+{
+	background-color:#E0E0E0;
+}
+
+#message
+{	
+	 background-color: #FFFFFF;  
+	 color: #000000;   
+	 font-family: cochin ,Times, Verdana, helvetica,sans-serif; 
+	 line-height: 1.4 em;
+	 font-family: cochin ,Times, Verdana, helvetica,sans-serif;
+}
+
+	
+#message input.button
+{ 
+	  color:#000061; 
+	  font: cochin, Times, Verdana, helvetica,sans-serif;
+	  font-weight:bold;
+	  border: 1px solid #000061;
+	  margin-top:4px;
+	  padding-top: 3px;
+	  padding-bottom: 3px;
+	 -webkit-border-top-left-radius:5px; 
+	 -webkit-border-top-right-radius:5px;
+	 -webkit-border-bottom-left-radius:5px; 
+	 -webkit-border-bottom-right-radius:5px;
+	  -moz-border-radius:10px;
+	  position:relative;
+	  float:right;
+}
+#message input.button:hover
+{
+	background:#E0E0E0
+}
