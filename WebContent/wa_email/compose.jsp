@@ -4,10 +4,6 @@
 <html>
 <head>
 
-<!-- Includes -->
-<jsp:include page="../wa_includes/pageLayout.jsp"/>
-
-
 <!--  CSS files -->
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="CSS/email.css" type="text/css" media="screen" />
@@ -19,7 +15,11 @@
 <script type="text/javascript" src="../lib/js/dashboard.js"></script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Compose</title>
+
+<!-- Includes -->
+<jsp:include page="../wa_includes/pageLayout.jsp"/>
+
 </head>
 <body>
 
