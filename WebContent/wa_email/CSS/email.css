@@ -4,10 +4,20 @@
 
 #emailOptions
 {
+	
+	color:black;
+	font-family: cochin;
+	font-size:1.5em;
+	
+}
+
+#composeOptions
+{
 	float:left;
 	color:black;
 	font-family: cochin;
 	font-size:1.5em;
+	min-width:130px;
 	min-width:130px;
 	margin: 0px 12px 0px;
 }

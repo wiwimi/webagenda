@@ -26,7 +26,17 @@
 
 <form id="post-form" action="" method="post">
 
+
+
 <div id="message">
+<div id= "emailOptions">
+			<h6> 
+			<a href =""> Send </a> | 
+			<a href =""> Draft </a> |
+			<a href =""> Close </a> |  <!-- Close must take the user to the inbox page -->
+			<a href =""> Clear Screen </a> 
+			</h6>
+</div>
 	<div id="messageDetails">
 				<p><label> To:  </label> <input type="text"  name ="recipent"> </p>
 				<p><label> Subject:  </label> <input type="text"  name ="subject"></p>
@@ -36,9 +46,6 @@
 			        <textarea  name="message" cols="92" rows="15" tabindex="101"></textarea>
 			  
 			</div>
-			<input type="submit" name="submit" class="button" value="Send"> 
-			<input type="submit" name="clear" class="button" value="Clear Screen">
-			<input type="submit" name="cancel" class="button" value="Cancel"> 
 </div>	
 	
 </form>

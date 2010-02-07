@@ -41,7 +41,12 @@
 			<div class="widgetLowerRectangle" id="mailWidgetLowerRectangle">
 			
 			<div id="emailOptions">
-			<h6>Sent | Drafts | Compose | Delete</h6>
+			<h6> 
+			<a href ="sent.jsp"> Sent </a> | 
+			<a href =""> Drafts </a> |
+			<a href =""> Compose </a> | 
+			<a href =""> Delete </a>
+			</h6>
 			</div>
 			
 			<div class = "border" summary ="inbox">
