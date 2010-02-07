@@ -11,38 +11,25 @@
 	
 }
 
-#composeOptions
-{
-	float:left;
-	color:black;
-	font-family: cochin;
-	font-size:1.5em;
-	min-width:130px;
-	min-width:130px;
-	margin: 0px 12px 0px;
-}
+
 
 #messageDetails label
 {
 	
-	text-align: right;
-	margin-right: 2.0em;
-	display: block;
-	display: inline-block;
 	line-height: 1.8;
-	vertical-align: top;
-	width:140px;
+	
+	
 	font: cochin, Times, Verdana, helvetica,sans-serif;
 	font-weight:bold;
-	position:absolute;
-	left:120px;
+	text-align: right;
+	width:50px;
+	display: block;
+	display: inline-block;
+	
 }
-
 #messageDetails input
 {
-	margin-left:80px; 
-	
-	width:675px;
+	width:700px;
 }
 
 #message input:focus

@@ -29,6 +29,14 @@
 
 
 <div id="message">
+
+<div id="mailWidget" class="fullWidget">
+			<div class="widgetUpperRectangle" id="mailWidgetUpperRectangle">
+				<div class="widgetTitle" id="mailWidgetTitle">E-mail</div>
+			</div>
+			
+			<div class="widgetLowerRectangle" id="mailWidgetLowerRectangle">
+			
 <div id= "emailOptions">
 			<h6> 
 			<a href =""> Send </a> | 
@@ -46,7 +54,8 @@
 			        <textarea  name="message" cols="92" rows="15" tabindex="101"></textarea>
 			  
 			</div>
-</div>	
+	</div>
+</div>
 	
 </form>
 

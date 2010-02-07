@@ -45,7 +45,7 @@
 			<a href ="sent.jsp"> Sent </a> | 
 			<a href =""> Drafts </a> |
 			<a href =""> Compose </a> | 
-			<a href =""> Delete </a>
+			<a href =""> Delete </a>  <!--  Prompts the user to select a message if none of the checkboces were checked -->
 			</h6>
 			</div>
 			
