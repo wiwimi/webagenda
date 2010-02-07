@@ -7,8 +7,9 @@
 <!-- Includes -->
 <jsp:include page="../wa_includes/pageLayout.jsp"/>
 
-<!--  CSS files -->
 
+<!--  CSS files -->
+<link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="CSS/email.css" type="text/css" media="screen" />
 
 <!--  Libraries -->
@@ -24,6 +25,7 @@
 
 
 <form id="post-form" action="" method="post">
+
 <div id="message">
 	<div id="messageDetails">
 				<p><label> To:  </label> <input type="text"  name ="recipent"> </p>
@@ -37,7 +39,8 @@
 			<input type="submit" name="submit" class="button" value="Send"> 
 			<input type="submit" name="clear" class="button" value="Clear Screen">
 			<input type="submit" name="cancel" class="button" value="Cancel"> 
-</div>			
+</div>	
+	
 </form>
 
 

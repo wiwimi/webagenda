@@ -5,7 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-
 <!--  CSS files -->
 <link rel="stylesheet" href="CSS/style.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="../CSS/style.css" type="text/css" media="screen" />
@@ -16,22 +15,9 @@
 <!-- Javascript Files -->
 <script type="text/javascript" src="js/dashboard.js"></script>
 
-
 <title>Insert title here</title>
 </head>
 <body>
-
-<div id="container">
-<div id="header">
-	<div id="headerTitle">Deerfoot Inn and Casino	
-	</div>
-<div id="userArea">
-	<h6>Welcome: <%session.getAttribute("username"); %> | <a href="#">Settings</a> | Logout</h6>
-</div>
-</div>
-</div>
-
-<div id="middle">
 
 <div id="sidebar">
 	<!-- Gray colour for rectangles -->
@@ -128,8 +114,6 @@
 	
 	</div>
 	<!-- End sidebar div -->
-	
-
 
 </body>
 </html>

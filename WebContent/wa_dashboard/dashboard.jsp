@@ -206,6 +206,7 @@ if(session.getAttribute("username") != null)
 		</div>
 		
 	</div>
+	</div>
 	
 	<!-- End middle content div -->
 </div>
