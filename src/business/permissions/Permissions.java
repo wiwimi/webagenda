@@ -54,7 +54,7 @@ public class Permissions {
 	private int maxDaysOff								= 0; // Not set
 	/** canTakeVacations is a permission that is similar to the canRequestDaysOff. Part of the difference between the
 	 * two is that vacations have a more positive political stigma, as some users are allowed to take 2 weeks off work.
-	 * To make a request for 14 days straight as a part time or temporary employee without reason looks bad.<br.
+	 * To make a request for 14 days straight as a part time or temporary employee without reason looks bad.<br>.
 	 * Generally vacations are only allowable for full-time employees. Booked days off do not count towards or against
 	 * vacation days and vice versa.*/
 	private boolean canTakeVacations					= false;
