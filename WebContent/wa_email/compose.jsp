@@ -15,7 +15,7 @@
 <script type="text/javascript" src="../lib/js/dashboard.js"></script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Compose</title>
+<title>Web Agenda - Compose</title>
 
 <!-- Includes -->
 <jsp:include page="../wa_includes/pageLayout.jsp"/>
@@ -51,7 +51,7 @@
 	</div>
 			<div id="messageContainer">
 			        
-			        <textarea  name="message" cols="92" rows="15" tabindex="101"></textarea>
+			        <textarea  name="message" cols="120" rows="17" tabindex="101"></textarea>
 			  
 			</div>
 	</div>

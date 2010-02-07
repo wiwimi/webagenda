@@ -17,8 +17,6 @@
 {
 	
 	line-height: 1.8;
-	
-	
 	font: cochin, Times, Verdana, helvetica,sans-serif;
 	font-weight:bold;
 	text-align: right;
@@ -29,7 +27,7 @@
 }
 #messageDetails input
 {
-	width:700px;
+	width:925px;
 }
 
 #message input:focus

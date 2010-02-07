@@ -11,12 +11,6 @@
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="CSS/email.css" type="text/css" media="screen" />
 
-<title>E-mail</title>
-
-<!-- Includes -->
-<jsp:include page="../wa_includes/pageLayout.jsp"/>
-
-
 <!--  Libraries -->
 <script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
 <!-- Sorttable is under the X11 licence, it is an open source project.-->
@@ -26,6 +20,11 @@
 <!--Javascript Files -->
 <script type="text/javascript" src="../lib/js/dashboard.js"></script>
 <script src="../lib/js/zebraTable.js" type ="text/javascript"></script>
+
+<title>Web Agenda - E-mail</title>
+
+<!-- Includes -->
+<jsp:include page="../wa_includes/pageLayout.jsp"/>
 
 
 </head>
@@ -43,7 +42,7 @@
 			<div id="emailOptions">
 			<h6> 
 			<a href ="sent.jsp"> Sent </a> | 
-			<a href =""> Drafts </a> |
+			<a href ="drafts.jsp"> Drafts </a> |
 			<a href =""> Compose </a> | 
 			<a href =""> Delete </a>  <!--  Prompts the user to select a message if none of the checkboces were checked -->
 			</h6>
