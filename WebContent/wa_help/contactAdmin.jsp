@@ -47,8 +47,6 @@
 						<p>	<label> Telephone: <em class="asterisk"> * </em> </label> <input type="text"  name ="telephone" size ="20"> </p>
 						<p>	<label> Email: <em class="asterisk"> * </em> </label> <input type="text"  name ="email" size ="30"> </p>
 						<p>	<label> What is your enquiry? </label></p>
-						
-						<br></br> <br></br>
 						<p>
 						<textarea  name="message" cols="60" rows="15" tabindex="101"></textarea>
 						</p>

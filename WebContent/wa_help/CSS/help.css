@@ -3,15 +3,16 @@
 
 #contactAdmin label
 {
-	
 	line-height: 1.8;
 	font: cochin, Times, Verdana, helvetica,sans-serif;
 	font-weight:bold;
 	text-align: right;
-	/*width:50px;
+	width:150px;
 	display: block;
-	display: inline-block;*/
-	
+	display: inline-block;
+	float: left;
+	margin-right: 2.0em;
+	vertical-align: top;
 }
 
 #contactAdmin input:focus
@@ -66,21 +67,6 @@
 	width:70%;
 	padding-bottom:1em;
 	pading-top:0;
-}
-
-#contactAdmin label
-{
-	width: 7em;
-	float: left;
-	text-align: right;
-	margin-right: 2.0em;
-	display: block;
-	display: inline-block;
-	line-height: 1.8;
-	vertical-align: top;
-	width:140px;
-	font: cochin, Times, Verdana, helvetica,sans-serif;
-	font-weight:bold;
 }
 .asterisk
 {
