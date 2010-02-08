@@ -41,10 +41,10 @@
 			
 			<div id="emailOptions">
 			<h6> 
-			<a href ="sent.jsp"> Sent </a> | 
-			<a href ="drafts.jsp"> Drafts </a> |
-			<a href =""> Compose </a> | 
-			<a href =""> Delete </a>  <!--  Prompts the user to select a message if none of the checkboces were checked -->
+			<a href ="sent.jsp" id="sent"> Sent </a> | 
+			<a href ="drafts.jsp" id="draft"> Drafts </a> |
+			<a href ="" id="compose"> Compose </a> | 
+			<a href ="" class="delete"> Delete </a>  <!--  Prompts the user to select a message if none of the checkboces were checked -->
 			</h6>
 			</div>
 			

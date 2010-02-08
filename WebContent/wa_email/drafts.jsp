@@ -42,10 +42,10 @@
 			
 			<div id="emailOptions">
 			<h6> 
-			<a href ="sent.jsp"> Sent </a> | 
-			<a href ="drafts.jsp"> Drafts </a> |
-			<a href ="compose.jsp"> Compose </a> | 
-			<a href =""> Delete </a>
+			<a href ="sent.jsp" id="sent"> Sent </a> | 
+			<a href ="drafts.jsp" id="draft"> Drafts </a> |
+			<a href ="compose.jsp" id="compose"> Compose </a> | 
+			<a href ="" id="delete"> Delete </a>
 			</h6>
 			</div>
 			

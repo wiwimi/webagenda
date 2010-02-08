@@ -1,0 +1,131 @@
+@CHARSET "ISO-8859-1";
+
+
+#contactAdmin label
+{
+	
+	line-height: 1.8;
+	font: cochin, Times, Verdana, helvetica,sans-serif;
+	font-weight:bold;
+	text-align: right;
+	/*width:50px;
+	display: block;
+	display: inline-block;*/
+	
+}
+
+#contactAdmin input:focus
+{
+	background-color:#E0E0E0;
+}
+
+#message
+{	
+	 background-color: #FFFFFF;  
+	 color: #000000;   
+	 font-family: cochin ,Times, Verdana, helvetica,sans-serif; 
+	 line-height: 1.4 em;
+	 font-family: cochin ,Times, Verdana, helvetica,sans-serif;
+}
+
+	
+#contactAdmin input.button
+{ 
+	  color:#000061; 
+	  font: cochin, Times, Verdana, helvetica,sans-serif;
+	  font-weight:bold;
+	  border: 1px solid #000061;
+	  margin-top:4px;
+	  padding-top: 3px;
+	  padding-bottom: 3px;
+	 -webkit-border-top-left-radius:5px; 
+	 -webkit-border-top-right-radius:5px;
+	 -webkit-border-bottom-left-radius:5px; 
+	 -webkit-border-bottom-right-radius:5px;
+	  -moz-border-radius:10px;
+	  position:relative;
+	  float:right;
+}
+
+#contactAdmin input, select
+
+{
+	background-color: #FFFFFF;
+	font-family: cochin,Verdana, Times,helvetica,sans-serif;
+	border: 1px solid #000080;
+	border:solid 1px #aacfe4;
+}
+#contactAdmin input:focus
+{
+	background-color:#E0E0E0;
+}
+
+#contactAdmin
+{
+	float:left;
+	width:70%;
+	padding-bottom:1em;
+	pading-top:0;
+}
+
+#contactAdmin label
+{
+	width: 7em;
+	float: left;
+	text-align: right;
+	margin-right: 2.0em;
+	display: block;
+	display: inline-block;
+	line-height: 1.8;
+	vertical-align: top;
+	width:140px;
+	font: cochin, Times, Verdana, helvetica,sans-serif;
+	font-weight:bold;
+}
+.asterisk
+{
+	font-weight: bold;
+	font-style: normal;
+	color: #f00;
+}
+
+#contactAdmin input.button
+{ 
+	  color:#000061; 
+	  font: cochin, Times, Verdana, helvetica,sans-serif;
+	  margin-left:220px;
+	  font-weight:bold;
+	  border: 1px solid #000061;
+	  margin-top:4px;
+	  padding-top: 3px;
+	  padding-bottom: 3px;
+	 -webkit-border-top-left-radius:5px; 
+	 -webkit-border-top-right-radius:5px;
+	 -webkit-border-bottom-left-radius:5px; 
+	 -webkit-border-bottom-right-radius:5px;
+	  -moz-border-radius:10px;
+}
+#contactAdmin input.button:hover
+{
+	color:white;
+	background:#000061
+}
+
+fieldset
+{
+	height:75%;
+	margin-left:10px;
+	margin-right:10px;
+	border:white;
+	border-top:1px solid gray;
+}
+fieldset.focussed {
+ border: 1px solid #000061;
+}
+
+#contactAdmin legend
+{
+	color:#151B54; 
+	font: bold 110% cochin, Times, Verdana, helvetica,sans-serif;
+}
+

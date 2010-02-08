@@ -39,10 +39,10 @@
 			
 <div id= "emailOptions">
 			<h6> 
-			<a href =""> Send </a> | 
-			<a href =""> Draft </a> |
-			<a href =""> Close </a> |  <!-- Close must take the user to the inbox page -->
-			<a href =""> Clear Screen </a> 
+			<a href ="" id="send"> Send </a> | 
+			<a href ="" id="draft"> Draft </a> |
+			<a href ="" id="close"> Close </a> |  <!-- Close must take the user to the inbox page -->
+			<a href ="" id="clear"> Clear Screen </a> 
 			</h6>
 </div>
 	<div id="messageDetails">
