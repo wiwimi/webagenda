@@ -38,20 +38,30 @@
 			<div class="widgetLowerRectangle" id="helpWidgetLowerRectangle">
 
 			<div id="contactAdmin">
-			
+			<form action="">
 				 <fieldset>
 				
 					<legend > Contact Admin
-						<p>	<label> Given Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="givenName" size ="30"> </p>
-						<p>	<label> Family Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="familyName" size ="30"> </p>
-						<p>	<label> Telephone: <em class="asterisk"> * </em> </label> <input type="text"  name ="telephone" size ="20"> </p>
-						<p>	<label> Email: <em class="asterisk"> * </em> </label> <input type="text"  name ="email" size ="30"> </p>
-						<p>	<label> What is your enquiry? </label></p>
-						<p>
+						<p><label> Supervisor: <em class="asterisk"> * </em> </label>
+						<select>
+							  <option>John James</option>
+							  <option>Mike </option>
+							  <option>Pauline Turnbull</option>
+						</select>
+						</p>
+						
+						<p>	
+						<label> What is your enquiry?  <em class="asterisk"> * </em></label>
 						<textarea  name="message" cols="60" rows="15" tabindex="101"></textarea>
 						</p>
-			  	   </legend>
+			  	  
+						<input type="submit" name="submit" class="button" value="Send"> 
+						<input type="submit" name="clear" class="button" value="Clear Screen"> 
+						<br></br>
+						
+			    </legend>
 				</fieldset>
+				</form>
 			</div>
 			</div>
 </div>

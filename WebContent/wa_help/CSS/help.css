@@ -7,7 +7,7 @@
 	font: cochin, Times, Verdana, helvetica,sans-serif;
 	font-weight:bold;
 	text-align: right;
-	width:150px;
+	width:160px;
 	display: block;
 	display: inline-block;
 	float: left;
@@ -45,7 +45,7 @@
 	 -webkit-border-bottom-right-radius:5px;
 	  -moz-border-radius:10px;
 	  position:relative;
-	  float:right;
+	  margin:auto 0;
 }
 
 #contactAdmin input, select
