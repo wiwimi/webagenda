@@ -107,7 +107,7 @@ if(session.getAttribute("username") != null)
 			
 			<b> <a href ="../wa_email/inbox.jsp" > Inbox </a> </b> <br>
 			<b> <a href ="../wa_email/compose.jsp"> Compose </a> </b> <br>
-			<b> <a href =" " > Drafts </a> </b> <br>
+			<b> <a href ="../wa_email/drafts.jsp"> Drafts </a> </b> <br>
 			<b> <a href =" " > Notifications </a> </b> <br>
 			
 		
@@ -126,7 +126,7 @@ if(session.getAttribute("username") != null)
 		<div id= "helpLowerRectangle" class = "lowerRectangle">
 			
 			<b> <a href =" " > Search Help </a> </b> <br>
-			<b> <a href =" " >  Contact Admin </a> </b> <br>
+			<b> <a href ="../wa_help/contactAdmin.jsp">  Contact Admin </a> </b> <br>
 			<b> <a href =" " > Online Help </a> </b> <br>
 		</div>
 	
