@@ -17,6 +17,7 @@
 
 <!--  CSS files -->
 <link rel="stylesheet" href="CSS/userAddStyle.css" type="text/css"></link>
+<link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 
 <title>Adding User</title>
 </head>
@@ -32,7 +33,7 @@ Randomly generated passwords are going to be sent to the employee's e-mail. If t
 				<div class="widgetTitle" id="usersTitle">Users</div>
 			</div>
 			
-			<div class="widgetLowerRectangle" id="quickLinksLowerRectangle">
+		<div class="widgetLowerRectangle" id="quickLinksLowerRectangle">
 
 		<div id ="addUser">
 			<form class="addUserForm" method="post">
