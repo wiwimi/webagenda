@@ -70,7 +70,7 @@
 		<div id= "usersLowerRectangle" class = "lowerRectangle">
 			
 			<b> <a href ="../wa_user/userAdmin.jsp" > Add </a> </b> <br>
-			<b> <a href =" " > Delete </a> </b> <br>
+			<b> <a href ="../wa_user/userDelete.jsp" > Delete </a> </b> <br>
 			<b> <a href =" " > Update </a> </b> <br>
 		</div>
 		

@@ -1,7 +1,5 @@
 $(document).ready(function()
 {	
-	//$('#quickLinksWidget').draggable({ snapMode: 'outer' });
-	
 	    $('#helpUpperRectangle').click(function()
 		{
 			if($('#helpLowerRectangle').is(":hidden"))

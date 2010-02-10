@@ -79,7 +79,6 @@ label {
 	position:relative;
 	width:83%;
 	float:left;
-	padding-bottom:20px;
 }
 
 .column
@@ -111,7 +110,7 @@ label {
 		text-align: center;
 		position: relative;
 		-webkit-border-top-left-radius:10px; 
-		-webkit-border-top-right-radius:10px;	
+		-webkit-border-top-right-radius:10px;
 }
 .widgetLowerRectangle
 {
@@ -127,6 +126,7 @@ label {
 		min-height : 50 px;
 		text-align: left;
 		position:relative;
+		margin-bottom:20px;
 }
 
 .widgetTitle
