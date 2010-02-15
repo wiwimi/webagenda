@@ -8,6 +8,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
@@ -27,7 +28,12 @@ public class Test {
 		         InetAddress.getLocalHost();
 
 			WaConnection.getConnection(thisIp);
-			WaConnection.issueQuery("SELECT * FROM EMPLOYEE;");
+			ResultSet employees = WaConnection.issueQuery("SELECT * FROM EMPLOYEE;");
+			employees.next(); // Must be positioned to first (next) item before it can be read
+			int i = employees.getInt(1);
+			String str = employees.getString(3);
+			
+			System.out.println("Employee " + i + " has a first name of " + str);
 			
 			
 			messagelog.Logging.closeAllLogs();
