@@ -12,6 +12,8 @@ import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
+import messagelog.Logging;
+
 import com.mysql.jdbc.*;
 
 /**
@@ -54,7 +56,7 @@ public class WaConnection {
 		{
 			wac_con_instnc = Class.forName (wac_driver).newInstance ();
 			wac_connection = (Connection) DriverManager.getConnection (wac_db_url, wac_db_user, JOptionPane.showInputDialog("Enter Password"));
-			messagelog.Logging.writeToConnectionLog("Connection using " + wac_driver + " is established by " + ip + ".");
+			messagelog.Logging.writeToLog(Logging.CONN_LOG,Logging.NORM_ENTRY,"Connection using " + wac_driver + " is established by " + ip + ".");
 		}
 		return wac_con_instnc;
 	}

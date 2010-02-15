@@ -3,12 +3,11 @@
  */
 package messagelog;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
+
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Date;
 
 /**
  * @author dann
@@ -24,12 +23,18 @@ public class Logging {
 	public static final String LOG_LOCATION 					= "log/";
 	/** Where the connection log file(s) are stored -- monitor where connections
 	 * are originating from, what time they occur, and successes or failures. */
-	public static final String CONNECTION_LOG					= LOG_LOCATION + "connection.log";
+	public static final String[] LOGARRAY = new String[]{
+		new String(LOG_LOCATION + "connection.log"),
+		new String(LOG_LOCATION + "access.log"),
+		new String(LOG_LOCATION + "init.log")
+	};
 	public static final String ERR_ENTRY						= "(EE)",
 							   WARN_ENTRY						= "(WW)",
 							   NORM_ENTRY						= "(--)";
-	
-	public static final int CONN_LOG							= 0;
+	/** Location of Connection log in the logfiles linked list array */
+	public static final int CONN_LOG							= 0,
+					   ACCESS_LOG								= 1,
+					   INIT_LOG									= 2;
 							   
 	
 	private static LinkedList<LogFile> logfiles					=  null;
@@ -51,7 +56,10 @@ public class Logging {
 		{
 			// Initialize all the log files here
 			try {
-				logfiles.add(new LogFile(CONNECTION_LOG)); // Connection log is firest
+				logfiles.add(new LogFile(LOGARRAY[CONN_LOG])); // Connection log is firest
+				logfiles.add(new LogFile(LOGARRAY[ACCESS_LOG]));
+				logfiles.add(new LogFile(LOGARRAY[INIT_LOG]));
+				
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -60,19 +68,14 @@ public class Logging {
 		
 	}
 	
-	public static void writeToConnectionLog(String TYPE, String message)
+	public static void writeToLog(int LOGFILE, String TYPE, String message)
 	{
 		try {
-			logfiles.get(CONN_LOG).logMessage(TYPE + " " + message);
+			logfiles.get(LOGFILE).logMessage(TYPE + " " + message);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-	
-	public static void writeToConnectionLog(String message)
-	{
-		writeToConnectionLog(Logging.NORM_ENTRY, message);
 	}
 	
 	public static void closeAllLogs()
