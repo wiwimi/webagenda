@@ -39,9 +39,11 @@ public class Logging {
 	
 	private static LinkedList<LogFile> logfiles					=  null;
 	
-	
-	// FIXME: This code is messy and not properly structured
-	
+	/**
+	 * Initializes log files by creating the linked list which holds log files and
+	 * adding individual pre-defined log file types to it, which can be accessed
+	 * by *_LOG integer variables.
+	 */
 	public static void initializeLogs() throws exception.InitializedLogFileException 
 	{
 		if(logfiles != null) {
@@ -68,10 +70,17 @@ public class Logging {
 		
 	}
 	
+	/**
+	 * Writes to log file specified by parameters
+	 * 
+	 * @param LOGFILE Type of Logfile to write to, such as the connection log file
+	 * @param TYPE Style of log entry, whether line represents an error, warning, or simple message
+	 * @param message String message to write to log file.
+	 */
 	public static void writeToLog(int LOGFILE, String TYPE, String message)
 	{
 		try {
-			logfiles.get(LOGFILE).logMessage(TYPE + " " + message);
+			logfiles.get(LOGFILE).logMessage(TYPE + " " + message + " [" + new Date() + "]" + System.getProperty("line.separator"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

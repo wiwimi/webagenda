@@ -20,6 +20,10 @@ public abstract class Broker {
 	private String db_hostname							= "localhost";
 	/** Connection that interacts with the ConnectionManager for database requests */
 	private ThreadedConnection threaded_conn			= null;
+	/** The max number of threads that the application should use to connect to the database.
+	 * Actual MySQL threads are specified in the mysql database, may be configured by installer
+	 * but not here. */
+	private int int_threads								= 1; // Default value, unless multithreading is specified
 	
 	/**
 	 * Send a request through the ConnectionManager to the database

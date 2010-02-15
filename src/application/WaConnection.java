@@ -1,5 +1,6 @@
 /**
- * 
+ * WebAgenda Connection Class
+ * application.WaConnection
  */
 package application;
 
@@ -25,7 +26,7 @@ public class WaConnection {
 
 	private static String wac_database				= "mysql";
 	private static String wac_dblocation			= "localhost";
-	private static String wac_db_user				= "root"; //FIXME: don't use root
+	private static String wac_db_user				= "root"; //FIXME: don't use root for final -- this is just for me (dann) since WebAgenda user doesn't work right
 	private static String wac_db_table				= "WebAgenda";
 	private static String wac_driver				= "com.mysql.jdbc.Driver";
 	private static int wac_dbport					= 3306;
