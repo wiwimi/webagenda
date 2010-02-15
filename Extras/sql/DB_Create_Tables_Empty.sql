@@ -11,7 +11,7 @@ CREATE SCHEMA IF NOT EXISTS `WebAgenda` DEFAULT CHARACTER SET utf8 COLLATE utf8_
 DROP TABLE IF EXISTS `WebAgenda`.`PERMISSIONSET` ;
 
 CREATE  TABLE IF NOT EXISTS `WebAgenda`.`PERMISSIONSET` (
-  `plevel` INT NOT NULL ,
+  `plevel` VARCHAR(10) NOT NULL ,
   `canEditSched` TINYINT(1) NOT NULL DEFAULT 0 ,
   `canReadSched` TINYINT(1) NOT NULL DEFAULT 1 ,
   `canReadOldSched` TINYINT(1) NOT NULL DEFAULT 0 ,
@@ -26,8 +26,7 @@ CREATE  TABLE IF NOT EXISTS `WebAgenda`.`PERMISSIONSET` (
   `canTakeEmergencyDays` TINYINT(1) NOT NULL DEFAULT 0 ,
   `canViewInactiveEmps` TINYINT(1) NOT NULL DEFAULT 0 ,
   `canSendNotifications` TINYINT(1) NOT NULL DEFAULT 0 ,
-  `trusted` TINYINT(1) NOT NULL DEFAULT 0 ,
-  `preferredRank` INT NOT NULL ,
+  `trusted` VARCHAR(10) NOT NULL DEFAULT 0 ,
   PRIMARY KEY (`plevel`) )
 ENGINE = InnoDB;
 
@@ -73,7 +72,7 @@ CREATE  TABLE IF NOT EXISTS `WebAgenda`.`EMPLOYEE` (
   `password` VARCHAR(8) NOT NULL ,
   `prefPosition` VARCHAR(45) NULL ,
   `prefLocation` VARCHAR(45) NULL ,
-  `plevel` INT NOT NULL ,
+  `plevel` VARCHAR(10) NOT NULL ,
   `active` TINYINT(1) NOT NULL DEFAULT 1 ,
   PRIMARY KEY (`empID`) ,
   INDEX `fk_EMPLOYEE_PERMISSIONSET` (`plevel` ASC) ,
