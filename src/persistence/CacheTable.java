@@ -24,6 +24,10 @@ public class CacheTable {
 	 * logged to an error log. */
 	private Date flush_stamp											= null;
 	
+	CacheTable()
+	{
+		cached_data = new DoubleLinkedList<Cachable>();
+	}
 	
 	/**
 	 * Method to remove an item from cache. Probably won't be used while the system is in a work environment because it's

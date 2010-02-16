@@ -19,6 +19,8 @@ public class EmployeeBroker extends Broker {
 	
 	private EmployeeBroker()
 	{
+		employee_cache = new CacheTable();
+		Logging.writeToLog(Logging.INIT_LOG, Logging.NORM_ENTRY, "Employee Broker Cache Table initialized");
 		
 	}
 	

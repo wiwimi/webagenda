@@ -80,13 +80,17 @@ public class Logging {
 	public static void writeToLog(int LOGFILE, String TYPE, String message)
 	{
 		try {
-			logfiles.get(LOGFILE).logMessage(TYPE + " " + message + " [" + new Date() + "]" + System.getProperty("line.separator"));
+			// the line.separator command is a system-independant newline character inserted at the end of a log file.
+			logfiles.get(LOGFILE).logMessage(TYPE + " " + message + " [" + new Date() + "]" + System.getProperty("line.separator")); 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
+	/**
+	 * Goes through the linked list using an iterator to close all log files.
+	 */
 	public static void closeAllLogs()
 	{
 		Iterator<LogFile> it = logfiles.iterator();
