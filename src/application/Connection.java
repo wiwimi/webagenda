@@ -3,7 +3,6 @@
  */
 package application;
 
-import java.net.InetAddress;
 
 /**
  * @author dann
@@ -16,16 +15,4 @@ import java.net.InetAddress;
  */
 public class Connection {
 
-	private InetAddress ip 				= null;
-
-	public InetAddress getIp() {
-		return ip;
-	}
-
-	public void setIp(InetAddress ip) {
-		this.ip = ip;
-	}
-	
-	
-	
 }

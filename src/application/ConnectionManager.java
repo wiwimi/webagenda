@@ -28,9 +28,9 @@ import java.util.LinkedList;
  * 		
  * 
  */
-public class ConnectionManager implements ConnectionInterface {
+public class ConnectionManager implements ConnectionManagerInterface {
 	
-	/**  */
+	/** List of connections that are stored and retrieved.  */
 	private LinkedList<Connection> connections = new LinkedList<Connection>();
 
 	/** Manager object where only one instance of it can exist. Is used
@@ -56,15 +56,7 @@ public class ConnectionManager implements ConnectionInterface {
 	 */
 	private ConnectionManager() throws HeadlessException, ClassNotFoundException, IllegalAccessException, InstantiationException, SQLException
 	{
-		//TODO: Initialize
-		if(one_request)
-		{
-			
 
-		}
-		else {
-			
-		}
 	}
 	
 	/**
@@ -119,7 +111,6 @@ public class ConnectionManager implements ConnectionInterface {
 
 	@Override
 	public Connection addConnection(Connection c, InetAddress ip) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

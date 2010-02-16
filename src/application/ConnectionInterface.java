@@ -10,12 +10,18 @@ import java.net.InetAddress;
  * @version 0.01.00
  * @license GPL 2
  */
-public interface ConnectionInterface {
+public abstract class ConnectionInterface {
 
-	public boolean isConnected(Connection get_conn);
+	private InetAddress ip = null;
 	
-	public Connection addConnection(Connection c, InetAddress ip);
+	public InetAddress getIp()
+	{
+		return ip;
+	}
 	
-	public Connection getConnection();
+	void setIp(InetAddress ip)
+	{
+		this.ip = ip;
+	}
 	
 }

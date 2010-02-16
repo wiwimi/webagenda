@@ -6,6 +6,7 @@ package application;
 
 import java.awt.HeadlessException;
 import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,7 +23,7 @@ import com.mysql.jdbc.*;
  * @version 00.01.00
  * @license GPL 2
  */
-public class WaConnection extends Connection {
+public class WaConnection extends ConnectionInterface {
 
 	private static String wac_database				= "mysql";
 	private static String wac_dblocation			= "localhost";
@@ -31,13 +32,15 @@ public class WaConnection extends Connection {
 	private static String wac_driver				= "com.mysql.jdbc.Driver";
 	private static int wac_dbport					= 3306;
 	private static Object wac_con_instnc			= null;
-	private static Connection wac_connection		= null;
+	private static Object wac_connection			= null;
 	
 	private static String wac_db_url				= "jdbc:" + wac_database + "://" + wac_dblocation + ":" + wac_dbport + "/" + wac_db_table;
+	private InetAddress ip							= null;
 	
-	private WaConnection()
+	private WaConnection() throws UnknownHostException 
 	{
-		
+		//FIXME: This needs to be dynamically assigned
+		this.setIp(InetAddress.getLocalHost());
 	}
 	
 	/**
@@ -56,14 +59,15 @@ public class WaConnection extends Connection {
 	 * @throws SQLException 
 	 * @throws HeadlessException 
 	 */
-	static Connection getConnection(InetAddress ip) throws ClassNotFoundException, IllegalAccessException, 
+	static Object getConnection(InetAddress ip) throws ClassNotFoundException, IllegalAccessException, 
 	InstantiationException, HeadlessException, SQLException
-	{
+	{		
 		if(wac_con_instnc == null)
 		{
 			wac_con_instnc = Class.forName (wac_driver).newInstance ();
-			wac_connection = (Connection) DriverManager.getConnection (wac_db_url, wac_db_user, JOptionPane.showInputDialog("Enter Password"));
+			wac_connection = (Object) DriverManager.getConnection (wac_db_url, wac_db_user, JOptionPane.showInputDialog("Enter Password"));
 			messagelog.Logging.writeToLog(Logging.CONN_LOG,Logging.NORM_ENTRY,"Connection using " + wac_driver + " is established by " + ip + ".");
+			
 		}
 		return (Connection) wac_con_instnc;
 	}
@@ -90,7 +94,5 @@ public class WaConnection extends Connection {
 		}
 		return null;
 	}
-	
-	
 	
 }
