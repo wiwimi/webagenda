@@ -8,6 +8,8 @@ import java.net.InetAddress;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
+import messagelog.Logging;
+
 /**
  * @author dann
  * @version 0.01.00
@@ -23,15 +25,14 @@ import java.util.LinkedList;
  * and load on the database, but may slow the system. <br>
  * <br>
  * 
+ * 
  * FIXME:
  * 		Writes should have priority over reads (need priority mechanism? One built in?)
  * 		
  * 
  */
-public class ConnectionManager implements ConnectionManagerInterface {
+public class ConnectionManager  {
 	
-	/** List of connections that are stored and retrieved.  */
-	private LinkedList<Connection> connections = new LinkedList<Connection>();
 
 	/** Manager object where only one instance of it can exist. Is used
 	 * to control access to the database. */
@@ -73,6 +74,7 @@ public class ConnectionManager implements ConnectionManagerInterface {
 	{
 		if(con_manager==null) {
 			con_manager = new ConnectionManager();
+			Logging.writeToLog(Logging.ACCESS_LOG, Logging.NORM_ENTRY, "Connection Manager Rule: Multiple Connections");
 		}
 		return con_manager;
 	}
@@ -94,6 +96,12 @@ public class ConnectionManager implements ConnectionManagerInterface {
 		if(con_manager == null) {
 			one_request = one_instance;
 			con_manager = new ConnectionManager();
+			if(one_request) {
+				Logging.writeToLog(Logging.ACCESS_LOG, Logging.NORM_ENTRY, "Connection Manager Rule: Singular Connection");
+			}
+			else {
+				Logging.writeToLog(Logging.ACCESS_LOG, Logging.NORM_ENTRY, "Connection Manager Rule: Multiple Connections");
+			}
 		}
 		return con_manager;
 	}
@@ -109,21 +117,5 @@ public class ConnectionManager implements ConnectionManagerInterface {
 		return one_request;
 	}
 
-	@Override
-	public Connection addConnection(Connection c, InetAddress ip) {
-		return null;
-	}
-
-	@Override
-	public Connection getConnection() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean isConnected(Connection getConn) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 	
 }

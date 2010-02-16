@@ -38,16 +38,19 @@ public class AppDriver {
 	{
 		try {
 			
-			// ---- Set up Connection Manager ----
-			con_man = ConnectionManager.getManager();
+			
 			
 			// ---- Set up Logs ----
-			
+				// Logs first, since ConnectionManager uses log files
 			messagelog.Logging.initializeLogs();
 
 		    InetAddress thisIp = InetAddress.getLocalHost();
 		    
 			WaConnection.getConnection(thisIp);
+			
+			// ---- Set up Connection Manager ----
+			
+			con_man = ConnectionManager.getManager(true); // Only have one connection into the db
 			
 			// ---- Set up Brokers ----
 			

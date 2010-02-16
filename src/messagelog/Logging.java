@@ -18,6 +18,11 @@ public class Logging {
 
 	public static final String LOG_FILE_HEADER_TXT				= ""; //TODO
 	
+	/** Flag for enabling logging. Definitely recommended; if no logging is
+	 * performed, all logging messages will be ignored, no files created.
+	 * LinkedList will remain null. */
+	private static boolean enable_logging						= true;
+	
 	/** The base location where all log files are stored.<br> 
 	 * TODO: Have installer determine where the log folder(s) are located. */
 	public static final String LOG_LOCATION 					= "log/";
@@ -46,6 +51,8 @@ public class Logging {
 	 */
 	public static void initializeLogs() throws exception.InitializedLogFileException 
 	{
+		if(!enable_logging) return;
+		
 		if(logfiles != null) {
 			throw new exception.InitializedLogFileException
 				("Cannot initialize an already-initialized log file array");
@@ -79,6 +86,7 @@ public class Logging {
 	 */
 	public static void writeToLog(int LOGFILE, String TYPE, String message)
 	{
+		if(!enable_logging) return;
 		try {
 			// the line.separator command is a system-independant newline character inserted at the end of a log file.
 			logfiles.get(LOGFILE).logMessage(TYPE + " " + message + " [" + new Date() + "]" + System.getProperty("line.separator")); 
@@ -93,6 +101,7 @@ public class Logging {
 	 */
 	public static void closeAllLogs()
 	{
+		if(!enable_logging) return;
 		Iterator<LogFile> it = logfiles.iterator();
 		while(it.hasNext())
 		{

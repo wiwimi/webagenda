@@ -23,7 +23,7 @@ import com.mysql.jdbc.*;
  * @version 00.01.00
  * @license GPL 2
  */
-public class WaConnection extends ConnectionInterface {
+public class WaConnection {
 
 	private static String wac_database				= "mysql";
 	private static String wac_dblocation			= "localhost";
@@ -35,12 +35,9 @@ public class WaConnection extends ConnectionInterface {
 	private static Object wac_connection			= null;
 	
 	private static String wac_db_url				= "jdbc:" + wac_database + "://" + wac_dblocation + ":" + wac_dbport + "/" + wac_db_table;
-	private InetAddress ip							= null;
 	
-	private WaConnection() throws UnknownHostException 
+	private WaConnection() 
 	{
-		//FIXME: This needs to be dynamically assigned
-		this.setIp(InetAddress.getLocalHost());
 	}
 	
 	/**
@@ -59,7 +56,7 @@ public class WaConnection extends ConnectionInterface {
 	 * @throws SQLException 
 	 * @throws HeadlessException 
 	 */
-	static Object getConnection(InetAddress ip) throws ClassNotFoundException, IllegalAccessException, 
+	static Connection getConnection(InetAddress ip) throws ClassNotFoundException, IllegalAccessException, 
 	InstantiationException, HeadlessException, SQLException
 	{		
 		if(wac_con_instnc == null)
@@ -67,6 +64,7 @@ public class WaConnection extends ConnectionInterface {
 			wac_con_instnc = Class.forName (wac_driver).newInstance ();
 			wac_connection = (Object) DriverManager.getConnection (wac_db_url, wac_db_user, JOptionPane.showInputDialog("Enter Password"));
 			messagelog.Logging.writeToLog(Logging.CONN_LOG,Logging.NORM_ENTRY,"Connection using " + wac_driver + " is established by " + ip + ".");
+			
 			
 		}
 		return (Connection) wac_con_instnc;
