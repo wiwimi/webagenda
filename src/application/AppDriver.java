@@ -26,7 +26,7 @@ import exception.*;
 public class AppDriver {
 
 	/** Connection Manager for setting up Broker connections. */
-	private ConnectionManager con_man = ConnectionManager.getManager();
+	private static ConnectionManager con_man = null;
 	
 	
 	/**
@@ -38,12 +38,14 @@ public class AppDriver {
 	{
 		try {
 			
+			// ---- Set up Connection Manager ----
+			con_man = ConnectionManager.getManager();
+			
 			// ---- Set up Logs ----
 			
 			messagelog.Logging.initializeLogs();
 
-		    InetAddress thisIp =
-		         InetAddress.getLocalHost();
+		    InetAddress thisIp = InetAddress.getLocalHost();
 		    
 			WaConnection.getConnection(thisIp);
 			

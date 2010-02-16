@@ -3,6 +3,11 @@
  */
 package application;
 
+import java.awt.HeadlessException;
+import java.net.InetAddress;
+import java.sql.SQLException;
+import java.util.LinkedList;
+
 /**
  * @author dann
  * @version 0.01.00
@@ -23,33 +28,79 @@ package application;
  * 		
  * 
  */
-public class ConnectionManager {
+public class ConnectionManager implements ConnectionInterface {
+	
+	/**  */
+	private LinkedList<Connection> connections = new LinkedList<Connection>();
 
 	/** Manager object where only one instance of it can exist. Is used
 	 * to control access to the database. */
 	private static ConnectionManager con_manager					= null;
 	/** Flag that determines if Brokers are allowed to access the database simultaneously,
 	 * even though they are only accessing their own related tables and fields. 
-	 * This will not protect against non-WebAgenda connections to the database. */
-	private boolean one_request										= false; 
+	 * This will not protect against non-WebAgenda connections to the database. 
+	 * <br>
+	 * Default is false -- multiple connections are allowed. */
+	private static boolean one_request										= false; 
 	
 	/**
-	 * Private Constructor that sets up the ConnectionManager.s
+	 * Private Constructor that sets up the ConnectionManager.
+	 * If only one connection is allowed, one connection is added.
+	 * If more than one connection are allowed, then every broker will get its own connection.
+	 * 
+	 * @throws SQLException 
+	 * @throws InstantiationException 
+	 * @throws IllegalAccessException 
+	 * @throws ClassNotFoundException 
+	 * @throws HeadlessException 
 	 */
-	private ConnectionManager()
+	private ConnectionManager() throws HeadlessException, ClassNotFoundException, IllegalAccessException, InstantiationException, SQLException
 	{
 		//TODO: Initialize
+		if(one_request)
+		{
+			
+
+		}
+		else {
+			
+		}
 	}
 	
 	/**
 	 * Singleton Pattern to retrieve the manager and set it up if uninitialized.
 	 * 
-	 * 
 	 * @return Initialized ConnectionManager
+	 * @throws SQLException 
+	 * @throws InstantiationException 
+	 * @throws IllegalAccessException 
+	 * @throws ClassNotFoundException 
+	 * @throws HeadlessException 
 	 */
-	public static ConnectionManager getManager()
+	public static ConnectionManager getManager() throws HeadlessException, ClassNotFoundException, IllegalAccessException, InstantiationException, SQLException
 	{
 		if(con_manager==null) {
+			con_manager = new ConnectionManager();
+		}
+		return con_manager;
+	}
+	
+	/**
+	 * Singleton Pattern to retrieve the manager and set it up if uninitialized. Method only sets the one_instance boolean if the
+	 * manager currently isn't initialized.
+	 * 
+	 * @param one_instance boolean true if manager only uses one thread for the application to connect to the database.
+	 * @return Initialized ConnectionManager 
+	 * @throws HeadlessException
+	 * @throws ClassNotFoundException
+	 * @throws IllegalAccessException
+	 * @throws InstantiationException
+	 * @throws SQLException
+	 */
+	public static ConnectionManager getManager(boolean one_instance) throws HeadlessException, ClassNotFoundException, IllegalAccessException, InstantiationException, SQLException
+	{
+		if(con_manager == null) {
+			one_request = one_instance;
 			con_manager = new ConnectionManager();
 		}
 		return con_manager;
@@ -65,7 +116,23 @@ public class ConnectionManager {
 	{
 		return one_request;
 	}
-	
-	
+
+	@Override
+	public Connection addConnection(Connection c, InetAddress ip) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Connection getConnection() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isConnected(Connection getConn) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 }

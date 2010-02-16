@@ -22,7 +22,7 @@ import com.mysql.jdbc.*;
  * @version 00.01.00
  * @license GPL 2
  */
-public class WaConnection {
+public class WaConnection extends Connection {
 
 	private static String wac_database				= "mysql";
 	private static String wac_dblocation			= "localhost";
@@ -35,22 +35,28 @@ public class WaConnection {
 	
 	private static String wac_db_url				= "jdbc:" + wac_database + "://" + wac_dblocation + ":" + wac_dbport + "/" + wac_db_table;
 	
+	private WaConnection()
+	{
+		
+	}
+	
 	/**
 	 * Attempts to store a database connection into an object. Will throw exceptions
 	 * if connection fails or will return null. May return an object that is already
 	 * initialized if it was done so previously. 
 	 * 
-	 * @return Object a connection that can be manipulated. It is not recommended that the 
-	 * object be casted; it should exist purely for holding the connection until the database
-	 * needs to be disconnected (a very unlikely scenario in the real-world use) and then
-	 * it should be able to be assigned to a null value after db is closed. 
+	 * @return Connection a connection that can be manipulated. The connection should exist purely for holding 
+	 * the connection until the database needs to be disconnected (a very unlikely scenario in the real-world use) 
+	 * and then it should be able to be assigned to a null value after db is closed.
+	 * <br>
+	 * Object is essentially an anchor for holding a connection as long as needed 
 	 * @throws ClassNotFoundException - This exception is thrown if the mysql jdbc library is not found.
 	 * @throws IllegalAccessException
 	 * @throws InstantiationException
 	 * @throws SQLException 
 	 * @throws HeadlessException 
 	 */
-	static Object getConnection(InetAddress ip) throws ClassNotFoundException, IllegalAccessException, 
+	static Connection getConnection(InetAddress ip) throws ClassNotFoundException, IllegalAccessException, 
 	InstantiationException, HeadlessException, SQLException
 	{
 		if(wac_con_instnc == null)
@@ -59,7 +65,7 @@ public class WaConnection {
 			wac_connection = (Connection) DriverManager.getConnection (wac_db_url, wac_db_user, JOptionPane.showInputDialog("Enter Password"));
 			messagelog.Logging.writeToLog(Logging.CONN_LOG,Logging.NORM_ENTRY,"Connection using " + wac_driver + " is established by " + ip + ".");
 		}
-		return wac_con_instnc;
+		return (Connection) wac_con_instnc;
 	}
 	
 	/**
@@ -74,7 +80,8 @@ public class WaConnection {
 	static ResultSet issueQuery(String query)
 	{
 		try {
-			Statement db_state = (Statement) wac_connection.createStatement();
+			// This is the beauty of abstraction layers.
+			Statement db_state = (Statement) ((java.sql.Connection) wac_connection).createStatement();
 			return db_state.executeQuery(query);
 			
 		} catch (SQLException e) {

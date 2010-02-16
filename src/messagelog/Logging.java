@@ -36,7 +36,7 @@ public class Logging {
 					   ACCESS_LOG								= 1,
 					   INIT_LOG									= 2;
 							   
-	
+	/** Linked list that holds log file references */
 	private static LinkedList<LogFile> logfiles					=  null;
 	
 	/**
