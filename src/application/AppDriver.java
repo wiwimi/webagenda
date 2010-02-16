@@ -41,16 +41,23 @@ public class AppDriver {
 			
 			
 			// ---- Set up Logs ----
+			
 				// Logs first, since ConnectionManager uses log files
 			messagelog.Logging.initializeLogs();
 
+				// Determine IP address (this will be an args item in the installer or command line specification)
 		    InetAddress thisIp = InetAddress.getLocalHost();
-		    
-			WaConnection.getConnection(thisIp);
 			
 			// ---- Set up Connection Manager ----
 			
 			con_man = ConnectionManager.getManager(true); // Only have one connection into the db
+			
+			con_man.addConnection(WaConnection.getConnection(thisIp)); // Grab the connection object that is produced.
+			
+			/* In the event that multiple connections are used, ConnectionManager still has the singular threaded connection
+			 * object saved at position 0 in the linked list of connections. 
+			 * TODO: After all connections (if multiple connections are chosen) are initialized, remove the original singular
+			 * threaded connection.  */
 			
 			// ---- Set up Brokers ----
 			

@@ -4,7 +4,6 @@
 package application;
 
 import java.awt.HeadlessException;
-import java.net.InetAddress;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
@@ -42,7 +41,10 @@ public class ConnectionManager  {
 	 * This will not protect against non-WebAgenda connections to the database. 
 	 * <br>
 	 * Default is false -- multiple connections are allowed. */
-	private static boolean one_request										= false; 
+	private static boolean one_request										= false;
+	
+	/** A list of connections that reside in a thread that access the database  */
+	private LinkedList<ThreadedConnection> connections						= null;
 	
 	/**
 	 * Private Constructor that sets up the ConnectionManager.
@@ -57,7 +59,7 @@ public class ConnectionManager  {
 	 */
 	private ConnectionManager() throws HeadlessException, ClassNotFoundException, IllegalAccessException, InstantiationException, SQLException
 	{
-
+		connections = new LinkedList<ThreadedConnection>();
 	}
 	
 	/**
@@ -115,6 +117,19 @@ public class ConnectionManager  {
 	public boolean isOneRequestOnly()
 	{
 		return one_request;
+	}
+	
+	/**
+	 * Adds a connection to a thread which may represent the entire database connection or one broker's connection.
+	 * 
+	 * @param o Object connection object
+	 * @return Object connection
+	 */
+	Object addConnection(Object o)
+	{
+		connections.add(new ThreadedConnection(o));
+		Logging.writeToLog(Logging.CONN_LOG, Logging.NORM_ENTRY, "Added a Connection " + connections.size() + " to a thread");
+		return o;
 	}
 
 	

@@ -22,6 +22,12 @@ import com.mysql.jdbc.*;
  * @author dann
  * @version 00.01.00
  * @license GPL 2
+ * 
+ * Class to first initialize connectivity with the database.
+ * Once the singular connection communicates with the database, it begins to spawn ThreadedConnections.
+ * If only the singular connection is used, the connection object is saved in the ThreadedConnection.
+ * WaConnection should only contain the variables used to connect, not the connection itself.
+ * 
  */
 public class WaConnection {
 
@@ -56,18 +62,20 @@ public class WaConnection {
 	 * @throws SQLException 
 	 * @throws HeadlessException 
 	 */
-	static Connection getConnection(InetAddress ip) throws ClassNotFoundException, IllegalAccessException, 
+	static Object getConnection(InetAddress ip) throws ClassNotFoundException, IllegalAccessException, 
 	InstantiationException, HeadlessException, SQLException
 	{		
+		
 		if(wac_con_instnc == null)
 		{
 			wac_con_instnc = Class.forName (wac_driver).newInstance ();
+			//FIXME: Does having objects initialized to a static object interfere with multiple broker connections? 
 			wac_connection = (Object) DriverManager.getConnection (wac_db_url, wac_db_user, JOptionPane.showInputDialog("Enter Password"));
 			messagelog.Logging.writeToLog(Logging.CONN_LOG,Logging.NORM_ENTRY,"Connection using " + wac_driver + " is established by " + ip + ".");
 			
 			
 		}
-		return (Connection) wac_con_instnc;
+		return wac_con_instnc;
 	}
 	
 	/**
