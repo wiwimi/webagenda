@@ -3,6 +3,7 @@
  */
 package persistence;
 
+import business.Cachable;
 import messagelog.Logging;
 
 /**
@@ -10,7 +11,7 @@ import messagelog.Logging;
  * @version 0.01.00
  *
  */
-public class PermissionBroker extends Broker {
+public class PermissionBroker {
 
 	/** Collection of Permissions to be cached in memory	*/
 	private CacheTable permission_cache									= null;
@@ -32,31 +33,5 @@ public class PermissionBroker extends Broker {
 		}
 		return broker_permissions;
 	}
-
-	@Override
-	public Object getBrokerObject(Object o) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int cache(Cachable cacheObj) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int clearCache() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int flushCache() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
-	
 	
 }

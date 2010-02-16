@@ -1,7 +1,7 @@
 /**
  * persistence - Cacheable.java
  */
-package persistence;
+package business;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -22,6 +22,7 @@ import java.util.Date;
  */
 public abstract class Cachable implements Serializable {
 
+	private static final long	serialVersionUID	= 1L;
 	private boolean is_modified 						= false;
 	private Date date_created							= null;
 

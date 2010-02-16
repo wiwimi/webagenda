@@ -3,14 +3,16 @@
  */
 package persistence;
 
+import business.Cachable;
+
 /**
  * All brokers should inherit this class
  * 
- * @author peon-dev
- * @version 0.01.00
+ * @author peon-dev, Daniel Wehr
+ * @version 0.2.0
  *
  */
-public abstract class Broker {
+public abstract class Broker<E extends Cachable> {
 	
 	/** The database username that contains access to webagenda data */
 	private String db_username							= null;
@@ -36,19 +38,6 @@ public abstract class Broker {
 		
 		return null;
 	}
-	
-	/**
-	 * Returns an object-based Broker object: This will be whatever the Broker is
-	 * supposed to handle; Employee, Permission[Set], and Schedules are examples
-	 * of objects that will be returned.
-	 * 
-	 * TODO:
-	 * @param o Object to initiate the request: May be an Integer (id), Sort request as
-	 * a string, or other parameters to be defined in the method itself.
-	 * 
-	 * @return Object result from the Broker request as its respective Broker object.
-	 */
-	public abstract Object getBrokerObject(Object o);
 	
 	/**
 	 * Flushes the Cache, writing all changes to the database that are 'dirty', have
@@ -78,7 +67,15 @@ public abstract class Broker {
 	 * @param cache_obj
 	 * @return
 	 */
-	public abstract int cache(Cachable cache_obj);
+	public abstract int cache(E cache_obj);
+	
+	public abstract E[] get(E getObj);
+	
+	public abstract boolean update(E updateObj);
+	
+	public abstract boolean create(E createObj);
+	
+	public abstract boolean delete(E deleteObj);
 	
 	
 }

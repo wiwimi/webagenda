@@ -10,7 +10,7 @@ import business.schedule.*;
  * @author peon-dev, Daniel Wehr
  * @version 0.2.0
  */
-public class Employee
+public class Employee extends Cachable
 	{
 	
 	/*
@@ -19,6 +19,8 @@ public class Employee
 	 * needed. Many will likely be handled in the broker rather than the employee
 	 * class itself.
 	 */
+
+	private static final long	serialVersionUID	= -1671744709578725501L;
 
 	/**
 	 * Identifier for the user. The name employee does not reflect their
@@ -344,6 +346,27 @@ public class Employee
 	public void setUser_settings(Settings userSettings)
 		{
 		user_settings = userSettings;
+		}
+
+	@Override
+	public boolean canDelete()
+		{
+		// TODO Auto-generated method stub
+		return false;
+		}
+
+	@Override
+	public boolean canEdit()
+		{
+		// TODO Auto-generated method stub
+		return false;
+		}
+
+	@Override
+	public boolean canRead()
+		{
+		// TODO Auto-generated method stub
+		return false;
 		}
 	
 	}
