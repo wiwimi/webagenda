@@ -3,6 +3,8 @@
  */
 package persistence;
 
+import com.mysql.jdbc.Statement;
+
 import business.Cachable;
 
 /**
@@ -113,4 +115,4 @@ public abstract class Broker<E extends Cachable>
 	 */
 	public abstract boolean delete(E deleteObj);
 	
-	}
+}

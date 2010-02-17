@@ -4,6 +4,8 @@
 package persistence;
 
 
+import com.mysql.jdbc.Statement;
+
 import business.Employee;
 import messagelog.Logging;
 
@@ -94,5 +96,6 @@ public class EmployeeBroker extends Broker<Employee>
 		// TODO Auto-generated method stub
 		return false;
 		}
+
 	
-	}
+}

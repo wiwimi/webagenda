@@ -6,6 +6,8 @@ package application;
 import java.awt.HeadlessException;
 import java.sql.SQLException;
 import java.util.LinkedList;
+import java.util.Observable;
+import java.util.Observer;
 
 import messagelog.Logging;
 
@@ -30,7 +32,7 @@ import messagelog.Logging;
  * 		
  * 
  */
-public class ConnectionManager  {
+public class ConnectionManager extends Observable {
 	
 
 	/** Manager object where only one instance of it can exist. Is used
@@ -125,12 +127,56 @@ public class ConnectionManager  {
 	 * @param o Object connection object
 	 * @return Object connection
 	 */
-	Object addConnection(Object o)
+	Object addConnection(Object o, String name)
 	{
-		connections.add(new ThreadedConnection(o));
+		try {
+			connections.add(new ThreadedConnection(o,name));
+		} catch (HeadlessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 		Logging.writeToLog(Logging.CONN_LOG, Logging.NORM_ENTRY, "Added a Connection " + connections.size() + " to a thread");
 		return o;
 	}
 
+	/**
+	 * Returns a ThreadedConnection object. 
+	 * 
+	 * @param pos int position in array of threaded connections
+	 * @return ThreadedConnection object
+	 */
+	ThreadedConnection getConnection(int pos)
+	{
+		return connections.get(pos);
+	}
+	
+	public int numberOfConnections()
+	{
+		return connections.size();
+	}
+	
+	@Override
+	public void notifyObservers(Object arg)
+	{
+		this.setChanged();
+		super.notifyObservers(arg);
+	}
 	
 }

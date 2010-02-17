@@ -52,7 +52,7 @@ public class AppDriver {
 			
 			con_man = ConnectionManager.getManager(true); // Only have one connection into the db
 			
-			con_man.addConnection(WaConnection.getConnection(thisIp)); // Grab the connection object that is produced.
+			con_man.addConnection(WaConnection.getConnection(thisIp),"Singular"); // Grab the connection object that is produced.
 			
 			/* In the event that multiple connections are used, ConnectionManager still has the singular threaded connection
 			 * object saved at position 0 in the linked list of connections. 
@@ -65,8 +65,23 @@ public class AppDriver {
 			PermissionBroker brok_perm = PermissionBroker.getBroker();
 			ScheduleBroker brok_sched = ScheduleBroker.getBroker();
 			
-			// ---- 
+			// ---- Observe Connection Threads ----
 			
+			// These threads are daemons, so they will exit when program exits.
+			//TODO: Implement proper shutdown procedure
+			
+			ThreadedConnection tc = null;
+			for(int i = 0; i < con_man.numberOfConnections(); i++) {
+				tc = con_man.getConnection(i); // Begin thread
+				tc.start();
+				System.out.println(tc.isDaemon());
+			}
+			System.out.println(tc.isAlive());
+			con_man.notifyObservers("Hello World");
+			
+			
+			
+			System.out.println("Done");
 			
 			
 			
