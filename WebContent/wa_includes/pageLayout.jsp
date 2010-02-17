@@ -128,8 +128,5 @@
 	
 	</div>
 	<!-- End sidebar div -->
-	
-
-
 </body>
 </html>
