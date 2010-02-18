@@ -54,8 +54,21 @@ public class ConnectionManager extends Observable {
 	 * Default is false -- multiple connections are allowed. */
 	private static boolean one_request										= false;
 	
-	/** A list of connections that reside in a thread that access the database  */
+	/** A list of connections that access the database. 0 Must exist at all times.  */
 	private LinkedList<ThreadedConnection> connections						= null;
+	
+	/** Queue that is ONLY INITIALIZED when there is only one (the singular) thread that 
+	 * contacts the database. Multiple Broker connections to the database will leave
+	 * this value as null, since Brokers use their own queues. In a Multiple Connection
+	 * scenario, Brokers will still have their queues, but pop one from the Broker to
+	 * pull one onto this ConnectionManager Queue. Puts less load on the server, but
+	 * uses more memory. For small systems that require little in scheduling, this
+	 * method is more efficient.  */
+	private Queue<SqlStatement> singular_queue								= null;
+	
+	private int max_queue_size												= 500 * 3; /* (3 Brokers currently added * 500 -- number of max connections going to the db at once.
+																							As this is the queue and not simultaneous connections, the limit will not be 500. The
+																							number of statements that can be active (off the queue in a running thread) is 500. */
 	
 	/**
 	 * Private Constructor that sets up the ConnectionManager and initializes internal lists.
@@ -119,28 +132,25 @@ public class ConnectionManager extends Observable {
 	}
 	
 	/**
-	 * Returns the boolean flag of whether only one request can be sent to the
-	 * database at a time.
-	 * 
-	 * @return boolean - true if only one request is sent to the database at a time.
-	 */
-	public boolean isOneRequestOnly()
-	{
-		return one_request;
-	}
-	
-	/**
 	 * Method that works twofold:<br>
 	 * <br>
-	 * 1) Singular Thread: When a request is made from a broker, the thread drops the desirable statement into ConnectionManager's
-	 * queue. Singular Thread will 
+	 * 1) Singular Thread Mode: When a request is made from a broker, the thread drops the desirable statement into ConnectionManager's
+	 * queue as an SqlStatement object. Singular Thread Mode will queue up the statement using ConnectionManager settings (if max queue 
+	 * size, priorities, etc. exist) and then use thread 0 (first thread in linked list, should be the only initialized thread) to send 
+	 * statements and get back results to the appropriate Broker object.<br> 
+	 * <br>
+	 * 2) Multiple Thread Mode: When a request is made from a broker, the BrokerThread class will receieve a SingularThreadControlException
+	 * which will cause the Broker to directly connect to the database using a saved connection object (which would otherwise be null or
+	 * reference the ConnectionManager's object, thread 0 aka the Singular Thread) and retrieve the statement results based on its own
+	 * queue system which prevents too many <b>simultaneous</b> connections. <br>
 	 * 
-	 * 
-	 * @param state
-	 * @return
+	 * @param state SqlStatement to send to the database.
+	 * @throws SingularThreadControlException when ConnectionManager refuses to manage connection - Broker handles connection, multiple db connections exist.
+	 * @return ResultSet of the statement sent to the database.
 	 */
-	protected ResultSet issueStatement(Statement state)
+	protected ResultSet issueStatement(SqlStatement state) throws SingularThreadControlException
 	{
+		if(!isSingular()) throw new SingularThreadControlException(); // This should exit the method call
 		
 		return null;
 	}

@@ -19,8 +19,8 @@ import com.mysql.jdbc.Statement;
  */
 public class ThreadedConnection extends Thread implements Observer, Runnable {
 
-	private Object connection 					= null;
-	private Queue<String> statements			= null;
+	private Object connection 						= null;
+	private Queue<SqlStatement> statements			= null;
 	
 	/**
 	 * Constructor that saves the web agenda connection for use in the thread
@@ -35,25 +35,48 @@ public class ThreadedConnection extends Thread implements Observer, Runnable {
 	public ThreadedConnection(Object o, String name) throws HeadlessException, ClassNotFoundException, IllegalAccessException, InstantiationException, SQLException
 	{
 		connection = o;
-		statements = new LinkedList<String>();
-		this.setDaemon(true);
+		statements = new LinkedList<SqlStatement>();
+		this.setDaemon(false);
 		ConnectionManager.getManager().addObserver(this);
 	}
 	
 	@Override 
 	public void run()
 	{
-		System.out.println("running");
+		System.out.println("Starting Sql Database loop");
+		while(true)
+		{
+			SqlStatement sqlstatement = statements.poll();
+			if(sqlstatement == null) {
+				// No items in queue, can exit
+				break;
+			}
+			// Send request to database
+			try {
+				Thread.sleep(1000); // Temporary, to emulate the time it takes to process db request (not accurate)
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println("Finished statement: " + statements.size());
+			
+		}
+		
+		System.out.println("Finished Sql Manage Loop, now exiting");
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
 		if(arg instanceof String)
 			System.out.println(arg.toString());
-		else if(arg instanceof Statement)
+		else if(arg instanceof SqlStatement)
 		{
-			//TODO: Add to statement queue
+			statements.add((SqlStatement) arg);
+			if(statements.size() == 1) {
+				start(); // Was previously 0 
+			}
 		}
+		else return;
 	}
 	
 }

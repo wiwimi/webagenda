@@ -10,7 +10,7 @@ import business.Cachable;
 /**
  * All brokers should inherit this class
  * 
- * @author peon-dev, Daniel Wehr
+ * @author dann, Daniel Wehr
  * @version 0.2.0
  */
 public abstract class Broker<E extends Cachable>

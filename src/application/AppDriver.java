@@ -3,11 +3,17 @@
  */
 package application;
 
+/*
+ * TODO: Priority in Queue -- when adding, have multiple queues. Make sure one queue works first
+ */
+
 import java.awt.HeadlessException;
+
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import application.ThreadedConnection;
 
 import persistence.*;
 
@@ -70,20 +76,16 @@ public class AppDriver {
 			// These threads are daemons, so they will exit when program exits.
 			//TODO: Implement proper shutdown procedure
 			
-			ThreadedConnection tc = null;
+			ThreadedConnection tc = null; // Prepare for creating ThreadedConnection using Singular Connector
 			for(int i = 0; i < con_man.numberOfConnections(); i++) {
-				tc = con_man.getConnection(i); // Begin thread
-				tc.start();
-				System.out.println(tc.isDaemon());
+				tc = con_man.getConnection(i); // Begin thread, get singular thread connector
 			}
-			System.out.println(tc.isAlive());
-			con_man.notifyObservers("Hello World");
 			
 			
-			
-			System.out.println("Done");
-			
-			
+			con_man.notifyObservers("Notifying Manager to send this to all ThreadedConnections");
+			con_man.notifyObservers(new SqlStatement(null,null));
+			con_man.notifyObservers(new SqlStatement(null,null));
+			con_man.notifyObservers(new SqlStatement(null,null));
 			
 //			ResultSet employees = WaConnection.issueQuery("SELECT * FROM EMPLOYEE;");
 //			employees.next(); // Must be positioned to first (next) item before it can be read
