@@ -34,7 +34,7 @@ public abstract class Broker<E extends Cachable>
 	/**
 	 * Connection that interacts with the ConnectionManager for database requests
 	 */
-	private ThreadedConnection	threaded_conn	= null;
+	private BrokerThread	threaded_conn	= null;
 	
 	/**
 	 * The max number of threads that the application should use to connect to

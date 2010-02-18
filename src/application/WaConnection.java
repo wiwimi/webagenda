@@ -78,27 +78,4 @@ public class WaConnection {
 		return wac_con_instnc;
 	}
 	
-	/**
-	 * Returns the ResultSet that is found from the query. Result set can be used
-	 * to retrieve information requested from the database.
-	 * 
-	 * 
-	 * @return ResultSet query result
-	 * @param The Query (as a string)
-	 * <br>Example: SELECT * FROM EMPLOYEE; 
-	 */
-	static ResultSet issueQuery(String query)
-	{
-		try {
-			// This is the beauty of abstraction layers.
-			Statement db_state = (Statement) ((java.sql.Connection) wac_connection).createStatement();
-			return db_state.executeQuery(query);
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-	}
-	
 }

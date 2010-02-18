@@ -10,6 +10,8 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Queue;
 
+import com.mysql.jdbc.Statement;
+
 /**
  * @author dann
  * @version 0.01.00
@@ -23,7 +25,7 @@ public class ThreadedConnection extends Thread implements Observer, Runnable {
 	/**
 	 * Constructor that saves the web agenda connection for use in the thread
 	 * 
-	 * @param wac WaConnection WebAgenda Connectino
+	 * @param wac WaConnection WebAgenda Connection
 	 * @throws SQLException 
 	 * @throws InstantiationException 
 	 * @throws IllegalAccessException 
@@ -46,7 +48,12 @@ public class ThreadedConnection extends Thread implements Observer, Runnable {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		System.out.println(arg.toString());
+		if(arg instanceof String)
+			System.out.println(arg.toString());
+		else if(arg instanceof Statement)
+		{
+			//TODO: Add to statement queue
+		}
 	}
 	
 }

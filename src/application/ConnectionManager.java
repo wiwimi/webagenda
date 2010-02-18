@@ -4,10 +4,14 @@
 package application;
 
 import java.awt.HeadlessException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Queue;
+
+import com.mysql.jdbc.Statement;
 
 import messagelog.Logging;
 
@@ -19,13 +23,18 @@ import messagelog.Logging;
  * This class allows for each Broker class to have its own connection to the database.
  * Each uses the WebAgenda database, but is limited based on the database restrictions
  * placed on a Broker. (A Broker can only access tables and fields that are relevant
- * to it's purpose.)<br>
+ * to it's purpose.) An account should be made for each broker. It can read other tables,
+ * but not write. <br>
  * <br>
  * This class also may optionally enforce a 'one request load' rule where only one
  * request may be made to the database by all Brokers combined. This is to reduce stress
  * and load on the database, but may slow the system. <br>
  * <br>
- * 
+ * Also queues up request statements to the database from all the brokers using
+ * a control mechanism (only applicable) if Brokers work on a singular connection.
+ * Otherwise this control is ignored. However, all communications are sent to this 
+ * class regardless and each broker has its own queue of statements so they can be 
+ * monitored and limited if necessary.
  * 
  * FIXME:
  * 		Writes should have priority over reads (need priority mechanism? One built in?)
@@ -49,9 +58,7 @@ public class ConnectionManager extends Observable {
 	private LinkedList<ThreadedConnection> connections						= null;
 	
 	/**
-	 * Private Constructor that sets up the ConnectionManager.
-	 * If only one connection is allowed, one connection is added.
-	 * If more than one connection are allowed, then every broker will get its own connection.
+	 * Private Constructor that sets up the ConnectionManager and initializes internal lists.
 	 * 
 	 * @throws SQLException 
 	 * @throws InstantiationException 
@@ -60,8 +67,9 @@ public class ConnectionManager extends Observable {
 	 * @throws HeadlessException 
 	 */
 	private ConnectionManager() throws HeadlessException, ClassNotFoundException, IllegalAccessException, InstantiationException, SQLException
-	{
+	{		
 		connections = new LinkedList<ThreadedConnection>();
+		
 	}
 	
 	/**
@@ -122,6 +130,22 @@ public class ConnectionManager extends Observable {
 	}
 	
 	/**
+	 * Method that works twofold:<br>
+	 * <br>
+	 * 1) Singular Thread: When a request is made from a broker, the thread drops the desirable statement into ConnectionManager's
+	 * queue. Singular Thread will 
+	 * 
+	 * 
+	 * @param state
+	 * @return
+	 */
+	protected ResultSet issueStatement(Statement state)
+	{
+		
+		return null;
+	}
+	
+	/**
 	 * Adds a connection to a thread which may represent the entire database connection or one broker's connection.
 	 * 
 	 * @param o Object connection object
@@ -157,7 +181,8 @@ public class ConnectionManager extends Observable {
 	}
 
 	/**
-	 * Returns a ThreadedConnection object. 
+	 * Returns a ThreadedConnection object.
+	 * Thread 0 will always be the Singular Thread. All other threads are broker threads if they exist.
 	 * 
 	 * @param pos int position in array of threaded connections
 	 * @return ThreadedConnection object
@@ -167,6 +192,10 @@ public class ConnectionManager extends Observable {
 		return connections.get(pos);
 	}
 	
+	/**
+	 * Returns the number of database connection threads. 
+	 * @return
+	 */
 	public int numberOfConnections()
 	{
 		return connections.size();
@@ -179,4 +208,14 @@ public class ConnectionManager extends Observable {
 		super.notifyObservers(arg);
 	}
 	
+	/**
+	 * Getter method for determining if application allows multiple database connections to exist, or whether to use only the
+	 * singular thread for the db connection.
+	 * 
+	 * @return boolean true if only one thread connects to the database. False if multiples do.
+	 */
+	public static boolean isSingular()
+	{
+		return ConnectionManager.one_request;
+	}
 }
