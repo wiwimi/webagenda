@@ -21,7 +21,7 @@ label
 	color:white;
 	text-decoration:none;
 }
-	/*Noorin*/
+	/*Noorin
 	
 	table.sortable
 	{
@@ -60,7 +60,7 @@ label
 		position:relative;
 		text-align: left;
 		
-	}
+	}*/
 	/* over class will be used later for highlight effect when the cursore moves over a row */
 	tr.alt td
 	{

@@ -135,6 +135,17 @@ $(document).ready(function()
 			}
 		});
 		
+		$('#usersWidgetUpperRectangle').click(function(){
+			if($('#usersWidgetLowerRectangle').is(":hidden"))
+			{
+				$('#usersWidgetLowerRectangle').slideDown('fast');
+			}
+			else
+			{
+				$('#usersWidgetLowerRectangle').slideUp('fast');
+			}
+		});
+		
 		$('#notificationCloseButton').click(function(){
 			if($('#notification').is(":hidden"))
 			{

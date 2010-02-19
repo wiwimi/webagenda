@@ -414,11 +414,28 @@ label {
 		font-size:1.2em;
 	}
 	
+	
 	#helpTitle:before
 	{
 		position:relative;
 		top:5px;
 		content:url(../lib/images/icons/BlckWhite/001_39.png);
 	}
+	
+	#maintenanceTitle
+	{
+		font-weight:bold;
+		font-size:1.2em;
+	}
+	
+	
+	#maintenanceTitle:before
+	{
+		position:relative;
+		top:5px;
+		content:url(../lib/images/icons/BlckWhite/001_41.png);
+	}
+	
+	
 
 	

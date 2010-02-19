@@ -43,6 +43,7 @@
 
 #addUser label
 {
+	width: 7em;
 	float: left;
 	text-align: right;
 	margin-right: 2.0em;
@@ -50,7 +51,7 @@
 	display: inline-block;
 	line-height: 1.8;
 	vertical-align: top;
-	width:17%;
+	width:140px;
 	font: cochin, Times, Verdana, helvetica,sans-serif;
 	font-weight:bold;
 
@@ -91,6 +92,8 @@ fieldset
 	margin-right:10px;
 	border:white;
 	border-top:1px solid gray;
+	
+	
 }
 fieldset.focussed {
  border: 1px solid #000061;
@@ -131,7 +134,7 @@ fieldset.focussed {
 	width:95%;
 }
 
-.userTable
+#userTable
 {
 	-webkit-border-bottom-left-radius: 4px 4px;
 	-webkit-border-bottom-right-radius: 4px 4px;
@@ -185,7 +188,7 @@ thead
 	vertical-align: left;
 	background-image:url(../../lib/images/content/HeaderGradient.png);
 	background-repeat:x-repeat;
-	color:white;
+	color:black;
 }
 
 .headerRow:hover
@@ -201,7 +204,7 @@ tfoot
 	vertical-align: left;
 	background-image:url(../../lib/images/content/HeaderGradient.png);
 	background-repeat:x-repeat;
-	color:white;
+	color:black;
 }
 
 tbody
@@ -212,7 +215,7 @@ tbody
 	color:black;
 }
 
-.usertable tr, .usertable.th
+#usertable tr, .usertable.th
 {
 	border-bottom-style: solid;
 	border-bottom-width: 1px;
@@ -220,7 +223,7 @@ tbody
 	vertical-align: text-top;
 }
 
-.userTable th
+#userTable th
 {
 	line-height: 1.3em;
 	padding: 7px 7px 8px;

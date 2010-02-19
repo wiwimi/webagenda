@@ -129,6 +129,21 @@
 			<b> <a href ="../wa_settings/admin_profile.jsp"> Admin's Profile </a> </b> <br>
 			<b> <a href ="../wa_settings/corporate_settings.jsp" > Corporate's Profile </a> </b> <br>
 		</div>
+		
+		<div id= "maintenanceUpperRectangle" class="upperRectangle">
+		
+			<div class="sidebarTitle" id="maintenanceTitle">Settings</div>
+		
+		</div>
+		
+		<!-- White Background for boxes-->
+		
+		<div id= "maintenanceLowerRectangle" class = "lowerRectangle">
+			
+			<b> <a href ="../wa_settings/location.jsp"> Security </a> </b> <br>
+			<b> <a href ="../wa_settings/position.jsp"> Admin's Profile </a> </b> <br>
+			<b> <a href ="../wa_settings/skills.jsp" > Corporate's Profile </a> </b> <br>
+		</div>
 	
 	</div>
 	<!-- End sidebar div -->

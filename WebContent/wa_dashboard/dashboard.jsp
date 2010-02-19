@@ -90,6 +90,24 @@ if(session.getAttribute("username") != null)
 			<b> <a href ="../wa_user/userAdmin.jsp" > Add </a> </b> <br>
 			<b> <a href ="../wa_user/userDelete.jsp" > Delete </a> </b> <br>
 			<b> <a href ="../wa_user/userAdminUpdate.jsp" > Update </a> </b> <br>
+			<b> <a href ="../wa_user/userDelete.jsp" > Skills </a> </b> <br>
+			<b> <a href ="../wa_user/userAdminUpdate.jsp" > Positions </a> </b> <br>
+		</div>
+		<br>
+		
+		<div id= "maintenanceUpperRectangle" class="upperRectangle">
+		
+			<div class="sidebarTitle" id="maintenanceTitle"> Locations </div>
+		
+		</div>
+		
+		<!-- White Background for boxes-->
+		
+		<div id= "maintenanceLowerRectangle" class = "lowerRectangle">
+			
+			<b> <a href ="../wa_settings/security_settings.jsp"> Add </a> </b> <br>
+			<b> <a href ="../wa_settings/security_settings.jsp"> Update </a> </b> <br>
+		
 		</div>
 		
 		<br>
@@ -147,7 +165,8 @@ if(session.getAttribute("username") != null)
 			<b> <a href ="../wa_settings/admin_profile.jsp"> Admin's Profile </a> </b> <br>
 			<b> <a href ="../wa_settings/corporate_settings.jsp" > Corporate's Profile </a> </b> <br>
 		</div>
-	
+		
+		
 	</div>
 	<!-- End sidebar div -->
 	<!-- End of Header file -->

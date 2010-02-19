@@ -4,36 +4,36 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<!--  Includes -->
-<jsp:include page="../wa_includes/pageLayout.jsp"/>
-
-<!-- Libraries -->
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-<style type="text/css">@import "../lib/js/jquery.datepick.css";</style> 
-<script type="text/javascript" src="../lib/js/jquery.datepick.js"></script>
-
 <!-- Javascript Files -->
 <script type="text/javascript" src="../lib/js/dashboard.js"></script>
+
 
 <!--  CSS files -->
 <link rel="stylesheet" href="CSS/userAddStyle.css" type="text/css"></link>
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 
-<title>Adding User</title>
+<!-- Sorttable is under the X11 licence, it is an open source project.-->
+<!-- Javascript Files -->
+<script src="../lib/js/sorttable.js" type ="text/javascript"></script>
+
+<!-- Libraries -->
+<script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>	
+
+<!--  Includes -->
+<jsp:include page="../wa_includes/pageLayout.jsp"/>
+
+
+<title>Deleting User</title>
 </head>
 <body>
-Fields marked with <em class="asterisk" > *</em> are required.
-<br></br>
-Randomly generated passwords are going to be sent to the employee's e-mail. If that field was missing it will be sent to your e-mail.
-<br></br>
+
 <br></br>
 
 		<div id="usersWidget" class="fullWidget">
-			<div class="widgetUpperRectangle" id="usersUpperRectangle">
+			<div class="widgetUpperRectangle" id="usersWidgetUpperRectangle">
 				<div class="widgetTitle" id="usersTitle">Users</div>
 			</div>
-			
-		<div class="widgetLowerRectangle" id="quickLinksLowerRectangle">
+		<div class="widgetLowerRectangle" id="usersWidgetLowerRectangle">
 
 			<div id="usersIcon">
 				<h3>Users</h3>
@@ -45,26 +45,27 @@ Randomly generated passwords are going to be sent to the employee's e-mail. If t
 			
 			<div id="tableArea">
 							<div class="userAdmin">
-				<table class="userTable">
+				<table class="sortable" id="userTable">
 					<thead class="head">
 						<tr class="headerRow">
 							<th>Username</th>
-							<th>First Name</th>
-							<th>Last Name</th>
-							<th>Address</th>
-							<th>Country</th>
-							<th>Workgroup</th>
+							<th>Employee ID</th>
+							<th>Family Name</th>
+							<th>Given Name</th>
+							<th>Position</th>
+							<th>Supervisor</th>
+				
 						</tr>
 					</thead>
 					
 					<tfoot class="foot">
 						<tr class="headerRow">
 							<th>Username</th>
-							<th>First Name</th>
-							<th>Last Name</th>
-							<th>Address</th>
-							<th>Country</th>
-							<th>Workgroup</th>
+							<th>Employee ID</th>
+							<th>Family Name</th>
+							<th>Given Name</th>
+							<th>Position</th>
+							<th>Supervisor</th>
 						</tr>
 					</tfoot>
 					
