@@ -4,8 +4,11 @@
 package persistence;
 
 
+import java.sql.ResultSet;
+
 import com.mysql.jdbc.Statement;
 
+import application.SqlStatement;
 import business.Employee;
 import messagelog.Logging;
 
@@ -18,15 +21,21 @@ public class EmployeeBroker extends Broker<Employee>
 	
 	/** Collection of Employees to be cached in memory */
 	private CacheTable				employee_cache		= null;
-	
+	/** Static representation of the broker */
 	private static EmployeeBroker	broker_employees	= null;
+	/** Thread created in the CacheTable object that flushes this broker's data. Not static because
+	 * thread must be instantiated by each Broker for its own purpose. So don't go creating hundreds
+	 * of cachebrokers if you want an efficient system. ;) */
+	private Thread	flush_employee						= null; 
 	
+	/**
+	 * Constructor for EmployeeBroker
+	 */
 	private EmployeeBroker()
 		{
-		employee_cache = new CacheTable();
+		
 		Logging.writeToLog(Logging.INIT_LOG, Logging.NORM_ENTRY,
 				"Employee Broker Cache Table initialized");
-		
 		}
 	
 	/**
@@ -44,10 +53,18 @@ public class EmployeeBroker extends Broker<Employee>
 			{
 			Logging.writeToLog(Logging.INIT_LOG, Logging.NORM_ENTRY, "Employee Broker initialized");
 			broker_employees = new EmployeeBroker();
+			broker_employees.initCacheTable();
 			}
 		return broker_employees;
 		}
-
+	
+	private void initCacheTable()
+	{
+		employee_cache = new CacheTable(broker_employees);
+		flush_employee = employee_cache.getFlushThread();
+		flush_employee.start(); // Start your engines
+	}
+	
 	@Override
 	public int cache(Employee cacheObj)
 		{
@@ -97,5 +114,12 @@ public class EmployeeBroker extends Broker<Employee>
 		return false;
 		}
 
+	@Override
+	public ResultSet issueStatement(SqlStatement statement) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 	
 }

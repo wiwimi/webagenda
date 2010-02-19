@@ -4,7 +4,10 @@
 package persistence;
 
 
+import java.io.IOException;
 import java.util.Date;
+
+import messagelog.Logging;
 import business.Cachable;
 import utilities.DoubleLinkedList;
 
@@ -21,14 +24,22 @@ public class CacheTable {
 	 * Faster Inserting and Removing of objects, optimizing cache response time. </div> */
 	private DoubleLinkedList<Cachable> cached_data 						= null;
 	
+	/** Number of milliseconds for flush to wait in a regular flushing cycle -- 15 seconds default if not specified in arguments. 
+	 * FlushThread will be activated and run after the wait time, then put back to sleep. */
+	protected static long flush_wait_time								= 15000; 
+	
 	/** Date when last cache flush occured. If greater than the specified routine flush time, Broker knows
 	 * that an error has occured such as a power failure upon request to flush. This should be
 	 * logged to an error log. */
 	private Date flush_stamp											= null;
 	
-	CacheTable()
+	private FlushThread flusher											= null;
+	
+	CacheTable(Broker broker_to_flush)
 	{
 		cached_data = new DoubleLinkedList<Cachable>();
+		flush_stamp = new Date();// Place current date into the flush stamp -- this is the last 'flush' recorded.
+		flusher = new FlushThread(broker_to_flush);
 	}
 	
 	/**
@@ -45,6 +56,11 @@ public class CacheTable {
 	private int removeFromCache(int id)
 	{
 		return -1;
+	}
+	
+	protected void flush()
+	{
+		flusher.forceFlush();
 	}
 	
 	/**
@@ -89,5 +105,72 @@ public class CacheTable {
 		return null;
 	}
 	
+	FlushThread getFlushThread()
+	{
+		return flusher;
+	}
+	
+	/**
+	 * 
+	 * @author dann
+	 * @version 0.01.00
+	 * @license GPL 2
+	 * 
+	 * Class that flushes data periodically back to the database. Flushes are database writes and therefore given higher priority than retrievals.
+	 * As this class extends the Thread class, it is a thread that sleeps for a defined period of time (recommended 3 - 30 seconds in between flush
+	 * negotiations) then wakes up to save modified data in a broker. Brokers can avoid making database calls with every edit in this manner.
+	 * All these threads are daemons.
+	 * FIXME: Upon exit of program, all FlushThreads must be run once (set as non-daemon?) so that data can be written before db is closed.
+	 * Of course, this does not check for immediate shutdowns aka failures, outages.
+	 */
+	public class FlushThread extends Thread {
+		
+		/** Remembers what Broker called this flushing thread so it can communicate with broker if required. (Remove if not) TODO */
+		private Broker brok_monitor							= null;
+		
+		/**
+		 * Constructor that creates a thread to navigate a specific Broker's cache table as a daemon thread that will
+		 * detect data that is modified and hasn't been saved, then saving it.
+		 * 
+		 * @param brok Broker object to monitor
+		 */
+		public FlushThread(Broker brok)
+		{
+			brok_monitor = brok;
+			this.setDaemon(true);
+		}
+		
+		protected void forceFlush()
+		{
+			this.interrupt();
+		}
+		
+		@Override
+		public void run()
+		{
+			if(brok_monitor == null)
+				Logging.writeToLog(Logging.INIT_LOG, Logging.NORM_ENTRY, "Flushing Thread started for Broker (Not yet initialized)");
+			else
+				Logging.writeToLog(Logging.INIT_LOG, Logging.NORM_ENTRY, "Flushing Thread started for " + brok_monitor.getClass().getSimpleName());
+
+			
+			while(true)
+			{
+				try {
+					System.out.println("Thread going to sleep");
+					this.sleep(CacheTable.flush_wait_time);
+					
+				} catch (InterruptedException e) {
+				
+					System.out.println("Thread woken up");
+				}
+			}
+				
+		}
+		
+		
+		
+		
+	}
 	
 }

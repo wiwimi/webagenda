@@ -3,8 +3,11 @@
  */
 package persistence;
 
+import java.sql.ResultSet;
+
 import com.mysql.jdbc.Statement;
 
+import application.SqlStatement;
 import business.Cachable;
 
 /**
@@ -114,5 +117,19 @@ public abstract class Broker<E extends Cachable>
 	 * @return
 	 */
 	public abstract boolean delete(E deleteObj);
+
+	/**
+	 * Issues a statement to the database which returns the results in a ResultSet object.
+	 * Depending on the application's configuration this method may cause ConnectionManager
+	 * to throw the SingularThreadControlException, which will force the broker to issue
+	 * the command in a thread, otherwise the ConnectionManager will issue it through
+	 * the Singular Thread. The broker will use an applicable *Call object to perform
+	 * statements that will be turned into an SqlStatement and sent.
+	 * Each broker has its own *Call object it uses, with DbCall as its parent.
+	 * 
+	 * @param statement SqlStatement to send to database
+	 * @return ResultSet results from SqlStatement
+	 */
+	public abstract ResultSet issueStatement(SqlStatement statement);
 	
 }

@@ -152,6 +152,8 @@ public class ConnectionManager extends Observable {
 	{
 		if(!isSingular()) throw new SingularThreadControlException(); // This should exit the method call
 		
+		System.out.println("issuing statement");
+		
 		return null;
 	}
 	

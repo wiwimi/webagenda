@@ -91,8 +91,8 @@ public class Logging {
 			// the line.separator command is a system-independant newline character inserted at the end of a log file.
 			logfiles.get(LOGFILE).logMessage(TYPE + " " + message + " [" + new Date() + "]" + System.getProperty("line.separator")); 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.err.println("Attempted to write to log file, write failed. File may be closed or filesystem read-only.");
+			System.err.println("Could not write the following message to log: " + message);
 		}
 	}
 	

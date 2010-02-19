@@ -67,9 +67,11 @@ public class AppDriver {
 			
 			// ---- Set up Brokers ----
 			
+				// The setting up of FlushThreads is in the constructor called in getBroker()
 			EmployeeBroker brok_emp = EmployeeBroker.getBroker();
 			PermissionBroker brok_perm = PermissionBroker.getBroker();
 			ScheduleBroker brok_sched = ScheduleBroker.getBroker();
+			
 			
 			// ---- Observe Connection Threads ----
 			
