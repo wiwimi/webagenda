@@ -4,10 +4,14 @@
 package persistence;
 
 
+import java.awt.HeadlessException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import com.mysql.jdbc.Statement;
 
+import application.ConnectionManager;
+import application.SingularThreadControlException;
 import application.SqlStatement;
 import business.Employee;
 import messagelog.Logging;
@@ -116,7 +120,29 @@ public class EmployeeBroker extends Broker<Employee>
 
 	@Override
 	public ResultSet issueStatement(SqlStatement statement) {
-		// TODO Auto-generated method stub
+		
+		try {
+			ConnectionManager.getManager().issueStatement(statement);
+		} catch (HeadlessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SingularThreadControlException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
 		return null;
 	}
 

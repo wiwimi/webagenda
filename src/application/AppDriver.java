@@ -85,9 +85,8 @@ public class AppDriver {
 			
 			
 			con_man.notifyObservers("Notifying Manager to send this to all ThreadedConnections");
-			con_man.notifyObservers(new SqlStatement(null,null));
-			con_man.notifyObservers(new SqlStatement(null,null));
-			con_man.notifyObservers(new SqlStatement(null,null));
+			
+			brok_emp.issueStatement(new SqlStatement(null,null));
 			
 //			ResultSet employees = WaConnection.issueQuery("SELECT * FROM EMPLOYEE;");
 //			employees.next(); // Must be positioned to first (next) item before it can be read

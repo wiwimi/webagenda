@@ -52,6 +52,7 @@ public class ThreadedConnection extends Thread implements Observer, Runnable {
 				break;
 			}
 			// Send request to database
+			
 			try {
 				Thread.sleep(1000); // Temporary, to emulate the time it takes to process db request (not accurate)
 			} catch (InterruptedException e) {

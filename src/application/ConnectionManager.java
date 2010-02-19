@@ -148,11 +148,11 @@ public class ConnectionManager extends Observable {
 	 * @throws SingularThreadControlException when ConnectionManager refuses to manage connection - Broker handles connection, multiple db connections exist.
 	 * @return ResultSet of the statement sent to the database.
 	 */
-	protected ResultSet issueStatement(SqlStatement state) throws SingularThreadControlException
+	public ResultSet issueStatement(SqlStatement state) throws SingularThreadControlException
 	{
 		if(!isSingular()) throw new SingularThreadControlException(); // This should exit the method call
-		
-		System.out.println("issuing statement");
+		System.out.println("issuing statement to ThreadedConnnection");
+		notifyObservers(state);
 		
 		return null;
 	}
