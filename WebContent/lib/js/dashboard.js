@@ -146,6 +146,17 @@ $(document).ready(function()
 			}
 		});
 		
+		$('#locationsUpperRectangle').click(function(){
+			if($('#locationsWidgetLowerRectangle').is(":hidden"))
+			{
+				$('#locationsWidgetLowerRectangle').slideDown('fast');
+			}
+			else
+			{
+				$('#locationsWidgetLowerRectangle').slideUp('fast');
+			}
+		});
+		
 		$('#notificationCloseButton').click(function(){
 			if($('#notification').is(":hidden"))
 			{
@@ -156,4 +167,6 @@ $(document).ready(function()
 				$('#notification').slideUp('fast');
 			}
 		});
+		
+		
 });

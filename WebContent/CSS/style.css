@@ -422,14 +422,14 @@ label {
 		content:url(../lib/images/icons/BlckWhite/001_39.png);
 	}
 	
-	#maintenanceTitle
+	#locationsTitle
 	{
 		font-weight:bold;
 		font-size:1.2em;
 	}
 	
 	
-	#maintenanceTitle:before
+	#locationsTitle:before
 	{
 		position:relative;
 		top:5px;

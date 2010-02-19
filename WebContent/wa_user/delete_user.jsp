@@ -4,25 +4,26 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
+<!-- Javascript Files -->
+<script type="text/javascript" src="../lib/js/dashboard.js"></script>
+
+
 <!--  CSS files -->
-<link rel="stylesheet" href="CSS/userAddStyle.css" type="text/css"></link>
+<link rel="stylesheet" href="CSS/user.css" type="text/css"></link>
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 
 <!-- Sorttable is under the X11 licence, it is an open source project.-->
 <!-- Javascript Files -->
 <script src="../lib/js/sorttable.js" type ="text/javascript"></script>
-<script type="text/javascript" src="../lib/js/dashboard.js"></script>
-
 
 <!-- Libraries -->
 <script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>	
-
 
 <!--  Includes -->
 <jsp:include page="../wa_includes/pageLayout.jsp"/>
 
 
-<title>Updating User</title>
+<title>Deleting User</title>
 </head>
 <body>
 
@@ -32,7 +33,6 @@
 			<div class="widgetUpperRectangle" id="usersWidgetUpperRectangle">
 				<div class="widgetTitle" id="usersTitle">Users</div>
 			</div>
-			
 		<div class="widgetLowerRectangle" id="usersWidgetLowerRectangle">
 
 			<div id="usersIcon">
@@ -94,8 +94,9 @@
 			</div>
 			
 		</div>
+</div>
 
 <div id="footer"></div>
-</div>
+
 </body>
 </html>

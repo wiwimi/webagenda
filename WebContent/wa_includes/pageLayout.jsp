@@ -83,26 +83,26 @@
 		
 		<div id= "usersLowerRectangle" class = "lowerRectangle">
 			
-			<b> <a href ="../wa_user/userAdmin.jsp" > Add </a> </b> <br>
-			<b> <a href ="../wa_user/userDelete.jsp" > Delete </a> </b> <br>
-			<b> <a href ="../wa_user/userAdminUpdate.jsp" > Update </a> </b> <br>
-			<b> <a href ="../wa_user/userDelete.jsp" > Skills </a> </b> <br>
-			<b> <a href ="../wa_user/userAdminUpdate.jsp" > Positions </a> </b> <br>
+			<b> <a href ="../wa_user/add_user.jsp" > Add </a> </b> <br>
+			<b> <a href ="../wa_user/delete_user.jsp" > Delete </a> </b> <br>
+			<b> <a href ="../wa_user/update_user.jsp" > Update </a> </b> <br>
+			<b> <a href ="" > Skills </a> </b> <br>
+			<b> <a href ="" > Positions </a> </b> <br>
 		</div>
 		<br>
 		
-		<div id= "maintenanceUpperRectangle" class="upperRectangle">
+		<div id= "locationsUpperRectangle" class="upperRectangle">
 		
-			<div class="sidebarTitle" id="maintenanceTitle"> Locations </div>
+			<div class="sidebarTitle" id="locationsTitle"> Locations </div>
 		
 		</div>
 		
 		<!-- White Background for boxes-->
 		
-		<div id= "maintenanceLowerRectangle" class = "lowerRectangle">
+		<div id= "locationsLowerRectangle" class = "lowerRectangle">
 			
-			<b> <a href ="../wa_settings/security_settings.jsp"> Add </a> </b> <br>
-			<b> <a href ="../wa_settings/security_settings.jsp"> Update </a> </b> <br>
+			<b> <a href ="../wa_location/add_location.jsp"> Add </a> </b> <br>
+			<b> <a href ="../wa_location/update_location.jsp"> Update </a> </b> <br>
 		
 		</div>
 		
