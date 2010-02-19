@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry excluding="lib/" kind="src" path="src"/>
-	<classpathentry kind="src" path="src/lib"/>
+	<classpathentry kind="src" path="lib"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/com.sun.enterprise.jst.server.runtimeTarget/GlassFish v3 Java EE 6">
 		<attributes>
@@ -10,15 +10,7 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="/home/dann/workspace/WebAgendaNew/src/lib/DoubleLinkedList-DK.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/home/dann/workspace/WebAgendaNew/src/lib/mysql-connector-java-5.1.11-bin.jar">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
+	<classpathentry kind="lib" path="lib/DoubleLinkedList-DK.jar"/>
+	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.11-bin.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
