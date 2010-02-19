@@ -87,9 +87,9 @@
 		
 		<div id="mailLowerRectangle" class = "lowerRectangle">
 			
-			<b> <a href ="../wa_email/email.jsp" > Inbox </a> </b> <br>
+			<b> <a href ="../wa_email/inbox.jsp" > Inbox </a> </b> <br>
 			<b> <a href ="../wa_email/compose.jsp"> Compose </a> </b> <br>
-			<b> <a href =" " > Drafts </a> </b> <br>
+			<b> <a href ="../wa_email/drafts.jsp"> Drafts </a> </b> <br>
 			<b> <a href =" " > Notifications </a> </b> <br>
 			
 		
@@ -108,12 +108,31 @@
 		<div id= "helpLowerRectangle" class = "lowerRectangle">
 			
 			<b> <a href =" " > Search Help </a> </b> <br>
-			<b> <a href =" " >  Contact Admin </a> </b> <br>
+			<b> <a href ="../wa_help/contactAdmin.jsp">  Contact Admin </a> </b> <br>
 			<b> <a href =" " > Online Help </a> </b> <br>
+		</div>
+		
+		<br>
+		
+		<!--Noorin-->
+		<div id= "settingsUpperRectangle" class="upperRectangle">
+		
+			<div class="sidebarTitle" id="settingsTitle">Settings</div>
+		
+		</div>
+		
+		<!-- White Background for boxes-->
+		
+		<div id= "settingsLowerRectangle" class = "lowerRectangle">
+			
+			<b> <a href ="../wa_settings/security_settings.jsp"> Security </a> </b> <br>
+			<b> <a href ="../wa_settings/admin_profile.jsp"> Admin's Profile </a> </b> <br>
+			<b> <a href ="../wa_settings/corporate_settings.jsp" > Corporate's Profile </a> </b> <br>
 		</div>
 	
 	</div>
 	<!-- End sidebar div -->
+	<!-- End of Header file -->
 
 </body>
 </html>

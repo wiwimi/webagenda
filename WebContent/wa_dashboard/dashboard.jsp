@@ -89,7 +89,7 @@ if(session.getAttribute("username") != null)
 			
 			<b> <a href ="../wa_user/userAdmin.jsp" > Add </a> </b> <br>
 			<b> <a href ="../wa_user/userDelete.jsp" > Delete </a> </b> <br>
-			<b> <a href =" " > Update </a> </b> <br>
+			<b> <a href ="../wa_user/userAdminUpdate.jsp" > Update </a> </b> <br>
 		</div>
 		
 		<br>
@@ -128,6 +128,24 @@ if(session.getAttribute("username") != null)
 			<b> <a href =" " > Search Help </a> </b> <br>
 			<b> <a href ="../wa_help/contactAdmin.jsp">  Contact Admin </a> </b> <br>
 			<b> <a href =" " > Online Help </a> </b> <br>
+		</div>
+		
+		<br>
+		
+		<!--Noorin-->
+		<div id= "settingsUpperRectangle" class="upperRectangle">
+		
+			<div class="sidebarTitle" id="settingsTitle">Settings</div>
+		
+		</div>
+		
+		<!-- White Background for boxes-->
+		
+		<div id= "settingsLowerRectangle" class = "lowerRectangle">
+			
+			<b> <a href ="../wa_settings/security_settings.jsp"> Security </a> </b> <br>
+			<b> <a href ="../wa_settings/admin_profile.jsp"> Admin's Profile </a> </b> <br>
+			<b> <a href ="../wa_settings/corporate_settings.jsp" > Corporate's Profile </a> </b> <br>
 		</div>
 	
 	</div>

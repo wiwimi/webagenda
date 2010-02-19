@@ -1,3 +1,5 @@
+/*author:Noorin, Mark you added to this so feel free to put your name where appropriate*/
+
 $(document).ready(function()
 {	
 	    $('#helpUpperRectangle').click(function()
@@ -43,6 +45,23 @@ $(document).ready(function()
 			}
 		
 		});
+		
+		$('#settingsUpperRectangle').click(function()
+				{
+					if($('#settingsLowerRectangle').is(":hidden"))
+					{
+				
+						$('#settingsLowerRectangle').slideDown('fast');
+					}
+					else
+					{
+					
+						$('#settingsLowerRectangle').slideUp('fast');
+					
+					}
+				
+	   });
+		
 		$('#scheduleWidgetUpperRectangle').click(function()
 		{
 			if($('#scheduleWidgetLowerRectangle').is(":hidden"))

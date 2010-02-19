@@ -369,6 +369,19 @@ label {
 		content:url(../lib/images/icons/BlckWhite/001_45.png);
 	}
 	
+	#settingsTitle
+	{
+		font-weight:bold;
+		font-size:1.2em;
+	}
+	
+	#settingsTitle:before
+	{
+		position:relative;
+		top:5px;
+		content:url(../lib/images/icons/BlckWhite/001_45.png);
+	}
+	
 	#usersTitle
 	{
 		font-weight:bold;

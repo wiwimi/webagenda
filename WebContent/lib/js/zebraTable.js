@@ -1,3 +1,5 @@
+/*author: Noorin*/
+
 $(function()
 	{ 
 		

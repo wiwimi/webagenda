@@ -1,5 +1,5 @@
 @CHARSET "ISO-8859-1";
-#addUser input, select
+#updateAdmin input, select
 
 {
 	background-color: #FFFFFF;
@@ -7,12 +7,12 @@
 	border: 1px solid #000080;
 	border:solid 1px #aacfe4;
 }
-#addUser input:focus
+#updateAdmin input:focus
 {
 	background-color:#E0E0E0;
 }
 
-#addUser form
+#updateAdmin form
 {
 	 background-color: #FFFFFF;  
 	 color: #000000;   
@@ -22,7 +22,7 @@
 	 padding: 1em 1em;
 	 width:134%;
 }
-#addUser
+#updateAdmin
 {
 	
 	float:left;
@@ -30,18 +30,13 @@
 	padding-bottom:1em;
 	pading-top:0;
 }
-#work
-{
-	//padding-left:275px;
-	position:realtive;
-}
 #personal
 {
 	//float:left;
 	position:realtive;
 }
 
-#addUser label
+#updateAdmin label
 {
 	float: left;
 	text-align: right;
@@ -62,7 +57,7 @@
 	color: #f00;
 }
 
-#addUser input.button
+#updateAdmin input.button
 { 
 	  color:#000061; 
 	  font: cochin, Times, Verdana, helvetica,sans-serif;
@@ -78,7 +73,7 @@
 	 -webkit-border-bottom-right-radius:5px;
 	  -moz-border-radius:10px;
 }
-#addUser input.button:hover
+#updateAdmin input.button:hover
 {
 	color:white;
 	background:#000061
@@ -96,7 +91,7 @@ fieldset.focussed {
  border: 1px solid #000061;
 }
 
-#addUser legend
+#updateAdmin legend
 {
 	color:#151B54; 
 	font: bold 110% cochin, Times, Verdana, helvetica,sans-serif;
