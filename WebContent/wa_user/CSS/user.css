@@ -12,7 +12,7 @@
 	background-color:#E0E0E0;
 }
 
-#addUser form
+#userForm form
 {
 	 background-color: #FFFFFF;  
 	 color: #000000;   
@@ -22,7 +22,7 @@
 	 padding: 1em 1em;
 	 width:134%;
 }
-#addUser
+#userForm
 {
 	
 	float:left;
@@ -41,7 +41,7 @@
 	position:realtive;
 }
 
-#addUser label
+#userForm label
 {
 	width: 7em;
 	float: left;
@@ -63,7 +63,7 @@
 	color: #f00;
 }
 
-#addUser input.button
+#userForm input.button
 { 
 	  color:#000061; 
 	  font: cochin, Times, Verdana, helvetica,sans-serif;
@@ -79,7 +79,7 @@
 	 -webkit-border-bottom-right-radius:5px;
 	  -moz-border-radius:10px;
 }
-#addUser input.button:hover
+#userForm input.button:hover
 {
 	color:white;
 	background:#000061
@@ -99,7 +99,7 @@ fieldset.focussed {
  border: 1px solid #000061;
 }
 
-#addUser legend
+#userForm legend
 {
 	color:#151B54; 
 	font: bold 110% cochin, Times, Verdana, helvetica,sans-serif;

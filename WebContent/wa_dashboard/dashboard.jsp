@@ -25,152 +25,12 @@ if(session.getAttribute("username") != null)
 <script type="text/javascript" src="../lib/js/dashboard.js"></script>
 
 <title>Web Agenda - Dashboard</title>
+
+<!--  Includes -->
+<jsp:include page="../wa_includes/pageLayout.jsp"/>
 </head>
 <body>
-<div id="container">
-<div id="header">
-<div id="headerTitle">Deerfoot Inn and Casino</div>
-<div id="userArea">
-	<h6>Welcome: <% out.println(session.getAttribute("username")); %> | <a href="#">Settings</a> | <a href="../logout">Logout</a></h6>
-</div>
-</div>
 
-<div id="middle">
-
-<div id="sidebar">
-	<!-- Gray colour for rectangles -->
-		
-		<div id= "dashboardUpperRectangle" class="upperRectangleCurrent">
-		
-			<div class="sidebarTitle" id="dashboardTitle">Dashboard</div>
-		
-		</div>
-		
-		<!-- White Background for boxes-->
-		
-		<div id = "dashboardLowerRectangle" class = "lowerRectangle">
-			
-			<b> <a href ="../wa_dashboard/dashboard.jsp" > Dashboard  </a> </b> <br>
-			<b> <a href ="" > Reports </a> </b> <br>
-		</div>
-		
-		<br>
-
-		<!-- Gray colour for rectangles -->
-		
-		<div id = "scheduleUpperRectangle" class="upperRectangle">
-		
-			<div class="sidebarTitle" id="scheduleTitle">Schedule</div>
-		
-		</div>
-		
-		<!-- White Background for boxes-->
-		
-		<div id= "scheduleLowerRectangle" class = "lowerRectangle">
-			
-			<b> <a href ="" > View Schedule  </a> </b> <br>
-			<b> <a href ="" > Request Change </a> </b> <br>
-			<b> <a href ="" > Availability </a> </b> <br>
-		</div>
-		
-		<br>
-		
-		<!-- Gray colour for rectangles -->
-		
-		<div id ="usersUpperRectangle" class="upperRectangle">
-		
-			<div class="sidebarTitle" id="usersTitle">Users</div>
-		
-		</div>
-		
-		<!-- White Background for boxes-->
-		
-		<div id= "usersLowerRectangle" class = "lowerRectangle">
-			
-			<b> <a href ="../wa_user/add_user.jsp" > Add </a> </b> <br>
-			<b> <a href ="../wa_user/delete_user.jsp" > Delete </a> </b> <br>
-			<b> <a href ="../wa_user/update_user.jsp" > Update </a> </b> <br>
-			<b> <a href ="" > Skills </a> </b> <br>
-			<b> <a href ="" > Positions </a> </b> <br>
-		</div>
-		<br>
-		
-		<div id= "locationsUpperRectangle" class="upperRectangle">
-		
-			<div class="sidebarTitle" id="locationsTitle"> Locations </div>
-		
-		</div>
-		
-		<!-- White Background for boxes-->
-		
-		<div id= "locationsLowerRectangle" class = "lowerRectangle">
-			
-			<b> <a href ="../wa_location/add_location.jsp"> Add </a> </b> <br>
-			<b> <a href ="../wa_location/update_location.jsp"> Update </a> </b> <br>
-		
-		</div>
-		
-		<br>
-		<!-- Gray colour for rectangles -->
-		
-		<div id="mailUpperRectangle" class="upperRectangle">
-		
-			<div class="sidebarTitle" id="mailTitle"> Mail</div>
-		
-		</div>
-		
-		<!-- White Background for boxes-->
-		
-		<div id="mailLowerRectangle" class = "lowerRectangle">
-			
-			<b> <a href ="../wa_email/inbox.jsp" > Inbox </a> </b> <br>
-			<b> <a href ="../wa_email/compose.jsp"> Compose </a> </b> <br>
-			<b> <a href ="../wa_email/drafts.jsp"> Drafts </a> </b> <br>
-			<b> <a href =" " > Notifications </a> </b> <br>
-			
-		
-		</div>
-		
-		<br>
-		
-		<div id= "helpUpperRectangle" class="upperRectangle">
-		
-			<div class="sidebarTitle" id="helpTitle">Help</div>
-		
-		</div>
-		
-		<!-- White Background for boxes-->
-		
-		<div id= "helpLowerRectangle" class = "lowerRectangle">
-			
-			<b> <a href =" " > Search Help </a> </b> <br>
-			<b> <a href ="../wa_help/contactAdmin.jsp">  Contact Admin </a> </b> <br>
-			<b> <a href =" " > Online Help </a> </b> <br>
-		</div>
-		
-		<br>
-		
-		<!--Noorin-->
-		<div id= "settingsUpperRectangle" class="upperRectangle">
-		
-			<div class="sidebarTitle" id="settingsTitle">Settings</div>
-		
-		</div>
-		
-		<!-- White Background for boxes-->
-		
-		<div id= "settingsLowerRectangle" class = "lowerRectangle">
-			
-			<b> <a href ="../wa_settings/security_settings.jsp"> Security </a> </b> <br>
-			<b> <a href ="../wa_settings/admin_profile.jsp"> Admin's Profile </a> </b> <br>
-			<b> <a href ="../wa_settings/corporate_settings.jsp" > Corporate's Profile </a> </b> <br>
-		</div>
-		
-		
-	</div>
-	<!-- End sidebar div -->
-	<!-- End of Header file -->
-	
 	<div id="notification">
 		<div id="notificationText">This is a test notification</div>
 		<div id="notificationCloseButton">Close</div>
@@ -210,7 +70,7 @@ if(session.getAttribute("username") != null)
 		</div>
 		
 		<div id="scheduleWidget" class="fullWidget">
-			<div class="widgetUpperRectangle" id="scheduleWidgetUpperRectangle">
+			<div class="widgetUpperRectangle" id="scheduleUpperRectangle">
 				<div class="widgetTitle" id="scheduleWidgetTitle">Schedule</div>
 			</div>
 			
@@ -245,12 +105,11 @@ if(session.getAttribute("username") != null)
 		
 	</div>
 	</div>
-	
 	<!-- End middle content div -->
-</div>
+
 
 <div id="footer"></div>
-</div>
+
 </body>
 </html>
 

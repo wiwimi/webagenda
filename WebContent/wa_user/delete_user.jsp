@@ -19,10 +19,6 @@
 <!-- Libraries -->
 <script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>	
 
-<!--  Includes -->
-<jsp:include page="../wa_includes/pageLayout.jsp"/>
-
-
 <title>Deleting User</title>
 </head>
 <body>

@@ -5,9 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<!--  Includes -->
-<jsp:include page="../wa_includes/pageLayout.jsp"/>
-
 <!-- Libraries -->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <style type="text/css">@import "../lib/js/jquery.datepick.css";</style> 
@@ -21,6 +18,10 @@
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 
 <title>Adding User</title>
+
+<!--  Includes -->
+<jsp:include page="../wa_includes/pageLayout.jsp"/>
+
 </head>
 <body>
 Fields marked with <em class="asterisk" > *</em> are required.
@@ -36,7 +37,7 @@ Randomly generated passwords are going to be sent to the employee's e-mail. If t
 			
 		<div class="widgetLowerRectangle" id="quickLinksLowerRectangle">
 
-		<div id ="addUser">
+		<div id ="userForm">
 			<form class="addUserForm" method="post">
 			 <div id="personal">
 			
@@ -96,7 +97,7 @@ Randomly generated passwords are going to be sent to the employee's e-mail. If t
 									<br></br>
 									<br></br>
 					</p>		
-								<!--This should be populated from MaintainSkills use case -->
+								<!--This should be populated from MaintainPermission use case -->
 					
 					<p>
 							<label id="theSelect" class="theSelect"> Permission level: </label>  

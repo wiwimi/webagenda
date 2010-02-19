@@ -159,11 +159,28 @@ label {
 	overflow:hidden;
 }
 
+#scheduleLowerRectangle
+{
+	overflow:hidden;
+}
+
+#skillLowerRectangle
+{
+	overflow:hidden;
+}
+
 #scheduleWidgetTitle:before
 {
 	position:relative;
 	top:5px;
 	content: url(../lib/images/icons/Color/001_44.png);
+}
+
+#skillWidgetTitle:before
+{
+	position:relative;
+	top:5px;
+	content: url(../lib/images/icons/Color/001_18.png);
 }
 
 #notificationsWidgetTitle:before

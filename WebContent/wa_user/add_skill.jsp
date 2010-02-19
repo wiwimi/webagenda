@@ -5,17 +5,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-
-
-
 <!-- Javascript Files -->
 <script type="text/javascript" src="../lib/js/dashboard.js"></script>
 
 <!--  CSS files -->
-<link rel="stylesheet" href="CSS/location.css" type="text/css"></link>
+<link rel="stylesheet" href="CSS/user.css" type="text/css"></link>
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 
-<title>Adding Location</title>
+<title>Adding Skill</title>
 
 <!--  Includes -->
 <jsp:include page="../wa_includes/pageLayout.jsp"/>
@@ -25,20 +22,20 @@
 Fields marked with <em class="asterisk" > *</em> are required.
 <br></br>
 <br></br>
-		<div id="locationWidget" class="fullWidget">
-			<div class="widgetUpperRectangle" id="locationsUpperRectangle">
-				<div class="widgetTitle" id="locationsTitle">Locations</div>
+		<div id="skillWidget" class="fullWidget">
+			<div class="widgetUpperRectangle" id="skillUpperRectangle">
+				<div class="widgetTitle" id="skillWidgetTitle">Skills </div>
 			</div>
 			
-		<div class="widgetLowerRectangle" id="locationsLowerRectangle">
+		<div class="widgetLowerRectangle" id="skillLowerRectangle">
 
-		<div id ="addLocation">
-			<form class="addLocationForm" method="post">
-			<div id="location">
+		<div id ="userForm">
+			<form class="addSkillForm" method="post">
+			<div id="skill">
 				 <fieldset>
-					<legend > Location Details
+					<legend > Skill Details
 					
-							<p>	<label> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="locationName" size ="30"> </p>
+							<p>	<label> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="skillName" size ="30"> </p>
 							
 							<p>	<label> Description: </label></p>
 							<textarea  name="descreption" cols="23" rows="6" tabindex="101"></textarea>

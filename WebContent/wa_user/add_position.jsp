@@ -5,17 +5,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-
-
-
 <!-- Javascript Files -->
 <script type="text/javascript" src="../lib/js/dashboard.js"></script>
 
 <!--  CSS files -->
-<link rel="stylesheet" href="CSS/location.css" type="text/css"></link>
+<link rel="stylesheet" href="CSS/user.css" type="text/css"></link>
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 
-<title>Adding Location</title>
+<title>Adding Positions</title>
 
 <!--  Includes -->
 <jsp:include page="../wa_includes/pageLayout.jsp"/>
@@ -25,23 +22,44 @@
 Fields marked with <em class="asterisk" > *</em> are required.
 <br></br>
 <br></br>
-		<div id="locationWidget" class="fullWidget">
-			<div class="widgetUpperRectangle" id="locationsUpperRectangle">
-				<div class="widgetTitle" id="locationsTitle">Locations</div>
+		<div id="skillWidget" class="fullWidget">
+			<div class="widgetUpperRectangle" id="skillUpperRectangle">
+				<div class="widgetTitle" id="skillWidgetTitle">Positions </div>
 			</div>
 			
-		<div class="widgetLowerRectangle" id="locationsLowerRectangle">
+		<div class="widgetLowerRectangle" id="skillLowerRectangle">
 
-		<div id ="addLocation">
-			<form class="addLocationForm" method="post">
-			<div id="location">
+		<div id ="userForm">
+			<form class="addPositionForm" method="post">
+			<div id="position">
 				 <fieldset>
-					<legend > Location Details
+					<legend > Position Details
 					
-							<p>	<label> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="locationName" size ="30"> </p>
+							<p>	<label> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="skillName" size ="30"> </p>
+							
+							
+								<!--This should be populated from MaintainSkills use case -->
+							<p>
+									<label id="theSelect" class="theSelect"> Required Skills: </label>  
+											<select name="skills" size=3 multiple>
+													<option value="1">Accounting</option>
+													<option value="2">Cooking</option>
+													<option value="3">Event Planning</option>
+											</select>
+											<br></br>
+											<br></br>
+							</p>		
 							
 							<p>	<label> Description: </label></p>
 							<textarea  name="descreption" cols="23" rows="6" tabindex="101"></textarea>
+					
+					
+					
+					
+					
+					
+					
+					
 					</legend>
 				</fieldset>
 			

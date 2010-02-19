@@ -86,8 +86,8 @@
 			<b> <a href ="../wa_user/add_user.jsp" > Add </a> </b> <br>
 			<b> <a href ="../wa_user/delete_user.jsp" > Delete </a> </b> <br>
 			<b> <a href ="../wa_user/update_user.jsp" > Update </a> </b> <br>
-			<b> <a href ="" > Skills </a> </b> <br>
-			<b> <a href ="" > Positions </a> </b> <br>
+			<b> <a href ="../wa_user/add_skill.jsp" > Skills </a> </b> <br>
+			<b> <a href ="../wa_user/add_position.jsp" > Positions </a> </b> <br>
 		</div>
 		<br>
 		
