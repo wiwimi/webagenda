@@ -13,6 +13,9 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Observable;
+import java.util.Observer;
+
 import application.ThreadedConnection;
 
 import persistence.*;
@@ -33,7 +36,6 @@ public class AppDriver {
 
 	/** Connection Manager for setting up Broker connections. */
 	private static ConnectionManager con_man = null;
-	
 	
 	/**
 	 * Method to setup the backend
@@ -94,8 +96,8 @@ public class AppDriver {
 //			String str = employees.getString(3);
 //			
 //			System.out.println("Employee " + i + " has a first name of " + str);
-			
-			
+
+			ConnectionMonitor.getConnectionMonitor().run();
 			
 		} catch (HeadlessException e) {
 			// TODO Auto-generated catch block
@@ -123,6 +125,70 @@ public class AppDriver {
 			// This statement should only be accessed if the application is shutdown on the server or errors cause application to fail.
 			messagelog.Logging.closeAllLogs();
 		}
+		
+	}
+	
+	/**
+	 * 
+	 * @author dann
+	 * @version 0.01.00
+	 * @license GPL 2
+	 * 
+	 * Class that monitors the number of connections to the database that exist. Is a thread that sleeps until the number
+	 * of connections equals 0, then exits the program.
+	 */
+	public static class ConnectionMonitor extends Observable implements Runnable
+	{
+
+		private static ConnectionMonitor cm = new ConnectionMonitor();
+		
+		static ConnectionMonitor getConnectionMonitor()
+		{
+			return cm;
+		}
+		
+		@Override
+		public void run() {
+			
+			try {
+				while(true)
+				{
+					System.out.println("Main Program Sleeping");
+					Thread.sleep(Long.MAX_VALUE);
+					
+					if(ConnectionManager.getManager().numberOfConnections() < 1)
+					{
+						return;
+					}
+				}
+			} catch (HeadlessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InstantiationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		
+		public void runWebAgenda()
+		{
+			run();
+		}
+		
+		
 		
 	}
 	
