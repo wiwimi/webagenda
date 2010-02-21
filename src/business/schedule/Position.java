@@ -21,4 +21,9 @@ public class Position {
 	/** This attribute is a description of the name of the position. It is optional, but may aid in informed
 	 * decisions that new users may require when scheduling. */
 	private String description						= null;
+	
+	public Position(String pos_name)
+	{
+		name = pos_name;
+	}
 }

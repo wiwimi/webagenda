@@ -21,6 +21,9 @@ public class Location {
 	 * goes on at that location or who should/does work at that location. This is optional. */
 	private String description						= null;
 	
-	
+	public Location(String str)
+	{
+		name = str;
+	}
 	
 }

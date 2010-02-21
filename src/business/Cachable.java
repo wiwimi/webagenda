@@ -45,5 +45,4 @@ public abstract class Cachable implements Serializable {
 	public abstract boolean canRead();
 	
 	
-	
 }

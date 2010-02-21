@@ -97,7 +97,9 @@ public class AppDriver {
 			
 			con_man.notifyObservers("Notifying Manager to send this to all ThreadedConnections");
 			
-			// Fetch data from db
+			// Fetch data from db -- this should fetch all employees.
+			Employee all_emp = new Employee(-1,null,null,null,null,null,null);
+			brok_emp.get(all_emp);
 			
 
 

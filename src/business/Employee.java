@@ -141,6 +141,12 @@ public class Employee extends Cachable
 		
 	}
 	
+	/** Produces a blank template of an employee */
+	public Employee()
+	{
+		
+	}
+	
 	/**
 	 * @return the employee_id
 	 */
@@ -269,6 +275,11 @@ public class Employee extends Cachable
 		preferred_location = preferredLocation;
 		}
 
+	public void setPreferred_location(String preferredLocation)
+	{
+		preferred_location = new Location(preferredLocation);
+	}
+	
 	/**
 	 * @return the preferred_position
 	 */
@@ -284,6 +295,11 @@ public class Employee extends Cachable
 		{
 		preferred_position = preferredPosition;
 		}
+	
+	public void setPreferred_position(String preferredPosition)
+	{
+		preferred_position = new Position(preferredPosition);
+	}
 
 	/**
 	 * @return the permission_level

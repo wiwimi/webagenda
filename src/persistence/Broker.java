@@ -4,6 +4,7 @@
 package persistence;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Observer;
 
 import business.Cachable;
@@ -143,7 +144,7 @@ public abstract class Broker<E extends Cachable> implements Observer
 	 * For id numbers, -1 specifies any id numbers are a match.
 	 * 
 	 * @param c Cachable object template
-	 * @return Cachable[] of matching objects.
+	 * @return Cachable[] of matching objects. Can be null if no matches are found.
 	 */
 	public abstract Cachable[] getCachableObjects(Cachable c);
 	
@@ -162,6 +163,18 @@ public abstract class Broker<E extends Cachable> implements Observer
 		}
 		return -1;
 	}
+	
+	/**
+	 * Method to take a result set and (based on the columns of the appropriate data table) return
+	 * the right results through an array of cachable objects relating to the broker.<br>
+	 * This method is used on objects that are returned from the database, not the actual broker
+	 * cache.
+	 * 
+	 * @param rs ResultSet
+	 * @return Cachable array of objects
+	 */
+	protected abstract Cachable[] translateResultSet(ResultSet rs) throws SQLException;
+	
 
 	/**
 	 * @return the db_username

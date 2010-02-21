@@ -13,7 +13,12 @@ package application.dbrequests;
  */
 public class EmployeeCall extends DbCall {
 
+	private static final String EMPLOYEE_TABLE = "EMPLOYEE";
 	
+	public String getAllEmployees()
+	{
+		return returnSelect(new String[]{"*"}, new String[]{EMPLOYEE_TABLE}, null); 
+	}
 	
 	
 	

@@ -3,15 +3,16 @@
  */
 package persistence;
 
-
-import java.awt.HeadlessException;
-
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Observable;
 import java.util.Observer;
 
-import application.ConnectionManager;
-import application.SingularThreadControlException;
+import utilities.DoubleLinkedList;
+
+
+import application.CachableResult;
+import application.dbrequests.EmployeeCall;
 import business.Cachable;
 import business.Employee;
 import messagelog.Logging;
@@ -31,6 +32,25 @@ public class EmployeeBroker extends Broker<Employee> implements Observer
 	 * thread must be instantiated by each Broker for its own purpose. So don't go creating hundreds
 	 * of cachebrokers if you want an efficient system. ;) */
 	private Thread	flush_employee						= null; 
+	/** Class that contains methods to return Sql commands (as strings) that can be inputted into a 
+	 * search for Cachable objects.  */
+	private EmployeeCall emp_call						= new EmployeeCall();
+	
+	public static final int empID						= 1;
+	public static final int supervisorID				= 2;
+	public static final int givenName					= 3;
+	public static final int familyName					= 4;
+	public static final int birthDate					= 5;
+	public static final int email						= 6;
+	public static final int username					= 7;
+	public static final int lastLogin					= 8;
+	public static final int password					= 9;
+	public static final int prefPosition				= 10;
+	public static final int prefLocation				= 11;
+	public static final int plevel						= 12;
+	public static final int active						= 13;
+	/** This variable specifies the last table entry in the database that can be retrieved */
+	private static final int last_table_entry			= active;
 	
 	/**
 	 * Constructor for EmployeeBroker
@@ -45,9 +65,6 @@ public class EmployeeBroker extends Broker<Employee> implements Observer
 	/**
 	 * Returns an object-based Employee Broker object.
 	 * 
-	 * TODO:
-	 * @param getParam Object to initiate the request: May be an Integer (id), Sort request as
-	 * a string, or other parameters to be defined in the method itself.
 	 * 
 	 * @return EmployeeBroker result from the Broker request as its respective Broker object.
 	 */
@@ -105,10 +122,18 @@ public class EmployeeBroker extends Broker<Employee> implements Observer
 		}
 
 	@Override
-	public Employee[] get(Employee getObj)
+	public Employee[] get(Employee template)
 		{
-		// TODO Auto-generated method stub
+		if(template.getEmployee_id() >= 0)
+		{
+			// Returns only one employee
+			CachableResult cres = new CachableResult(template,emp_call.getAllEmployees());
+		}
+		else {
+			// May Return multiples
+		}
 		return null;
+		
 		}
 
 	@Override
@@ -132,6 +157,36 @@ public class EmployeeBroker extends Broker<Employee> implements Observer
 	@Override
 	public Cachable[] getCachableObjects(Cachable c) {
 		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected Cachable[] translateResultSet(ResultSet rs) throws SQLException {
+		DoubleLinkedList<Employee> dll = new DoubleLinkedList<Employee>();
+		rs.next();
+		Employee emp = new Employee();
+		for(int i = 0; i < last_table_entry; i++)
+		{
+			emp.setEmployee_id(rs.getInt(empID));
+			emp.setSupervisor(rs.getInt(supervisorID));
+			emp.setGivenName(rs.getString(givenName));
+			emp.setFamilyName(rs.getString(familyName));
+			emp.setBirth_date(rs.getDate(birthDate));
+			emp.setEmail(rs.getString(email));
+			emp.setUsername(rs.getString(username));
+			emp.setLastLogin(rs.getDate(lastLogin));
+			emp.setPassword(rs.getString(password));
+			emp.setPreferred_position(rs.getString(prefPosition));
+			emp.setPermission_level(rs.getString(plevel));
+			emp.setActive(rs.getBoolean(active));
+		}
+		
+		//employees.next(); // Must be positioned to first (next) item before it can be read
+		//int i = employees.getInt(1);
+		//String str = employees.getString(3);
+		//
+		//System.out.println("Employee " + i + " has a first name of " + str);
+		
 		return null;
 	}
 	
