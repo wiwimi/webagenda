@@ -20,6 +20,9 @@
 <script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>	
 
 <title>Web Agenda- Deleting User</title>
+
+<!--  Includes -->
+<jsp:include page="../wa_includes/pageLayout.jsp"/>
 </head>
 <body>
 

@@ -169,13 +169,6 @@ label {
 	overflow:hidden;
 }
 
-#scheduleWidgetTitle:before
-{
-	position:relative;
-	top:5px;
-	content: url(../lib/images/icons/Color/001_44.png);
-}
-
 #skillWidgetTitle:before
 {
 	position:relative;
@@ -373,6 +366,13 @@ label {
 		content:url(../lib/images/icons/Color/001_20.png);
 	}
 	
+	#scheduleWidgetTitle:before
+	{
+		position:relative;
+		top:5px;
+		content: url(../lib/images/icons/Color/001_44.png);
+	}
+	
 	#scheduleTitle
 	{
 		font-weight:bold;
@@ -411,6 +411,12 @@ label {
 		top:5px;
 		content:url(../lib/images/icons/BlckWhite/001_55.png);
 	}
+	#usersWidgetTitle:before
+	{
+		position:relative;
+		top:5px;
+		content:url(../lib/images/icons/Color/001_54.png);
+	}
 	
 	#mailTitle
 	{
@@ -445,12 +451,33 @@ label {
 		font-size:1.2em;
 	}
 	
+	#locationsWidgetTitle:before
+	{
+		position:relative;
+		top:5px;
+		content:url(../lib/images/icons/Color/001_41.png);
+	}
+	
 	
 	#locationsTitle:before
 	{
 		position:relative;
 		top:5px;
 		content:url(../lib/images/icons/BlckWhite/001_41.png);
+	}
+	
+	#requestTitle
+	{
+		font-weight:bold;
+		font-size:1.2em;
+	}
+	
+	
+	#requestWidgetTitle:before
+	{
+		position:relative;
+		top:5px;
+		content:url(../lib/images/icons/Color/001_50.png);
 	}
 	
 	

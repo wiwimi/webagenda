@@ -32,7 +32,7 @@ Randomly generated passwords are going to be sent to the employee's e-mail. If t
 
 		<div id="usersWidget" class="fullWidget">
 			<div class="widgetUpperRectangle" id="usersUpperRectangle">
-				<div class="widgetTitle" id="usersTitle">Users</div>
+				<div class="widgetTitle" id="usersWidgetTitle">Users</div>
 			</div>
 			
 		<div class="widgetLowerRectangle" id="quickLinksLowerRectangle">

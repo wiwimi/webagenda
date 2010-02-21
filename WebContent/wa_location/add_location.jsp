@@ -27,7 +27,7 @@ Fields marked with <em class="asterisk" > *</em> are required.
 <br></br>
 		<div id="locationWidget" class="fullWidget">
 			<div class="widgetUpperRectangle" id="locationsUpperRectangle">
-				<div class="widgetTitle" id="locationsTitle">Locations</div>
+				<div class="widgetTitle" id="locationsWidgetTitle">Locations</div>
 			</div>
 			
 		<div class="widgetLowerRectangle" id="locationsLowerRectangle">

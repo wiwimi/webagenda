@@ -85,6 +85,6 @@ Randomly generated passwords are going to be sent to the employee's e-mail. If t
 </script>
 
 <div id="footer"></div>
-</div>
+
 </body>
 </html>

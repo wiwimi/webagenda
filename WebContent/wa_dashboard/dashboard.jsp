@@ -71,7 +71,7 @@ if(session.getAttribute("username") != null)
 		
 		<div id="scheduleWidget" class="fullWidget">
 			<div class="widgetUpperRectangle" id="scheduleUpperRectangle">
-				<div class="widgetTitle" id="scheduleWidgetTitle">Schedule</div>
+				<div class="widgetTitle" id="scheduleTitle">Schedule</div>
 			</div>
 			
 			<div class="widgetLowerRectangle" id="scheduleWidgetLowerRectangle">
