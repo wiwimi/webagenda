@@ -38,6 +38,7 @@ import messagelog.Logging;
  * 
  * FIXME:
  * 		Writes should have priority over reads (need priority mechanism? One built in?)
+ * 		Connection Removal (notify ConnectionMonitor in AppDriver)
  * 		
  * 
  */
@@ -146,15 +147,13 @@ public class ConnectionManager extends Observable {
 	 * 
 	 * @param state SqlStatement to send to the database.
 	 * @throws SingularThreadControlException when ConnectionManager refuses to manage connection - Broker handles connection, multiple db connections exist.
-	 * @return ResultSet of the statement sent to the database.
 	 */
-	public ResultSet issueStatement(SqlStatement state) throws SingularThreadControlException
+	public void issueStatement(SqlStatement state) throws SingularThreadControlException
 	{
 		if(!isSingular()) throw new SingularThreadControlException(); // This should exit the method call
-		System.out.println("issuing statement to ThreadedConnnection");
-		notifyObservers(state);
-		
-		return null;
+		notifyObservers(state); /* Sends the statement to the threaded connection object (singular thread)
+		 as the exception has not been thrown by this point. It is added to queue and processed. 
+		 The statement results will be sent back to the Broker object from whence it originated. */
 	}
 	
 	/**

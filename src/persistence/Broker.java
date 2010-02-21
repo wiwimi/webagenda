@@ -3,20 +3,21 @@
  */
 package persistence;
 
-import java.sql.ResultSet;
-
-import com.mysql.jdbc.Statement;
+import java.util.Observer;
 
 import application.SqlStatement;
 import business.Cachable;
+import persistence.BrokerThread;
 
 /**
- * All brokers should inherit this class
+ * All brokers should inherit this class.
+ * Includes database information for multiple db connectivity, BrokerThreads and associated methods for fetching results from the
+ * database and managing the threads.
  * 
  * @author dann, Daniel Wehr
  * @version 0.2.0
  */
-public abstract class Broker<E extends Cachable>
+public abstract class Broker<E extends Cachable> implements Observer
 	{
 	
 	/** The database username that contains access to webagenda data */
@@ -35,17 +36,19 @@ public abstract class Broker<E extends Cachable>
 	private String					db_hostname		= "localhost";
 	
 	/**
-	 * Connection that interacts with the ConnectionManager for database requests
-	 */
-	private BrokerThread	threaded_conn	= null;
-	
-	/**
-	 * The max number of threads that the application should use to connect to
-	 * the database. Actual MySQL threads are specified in the mysql database,
-	 * may be configured by installer but not here.
+	 * The max number of threads that the application should use to fetch resultsets from
+	 * sqlstatements simultaneously. The method that calls issueStatement(SqlStatement) will
+	 * then wait until their results are retrieved. That way, if one statement must call the
+	 * db and the next has all data in cache, the cache can quickly retrieve it and the db
+	 * can continue to fetch.
 	 */
 	// Default value unless multithreading is specified.
-	private int						int_threads		= 1;
+	protected int						int_threads		= 5;
+	
+	/**
+	 * The number of available threads that grab queue items and return data.
+	 */
+	private BrokerThread[] request_threads				= new BrokerThread[int_threads];
 	
 	/**
 	 * Flushes the Cache, writing all changes to the database that are 'dirty',
@@ -119,17 +122,84 @@ public abstract class Broker<E extends Cachable>
 	public abstract boolean delete(E deleteObj);
 
 	/**
-	 * Issues a statement to the database which returns the results in a ResultSet object.
+	 * Issues a statement to the database from a Broker object.
 	 * Depending on the application's configuration this method may cause ConnectionManager
 	 * to throw the SingularThreadControlException, which will force the broker to issue
 	 * the command in a thread, otherwise the ConnectionManager will issue it through
 	 * the Singular Thread. The broker will use an applicable *Call object to perform
 	 * statements that will be turned into an SqlStatement and sent.
 	 * Each broker has its own *Call object it uses, with DbCall as its parent.
+	 * The results are returned via an observable/observer pattern so the methods
+	 * that retrieve results don't have to wait on other requests before getting
+	 * their result. 
 	 * 
 	 * @param statement SqlStatement to send to database
 	 * @return ResultSet results from SqlStatement
 	 */
-	public abstract ResultSet issueStatement(SqlStatement statement);
+	abstract void issueStatement(SqlStatement statement);
+	
+	
+	
+	public abstract void queueRequest(SqlStatement statement);
+	
+	/**
+	 * Method to return the next free space in the BrokerThread array. 
+	 * 
+	 * @return int next free position in BrokerThread array
+	 * <br>
+	 * Returns -1 if no free space is found.
+	 */
+	public int nextFreeBrokerThread()
+	{
+		for(int i = 0; i < int_threads; i++)
+		{
+			if(request_threads[i] == null) return i;
+		}
+		return -1;
+	}
+
+	/**
+	 * @return the db_username
+	 */
+	protected String getDb_username() {
+		return db_username;
+	}
+
+	/**
+	 * @param dbUsername the db_username to set
+	 */
+	protected void setDb_username(String dbUsername) {
+		db_username = dbUsername;
+	}
+
+	/**
+	 * @return the db_password
+	 */
+	protected String getDb_password() {
+		return db_password;
+	}
+
+	/**
+	 * @param dbPassword the db_password to set
+	 */
+	protected void setDb_password(String dbPassword) {
+		db_password = dbPassword;
+	}
+
+	/**
+	 * @return the db_hostname
+	 */
+	protected String getDb_hostname() {
+		return db_hostname;
+	}
+
+	/**
+	 * @param dbHostname the db_hostname to set
+	 */
+	protected void setDb_hostname(String dbHostname) {
+		db_hostname = dbHostname;
+	}
+	
+	
 	
 }

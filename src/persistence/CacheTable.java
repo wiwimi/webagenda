@@ -4,7 +4,6 @@
 package persistence;
 
 
-import java.io.IOException;
 import java.util.Date;
 
 import messagelog.Logging;
@@ -35,11 +34,18 @@ public class CacheTable {
 	
 	private FlushThread flusher											= null;
 	
-	CacheTable(Broker broker_to_flush)
+	/**
+	 * Broker parameter is purposefully unchecked because attempting to introduce strict rules prevents this from running.
+	 * FIXME: ?
+	 * 
+	 * @param broker Any Broker object
+	 */
+	@SuppressWarnings("unchecked")
+	CacheTable(Broker broker)
 	{
 		cached_data = new DoubleLinkedList<Cachable>();
 		flush_stamp = new Date();// Place current date into the flush stamp -- this is the last 'flush' recorded.
-		flusher = new FlushThread(broker_to_flush);
+		flusher = new FlushThread(broker);
 	}
 	
 	/**
@@ -126,7 +132,7 @@ public class CacheTable {
 	public class FlushThread extends Thread {
 		
 		/** Remembers what Broker called this flushing thread so it can communicate with broker if required. (Remove if not) TODO */
-		private Broker brok_monitor							= null;
+		private Broker<Cachable> brok_monitor							= null;
 		
 		/**
 		 * Constructor that creates a thread to navigate a specific Broker's cache table as a daemon thread that will
@@ -134,7 +140,7 @@ public class CacheTable {
 		 * 
 		 * @param brok Broker object to monitor
 		 */
-		public FlushThread(Broker brok)
+		public FlushThread(Broker<Cachable> brok)
 		{
 			brok_monitor = brok;
 			this.setDaemon(true);

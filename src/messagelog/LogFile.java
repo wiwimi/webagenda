@@ -58,5 +58,10 @@ public class LogFile {
 		bw_log.write(str);
 	}
 	
+	public void flushLog() throws IOException
+	{
+		bw_log.flush();
+	}
+	
 	
 }

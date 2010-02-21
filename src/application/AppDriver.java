@@ -7,6 +7,13 @@ package application;
  * TODO: Priority in Queue -- when adding, have multiple queues. Make sure one queue works first
  */
 
+//ResultSet employees = WaConnection.issueQuery("SELECT * FROM EMPLOYEE;");
+//employees.next(); // Must be positioned to first (next) item before it can be read
+//int i = employees.getInt(1);
+//String str = employees.getString(3);
+//
+//System.out.println("Employee " + i + " has a first name of " + str);
+
 import java.awt.HeadlessException;
 
 import java.net.InetAddress;
@@ -88,14 +95,11 @@ public class AppDriver {
 			
 			con_man.notifyObservers("Notifying Manager to send this to all ThreadedConnections");
 			
-			brok_emp.issueStatement(new SqlStatement(null,null));
+			SqlStatement sqlst = new SqlStatement((Object) brok_emp,"SELECT * FROM employees;");
+			sqlst.addObserver(brok_emp);
+			brok_emp.queueRequest(sqlst);
 			
-//			ResultSet employees = WaConnection.issueQuery("SELECT * FROM EMPLOYEE;");
-//			employees.next(); // Must be positioned to first (next) item before it can be read
-//			int i = employees.getInt(1);
-//			String str = employees.getString(3);
-//			
-//			System.out.println("Employee " + i + " has a first name of " + str);
+
 
 			ConnectionMonitor.getConnectionMonitor().run();
 			

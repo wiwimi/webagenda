@@ -3,7 +3,10 @@
  */
 package persistence;
 
+import java.sql.ResultSet;
 import java.util.Observable;
+
+import application.SqlStatement;
 
 /**
  * @author dann
@@ -23,6 +26,11 @@ public class BrokerThread extends Observable implements Runnable {
 	public void run() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public ResultSet issueRequest(SqlStatement statement)
+	{
+		return null;
 	}
 
 }

@@ -4,12 +4,14 @@
 package application;
 
 import java.awt.HeadlessException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Queue;
 
+import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 
 /**
@@ -43,15 +45,35 @@ public class ThreadedConnection extends Thread implements Observer, Runnable {
 	@Override 
 	public void run()
 	{
+		// Declare Variables here to reduce memory consumption in loop
+		ResultSet results = null;
+			Statement st = null;
+		// Get connection from object
+		Connection con = (Connection) connection;
 		System.out.println("Starting Sql Database loop");
+		
 		while(true)
 		{
+			// Get sql statement from queue
 			SqlStatement sqlstatement = statements.poll();
 			if(sqlstatement == null) {
 				// No items in queue, can exit
 				break;
 			}
 			// Send request to database
+			try {
+				st = (Statement) con.createStatement();
+				results = st.executeQuery(sqlstatement.getStatement());
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				results = null;
+				System.err.println("Execution of SqlStatement failed. Check Synatx of Query.");
+				e1.printStackTrace();
+			}
+			
+			
+			
+			
 			
 			try {
 				Thread.sleep(1000); // Temporary, to emulate the time it takes to process db request (not accurate)
@@ -59,11 +81,14 @@ public class ThreadedConnection extends Thread implements Observer, Runnable {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			System.out.println("Finished statement: " + statements.size());
+			System.out.println("Statements Left: " + statements.size());
 			
 		}
 		
 		System.out.println("Finished Sql Manage Loop, now exiting");
+		results = null;
+		st = null;
+		con = null; // Since connection is the actual connection, this can be nulled without fear of disconnecting
 	}
 
 	@Override
@@ -72,6 +97,7 @@ public class ThreadedConnection extends Thread implements Observer, Runnable {
 			System.out.println(arg.toString());
 		else if(arg instanceof SqlStatement)
 		{
+			// We only want it to start when the list goes from empty to non-empty.
 			statements.add((SqlStatement) arg);
 			if(statements.size() == 1) {
 				start(); // Was previously 0 

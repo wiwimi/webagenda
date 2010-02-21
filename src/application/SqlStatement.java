@@ -4,7 +4,11 @@
 package application;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Observable;
+import java.util.Observer;
 
+import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 
 /**
@@ -15,15 +19,14 @@ import com.mysql.jdbc.Statement;
  * Class that represents an Sql Statement with optional WebAgenda values such as priority and
  * which broker sent the statement.
  */
-public class SqlStatement {
+public class SqlStatement extends Observable {
 
 	private byte priority 						= 4;
-	private Statement sql_state					= null;
+	private String sql_state					= null;
 	private Object broker_obj_ref				= null;
-	/** ResultSet is only non-null IF multiple threading is enabled. If Brokers use the Singular thread for
-	 * retrieving db data, the resultset is determined in ConnectionManager. Otherwise, this class will
-	 * save the result set. */
 	private ResultSet result					= null;
+	/** Position in Queue of sql statements */
+	private int position						= -1;
 	
 	/**
 	 * Constructor that uses a priority of 4 (average urgency) to create an Sql Statement
@@ -31,8 +34,9 @@ public class SqlStatement {
 	 * @param broker_ref Object reference to the Broker that requested this statement
 	 * @param state Statement to send to Database
 	 */
-	public SqlStatement(Object broker_ref, Statement state)
+	public SqlStatement(Object broker_ref, String state)
 	{
+		broker_obj_ref = broker_ref;
 		sql_state = state;
 	}
 	
@@ -42,8 +46,9 @@ public class SqlStatement {
 	 * @param state Statment to send to database
 	 * @param p Byte priority
 	 */
-	public SqlStatement(Object broker_ref, Statement state, byte p)
+	public SqlStatement(Object broker_ref, String state, byte p)
 	{
+		broker_obj_ref = broker_ref;
 		sql_state = state;
 		priority = p;
 	}
@@ -83,11 +88,41 @@ public class SqlStatement {
 	/**
 	 * Returns the statement that was sent to the database.
 	 * 
-	 * @return
+	 * @return String statement to request from database
 	 */
-	Statement getStatement()
+	public String getStatement()
 	{
 		return this.sql_state;
+	}
+	
+	/**
+	 * By supplying a proper connection, this will issue a command to the database through the connection and will
+	 * set the class variable ResultSet to the results which will be returned. It can also be retrieved through
+	 * the getResult() method and set using setResult(ResultSet rs, String statement).<br>
+	 * The setter requires the statement (as a string) because the cache looks at the statement given when
+	 * retrieving previous results.
+	 * 
+	 * @param con Connection to database
+	 * @param str String statement to database
+	 * @return ResultSet results from statement
+	 * @throws SQLException error is returned from statement
+	 */
+	ResultSet issueStatement(Connection con, String str) throws SQLException
+	{
+		Statement st = (Statement) con.createStatement();
+		setResult(st.executeQuery(str),str);
+		return getResult();
+	}
+
+	public ResultSet getResult() {
+		return result;
+	}
+
+	protected void setResult(ResultSet result,String statement) {
+		this.sql_state = statement;
+		this.result = result;
+		this.setChanged();
+		this.notifyObservers(this);
 	}
 	
 }

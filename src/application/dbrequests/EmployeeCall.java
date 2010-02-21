@@ -13,9 +13,8 @@ package application.dbrequests;
  */
 public class EmployeeCall extends DbCall {
 
-	public String getEmployeeSelect()
-	{
-		return this.getSelectString();
-	}
+	
+	
+	
 	
 }

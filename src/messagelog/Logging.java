@@ -78,7 +78,10 @@ public class Logging {
 	}
 	
 	/**
-	 * Writes to log file specified by parameters
+	 * Writes to log file specified by parameters, will also flush after every write. 
+	 * Since recording behavior is important especially leading up to any issues the program
+	 * may encounter, data integrity is a high priority. Logs should not be used frequently
+	 * for debugging messages (those should probably go to system.out)
 	 * 
 	 * @param LOGFILE Type of Logfile to write to, such as the connection log file
 	 * @param TYPE Style of log entry, whether line represents an error, warning, or simple message
@@ -90,6 +93,7 @@ public class Logging {
 		try {
 			// the line.separator command is a system-independant newline character inserted at the end of a log file.
 			logfiles.get(LOGFILE).logMessage(TYPE + " " + message + " [" + new Date() + "]" + System.getProperty("line.separator")); 
+			logfiles.get(LOGFILE).flushLog();
 		} catch (IOException e) {
 			System.err.println("Attempted to write to log file, write failed. File may be closed or filesystem read-only.");
 			System.err.println("Could not write the following message to log: " + message);
@@ -112,6 +116,16 @@ public class Logging {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	public static void flushAllLogs() throws IOException
+	{
+		Iterator<LogFile> it = logfiles.iterator();
+		while(it.hasNext())
+		{
+			it.next().flushLog();
+		}
+		
 	}
 	
 }

@@ -5,10 +5,9 @@ package persistence;
 
 
 import java.awt.HeadlessException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
-import com.mysql.jdbc.Statement;
+import java.sql.SQLException;
+import java.util.Observable;
 
 import application.ConnectionManager;
 import application.SingularThreadControlException;
@@ -118,16 +117,29 @@ public class EmployeeBroker extends Broker<Employee>
 		return false;
 		}
 
+	
+	
+	
 	@Override
-	public ResultSet issueStatement(SqlStatement statement) {
+	void issueStatement(SqlStatement statement) {
 		
 		try {
+			
+			// Attempt to grab from cache
+			
+			// Then give control to connection manager
+			
+			// the sql statement should notify observer that results are finished.
+			
 			ConnectionManager.getManager().issueStatement(statement);
 		} catch (HeadlessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SingularThreadControlException e) {
-			// TODO Auto-generated catch block
+			
+			//TODO: Broker implemented function
+			
+			
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -142,10 +154,21 @@ public class EmployeeBroker extends Broker<Employee>
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-			
-		return null;
 	}
 
+	@Override
+	public void update(Observable o, Object arg) {
+		// Incoming sqlstatement with results
+		SqlStatement sql = null;
+		
+	}
+
+	@Override
+	public void queueRequest(SqlStatement statement) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	
 	
 }
