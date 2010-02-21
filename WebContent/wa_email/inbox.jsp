@@ -10,6 +10,7 @@
 <!--  CSS files -->
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="CSS/email.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="CSS/inbox.css" type="text/css" media="screen" />
 
 <!--  Libraries -->
 <script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
@@ -48,17 +49,28 @@
 			</h6>
 			</div>
 			
-			<div class = "border" summary ="inbox">
+			<div id="tableArea">
+							<div class="userAdmin">
+				<table class="sortable" id="userTable">
+					<thead class="head">
+						<tr class="headerRow">
 
-				<table class = "sortable">
-					<thead>
-						<tr>
-							<th> <input type=checkbox name="sort"> </input>  </th>
-							<th> <b> From </b> </th>
-							<th> <b>Subject </b> </th>
-							<th> <b>Date </b> </th>
+							<th> <input type=checkbox name="sort">  </th>
+							<th> From  </th>
+							<th> Subject </th>
+							<th> Date </th>
 						</tr>
 					</thead>
+					
+					<tfoot class="foot">
+						<tr class="headerRow">
+						<th> <input type=checkbox name="sort">  </th>
+							<th>From</th>
+							<th>Subject</th>
+							<th>Date</th>
+						</tr>
+					</tfoot>
+					
 					<tbody>
 						
 						<tr>
@@ -84,22 +96,8 @@
 						
 						</tr>
 						
-						<tr>
-							<th> </th>
-							<td>  </td>
-							<td>  </td>
-							<td>  </td>
-						
-						</tr>
-						
-						<tr>
-							<th>  </th>
-							<td>  </td>
-							<td>  </td>
-							<td>  </td>
 					
-						
-						</tr>
+					
 					</tbody>
 	
 				</table>
@@ -107,8 +105,7 @@
 	</div>
 </div>
 </div>
+</div>
 <div id="footer"></div>
-
 </body>
-
 </html>

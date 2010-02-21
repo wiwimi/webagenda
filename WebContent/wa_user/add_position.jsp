@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="CSS/user.css" type="text/css"></link>
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 
-<title>Adding Positions</title>
+<title>Web Agenda- Positions</title>
 
 <!--  Includes -->
 <jsp:include page="../wa_includes/pageLayout.jsp"/>

@@ -56,8 +56,9 @@
 			</div>
 	</div>
 </div>
-	
+</div>	
 </form>
+
 
 <div id="footer"></div>
 

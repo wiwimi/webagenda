@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="CSS/user.css" type="text/css"></link>
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 
-<title>Adding User</title>
+<title>Web Agenda- Adding a User</title>
 
 <!--  Includes -->
 <jsp:include page="../wa_includes/pageLayout.jsp"/>

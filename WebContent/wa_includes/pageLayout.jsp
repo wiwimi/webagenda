@@ -64,7 +64,7 @@
 		
 		<div id= "scheduleLowerRectangle" class = "lowerRectangle">
 			
-			<b> <a href ="" > View Schedule  </a> </b> <br>
+			<b> <a href ="../wa_schedule/schedule.jsp" > View Schedule  </a> </b> <br>
 			<b> <a href ="" > Request Change </a> </b> <br>
 			<b> <a href ="" > Availability </a> </b> <br>
 		</div>

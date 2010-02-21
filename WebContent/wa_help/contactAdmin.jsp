@@ -19,7 +19,7 @@
 <script type="text/javascript" src="../lib/js/dashboard.js"></script>
 <script src="../lib/js/zebraTable.js" type ="text/javascript"></script>
 
-<title>Contact Admin Form</title>
+<title>Web Agenda- Contact Admin</title>
 
 <!-- Includes -->
 <jsp:include page="../wa_includes/pageLayout.jsp"/>

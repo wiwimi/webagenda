@@ -19,7 +19,7 @@
 <!-- Libraries -->
 <script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>	
 
-<title>Deleting User</title>
+<title>Web Agenda- Deleting User</title>
 </head>
 <body>
 
