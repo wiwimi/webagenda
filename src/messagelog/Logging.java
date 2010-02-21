@@ -97,6 +97,7 @@ public class Logging {
 		} catch (IOException e) {
 			System.err.println("Attempted to write to log file, write failed. File may be closed or filesystem read-only.");
 			System.err.println("Could not write the following message to log: " + message);
+			e.printStackTrace();
 		}
 	}
 	

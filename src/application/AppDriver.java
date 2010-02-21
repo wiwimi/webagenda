@@ -40,6 +40,10 @@ import exception.*;
  * AppDriver is a class to launch the backend, setup all the brokers, establish
  * connections, and wait for input. Any errors in setup should be outputted
  * and logged.
+ * 
+ * Pre-Requisites for using this project as a backend:
+ * 		Copy AppDriver into the front end
+ * 
  */
 public class AppDriver {
 
@@ -65,7 +69,7 @@ public class AppDriver {
 			// ---- Set up Logs ----
 			
 				// Logs first, since ConnectionManager uses log files
-			
+			messagelog.Logging.initializeLogs();
 
 				// Determine IP address (this will be an args item in the installer or command line specification)
 		    InetAddress thisIp = InetAddress.getLocalHost();
@@ -106,7 +110,7 @@ public class AppDriver {
 			}
 			
 			con_man.notifyObservers("Notifying Manager to send this to all ThreadedConnections");
-			ConnectionMonitor.getConnectionMonitor().run();
+			ConnectionMonitor.getConnectionMonitor().runWebAgenda();
 			
 		} catch (HeadlessException e) {
 			// TODO Auto-generated catch block
@@ -132,9 +136,14 @@ public class AppDriver {
 		}
 		finally {
 			// This statement should only be accessed if the application is shutdown on the server or errors cause application to fail.
-			messagelog.Logging.closeAllLogs();
+			//messagelog.Logging.closeAllLogs();
 		}
 		
+	}
+	
+	public static EmployeeBroker getEmpBroker()
+	{
+		return AppDriver.brok_emp;
 	}
 	
 	/**
@@ -146,57 +155,64 @@ public class AppDriver {
 	 * Class that monitors the number of connections to the database that exist. Is a thread that sleeps until the number
 	 * of connections equals 0, then exits the program.
 	 */
-	public static class ConnectionMonitor extends Observable implements Runnable
+	public static class ConnectionMonitor extends Observable
 	{
 
 		private static ConnectionMonitor cm = new ConnectionMonitor();
+		private MainThread thr = null;
 		
 		public static ConnectionMonitor getConnectionMonitor()
 		{
 			return cm;
 		}
-		
-		@Override
-		public void run() {
-			try {
-				while(true)
-				{
-					System.out.println("Main Program Sleeping");
-					Thread.sleep(Long.MAX_VALUE);
-					
-					if(ConnectionManager.getManager().numberOfConnections() < 1)
-					{
-						return;
-					}
-				}
-			} catch (HeadlessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (InstantiationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-		}
 
 		public void runWebAgenda()
 		{
-			run();
+			if(thr == null)
+			{
+				thr = new MainThread();
+				thr.start();
+			}
 		}
 		
-		
+		public class MainThread extends Thread {
+			
+			@Override
+			public void run()
+			{
+				try {
+					while(true)
+					{
+						System.out.println("Main Program Sleeping");
+						Thread.sleep(Long.MAX_VALUE);
+						
+						if(ConnectionManager.getManager().numberOfConnections() < 1)
+						{
+							return;
+						}
+					}
+				} catch (HeadlessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IllegalAccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InstantiationException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+		}
 		
 	}
 	

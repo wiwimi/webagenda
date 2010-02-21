@@ -31,7 +31,7 @@ public class EmployeeBroker extends Broker<Employee> implements Observer
 	/** Collection of Employees to be cached in memory */
 	private CacheTable				employee_cache		= null;
 	/** Static representation of the broker */
-	private static EmployeeBroker	broker_employees	= null;
+	private static volatile EmployeeBroker	broker_employees	= null;
 	/** Thread created in the CacheTable object that flushes this broker's data. Not static because
 	 * thread must be instantiated by each Broker for its own purpose. So don't go creating hundreds
 	 * of cachebrokers if you want an efficient system. ;) */
@@ -94,7 +94,6 @@ public class EmployeeBroker extends Broker<Employee> implements Observer
 		employee_cache = new CacheTable(broker_employees);
 		flush_employee = employee_cache.getFlushThread();
 		flush_employee.start(); // Start your engines
-		System.out.println("flushed");
 	}
 	
 	@Override

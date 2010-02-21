@@ -118,12 +118,11 @@ public class ConnectionManager extends Observable implements Observer {
 	 * @throws IllegalAccessException
 	 * @throws InstantiationException
 	 * @throws SQLException
-	 * @throws InitializedLogFileException Log files are initialized and an attempt to reinitialize them was detected
 	 */
 	public static ConnectionManager getManager(boolean one_instance) throws HeadlessException, ClassNotFoundException, IllegalAccessException, InstantiationException, SQLException, InitializedLogFileException
 	{
 		if(con_manager == null) {
-			messagelog.Logging.initializeLogs();
+			
 			one_request = one_instance;
 			con_manager = new ConnectionManager();
 			if(one_request) {
