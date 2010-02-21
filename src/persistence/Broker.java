@@ -3,11 +3,12 @@
  */
 package persistence;
 
+import java.sql.ResultSet;
 import java.util.Observer;
 
-import application.SqlStatement;
 import business.Cachable;
 import persistence.BrokerThread;
+import utilities.DoubleLinkedList;
 
 /**
  * All brokers should inherit this class.
@@ -35,6 +36,8 @@ public abstract class Broker<E extends Cachable> implements Observer
 	 */
 	private String					db_hostname		= "localhost";
 	
+	private DoubleLinkedList<Cachable> queue		= null;
+	
 	/**
 	 * The max number of threads that the application should use to fetch resultsets from
 	 * sqlstatements simultaneously. The method that calls issueStatement(SqlStatement) will
@@ -57,7 +60,7 @@ public abstract class Broker<E extends Cachable> implements Observer
 	 * @return int error code <br>
 	 *         0: Successful Flush -1: Error (undefined)
 	 */
-	public abstract int flushCache();
+	abstract int flushCache();
 	
 	/**
 	 * Clears the Cache, flushing first and then uninitializing data that hasn't
@@ -65,7 +68,7 @@ public abstract class Broker<E extends Cachable> implements Observer
 	 * 
 	 * @return int error code 0: Successful Clear -1: Error (undefined)
 	 */
-	public abstract int clearCache();
+	abstract int clearCache();
 	
 	/**
 	 * Place object in the Broker's memory. This will significatly reduce access
@@ -75,7 +78,7 @@ public abstract class Broker<E extends Cachable> implements Observer
 	 * @param cache_obj
 	 * @return
 	 */
-	public abstract int cache(E cache_obj);
+	abstract int cache(E cache_obj);
 	
 	/**
 	 * Accepts a newly made object, and creates its equivalent record within the
@@ -120,27 +123,29 @@ public abstract class Broker<E extends Cachable> implements Observer
 	 * @return
 	 */
 	public abstract boolean delete(E deleteObj);
-
+	
 	/**
-	 * Issues a statement to the database from a Broker object.
-	 * Depending on the application's configuration this method may cause ConnectionManager
-	 * to throw the SingularThreadControlException, which will force the broker to issue
-	 * the command in a thread, otherwise the ConnectionManager will issue it through
-	 * the Singular Thread. The broker will use an applicable *Call object to perform
-	 * statements that will be turned into an SqlStatement and sent.
-	 * Each broker has its own *Call object it uses, with DbCall as its parent.
-	 * The results are returned via an observable/observer pattern so the methods
-	 * that retrieve results don't have to wait on other requests before getting
-	 * their result. 
+	 * Returns the Cachable object (a business object) that has the same identifier 
+	 * as the one specified. Will return null if target does not exist.
 	 * 
-	 * @param statement SqlStatement to send to database
-	 * @return ResultSet results from SqlStatement
+	 * @param id int identification number
+	 * @return Cachable object, or null if not found.
 	 */
-	abstract void issueStatement(SqlStatement statement);
+	public abstract Cachable getCachableObject(int id);
 	
-	
-	
-	public abstract void queueRequest(SqlStatement statement);
+	/**
+	 * Returns an array of cachable (business) objects that meet criteria of the
+	 * specified Cachable object. In this method, all attributes are taken into
+	 * account when looking for matching objects (except when null or wildcard values,
+	 * see comments on overriden methods for more information) and a list of
+	 * those are returned.<br>
+	 * <br>
+	 * For id numbers, -1 specifies any id numbers are a match.
+	 * 
+	 * @param c Cachable object template
+	 * @return Cachable[] of matching objects.
+	 */
+	public abstract Cachable[] getCachableObjects(Cachable c);
 	
 	/**
 	 * Method to return the next free space in the BrokerThread array. 

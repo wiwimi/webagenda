@@ -125,6 +125,23 @@ public class Employee extends Cachable
 	private Settings	user_settings			= null;
 
 	/**
+	 * Base constructor for a new employee object. Is required to create a new employee, but values can be null or invalid if using an employee
+	 * object as an object to search criteria off of.
+	 * 
+	 * @param empID int employee id
+	 * @param fname String first name
+	 * @param lname String last (family) name
+	 * @param birthdate Date birthdate
+	 * @param username String username for employee account
+	 * @param password String password for employee account
+	 * @param plevel String permission level (formats: #, ##, #c, ##c -- "0", "43","3a","34i" are acceptable)
+	 */
+	public Employee(int empID, String fname, String lname, Date birthdate, String username, String password,  String plevel)
+	{
+		
+	}
+	
+	/**
 	 * @return the employee_id
 	 */
 	public Integer getEmployee_id()

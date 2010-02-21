@@ -8,10 +8,11 @@ import java.awt.HeadlessException;
 
 import java.sql.SQLException;
 import java.util.Observable;
+import java.util.Observer;
 
 import application.ConnectionManager;
 import application.SingularThreadControlException;
-import application.SqlStatement;
+import business.Cachable;
 import business.Employee;
 import messagelog.Logging;
 
@@ -19,7 +20,7 @@ import messagelog.Logging;
  * @author peon-dev, Daniel Wehr
  * @version 0.2.0
  */
-public class EmployeeBroker extends Broker<Employee>
+public class EmployeeBroker extends Broker<Employee> implements Observer
 	{
 	
 	/** Collection of Employees to be cached in memory */
@@ -117,56 +118,21 @@ public class EmployeeBroker extends Broker<Employee>
 		return false;
 		}
 
-	
-	
-	
-	@Override
-	void issueStatement(SqlStatement statement) {
-		
-		try {
-			
-			// Attempt to grab from cache
-			
-			// Then give control to connection manager
-			
-			// the sql statement should notify observer that results are finished.
-			
-			ConnectionManager.getManager().issueStatement(statement);
-		} catch (HeadlessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SingularThreadControlException e) {
-			
-			//TODO: Broker implemented function
-			
-			
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
 	@Override
 	public void update(Observable o, Object arg) {
-		// Incoming sqlstatement with results
-		SqlStatement sql = null;
 		
 	}
 
 	@Override
-	public void queueRequest(SqlStatement statement) {
+	public Cachable getCachableObject(int id) {
 		// TODO Auto-generated method stub
-		
+		return null;
+	}
+
+	@Override
+	public Cachable[] getCachableObjects(Cachable c) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

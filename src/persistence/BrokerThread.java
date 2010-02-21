@@ -6,7 +6,6 @@ package persistence;
 import java.sql.ResultSet;
 import java.util.Observable;
 
-import application.SqlStatement;
 
 /**
  * @author dann
@@ -28,9 +27,5 @@ public class BrokerThread extends Observable implements Runnable {
 		
 	}
 	
-	public ResultSet issueRequest(SqlStatement statement)
-	{
-		return null;
-	}
 
 }

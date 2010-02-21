@@ -21,8 +21,8 @@ import com.mysql.jdbc.Statement;
  */
 public class ThreadedConnection extends Thread implements Observer, Runnable {
 
-	private Object connection 						= null;
-	private Queue<SqlStatement> statements			= null;
+	private Object connection 							= null;
+	private Queue<CachableResult> statements			= null;
 	
 	/**
 	 * Constructor that saves the web agenda connection for use in the thread
@@ -37,7 +37,7 @@ public class ThreadedConnection extends Thread implements Observer, Runnable {
 	public ThreadedConnection(Object o, String name) throws HeadlessException, ClassNotFoundException, IllegalAccessException, InstantiationException, SQLException
 	{
 		connection = o;
-		statements = new LinkedList<SqlStatement>();
+		statements = new LinkedList<CachableResult>();
 		this.setDaemon(false);
 		ConnectionManager.getManager().addObserver(this);
 	}
@@ -55,15 +55,15 @@ public class ThreadedConnection extends Thread implements Observer, Runnable {
 		while(true)
 		{
 			// Get sql statement from queue
-			SqlStatement sqlstatement = statements.poll();
-			if(sqlstatement == null) {
+			CachableResult c_result = statements.poll();
+			if(c_result == null) {
 				// No items in queue, can exit
 				break;
 			}
 			// Send request to database
 			try {
 				st = (Statement) con.createStatement();
-				results = st.executeQuery(sqlstatement.getStatement());
+				
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				results = null;
@@ -95,10 +95,10 @@ public class ThreadedConnection extends Thread implements Observer, Runnable {
 	public void update(Observable o, Object arg) {
 		if(arg instanceof String)
 			System.out.println(arg.toString());
-		else if(arg instanceof SqlStatement)
+		else if(arg instanceof CachableResult)
 		{
 			// We only want it to start when the list goes from empty to non-empty.
-			statements.add((SqlStatement) arg);
+			statements.add((CachableResult) arg);
 			if(statements.size() == 1) {
 				start(); // Was previously 0 
 			}

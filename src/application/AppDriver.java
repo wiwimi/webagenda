@@ -23,6 +23,8 @@ import java.sql.SQLException;
 import java.util.Observable;
 import java.util.Observer;
 
+import business.Employee;
+
 import application.ThreadedConnection;
 
 import persistence.*;
@@ -95,9 +97,7 @@ public class AppDriver {
 			
 			con_man.notifyObservers("Notifying Manager to send this to all ThreadedConnections");
 			
-			SqlStatement sqlst = new SqlStatement((Object) brok_emp,"SELECT * FROM employees;");
-			sqlst.addObserver(brok_emp);
-			brok_emp.queueRequest(sqlst);
+			// Fetch data from db
 			
 
 

@@ -11,6 +11,8 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Queue;
 
+import business.Cachable;
+
 import com.mysql.jdbc.Statement;
 
 import messagelog.Logging;
@@ -65,7 +67,7 @@ public class ConnectionManager extends Observable {
 	 * pull one onto this ConnectionManager Queue. Puts less load on the server, but
 	 * uses more memory. For small systems that require little in scheduling, this
 	 * method is more efficient.  */
-	private Queue<SqlStatement> singular_queue								= null;
+	private Queue<CachableResult> singular_queue								= null;
 	
 	private int max_queue_size												= 500 * 3; /* (3 Brokers currently added * 500 -- number of max connections going to the db at once.
 																							As this is the queue and not simultaneous connections, the limit will not be 500. The
@@ -148,10 +150,10 @@ public class ConnectionManager extends Observable {
 	 * @param state SqlStatement to send to the database.
 	 * @throws SingularThreadControlException when ConnectionManager refuses to manage connection - Broker handles connection, multiple db connections exist.
 	 */
-	public void issueStatement(SqlStatement state) throws SingularThreadControlException
+	public void issueStatement(Cachable cache_item) throws SingularThreadControlException
 	{
 		if(!isSingular()) throw new SingularThreadControlException(); // This should exit the method call
-		notifyObservers(state); /* Sends the statement to the threaded connection object (singular thread)
+		notifyObservers(cache_item); /* Sends the statement to the threaded connection object (singular thread)
 		 as the exception has not been thrown by this point. It is added to queue and processed. 
 		 The statement results will be sent back to the Broker object from whence it originated. */
 	}
