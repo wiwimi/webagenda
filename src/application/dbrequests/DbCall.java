@@ -16,12 +16,12 @@ package application.dbrequests;
 public abstract class DbCall {
 
 	public static final String DATABASE_NAME = "`WebAgenda`.";
-	public static final String SELECT_COM = "SELECT";
-	public static final String UPDATE_COM = "UPDATE";
-	public static final String DELETE_COM = "DELETE";
-	public static final String INSERT_COM = "INSERT";
-	public static final String WHERE_COM = "WHERE";
-	public static final String FROM_COM = "FROM";
+	public static final String SELECT_COM = "SELECT ";
+	public static final String UPDATE_COM = "UPDATE ";
+	public static final String DELETE_COM = "DELETE ";
+	public static final String INSERT_COM = "INSERT ";
+	public static final String WHERE_COM = "WHERE ";
+	public static final String FROM_COM = "FROM ";
 	
 	public String returnSelect(String[] columns, String[] tables, String[] where)
 	{
@@ -30,12 +30,23 @@ public abstract class DbCall {
 		sb = getMultipleItemsInForm(sb, columns);
 		sb.append(FROM_COM);
 		sb = getMultipleItemsInForm(sb, tables);
-		sb.append(WHERE_COM);
-		sb = getMultipleItemsInForm(sb, where);
+		if(where != null)
+		{
+			sb.append(WHERE_COM);
+			sb = getMultipleItemsInForm(sb, where);
+		}
 		return sb.toString();
 		
 	}
 	
+	/**
+	 * Private method that parses through all string arrays for possible values for
+	 * each select, from, and where clause.
+	 * 
+	 * @param sb String Builder that makes the sql statement
+	 * @param loop_through String[] that contains strings to add
+	 * @return StringBuilder with the appropriate strings appended to sql statement
+	 */
 	private StringBuilder getMultipleItemsInForm(StringBuilder sb, String[] loop_through)
 	{
 		if(loop_through == null) return sb;
@@ -44,7 +55,7 @@ public abstract class DbCall {
 		{
 			if(i < loop_through.length - 1)
 				sb.append(loop_through[i] + ", ");
-			else sb.append(loop_through[i]);
+			else sb.append(loop_through[i] + " ");
 		}
 		return sb;
 	}

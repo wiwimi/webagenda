@@ -3,6 +3,7 @@
  */
 package persistence;
 
+import java.awt.HeadlessException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Observer;
@@ -20,7 +21,7 @@ import utilities.DoubleLinkedList;
  * @author dann, Daniel Wehr
  * @version 0.2.0
  */
-public abstract class Broker<E extends Cachable> implements Observer
+public abstract class Broker<E extends Cachable> implements Observer 
 	{
 	
 	/** The database username that contains access to webagenda data */
@@ -102,7 +103,7 @@ public abstract class Broker<E extends Cachable> implements Observer
 	 *           criteria. If the primary key is filled in the search object,
 	 *           only that will be used and all others will be ignored.
 	 */
-	public abstract void get(E getObj);
+	public abstract void get(E getObj) throws HeadlessException, ClassNotFoundException, IllegalAccessException, InstantiationException, SQLException;
 	
 	/**
 	 * Applies all changes to the updated object to its equivalent record within

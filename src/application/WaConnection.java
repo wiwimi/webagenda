@@ -6,17 +6,15 @@ package application;
 
 import java.awt.HeadlessException;
 import java.net.InetAddress;
-import java.net.UnknownHostException;
+
 import java.sql.DriverManager;
-import java.sql.ResultSet;
+
 import java.sql.SQLException;
 
 
 import javax.swing.JOptionPane;
 
 import messagelog.Logging;
-
-import com.mysql.jdbc.*;
 
 /**
  * @author dann
@@ -75,7 +73,7 @@ public class WaConnection {
 			
 			
 		}
-		return wac_con_instnc;
+		return wac_connection;
 	}
 	
 }

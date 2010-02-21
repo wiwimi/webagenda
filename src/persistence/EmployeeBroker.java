@@ -3,6 +3,7 @@
  */
 package persistence;
 
+import java.awt.HeadlessException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Observable;
@@ -15,6 +16,7 @@ import utilities.DoubleLinkedList;
 
 import application.CachableResult;
 import application.ConnectionManager;
+import application.SingularThreadControlException;
 import application.ThreadedConnection;
 import application.dbrequests.EmployeeCall;
 import business.Cachable;
@@ -132,22 +134,30 @@ public class EmployeeBroker extends Broker<Employee> implements Observer
 		}
 
 	@Override
-	public void get(Employee template) 
+	public void get(Employee template) throws HeadlessException, ClassNotFoundException, IllegalAccessException, InstantiationException, SQLException 
 		{
-		
-		System.out.println("\tTemplate: " + template);
-		
 		if(template.getEmployee_id() >= 0)
 		{
 			
 			CachableResult cres = new CachableResult(template,emp_call.getAllEmployees());
 			// Add observer to the CachableResult
+			System.out.println("\tCachable Result with Observers for ThreadedConnection and EmpBroker");
 			cres.addObserver(con);
 			cres.addObserver(this);
-			// Send to threaded connection
+			// Send to ConnectionMonitor so it will hand it off to ThreadedConnection for processing
+			try {
+				ConnectionManager.getManager().issueStatement(cres);
+				
+				
+			} catch (SingularThreadControlException e) {
+				//TODO: Have broker send it to its own ThreadedConnection based on ConMan's getConnection(int)
+				// where int is the broker's dynamic threadedconnection object.
+				System.out.println("Multi connection");
+			} 
 		}
 		else {
 			// May Return multiples
+			
 		}
 		
 		}
@@ -239,6 +249,7 @@ public class EmployeeBroker extends Broker<Employee> implements Observer
 	public void update(Observable o, Object arg) {
 		if(arg instanceof ResultSet)
 		{
+			System.out.println("Recieved Result Set");
 			try {
 				Employee[] ee = translateResultSet((ResultSet) arg);
 				System.out.println(ee);

@@ -89,7 +89,7 @@ public class AppDriver {
 			
 			// These threads are daemons, so they will exit when program exits.
 			//TODO: Implement proper shutdown procedure
-			
+			System.out.println("Connections: " + con_man.numberOfConnections());
 			ThreadedConnection tc = null; // Prepare for creating ThreadedConnection using Singular Connector
 			for(int i = 0; i < con_man.numberOfConnections(); i++) {
 				tc = con_man.getConnection(i); // Begin thread, get singular thread connector
@@ -105,12 +105,20 @@ public class AppDriver {
 			
 			if(!ConnectionManager.isSingular())
 			{
-				brok_emp.getBroker().setConnection(tc);
+				System.out.println("TODO: Have Broker create a threaded connection with dynamic position");
 				
+			}
+			else {
+				EmployeeBroker.getBroker().setConnection(tc);
 			}
 			
 			con_man.notifyObservers("Notifying Manager to send this to all ThreadedConnections");
-			ConnectionMonitor.getConnectionMonitor().runWebAgenda();
+			ConnectionMonitor.getConnectionMonitor().runWebAgenda(); // Main program thread sleep until program end or request given.
+			
+			Employee template = new Employee(1,null,null,null,null,null,null);
+			brok_emp.get(template);
+			
+			
 			
 		} catch (HeadlessException e) {
 			// TODO Auto-generated catch block

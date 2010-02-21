@@ -150,7 +150,7 @@ public class Employee extends Cachable
 	/** Produces a blank template of an employee */
 	public Employee()
 	{
-		
+		this.employee_id = -1;
 	}
 	
 	/**
