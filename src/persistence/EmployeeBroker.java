@@ -8,10 +8,14 @@ import java.sql.SQLException;
 import java.util.Observable;
 import java.util.Observer;
 
+import com.mysql.jdbc.Connection;
+
 import utilities.DoubleLinkedList;
 
 
 import application.CachableResult;
+import application.ConnectionManager;
+import application.ThreadedConnection;
 import application.dbrequests.EmployeeCall;
 import business.Cachable;
 import business.Employee;
@@ -36,6 +40,8 @@ public class EmployeeBroker extends Broker<Employee> implements Observer
 	 * search for Cachable objects.  */
 	private EmployeeCall emp_call						= new EmployeeCall();
 	
+	private ThreadedConnection con						= null;
+	
 	public static final int empID						= 1;
 	public static final int supervisorID				= 2;
 	public static final int givenName					= 3;
@@ -49,8 +55,6 @@ public class EmployeeBroker extends Broker<Employee> implements Observer
 	public static final int prefLocation				= 11;
 	public static final int plevel						= 12;
 	public static final int active						= 13;
-	/** This variable specifies the last table entry in the database that can be retrieved */
-	private static final int last_table_entry			= active;
 	
 	/**
 	 * Constructor for EmployeeBroker
@@ -71,7 +75,7 @@ public class EmployeeBroker extends Broker<Employee> implements Observer
 	public static EmployeeBroker getBroker()
 		{
 		if (broker_employees == null)
-			{
+			{	
 			Logging.writeToLog(Logging.INIT_LOG, Logging.NORM_ENTRY, "Employee Broker initialized");
 			broker_employees = new EmployeeBroker();
 			broker_employees.initCacheTable();
@@ -79,11 +83,18 @@ public class EmployeeBroker extends Broker<Employee> implements Observer
 		return broker_employees;
 		}
 	
+	public void setConnection(ThreadedConnection tc)
+	{
+		if(con == null)
+			con = tc;
+	}
+	
 	private void initCacheTable()
 	{
 		employee_cache = new CacheTable(broker_employees);
 		flush_employee = employee_cache.getFlushThread();
 		flush_employee.start(); // Start your engines
+		System.out.println("flushed");
 	}
 	
 	@Override
@@ -122,17 +133,23 @@ public class EmployeeBroker extends Broker<Employee> implements Observer
 		}
 
 	@Override
-	public Employee[] get(Employee template)
+	public void get(Employee template) 
 		{
+		
+		System.out.println("\tTemplate: " + template);
+		
 		if(template.getEmployee_id() >= 0)
 		{
-			// Returns only one employee
+			
 			CachableResult cres = new CachableResult(template,emp_call.getAllEmployees());
+			// Add observer to the CachableResult
+			cres.addObserver(con);
+			cres.addObserver(this);
+			// Send to threaded connection
 		}
 		else {
 			// May Return multiples
 		}
-		return null;
 		
 		}
 
@@ -143,10 +160,7 @@ public class EmployeeBroker extends Broker<Employee> implements Observer
 		return false;
 		}
 
-	@Override
-	public void update(Observable o, Object arg) {
-		
-	}
+
 
 	@Override
 	public Cachable getCachableObject(int id) {
@@ -161,11 +175,27 @@ public class EmployeeBroker extends Broker<Employee> implements Observer
 	}
 
 	@Override
-	protected Cachable[] translateResultSet(ResultSet rs) throws SQLException {
+	protected Employee[] translateResultSet(ResultSet rs) throws SQLException {
 		DoubleLinkedList<Employee> dll = new DoubleLinkedList<Employee>();
-		rs.next();
+		while(rs.next())
+			dll.add(addEmployeeFull(rs));
+		
+		if(dll.size() == 0)
+			return null;
+		
+		return dll.toArray();
+	}
+	
+	/**
+	 * Method to assign all the table columns to an employee.
+	 * 
+	 * @param rs ResultSet from database
+	 * @return Employee fully assigned
+	 * @throws SQLException if database returns an error
+	 */
+	private Employee addEmployeeFull(ResultSet rs) throws SQLException
+	{
 		Employee emp = new Employee();
-		for(int i = 0; i < last_table_entry; i++)
 		{
 			emp.setEmployee_id(rs.getInt(empID));
 			emp.setSupervisor(rs.getInt(supervisorID));
@@ -180,16 +210,43 @@ public class EmployeeBroker extends Broker<Employee> implements Observer
 			emp.setPermission_level(rs.getString(plevel));
 			emp.setActive(rs.getBoolean(active));
 		}
-		
-		//employees.next(); // Must be positioned to first (next) item before it can be read
-		//int i = employees.getInt(1);
-		//String str = employees.getString(3);
-		//
-		//System.out.println("Employee " + i + " has a first name of " + str);
-		
-		return null;
+		return emp;
 	}
 	
+	//TODO: Fill out columns, add comment
+	private Employee addEmployee(int[] columnsToAssign)
+	{
+		Employee emp = new Employee();
+		{
+			for(int i = 0; i < columnsToAssign.length; i++)
+			{
+				switch(i)
+				{
+				case 1:
+					break;
+				}
+			}
+		}
+		return emp;
+	}
+
+	@Override
+	public int getBrokerConnectionPosition() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
-	
+	@Override
+	public void update(Observable o, Object arg) {
+		if(arg instanceof ResultSet)
+		{
+			try {
+				Employee[] ee = translateResultSet((ResultSet) arg);
+				System.out.println(ee);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
 }

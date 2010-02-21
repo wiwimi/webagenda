@@ -5,6 +5,7 @@ package application;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Observable;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
@@ -16,7 +17,7 @@ import business.Cachable;
  * @version 0.01.00
  * @license GPL 2
  */
-public class CachableResult {
+public class CachableResult extends Observable {
 	
 	private byte priority					= 4;
 	
@@ -45,5 +46,6 @@ public class CachableResult {
 		
 		return stat.executeQuery(sql_statement);
 	}
-
+	
+	
 }

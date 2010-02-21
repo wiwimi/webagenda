@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Observer;
 
+import application.ThreadedConnection;
 import business.Cachable;
 import persistence.BrokerThread;
 import utilities.DoubleLinkedList;
@@ -38,6 +39,8 @@ public abstract class Broker<E extends Cachable> implements Observer
 	private String					db_hostname		= "localhost";
 	
 	private DoubleLinkedList<Cachable> queue		= null;
+	
+	private ThreadedConnection threadc			= null;
 	
 	/**
 	 * The max number of threads that the application should use to fetch resultsets from
@@ -98,10 +101,8 @@ public abstract class Broker<E extends Cachable> implements Observer
 	 *           returned. All non-null attributes will be used as search
 	 *           criteria. If the primary key is filled in the search object,
 	 *           only that will be used and all others will be ignored.
-	 * @return All objects that matched the search criteria. If no matches are
-	 *         found, an array with a single null object will be returned.
 	 */
-	public abstract E[] get(E getObj);
+	public abstract void get(E getObj);
 	
 	/**
 	 * Applies all changes to the updated object to its equivalent record within
@@ -218,6 +219,32 @@ public abstract class Broker<E extends Cachable> implements Observer
 		db_hostname = dbHostname;
 	}
 	
+	/**
+	 * Method that should be overriden by Broker object. Can only be set once.
+	 * 
+	 * @param tc ThreadedConnection connection to database
+	 */
+	void setConnection(ThreadedConnection tc)
+	{
+		if(threadc == null)
+			threadc = tc;
+		
+	}
+	
+	protected ThreadedConnection getConnection()
+	{
+		return threadc;
+	}
+	
+	/**
+	 * Returns a whole integer representing the position in a list of threadconnections found in ConnectionManager
+	 * that is owned by the broker.
+	 * 
+	 * @return int position 0 if ConnectionManager's isSingular() method returns true, otherwise a dynamic integer
+	 * is returned.
+	 * @see application.ConnectionManager
+	 */
+	public abstract int getBrokerConnectionPosition();
 	
 	
 }

@@ -46,6 +46,13 @@ public class AppDriver {
 	/** Connection Manager for setting up Broker connections. */
 	private static ConnectionManager con_man = null;
 	
+	//FIXME: Temporary broker variables accessible to test methods
+	
+	// The setting up of FlushThreads is in the constructor called in getBroker()
+	static EmployeeBroker brok_emp = null;
+	static PermissionBroker brok_perm = null;
+	static ScheduleBroker brok_sched = null;
+	
 	/**
 	 * Method to setup the backend
 	 * 
@@ -55,12 +62,10 @@ public class AppDriver {
 	{
 		try {
 			
-			
-			
 			// ---- Set up Logs ----
 			
 				// Logs first, since ConnectionManager uses log files
-			messagelog.Logging.initializeLogs();
+			
 
 				// Determine IP address (this will be an args item in the installer or command line specification)
 		    InetAddress thisIp = InetAddress.getLocalHost();
@@ -76,14 +81,6 @@ public class AppDriver {
 			 * TODO: After all connections (if multiple connections are chosen) are initialized, remove the original singular
 			 * threaded connection.  */
 			
-			// ---- Set up Brokers ----
-			
-				// The setting up of FlushThreads is in the constructor called in getBroker()
-			EmployeeBroker brok_emp = EmployeeBroker.getBroker();
-			PermissionBroker brok_perm = PermissionBroker.getBroker();
-			ScheduleBroker brok_sched = ScheduleBroker.getBroker();
-			
-			
 			// ---- Observe Connection Threads ----
 			
 			// These threads are daemons, so they will exit when program exits.
@@ -94,15 +91,21 @@ public class AppDriver {
 				tc = con_man.getConnection(i); // Begin thread, get singular thread connector
 			}
 			
+			// ---- Set up Brokers ----
+			
+				// The setting up of FlushThreads is in the constructor called in getBroker()
+			brok_emp = EmployeeBroker.getBroker();
+			
+			brok_perm = PermissionBroker.getBroker();
+			brok_sched = ScheduleBroker.getBroker();
+			
+			if(!ConnectionManager.isSingular())
+			{
+				brok_emp.getBroker().setConnection(tc);
+				
+			}
 			
 			con_man.notifyObservers("Notifying Manager to send this to all ThreadedConnections");
-			
-			// Fetch data from db -- this should fetch all employees.
-			Employee all_emp = new Employee(-1,null,null,null,null,null,null);
-			brok_emp.get(all_emp);
-			
-
-
 			ConnectionMonitor.getConnectionMonitor().run();
 			
 		} catch (HeadlessException e) {
@@ -148,14 +151,13 @@ public class AppDriver {
 
 		private static ConnectionMonitor cm = new ConnectionMonitor();
 		
-		static ConnectionMonitor getConnectionMonitor()
+		public static ConnectionMonitor getConnectionMonitor()
 		{
 			return cm;
 		}
 		
 		@Override
 		public void run() {
-			
 			try {
 				while(true)
 				{
@@ -188,7 +190,7 @@ public class AppDriver {
 			}
 			
 		}
-		
+
 		public void runWebAgenda()
 		{
 			run();

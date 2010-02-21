@@ -62,7 +62,7 @@ public class WaConnection {
 	 * @throws SQLException 
 	 * @throws HeadlessException 
 	 */
-	static Object getConnection(InetAddress ip) throws ClassNotFoundException, IllegalAccessException, 
+	public static Object getConnection(InetAddress ip) throws ClassNotFoundException, IllegalAccessException, 
 	InstantiationException, HeadlessException, SQLException
 	{		
 		

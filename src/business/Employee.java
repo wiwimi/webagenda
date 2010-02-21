@@ -138,7 +138,13 @@ public class Employee extends Cachable
 	 */
 	public Employee(int empID, String fname, String lname, Date birthdate, String username, String password,  String plevel)
 	{
-		
+		this.employee_id = empID;
+		this.givenName = fname;
+		this.familyName = lname;
+		this.birth_date = birthdate;
+		this.username = username;
+		this.password = password;
+		this.permission_level = plevel;
 	}
 	
 	/** Produces a blank template of an employee */

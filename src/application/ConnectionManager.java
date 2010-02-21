@@ -4,16 +4,16 @@
 package application;
 
 import java.awt.HeadlessException;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Queue;
 
+import exception.InitializedLogFileException;
+
 import business.Cachable;
 
-import com.mysql.jdbc.Statement;
 
 import messagelog.Logging;
 
@@ -44,7 +44,7 @@ import messagelog.Logging;
  * 		
  * 
  */
-public class ConnectionManager extends Observable {
+public class ConnectionManager extends Observable implements Observer {
 	
 
 	/** Manager object where only one instance of it can exist. Is used
@@ -118,10 +118,12 @@ public class ConnectionManager extends Observable {
 	 * @throws IllegalAccessException
 	 * @throws InstantiationException
 	 * @throws SQLException
+	 * @throws InitializedLogFileException Log files are initialized and an attempt to reinitialize them was detected
 	 */
-	public static ConnectionManager getManager(boolean one_instance) throws HeadlessException, ClassNotFoundException, IllegalAccessException, InstantiationException, SQLException
+	public static ConnectionManager getManager(boolean one_instance) throws HeadlessException, ClassNotFoundException, IllegalAccessException, InstantiationException, SQLException, InitializedLogFileException
 	{
 		if(con_manager == null) {
+			messagelog.Logging.initializeLogs();
 			one_request = one_instance;
 			con_manager = new ConnectionManager();
 			if(one_request) {
@@ -138,7 +140,7 @@ public class ConnectionManager extends Observable {
 	 * Method that works twofold:<br>
 	 * <br>
 	 * 1) Singular Thread Mode: When a request is made from a broker, the thread drops the desirable statement into ConnectionManager's
-	 * queue as an SqlStatement object. Singular Thread Mode will queue up the statement using ConnectionManager settings (if max queue 
+	 * queue as an CacheResult object. Singular Thread Mode will queue up the statement using ConnectionManager settings (if max queue 
 	 * size, priorities, etc. exist) and then use thread 0 (first thread in linked list, should be the only initialized thread) to send 
 	 * statements and get back results to the appropriate Broker object.<br> 
 	 * <br>
@@ -150,7 +152,7 @@ public class ConnectionManager extends Observable {
 	 * @param state SqlStatement to send to the database.
 	 * @throws SingularThreadControlException when ConnectionManager refuses to manage connection - Broker handles connection, multiple db connections exist.
 	 */
-	public void issueStatement(Cachable cache_item) throws SingularThreadControlException
+	public void issueStatement(CachableResult cache_item) throws SingularThreadControlException
 	{
 		if(!isSingular()) throw new SingularThreadControlException(); // This should exit the method call
 		notifyObservers(cache_item); /* Sends the statement to the threaded connection object (singular thread)
@@ -164,7 +166,7 @@ public class ConnectionManager extends Observable {
 	 * @param o Object connection object
 	 * @return Object connection
 	 */
-	Object addConnection(Object o, String name)
+	public Object addConnection(Object o, String name)
 	{
 		try {
 			connections.add(new ThreadedConnection(o,name));
@@ -200,7 +202,7 @@ public class ConnectionManager extends Observable {
 	 * @param pos int position in array of threaded connections
 	 * @return ThreadedConnection object
 	 */
-	ThreadedConnection getConnection(int pos)
+	public ThreadedConnection getConnection(int pos)
 	{
 		return connections.get(pos);
 	}
@@ -230,5 +232,15 @@ public class ConnectionManager extends Observable {
 	public static boolean isSingular()
 	{
 		return ConnectionManager.one_request;
+	}
+
+	/**
+	 * This update method grabs finished CacheResults and saves them to the cache, then notifies the caller that its
+	 * finished in which the caller can then grab results from the cache. 
+	 */
+	@Override
+	public void update(Observable o, Object arg) {
+		
+		
 	}
 }

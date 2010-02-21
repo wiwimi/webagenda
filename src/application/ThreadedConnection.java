@@ -82,7 +82,7 @@ public class ThreadedConnection extends Thread implements Observer, Runnable {
 				e.printStackTrace();
 			}
 			System.out.println("Statements Left: " + statements.size());
-			
+			c_result.notifyObservers(results);
 		}
 		
 		System.out.println("Finished Sql Manage Loop, now exiting");
@@ -105,5 +105,4 @@ public class ThreadedConnection extends Thread implements Observer, Runnable {
 		}
 		else return;
 	}
-	
 }

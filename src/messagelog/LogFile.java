@@ -28,7 +28,8 @@ public class LogFile {
 	}
 	
 	/**
-	 * Basic method to determine if the log file 
+	 * Basic method to determine if the log file exists. If file does not exist and method cannot write to desired location,
+	 * an error is thrown.
 	 * @return
 	 */
 	public boolean initFile()
