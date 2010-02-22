@@ -42,101 +42,135 @@
 			</div>
 			
 			<div class="widgetLowerRectangle" id="requestWidgetLowerRectangle">
-			
-					<div class="tabs">
-<ul class="tabs">
-    <li><a href="#tab1">1- Shift Change</a></li>
-    <li><a href="#tab2">2- Find a Replacement</a></li>
-    <li><a href="#tab2">3- Confirm</a></li>
-</ul>
-
-<div class="tab_container">
-    <div id="tab1" class="tab_content">
-        <!--Content-->
-        
-        
-			<div id ="userForm">
-			<form class="addUserForm" method="post">
-			<div id="request">
-			
-			
-				 <fieldset>
-					<legend > Current Shift
-							<p><label>  From:   <em class="asterisk"> * </em> </label>
-							<select name="shifts">
-													<option value="1">shift</option>
-													<option value="2">shift</option>
-													<option value="3">shift</option>
-							</select>
-							</p>
-							<p>	<label> To: <em class="asterisk"> * </em> </label>
-							<select name="shifts">
-													<option value="1">shift</option>
-													<option value="2">shift</option>
-													<option value="3">shift</option>
-							</select>
-							
-							</p>	
-					</legend>
-					</fieldset>
-					
-					<fieldset>
-					<legend > Requested Shift
-				
-							<p>	<label> From: <em class="asterisk"> * </em> </label> 
-		
-							<select name="shifts">
-													<option value="1">shift</option>
-													<option value="2">shift</option>
-													<option value="3">shift</option>
-							</select>
-							</p>
-							<p>	<label> To: <em class="asterisk"> * </em> </label>
-							<select name="shifts">
-													<option value="1">shift</option>
-													<option value="2">shift</option>
-													<option value="3">shift</option>
-							</select>
-							
-							</p>
-					</legend>
-					</fieldset>
-				   <fieldset>
-					<legend > Reason(s) for shift change
-				  <p>
-					<input type="checkbox" name="school" value="school"> School<br>
-					<input type="checkbox" name="conflict" value="conflict"> Scheduling Conflict<br>
-					<input type="checkbox" name="personal" value="personal"> Personal<br>
-					<input type="checkbox" name="other" value="other"> Other, Explain<br>
-				 </p>
-					<textarea  name="descreption" cols="23" rows="6" tabindex="101"></textarea>
-				 </legend>
-				</fieldset>
-					
-						<input type="submit" name="clear" class="button" value="Clear Screen"> 
-						<br></br>
-				</div>
-				</form>
-			</div>
-			</div>
-
-</div>
 	
-        
-    </div>
-
-	<div id="tab2" class="tab_content">
-       <!--Content-->
-       tab 2
-    </div>
-    
-     <div id="tab3" class="tab_content">
-       <!--Content-->
-            <input type="submit" name="submit" class="button" value="Confirm"> 
-    </div>
-</div>
-</div>		
-			
+					
+						<ul class="tabs">
+						    <li><a href="#tab1">1- Shift Change</a></li>
+						    <li><a href="#tab2">2- Find a Replacement</a></li>
+						    <li><a href="#tab2">3- Confirm</a></li>
+						</ul>
+	               
+					<div class="tab_container">
+					    <div id="tab1" class="tab_content">
+					        <!--Content-->
+	        
+	        
+							<div id ="userForm">
+							<form class="addUserForm" method="post">
+							<div id="request">
+				
+					
+								 <fieldset>
+									<legend > Current Shift
+											<p><label>  From:   <em class="asterisk"> * </em> </label>
+											<select name="shifts">
+																	<option value="1">shift</option>
+																	<option value="2">shift</option>
+																	<option value="3">shift</option>
+											</select>
+											</p>
+											<p>	<label> To: <em class="asterisk"> * </em> </label>
+											<select name="shifts">
+																	<option value="1">shift</option>
+																	<option value="2">shift</option>
+																	<option value="3">shift</option>
+											</select>
+											
+											</p>	
+									</legend>
+									</fieldset>
+									
+									<fieldset>
+									<legend > Requested Shift
+								
+											<p>	<label> From: <em class="asterisk"> * </em> </label> 
+						
+											<select name="shifts">
+																	<option value="1">shift</option>
+																	<option value="2">shift</option>
+																	<option value="3">shift</option>
+											</select>
+											</p>
+											<p>	<label> To: <em class="asterisk"> * </em> </label>
+											<select name="shifts">
+																	<option value="1">shift</option>
+																	<option value="2">shift</option>
+																	<option value="3">shift</option>
+											</select>
+											
+											</p>
+									</legend>
+									</fieldset>
+								   <fieldset>
+									<legend > Reason(s) for shift change
+								  <p>
+									<input type="checkbox" name="school" value="school"> School<br>
+									<input type="checkbox" name="conflict" value="conflict"> Scheduling Conflict<br>
+									<input type="checkbox" name="personal" value="personal"> Personal<br>
+									<input type="checkbox" name="other" value="other"> Other, Explain<br>
+								 </p>
+									<textarea  name="descreption" cols="23" rows="6" tabindex="101"></textarea>
+								 </legend>
+								</fieldset>
+									
+										<input type="submit" name="clear" class="button" value="Clear Screen"> 
+										<br></br>
+								</div>
+							</form>
+						</div>
+						</div>
+	
+				<div id="tab2" class="tab_content">
+			       <!--Content-->
+			       
+			       <div id ="userForm">
+						<form class="addUserForm" method="post">
+						<div id="request">
+						
+						You can skip this step but it will help the system find a replacement
+						<br></br> <br></br>
+							 <fieldset>
+								<legend > Alternative Employee
+										<p><label>  Name:   <em class="asterisk"> * </em> </label>
+										<select name="shifts">
+																<option value="1">Test</option>
+																<option value="2">Test</option>
+																<option value="3">Test</option>
+										</select>
+										</p>
+										<p>	<label> Position: <em class="asterisk"> * </em> </label>
+										<select name="shifts">
+																<option value="1">Test</option>
+																<option value="2">Test</option>
+																<option value="3">Test</option>
+										</select>
+										<p>	<label> ID: <em class="asterisk"> * </em> </label>
+										<select name="shifts">
+																<option value="1">Test</option>
+																<option value="2">Test</option>
+																<option value="3">Test</option>
+										</select>
+										
+										</p>	
+								</legend>
+								</fieldset>
+								
+							
+								
+							</div>
+							   </form>
+			     
+			     			</div>
+	    
+	     <div id="tab3" class="tab_content">
+	       <!--Content-->
+	         tab 3
+	    </div>
+	    </div>
+	</div>
+	</div>		
+	</div>
+		
 
 <div id="footer"></div>
 
