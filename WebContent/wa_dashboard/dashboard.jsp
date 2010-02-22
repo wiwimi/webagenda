@@ -17,6 +17,9 @@ if(session.getAttribute("username") != null)
 <link rel="stylesheet" href="CSS/style.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="../CSS/style.css" type="text/css" media="screen" />
 
+
+
+
 <!-- Libraries -->
 <script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
 <script src="../lib/js/jquery-ui-1.7.2.custom.min.js" type="text/javascript"></script>
@@ -44,6 +47,7 @@ if(session.getAttribute("username") != null)
 				<div class="widgetTitle" id="quickLinksTitle">Quick Links</div>
 			</div>
 			
+			
 			<div class="widgetLowerRectangle" id="quickLinksLowerRectangle">
 			<div id="contentHolder">
 				<a href="#"><div class="linkBox">test</div></a>
@@ -68,10 +72,11 @@ if(session.getAttribute("username") != null)
 				<a href="#"><div class="linkBox">test</div></a>
 			</div>
 		</div>
+		</div>
 		
 		<div id="scheduleWidget" class="fullWidget">
 			<div class="widgetUpperRectangle" id="scheduleUpperRectangle">
-				<div class="widgetTitle" id="scheduleTitle">Schedule</div>
+				<div class="widgetTitle" id="scheduleWidgetTitle">Schedule</div>
 			</div>
 			
 			<div class="widgetLowerRectangle" id="scheduleWidgetLowerRectangle">
