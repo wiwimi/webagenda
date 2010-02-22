@@ -7,11 +7,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
 <!--  CSS files -->
-<link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
+
 <link rel="stylesheet" href="CSS/schedule.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="CSS/user.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="CSS/tabs.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 
-<title>Web Agenda- Request Change</title>
+<!-- Libraries -->
+<script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>	
+
+<!-- Javascript Files -->
+<script type="text/javascript" src="../lib/js/tabs.js"></script>
+
+
+
+<title>Web Agenda- Request Shift Change</title>
 
 
 <!-- Includes -->
@@ -33,9 +43,23 @@
 			
 			<div class="widgetLowerRectangle" id="requestWidgetLowerRectangle">
 			
+					<div class="tabs">
+<ul class="tabs">
+    <li><a href="#tab1">1- Shift Change</a></li>
+    <li><a href="#tab2">2- Find a Replacement</a></li>
+    <li><a href="#tab2">3- Confirm</a></li>
+</ul>
+
+<div class="tab_container">
+    <div id="tab1" class="tab_content">
+        <!--Content-->
+        
+        
 			<div id ="userForm">
 			<form class="addUserForm" method="post">
 			<div id="request">
+			
+			
 				 <fieldset>
 					<legend > Current Shift
 							<p><label>  From:   <em class="asterisk"> * </em> </label>
@@ -82,7 +106,6 @@
 				  <p>
 					<input type="checkbox" name="school" value="school"> School<br>
 					<input type="checkbox" name="conflict" value="conflict"> Scheduling Conflict<br>
-					<input type="checkbox" name="babysitting" value="babysitting"> Babysitting Issues<br>
 					<input type="checkbox" name="personal" value="personal"> Personal<br>
 					<input type="checkbox" name="other" value="other"> Other, Explain<br>
 				 </p>
@@ -90,9 +113,6 @@
 				 </legend>
 				</fieldset>
 					
-					
-			
-				        <input type="submit" name="submit" class="button" value="Submit"> 
 						<input type="submit" name="clear" class="button" value="Clear Screen"> 
 						<br></br>
 				</div>
@@ -102,7 +122,25 @@
 
 </div>
 	
+        
+    </div>
+
+	<div id="tab2" class="tab_content">
+       <!--Content-->
+       tab 2
+    </div>
+    
+     <div id="tab3" class="tab_content">
+       <!--Content-->
+            <input type="submit" name="submit" class="button" value="Confirm"> 
+    </div>
+</div>
+</div>		
+			
 
 <div id="footer"></div>
+
+
+
 </body>
 </html>

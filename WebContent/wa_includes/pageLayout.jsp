@@ -14,7 +14,7 @@
 <script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>	
 
 <!-- Javascript Files -->
-<script type="text/javascript" src="js/dashboard.js"></script>
+<script type="text/javascript" src="../lib/js/dashboard.js"></script>
 
 
 <title>Insert title here</title>
@@ -65,8 +65,8 @@
 		<div id= "scheduleLowerRectangle" class = "lowerRectangle">
 			
 			<b> <a href ="../wa_schedule/schedule.jsp" > View Schedule  </a> </b> <br>
-			<b> <a href ="../wa_schedule/request_change.jsp" > Request Change </a> </b> <br>
-			<b> <a href ="" > Availability </a> </b> <br>
+			<b> <a href ="../wa_schedule/request_change.jsp" > Request Shift Change </a> </b> <br>
+			<b> <a href ="../wa_schedule/shift_exchange_pool.jsp" > Availability </a> </b> <br>
 		</div>
 		
 		<br>
