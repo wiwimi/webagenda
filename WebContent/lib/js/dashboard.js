@@ -124,36 +124,36 @@ $(document).ready(function()
 			}
 		});	
 
-		$('#mailWidgetUpperRectangle').click(function(){
-			if($('#mailWidgetLowerRectangle').is(":hidden"))
+		$('#mailUpperRectangle').click(function(){
+			if($('#mailLowerRectangle').is(":hidden"))
 			{
-				$('#mailWidgetLowerRectangle').slideDown('fast');
+				$('#mailLowerRectangle').slideDown('fast');
 			}
 			else
 			{
-				$('#mailWidgetLowerRectangle').slideUp('fast');
+				$('#mailLowerRectangle').slideUp('fast');
 			}
 		});
 		
 		$('#usersWidgetUpperRectangle').click(function(){
-			if($('#usersWidgetLowerRectangle').is(":hidden"))
+			if($('#usersLowerRectangle').is(":hidden"))
 			{
-				$('#usersWidgetLowerRectangle').slideDown('fast');
+				$('#usersLowerRectangle').slideDown('fast');
 			}
 			else
 			{
-				$('#usersWidgetLowerRectangle').slideUp('fast');
+				$('#usersLowerRectangle').slideUp('fast');
 			}
 		});
 		
 		$('#locationsUpperRectangle').click(function(){
-			if($('#locationsWidgetLowerRectangle').is(":hidden"))
+			if($('#locationsLowerRectangle').is(":hidden"))
 			{
-				$('#locationsWidgetLowerRectangle').slideDown('fast');
+				$('#locationsLowerRectangle').slideDown('fast');
 			}
 			else
 			{
-				$('#locationsWidgetLowerRectangle').slideUp('fast');
+				$('#locationsLowerRectangle').slideUp('fast');
 			}
 		});
 		

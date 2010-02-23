@@ -112,6 +112,8 @@ Randomly generated passwords are going to be sent to the employee's e-mail. If t
 				</div>
 				
 						<input type="submit" name="submit" class="button" value="Save"> 
+						<input type="button" name="submit" class="button"  onClick="location.href='update_user.jsp'" value="Search" > 
+				        <input type="submit" name="submit" class="button" value="Delete">
 						<input type="submit" name="clear" class="button" value="Clear Screen"> 
 						<br></br>
 				</form>

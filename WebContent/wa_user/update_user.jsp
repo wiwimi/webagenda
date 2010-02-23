@@ -25,7 +25,7 @@
 <body>
 
 <br></br>
-
+		
 		<div id="usersWidget" class="fullWidget">
 			<div class="widgetUpperRectangle" id="usersWidgetUpperRectangle">
 				<div class="widgetTitle" id="usersTitle">Users</div>
@@ -86,10 +86,13 @@
 									<td>Test</td>
 									<td>Test</td>
 									</tr>
+								
 					</tbody>
 				</table>
+				
 			</div>
-			</div>
+			
+			</div> <!-- End Table Area -->
 			
 		</div>
 </div>

@@ -43,6 +43,8 @@ Fields marked with <em class="asterisk" > *</em> are required.
 				</fieldset>
 			
 				        <input type="submit" name="submit" class="button" value="Save"> 
+						<input type="button" name="submit" class="button"  onClick="location.href='update_skill.jsp'" value="Search" > 
+				        <input type="submit" name="submit" class="button" value="Delete">
 						<input type="submit" name="clear" class="button" value="Clear Screen"> 
 						<br></br>
 				</div>

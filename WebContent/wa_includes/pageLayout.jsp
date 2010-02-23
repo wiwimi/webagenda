@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+
+<!--Author:Noorin-->
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -67,6 +71,7 @@
 			<b> <a href ="../wa_schedule/schedule.jsp" > View Schedule  </a> </b> <br>
 			<b> <a href ="../wa_schedule/request_change.jsp" > Request Shift Change </a> </b> <br>
 			<b> <a href ="../wa_schedule/shift_exchange_pool.jsp" > Availability </a> </b> <br>
+			<b> <a href ="../wa_schedule/" > Create schedule </a> </b> <br>
 		</div>
 		
 		<br>
@@ -83,9 +88,7 @@
 		
 		<div id= "usersLowerRectangle" class = "lowerRectangle">
 			
-			<b> <a href ="../wa_user/add_user.jsp" > Add </a> </b> <br>
-			<b> <a href ="../wa_user/delete_user.jsp" > Delete </a> </b> <br>
-			<b> <a href ="../wa_user/update_user.jsp" > Update </a> </b> <br>
+			<b> <a href ="../wa_user/add_user.jsp" > Users </a> </b> <br>
 			<b> <a href ="../wa_user/add_skill.jsp" > Skills </a> </b> <br>
 			<b> <a href ="../wa_user/add_position.jsp" > Positions </a> </b> <br>
 		</div>
@@ -101,8 +104,7 @@
 		
 		<div id= "locationsLowerRectangle" class = "lowerRectangle">
 			
-			<b> <a href ="../wa_location/add_location.jsp"> Add </a> </b> <br>
-			<b> <a href ="../wa_location/update_location.jsp"> Update </a> </b> <br>
+			<b> <a href ="../wa_location/add_location.jsp"> Locations </a> </b> <br>
 		
 		</div>
 		
@@ -146,7 +148,7 @@
 		
 		<br>
 		
-		<!--Noorin-->
+		
 		<div id= "settingsUpperRectangle" class="upperRectangle">
 		
 			<div class="sidebarTitle" id="settingsTitle">Settings</div>

@@ -10,6 +10,7 @@
 <!--  CSS files -->
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="CSS/email.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="CSS/inbox.css" type="text/css" media="screen" />
 
 
 <!--  Libraries -->
