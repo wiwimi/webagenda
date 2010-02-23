@@ -12,8 +12,6 @@ import messagelog.Logging;
  */
 public class ScheduleBroker {
 
-	/** Collection of Schedules to be cached in memory	*/
-	private CacheTable schedule_cache 							= null;
 	/** ScheduleBroker object for singleton pattern */
 	private static ScheduleBroker broker_schedule				= null;
 	

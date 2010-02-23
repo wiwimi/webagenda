@@ -5,6 +5,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/lib"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/lib"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/test"/>
         <property name="context-root" value="WebAgendaNew"/>
         <property name="java-output-path"/>
     </wb-module>

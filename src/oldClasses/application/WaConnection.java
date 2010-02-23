@@ -2,7 +2,7 @@
  * WebAgenda Connection Class
  * application.WaConnection
  */
-package application;
+package oldClasses.application;
 
 import java.awt.HeadlessException;
 import java.net.InetAddress;

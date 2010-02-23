@@ -3,7 +3,6 @@
  */
 package persistence;
 
-import business.Cachable;
 import messagelog.Logging;
 
 /**
@@ -13,8 +12,6 @@ import messagelog.Logging;
  */
 public class PermissionBroker {
 
-	/** Collection of Permissions to be cached in memory	*/
-	private CacheTable permission_cache									= null;
 	
 	private static PermissionBroker broker_permissions					= null;
 	

@@ -1,7 +1,7 @@
 /**
  * application - AppDriver.java
  */
-package application;
+package oldClasses.application;
 
 /*
  * TODO: Priority in Queue -- when adding, have multiple queues. Make sure one queue works first
@@ -25,7 +25,6 @@ import java.util.Observer;
 
 import business.Employee;
 
-import application.ThreadedConnection;
 
 import persistence.*;
 
@@ -109,7 +108,7 @@ public class AppDriver {
 				
 			}
 			else {
-				EmployeeBroker.getBroker().setConnection(tc);
+//				EmployeeBroker.getBroker().setConnection(tc);
 			}
 			
 			con_man.notifyObservers("Notifying Manager to send this to all ThreadedConnections");

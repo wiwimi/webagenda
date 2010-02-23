@@ -26,4 +26,10 @@ public class Position {
 	{
 		name = pos_name;
 	}
+
+	@Override
+	public String toString()
+		{
+		return name;
+		}
 }

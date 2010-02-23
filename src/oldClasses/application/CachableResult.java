@@ -1,17 +1,17 @@
 /**
  * application - CachableResult.java
  */
-package application;
+package oldClasses.application;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Observable;
+import oldClasses.business.Cachable;
 
 import persistence.EmployeeBroker;
 
 import messagelog.Logging;
 
 
-import business.Cachable;
 
 /**
  * @author dann
@@ -66,18 +66,18 @@ public class CachableResult extends Observable {
 	{
 		results.next();
 		while(results.next()) {
-			System.out.print(results.getInt(EmployeeBroker.empID) + " " );
-			System.out.print(results.getInt(EmployeeBroker.supervisorID) + " ");
-			System.out.print(results.getString(EmployeeBroker.givenName) + " ");
-			System.out.print(results.getString(EmployeeBroker.familyName) + " ");
-			System.out.print(results.getDate(EmployeeBroker.birthDate) + " ");
-			System.out.print(results.getString(EmployeeBroker.email) + " ");
-			System.out.print(results.getString(EmployeeBroker.username) + " ");
-			System.out.print(results.getDate(EmployeeBroker.lastLogin) + " ");
-			System.out.print(results.getString(EmployeeBroker.password) + " ");
-			System.out.print(results.getString(EmployeeBroker.prefPosition) + " ");
-			System.out.print(results.getString(EmployeeBroker.plevel) + " ");
-			System.out.print(results.getBoolean(EmployeeBroker.active) + " ");
+//			System.out.print(results.getInt(EmployeeBroker.empID) + " " );
+//			System.out.print(results.getInt(EmployeeBroker.supervisorID) + " ");
+//			System.out.print(results.getString(EmployeeBroker.givenName) + " ");
+//			System.out.print(results.getString(EmployeeBroker.familyName) + " ");
+//			System.out.print(results.getDate(EmployeeBroker.birthDate) + " ");
+//			System.out.print(results.getString(EmployeeBroker.email) + " ");
+//			System.out.print(results.getString(EmployeeBroker.username) + " ");
+//			System.out.print(results.getDate(EmployeeBroker.lastLogin) + " ");
+//			System.out.print(results.getString(EmployeeBroker.password) + " ");
+//			System.out.print(results.getString(EmployeeBroker.prefPosition) + " ");
+//			System.out.print(results.getString(EmployeeBroker.plevel) + " ");
+//			System.out.print(results.getBoolean(EmployeeBroker.active) + " ");
 			System.out.println();
 		}
 	}

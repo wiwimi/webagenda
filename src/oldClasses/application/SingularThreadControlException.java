@@ -1,7 +1,7 @@
 /**
  * application - SingularThreadControlException.java
  */
-package application;
+package oldClasses.application;
 
 /**
  * @author dann
@@ -16,7 +16,7 @@ package application;
  * with based on C.M. priorities.
  * 
  * 
- * @see persistence.BrokerThread
+ * @see oldClasses.persistence.BrokerThread
  * 
  */
 public class SingularThreadControlException extends Exception {

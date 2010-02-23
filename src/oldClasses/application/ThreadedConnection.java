@@ -1,7 +1,7 @@
 /**
  * application - ThreadedConnection.java
  */
-package application;
+package oldClasses.application;
 
 import java.awt.HeadlessException;
 import java.sql.ResultSet;

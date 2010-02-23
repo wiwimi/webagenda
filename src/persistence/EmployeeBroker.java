@@ -3,23 +3,10 @@
  */
 package persistence;
 
-import java.awt.HeadlessException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Observable;
-import java.util.Observer;
-
-import com.mysql.jdbc.Connection;
-
-import utilities.DoubleLinkedList;
-
-
-import application.CachableResult;
-import application.ConnectionManager;
-import application.SingularThreadControlException;
-import application.ThreadedConnection;
-import application.dbrequests.EmployeeCall;
-import business.Cachable;
+import java.sql.Statement;
+import application.DBConnection;
 import business.Employee;
 import messagelog.Logging;
 
@@ -27,36 +14,10 @@ import messagelog.Logging;
  * @author peon-dev, Daniel Wehr
  * @version 0.2.0
  */
-public class EmployeeBroker extends Broker<Employee> implements Observer
+public class EmployeeBroker extends Broker<Employee>
 	{
-	
-	/** Collection of Employees to be cached in memory */
-	private CacheTable				employee_cache		= null;
 	/** Static representation of the broker */
-	private static volatile EmployeeBroker	broker_employees	= null;
-	/** Thread created in the CacheTable object that flushes this broker's data. Not static because
-	 * thread must be instantiated by each Broker for its own purpose. So don't go creating hundreds
-	 * of cachebrokers if you want an efficient system. ;) */
-	private Thread	flush_employee						= null; 
-	/** Class that contains methods to return Sql commands (as strings) that can be inputted into a 
-	 * search for Cachable objects.  */
-	private EmployeeCall emp_call						= new EmployeeCall();
-	
-	private ThreadedConnection con						= null;
-	
-	public static final int empID						= 1;
-	public static final int supervisorID				= 2;
-	public static final int givenName					= 3;
-	public static final int familyName					= 4;
-	public static final int birthDate					= 5;
-	public static final int email						= 6;
-	public static final int username					= 7;
-	public static final int lastLogin					= 8;
-	public static final int password					= 9;
-	public static final int prefPosition				= 10;
-	public static final int prefLocation				= 11;
-	public static final int plevel						= 12;
-	public static final int active						= 13;
+	private static volatile EmployeeBroker	employeeBroker	= null;
 	
 	/**
 	 * Constructor for EmployeeBroker
@@ -64,199 +25,138 @@ public class EmployeeBroker extends Broker<Employee> implements Observer
 	private EmployeeBroker()
 		{
 		
-		Logging.writeToLog(Logging.INIT_LOG, Logging.NORM_ENTRY,
-				"Employee Broker Cache Table initialized");
+//		Logging.writeToLog(Logging.INIT_LOG, Logging.NORM_ENTRY, "Employee Broker Initialized");
 		}
 	
 	/**
 	 * Returns an object-based Employee Broker object.
 	 * 
-	 * 
-	 * @return EmployeeBroker result from the Broker request as its respective Broker object.
+	 * @return EmployeeBroker result from the Broker request as its respective
+	 *         Broker object.
 	 */
 	public static EmployeeBroker getBroker()
 		{
-		if (broker_employees == null)
-			{	
-			Logging.writeToLog(Logging.INIT_LOG, Logging.NORM_ENTRY, "Employee Broker initialized");
-			broker_employees = new EmployeeBroker();
-			broker_employees.initCacheTable();
+		if (employeeBroker == null)
+			{
+			employeeBroker = new EmployeeBroker();
+//			Logging.writeToLog(Logging.INIT_LOG, Logging.NORM_ENTRY, "Employee Broker initialized");
 			}
-		return broker_employees;
+		return employeeBroker;
 		}
 	
-	public void setConnection(ThreadedConnection tc)
-	{
-		if(con == null)
-			con = tc;
-	}
-	
-	private void initCacheTable()
-	{
-		employee_cache = new CacheTable(broker_employees);
-		flush_employee = employee_cache.getFlushThread();
-		flush_employee.start(); // Start your engines
-	}
-	
-	@Override
-	public int cache(Employee cacheObj)
-		{
-		// TODO Auto-generated method stub
-		return 0;
-		}
-
-	@Override
-	public int clearCache()
-		{
-		// TODO Auto-generated method stub
-		return 0;
-		}
-
 	@Override
 	public boolean create(Employee createObj)
 		{
 		// TODO Auto-generated method stub
 		return false;
 		}
-
+	
 	@Override
 	public boolean delete(Employee deleteObj)
 		{
 		// TODO Auto-generated method stub
 		return false;
 		}
-
+	
 	@Override
-	public int flushCache()
+	public Employee[] get(Employee searchTemplate) throws SQLException
 		{
-		// TODO Auto-generated method stub
-		return 0;
-		}
-
-	@Override
-	public void get(Employee template) throws HeadlessException, ClassNotFoundException, IllegalAccessException, InstantiationException, SQLException 
-		{
-		if(template.getEmployee_id() >= 0)
-		{
-			
-			CachableResult cres = new CachableResult(template,emp_call.getAllEmployees());
-			// Add observer to the CachableResult
-			System.out.println("\tCachable Result with Observers for ThreadedConnection and EmpBroker");
-			cres.addObserver(con);
-			cres.addObserver(this);
-			// Send to ConnectionMonitor so it will hand it off to ThreadedConnection for processing
-			try {
-				ConnectionManager.getManager().issueStatement(cres);
-				
-				
-			} catch (SingularThreadControlException e) {
-				//TODO: Have broker send it to its own ThreadedConnection based on ConMan's getConnection(int)
-				// where int is the broker's dynamic threadedconnection object.
-				System.out.println("Multi connection");
-			} 
-		}
-		else {
-			// May Return multiples
-			
-		}
+		// Create sql select statement from employee object.
+		String select = "SELECT * FROM employee WHERE ";
+		String comparisons = "";
 		
-		}
+		/*
+		 * NOTE: Depending on how the sql statement is parsed, new lines may need
+		 * to be included to prevent errors.
+		 */
 
+		if (searchTemplate.getEmployee_id() != null)
+			{
+			// If an employee ID is given, use only that for search.
+			comparisons = "empID = " + searchTemplate.getEmployee_id();
+			}
+		else
+			{
+			// Use all other non-null fields for search if no employee ID is given.
+			// Supervisor ID
+			comparisons = comparisons + (searchTemplate.getSupervisor() != null ? "supervisorID = " + searchTemplate.getSupervisor() : "");
+			// Given Name
+			comparisons = comparisons + (searchTemplate.getGivenName() != null ? (comparisons.equals("") ? "" : " AND ") + "givenName = " + searchTemplate.getGivenName() : "");
+			// Family Name
+			comparisons = comparisons + (searchTemplate.getFamilyName() != null ? (comparisons.equals("") ? "" : " AND ") + "familyName = " + searchTemplate.getFamilyName() : "");
+			// Email
+			comparisons = comparisons + (searchTemplate.getEmail() != null ? (comparisons.equals("") ? "" : " AND ") + "email = " +	searchTemplate.getEmail() : "");
+			// Username
+			comparisons = comparisons + (searchTemplate.getUsername() != null ? (comparisons.equals("") ? "" : " AND ") + "username = " +	searchTemplate.getUsername() : "");
+			// Preferred Position
+			comparisons = comparisons + (searchTemplate.getPreferred_position() != null ? (comparisons.equals("") ? "" : " AND ") +	"prefPosition = " + searchTemplate.getPreferred_position() : "");
+			// Preferred Location
+			comparisons = comparisons + (searchTemplate.getPreferred_location() != null ? (comparisons.equals("") ? "" : " AND ") + "prefLocation = " + searchTemplate.getPreferred_location() : "");
+			// Active State. FIXME may need to send 0/1 bit instead of "false"/"true".
+			comparisons = comparisons + (searchTemplate.getActive() != null ? (comparisons.equals("") ? "" : " AND ") + "active = " + searchTemplate.getActive() : "");
+			}
+		
+		// Add comparisons and close select statement.
+		select = select + comparisons + ";";
+		
+		System.out.println("\n"+select);
+		
+		//Get open DB connection, send query, and reopen connection for other users.
+		DBConnection conn = this.getConnection();
+		Statement stmt = conn.getConnection().createStatement();
+		ResultSet searchResults = stmt.executeQuery(select);
+		conn.setAvailable(true);
+		
+		//Parse returned ResultSet into array of employees.
+		Employee[] foundEmployees = parseResults(searchResults);
+		
+		// Return employees that matched search.
+		return foundEmployees;
+		}
+	
 	@Override
 	public boolean update(Employee updateObj)
 		{
 		// TODO Auto-generated method stub
 		return false;
 		}
-
-
-
-	@Override
-	public Cachable getCachableObject(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Cachable[] getCachableObjects(Cachable c) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	protected Employee[] translateResultSet(ResultSet rs) throws SQLException {
-		DoubleLinkedList<Employee> dll = new DoubleLinkedList<Employee>();
-		while(rs.next())
-			dll.add(addEmployeeFull(rs));
-		
-		if(dll.size() == 0)
-			return null;
-		
-		return dll.toArray();
-	}
 	
-	/**
-	 * Method to assign all the table columns to an employee.
-	 * 
-	 * @param rs ResultSet from database
-	 * @return Employee fully assigned
-	 * @throws SQLException if database returns an error
-	 */
-	private Employee addEmployeeFull(ResultSet rs) throws SQLException
-	{
-		Employee emp = new Employee();
+	@Override
+	public Employee[] parseResults(ResultSet rs) throws SQLException
 		{
-			emp.setEmployee_id(rs.getInt(empID));
-			emp.setSupervisor(rs.getInt(supervisorID));
-			emp.setGivenName(rs.getString(givenName));
-			emp.setFamilyName(rs.getString(familyName));
-			emp.setBirth_date(rs.getDate(birthDate));
-			emp.setEmail(rs.getString(email));
-			emp.setUsername(rs.getString(username));
-			emp.setLastLogin(rs.getDate(lastLogin));
-			emp.setPassword(rs.getString(password));
-			emp.setPreferred_position(rs.getString(prefPosition));
-			emp.setPermission_level(rs.getString(plevel));
-			emp.setActive(rs.getBoolean(active));
-		}
-		return emp;
-	}
-	
-	//TODO: Fill out columns, add comment
-	private Employee addEmployee(int[] columnsToAssign)
-	{
-		Employee emp = new Employee();
-		{
-			for(int i = 0; i < columnsToAssign.length; i++)
+		
+		// List will be returned as null if no results are found.
+		Employee[] empList = null;
+		
+		if (rs.last())
 			{
-				switch(i)
+			// Results exist, get total number of rows to create array of same
+			// size.
+			int resultCount = rs.getRow();
+			
+			// Return ResultSet to beginning.
+			rs.beforeFirst();
+			empList = new Employee[resultCount];
+			
+			for (int i = 0; i < resultCount && rs.next(); i++)
 				{
-				case 1:
-					break;
+				Employee emp = new Employee();
+				emp.setEmployee_id(rs.getInt("empID"));
+				emp.setSupervisor(rs.getInt("supervisorID"));
+				emp.setGivenName(rs.getString("givenName"));
+				emp.setFamilyName(rs.getString("familyName"));
+				emp.setBirth_date(rs.getDate("birthDate"));
+				emp.setEmail(rs.getString("email"));
+				emp.setUsername(rs.getString("username"));
+				emp.setLastLogin(rs.getDate("lastLogin"));
+				emp.setPreferred_position(rs.getString("prefPosition"));
+				emp.setPermission_level(rs.getString("plevel"));
+				emp.setActive(rs.getBoolean("active"));
+				empList[i] = emp;
 				}
+			
 			}
-		}
-		return emp;
-	}
-
-	@Override
-	public int getBrokerConnectionPosition() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
-	@Override
-	public void update(Observable o, Object arg) {
-		if(arg instanceof ResultSet)
-		{
-			System.out.println("Recieved Result Set");
-			try {
-				Employee[] ee = translateResultSet((ResultSet) arg);
-				System.out.println(ee);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		
+		return empList;
 		}
 	}
-}

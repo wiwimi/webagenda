@@ -10,7 +10,7 @@ import business.schedule.*;
  * @author peon-dev, Daniel Wehr
  * @version 0.2.0
  */
-public class Employee extends Cachable
+public class Employee extends BusinessObject
 	{
 	
 	/*
@@ -48,6 +48,13 @@ public class Employee extends Cachable
 	 */
 	private String		familyName				= null;
 	
+	/**
+	 * The date of birth for the employee. While not required by the system for
+	 * general use, it can be made required by certain positions that may require
+	 * users to be over the age of 16/18/21.
+	 */
+	private Date		birth_date				= null;
+
 	/**
 	 * User's e-mail address that they want information sent to. Is changeable by
 	 * the user. It is highly recommended that this be set.
@@ -93,6 +100,11 @@ public class Employee extends Cachable
 	private String		permission_level		= null;
 	
 	/**
+	 * The last time at which the employee logged into the system.
+	 */
+	private Date		lastLogin				= null;
+
+	/**
 	 * Boolean value that represents if the user can access their account; all
 	 * accounts are saved in the database and can only be deleted when explicitly
 	 * requested; since some records cannot be deleted (see tax records),
@@ -102,18 +114,6 @@ public class Employee extends Cachable
 	 * users.
 	 */
 	private Boolean	active					= null;
-	
-	/**
-	 * The date of birth for the employee. While not required by the system for
-	 * general use, it can be made required by certain positions that may require
-	 * users to be over the age of 16/18/21.
-	 */
-	private Date		birth_date				= null;
-	
-	/**
-	 * The last time at which the employee logged into the system.
-	 */
-	private Date		lastLogin				= null;
 	
 	/**
 	 * An object that contains the personal visual settings of a user; loaded
@@ -150,7 +150,6 @@ public class Employee extends Cachable
 	/** Produces a blank template of an employee */
 	public Employee()
 	{
-		this.employee_id = -1;
 	}
 	
 	/**
@@ -386,26 +385,11 @@ public class Employee extends Cachable
 		{
 		user_settings = userSettings;
 		}
-
+	
 	@Override
-	public boolean canDelete()
+	public String toString()
 		{
-		// TODO Auto-generated method stub
-		return false;
-		}
-
-	@Override
-	public boolean canEdit()
-		{
-		// TODO Auto-generated method stub
-		return false;
-		}
-
-	@Override
-	public boolean canRead()
-		{
-		// TODO Auto-generated method stub
-		return false;
+		return employee_id + ";" + supervisor + ";" + givenName + ";" + familyName + ";" + birth_date + ";" + email + ";" + username + ";" + password + ";" + preferred_location + ";" + preferred_position + ";" + permission_level + ";" + lastLogin + ";" + active;
 		}
 	
 	}

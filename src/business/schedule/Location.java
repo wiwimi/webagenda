@@ -26,4 +26,10 @@ public class Location {
 		name = str;
 	}
 	
+	@Override
+	public String toString()
+		{
+		return name;
+		}
+	
 }
