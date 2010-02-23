@@ -89,14 +89,13 @@
 		<div id= "usersLowerRectangle" class = "lowerRectangle">
 			
 			<b> <a href ="../wa_user/add_user.jsp" > Users </a> </b> <br>
-			<b> <a href ="../wa_user/add_skill.jsp" > Skills </a> </b> <br>
-			<b> <a href ="../wa_user/add_position.jsp" > Positions </a> </b> <br>
+			
 		</div>
 		<br>
 		
 		<div id= "locationsUpperRectangle" class="upperRectangle">
 		
-			<div class="sidebarTitle" id="locationsTitle"> Locations </div>
+			<div class="sidebarTitle" id="locationsTitle"> Maintenance </div>
 		
 		</div>
 		
@@ -105,6 +104,8 @@
 		<div id= "locationsLowerRectangle" class = "lowerRectangle">
 			
 			<b> <a href ="../wa_location/add_location.jsp"> Locations </a> </b> <br>
+			<b> <a href ="../wa_user/add_skill.jsp" > Skills </a> </b> <br>
+			<b> <a href ="../wa_user/add_position.jsp" > Positions </a> </b> <br>
 		
 		</div>
 		
