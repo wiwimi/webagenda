@@ -139,6 +139,7 @@ public class EmployeeBroker extends Broker<Employee>
 		// users.
 		DBConnection conn = this.getConnection();
 		Statement stmt = conn.getConnection().createStatement();
+		System.out.println(select);
 		ResultSet searchResults = stmt.executeQuery(select);
 		conn.setAvailable(true);
 		

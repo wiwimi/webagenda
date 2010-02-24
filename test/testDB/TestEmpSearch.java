@@ -4,6 +4,10 @@
 package testDB;
 
 import java.sql.SQLException;
+
+import exception.InitializedLogFileException;
+
+import messagelog.Logging;
 import persistence.EmployeeBroker;
 import business.Employee;
 
@@ -16,6 +20,13 @@ public class TestEmpSearch
 	{
 	public TestEmpSearch()
 		{
+		
+		try {
+			Logging.initializeLogs();
+		} catch (InitializedLogFileException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		//Create broker.
 		EmployeeBroker empBroker = EmployeeBroker.getBroker();
 		
