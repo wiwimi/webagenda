@@ -14,7 +14,7 @@ import java.sql.SQLException;
 public class ConnectionManager
 	{
 	private static String	db_user				= "WABroker";
-	private static String	db_pass				= "WABrokerPass1!3#";
+	private static String	db_pass				= "WABrokerPass123";
 	private static String	db_name				= "WebAgenda";
 	private static String	db_driver			= "com.mysql.jdbc.Driver";
 	private static Object	db_drv_instance	= null;
