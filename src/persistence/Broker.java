@@ -192,10 +192,9 @@ public abstract class Broker<E extends BusinessObject>
 						{
 							if(dbc.getAccessTime() < now - 3000)
 							{
-								System.out.println("Closing connection " + i);
-								System.out.println("Total size: " + getConnections().size());
 								if(getConnections().size() > int_min_connections)
 								{
+									System.out.println("Closing connection " + i);
 									getConnections().remove(dbc);
 									dbc.getConnection().close();
 								}

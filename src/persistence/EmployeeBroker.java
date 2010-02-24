@@ -9,7 +9,6 @@ import java.sql.Statement;
 import exception.InvalidLoginException;
 import application.DBConnection;
 import business.Employee;
-import messagelog.Logging;
 
 /**
  * @author peon-dev, Daniel Wehr
@@ -76,6 +75,10 @@ public class EmployeeBroker extends Broker<Employee>
 	@Override
 	public Employee[] get(Employee searchTemplate) throws SQLException
 		{
+		
+		if(searchTemplate == null)
+			throw new NullPointerException();
+		
 		// Create sql select statement from employee object.
 		String select = "SELECT * FROM `WebAgenda`.`EMPLOYEE` WHERE ";
 		String comparisons = "";
@@ -171,8 +174,9 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @throws InvalidLoginException when the username or password does not match
 	 *            a record in the database.
 	 * @throws SQLException if there was an issue with the database connection or search query.
+	 * @throws NullPointerException 
 	 */
-	public Employee tryLogin(String username, String password) throws InvalidLoginException, SQLException
+	public Employee tryLogin(String username, String password) throws InvalidLoginException, SQLException, NullPointerException
 		{
 		Employee loginEmp = new Employee();
 		loginEmp.setUsername(username);
