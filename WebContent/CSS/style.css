@@ -31,10 +31,13 @@ label {
 #loginArea 
 {
 	float:right;
-	width: 550px;
+	width: 630px;
 	height: 100px;
 	position: relative;
 	color:white;
+	font-face: Verdana;
+	font-size: 1.5em;
+	
 }
 
 #rememberMe {
@@ -170,6 +173,7 @@ label {
 #quickLinksLowerRectangle
 {
 	overflow:hidden;
+	
 }
 
 #scheduleLowerRectangle
@@ -271,6 +275,7 @@ label {
 		-webkit-border-top-left-radius:10px; 
 		-webkit-border-top-right-radius:10px;
 		-moz-border-radius:10px;
+		
 
 	}
 	
@@ -491,6 +496,20 @@ label {
 		position:relative;
 		top:5px;
 		content:url(../lib/images/icons/Color/001_50.png);
+	}
+	
+	#passwordTitle
+	{
+		font-weight:bold;
+		font-size:1.2em;
+	}
+	
+	
+	#passwordTitle:before
+	{
+		position:relative;
+		top:5px;
+		content:url(../lib/images/icons/Color/001_41.png);
 	}
 	
 

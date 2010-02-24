@@ -37,7 +37,7 @@ Randomly generated passwords are going to be sent to the employee's e-mail. If t
 				<div class="widgetTitle" id="usersTitle">Admin's Profile</div>
 			</div>
 			
-		<div class="widgetLowerRectangle" id="quickLinksLowerRectangle">
+		<div class="widgetLowerRectangle" id="usersLowerRectangle">
 
 		<div id ="updateProfileForm">
 			<form class="updateProfileForm" method="post">
@@ -47,12 +47,7 @@ Randomly generated passwords are going to be sent to the employee's e-mail. If t
 			
 							<p> <label> User Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="userName" size ="30"> </p>
 							
-							<p> <label> Old Password: <em class="asterisk"> * </em> </label> <input type="password"  name ="userName" size ="30"> </p>
 							
-							
-							<p> <label> New Password: <em class="asterisk"> * </em> </label> <input type="password"  name ="userName" size ="30"> </p>
-							<p> <label> New Password: <em class="asterisk"> * </em> </label> <input type="password"  name ="userName" size ="30"> </p>
-			
 			</legend>
 				</fieldset>
 						<input type="submit" name="submit" class="button" value="Save"> 

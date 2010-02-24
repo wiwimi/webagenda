@@ -162,6 +162,7 @@
 			
 			
 			<b> <a href ="../wa_settings/user_profile.jsp"> User's Profile </a> </b> <br>
+			<b> <a href ="../wa_settings/Password.jsp"> Change Password </a> </b> <br>
 			
 		</div>
 		

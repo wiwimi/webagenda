@@ -161,6 +161,7 @@
 		<div id= "settingsLowerRectangle" class = "lowerRectangle">
 			
 			<b> <a href ="../wa_settings/security_settings.jsp"> Security </a> </b> <br>
+			<b> <a href ="../wa_settings/Password.jsp"> Change Password </a> </b> <br>
 			<b> <a href ="../wa_settings/admin_profile.jsp"> Admin's Profile </a> </b> <br>
 			<b> <a href ="../wa_settings/corporate_settings.jsp" > Corporate's Profile </a> </b> <br>
 		</div>
