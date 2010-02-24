@@ -2,6 +2,8 @@ package ui;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -10,6 +12,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import exception.InvalidLoginException;
+
+import business.Employee;
+
+import persistence.EmployeeBroker;
 
 /**
  * Servlet implementation class Login
@@ -62,22 +70,25 @@ public class Login extends HttpServlet
         PrintWriter out = response.getWriter();
         try 
         {
-            ServletContext context = getServletContext();
-            RequestDispatcher dispatcher;
+        	EmployeeBroker empBroker = EmployeeBroker.getBroker();
+        	Employee loggedIn = empBroker.tryLogin(username, password);
 
-            if(username.equals("admin") && password.equals("password"))
-            {
-            	//Login is successful
-            	loginSession.setAttribute("username", username);
+            //Login is successful
+            loginSession.setAttribute("username", username);
             	
-            	response.sendRedirect("wa_dashboard/dashboard.jsp");
-            }
-            else
-            {
-                response.sendRedirect(("wa_login/login.jsp?LoginAttempt=1"));
-                
-            }
+            response.sendRedirect("wa_dashboard/dashboard.jsp");
         } 
+        catch (InvalidLoginException e)
+		{
+        	//login was unsuccessful
+        	response.sendRedirect(("wa_login/login.jsp?LoginAttempt=1"));
+			e.printStackTrace();
+		} 
+        catch (SQLException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
         finally
         {
             out.close();
