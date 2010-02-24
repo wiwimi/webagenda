@@ -37,7 +37,7 @@
 }
 #personal
 {
-	
+
 	position:realtive;
 }
 
@@ -67,8 +67,10 @@
 { 
 	  color:#000061; 
 	  font: cochin, Times, Verdana, helvetica,sans-serif;
+	 
 	  font-weight:bold;
 	  border: 1px solid #000061;
+	 
 	  padding-top: 3px;
 	  padding-bottom: 3px;
 	 -webkit-border-top-left-radius:5px; 
