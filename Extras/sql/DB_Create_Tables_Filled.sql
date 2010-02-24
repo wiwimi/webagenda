@@ -324,7 +324,7 @@ ENGINE = InnoDB;
 
 
 ;
-CREATE USER WABroker IDENTIFIED BY 'WABrokerPass1!3#';
+CREATE USER WABroker IDENTIFIED BY 'WaBrokerPass123';
 
 grant DELETE on TABLE `WebAgenda`.`EMPLOYEE` to WABroker;
 grant INSERT on TABLE `WebAgenda`.`EMPLOYEE` to WABroker;
