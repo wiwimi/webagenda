@@ -27,7 +27,13 @@ public abstract class Broker<E extends BusinessObject>
 	/** Double linked list for holding connection objects. List changes dynamically depending on
 	 * the need of the application, old connections will be closed and removed periodically. */
 	private DoubleLinkedList<DBConnection>	connections	= new DoubleLinkedList<DBConnection>();
+	/** Monitor thread for checking broker objects that are inactive, unused and consuming 
+	 * memory needlessly. */
 	private BrokerConMonitor bcon_mon = null;
+	/** Minimum connections for Broker object, must be 1 or higher to be valid.
+	 * This prevents NullPointerExceptions when all connections are removed
+	 * from the DoubleLinkedList. */
+	private int int_min_connections = 1;
 	
 	/**
 	 * Accepts a newly made object, and creates its equivalent record within the
@@ -188,9 +194,11 @@ public abstract class Broker<E extends BusinessObject>
 							{
 								System.out.println("Closing connection " + i);
 								System.out.println("Total size: " + getConnections().size());
-								getConnections().remove(dbc);
-								
-								dbc.getConnection().close();
+								if(getConnections().size() > int_min_connections)
+								{
+									getConnections().remove(dbc);
+									dbc.getConnection().close();
+								}
 							}
 							else {
 								// System is still waiting for the time to pass before removing the connection, and provided it's inactive
