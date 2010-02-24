@@ -77,8 +77,27 @@ label {
 .fullWidget
 {
 	position:relative;
+	width:80%;
+	float:left;
+}
+
+.halfWidget
+{
+	float:left;
+	width:80%;
+}
+
+.fullWidgetDashboard
+{
+	position:relative;
 	width:97%;
 	float:left;
+}
+
+.halfWidgetDashboard
+{
+	float:left;
+	width:100%;
 }
 
 .column
@@ -86,12 +105,6 @@ label {
 	float:left;
 	width:48%;
 	margin:0 5px;
-}
-
-.halfWidget
-{
-	float:left;
-	width:100%;
 }
 
 .widgetUpperRectangle

@@ -4,6 +4,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
+<title>Web Agenda- Updating User</title>
+
+<!--  Includes -->
+<jsp:include page="../wa_includes/PageLayoutAdmin.jsp"/>
+
 <!--  CSS files -->
 <link rel="stylesheet" href="CSS/user.css" type="text/css"></link>
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
@@ -17,13 +22,8 @@
 <!-- Libraries -->
 <script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>	
 
-<title>Web Agenda- Updating User</title>
-
-<!--  Includes -->
-<jsp:include page="../wa_includes/pageLayout.jsp"/>
 </head>
 <body>
-
 <br></br>
 		
 		<div id="usersWidget" class="fullWidget">

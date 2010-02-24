@@ -1,5 +1,8 @@
 @CHARSET "ISO-8859-1";
-#updateAdmin input, select
+
+/*author: Noorin*/
+
+#updateProfileForm input, select
 
 {
 	background-color: #FFFFFF;
@@ -7,12 +10,12 @@
 	border: 1px solid #000080;
 	border:solid 1px #aacfe4;
 }
-#updateAdmin input:focus
+#updateProfileForm input:focus
 {
 	background-color:#E0E0E0;
 }
 
-#updateAdmin form
+#updateProfileForm form
 {
 	 background-color: #FFFFFF;  
 	 color: #000000;   
@@ -22,7 +25,7 @@
 	 padding: 1em 1em;
 	 width:134%;
 }
-#updateAdmin
+#updateProfileForm
 {
 	
 	float:left;
@@ -36,7 +39,7 @@
 	position:realtive;
 }
 
-#updateAdmin label
+#updateProfileForm label
 {
 	float: left;
 	text-align: right;
@@ -57,7 +60,7 @@
 	color: #f00;
 }
 
-#updateAdmin input.button
+#updateProfileForm input.button
 { 
 	  color:#000061; 
 	  font: cochin, Times, Verdana, helvetica,sans-serif;
@@ -73,7 +76,7 @@
 	 -webkit-border-bottom-right-radius:5px;
 	  -moz-border-radius:10px;
 }
-#updateAdmin input.button:hover
+#updateProfileForm input.button:hover
 {
 	color:white;
 	background:#000061
@@ -91,7 +94,7 @@ fieldset.focussed {
  border: 1px solid #000061;
 }
 
-#updateAdmin legend
+#updateProfileForm legend
 {
 	color:#151B54; 
 	font: bold 110% cochin, Times, Verdana, helvetica,sans-serif;

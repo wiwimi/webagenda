@@ -24,7 +24,7 @@
 <title>Web Agenda - Sent</title>
 
 <!-- Includes -->
-<jsp:include page="../wa_includes/pageLayout.jsp"/>
+<jsp:include page="../wa_includes/PageLayoutAdmin.jsp"/>
 
 
 </head>

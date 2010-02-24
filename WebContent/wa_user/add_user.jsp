@@ -5,6 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
+<title>Web Agenda- Adding a User</title>
+
+<!--  Includes -->
+<jsp:include page="../wa_includes/PageLayoutAdmin.jsp"/>
+
 <!-- Libraries -->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <style type="text/css">@import "../lib/js/jquery.datepick.css";</style> 
@@ -16,11 +21,6 @@
 <!--  CSS files -->
 <link rel="stylesheet" href="CSS/user.css" type="text/css"></link>
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
-
-<title>Web Agenda- Adding a User</title>
-
-<!--  Includes -->
-<jsp:include page="../wa_includes/pageLayout.jsp"/>
 
 </head>
 <body>

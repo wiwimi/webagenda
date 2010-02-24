@@ -30,7 +30,7 @@ if(session.getAttribute("username") != null)
 <title>Web Agenda - Dashboard</title>
 
 <!--  Includes -->
-<jsp:include page="../wa_includes/pageLayout.jsp"/>
+<jsp:include page="../wa_includes/PageLayoutAdmin.jsp"/>
 </head>
 <body>
 
@@ -42,7 +42,7 @@ if(session.getAttribute("username") != null)
 	<!-- Start middle Content div -->
 	<div id="middleContent">
 	
-		<div id="quickLinksWidget" class="fullWidget">
+		<div id="quickLinksWidget" class="fullWidgetDashboard">
 			<div class="widgetUpperRectangle" id="quickLinksUpperRectangle">
 				<div class="widgetTitle" id="quickLinksTitle">Quick Links</div>
 			</div>
@@ -74,7 +74,7 @@ if(session.getAttribute("username") != null)
 		</div>
 		</div>
 		
-		<div id="scheduleWidget" class="fullWidget">
+		<div id="scheduleWidget" class="fullWidgetDashboard">
 			<div class="widgetUpperRectangle" id="scheduleUpperRectangle">
 				<div class="widgetTitle" id="scheduleWidgetTitle">Schedule</div>
 			</div>
@@ -85,7 +85,7 @@ if(session.getAttribute("username") != null)
 		</div>
 		
 		<div id="firstColumn" class="column">
-			<div id="notificationsWidget" class="halfWidget">
+			<div id="notificationsWidget" class="halfWidgetDashboard">
 				<div class="widgetUpperRectangle" id="notificationsUpperRectangle">
 					<div class="widgetTitle" id="notificationsWidgetTitle">Notifications</div>
 				</div>
@@ -97,7 +97,7 @@ if(session.getAttribute("username") != null)
 		</div>
 		
 		<div id="secondColumn" class="column">
-			<div id="mailWidget" class="halfWidget">
+			<div id="mailWidget" class="halfWidgetDashboard">
 				<div class="widgetUpperRectangle" id="mailWidgetUpperRectangle">
 					<div class="widgetTitle" id="mailWidgetTitle">Mail(1)</div>
 				</div>

@@ -3,12 +3,13 @@
 <!-- Author: Noorin -->
 <html>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>Web Agenda- Admin's Profile</title>
+<title>Web Agenda- User's Profile</title>
 
 <!--  Includes -->
-<jsp:include page="../wa_includes/PageLayoutAdmin.jsp"/>
+<jsp:include page="../wa_includes/PageLayoutUser.jsp"/>
 
 <!-- Libraries -->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
@@ -40,25 +41,14 @@ Randomly generated passwords are going to be sent to the employee's e-mail. If t
 
 		<div id ="updateProfileForm">
 			<form class="updateProfileForm" method="post">
-			 <div id="personal">
-			
-				 <fieldset>
-					<legend > Personal 
-					
-							<p>	<label> Given Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="givenName" size ="30"> </p>
-							<p>	<label> Family Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="familyName" size ="30"> </p>
-							<p>	<label> Date of Birth: <em class="asterisk"> * </em> </label> <input type="text" name ="dob" id="dob" size ="10"></p>
-							<p>	<label> Personal E-mail: </label> <input type="text"  name ="email" size ="30"> </p>
-					
-					</legend>
-				</fieldset>
-			</div>
-			
+
 			<fieldset>
 					<legend > Account Settings
 			
 							<p> <label> User Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="userName" size ="30"> </p>
+							
 							<p> <label> Old Password: <em class="asterisk"> * </em> </label> <input type="password"  name ="userName" size ="30"> </p>
+							
 							
 							<p> <label> New Password: <em class="asterisk"> * </em> </label> <input type="password"  name ="userName" size ="30"> </p>
 							<p> <label> New Password: <em class="asterisk"> * </em> </label> <input type="password"  name ="userName" size ="30"> </p>
@@ -72,6 +62,7 @@ Randomly generated passwords are going to be sent to the employee's e-mail. If t
 			</div>
 			</div>
 		</div>
+
 
 <div id="footer"></div>
 
