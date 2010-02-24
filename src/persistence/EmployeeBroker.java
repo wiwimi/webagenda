@@ -77,7 +77,7 @@ public class EmployeeBroker extends Broker<Employee>
 	public Employee[] get(Employee searchTemplate) throws SQLException
 		{
 		// Create sql select statement from employee object.
-		String select = "SELECT * FROM 'WebAgenda'.'Employee' WHERE ";
+		String select = "SELECT * FROM `WebAgenda`.`EMPLOYEE` WHERE ";
 		String comparisons = "";
 		
 		/*
