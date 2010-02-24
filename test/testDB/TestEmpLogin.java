@@ -4,6 +4,9 @@
 package testDB;
 
 import java.sql.SQLException;
+
+import messagelog.Logging;
+import exception.InitializedLogFileException;
 import exception.InvalidLoginException;
 import business.Employee;
 import persistence.EmployeeBroker;
@@ -19,6 +22,13 @@ public class TestEmpLogin
 	
 	public TestEmpLogin()
 		{
+		
+		try {
+			Logging.initializeLogs();
+		} catch (InitializedLogFileException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		/*
 		 * Create sample username/password strings. These would normally be

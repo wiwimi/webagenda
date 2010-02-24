@@ -179,24 +179,25 @@ public abstract class Broker<E extends BusinessObject>
 					{
 						dbc = getConnections().get(i);
 
-						if(dbc.isAvailable())
+						if(dbc == null) {
+							
+						}
+						else if(dbc.isAvailable())
 						{
-							System.out.println("is available");
 							if(dbc.getAccessTime() < now - 3000)
 							{
-								System.out.println("Time to close");
+								System.out.println("Closing connection " + i);
 								getConnections().remove(dbc);
 								
 								dbc.getConnection().close();
 							}
 							else {
-								System.out.println(dbc.getAccessTime() + " is not there yet @ " + now);
+								// System is still waiting for the time to pass before removing the connection, and provided it's inactive
 								
 							}
 						}
 					}
 					
-					System.out.println("Thread going to sleep");
 					dbc = null;
 					now = -1L;
 					Broker.BrokerConMonitor.sleep(lng_delay);

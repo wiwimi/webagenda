@@ -12,9 +12,9 @@ import java.util.Date;
  */
 public class DBConnection
 	{
-	private Connection	conn;
+	private Connection		conn = null;
 	private Date			lastAccess	= null;
-	private boolean		isAvailable	= false;
+	private boolean			isAvailable	= false;
 	
 	public DBConnection(Connection newConn)
 		{
