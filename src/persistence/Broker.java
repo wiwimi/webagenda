@@ -3,8 +3,11 @@
  */
 package persistence;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import messagelog.Logging;
 import business.BusinessObject;
 import application.ConnectionManager;
 import application.DBConnection;
@@ -21,7 +24,11 @@ import utilities.Iterator;
  */
 public abstract class Broker<E extends BusinessObject>
 	{
+	
+	/** Double linked list for holding connection objects. List changes dynamically depending on
+	 * the need of the application, old connections will be closed and removed periodically. */
 	private DoubleLinkedList<DBConnection>	connections	= new DoubleLinkedList<DBConnection>();
+	private BrokerConMonitor bcon_mon = null;
 	
 	/**
 	 * Accepts a newly made object, and creates its equivalent record within the
@@ -115,5 +122,95 @@ public abstract class Broker<E extends BusinessObject>
 		returnConnection.setAvailable(false);
 		return returnConnection;
 		}
+	
+		public void initConnectionThread()
+		{
+			if(bcon_mon == null) {
+				bcon_mon = new BrokerConMonitor();
+				
+			}
+		}
+		
+		/**
+		 * Returns a list of current open connections that the Broker utilizes.
+		 * @return DoubleLinkedList<DBConnection> connections
+		 */
+		DoubleLinkedList<DBConnection> getConnections()
+		{
+			return this.connections;
+		}
+		
+		public int getNumberOfConnections()
+		{
+			return this.connections.size();
+		}
+	
+		/**
+		 * Class to monitor a list of db connections for each broker, closing
+		 * them when they are old and unused within a certain time period
+		 * (default is 5 minutes) to prevent overuse of memory.
+		 * 
+		 * @author Daniel Kettle
+		 * @version 0.01.00
+		 * @license GPL 2
+		 */
+	class BrokerConMonitor extends Thread {
+		
+		private long lng_delay 				= 1500; // 300 000 is 5 min.
+		
+		public BrokerConMonitor()
+		{
+			Logging.writeToLog(Logging.INIT_LOG, Logging.NORM_ENTRY, "Broker Connection Monitor Initialized.");
+			this.start();
+		}
+		
+		@Override 
+		public void run()
+		{
+			long now = -1L;
+			DBConnection dbc = null;
+			while(true)
+			{
+				try {
+					// To do when thread wakes up
+					
+					now = new java.util.Date().getTime();
+					for(int i = 0; i < getConnections().size(); i++)
+					{
+						dbc = getConnections().get(i);
+
+						if(dbc.isAvailable())
+						{
+							System.out.println("is available");
+							if(dbc.getAccessTime() < now - 3000)
+							{
+								System.out.println("Time to close");
+								getConnections().remove(dbc);
+								
+								dbc.getConnection().close();
+							}
+							else {
+								System.out.println(dbc.getAccessTime() + " is not there yet @ " + now);
+								
+							}
+						}
+					}
+					
+					System.out.println("Thread going to sleep");
+					dbc = null;
+					now = -1L;
+					Broker.BrokerConMonitor.sleep(lng_delay);
+					
+				} catch (InterruptedException e) {
+				
+					System.out.println("Thread woken up");
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} 
+			}
+		}
+		
+	}
 	
 	}

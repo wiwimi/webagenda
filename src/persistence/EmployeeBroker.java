@@ -25,7 +25,7 @@ public class EmployeeBroker extends Broker<Employee>
 	 */
 	private EmployeeBroker()
 		{
-		
+		super.initConnectionThread(); // Start the connection monitor, checking for old connections. 
 		// Logging.writeToLog(Logging.INIT_LOG, Logging.NORM_ENTRY,
 		// "Employee Broker Initialized");
 		}
