@@ -177,15 +177,17 @@ public abstract class Broker<E extends BusinessObject>
 					for(int i = 0; i < getConnections().size(); i++)
 					{
 						dbc = getConnections().get(i);
-
+						System.out.println(((dbc.getAccessTime() - now) + 3000) + " time to remove");
+						System.out.println(dbc.isAvailable() + " is available");
 						if(dbc == null) {
-							
+							System.out.println("DBConnection is null");
 						}
 						else if(dbc.isAvailable())
 						{
 							if(dbc.getAccessTime() < now - 3000)
 							{
 								System.out.println("Closing connection " + i);
+								System.out.println("Total size: " + getConnections().size());
 								getConnections().remove(dbc);
 								
 								dbc.getConnection().close();

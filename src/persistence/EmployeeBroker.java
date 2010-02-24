@@ -133,7 +133,6 @@ public class EmployeeBroker extends Broker<Employee>
 		
 		// Add comparisons and close select statement.
 		select = select + comparisons + ";";
-		System.out.println(select);
 		
 		// Get open DB connection, send query, and reopen connection for other
 		// users.
