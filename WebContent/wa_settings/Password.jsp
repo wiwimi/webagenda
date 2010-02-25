@@ -21,7 +21,11 @@
 <script type="text/javascript" src="../lib/js/calendar.js"></script>
 
 <!--  CSS files -->
-<link rel="stylesheet" href="CSS/userAddStyle.css" type="text/css"></link>
+
+
+	<link rel="stylesheet" href="CSS/userAddStyle.css" type="text/css"></link>
+
+
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 
 </head>
