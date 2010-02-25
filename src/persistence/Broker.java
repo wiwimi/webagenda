@@ -163,6 +163,7 @@ public abstract class Broker<E extends BusinessObject>
 	class BrokerConMonitor extends Thread {
 		
 		private long lng_delay 				= 5000; // 300 000 is 5 min.
+		private long lng_time_to_close		= 5000;
 		
 		public BrokerConMonitor()
 		{
@@ -184,14 +185,14 @@ public abstract class Broker<E extends BusinessObject>
 					for(int i = 0; i < getConnections().size(); i++)
 					{
 						dbc = getConnections().get(i);
-						System.out.println(((dbc.getAccessTime() - now) + 3000) + " time to remove");
+						System.out.println(((dbc.getAccessTime() - now) + lng_time_to_close) + " time to remove");
 						System.out.println(dbc.isAvailable() + " is available");
 						if(dbc == null) {
 							System.out.println("DBConnection is null");
 						}
 						else if(dbc.isAvailable())
 						{
-							if(dbc.getAccessTime() < now - 3000)
+							if(dbc.getAccessTime() < now - lng_time_to_close)
 							{
 								if(getConnections().size() > int_min_connections)
 								{
