@@ -3,6 +3,8 @@
  */
 package business.permissions;
 
+import business.BusinessObject;
+
 /**
  * Permissions are based on the DB_Create_Tables.sql Rev 120 script posted on 1/27/10 (dd/MM/YY)
  * 
@@ -11,7 +13,7 @@ package business.permissions;
  * @version 0.01.00
  *
  */
-public class Permissions {
+public class Permissions extends BusinessObject {
 
 	/** canEditSchedule is a permission that allows a user to call methods in ScheduleBroker successfully that
 	 * add/edit/delete shifts and a-e-d employees from those shifts. For Automatic Scheduling to occur, this

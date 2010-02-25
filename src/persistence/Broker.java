@@ -6,12 +6,13 @@ package persistence;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import utilities.*;
+
 import messagelog.Logging;
 import business.BusinessObject;
 import application.ConnectionManager;
 import application.DBConnection;
-import utilities.DoubleLinkedList;
-import utilities.Iterator;
+
 
 /**
  * All brokers should inherit this class. Includes database information for
@@ -161,7 +162,7 @@ public abstract class Broker<E extends BusinessObject>
 		 */
 	class BrokerConMonitor extends Thread {
 		
-		private long lng_delay 				= 1500; // 300 000 is 5 min.
+		private long lng_delay 				= 5000; // 300 000 is 5 min.
 		
 		public BrokerConMonitor()
 		{
