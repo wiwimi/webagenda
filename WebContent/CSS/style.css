@@ -515,7 +515,10 @@ label {
 		content:url(../lib/images/icons/Color/001_41.png);
 	}
 	
-
+p.error
+{
+	color:red;
+}
 	
 	
 
