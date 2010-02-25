@@ -29,7 +29,7 @@
 		<div id="usersWidget" class="fullWidget">
 			<div class="widgetUpperRectangle" id="usersWidgetUpperRectangle">
 				<div class="widgetTitle" id="usersTitle">Users</div>
-			</div>
+		</div>
 			
 		<div class="widgetLowerRectangle" id="usersWidgetLowerRectangle">
 
@@ -40,6 +40,8 @@
 			<div id="searchArea">
 				<input type="text" value="" size=30></input><button type="submit" value="Search">Search</button>
 			</div>
+			
+		
 			
 			<div id="tableArea">
 							<div class="userAdmin">
@@ -70,21 +72,21 @@
 					<tbody>
 
 									<tr>
-									<td><a href="#"><div id="profileImage">Test</div></a></td>
-									<td><a href="#">Test</a></td>
-									<td><a href="#">Test</a></td>
-									<td>Test</td>
-									<td>Test</td>
-									<td>Test</td>
+									<td><a href="add_user.jsp"><div id="profileImage">Test</div></a></td>
+									<td><a href="add_user.jsp">Test</a></td>
+									<td><a href="add_user.jsp">Test</a></td>
+									<td> <a href="add_user.jsp">Test</a> </td>
+									<td> <a href="add_user.jsp">Test</a> </td>
+									<td> <a href="add_user.jsp">Test</a> </td>
 									</tr>
 									
 									<tr>
-									<td><a href="#"><div id="profileImage">Test</div></a></td>
-									<td><a href="#">Test</a></td>
-									<td><a href="#">Test</a></td>
-									<td>Test</td>
-									<td>Test</td>
-									<td>Test</td>
+									<td><a href="add_user.jsp"><div id="profileImage">Test</div></a></td>
+									<td><a href="add_user.jsp">Test</a></td>
+									<td><a href="add_user.jsp">Test</a></td>
+									<td> <a href="add_user.jsp">Test</a>  </td>
+									<td> <a href="add_user.jsp">Test</a> </td>
+									<td> <a href="add_user.jsp">Test</a> </td>
 									</tr>
 								
 					</tbody>

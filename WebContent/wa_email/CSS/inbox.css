@@ -32,7 +32,6 @@ tr
 tr:hover
 {
 	background-color:gray;
-	
 }
 
 td
@@ -53,34 +52,11 @@ td a:hover
 {
 	text-decoration:underline;
 }
-
-
-thead
-{
-	border-color: inherit;
-	display: table-header-group;
-	vertical-align: left;
-	background-image:url(../../lib/images/content/HeaderGradient.png);
-	background-repeat:x-repeat;
-	color:black;
-}
-
 .headerRow:hover
 {
 	background-image:url(../../lib/images/content/HeaderGradient.png);
 	background-repeat:x-repeat;
 }
-
-tfoot
-{
-	border-color: inherit;
-	display: table-footer-group;
-	vertical-align: left;
-	background-image:url(../../lib/images/content/HeaderGradient.png);
-	background-repeat:x-repeat;
-	color:black;
-}
-
 tbody
 {
 	border-color: inherit;
@@ -102,4 +78,31 @@ tbody
 	line-height: 1.3em;
 	padding: 7px 7px 8px;
 	text-align: left;
+	
+}
+
+tfoot th, thead th
+{
+	
+	background-image:url(../../lib/images/content/HeaderGradient.png);
+	background-repeat:x-repeat;
+}
+tfoot 
+{
+	border-color: inherit;
+	display: table-footer-group;
+	vertical-align: left;
+	background-image:url(../../lib/images/content/HeaderGradient.png);
+	background-repeat:x-repeat;
+	color:black;
+}
+
+thead
+{
+	border-color: inherit;
+	display: table-header-group;
+	vertical-align: left;
+	background-image:url(../../lib/images/content/HeaderGradient.png);
+	background-repeat:x-repeat;
+	color:black;
 }

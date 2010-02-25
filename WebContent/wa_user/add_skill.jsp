@@ -19,7 +19,10 @@
 
 </head>
 <body>
-Fields marked with <em class="asterisk" > *</em> are required.
+		<div id="instructions">
+			Fields marked with <em class="asterisk" > *</em> are required.
+			<br></br>
+		</div>
 <br></br>
 <br></br>
 		<div id="skillWidget" class="fullWidget">
@@ -28,10 +31,20 @@ Fields marked with <em class="asterisk" > *</em> are required.
 			</div>
 			
 		<div class="widgetLowerRectangle" id="skillLowerRectangle">
+		
 
 		<div id ="userForm">
 			<form class="addSkillForm" method="post">
 			<div id="skill">
+			
+			<div id="searchArea">
+						<input type="submit" name="submit" class="button" value="Save"> 
+						<input type="button" name="submit" class="button" value="Search" onClick="location.href='update_user.jsp';"> 
+						<input type="submit" name="submit" class="button" value="Delete">
+						<input type="submit" name="clear" class="button" value="Clear Screen"> 
+						<br></br>
+			</div>
+				
 				 <fieldset>
 					<legend > Skill Details
 					
@@ -42,12 +55,16 @@ Fields marked with <em class="asterisk" > *</em> are required.
 					</legend>
 				</fieldset>
 			
-				        <input type="submit" name="submit" class="button" value="Save"> 
-						<input type="button" name="submit" class="button"  onClick="location.href='update_skill.jsp'" value="Search" > 
-				        <input type="submit" name="submit" class="button" value="Delete">
+				</div>
+				
+				<div id="searchArea">
+						<input type="submit" name="submit" class="button" value="Save"> 
+						<input type="button" name="submit" class="button" value="Search" onClick="location.href='update_user.jsp';">
+						 <input type="submit" name="submit" class="button" value="Delete">
 						<input type="submit" name="clear" class="button" value="Clear Screen"> 
 						<br></br>
 				</div>
+				
 				</form>
 			</div>
 			</div>

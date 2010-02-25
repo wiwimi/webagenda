@@ -40,7 +40,7 @@
 			</div>
 			
 			<div id="searchArea">
-				<input type="text" value="" size=30></input><button type="submit" value="Search">Search</button>
+				<input type="text" value="" size=30></input><input type="button" class="button" value="Search">
 			</div>
 			
 			<div id="tableArea">

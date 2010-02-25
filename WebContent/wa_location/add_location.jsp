@@ -22,8 +22,9 @@
 
 </head>
 <body>
-Fields marked with <em class="asterisk" > *</em> are required.
-<br></br>
+	<div id="instructions">
+	        Fields marked with <em class="asterisk" > *</em> are required.
+	</div>
 <br></br>
 		<div id="locationWidget" class="fullWidget">
 			<div class="widgetUpperRectangle" id="locationsUpperRectangle">
@@ -44,12 +45,12 @@ Fields marked with <em class="asterisk" > *</em> are required.
 							<textarea  name="descreption" cols="23" rows="6" tabindex="101"></textarea>
 					</legend>
 				</fieldset>
-			
-				        <input type="submit" name="submit" class="button" value="Save"> 
-						<input type="button" name="submit" class="button"  onClick="location.href='update_location.jsp'" value="Search" > 
-				        <input type="submit" name="submit" class="button" value="Delete">
-						<input type="submit" name="clear" class="button" value="Clear Screen"> 
-						<br></br>
+					   <div id="searchArea">
+					        <input type="submit" name="submit" class="button" value="Save"> 
+							<input type="button" name="submit" class="button"  onClick="location.href='update_location.jsp'" value="Search" > 
+					        <input type="submit" name="submit" class="button" value="Delete">
+							<input type="submit" name="clear" class="button" value="Clear Screen"> 
+			            </div>
 				</div>
 				</form>
 			</div>

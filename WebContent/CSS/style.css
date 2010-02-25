@@ -258,7 +258,8 @@ label {
 
 	#sidebar .upperDashboard
 	{
-		font-size: 90%;
+		font-size: 85%;
+		font-family:Verdana;
 	    line-height: 1.0 em;
 		padding: 10px;
 		color: white;
@@ -266,7 +267,7 @@ label {
 		border-style: solid;
 		border-width: 1px;
 		border-color: gray;
-		width : 140px;
+		width : 150px;
 		height : 20 px;
 		text-align: left;
 		position:relative;
@@ -281,7 +282,8 @@ label {
 
 	#sidebar .upperRectangle
 	{
-		font-size: 90%;
+		font-size: 85%;
+		font-family:Verdana;
 	    line-height: 1.0 em;
 		padding: 1px;
 		padding-left:10px;
@@ -291,7 +293,7 @@ label {
 		border-style: solid;
 		border-width: 1px;
 		border-color: gray;
-		width : 140px;
+		width : 150px;
 		height : 20 px;
 		text-align: left;
 		position: relative;
@@ -304,14 +306,15 @@ label {
 
 	#sidebar .upperRectangleCurrent
 	{
-		font-size: 90%;
+		font-size: 85%;
+		font-family:Verdana;
 	    line-height: 1.0 em;
 		padding: 1px;
 		padding-left:12px;
-		color: Black;
+		color: White;
 		background-image:url(../lib/images/content/sideBarHeaderCurrentBack.png);
 		background-repeat:x-repeat;
-		width : 140px;
+		width : 150px;
 		height : 20 px;
 		text-align: left;
 		position: relative;
@@ -326,8 +329,8 @@ label {
 
 	#sidebar .lowerRectangle
 	{
-		font-size: 90%;
-	    line-height: 1.0 em;
+		
+		line-height: 1.0 em;
 		padding: 1px;
 		padding-left:10px;
 		color: Black;
@@ -335,7 +338,7 @@ label {
 		border-style: solid;
 		border-width: 1px;
 		border-color: #8B8B8B;
-		width : 140px;
+		width : 150px;
 		height : 50 px;
 		text-align: left;
 		position:relative;
@@ -421,12 +424,14 @@ label {
 		font-size:1.2em;
 	}
 	
+	
 	#usersTitle:before
 	{
 		position:relative;
 		top:5px;
 		content:url(../lib/images/icons/BlckWhite/001_55.png);
 	}
+	
 	#usersWidgetTitle:before
 	{
 		position:relative;

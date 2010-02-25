@@ -17,6 +17,7 @@
 
 <!-- Javascript Files -->
 <script type="text/javascript" src="../lib/js/dashboard.js"></script>
+<script type="text/javascript" src="../lib/js/calendar.js"></script>
 
 <!--  CSS files -->
 <link rel="stylesheet" href="CSS/user.css" type="text/css"></link>
@@ -24,9 +25,12 @@
 
 </head>
 <body>
-Fields marked with <em class="asterisk" > *</em> are required.
-<br></br>
-Randomly generated passwords are going to be sent to the employee's e-mail. If that field was missing it will be sent to your e-mail.
+	<div id="instructions">
+		Fields marked with <em class="asterisk" > *</em> are required.
+		Randomly generated passwords are going to be sent to the employee's e-mail. If that field was missing it will be sent to your e-mail.
+		<br></br>
+	</div>
+
 <br></br>
 <br></br>
 
@@ -35,11 +39,21 @@ Randomly generated passwords are going to be sent to the employee's e-mail. If t
 				<div class="widgetTitle" id="usersWidgetTitle">Users</div>
 			</div>
 			
-		<div class="widgetLowerRectangle" id="quickLinksLowerRectangle">
+		<div class="widgetLowerRectangle" id="usersLowerRectangle">
+		
+		
 
 		<div id ="userForm">
 			<form class="addUserForm" method="post">
 			 <div id="personal">
+				 	<div id="searchArea">
+				 	
+				            <input type="submit" name="submit" class="button" value="Save"> 
+							<input type="button" name="submit" class="button" value="Search" onClick="location.href='update_user.jsp';">
+							<input type="submit" name="submit" class="button" value="Delete"> 
+							<input type="submit" name="clear" class="button" value="Clear Screen">
+							
+					</div>
 			
 				 <fieldset>
 					<legend > Personal 
@@ -55,7 +69,6 @@ Randomly generated passwords are going to be sent to the employee's e-mail. If t
 			</div>
 			
 			<div id="work">
-		    <p>
 			<fieldset>
 				<legend> Working Preferences 
 					<p>	<label> Status: <em class="asterisk"> * </em> </label> 
@@ -107,35 +120,21 @@ Randomly generated passwords are going to be sent to the employee's e-mail. If t
 											<option value="3">Level 2b</option>
 									</select>
 				</legend>
-				</fieldset>	
-				</p>
+				</fieldset>
 				</div>
-				
+				<div id="searchArea">
 						<input type="submit" name="submit" class="button" value="Save"> 
-						<input type="submit" name="submit" class="button"  onClick="location.href='update_user.jsp'"> 
+						<input type="button" name="submit" class="button" value="Search" onClick="location.href='update_user.jsp';"> 
+						<input type="submit" name="submit" class="button" value="Delete">
 						<input type="submit" name="clear" class="button" value="Clear Screen"> 
 						<br></br>
+				</div>
 				</form>
 			</div>
 			</div>
 		</div>
-<script type="text/javascript">
-        $(function()
-		{
-                
-			
-			$("#dob").datepick({showOn: 'button', buttonImageOnly: true, buttonImage:'../lib/images/icons/Color/calendar.gif'});
-			
-			$(".addUserForm fieldset").mouseover(function()
-			{
-				$(this).addClass("over");
-			});
-			
-        });
-		
-</script>
 
 <div id="footer"></div>
-</div>
+
 </body>
 </html>

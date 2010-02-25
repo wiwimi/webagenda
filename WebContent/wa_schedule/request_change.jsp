@@ -24,8 +24,6 @@
 <!-- Includes -->
 <jsp:include page="../wa_includes/PageLayoutAdmin.jsp"/>
 
-
-
 </head>
 <body>
 
@@ -113,7 +111,8 @@
 								</fieldset>
 									
 										<input type="submit" name="clear" class="button" value="Clear Screen"> 
-										<input type="submit" name="button" class="button" value="Next">
+										<input type="submit" name="submit" class="button"  value="Next" onClick="location.href='#tab2'">
+ 									 
 										<br></br>
 								</div>
 						</div>
@@ -149,15 +148,17 @@
 										</select>
 										</p>
 									    <p>	<label> Position: </label>
-										<INPUT type="text" name="position" disabled="true"><BR>
+										<INPUT type="text" name="position" disabled><BR>
 										
 										</p>	
 								</legend>
 								</fieldset>
 								
 								 <input type="submit" name="button" class="button" value="Back">
-								 <input type="submit" name="button" class="button" value="Search">
+								 <input type="button" name="button" class="button" value="Search" onClick="location.href='../wa_user/update_user.jsp'">
 				                 <input type="submit" name="clear" class="button" value="Next"> 
+				              
+
 								
 							
 								
