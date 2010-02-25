@@ -4,6 +4,7 @@
 package messagelog;
 
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -49,13 +50,23 @@ public class Logging {
 	 * adding individual pre-defined log file types to it, which can be accessed
 	 * by *_LOG integer variables.
 	 */
-	public static void initializeLogs() throws exception.InitializedLogFileException 
+	public static void initializeLogs() throws exception.InitializedLogFileException, IOException
 	{
 		if(!enable_logging) return;
 		
 		if(logfiles != null) {
 			throw new exception.InitializedLogFileException
 				("Cannot initialize an already-initialized log file array");
+		}
+		
+		
+		{
+			File dir = new File(LOG_LOCATION);
+			if(!dir.exists())
+			{
+				boolean b = dir.getAbsoluteFile().mkdir();
+				if(!b) throw new IOException(dir.getAbsolutePath() + " cannot be written to, cannot log files to.");
+			}
 		}
 			
 		// Initialize the new Log files if exception does not interfere

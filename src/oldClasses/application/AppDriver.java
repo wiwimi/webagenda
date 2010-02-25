@@ -16,6 +16,7 @@ package oldClasses.application;
 
 import java.awt.HeadlessException;
 
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.sql.ResultSet;
@@ -138,6 +139,9 @@ public class AppDriver {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (InitializedLogFileException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

@@ -3,13 +3,15 @@
  */
 package business.permissions;
 
+import business.BusinessObject;
+
 
 /**
  * @author peon-dev
  * @version 0.01.00
  *
  */
-public class PermissionLevel {
+public class PermissionLevel extends BusinessObject {
 
 	/** Permission set that makes use of Permissions object. The reason that level is not included in the
 	 * Permissions object is because this way multiple Permission Levels can make use of one set of

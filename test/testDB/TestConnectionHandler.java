@@ -1,6 +1,7 @@
 package testDB;
 
 import java.awt.HeadlessException;
+import java.io.IOException;
 import java.sql.SQLException;
 
 import exception.InitializedLogFileException;
@@ -19,7 +20,12 @@ public class TestConnectionHandler {
 	 */
 	public static void main(String[] args) throws InitializedLogFileException {
 		
-		Logging.initializeLogs();
+		try {
+			Logging.initializeLogs();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		EmployeeBroker.getBroker().initConnectionThread();
 		DBConnection dbc1 = EmployeeBroker.getBroker().getConnection();
 		dbc1.setAvailable(false);

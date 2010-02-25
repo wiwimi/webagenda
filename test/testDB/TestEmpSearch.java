@@ -3,6 +3,7 @@
  */
 package testDB;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 import exception.InitializedLogFileException;
@@ -26,6 +27,9 @@ public class TestEmpSearch
 		} catch (InitializedLogFileException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		//Create broker.
 		EmployeeBroker empBroker = EmployeeBroker.getBroker();

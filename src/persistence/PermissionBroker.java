@@ -6,7 +6,7 @@ package persistence;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import business.permissions.Permissions;
+import business.permissions.*;
 import messagelog.Logging;
 
 //TODO: PermissionBroker needs access to permission tables and permission level tables
@@ -16,7 +16,7 @@ import messagelog.Logging;
  * @version 0.01.00
  *
  */
-public class PermissionBroker extends Broker<Permissions> {
+public class PermissionBroker extends Broker<PermissionLevel> {
 
 	/** Permission Broker that is returned when the getBroker() method is called.
 	 * Only one instance of this Broker can exist at one time. */
@@ -52,34 +52,32 @@ public class PermissionBroker extends Broker<Permissions> {
 		return broker_permissions;
 	}
 
-
-
 	@Override
-	public boolean create(Permissions createObj) throws SQLException {
+	public boolean create(PermissionLevel createObj) throws SQLException {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean delete(Permissions deleteObj) throws SQLException {
+	public boolean delete(PermissionLevel deleteObj) throws SQLException {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public Permissions[] get(Permissions getObj) throws SQLException {
+	public PermissionLevel[] get(PermissionLevel getObj) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean update(Permissions updateObj) throws SQLException {
+	public boolean update(PermissionLevel updateObj) throws SQLException {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public Permissions[] parseResults(ResultSet rs) throws SQLException {
+	public PermissionLevel[] parseResults(ResultSet rs) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
