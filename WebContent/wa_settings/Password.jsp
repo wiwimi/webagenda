@@ -46,13 +46,13 @@
 					<form class="updateProfileForm" method="post">
 		
 						<fieldset>
-								<legend > Account Settings
+								<legend > Account Settings </legend>
 			
 						 <p> <label> Old Password: <em class="asterisk"> * </em> </label> <input type="password"  name ="userName" size ="30"> </p>
 						 <p> <label> New Password: <em class="asterisk"> * </em> </label> <input type="password"  name ="userName" size ="30"> </p>
 						 <p> <label> New Password: <em class="asterisk"> * </em> </label> <input type="password"  name ="userName" size ="30"> </p>
 						
-								</legend>
+								
 						</fieldset>
 							
 					    <input type="submit" name="submit" class="button" value="Save"> 

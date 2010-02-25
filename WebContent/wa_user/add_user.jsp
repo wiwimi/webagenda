@@ -56,21 +56,18 @@
 					</div>
 			
 				 <fieldset>
-					<legend > Personal 
+					<legend > Personal </legend>
 					
 							<p>	<label> Given Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="givenName" size ="30"> </p>
 							<p>	<label> Family Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="familyName" size ="30"> </p>
 							<p>	<label> Date of Birth: <em class="asterisk"> * </em> </label> <input type="text" name ="dob" id="dob" size ="10"></p>
-					
-							<p>	<label> Personal E-mail: </label> <input type="text"  name ="email" size ="30"> </p>
-					
-					</legend>
+					        <p>	<label> Personal E-mail: </label> <input type="text"  name ="email" size ="30"> </p>
 				</fieldset>
 			</div>
 			
 			<div id="work">
 			<fieldset>
-				<legend> Working Preferences 
+				<legend> Working Preferences </legend>
 					<p>	<label> Status: <em class="asterisk"> * </em> </label> 
 							        <select name="status" >
 											<option value="enabled" > Enabled</option> 
@@ -119,7 +116,6 @@
 											<option value="2">Level 1a</option>
 											<option value="3">Level 2b</option>
 									</select>
-				</legend>
 				</fieldset>
 				</div>
 				<div id="searchArea">

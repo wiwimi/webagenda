@@ -46,13 +46,13 @@
 			</div>
 				
 				 <fieldset>
-					<legend > Skill Details
+					<legend > Skill Details </legend>
 					
 							<p>	<label> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="skillName" size ="30"> </p>
 							
 							<p>	<label> Description: </label></p>
 							<textarea  name="descreption" cols="23" rows="6" tabindex="101"></textarea>
-					</legend>
+					
 				</fieldset>
 			
 				</div>

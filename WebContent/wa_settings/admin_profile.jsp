@@ -55,16 +55,14 @@ Randomly generated passwords are going to be sent to the employee's e-mail. If t
 			</div>
 			
 			<fieldset>
-					<legend > Account Settings
+					<legend > Account Settings </legend>
 			
 							<p> <label> User Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="userName" size ="30"> </p>
 							<p> <label> Old Password: <em class="asterisk"> * </em> </label> <input type="password"  name ="userName" size ="30"> </p>
 							
 							<p> <label> New Password: <em class="asterisk"> * </em> </label> <input type="password"  name ="userName" size ="30"> </p>
 							<p> <label> New Password: <em class="asterisk"> * </em> </label> <input type="password"  name ="userName" size ="30"> </p>
-			
-			</legend>
-				</fieldset>
+			</fieldset>
 						<input type="submit" name="submit" class="button" value="Save"> 
 						<input type="submit" name="clear" class="button" value="Clear Screen"> 
 						<br></br>
