@@ -15,6 +15,7 @@
 
 <!--Javascript Files -->
 <script type="text/javascript" src="../lib/js/dashboard.js"></script>
+<script src="../lib/js/zebraTable.js" type ="text/javascript"></script>
 
 <!--  CSS files -->
 

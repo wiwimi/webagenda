@@ -9,7 +9,7 @@
 <title>Web Agenda- User's Profile</title>
 
 <!--  Includes -->
-<jsp:include page="../wa_includes/PageLayoutUser.jsp"/>
+<jsp:include page="../wa_includes/PageLayoutAdmin.jsp"/>
 
 <!-- Libraries -->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
@@ -58,5 +58,6 @@
 				</div>                  <!-- End updateProfileForm -->
 	       </div>                       <!-- End widgetLowerRectangle -->
 	</div>                              <!-- End usersWidget -->
+<div id="footer"></div>
 </body>
 </html>
