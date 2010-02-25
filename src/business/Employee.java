@@ -3,7 +3,7 @@
  */
 package business;
 
-import java.util.Date;
+import java.sql.Date;
 import business.schedule.*;
 
 /**

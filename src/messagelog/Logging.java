@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Date;
+import exception.InitializedLogFileException;
 
 /**
  * @author dann
@@ -101,6 +102,22 @@ public class Logging {
 	public static void writeToLog(int LOGFILE, String TYPE, String message)
 	{
 		if(!enable_logging) return;
+		
+		if (logfiles == null)
+			try
+				{
+				initializeLogs();
+				}
+			catch (InitializedLogFileException e1)
+				{
+				e1.printStackTrace();
+				}
+			catch (IOException e)
+				{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				}
+		
 		try {
 			// the line.separator command is a system-independant newline character inserted at the end of a log file.
 			logfiles.get(LOGFILE).logMessage(TYPE + " " + message + " [" + new Date() + "]" + System.getProperty("line.separator")); 
