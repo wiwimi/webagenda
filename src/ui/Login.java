@@ -3,7 +3,6 @@ package ui;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -12,11 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import exception.InvalidLoginException;
-
 import business.Employee;
-
 import persistence.EmployeeBroker;
 
 /**
@@ -72,7 +68,9 @@ public class Login extends HttpServlet
         {
         	EmployeeBroker empBroker = EmployeeBroker.getBroker();
         	Employee loggedIn = empBroker.tryLogin(username, password);
-
+        	
+        	System.out.println("Login Worked!");
+        	
             //Login is successful
             loginSession.setAttribute("username", username);
             	
@@ -81,6 +79,7 @@ public class Login extends HttpServlet
         catch (InvalidLoginException e)
 		{
         	//login was unsuccessful
+        	System.out.println("Login Didn't work!");
         	response.sendRedirect(("wa_login/login.jsp?LoginAttempt=1"));
 			e.printStackTrace();
 		} 
