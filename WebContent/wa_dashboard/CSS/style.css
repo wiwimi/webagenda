@@ -26,7 +26,7 @@ label
 	position: relative;
 	color:white;
 	font-family: cochin, georgia;
-	font-size:1.7em;
+	font-size:1.4em;
 	min-width:130px;
 	margin: 0px 12px 0px;
 }
@@ -80,9 +80,9 @@ label
 	
 	/* over class will be used later for highlight effect when the cursor moves over a row */
 	
-	tr.alt
+	tr.alt td
 	{
-		background:#F8F8F8  ;
+		background:white;
 	}
 	
 	tr.over td, tr.over th

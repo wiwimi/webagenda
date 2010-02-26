@@ -65,8 +65,9 @@
 #addLocation input.button
 { 
 	  color:#000061; 
-	  font: cochin, Times, Verdana, helvetica,sans-serif;
-	  font-weight:bold;
+	  font: cochin, Verdana, Georgia,  helvetica,sans-serif;
+	  font-size:80%;
+	  background-color:#E6E6E6
 	  border: 1px solid #000061;
 	  padding-top: 2px;
 	  padding-bottom: 2px;

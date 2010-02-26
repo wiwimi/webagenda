@@ -10,6 +10,10 @@
 <!--  Includes -->
 <jsp:include page="../wa_includes/PageLayoutAdmin.jsp"/>
 
+ <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script type="text/javascript" src="http://dev.jquery.com/view/trunk/plugins/validate/jquery.validate.js"></script>
+
+
 <!-- Libraries -->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <style type="text/css">@import "../lib/js/jquery.datepick.css";</style> 
@@ -18,6 +22,8 @@
 <!-- Javascript Files -->
 <script type="text/javascript" src="../lib/js/dashboard.js"></script>
 <script type="text/javascript" src="../lib/js/calendar.js"></script>
+
+
 
 <!--  CSS files -->
 <link rel="stylesheet" href="CSS/user.css" type="text/css"></link>
@@ -131,6 +137,12 @@
 		</div>
 
 <div id="footer"></div>
+
+<script>
+
+$("#userForm").validate();
+
+</script>
 
 </body>
 </html>
