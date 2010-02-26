@@ -5,6 +5,7 @@ package persistence;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import exception.DBCreateException;
 
 import business.permissions.*;
 import messagelog.Logging;
@@ -53,7 +54,7 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 	}
 
 	@Override
-	public boolean create(PermissionLevel createObj) throws SQLException {
+	public boolean create(PermissionLevel createObj) throws DBCreateException {
 		// TODO Auto-generated method stub
 		return false;
 	}

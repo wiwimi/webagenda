@@ -5,6 +5,7 @@ package persistence;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import exception.DBCreateException;
 
 import utilities.*;
 
@@ -44,7 +45,7 @@ public abstract class Broker<E extends BusinessObject>
 	 * @param createObj The object to add to the database.
 	 * @return true if the create was successful, otherwise false.
 	 */
-	public abstract boolean create(E createObj) throws SQLException;
+	public abstract boolean create(E createObj) throws DBCreateException;
 	
 	/**
 	 * Retrieves data from the database and return them as objects.

@@ -6,6 +6,7 @@ package persistence;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import exception.DBCreateException;
 import exception.InvalidLoginException;
 import application.DBConnection;
 import business.Employee;
@@ -24,9 +25,8 @@ public class EmployeeBroker extends Broker<Employee>
 	 */
 	private EmployeeBroker()
 		{
-		super.initConnectionThread(); // Start the connection monitor, checking for old connections. 
-		// Logging.writeToLog(Logging.INIT_LOG, Logging.NORM_ENTRY,
-		// "Employee Broker Initialized");
+		super.initConnectionThread(); // Start the connection monitor, checking
+		// for old connections.
 		}
 	
 	/**
@@ -40,8 +40,6 @@ public class EmployeeBroker extends Broker<Employee>
 		if (employeeBroker == null)
 			{
 			employeeBroker = new EmployeeBroker();
-			// Logging.writeToLog(Logging.INIT_LOG, Logging.NORM_ENTRY,
-			// "Employee Broker initialized");
 			}
 		return employeeBroker;
 		}
@@ -51,10 +49,64 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @see persistence.Broker#create(business.BusinessObject)
 	 */
 	@Override
-	public boolean create(Employee createObj)
+	public boolean create(Employee addEmp) throws DBCreateException
 		{
-		// TODO Auto-generated method stub
-		return false;
+		if (addEmp == null)
+			throw new NullPointerException("Can not add null employee.");
+		
+		/*
+		 * Make sure all "not null" DB fields are filled. TODO: Expand this to
+		 * throw a DBAddException with the exception message saying exactly what
+		 * fields are missing.
+		 */
+		if (addEmp.getEmployee_id() == null || addEmp.getGivenName() == null || addEmp.getFamilyName() == null ||
+				addEmp.getUsername() == null || addEmp.getPassword() == null || addEmp.getPermission_level() == null ||
+				addEmp.getActive() == null)
+			throw new DBCreateException("Not all required fields are filled.");
+		
+		/*
+		 * Create insert string. Employee will always start with an empty
+		 * lastLogin value, and true for active state. TODO, remove null checks on
+		 * required fields, which should be caught above.
+		 */
+		String insert = "INSERT INTO `WebAgenda`.`EMPLOYEE` " +
+				"(`empID`, `supervisorID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`)" +
+				" values (" + addEmp.getEmployee_id() + ", " +
+				(addEmp.getSupervisor() == null ? "NULL, " : addEmp.getSupervisor() + ", ") + "'" + addEmp.getGivenName() +
+				"', " + "'" + addEmp.getFamilyName() + "', " +
+				(addEmp.getBirth_date() == null ? "NULL, " : "'" + addEmp.getBirth_date() + "', ") +
+				(addEmp.getEmail() == null ? "NULL, " : "'" + addEmp.getEmail() + "', ") +
+				(addEmp.getUsername() == null ? "NULL, " : "'" + addEmp.getUsername() + "', ") +
+				(addEmp.getPassword() == null ? "NULL, " : "'" + addEmp.getPassword() + "', ") + "NULL, " +
+				(addEmp.getPreferred_position() == null ? "NULL, " : "'" + addEmp.getPreferred_position() + "', ") +
+				(addEmp.getPreferred_location() == null ? "NULL, " : "'" + addEmp.getPreferred_location() + "', ") +
+				(addEmp.getPermission_level() == null ? "NULL, " : "'" + addEmp.getPermission_level() + "', ") + "true);";
+		
+		/*
+		 * Send insert to database. SQL errors such as primary key already in use
+		 * will be caught, and turned into our own DBAddException, so this method
+		 * will only have one type of exception that needs to be caught. If the
+		 * insert is successful, return true.
+		 */
+		try
+			{
+			DBConnection conn = this.getConnection();
+			Statement stmt = conn.getConnection().createStatement();
+			int result = stmt.executeUpdate(insert);
+			conn.setAvailable(true);
+			
+			if (result != 1)
+				throw new DBCreateException("Failed to add employee, result count incorrect.");
+			}
+		catch (SQLException e)
+			{
+			// TODO May need additional SQL exception processing here.
+			throw new DBCreateException(e.getMessage(), e);
+			}
+		
+		// TODO Inserts for employee skills as well, once that broker is up.
+		
+		return true;
 		}
 	
 	/*
@@ -62,7 +114,7 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @see persistence.Broker#delete(business.BusinessObject)
 	 */
 	@Override
-	public boolean delete(Employee deleteObj)
+	public boolean delete(Employee deleteEmp)
 		{
 		// TODO Auto-generated method stub
 		return false;
@@ -75,9 +127,8 @@ public class EmployeeBroker extends Broker<Employee>
 	@Override
 	public Employee[] get(Employee searchTemplate) throws SQLException
 		{
-		
-		if(searchTemplate == null)
-			throw new NullPointerException();
+		if (searchTemplate == null)
+			throw new NullPointerException("Can not search with null template.");
 		
 		// Create sql select statement from employee object.
 		String select = "SELECT * FROM `WebAgenda`.`EMPLOYEE` WHERE ";
@@ -102,33 +153,32 @@ public class EmployeeBroker extends Broker<Employee>
 			// Given Name
 			comparisons = comparisons +
 					(searchTemplate.getGivenName() != null ? (comparisons.equals("") ? "" : " AND ") + "givenName = '" +
-							searchTemplate.getGivenName()+"'" : "");
+							searchTemplate.getGivenName() + "'" : "");
 			// Family Name
 			comparisons = comparisons +
 					(searchTemplate.getFamilyName() != null ? (comparisons.equals("") ? "" : " AND ") + "familyName = '" +
-							searchTemplate.getFamilyName()+"'" : "");
+							searchTemplate.getFamilyName() + "'" : "");
 			// Email
 			comparisons = comparisons +
 					(searchTemplate.getEmail() != null ? (comparisons.equals("") ? "" : " AND ") + "email = '" +
-							searchTemplate.getEmail()+"'" : "");
+							searchTemplate.getEmail() + "'" : "");
 			// Username
 			comparisons = comparisons +
 					(searchTemplate.getUsername() != null ? (comparisons.equals("") ? "" : " AND ") + "username = '" +
-							searchTemplate.getUsername()+"'" : "");
+							searchTemplate.getUsername() + "'" : "");
 			// Username
 			comparisons = comparisons +
 					(searchTemplate.getPassword() != null ? (comparisons.equals("") ? "" : " AND ") + "password = '" +
-							searchTemplate.getPassword()+"'" : "");
+							searchTemplate.getPassword() + "'" : "");
 			// Preferred Position
 			comparisons = comparisons +
 					(searchTemplate.getPreferred_position() != null ? (comparisons.equals("") ? "" : " AND ") +
-							"prefPosition = '" + searchTemplate.getPreferred_position()+"'" : "");
+							"prefPosition = '" + searchTemplate.getPreferred_position() + "'" : "");
 			// Preferred Location
 			comparisons = comparisons +
 					(searchTemplate.getPreferred_location() != null ? (comparisons.equals("") ? "" : " AND ") +
-							"prefLocation = '" + searchTemplate.getPreferred_location()+"'" : "");
-			// Active State. FIXME may need to send 0/1 bit instead of
-			// "false"/"true".
+							"prefLocation = '" + searchTemplate.getPreferred_location() + "'" : "");
+			// Active State.
 			comparisons = comparisons +
 					(searchTemplate.getActive() != null ? (comparisons.equals("") ? "" : " AND ") + "active = " +
 							searchTemplate.getActive() : "");
@@ -141,7 +191,6 @@ public class EmployeeBroker extends Broker<Employee>
 		// users.
 		DBConnection conn = this.getConnection();
 		Statement stmt = conn.getConnection().createStatement();
-		System.out.println(select);
 		ResultSet searchResults = stmt.executeQuery(select);
 		conn.setAvailable(true);
 		
@@ -173,11 +222,16 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @return The employee object for the employee that has logged in.
 	 * @throws InvalidLoginException when the username or password does not match
 	 *            a record in the database.
-	 * @throws SQLException if there was an issue with the database connection or search query.
-	 * @throws NullPointerException 
+	 * @throws SQLException if there was an issue with the database connection or
+	 *            search query.
+	 * @throws NullPointerException
 	 */
-	public Employee tryLogin(String username, String password) throws InvalidLoginException, SQLException, NullPointerException
+	public Employee tryLogin(String username, String password) throws InvalidLoginException, SQLException,
+			NullPointerException
 		{
+		if (username == null || password == null)
+			throw new InvalidLoginException("Username and password must not be null.");
+		
 		Employee loginEmp = new Employee();
 		loginEmp.setUsername(username);
 		loginEmp.setPassword(password);
@@ -186,8 +240,8 @@ public class EmployeeBroker extends Broker<Employee>
 		if (results == null)
 			throw new InvalidLoginException("Username or password invalid.");
 		
-		if (results.length > 1)
-			throw new InvalidLoginException("Duplicate users found.");
+		// TODO Update employee record in DB with new lastLogin time.
+		// TODO Pull full permissions object into this employee as well.
 		
 		return results[0];
 		}
