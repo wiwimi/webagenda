@@ -6,8 +6,7 @@
 
 {
 	background-color: #FFFFFF;
-	font-family: cochin,Verdana, Times,helvetica,sans-serif;
-	border: 1px solid #000080;
+	font-family: cochin,Arial, Verdana, Times,helvetica,sans-serif;
 	border:solid 1px #aacfe4;
 }
 #updateProfileForm input:focus
@@ -42,9 +41,7 @@
 #updateProfileForm label
 {
 	width: 7em;
-	float: left;
 	font-weight: 700;
-	font-style:Arial;
 	font-size: 14px;
 	font-family: Arial,  Verdana, Helvetica, sans-serif;
 	text-align: right;
@@ -54,8 +51,29 @@
 	line-height: 1.8;
 	vertical-align: top;
 	width:200px;
-
 }
+
+#password_li label 
+{ 
+	position: relative; 
+	width: 200px; 
+	background-color: azure; (no height and no float)
+}
+#password_li input 
+{ 
+	position: relative;
+	text-align:right;
+}
+#confirmpass_li label
+{ 
+	  
+	position: relative; 
+	float: left; 
+	width: 200px;
+	background-color: yellow;
+}
+
+
 .asterisk
 {
 	font-weight: bold;
@@ -226,6 +244,7 @@ tbody
 	padding: 7px 7px 8px;
 	text-align: left;
 }
+
 #profileImage
 {
 	

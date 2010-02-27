@@ -8,7 +8,6 @@
 {
 	background-color: #FFFFFF;
 	font-family: cochin,Verdana, Times,helvetica,sans-serif;
-	border: 1px solid #000080;
 	border:solid 1px #aacfe4;
 }
 
@@ -51,7 +50,6 @@
 	width: 7em;
 	float: left;
 	font-weight: 700;
-	font-style:Arial;
 	font-size: 14px;
 	font-family: Arial,  Verdana, Helvetica, sans-serif;
 	text-align: right;

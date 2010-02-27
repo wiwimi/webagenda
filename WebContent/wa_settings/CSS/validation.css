@@ -1,0 +1,20 @@
+@CHARSET "ISO-8859-1";
+
+/*Author: Noorin*/
+
+.updateProfileForm confirmpass_li img 
+	{
+		position:absolute;left:5px;
+	}
+.updateProfileForm .error 
+	{
+		border:1px solid #A90000;
+		padding:4px 4px 4px 29px;
+		background-color:#F8E5E5;
+	}
+.updateProfileForm .success 
+	{
+		border:1px solid #74F019;
+		padding:4px 4px 4px 29px;
+		background-color:#DEF8CA;
+	}

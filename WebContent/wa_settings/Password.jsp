@@ -19,13 +19,13 @@
 <!-- Javascript Files -->
 <script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
 <script type="text/javascript" src="../lib/js/dashboard.js"></script>
-<script type="text/javascript" src="../lib/js/jquery.validate.min.js"></script>
-<script type="text/javascript" src="../lib/js/password.js"></script>
+<script type="text/javascript" src="../lib/js/jquery2.js"></script>
+<script type="text/javascript" src="../lib/js/val.js"></script>
 
 <!--  CSS files -->
 <link rel="stylesheet" href="CSS/userAddStyle.css" type="text/css"></link>
 <link rel="stylesheet" href="CSS/settings.css" type="text/css"></link>
-
+<link rel="stylesheet" href="CSS/validation.css" type="text/css"></link>
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 
 </head>
@@ -48,17 +48,27 @@
 		
 						<fieldset>
 								<legend > Account Settings </legend>
-			
-						 <p><label for="pwd"> Old Password: <em class="asterisk"> * </em> </label> <input type="password"  name ="pwd" id="pwd" size ="30"> </p>
-						
-						 <p> <label for="pwdc"> New Password: <em class="asterisk"> * </em> </label> <input type="password"  name ="pwdc" id="pwdc" class="required" equalTo="#pwd" size ="30"> 
-						  <span id="pwdInfo">At least 5 characters: letters, numbers and '_'</span> </p>
-						 <p> <label for="pwdc"> New Password: <em class="asterisk"> * </em> </label> <input type="password"  name ="pwdc" id="pwdc" size ="30" class="required" equalTo="#pwd"> </p>
-						
-								
+									<label for="old_pwd"> Old Password: <em class="asterisk"> * </em> </label> 
+									<input type="password"  name ="old_pwd" id="old_pwd" size ="30" maxlength="30"/> 
+										 	
+									<div class="validated" id="password_li">
+										 <label for="new_pwd"> New Password: <em class="asterisk"> * </em> </label> 
+										 <div id="password_img"></div>
+										 <input type="password"  name ="password" id="password" size ="30" maxlength="30"/> 
+									  	 <span id="pwdInfo">At least 5 characters: letters, numbers and '_'</span> 
+									 	 <div id="password_msg"></div>
+									</div>
+									 <div class="validated" id="confirmpass_li">
+									     <label for="confirmpass"> New Password: <em class="asterisk"> * </em> </label> 
+									      <div id="confirmpass_img"></div>
+									     <input name="confirmpass" id="confirmpass" type="password" size ="30" maxlength="30" />
+									 	 <div id="confirmpass_msg"></div>
+									 </div>
+									 
+									 
 						</fieldset>
-							
-					    <input type="submit" name="submit" class="button" value="Save"> 
+						
+						<input type="submit" name="submit" class="button" value="Save"> 
 						<input type="submit" name="clear" class="button" value="Clear Screen"> 
 						<br></br>
 					</form>
