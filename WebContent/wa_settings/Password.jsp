@@ -17,24 +17,25 @@
 <script type="text/javascript" src="../lib/js/jquery.datepick.js"></script>
 
 <!-- Javascript Files -->
+<script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
 <script type="text/javascript" src="../lib/js/dashboard.js"></script>
-<script type="text/javascript" src="../lib/js/calendar.js"></script>
+<script type="text/javascript" src="../lib/js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="../lib/js/password.js"></script>
 
 <!--  CSS files -->
-
-
-	<link rel="stylesheet" href="CSS/userAddStyle.css" type="text/css"></link>
-
+<link rel="stylesheet" href="CSS/userAddStyle.css" type="text/css"></link>
+<link rel="stylesheet" href="CSS/settings.css" type="text/css"></link>
 
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 
 </head>
 <body>
-	Fields marked with <em class="asterisk" > *</em> are required.
-	<br><br>
-	You must retype your password. This helps protect your information.
-	<br></br>
-	<br></br>
+	<div id="instructions">
+		Fields marked with <em class="asterisk" > * </em> are required.
+		You must retype your password. This helps protect your information.
+		<br></br>
+		<br></br>
+	</div>
 	<div id="usersWidget" class="fullWidget">
 				<div class="widgetUpperRectangle" id="passwordsUpperRectangle">
 					<div class="widgetTitle" id="passwordTitle">Password</div>
@@ -48,9 +49,11 @@
 						<fieldset>
 								<legend > Account Settings </legend>
 			
-						 <p> <label> Old Password: <em class="asterisk"> * </em> </label> <input type="password"  name ="userName" size ="30"> </p>
-						 <p> <label> New Password: <em class="asterisk"> * </em> </label> <input type="password"  name ="userName" size ="30"> </p>
-						 <p> <label> New Password: <em class="asterisk"> * </em> </label> <input type="password"  name ="userName" size ="30"> </p>
+						 <p><label for="pwd"> Old Password: <em class="asterisk"> * </em> </label> <input type="password"  name ="pwd" id="pwd" size ="30"> </p>
+						
+						 <p> <label for="pwdc"> New Password: <em class="asterisk"> * </em> </label> <input type="password"  name ="pwdc" id="pwdc" class="required" equalTo="#pwd" size ="30"> 
+						  <span id="pwdInfo">At least 5 characters: letters, numbers and '_'</span> </p>
+						 <p> <label for="pwdc"> New Password: <em class="asterisk"> * </em> </label> <input type="password"  name ="pwdc" id="pwdc" size ="30" class="required" equalTo="#pwd"> </p>
 						
 								
 						</fieldset>
@@ -63,5 +66,7 @@
 	       </div>                       <!-- End widgetLowerRectangle -->
 	</div>                              <!-- End usersWidget -->
 <div id="footer"></div>
+
+
 </body>
 </html>

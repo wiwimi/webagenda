@@ -5,17 +5,19 @@
 #corporateProfile label
 {
 	
-	
+	width: 7em;
 	float: left;
+	font-weight: 700;
+	font-style:Arial;
+	font-size: 14px;
+	font-family: Arial,  Verdana, Helvetica, sans-serif;
 	text-align: right;
 	margin-right: 2.0em;
 	display: block;
 	display: inline-block;
 	line-height: 1.8;
 	vertical-align: top;
-	width:17%;
-	font: cochin, Times, Verdana, helvetica,sans-serif;
-	font-weight:bold;
+	width:200px;
 }
 
 #corporateProfile input, select
@@ -74,4 +76,16 @@ fieldset.focussed {
 {
 	color:white;
 	background:#000061
+}
+
+#updateProfileForm span{
+	
+	color: #544E4F;
+	font-style: italic;
+}
+
+#instructions
+{ 
+	font-family:Arial; 
+	font-size:100%;
 }

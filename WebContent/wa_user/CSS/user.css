@@ -50,6 +50,10 @@
 {
 	width: 7em;
 	float: left;
+	font-weight: 700;
+	font-style:Arial;
+	font-size: 14px;
+	font-family: Arial,  Verdana, Helvetica, sans-serif;
 	text-align: right;
 	margin-right: 2.0em;
 	display: block;
@@ -57,8 +61,7 @@
 	line-height: 1.8;
 	vertical-align: top;
 	width:200px;
-	font: cochin, georgia, Times, Verdana, helvetica,sans-serif;
-	font-weight:bold;
+	
 
 }
 .asterisk
@@ -248,9 +251,16 @@ tbody
 	top:5px;
 	content: url(../../lib/images/icons/Color/001_54.png)
 }
-
 #instructions
 { 
-	font-family:verdana; 
+	font-family:Arial; 
 	font-size:100%;
+}
+.error 
+{
+	    font: normal 10px arial;
+	    padding: 3px;
+	    margin: 3px;
+	    background-color: #ffc;
+	    border: 1px solid #c00;
 }

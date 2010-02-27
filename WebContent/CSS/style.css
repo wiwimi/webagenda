@@ -258,7 +258,7 @@ label {
 
 	#sidebar .upperDashboard
 	{
-		font-size: 85%;
+		font-size: 73%;
 		font-family:Verdana;
 	    line-height: 1.0 em;
 		padding: 10px;
@@ -282,7 +282,7 @@ label {
 
 	#sidebar .upperRectangle
 	{
-		font-size: 85%;
+		font-size: 73%;
 		font-family:Verdana;
 	    line-height: 1.0 em;
 		padding: 1px;
@@ -306,7 +306,7 @@ label {
 
 	#sidebar .upperRectangleCurrent
 	{
-		font-size: 85%;
+		font-size: 73%;
 		font-family:Verdana;
 	    line-height: 1.0 em;
 		padding: 1px;
@@ -418,7 +418,7 @@ label {
 		content:url(../lib/images/icons/BlckWhite/001_45.png);
 	}
 	
-	#usersTitle
+	#usersTitle, #usersWidgetTitle
 	{
 		font-weight:bold;
 		font-size:1.2em;
@@ -439,7 +439,7 @@ label {
 		content:url(../lib/images/icons/Color/001_54.png);
 	}
 	
-	#mailTitle
+	#mailTitle, #mailWidgetTitle
 	{
 		font-weight:bold;
 		font-size:1.2em;
@@ -452,7 +452,7 @@ label {
 		content:url(../lib/images/icons/BlckWhite/001_46.png);
 	}
 	
-	#helpTitle
+	#helpTitle, #helpWidgetTitle
 	{
 		font-weight:bold;
 		font-size:1.2em;
@@ -466,11 +466,12 @@ label {
 		content:url(../lib/images/icons/BlckWhite/001_39.png);
 	}
 	
-	#locationsTitle
+	#locationsTitle, #locationsWidgetTitle
 	{
 		font-weight:bold;
 		font-size:1.2em;
 	}
+	
 	
 	#locationsWidgetTitle:before
 	{

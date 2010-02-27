@@ -41,16 +41,19 @@
 
 #updateProfileForm label
 {
+	width: 7em;
 	float: left;
+	font-weight: 700;
+	font-style:Arial;
+	font-size: 14px;
+	font-family: Arial,  Verdana, Helvetica, sans-serif;
 	text-align: right;
 	margin-right: 2.0em;
 	display: block;
 	display: inline-block;
 	line-height: 1.8;
 	vertical-align: top;
-	width:20%;
-	font: cochin, Times, Verdana, helvetica,sans-serif;
-	font-weight:bold;
+	width:200px;
 
 }
 .asterisk
@@ -62,24 +65,23 @@
 
 #updateProfileForm input.button
 { 
-	  color:#000061; 
-	  font: cochin, Times, Verdana, helvetica,sans-serif;
-	  margin-left:220px;
-	  font-weight:bold;
+	  font-family: cochin, Verdana, georgia, Times, helvetica,sans-serif;
+	  font-size:80%;
+	  color:black;
+	  background-color:#E6E6E6;
 	  border: 1px solid #000061;
-	  margin-top:4px;
-	  padding-top: 3px;
-	  padding-bottom: 3px;
-	 -webkit-border-top-left-radius:5px; 
-	 -webkit-border-top-right-radius:5px;
-	 -webkit-border-bottom-left-radius:5px; 
-	 -webkit-border-bottom-right-radius:5px;
-	  -moz-border-radius:10px;
+	  padding-top: 2px;
+	  padding-bottom: 2px;
+	 -webkit-border-top-left-radius:2px; 
+	 -webkit-border-top-right-radius:2px;
+	 -webkit-border-bottom-left-radius:2px; 
+	 -webkit-border-bottom-right-radius:2px;
+	  -moz-border-radius:5px;
 }
 #updateProfileForm input.button:hover
 {
+	background-color:#989898   ;
 	color:white;
-	background:#000061
 }
 
 fieldset
@@ -224,7 +226,6 @@ tbody
 	padding: 7px 7px 8px;
 	text-align: left;
 }
-
 #profileImage
 {
 	
