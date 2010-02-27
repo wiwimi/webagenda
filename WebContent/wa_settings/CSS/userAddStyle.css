@@ -46,7 +46,6 @@
 	font-family: Arial,  Verdana, Helvetica, sans-serif;
 	text-align: right;
 	margin-right: 2.0em;
-	display: block;
 	display: inline-block;
 	line-height: 1.8;
 	vertical-align: top;
@@ -59,11 +58,13 @@
 	width: 200px; 
 	background-color: azure; (no height and no float)
 }
-#password_li input 
-{ 
-	position: relative;
-	text-align:right;
-}
+#password_li input
+	{
+	    
+	    margin-right: 5%;
+	    
+	}
+
 #confirmpass_li label
 { 
 	  
