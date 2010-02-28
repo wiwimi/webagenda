@@ -37,6 +37,10 @@ public abstract class Broker<E extends BusinessObject>
 	 * This prevents NullPointerExceptions when all connections are removed
 	 * from the DoubleLinkedList. */
 	private int int_min_connections = 1;
+	/**
+	 * Boolean used to determine if the BrokerConMonitor should continue to run.
+	 */
+	private boolean runConnectionThread = true;
 	
 	/**
 	 * Accepts a newly made object, and creates its equivalent record within the
@@ -133,11 +137,17 @@ public abstract class Broker<E extends BusinessObject>
 	
 		public void initConnectionThread()
 		{
+			runConnectionThread = true;
 			if(bcon_mon == null) {
 				bcon_mon = new BrokerConMonitor();
 				
 			}
 		}
+		
+		public void stopConnectionThread()
+			{
+			runConnectionThread = false;
+			}
 		
 		/**
 		 * Returns a list of current open connections that the Broker utilizes.
@@ -178,12 +188,12 @@ public abstract class Broker<E extends BusinessObject>
 		{
 			long now = -1L;
 			DBConnection dbc = null;
-			while(true)
+			while(runConnectionThread)
 			{
 				try {
 					// To do when thread wakes up
 					
-					now = new java.util.Date().getTime();
+					now = System.currentTimeMillis();
 					for(int i = 0; i < getConnections().size(); i++)
 					{
 						dbc = getConnections().get(i);

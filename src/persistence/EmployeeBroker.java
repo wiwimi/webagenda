@@ -73,8 +73,6 @@ public class EmployeeBroker extends Broker<Employee>
 			nullMsg = nullMsg + " Password";
 		if (createEmp.getPermission_level() == null)
 			nullMsg = nullMsg + " PermissionLevel";
-		if (createEmp.getActive() == null)
-			nullMsg = nullMsg + " PermissionLevel";
 		if (!nullMsg.equals("Missing Required Fields:"))
 			throw new DBCreateException(nullMsg);
 		
@@ -82,33 +80,21 @@ public class EmployeeBroker extends Broker<Employee>
 		 * Create insert string. Employee will always start with an empty
 		 * lastLogin value, and true for active state.
 		 */
-		String insert = "INSERT INTO `WebAgenda`.`EMPLOYEE` "
-				+ "(`empID`, `supervisorID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`)"
-				+ " values (" +
-				createEmp.getEmployee_id() +
-				", " +
-				(createEmp.getSupervisor() == null ? "NULL, " : createEmp.getSupervisor() + ", ") +
-				"'" +
-				createEmp.getGivenName() +
-				"', " +
-				"'" +
-				createEmp.getFamilyName() +
-				"', " +
-				(createEmp.getBirth_date() == null ? "NULL, " : "'" + createEmp.getBirth_date() + "', ") +
-				(createEmp.getEmail() == null ? "NULL, " : "'" + createEmp.getEmail() + "', ") +
-				"'" +
-				createEmp.getUsername() +
-				"', " +
-				"'" +
-				createEmp.getPassword() +
-				"', " +
-				"NULL, " +
-				(createEmp.getPreferred_position() == null ? "NULL, " : "'" +
-						createEmp.getPreferred_position() + "', ") +
-				(createEmp.getPreferred_location() == null ? "NULL, " : "'" +
-						createEmp.getPreferred_location() + "', ") +
-				"'" +
-				createEmp.getPermission_level() + "', " + "true);";
+		String insert = String.format(
+			"INSERT INTO `WebAgenda`.`EMPLOYEE` " +
+				"(`empID`, `supervisorID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`)" +
+				" VALUES (%s,%s,'%s','%s',%s,%s,'%s','%s',NULL,%s,%s,'%s',true)",
+			createEmp.getEmployee_id(),
+			(createEmp.getSupervisor() == null ? "NULL"	: createEmp.getSupervisor()),
+			createEmp.getGivenName(),
+			createEmp.getFamilyName(),
+			(createEmp.getBirth_date() == null ? "NULL" : "'"+createEmp.getBirth_date()+"'"),
+			(createEmp.getEmail() == null ? "NULL" : "'"+createEmp.getEmail()+"'"),
+			createEmp.getUsername(),
+			createEmp.getPassword(),
+			(createEmp.getPreferred_position() == null ? "NULL" : "'"+createEmp.getPreferred_position()+"'"),
+			(createEmp.getPreferred_location() == null ? "NULL" : "'"+createEmp.getPreferred_location()+"'"),
+			createEmp.getPermission_level());
 		
 		/*
 		 * Send insert to database. SQL errors such as primary key already in use
@@ -124,13 +110,14 @@ public class EmployeeBroker extends Broker<Employee>
 			conn.setAvailable(true);
 			
 			if (result != 1)
-				throw new DBCreateException("Failed to create employee, result count incorrect: " +
-						result);
+				throw new DBCreateException(
+						"Failed to create employee, result count incorrect: " +
+								result);	
 			}
 		catch (SQLException e)
 			{
 			// TODO May need additional SQL exception processing here.
-			throw new DBCreateException(e.getMessage(), e);
+			throw new DBCreateException("Failed to create employee.", e);
 			}
 		
 		// TODO Inserts for employee skills as well, once that broker is up.
@@ -178,7 +165,7 @@ public class EmployeeBroker extends Broker<Employee>
 		catch (SQLException e)
 			{
 			// TODO May need additional SQL exception processing here.
-			throw new DBDeleteException(e.getMessage(), e);
+			throw new DBDeleteException("Failed to delete employee, see SQL error cause.", e);
 			}
 		
 		return true;
@@ -307,10 +294,12 @@ public class EmployeeBroker extends Broker<Employee>
 		if (results == null)
 			throw new InvalidLoginException("Username or password invalid.");
 		
+		Employee loggedIn = results[0];
+		
 		// TODO Update employee record in DB with new lastLogin time.
 		// TODO Pull full permissions object into this employee as well.
 		
-		return results[0];
+		return loggedIn;
 		}
 	
 	/*
@@ -320,7 +309,6 @@ public class EmployeeBroker extends Broker<Employee>
 	@Override
 	public Employee[] parseResults(ResultSet rs) throws SQLException
 		{
-		
 		// List will be returned as null if no results are found.
 		Employee[] empList = null;
 		
@@ -330,7 +318,7 @@ public class EmployeeBroker extends Broker<Employee>
 			// size.
 			int resultCount = rs.getRow();
 			
-			// Return ResultSet to beginning.
+			// Return ResultSet to beginning to start retrieving employees.
 			rs.beforeFirst();
 			empList = new Employee[resultCount];
 			
@@ -346,6 +334,7 @@ public class EmployeeBroker extends Broker<Employee>
 				emp.setUsername(rs.getString("username"));
 				emp.setLastLogin(rs.getDate("lastLogin"));
 				emp.setPreferred_position(rs.getString("prefPosition"));
+				emp.setPreferred_location(rs.getString("prefLocation"));
 				emp.setPermission_level(rs.getString("plevel"));
 				emp.setActive(rs.getBoolean("active"));
 				empList[i] = emp;
