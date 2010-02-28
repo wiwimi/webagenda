@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import exception.DBCreateException;
+import exception.DBDeleteException;
 
 import application.DBConnection;
 import business.Employee;
@@ -64,7 +65,7 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 	}
 
 	@Override
-	public boolean delete(PermissionLevel deleteObj) throws SQLException {
+	public boolean delete(PermissionLevel deleteObj) throws DBDeleteException {
 		// TODO Auto-generated method stub
 		return false;
 	}

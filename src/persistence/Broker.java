@@ -6,6 +6,7 @@ package persistence;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import exception.DBCreateException;
+import exception.DBDeleteException;
 
 import utilities.*;
 
@@ -77,7 +78,7 @@ public abstract class Broker<E extends BusinessObject>
 	 * @param deleteObj
 	 * @return true if the delete was successful, otherwise false.
 	 */
-	public abstract boolean delete(E deleteObj) throws SQLException;
+	public abstract boolean delete(E deleteObj) throws DBDeleteException;
 	
 	/**
 	 * Parses a ResultSet returned by a select query back into cachable objects.

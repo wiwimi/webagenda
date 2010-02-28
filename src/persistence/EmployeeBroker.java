@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import exception.DBCreateException;
+import exception.DBDeleteException;
 import exception.InvalidLoginException;
 import application.DBConnection;
 import business.Employee;
@@ -49,38 +50,65 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @see persistence.Broker#create(business.BusinessObject)
 	 */
 	@Override
-	public boolean create(Employee addEmp) throws DBCreateException
+	public boolean create(Employee createEmp) throws DBCreateException
 		{
-		if (addEmp == null)
-			throw new NullPointerException("Can not add null employee.");
+		if (createEmp == null)
+			throw new NullPointerException("Can not create null employee.");
 		
 		/*
-		 * Make sure all "not null" DB fields are filled. TODO: Expand this to
-		 * throw a DBAddException with the exception message saying exactly what
-		 * fields are missing.
+		 * Make sure all "not null" DB fields are filled. Expand this to throw a
+		 * DBAddException with the exception message saying exactly what fields
+		 * are missing.
 		 */
-		if (addEmp.getEmployee_id() == null || addEmp.getGivenName() == null || addEmp.getFamilyName() == null ||
-				addEmp.getUsername() == null || addEmp.getPassword() == null || addEmp.getPermission_level() == null ||
-				addEmp.getActive() == null)
-			throw new DBCreateException("Not all required fields are filled.");
+		String nullMsg = "Missing Required Fields:";
+		if (createEmp.getEmployee_id() == null)
+			nullMsg = nullMsg + " EmpID";
+		if (createEmp.getGivenName() == null)
+			nullMsg = nullMsg + " GivenName";
+		if (createEmp.getFamilyName() == null)
+			nullMsg = nullMsg + " FamilyName";
+		if (createEmp.getUsername() == null)
+			nullMsg = nullMsg + " Username";
+		if (createEmp.getPassword() == null)
+			nullMsg = nullMsg + " Password";
+		if (createEmp.getPermission_level() == null)
+			nullMsg = nullMsg + " PermissionLevel";
+		if (createEmp.getActive() == null)
+			nullMsg = nullMsg + " PermissionLevel";
+		if (!nullMsg.equals("Missing Required Fields:"))
+			throw new DBCreateException(nullMsg);
 		
 		/*
 		 * Create insert string. Employee will always start with an empty
-		 * lastLogin value, and true for active state. TODO, remove null checks on
-		 * required fields, which should be caught above.
+		 * lastLogin value, and true for active state.
 		 */
-		String insert = "INSERT INTO `WebAgenda`.`EMPLOYEE` " +
-				"(`empID`, `supervisorID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`)" +
-				" values (" + addEmp.getEmployee_id() + ", " +
-				(addEmp.getSupervisor() == null ? "NULL, " : addEmp.getSupervisor() + ", ") + "'" + addEmp.getGivenName() +
-				"', " + "'" + addEmp.getFamilyName() + "', " +
-				(addEmp.getBirth_date() == null ? "NULL, " : "'" + addEmp.getBirth_date() + "', ") +
-				(addEmp.getEmail() == null ? "NULL, " : "'" + addEmp.getEmail() + "', ") +
-				(addEmp.getUsername() == null ? "NULL, " : "'" + addEmp.getUsername() + "', ") +
-				(addEmp.getPassword() == null ? "NULL, " : "'" + addEmp.getPassword() + "', ") + "NULL, " +
-				(addEmp.getPreferred_position() == null ? "NULL, " : "'" + addEmp.getPreferred_position() + "', ") +
-				(addEmp.getPreferred_location() == null ? "NULL, " : "'" + addEmp.getPreferred_location() + "', ") +
-				(addEmp.getPermission_level() == null ? "NULL, " : "'" + addEmp.getPermission_level() + "', ") + "true);";
+		String insert = "INSERT INTO `WebAgenda`.`EMPLOYEE` "
+				+ "(`empID`, `supervisorID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`)"
+				+ " values (" +
+				createEmp.getEmployee_id() +
+				", " +
+				(createEmp.getSupervisor() == null ? "NULL, " : createEmp.getSupervisor() + ", ") +
+				"'" +
+				createEmp.getGivenName() +
+				"', " +
+				"'" +
+				createEmp.getFamilyName() +
+				"', " +
+				(createEmp.getBirth_date() == null ? "NULL, " : "'" + createEmp.getBirth_date() + "', ") +
+				(createEmp.getEmail() == null ? "NULL, " : "'" + createEmp.getEmail() + "', ") +
+				"'" +
+				createEmp.getUsername() +
+				"', " +
+				"'" +
+				createEmp.getPassword() +
+				"', " +
+				"NULL, " +
+				(createEmp.getPreferred_position() == null ? "NULL, " : "'" +
+						createEmp.getPreferred_position() + "', ") +
+				(createEmp.getPreferred_location() == null ? "NULL, " : "'" +
+						createEmp.getPreferred_location() + "', ") +
+				"'" +
+				createEmp.getPermission_level() + "', " + "true);";
 		
 		/*
 		 * Send insert to database. SQL errors such as primary key already in use
@@ -96,7 +124,8 @@ public class EmployeeBroker extends Broker<Employee>
 			conn.setAvailable(true);
 			
 			if (result != 1)
-				throw new DBCreateException("Failed to add employee, result count incorrect.");
+				throw new DBCreateException("Failed to create employee, result count incorrect: " +
+						result);
 			}
 		catch (SQLException e)
 			{
@@ -114,10 +143,45 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @see persistence.Broker#delete(business.BusinessObject)
 	 */
 	@Override
-	public boolean delete(Employee deleteEmp)
+	public boolean delete(Employee deleteEmp) throws DBDeleteException
 		{
-		// TODO Auto-generated method stub
-		return false;
+		if (deleteEmp == null)
+			throw new NullPointerException("Can not delete null employee.");
+		
+		if (deleteEmp.getEmployee_id() == null)
+			throw new DBDeleteException("Missing Required Field: EmpID");
+		
+		/*
+		 * Rather than an actual delete, employees are only disabled in the
+		 * system, so an update is used.
+		 */
+		String delete = "UPDATE `WebAgenda`.`Employee` SET active = false WHERE " + "empID = " +
+				deleteEmp.getEmployee_id() + ";";
+		
+		/*
+		 * Send update to database. SQL errors such as primary key already in use
+		 * will be caught, and turned into our own DBAddException, so this method
+		 * will only have one type of exception that needs to be caught. If the
+		 * insert is successful, return true.
+		 */
+		try
+			{
+			DBConnection conn = this.getConnection();
+			Statement stmt = conn.getConnection().createStatement();
+			int result = stmt.executeUpdate(delete);
+			conn.setAvailable(true);
+			
+			if (result != 1)
+				throw new DBDeleteException("Failed to delete employee, result count incorrect: " +
+						result);
+			}
+		catch (SQLException e)
+			{
+			// TODO May need additional SQL exception processing here.
+			throw new DBDeleteException(e.getMessage(), e);
+			}
+		
+		return true;
 		}
 	
 	/*
@@ -149,39 +213,42 @@ public class EmployeeBroker extends Broker<Employee>
 			// Use all other non-null fields for search if no employee ID is given.
 			// Supervisor ID
 			comparisons = comparisons +
-					(searchTemplate.getSupervisor() != null ? "supervisorID = " + searchTemplate.getSupervisor() : "");
+					(searchTemplate.getSupervisor() != null ? "supervisorID = " +
+							searchTemplate.getSupervisor() : "");
 			// Given Name
 			comparisons = comparisons +
-					(searchTemplate.getGivenName() != null ? (comparisons.equals("") ? "" : " AND ") + "givenName = '" +
-							searchTemplate.getGivenName() + "'" : "");
+					(searchTemplate.getGivenName() != null ? (comparisons.equals("") ? "" : " AND ") +
+							"givenName = '" + searchTemplate.getGivenName() + "'" : "");
 			// Family Name
 			comparisons = comparisons +
-					(searchTemplate.getFamilyName() != null ? (comparisons.equals("") ? "" : " AND ") + "familyName = '" +
-							searchTemplate.getFamilyName() + "'" : "");
+					(searchTemplate.getFamilyName() != null ? (comparisons.equals("") ? "" : " AND ") +
+							"familyName = '" + searchTemplate.getFamilyName() + "'" : "");
 			// Email
 			comparisons = comparisons +
-					(searchTemplate.getEmail() != null ? (comparisons.equals("") ? "" : " AND ") + "email = '" +
-							searchTemplate.getEmail() + "'" : "");
+					(searchTemplate.getEmail() != null ? (comparisons.equals("") ? "" : " AND ") +
+							"email = '" + searchTemplate.getEmail() + "'" : "");
 			// Username
 			comparisons = comparisons +
-					(searchTemplate.getUsername() != null ? (comparisons.equals("") ? "" : " AND ") + "username = '" +
-							searchTemplate.getUsername() + "'" : "");
+					(searchTemplate.getUsername() != null ? (comparisons.equals("") ? "" : " AND ") +
+							"username = '" + searchTemplate.getUsername() + "'" : "");
 			// Username
 			comparisons = comparisons +
-					(searchTemplate.getPassword() != null ? (comparisons.equals("") ? "" : " AND ") + "password = '" +
-							searchTemplate.getPassword() + "'" : "");
+					(searchTemplate.getPassword() != null ? (comparisons.equals("") ? "" : " AND ") +
+							"password = '" + searchTemplate.getPassword() + "'" : "");
 			// Preferred Position
 			comparisons = comparisons +
-					(searchTemplate.getPreferred_position() != null ? (comparisons.equals("") ? "" : " AND ") +
+					(searchTemplate.getPreferred_position() != null ? (comparisons.equals("") ? ""
+							: " AND ") +
 							"prefPosition = '" + searchTemplate.getPreferred_position() + "'" : "");
 			// Preferred Location
 			comparisons = comparisons +
-					(searchTemplate.getPreferred_location() != null ? (comparisons.equals("") ? "" : " AND ") +
+					(searchTemplate.getPreferred_location() != null ? (comparisons.equals("") ? ""
+							: " AND ") +
 							"prefLocation = '" + searchTemplate.getPreferred_location() + "'" : "");
 			// Active State.
 			comparisons = comparisons +
-					(searchTemplate.getActive() != null ? (comparisons.equals("") ? "" : " AND ") + "active = " +
-							searchTemplate.getActive() : "");
+					(searchTemplate.getActive() != null ? (comparisons.equals("") ? "" : " AND ") +
+							"active = " + searchTemplate.getActive() : "");
 			}
 		
 		// Add comparisons and close select statement.
@@ -226,8 +293,8 @@ public class EmployeeBroker extends Broker<Employee>
 	 *            search query.
 	 * @throws NullPointerException
 	 */
-	public Employee tryLogin(String username, String password) throws InvalidLoginException, SQLException,
-			NullPointerException
+	public Employee tryLogin(String username, String password) throws InvalidLoginException,
+			SQLException, NullPointerException
 		{
 		if (username == null || password == null)
 			throw new InvalidLoginException("Username and password must not be null.");
