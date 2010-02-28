@@ -36,7 +36,7 @@ public abstract class Broker<E extends BusinessObject>
 	/** Minimum connections for Broker object, must be 1 or higher to be valid.
 	 * This prevents NullPointerExceptions when all connections are removed
 	 * from the DoubleLinkedList. */
-	private int int_min_connections = 1;
+	private static final int int_min_connections = 1;
 	/**
 	 * Boolean used to determine if the BrokerConMonitor should continue to run.
 	 */
@@ -148,20 +148,6 @@ public abstract class Broker<E extends BusinessObject>
 			{
 			runConnectionThread = false;
 			}
-		
-		/**
-		 * Returns a list of current open connections that the Broker utilizes.
-		 * @return DoubleLinkedList<DBConnection> connections
-		 */
-		DoubleLinkedList<DBConnection> getConnections()
-		{
-			return this.connections;
-		}
-		
-		public int getNumberOfConnections()
-		{
-			return this.connections.size();
-		}
 	
 		/**
 		 * Class to monitor a list of db connections for each broker, closing
@@ -190,32 +176,29 @@ public abstract class Broker<E extends BusinessObject>
 			DBConnection dbc = null;
 			while(runConnectionThread)
 			{
-				try {
+				try
+				{
 					// To do when thread wakes up
 					
-					now = System.currentTimeMillis();
-					for(int i = 0; i < getConnections().size(); i++)
+					if (connections.size() > int_min_connections)
 					{
-						dbc = getConnections().get(i);
-						System.out.println(((dbc.getAccessTime() - now) + lng_time_to_close) + " time to remove");
-						System.out.println(dbc.isAvailable() + " is available");
-						if(dbc == null) {
-							System.out.println("DBConnection is null");
-						}
-						else if(dbc.isAvailable())
+						now = System.currentTimeMillis();
+						for(int i = connections.size() - 1; i >= int_min_connections; i--)
 						{
-							if(dbc.getAccessTime() < now - lng_time_to_close)
+							dbc = connections.get(i);
+							System.out.println("Connection "+i+": "+((dbc.getAccessTime() - now) + lng_time_to_close) + " time to remove");
+							System.out.println("Connection "+i+" is available: "+dbc.isAvailable());
+							if(dbc == null) {
+								System.out.println("DBConnection is null");
+							}
+							else if(dbc.isAvailable())
 							{
-								if(getConnections().size() > int_min_connections)
+								if(dbc.getAccessTime() < now - lng_time_to_close)
 								{
 									System.out.println("Closing connection " + i);
-									getConnections().remove(dbc);
+									connections.remove(dbc);
 									dbc.getConnection().close();
 								}
-							}
-							else {
-								// System is still waiting for the time to pass before removing the connection, and provided it's inactive
-								
 							}
 						}
 					}
