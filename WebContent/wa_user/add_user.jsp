@@ -11,10 +11,9 @@
 <jsp:include page="../wa_includes/PageLayoutAdmin.jsp"/>
 
 
-
 <!-- Libraries -->
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-<style type="text/css">@import "../lib/js/jquery.datepick.css";</style> 
+<script type="text/javascript" src ="../lib/js/jquery-1.3.2.min.js"></script>
+
 <script type="text/javascript" src="../lib/js/jquery.datepick.js"></script>
 
 <!-- Javascript Files -->
@@ -26,6 +25,7 @@
 <link rel="stylesheet" href="CSS/user.css" type="text/css"></link>
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="CSS/validation.css" type="text/css"></link>
+<style type="text/css">@import "../CSS/jquery.datepick.css";</style> 
 
 </head>
 <body>

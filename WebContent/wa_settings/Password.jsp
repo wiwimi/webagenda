@@ -3,7 +3,6 @@
 <!-- Author: Noorin -->
 <html>
 <head>
-
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
 <title>Web Agenda- User's Profile</title>
