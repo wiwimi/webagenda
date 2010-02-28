@@ -7,8 +7,16 @@ import business.BusinessObject;
 
 
 /**
- * @author peon-dev
+ * @author Daniel Kettle
  * @version 0.01.00
+ * <br>
+ * README: <p>
+ * Because of the volatile and secure nature of permissions, and to reduce the change of accidental permission changing either by
+ * expected or unexpected events, a series of Permissions (Permissions object) can only be assigned if the PermissionLevel 
+ * object has a null Permissions object in the class when the setter is called. User created widgets (if they are integrated)
+ * will not have access to the ability to null a permission in order to change it. All access will be via validation classes
+ * that access this class.
+ * 
  *
  */
 public class PermissionLevel extends BusinessObject {
@@ -53,6 +61,29 @@ public class PermissionLevel extends BusinessObject {
 		return description;
 	}
 	
+	public void setLevel(int i)
+	{
+		this.level = i;
+	}
 	
+	protected void setVersion(char c)
+	{
+		this.version = c;
+	}
+	
+	protected void setDescription(String s)
+	{
+		this.description = s;
+	}
+	
+	protected void invalidatePermission()
+	{
+		level_permissions = null;
+	}
+	
+	protected void setPermission(Permissions p)
+	{
+		if(level_permissions == null) this.level_permissions = p;
+	}
 	
 }

@@ -8,6 +8,7 @@ import business.BusinessObject;
 /**
  * Permissions are based on the DB_Create_Tables.sql Rev 120 script posted on 1/27/10 (dd/MM/YY)
  * 
+ * Only returns copies of variables when using getters.
  * 
  * @author peon-dev
  * @version 0.01.00
@@ -87,13 +88,16 @@ public class Permissions extends BusinessObject {
 	// GETTERS //
 	
 	public boolean isCanEditSchedule() {
-		return canEditSchedule;
+		boolean b = canEditSchedule;
+		return b;
 	}
 	public boolean isCanReadSchedule() {
-		return canReadSchedule;
+		boolean b = canReadSchedule;
+		return b;
 	}
 	public boolean isCanReadOldSchedule() {
-		return canReadOldSchedule;
+		boolean b = canReadOldSchedule;
+		return b;
 	}
 	public boolean isCanViewResources() {
 		return canViewResources;

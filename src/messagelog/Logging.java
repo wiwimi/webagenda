@@ -33,7 +33,8 @@ public class Logging {
 	public static final String[] LOGARRAY = new String[]{
 		new String(LOG_LOCATION + "connection.log"),
 		new String(LOG_LOCATION + "access.log"),
-		new String(LOG_LOCATION + "init.log")
+		new String(LOG_LOCATION + "init.log"),
+		new String(LOG_LOCATION + "permission.log")
 	};
 	public static final String ERR_ENTRY						= "(EE)",
 							   WARN_ENTRY						= "(WW)",
@@ -41,7 +42,8 @@ public class Logging {
 	/** Location of Connection log in the logfiles linked list array */
 	public static final int CONN_LOG							= 0,
 					   ACCESS_LOG								= 1,
-					   INIT_LOG									= 2;
+					   INIT_LOG									= 2,
+					   PERM_LOG									= 3;
 							   
 	/** Linked list that holds log file references */
 	private static LinkedList<LogFile> logfiles					=  null;
@@ -80,6 +82,7 @@ public class Logging {
 				logfiles.add(new LogFile(LOGARRAY[CONN_LOG])); // Connection log is firest
 				logfiles.add(new LogFile(LOGARRAY[ACCESS_LOG]));
 				logfiles.add(new LogFile(LOGARRAY[INIT_LOG]));
+				logfiles.add(new LogFile(LOGARRAY[PERM_LOG]));
 				
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
