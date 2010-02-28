@@ -10,6 +10,8 @@
 <!--  Includes -->
 <jsp:include page="../wa_includes/PageLayoutAdmin.jsp"/>
 
+
+
 <!-- Libraries -->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <style type="text/css">@import "../lib/js/jquery.datepick.css";</style> 
@@ -19,9 +21,11 @@
 <script type="text/javascript" src="../lib/js/dashboard.js"></script>
 <script type="text/javascript" src="../lib/js/calendar.js"></script>
 
+
 <!--  CSS files -->
 <link rel="stylesheet" href="CSS/user.css" type="text/css"></link>
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="CSS/validation.css" type="text/css"></link>
 
 </head>
 <body>
@@ -61,9 +65,13 @@
 							<p>	<label> Given Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="givenName" size ="30"> </p>
 							<p>	<label> Family Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="familyName" size ="30"> </p>
 							<p>	<label> Date of Birth: <em class="asterisk"> * </em> </label> <input type="text" name ="dob" id="dob" size ="10"></p>
-					
-							<p>	<label> Personal E-mail: </label> <input type="text"  name ="email" size ="30"> </p>
-					
+
+					       <div id="email">
+								<label for="email"> Personal E-mail: <em class="asterisk"> * </em> </label> 
+							    <div id="confirmEmail_img"></div>
+							    <input name="confirmEmail" id="confirmpass" type="text" size ="30" maxlength="30" />
+								<div id="confirmEmail_msg"></div>
+						   </div>
 					
 				</fieldset>
 			</div>

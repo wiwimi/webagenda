@@ -49,19 +49,17 @@
 						<fieldset>
 								<legend > Account Settings </legend>
 									<label for="old_pwd"> Old Password: <em class="asterisk"> * </em> </label> 
-									<input type="password"  name ="old_pwd" id="old_pwd" size ="30" maxlength="30"/> 
+									<input type="password"  name ="old_pwd" id="old_pwd" size ="6" maxlength="8"/> 
 										 	
 									<div class="validated" id="password_li">
-										 <label for="new_pwd"> New Password: <em class="asterisk"> * </em> </label> 
-										 <div id="password_img"></div>
-										 <input type="password"  name ="password" id="password" size ="30" maxlength="30"/> 
-									  	 <span id="pwdInfo">At least 5 characters: letters, numbers and '_'</span> 
-									 	 <div id="password_msg"></div>
+										 <label for="password"> New Password: <em class="asterisk"> * </em> </label> 
+										 <input class="validated" type="password"  name ="password" id="password" size ="6" maxlength="8"/> 
+									  	 <span id="pwdInfo"> 6 - 8 alphanumeric characters</span> 
 									</div>
-									 <div class="validated" id="confirmpass_li">
+									 <div id="confirmpass_li">
 									     <label for="confirmpass"> New Password: <em class="asterisk"> * </em> </label> 
 									      <div id="confirmpass_img"></div>
-									     <input name="confirmpass" id="confirmpass" type="password" size ="30" maxlength="30" />
+									     <input name="confirmpass" id="confirmpass" type="password" size ="6" maxlength="8" />
 									 	 <div id="confirmpass_msg"></div>
 									 </div>
 									 

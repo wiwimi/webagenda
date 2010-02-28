@@ -56,7 +56,6 @@
 { 
 	position: relative; 
 	width: 200px; 
-	background-color: azure; (no height and no float)
 }
 #password_li input
 	{
@@ -71,7 +70,6 @@
 	position: relative; 
 	float: left; 
 	width: 200px;
-	background-color: yellow;
 }
 
 
