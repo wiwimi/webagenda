@@ -48,6 +48,30 @@ public class PermissionLevel extends BusinessObject {
 	 * may want to designate their work to another employee. Description could be "Report-Generating Employee of Level 0". */
 	private String description									= null;
 	
+	private PermissionLevel(Permissions p, int level, char version)
+	{
+		this(p,level,version,null);
+	}
+	
+	private PermissionLevel(Permissions p, int level, char version, String description)
+	{
+		this.level_permissions = p;
+		this.level = level;
+		this.version = version;
+		this.description = description;
+	}
+	
+	/**
+	 * Returns a permission level based on the most restrictive default level,
+	 * also referred to as a template or blank permission level as no changes have
+	 * been made that should negatively affect the functioning of the system.
+	 * @return
+	 */
+	protected static PermissionLevel getDefault()
+	{
+		return new PermissionLevel(new Permissions(), 0, ' ');
+	}
+	
 	public Permissions getLevel_permissions() {
 		return level_permissions;
 	}
@@ -61,7 +85,7 @@ public class PermissionLevel extends BusinessObject {
 		return description;
 	}
 	
-	public void setLevel(int i)
+	protected void setLevel(int i)
 	{
 		this.level = i;
 	}
@@ -81,7 +105,17 @@ public class PermissionLevel extends BusinessObject {
 		level_permissions = null;
 	}
 	
-	protected void setPermission(Permissions p)
+	/**
+	 * Method that will set the new Permissions for this PermissionLevel object.
+	 * In order to re-assign permissions, the level and version must be confirmed
+	 * so that the permission level will be overwritten or saved as a different
+	 * permission level.
+	 * 
+	 * @param p Permissions object
+	 * @param level int level (0-99)
+	 * @param version char version (blank as default, or 'a' to 'z')
+	 */
+	protected void setPermission(Permissions p,int level, char version)
 	{
 		if(level_permissions == null) this.level_permissions = p;
 	}

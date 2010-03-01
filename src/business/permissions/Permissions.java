@@ -85,6 +85,17 @@ public class Permissions extends BusinessObject {
 	 * equal or higher than the user id recorded in this variable will have superiority. */
 	private int trusted									= -1; // Permission Elevation only distributable via a higher level, notification is sent when this is set to true
 	
+	/**
+	 * Constructor will ONLY create a basic default permission set, known as level 0. This is the lowest permission
+	 * setting for performing system-related tasks, but has allowances for emergency days off booking and
+	 * communication with other employees. Spamming of these privilleges can result in their suspension if
+	 * an authority deems it.
+	 */
+	public Permissions()
+	{
+		
+	}
+	
 	// GETTERS //
 	
 	public boolean isCanEditSchedule() {
@@ -134,6 +145,96 @@ public class Permissions extends BusinessObject {
 	}
 	public int getTrusted() {
 		return trusted;
+	}
+	/**
+	 * @param canEditSchedule the canEditSchedule to set
+	 */
+	protected void setCanEditSchedule(boolean canEditSchedule) {
+		this.canEditSchedule = canEditSchedule;
+	}
+	/**
+	 * @param canReadSchedule the canReadSchedule to set
+	 */
+	protected void setCanReadSchedule(boolean canReadSchedule) {
+		this.canReadSchedule = canReadSchedule;
+	}
+	/**
+	 * @param canReadOldSchedule the canReadOldSchedule to set
+	 */
+	protected void setCanReadOldSchedule(boolean canReadOldSchedule) {
+		this.canReadOldSchedule = canReadOldSchedule;
+	}
+	/**
+	 * @param canViewResources the canViewResources to set
+	 */
+	protected void setCanViewResources(boolean canViewResources) {
+		this.canViewResources = canViewResources;
+	}
+	/**
+	 * @param canChangePermissions the canChangePermissions to set
+	 */
+	protected void setCanChangePermissions(boolean canChangePermissions) {
+		this.canChangePermissions = canChangePermissions;
+	}
+	/**
+	 * @param canReadLogs the canReadLogs to set
+	 */
+	protected void setCanReadLogs(boolean canReadLogs) {
+		this.canReadLogs = canReadLogs;
+	}
+	/**
+	 * @param canAccessReports the canAccessReports to set
+	 */
+	protected void setCanAccessReports(boolean canAccessReports) {
+		this.canAccessReports = canAccessReports;
+	}
+	/**
+	 * @param canRequestDaysOff the canRequestDaysOff to set
+	 */
+	protected void setCanRequestDaysOff(boolean canRequestDaysOff) {
+		this.canRequestDaysOff = canRequestDaysOff;
+	}
+	/**
+	 * @param maxDaysOff the maxDaysOff to set
+	 */
+	protected void setMaxDaysOff(int maxDaysOff) {
+		this.maxDaysOff = maxDaysOff;
+	}
+	/**
+	 * @param canTakeVacations the canTakeVacations to set
+	 */
+	protected void setCanTakeVacations(boolean canTakeVacations) {
+		this.canTakeVacations = canTakeVacations;
+	}
+	/**
+	 * @param maxVacationDays the maxVacationDays to set
+	 */
+	protected void setMaxVacationDays(int maxVacationDays) {
+		this.maxVacationDays = maxVacationDays;
+	}
+	/**
+	 * @param canTakeEmergencyDays the canTakeEmergencyDays to set
+	 */
+	protected void setCanTakeEmergencyDays(boolean canTakeEmergencyDays) {
+		this.canTakeEmergencyDays = canTakeEmergencyDays;
+	}
+	/**
+	 * @param canViewInactiveEmployees the canViewInactiveEmployees to set
+	 */
+	protected void setCanViewInactiveEmployees(boolean canViewInactiveEmployees) {
+		this.canViewInactiveEmployees = canViewInactiveEmployees;
+	}
+	/**
+	 * @param canSendNotifications the canSendNotifications to set
+	 */
+	protected void setCanSendNotifications(boolean canSendNotifications) {
+		this.canSendNotifications = canSendNotifications;
+	}
+	/**
+	 * @param trusted the trusted to set
+	 */
+	protected void setTrusted(int trusted) {
+		this.trusted = trusted;
 	}
 	
 	

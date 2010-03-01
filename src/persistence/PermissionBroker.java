@@ -9,10 +9,8 @@ import java.sql.Statement;
 import exception.DBException;
 
 import application.DBConnection;
-import business.Employee;
 import business.permissions.*;
 import messagelog.Logging;
-import business.permissions.*;
 
 //TODO: PermissionBroker needs access to permission tables and permission level tables
 
@@ -101,7 +99,7 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 			// Can change permissions (up to current level - 1)
 			comparisons = comparisons + " AND canChanagePermissions = " + perm.isCanChangePermissions();
 			// Can read log files via a built in viewer (logs hosted on the server)
-			comparisons = comparisons + " canReadLogs = " + perm.isCanReadLogs();
+			comparisons = comparisons + " AND canReadLogs = " + perm.isCanReadLogs();
 			// Can access reports
 			comparisons = comparisons + " AND canAccessReports = " + perm.isCanAccessReports();
 			// Max days off
@@ -162,10 +160,10 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 			
 			for (int i = 0; i < resultCount && rs.next(); i++)
 				{
-				PermissionLevel plevel = new PermissionLevel();
+				PermissionLevel plevel = null;
 				
 				Permissions p = new Permissions();
-				
+				System.out.println(i);
 				
 				// Set values
 				
