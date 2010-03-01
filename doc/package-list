@@ -1,9 +1,14 @@
 application
-application.dbrequests
 business
 business.permissions
 business.schedule
 exception
 messagelog
+oldClasses.application
+oldClasses.application.dbrequests
+oldClasses.business
+oldClasses.persistence
 persistence
+testDB
 ui
+uiConnection.Settings

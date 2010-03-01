@@ -19,13 +19,41 @@ public class TestPermissions {
 	
 	public static void main(String[] args)
 	{
-		EmployeeBroker ebrok = EmployeeBroker.getBroker();
 		PermissionBroker pbrok = PermissionBroker.getBroker();
 		try {
+			// Produces an empty set
 			pbrok.get(PermissionAccess.getAccess().getDefault());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		
+		try {
+			PermissionLevel[] pla = pbrok.get(PermissionAccess.getAccess().getLevel(1, 'a'));
+			for(PermissionLevel pl : pla)
+				System.out.println(pl);
+		}
+		catch(SQLException e2)
+		{
+			e2.printStackTrace();
+		}
+		try {
+			PermissionLevel[] pla = pbrok.get(PermissionAccess.getAccess().getLevel(2, 'a'));
+			for(PermissionLevel pl : pla)
+				System.out.println(pl);
+		}
+		catch(SQLException e2)
+		{
+			e2.printStackTrace();
+		}
+		try {
+			PermissionLevel[] pla = pbrok.get(PermissionAccess.getAccess().getLevel(-1,' '));
+			for(PermissionLevel pl : pla)
+				System.out.println(pl);
+		}
+		catch(SQLException e2)
+		{
+			e2.printStackTrace();
 		}
 	}
 

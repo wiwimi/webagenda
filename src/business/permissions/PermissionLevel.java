@@ -48,11 +48,29 @@ public class PermissionLevel extends BusinessObject {
 	 * may want to designate their work to another employee. Description could be "Report-Generating Employee of Level 0". */
 	private String description									= null;
 	
+	/**
+	 * Constructor that creates a PermissionLevel object with (optional) a Permissions object, a level, and a version 
+	 * (space if using default) 
+	 * @param p Permissions obj
+	 * @param level int 
+	 * @param version char
+	 */
 	private PermissionLevel(Permissions p, int level, char version)
 	{
 		this(p,level,version,null);
 	}
 	
+	/**
+	 * Constructor that creates a PermissionLevel object with (optional) a Permissions object, a level, and a version 
+	 * (space if using default).
+	 * Includes an optional Description that explains the permissionlevel's relevance and the reasons for having a 
+	 * version character.
+	 * 
+	 * @param p Permission obj
+	 * @param level int
+	 * @param version char
+	 * @param description String
+	 */
 	private PermissionLevel(Permissions p, int level, char version, String description)
 	{
 		this.level_permissions = p;
@@ -65,7 +83,8 @@ public class PermissionLevel extends BusinessObject {
 	 * Returns a permission level based on the most restrictive default level,
 	 * also referred to as a template or blank permission level as no changes have
 	 * been made that should negatively affect the functioning of the system.
-	 * @return
+	 * 
+	 * @return PermissionLevel default
 	 */
 	protected static PermissionLevel getDefault()
 	{
@@ -118,6 +137,25 @@ public class PermissionLevel extends BusinessObject {
 	protected void setPermission(Permissions p,int level, char version)
 	{
 		if(level_permissions == null) this.level_permissions = p;
+		//FIXME:
 	}
+	
+	/**
+	 * Unlike the constructor implementation, this method is a factory that generates copies of permission
+	 * levels for business.permissions package so that the broker can have functionality required to
+	 * search, parse, and modify objects in the database. Classes outside of this package will be required
+	 * to provide a parameter, the employee who is submitting the request, in order to ensure that they
+	 * can make use of the functionality or they will be denied.
+	 * 
+	 * @param p Permission object
+	 * @param level int
+	 * @param version char
+	 * @return PermissionLevel with initialized Permission Level using parameters.
+	 */
+	protected static PermissionLevel getLevel(Permissions p, int level, char version)
+	{
+		return new PermissionLevel(p, level, version);
+	}
+	
 	
 }
