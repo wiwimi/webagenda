@@ -6,9 +6,7 @@ package persistence;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import exception.DBCreateException;
-import exception.DBDeleteException;
-import exception.DBUpdateException;
+import exception.DBException;
 
 import application.DBConnection;
 import business.Employee;
@@ -60,13 +58,13 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 	}
 
 	@Override
-	public boolean create(PermissionLevel createObj) throws DBCreateException {
+	public boolean create(PermissionLevel createObj) throws DBException {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean delete(PermissionLevel deleteObj) throws DBDeleteException {
+	public boolean delete(PermissionLevel deleteObj) throws DBException {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -141,7 +139,7 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 	}
 
 	@Override
-	public boolean update(PermissionLevel updateObj) throws DBUpdateException {
+	public boolean update(PermissionLevel updateObj) throws DBException {
 		// TODO Auto-generated method stub
 		return false;
 	}

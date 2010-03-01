@@ -6,9 +6,7 @@ package persistence;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import exception.DBCreateException;
-import exception.DBDeleteException;
-import exception.DBUpdateException;
+import exception.DBException;
 import exception.InvalidLoginException;
 import application.DBConnection;
 import business.Employee;
@@ -51,7 +49,7 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @see persistence.Broker#create(business.BusinessObject)
 	 */
 	@Override
-	public boolean create(Employee createEmp) throws DBCreateException
+	public boolean create(Employee createEmp) throws DBException
 		{
 		if (createEmp == null)
 			throw new NullPointerException("Can not create null employee.");
@@ -75,7 +73,7 @@ public class EmployeeBroker extends Broker<Employee>
 		if (createEmp.getPermission_level() == null)
 			nullMsg = nullMsg + " PermissionLevel";
 		if (!nullMsg.equals("Missing Required Fields:"))
-			throw new DBCreateException(nullMsg);
+			throw new DBException(nullMsg);
 		
 		/*
 		 * Create insert string. Employee will always start with an empty
@@ -111,14 +109,14 @@ public class EmployeeBroker extends Broker<Employee>
 			conn.setAvailable(true);
 			
 			if (result != 1)
-				throw new DBCreateException(
+				throw new DBException(
 						"Failed to create employee, result count incorrect: " +
 								result);	
 			}
 		catch (SQLException e)
 			{
 			// TODO May need additional SQL exception processing here.
-			throw new DBCreateException("Failed to create employee.", e);
+			throw new DBException("Failed to create employee.", e);
 			}
 		
 		// TODO Inserts for employee skills as well, once that broker is up.
@@ -131,13 +129,13 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @see persistence.Broker#delete(business.BusinessObject)
 	 */
 	@Override
-	public boolean delete(Employee deleteEmp) throws DBDeleteException
+	public boolean delete(Employee deleteEmp) throws DBException
 		{
 		if (deleteEmp == null)
 			throw new NullPointerException("Can not delete null employee.");
 		
 		if (deleteEmp.getEmployee_id() == null)
-			throw new DBDeleteException("Missing Required Field: EmpID");
+			throw new DBException("Missing Required Field: EmpID");
 		
 		/*
 		 * Rather than an actual delete, employees are only disabled in the
@@ -160,13 +158,13 @@ public class EmployeeBroker extends Broker<Employee>
 			conn.setAvailable(true);
 			
 			if (result != 1)
-				throw new DBDeleteException("Failed to delete employee, result count incorrect: " +
+				throw new DBException("Failed to delete employee, result count incorrect: " +
 						result);
 			}
 		catch (SQLException e)
 			{
 			// TODO May need additional SQL exception processing here.
-			throw new DBDeleteException("Failed to delete employee, see SQL error cause.", e);
+			throw new DBException("Failed to delete employee, see SQL error cause.", e);
 			}
 		
 		return true;
@@ -235,7 +233,7 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @see persistence.Broker#update(business.BusinessObject)
 	 */
 	@Override
-	public boolean update(Employee updateEmployee) throws DBUpdateException
+	public boolean update(Employee updateEmployee) throws DBException
 		{
 		if (updateEmployee == null)
 			throw new NullPointerException("Can not update null employee.");
@@ -284,11 +282,11 @@ public class EmployeeBroker extends Broker<Employee>
 			
 			//Ensure
 			if (updateRowCount != 1)
-				throw new DBUpdateException("Failed to update employee: rowcount incorrect.");
+				throw new DBException("Failed to update employee: rowcount incorrect.");
 			}
 		catch (SQLException e)
 			{
-			throw new DBUpdateException("Failed to update employee",e);
+			throw new DBException("Failed to update employee",e);
 			}
 
 		return true;

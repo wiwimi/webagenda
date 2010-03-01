@@ -6,8 +6,7 @@ package testDB;
 import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.Statement;
-import exception.DBCreateException;
-import exception.DBDeleteException;
+import exception.DBException;
 import application.ConnectionManager;
 import business.Employee;
 import persistence.EmployeeBroker;
@@ -41,7 +40,7 @@ public class TestEmpCreateDelete
 			successful = broker.create(newEmp);
 			System.out.println("Employee added: "+successful);
 			}
-		catch (DBCreateException e)
+		catch (DBException e)
 			{
 			e.printStackTrace();
 			}
@@ -56,7 +55,7 @@ public class TestEmpCreateDelete
 			boolean deleted = broker.delete(empSearchDelete);
 			System.out.println("Employee deleted: "+ deleted);
 			}
-		catch (DBDeleteException e)
+		catch (DBException e)
 			{
 			e.printStackTrace();
 			}

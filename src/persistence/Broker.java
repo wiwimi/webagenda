@@ -5,9 +5,7 @@ package persistence;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import exception.DBCreateException;
-import exception.DBDeleteException;
-import exception.DBUpdateException;
+import exception.DBException;
 
 import utilities.*;
 
@@ -51,7 +49,7 @@ public abstract class Broker<E extends BusinessObject>
 	 * @param createObj The object to add to the database.
 	 * @return true if the create was successful, otherwise false.
 	 */
-	public abstract boolean create(E createObj) throws DBCreateException;
+	public abstract boolean create(E createObj) throws DBException;
 	
 	/**
 	 * Retrieves data from the database and return them as objects.
@@ -72,7 +70,7 @@ public abstract class Broker<E extends BusinessObject>
 	 * @param updateObj The previously retrieved object that has been updated.
 	 * @return true if the update was successful, otherwise false.
 	 */
-	public abstract boolean update(E updateObj) throws DBUpdateException;
+	public abstract boolean update(E updateObj) throws DBException;
 	
 	/**
 	 * Removes the record from the database that is equivalent to the given
@@ -83,7 +81,7 @@ public abstract class Broker<E extends BusinessObject>
 	 * @param deleteObj
 	 * @return true if the delete was successful, otherwise false.
 	 */
-	public abstract boolean delete(E deleteObj) throws DBDeleteException;
+	public abstract boolean delete(E deleteObj) throws DBException;
 	
 	/**
 	 * Parses a ResultSet returned by a select query back into cachable objects.
