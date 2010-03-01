@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import exception.DBCreateException;
 import exception.DBDeleteException;
+import exception.DBUpdateException;
 
 import utilities.*;
 
@@ -71,7 +72,7 @@ public abstract class Broker<E extends BusinessObject>
 	 * @param updateObj The previously retrieved object that has been updated.
 	 * @return true if the update was successful, otherwise false.
 	 */
-	public abstract boolean update(E updateObj) throws SQLException;
+	public abstract boolean update(E updateObj) throws DBUpdateException;
 	
 	/**
 	 * Removes the record from the database that is equivalent to the given
@@ -158,7 +159,7 @@ public abstract class Broker<E extends BusinessObject>
 		 * @version 0.01.00
 		 * @license GPL 2
 		 */
-	class BrokerConMonitor extends Thread {
+	private class BrokerConMonitor extends Thread {
 		
 		private long lng_delay 				= 5000; // 300 000 is 5 min.
 		private long lng_time_to_close		= 5000;

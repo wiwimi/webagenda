@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import exception.DBCreateException;
 import exception.DBDeleteException;
+import exception.DBUpdateException;
 import exception.InvalidLoginException;
 import application.DBConnection;
 import business.Employee;
@@ -179,70 +180,44 @@ public class EmployeeBroker extends Broker<Employee>
 	public Employee[] get(Employee searchTemplate) throws SQLException
 		{
 		if (searchTemplate == null)
-			throw new NullPointerException("Can not search with null template.");
+			throw new NullPointerException("Can not search with null employee template.");
 		
 		// Create sql select statement from employee object.
 		String select = "SELECT * FROM `WebAgenda`.`EMPLOYEE` WHERE ";
-		String comparisons = "";
+		String comp = "";
 		
-		/*
-		 * NOTE: Depending on how the sql statement is parsed, new lines may need
-		 * to be included to prevent errors.
-		 */
-
 		if (searchTemplate.getEmployee_id() != null)
 			{
 			// If an employee ID is given, use only that for search.
-			comparisons = "empID = " + searchTemplate.getEmployee_id();
+			comp = "empID = " + searchTemplate.getEmployee_id();
 			}
 		else
 			{
 			// Use all other non-null fields for search if no employee ID is given.
 			// Supervisor ID
-			comparisons = comparisons +
-					(searchTemplate.getSupervisor() != null ? "supervisorID = " +
-							searchTemplate.getSupervisor() : "");
+			comp = comp + (searchTemplate.getSupervisor() != null ? "supervisorID = " + searchTemplate.getSupervisor() : "");
 			// Given Name
-			comparisons = comparisons +
-					(searchTemplate.getGivenName() != null ? (comparisons.equals("") ? "" : " AND ") +
-							"givenName = '" + searchTemplate.getGivenName() + "'" : "");
+			comp = comp + (searchTemplate.getGivenName() != null ? (comp.equals("") ? "" : " AND ") + "givenName = '" + searchTemplate.getGivenName() + "'" : "");
 			// Family Name
-			comparisons = comparisons +
-					(searchTemplate.getFamilyName() != null ? (comparisons.equals("") ? "" : " AND ") +
-							"familyName = '" + searchTemplate.getFamilyName() + "'" : "");
+			comp = comp + (searchTemplate.getFamilyName() != null ? (comp.equals("") ? "" : " AND ") + "familyName = '" + searchTemplate.getFamilyName() + "'" : "");
 			// Email
-			comparisons = comparisons +
-					(searchTemplate.getEmail() != null ? (comparisons.equals("") ? "" : " AND ") +
-							"email = '" + searchTemplate.getEmail() + "'" : "");
+			comp = comp + (searchTemplate.getEmail() != null ? (comp.equals("") ? "" : " AND ") + "email = '" + searchTemplate.getEmail() + "'" : "");
 			// Username
-			comparisons = comparisons +
-					(searchTemplate.getUsername() != null ? (comparisons.equals("") ? "" : " AND ") +
-							"username = '" + searchTemplate.getUsername() + "'" : "");
-			// Username
-			comparisons = comparisons +
-					(searchTemplate.getPassword() != null ? (comparisons.equals("") ? "" : " AND ") +
-							"password = '" + searchTemplate.getPassword() + "'" : "");
+			comp = comp + (searchTemplate.getUsername() != null ? (comp.equals("") ? "" : " AND ") + "username = '" + searchTemplate.getUsername() + "'" : "");
+			// Password
+			comp = comp + (searchTemplate.getPassword() != null ? (comp.equals("") ? "" : " AND ") + "password = '" + searchTemplate.getPassword() + "'" : "");
 			// Preferred Position
-			comparisons = comparisons +
-					(searchTemplate.getPreferred_position() != null ? (comparisons.equals("") ? ""
-							: " AND ") +
-							"prefPosition = '" + searchTemplate.getPreferred_position() + "'" : "");
+			comp = comp + (searchTemplate.getPreferred_position() != null ? (comp.equals("") ? "" : " AND ") + "prefPosition = '" + searchTemplate.getPreferred_position() + "'" : "");
 			// Preferred Location
-			comparisons = comparisons +
-					(searchTemplate.getPreferred_location() != null ? (comparisons.equals("") ? ""
-							: " AND ") +
-							"prefLocation = '" + searchTemplate.getPreferred_location() + "'" : "");
+			comp = comp + (searchTemplate.getPreferred_location() != null ? (comp.equals("") ? "" : " AND ") + "prefLocation = '" + searchTemplate.getPreferred_location() + "'" : "");
 			// Active State.
-			comparisons = comparisons +
-					(searchTemplate.getActive() != null ? (comparisons.equals("") ? "" : " AND ") +
-							"active = " + searchTemplate.getActive() : "");
+			comp = comp + (searchTemplate.getActive() != null ? (comp.equals("") ? "" : " AND ") + "active = " + searchTemplate.getActive() : "");
 			}
 		
 		// Add comparisons and close select statement.
-		select = select + comparisons + ";";
+		select = select + comp + ";";
 		
-		// Get open DB connection, send query, and reopen connection for other
-		// users.
+		// Get DB connection, send query, and reopen connection for other users.
 		DBConnection conn = this.getConnection();
 		Statement stmt = conn.getConnection().createStatement();
 		ResultSet searchResults = stmt.executeQuery(select);
@@ -260,10 +235,63 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @see persistence.Broker#update(business.BusinessObject)
 	 */
 	@Override
-	public boolean update(Employee updateObj)
+	public boolean update(Employee updateEmployee) throws DBUpdateException
 		{
-		// TODO Auto-generated method stub
-		return false;
+		if (updateEmployee == null)
+			throw new NullPointerException("Can not update null employee.");
+		
+		if (updateEmployee.getEmployee_id() == null)
+			throw new NullPointerException("Can not update employee without emp ID.");
+		
+		//Construct update string.
+		
+		// Create sql update statement from employee object.
+		String update = "UPDATE `WebAgenda`.`EMPLOYEE` SET ";
+		String set = "";
+		
+		// Use all non-null fields for update.
+		// Supervisor ID
+		set = set + (updateEmployee.getSupervisor() != null ? "supervisorID = " + updateEmployee.getSupervisor() : "");
+		// Given Name
+		set = set + (updateEmployee.getGivenName() != null ? (set.equals("") ? "" : " AND ") + "givenName = '" + updateEmployee.getGivenName() + "'" : "");
+		// Family Name
+		set = set + (updateEmployee.getFamilyName() != null ? (set.equals("") ? "" : " AND ") + "familyName = '" + updateEmployee.getFamilyName() + "'" : "");
+		// Email
+		set = set + (updateEmployee.getEmail() != null ? (set.equals("") ? "" : " AND ") + "email = '" + updateEmployee.getEmail() + "'" : "");
+		// Username
+		set = set + (updateEmployee.getUsername() != null ? (set.equals("") ? "" : " AND ") + "username = '" + updateEmployee.getUsername() + "'" : "");
+		// Password
+		set = set + (updateEmployee.getPassword() != null ? (set.equals("") ? "" : " AND ") + "password = '" + updateEmployee.getPassword() + "'" : "");
+		// LastLogin
+		set = set + (updateEmployee.getLastLogin() != null ? (set.equals("") ? "" : " AND ") + "lastLogin = NOW()" : "");
+		// Preferred Position
+		set = set + (updateEmployee.getPreferred_position() != null ? (set.equals("") ? "" : " AND ") + "prefPosition = '" + updateEmployee.getPreferred_position() + "'" : "");
+		// Preferred Location
+		set = set + (updateEmployee.getPreferred_location() != null ? (set.equals("") ? "" : " AND ") + "prefLocation = '" + updateEmployee.getPreferred_location() + "'" : "");
+		// Active State.
+		set = set + (updateEmployee.getActive() != null ? (set.equals("") ? "" : " AND ") + "active = " + updateEmployee.getActive() : "");
+		
+		update = update + set + " WHERE empID = " + updateEmployee.getEmployee_id() + ";";
+		System.out.println(update);
+		
+		// Get DB connection, send update, and reopen connection for other users.
+		try
+			{
+			DBConnection conn = this.getConnection();
+			Statement stmt = conn.getConnection().createStatement();
+			int updateRowCount = stmt.executeUpdate(update);
+			conn.setAvailable(true);
+			
+			//Ensure
+			if (updateRowCount != 1)
+				throw new DBUpdateException("Failed to update employee: rowcount incorrect.");
+			}
+		catch (SQLException e)
+			{
+			throw new DBUpdateException("Failed to update employee",e);
+			}
+
+		return true;
 		}
 	
 	/**

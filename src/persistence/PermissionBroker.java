@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import exception.DBCreateException;
 import exception.DBDeleteException;
+import exception.DBUpdateException;
 
 import application.DBConnection;
 import business.Employee;
@@ -26,7 +27,7 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 
 	/** Permission Broker that is returned when the getBroker() method is called.
 	 * Only one instance of this Broker can exist at one time. */
-	private static volatile PermissionBroker broker_permissions					= null;
+	private static volatile PermissionBroker broker_permissions	= null;
 	
 	/**
 	 * PermissionsBroker constructor 
@@ -140,7 +141,7 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 	}
 
 	@Override
-	public boolean update(PermissionLevel updateObj) throws SQLException {
+	public boolean update(PermissionLevel updateObj) throws DBUpdateException {
 		// TODO Auto-generated method stub
 		return false;
 	}
