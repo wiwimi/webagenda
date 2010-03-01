@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import exception.DBException;
 import exception.InvalidLoginException;
 import business.Employee;
 import persistence.EmployeeBroker;
@@ -83,15 +84,15 @@ public class Login extends HttpServlet
         	response.sendRedirect(("wa_login/login.jsp?LoginAttempt=1"));
 			e.printStackTrace();
 		} 
-        catch (SQLException e)
+        catch (DBException e)
 		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		// TODO Auto-generated catch block
+		e.printStackTrace();
 		} 
         finally
-        {
-            out.close();
-        }
+	     {
+	         out.close();
+	     }
 	}
 
 }

@@ -68,8 +68,8 @@ CREATE  TABLE IF NOT EXISTS `WebAgenda`.`EMPLOYEE` (
   `birthDate` DATE NULL ,
   `email` VARCHAR(50) NULL ,
   `username` VARCHAR(20) NOT NULL ,
-  `lastLogin` DATE NULL ,
   `password` VARCHAR(8) NOT NULL ,
+  `lastLogin` TIMESTAMP NULL ,
   `prefPosition` VARCHAR(45) NULL ,
   `prefLocation` VARCHAR(45) NULL ,
   `plevel` VARCHAR(10) NOT NULL ,
@@ -78,6 +78,8 @@ CREATE  TABLE IF NOT EXISTS `WebAgenda`.`EMPLOYEE` (
   INDEX `fk_EMPLOYEE_PERMISSIONSET` (`plevel` ASC) ,
   INDEX `fk_EMPLOYEE_LOCATION` (`prefLocation` ASC) ,
   INDEX `fk_EMPLOYEE_POSITION` (`prefPosition` ASC) ,
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC) ,
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) ,
   CONSTRAINT `fk_EMPLOYEE_PERMISSIONSET`
     FOREIGN KEY (`plevel` )
     REFERENCES `WebAgenda`.`PERMISSIONSET` (`plevel` )
@@ -323,7 +325,7 @@ CREATE  TABLE IF NOT EXISTS `WebAgenda`.`GLOBALSETTINGS` (
 ENGINE = InnoDB;
 
 
-;
+DROP USER WABroker;
 CREATE USER WABroker IDENTIFIED BY 'WaBrokerPass123';
 
 grant DELETE on TABLE `WebAgenda`.`EMPLOYEE` to WABroker;
@@ -424,15 +426,15 @@ COMMIT;
 -- Data for table `WebAgenda`.`EMPLOYEE`
 -- -----------------------------------------------------
 SET AUTOCOMMIT=0;
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supervisorID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `lastLogin`, `password`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (1, NULL, 'Chaney', 'Henson', NULL, NULL, 'user1', NULL, 'password', 'General Manager', 'Mohave Grill', '2a', true);
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supervisorID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `lastLogin`, `password`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (2, 1, 'Ray', 'Oliver', NULL, NULL, 'user2', NULL, 'password', 'Executive Chef', 'Mohave Grill', '1a', true);
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supervisorID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `lastLogin`, `password`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (3, 1, 'Audra', 'Gordon', NULL, NULL, 'user3', NULL, 'password', 'Front of House Mgr.', 'Mohave Grill', '1a', true);
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supervisorID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `lastLogin`, `password`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (4, 2, 'Rina', 'Pruitt', NULL, NULL, 'user4', NULL, 'password', 'Cook', 'Mohave Grill', '1a', true);
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supervisorID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `lastLogin`, `password`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (5, 2, 'Quinn', 'Hart', NULL, NULL, 'user5', NULL, 'password', 'Cook', 'Mohave Grill', '1a', true);
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supervisorID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `lastLogin`, `password`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (6, 2, 'Sierra', 'Dean', NULL, NULL, 'user6', NULL, 'password', 'Cook', 'Mohave Grill', '1a', true);
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supervisorID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `lastLogin`, `password`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (7, 3, 'Sylvia', 'Dyer', NULL, NULL, 'user7', NULL, 'password', 'Waiter', 'Mohave Grill', '1a', true);
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supervisorID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `lastLogin`, `password`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (8, 3, 'Kay', 'Bates', NULL, NULL, 'user8', NULL, 'password', 'Waiter', 'Mohave Grill', '1a', true);
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supervisorID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `lastLogin`, `password`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (9, 3, 'Luke', 'Garrison', NULL, NULL, 'user9', NULL, 'password', 'Waiter', 'Mohave Grill', '1a', true);
+insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supervisorID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (1, NULL, 'Chaney', 'Henson', NULL, NULL, 'user1', 'password', NULL, 'General Manager', 'Mohave Grill', '2a', true);
+insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supervisorID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (2, 1, 'Ray', 'Oliver', NULL, NULL, 'user2', 'password', NULL, 'Executive Chef', 'Mohave Grill', '1a', true);
+insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supervisorID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (3, 1, 'Audra', 'Gordon', NULL, NULL, 'user3', 'password', NULL, 'Front of House Mgr.', 'Mohave Grill', '1a', true);
+insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supervisorID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (4, 2, 'Rina', 'Pruitt', NULL, NULL, 'user4', 'password', NULL, 'Cook', 'Mohave Grill', '1a', true);
+insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supervisorID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (5, 2, 'Quinn', 'Hart', NULL, NULL, 'user5', 'password', NULL, 'Cook', 'Mohave Grill', '1a', true);
+insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supervisorID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (6, 2, 'Sierra', 'Dean', NULL, NULL, 'user6', 'password', NULL, 'Cook', 'Mohave Grill', '1a', true);
+insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supervisorID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (7, 3, 'Sylvia', 'Dyer', NULL, NULL, 'user7', 'password', NULL, 'Waiter', 'Mohave Grill', '1a', true);
+insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supervisorID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (8, 3, 'Kay', 'Bates', NULL, NULL, 'user8', 'password', NULL, 'Waiter', 'Mohave Grill', '1a', true);
+insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supervisorID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (9, 3, 'Luke', 'Garrison', NULL, NULL, 'user9', 'password', NULL, 'Waiter', 'Mohave Grill', '1a', true);
 
 COMMIT;
 

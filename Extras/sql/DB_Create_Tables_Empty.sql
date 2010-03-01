@@ -68,8 +68,8 @@ CREATE  TABLE IF NOT EXISTS `WebAgenda`.`EMPLOYEE` (
   `birthDate` DATE NULL ,
   `email` VARCHAR(50) NULL ,
   `username` VARCHAR(20) NOT NULL ,
-  `lastLogin` DATE NULL ,
   `password` VARCHAR(8) NOT NULL ,
+  `lastLogin` TIMESTAMP NULL ,
   `prefPosition` VARCHAR(45) NULL ,
   `prefLocation` VARCHAR(45) NULL ,
   `plevel` VARCHAR(10) NOT NULL ,
@@ -78,6 +78,8 @@ CREATE  TABLE IF NOT EXISTS `WebAgenda`.`EMPLOYEE` (
   INDEX `fk_EMPLOYEE_PERMISSIONSET` (`plevel` ASC) ,
   INDEX `fk_EMPLOYEE_LOCATION` (`prefLocation` ASC) ,
   INDEX `fk_EMPLOYEE_POSITION` (`prefPosition` ASC) ,
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC) ,
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) ,
   CONSTRAINT `fk_EMPLOYEE_PERMISSIONSET`
     FOREIGN KEY (`plevel` )
     REFERENCES `WebAgenda`.`PERMISSIONSET` (`plevel` )
@@ -323,7 +325,7 @@ CREATE  TABLE IF NOT EXISTS `WebAgenda`.`GLOBALSETTINGS` (
 ENGINE = InnoDB;
 
 
-;
+DROP USER WABroker;
 CREATE USER WABroker IDENTIFIED BY 'WaBrokerPass123';
 
 grant DELETE on TABLE `WebAgenda`.`EMPLOYEE` to WABroker;

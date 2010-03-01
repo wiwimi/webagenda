@@ -145,6 +145,10 @@ public class AppDriver {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		catch (DBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		finally {
 			// This statement should only be accessed if the application is shutdown on the server or errors cause application to fail.
 			//messagelog.Logging.closeAllLogs();

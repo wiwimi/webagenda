@@ -3,11 +3,10 @@
  */
 package testDB;
 
-import java.sql.SQLException;
+import exception.DBException;
 
 import business.permissions.PermissionAccess;
 import business.permissions.PermissionLevel;
-import persistence.EmployeeBroker;
 import persistence.PermissionBroker;
 
 /**
@@ -23,7 +22,7 @@ public class TestPermissions {
 		try {
 			// Produces an empty set
 			pbrok.get(PermissionAccess.getAccess().getDefault());
-		} catch (SQLException e) {
+		} catch (DBException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -33,7 +32,7 @@ public class TestPermissions {
 			for(PermissionLevel pl : pla)
 				System.out.println(pl);
 		}
-		catch(SQLException e2)
+		catch(DBException e2)
 		{
 			e2.printStackTrace();
 		}
@@ -42,7 +41,7 @@ public class TestPermissions {
 			for(PermissionLevel pl : pla)
 				System.out.println(pl);
 		}
-		catch(SQLException e2)
+		catch(DBException e2)
 		{
 			e2.printStackTrace();
 		}
@@ -51,7 +50,7 @@ public class TestPermissions {
 			for(PermissionLevel pl : pla)
 				System.out.println(pl);
 		}
-		catch(SQLException e2)
+		catch(DBException e2)
 		{
 			e2.printStackTrace();
 		}

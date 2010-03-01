@@ -4,22 +4,15 @@
 package business;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import business.schedule.*;
 
 /**
  * @author peon-dev, Daniel Wehr
- * @version 0.2.0
+ * @version 0.3.0
  */
 public class Employee extends BusinessObject
 	{
-	
-	/*
-	 * TODO: Getters and setters have been created for now. Any security related
-	 * changes regarding access to information can be made in the future as
-	 * needed. Many will likely be handled in the broker rather than the employee
-	 * class itself.
-	 */
-
 	private static final long	serialVersionUID	= -1671744709578725501L;
 
 	/**
@@ -102,7 +95,7 @@ public class Employee extends BusinessObject
 	/**
 	 * The last time at which the employee logged into the system.
 	 */
-	private Date		lastLogin				= null;
+	private Timestamp		lastLogin				= null;
 
 	/**
 	 * Boolean value that represents if the user can access their account; all
@@ -357,7 +350,7 @@ public class Employee extends BusinessObject
 	/**
 	 * @return the lastLogin
 	 */
-	public Date getLastLogin()
+	public Timestamp getLastLogin()
 		{
 		return lastLogin;
 		}
@@ -365,7 +358,7 @@ public class Employee extends BusinessObject
 	/**
 	 * @param lastLogin the lastLogin to set
 	 */
-	public void setLastLogin(Date lastLogin)
+	public void setLastLogin(Timestamp lastLogin)
 		{
 		this.lastLogin = lastLogin;
 		}

@@ -3,7 +3,6 @@
  */
 package persistence;
 
-import java.security.PermissionCollection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -69,7 +68,7 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 	}
 
 	@Override
-	public PermissionLevel[] get(PermissionLevel searchTemplate) throws SQLException {
+	public PermissionLevel[] get(PermissionLevel searchTemplate) throws DBException {
 		
 		if(searchTemplate == null)
 			throw new NullPointerException();
@@ -130,17 +129,23 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 		// Add comparisons and close select statement.
 		select = select + comparisons + ";";
 		
-		DBConnection conn = this.getConnection();
-		Statement stmt = conn.getConnection().createStatement();
-		System.out.println(select);
-		ResultSet searchResults = stmt.executeQuery(select);
-		conn.setAvailable(true);
-		
-		if(!searchResults.last()) {
-			// Results are null
-			System.out.println("No results found.");
+		PermissionLevel[] foundPermissions = null;
+		try {
+			DBConnection conn = this.getConnection();
+			Statement stmt = conn.getConnection().createStatement();
+			System.out.println(select);
+			ResultSet searchResults = stmt.executeQuery(select);
+			conn.setAvailable(true);
+			
+			if(!searchResults.last()) {
+				// Results are null
+				System.out.println("No results found.");
+			}
+			foundPermissions = parseResults(searchResults);
 		}
-		PermissionLevel[] foundPermissions = parseResults(searchResults);
+		catch (SQLException e) {
+			throw new DBException("Failed to search for permission level.",e);
+		}
 		
 		return foundPermissions;
 	}

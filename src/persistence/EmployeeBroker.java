@@ -6,6 +6,7 @@ package persistence;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import exception.DBException;
 import exception.InvalidLoginException;
 import application.DBConnection;
@@ -13,7 +14,7 @@ import business.Employee;
 
 /**
  * @author peon-dev, Daniel Wehr
- * @version 0.2.0
+ * @version 0.3.0
  */
 public class EmployeeBroker extends Broker<Employee>
 	{
@@ -79,21 +80,25 @@ public class EmployeeBroker extends Broker<Employee>
 		 * Create insert string. Employee will always start with an empty
 		 * lastLogin value, and true for active state.
 		 */
-		String insert = String.format(
-			"INSERT INTO `WebAgenda`.`EMPLOYEE` " +
-				"(`empID`, `supervisorID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`)" +
-				" VALUES (%s,%s,'%s','%s',%s,%s,'%s','%s',NULL,%s,%s,'%s',true)",
-			createEmp.getEmployee_id(),
-			(createEmp.getSupervisor() == null ? "NULL"	: createEmp.getSupervisor()),
-			createEmp.getGivenName(),
-			createEmp.getFamilyName(),
-			(createEmp.getBirth_date() == null ? "NULL" : "'"+createEmp.getBirth_date()+"'"),
-			(createEmp.getEmail() == null ? "NULL" : "'"+createEmp.getEmail()+"'"),
-			createEmp.getUsername(),
-			createEmp.getPassword(),
-			(createEmp.getPreferred_position() == null ? "NULL" : "'"+createEmp.getPreferred_position()+"'"),
-			(createEmp.getPreferred_location() == null ? "NULL" : "'"+createEmp.getPreferred_location()+"'"),
-			createEmp.getPermission_level());
+		String insert = String
+				.format(
+						"INSERT INTO `WebAgenda`.`EMPLOYEE` "
+								+ "(`empID`, `supervisorID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`)"
+								+ " VALUES (%s,%s,'%s','%s',%s,%s,'%s','%s',NULL,%s,%s,'%s',true)",
+						createEmp.getEmployee_id(),
+						(createEmp.getSupervisor() == null ? "NULL" : createEmp
+								.getSupervisor()), createEmp.getGivenName(), createEmp
+								.getFamilyName(),
+						(createEmp.getBirth_date() == null ? "NULL" : "'" +
+								createEmp.getBirth_date() + "'"),
+						(createEmp.getEmail() == null ? "NULL" : "'" +
+								createEmp.getEmail() + "'"), createEmp.getUsername(),
+						createEmp.getPassword(),
+						(createEmp.getPreferred_position() == null ? "NULL" : "'" +
+								createEmp.getPreferred_position() + "'"), (createEmp
+								.getPreferred_location() == null ? "NULL" : "'" +
+								createEmp.getPreferred_location() + "'"), createEmp
+								.getPermission_level());
 		
 		/*
 		 * Send insert to database. SQL errors such as primary key already in use
@@ -111,7 +116,7 @@ public class EmployeeBroker extends Broker<Employee>
 			if (result != 1)
 				throw new DBException(
 						"Failed to create employee, result count incorrect: " +
-								result);	
+								result);
 			}
 		catch (SQLException e)
 			{
@@ -124,8 +129,32 @@ public class EmployeeBroker extends Broker<Employee>
 		return true;
 		}
 	
-	/*
-	 * (non-Javadoc)
+	/**
+	 * Disables the employee in the system rather than fully deleting it.
+	 * 
+	 * @param disableEmp 
+	 * @return
+	 * @throws DBException
+	 */
+	public boolean disable(Employee disableEmp) throws DBException
+		{
+		if (disableEmp == null)
+			throw new NullPointerException("Can not delete null employee.");
+		
+		if (disableEmp.getEmployee_id() == null)
+			throw new DBException("Missing Required Field: EmpID");
+		
+		/*
+		 * Construct new employee that will only update the active state.
+		 */
+		Employee newDisableEmp = new Employee();
+		newDisableEmp.setEmployee_id(disableEmp.getEmployee_id());
+		newDisableEmp.setActive(false);
+		
+		return update(newDisableEmp);
+		}
+	
+	/* (non-Javadoc)
 	 * @see persistence.Broker#delete(business.BusinessObject)
 	 */
 	@Override
@@ -137,37 +166,28 @@ public class EmployeeBroker extends Broker<Employee>
 		if (deleteEmp.getEmployee_id() == null)
 			throw new DBException("Missing Required Field: EmpID");
 		
-		/*
-		 * Rather than an actual delete, employees are only disabled in the
-		 * system, so an update is used.
-		 */
-		String delete = "UPDATE `WebAgenda`.`Employee` SET active = false WHERE " + "empID = " +
-				deleteEmp.getEmployee_id() + ";";
+		String delete = String.format(
+				"DELETE FROM `WebAgenda`.`Employee` WHERE empID = %i;",
+				deleteEmp.getEmployee_id());
 		
-		/*
-		 * Send update to database. SQL errors such as primary key already in use
-		 * will be caught, and turned into our own DBAddException, so this method
-		 * will only have one type of exception that needs to be caught. If the
-		 * insert is successful, return true.
-		 */
+		boolean success;
 		try
 			{
-			DBConnection conn = this.getConnection();
+			DBConnection conn = employeeBroker.getConnection();
 			Statement stmt = conn.getConnection().createStatement();
 			int result = stmt.executeUpdate(delete);
-			conn.setAvailable(true);
 			
 			if (result != 1)
-				throw new DBException("Failed to delete employee, result count incorrect: " +
-						result);
+				throw new DBException("Failed to delete employee, result count incorrect: " +	result);
+			else
+				success = true;
 			}
 		catch (SQLException e)
 			{
-			// TODO May need additional SQL exception processing here.
-			throw new DBException("Failed to delete employee, see SQL error cause.", e);
+			throw new DBException("Failed to delete employee.",e);
 			}
 		
-		return true;
+		return success;
 		}
 	
 	/*
@@ -175,10 +195,11 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @see persistence.Broker#get(business.BusinessObject)
 	 */
 	@Override
-	public Employee[] get(Employee searchTemplate) throws SQLException
+	public Employee[] get(Employee searchTemplate) throws DBException
 		{
 		if (searchTemplate == null)
-			throw new NullPointerException("Can not search with null employee template.");
+			throw new NullPointerException(
+					"Can not search with null employee template.");
 		
 		// Create sql select statement from employee object.
 		String select = "SELECT * FROM `WebAgenda`.`EMPLOYEE` WHERE ";
@@ -193,36 +214,73 @@ public class EmployeeBroker extends Broker<Employee>
 			{
 			// Use all other non-null fields for search if no employee ID is given.
 			// Supervisor ID
-			comp = comp + (searchTemplate.getSupervisor() != null ? "supervisorID = " + searchTemplate.getSupervisor() : "");
+			comp = comp +
+					(searchTemplate.getSupervisor() != null ? "supervisorID = " +
+							searchTemplate.getSupervisor() : "");
 			// Given Name
-			comp = comp + (searchTemplate.getGivenName() != null ? (comp.equals("") ? "" : " AND ") + "givenName = '" + searchTemplate.getGivenName() + "'" : "");
+			comp = comp +
+					(searchTemplate.getGivenName() != null ? (comp.equals("") ? ""
+							: " AND ") +
+							"givenName = '" + searchTemplate.getGivenName() + "'" : "");
 			// Family Name
-			comp = comp + (searchTemplate.getFamilyName() != null ? (comp.equals("") ? "" : " AND ") + "familyName = '" + searchTemplate.getFamilyName() + "'" : "");
+			comp = comp +
+					(searchTemplate.getFamilyName() != null ? (comp.equals("") ? ""
+							: " AND ") +
+							"familyName = '" + searchTemplate.getFamilyName() + "'"
+							: "");
 			// Email
-			comp = comp + (searchTemplate.getEmail() != null ? (comp.equals("") ? "" : " AND ") + "email = '" + searchTemplate.getEmail() + "'" : "");
+			comp = comp +
+					(searchTemplate.getEmail() != null ? (comp.equals("") ? ""
+							: " AND ") +
+							"email = '" + searchTemplate.getEmail() + "'" : "");
 			// Username
-			comp = comp + (searchTemplate.getUsername() != null ? (comp.equals("") ? "" : " AND ") + "username = '" + searchTemplate.getUsername() + "'" : "");
+			comp = comp +
+					(searchTemplate.getUsername() != null ? (comp.equals("") ? ""
+							: " AND ") +
+							"username = '" + searchTemplate.getUsername() + "'" : "");
 			// Password
-			comp = comp + (searchTemplate.getPassword() != null ? (comp.equals("") ? "" : " AND ") + "password = '" + searchTemplate.getPassword() + "'" : "");
+			comp = comp +
+					(searchTemplate.getPassword() != null ? (comp.equals("") ? ""
+							: " AND ") +
+							"password = '" + searchTemplate.getPassword() + "'" : "");
 			// Preferred Position
-			comp = comp + (searchTemplate.getPreferred_position() != null ? (comp.equals("") ? "" : " AND ") + "prefPosition = '" + searchTemplate.getPreferred_position() + "'" : "");
+			comp = comp +
+					(searchTemplate.getPreferred_position() != null ? (comp
+							.equals("") ? "" : " AND ") +
+							"prefPosition = '" +
+							searchTemplate.getPreferred_position() + "'" : "");
 			// Preferred Location
-			comp = comp + (searchTemplate.getPreferred_location() != null ? (comp.equals("") ? "" : " AND ") + "prefLocation = '" + searchTemplate.getPreferred_location() + "'" : "");
+			comp = comp +
+					(searchTemplate.getPreferred_location() != null ? (comp
+							.equals("") ? "" : " AND ") +
+							"prefLocation = '" +
+							searchTemplate.getPreferred_location() + "'" : "");
 			// Active State.
-			comp = comp + (searchTemplate.getActive() != null ? (comp.equals("") ? "" : " AND ") + "active = " + searchTemplate.getActive() : "");
+			comp = comp +
+					(searchTemplate.getActive() != null ? (comp.equals("") ? ""
+							: " AND ") +
+							"active = " + searchTemplate.getActive() : "");
 			}
 		
 		// Add comparisons and close select statement.
 		select = select + comp + ";";
 		
 		// Get DB connection, send query, and reopen connection for other users.
-		DBConnection conn = this.getConnection();
-		Statement stmt = conn.getConnection().createStatement();
-		ResultSet searchResults = stmt.executeQuery(select);
-		conn.setAvailable(true);
-		
 		// Parse returned ResultSet into array of employees.
-		Employee[] foundEmployees = parseResults(searchResults);
+		Employee[] foundEmployees;
+		try
+			{
+			DBConnection conn = this.getConnection();
+			Statement stmt = conn.getConnection().createStatement();
+			ResultSet searchResults = stmt.executeQuery(select);
+			conn.setAvailable(true);
+			
+			foundEmployees = parseResults(searchResults);
+			}
+		catch (SQLException e)
+			{
+			throw new DBException("Failed to complete employee search.",e);
+			}
 		
 		// Return employees that matched search.
 		return foundEmployees;
@@ -239,9 +297,10 @@ public class EmployeeBroker extends Broker<Employee>
 			throw new NullPointerException("Can not update null employee.");
 		
 		if (updateEmployee.getEmployee_id() == null)
-			throw new NullPointerException("Can not update employee without emp ID.");
+			throw new NullPointerException(
+					"Can not update employee without emp ID.");
 		
-		//Construct update string.
+		// Construct update string.
 		
 		// Create sql update statement from employee object.
 		String update = "UPDATE `WebAgenda`.`EMPLOYEE` SET ";
@@ -249,27 +308,63 @@ public class EmployeeBroker extends Broker<Employee>
 		
 		// Use all non-null fields for update.
 		// Supervisor ID
-		set = set + (updateEmployee.getSupervisor() != null ? "supervisorID = " + updateEmployee.getSupervisor() : "");
+		set = set +
+				(updateEmployee.getSupervisor() != null ? "supervisorID = " +
+						updateEmployee.getSupervisor() : "");
 		// Given Name
-		set = set + (updateEmployee.getGivenName() != null ? (set.equals("") ? "" : " AND ") + "givenName = '" + updateEmployee.getGivenName() + "'" : "");
+		set = set +
+				(updateEmployee.getGivenName() != null ? (set.equals("") ? ""
+						: ", ") +
+						"givenName = '" + updateEmployee.getGivenName() + "'" : "");
 		// Family Name
-		set = set + (updateEmployee.getFamilyName() != null ? (set.equals("") ? "" : " AND ") + "familyName = '" + updateEmployee.getFamilyName() + "'" : "");
+		set = set +
+				(updateEmployee.getFamilyName() != null ? (set.equals("") ? ""
+						: ", ") +
+						"familyName = '" + updateEmployee.getFamilyName() + "'" : "");
 		// Email
-		set = set + (updateEmployee.getEmail() != null ? (set.equals("") ? "" : " AND ") + "email = '" + updateEmployee.getEmail() + "'" : "");
+		set = set +
+				(updateEmployee.getEmail() != null ? (set.equals("") ? "" : ", ") +
+						"email = '" + updateEmployee.getEmail() + "'" : "");
 		// Username
-		set = set + (updateEmployee.getUsername() != null ? (set.equals("") ? "" : " AND ") + "username = '" + updateEmployee.getUsername() + "'" : "");
+		set = set +
+				(updateEmployee.getUsername() != null ? (set.equals("") ? "" : ", ") +
+						"username = '" + updateEmployee.getUsername() + "'"
+						: "");
 		// Password
-		set = set + (updateEmployee.getPassword() != null ? (set.equals("") ? "" : " AND ") + "password = '" + updateEmployee.getPassword() + "'" : "");
+		set = set +
+				(updateEmployee.getPassword() != null ? (set.equals("") ? "" : ", ") +
+						"password = '" + updateEmployee.getPassword() + "'"
+						: "");
 		// LastLogin
-		set = set + (updateEmployee.getLastLogin() != null ? (set.equals("") ? "" : " AND ") + "lastLogin = NOW()" : "");
+		set = set +
+				(updateEmployee.getLastLogin() != null ? (set.equals("") ? ""
+						: ", ") +
+						"lastLogin = NOW()" : "");
 		// Preferred Position
-		set = set + (updateEmployee.getPreferred_position() != null ? (set.equals("") ? "" : " AND ") + "prefPosition = '" + updateEmployee.getPreferred_position() + "'" : "");
+		set = set +
+				(updateEmployee.getPreferred_position() != null ? (set.equals("") ? ""
+						: ", ") +
+						"prefPosition = '" +
+						updateEmployee.getPreferred_position() +
+						"'"
+						: "");
 		// Preferred Location
-		set = set + (updateEmployee.getPreferred_location() != null ? (set.equals("") ? "" : " AND ") + "prefLocation = '" + updateEmployee.getPreferred_location() + "'" : "");
+		set = set +
+				(updateEmployee.getPreferred_location() != null ? (set.equals("") ? ""
+						: ", ") +
+						"prefLocation = '" +
+						updateEmployee.getPreferred_location() +
+						"'"
+						: "");
 		// Active State.
-		set = set + (updateEmployee.getActive() != null ? (set.equals("") ? "" : " AND ") + "active = " + updateEmployee.getActive() : "");
+		set = set +
+				(updateEmployee.getActive() != null ? (set.equals("") ? "" : ", ") +
+						"active = " + updateEmployee.getActive() : "");
 		
-		update = update + set + " WHERE empID = " + updateEmployee.getEmployee_id() + ";";
+		// TODO if set is empty, throw error as nothing is being updated.
+		
+		update = update + set + " WHERE empID = " +
+				updateEmployee.getEmployee_id() + ";";
 		System.out.println(update);
 		
 		// Get DB connection, send update, and reopen connection for other users.
@@ -280,15 +375,16 @@ public class EmployeeBroker extends Broker<Employee>
 			int updateRowCount = stmt.executeUpdate(update);
 			conn.setAvailable(true);
 			
-			//Ensure
+			// Ensure
 			if (updateRowCount != 1)
-				throw new DBException("Failed to update employee: rowcount incorrect.");
+				throw new DBException(
+						"Failed to update employee: rowcount incorrect.");
 			}
 		catch (SQLException e)
 			{
-			throw new DBException("Failed to update employee",e);
+			throw new DBException("Failed to update employee", e);
 			}
-
+		
 		return true;
 		}
 	
@@ -306,15 +402,17 @@ public class EmployeeBroker extends Broker<Employee>
 	 *            search query.
 	 * @throws NullPointerException
 	 */
-	public Employee tryLogin(String username, String password) throws InvalidLoginException,
-			SQLException, NullPointerException
+	public Employee tryLogin(String username, String password)
+			throws InvalidLoginException, DBException
 		{
 		if (username == null || password == null)
-			throw new InvalidLoginException("Username and password must not be null.");
+			throw new InvalidLoginException(
+					"Username and password must not be null.");
 		
 		Employee loginEmp = new Employee();
 		loginEmp.setUsername(username);
 		loginEmp.setPassword(password);
+		loginEmp.setActive(true);
 		Employee[] results = get(loginEmp);
 		
 		if (results == null)
@@ -322,7 +420,14 @@ public class EmployeeBroker extends Broker<Employee>
 		
 		Employee loggedIn = results[0];
 		
-		// TODO Update employee record in DB with new lastLogin time.
+		// Update employee record in DB with new lastLogin time.
+		Employee updateLoginTime = new Employee();
+		updateLoginTime.setEmployee_id(loggedIn.getEmployee_id());
+		updateLoginTime.setLastLogin(new Timestamp(System.currentTimeMillis()));
+		boolean successful = update(updateLoginTime);
+		if (!successful)
+			throw new DBException("Failed to update login time.");
+		
 		// TODO Pull full permissions object into this employee as well.
 		
 		return loggedIn;
@@ -358,11 +463,15 @@ public class EmployeeBroker extends Broker<Employee>
 				emp.setBirth_date(rs.getDate("birthDate"));
 				emp.setEmail(rs.getString("email"));
 				emp.setUsername(rs.getString("username"));
-				emp.setLastLogin(rs.getDate("lastLogin"));
+				emp.setLastLogin(rs.getTimestamp("lastLogin"));
 				emp.setPreferred_position(rs.getString("prefPosition"));
 				emp.setPreferred_location(rs.getString("prefLocation"));
 				emp.setPermission_level(rs.getString("plevel"));
 				emp.setActive(rs.getBoolean("active"));
+				
+				if (emp.getSupervisor() == 0)
+					emp.setSupervisor(null);
+				
 				empList[i] = emp;
 				}
 			

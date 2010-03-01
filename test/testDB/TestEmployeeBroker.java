@@ -4,16 +4,14 @@
 package testDB;
 
 import static org.junit.Assert.*;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.Date;
+import java.sql.Timestamp;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import exception.DBException;
 import exception.InvalidLoginException;
 import persistence.EmployeeBroker;
-import application.ConnectionManager;
 import business.Employee;
 
 /**
@@ -23,7 +21,7 @@ import business.Employee;
  */
 public class TestEmployeeBroker
 	{
-	EmployeeBroker empBroker;
+	private EmployeeBroker empBroker;
 	
 	/**
 	 * @throws java.lang.Exception
@@ -46,12 +44,15 @@ public class TestEmployeeBroker
 		}
 	
 	/**
-	 * Test method for {@link persistence.EmployeeBroker#create(business.Employee)}
-	 * and {@link persistence.EmployeeBroker#delete(business.Employee)}.
+	 * Test method for {@link persistence.EmployeeBroker#create(business.Employee)},
+	 * {@link persistence.EmployeeBroker#disable(business.Employee)} and
+	 * {@link persistence.EmployeeBroker#delete(business.Employee)}.
 	 */
 	@Test
-	public void testCreateDeleteEmployee()
+	public void testCreateDisableDeleteEmployee()
 		{
+		System.out.println("******************** CREATE/DELETE TEST ********************");
+		
 		Employee newEmp = new Employee();
 		
 		newEmp.setEmployee_id(80000);
@@ -83,9 +84,9 @@ public class TestEmployeeBroker
 		//Try to delete employee.
 		try
 			{
-			boolean deleted = empBroker.delete(empSearchDelete);
-			assertTrue(deleted);
-			System.out.println("Employee deleted: "+ deleted);
+			boolean disabled = empBroker.disable(empSearchDelete);
+			assertTrue(disabled);
+			System.out.println("Employee disabled: "+ disabled);
 			}
 		catch (DBException e)
 			{
@@ -101,25 +102,33 @@ public class TestEmployeeBroker
 			assertFalse(results[0].getActive());
 			System.out.println("Employee retrieved: "+results[0]);
 			}
-		catch (SQLException e)
+		catch (DBException e)
 			{
 			e.printStackTrace();
 			fail();
 			}
 		
 		//Delete the test user.
-		Connection conn = ConnectionManager.getConnection().getConnection();
-		String delete = "DELETE FROM `WebAgenda`.`Employee` WHERE empID = 80000;";
 		try
 			{
-			Statement stmt = conn.createStatement();
-			stmt.executeUpdate(delete);
+			boolean deleted = empBroker.delete(empSearchDelete);
+			assertTrue(deleted);
+			System.out.println("Employee deleted: "+ deleted);
 			}
-		catch (SQLException e)
+		catch (DBException e)
 			{
 			e.printStackTrace();
 			fail();
 			}
+		}
+	
+	/**
+	 * Test method for {@link persistence.EmployeeBroker#delete(business.Employee)}.
+	 */
+	@Test
+	public void testFullDeleteEmployee()
+		{
+		
 		}
 	
 	/**
@@ -128,6 +137,8 @@ public class TestEmployeeBroker
 	@Test
 	public void testGetEmployee()
 		{
+		System.out.println("******************** GET TEST ********************");
+		
 		//Create employees to search by an employee ID, and all active employees.
 		Employee searchEmp1 = new Employee();
 		searchEmp1.setEmployee_id(5);
@@ -146,7 +157,7 @@ public class TestEmployeeBroker
 			byActive = empBroker.get(searchEmp2);
 			bySupervisor = empBroker.get(searchEmp3);
 			}
-		catch (SQLException e)
+		catch (DBException e)
 			{
 			e.printStackTrace();
 			fail();
@@ -184,7 +195,81 @@ public class TestEmployeeBroker
 	@Test
 	public void testUpdateEmployee()
 		{
-		fail("Not yet implemented");
+		System.out.println("******************** UPDATE TEST ********************");
+		
+		Employee newEmp = new Employee();
+		
+		newEmp.setEmployee_id(80000);
+		newEmp.setGivenName("Bilbo");
+		newEmp.setFamilyName("Baggins");
+		newEmp.setUsername("bilb01");
+		newEmp.setPassword("password");
+		newEmp.setPermission_level("2a");
+		newEmp.setActive(true);
+		
+		//Add employee
+		try
+			{
+			boolean successful = empBroker.create(newEmp);
+			assertTrue(successful);
+			System.out.println("Employee added: "+successful);
+			System.out.println(newEmp);
+			}
+		catch (DBException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		
+		//Modify new employee and send in as update.
+		newEmp.setLastLogin(new Timestamp(System.currentTimeMillis()));
+		newEmp.setBirth_date(new Date(System.currentTimeMillis() - (20l * 1000l * 60l * 60l * 24l * 365l)));
+		newEmp.setEmail("fakeemail@fake.com");
+		try
+			{
+			boolean successful = empBroker.update(newEmp);
+			assertTrue(successful);
+			System.out.println("Employee updated: "+successful);
+			System.out.println(newEmp);
+			}
+		catch (DBException e1)
+			{
+			e1.getCause().printStackTrace();
+			fail();
+			}
+		
+		//Create employee to use for ID search and deletion.
+		Employee empSearchDelete = new Employee();
+		empSearchDelete.setEmployee_id(80000);
+		
+		//Search for employee employee.
+		try
+			{
+			Employee[] results = empBroker.get(empSearchDelete);
+			System.out.println("Employee retrieved: "+results[0]);
+			
+			//Check accuracy of SQL Date.
+			java.util.Date tempDate = new java.util.Date(results[0].getLastLogin().getTime());
+			System.out.println("Login as date: "+tempDate.toString());
+			}
+		catch (DBException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		
+		//Delete the test user.
+		try
+			{
+			boolean deleted = empBroker.delete(empSearchDelete);
+			assertTrue(deleted);
+			System.out.println("Employee deleted: "+ deleted);
+			}
+		catch (DBException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
 		}
 	
 	/**
@@ -193,6 +278,8 @@ public class TestEmployeeBroker
 	@Test
 	public void testTryLogin()
 		{
+		System.out.println("******************** LOGIN TEST ********************");
+		
 		/*
 		 * Create sample username/password strings. These would normally be
 		 * entered by the user in the web interface. "user1" exists in the test
@@ -223,7 +310,7 @@ public class TestEmployeeBroker
 			e.printStackTrace();
 			fail();
 			}
-		catch (SQLException e)
+		catch (DBException e)
 			{
 			e.printStackTrace();
 			fail();
@@ -233,11 +320,13 @@ public class TestEmployeeBroker
 		try
 			{
 			Employee loggedIn = empBroker.tryLogin(user2, password2);
-			
 			/*
 			 * The above line should fail since the username/pass are not in the
 			 * DB, and an exception will be thrown instead.
 			 */
+			fail();
+			loggedIn.getActive();
+			loggedIn = null;
 			}
 		catch (InvalidLoginException e)
 			{
@@ -249,7 +338,7 @@ public class TestEmployeeBroker
 			System.out.println(e.getMessage());
 			assertTrue(true);
 			}
-		catch (SQLException e)
+		catch (DBException e)
 			{
 			e.printStackTrace();
 			fail();
