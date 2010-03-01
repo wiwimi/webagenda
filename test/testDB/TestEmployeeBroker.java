@@ -1,0 +1,259 @@
+/**
+ * 
+ */
+package testDB;
+
+import static org.junit.Assert.*;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import exception.DBException;
+import exception.InvalidLoginException;
+import persistence.EmployeeBroker;
+import application.ConnectionManager;
+import business.Employee;
+
+/**
+ * @author Daniel Wehr
+ * @version 0.1.0
+ *
+ */
+public class TestEmployeeBroker
+	{
+	EmployeeBroker empBroker;
+	
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@Before
+	public void setUp() throws Exception
+		{
+		empBroker = EmployeeBroker.getBroker();
+		empBroker.initConnectionThread();
+		}
+	
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@After
+	public void tearDown() throws Exception
+		{
+		empBroker.stopConnectionThread();
+		empBroker = null;
+		}
+	
+	/**
+	 * Test method for {@link persistence.EmployeeBroker#create(business.Employee)}
+	 * and {@link persistence.EmployeeBroker#delete(business.Employee)}.
+	 */
+	@Test
+	public void testCreateDeleteEmployee()
+		{
+		Employee newEmp = new Employee();
+		
+		newEmp.setEmployee_id(80000);
+		newEmp.setGivenName("Bilbo");
+		newEmp.setFamilyName("Baggins");
+		newEmp.setUsername("bilb01");
+		newEmp.setPassword("password");
+		newEmp.setPermission_level("2a");
+		newEmp.setActive(true);
+		
+		//Add employee
+		boolean successful;
+		try
+			{
+			successful = empBroker.create(newEmp);
+			assertTrue(successful);
+			System.out.println("Employee added: "+successful);
+			}
+		catch (DBException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		
+		//Create employee to use for ID search and deletion.
+		Employee empSearchDelete = new Employee();
+		empSearchDelete.setEmployee_id(80000);
+		
+		//Try to delete employee.
+		try
+			{
+			boolean deleted = empBroker.delete(empSearchDelete);
+			assertTrue(deleted);
+			System.out.println("Employee deleted: "+ deleted);
+			}
+		catch (DBException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		
+		//Search for disabled employee.
+		try
+			{
+			empSearchDelete.setActive(false);
+			Employee[] results = empBroker.get(empSearchDelete);
+			assertFalse(results[0].getActive());
+			System.out.println("Employee retrieved: "+results[0]);
+			}
+		catch (SQLException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		
+		//Delete the test user.
+		Connection conn = ConnectionManager.getConnection().getConnection();
+		String delete = "DELETE FROM `WebAgenda`.`Employee` WHERE empID = 80000;";
+		try
+			{
+			Statement stmt = conn.createStatement();
+			stmt.executeUpdate(delete);
+			}
+		catch (SQLException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		}
+	
+	/**
+	 * Test method for {@link persistence.EmployeeBroker#get(business.Employee)}.
+	 */
+	@Test
+	public void testGetEmployee()
+		{
+		//Create employees to search by an employee ID, and all active employees.
+		Employee searchEmp1 = new Employee();
+		searchEmp1.setEmployee_id(5);
+		
+		Employee searchEmp2 = new Employee();
+		searchEmp2.setActive(true);
+		
+		Employee searchEmp3 = new Employee();
+		searchEmp3.setSupervisor(3);
+		
+		//Run searches
+		Employee[] byID = null, byActive = null, bySupervisor = null;
+		try
+			{
+			byID = empBroker.get(searchEmp1);
+			byActive = empBroker.get(searchEmp2);
+			bySupervisor = empBroker.get(searchEmp3);
+			}
+		catch (SQLException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		
+		assertNotNull(byID);
+		assertNotNull(byActive);
+		assertNotNull(bySupervisor);
+		
+		// PRINT RESULTS! :D
+		// This is just using the basic toString that dumps all data.
+		System.out.println("---------- Search Results by ID 5 ----------");
+		for (Employee emp : byID)
+			{
+			System.out.println(emp);
+			}
+		
+		System.out.println("\n---------- Search Results by Active State True ----------");
+		for (Employee emp : byActive)
+			{
+			System.out.println(emp);
+			}
+		
+		System.out.println("\n---------- Search Results by Supervisor 3 ----------");
+		for (Employee emp : bySupervisor)
+			{
+			System.out.println(emp);
+			}
+		
+		}
+	
+	/**
+	 * Test method for {@link persistence.EmployeeBroker#update(business.Employee)}.
+	 */
+	@Test
+	public void testUpdateEmployee()
+		{
+		fail("Not yet implemented");
+		}
+	
+	/**
+	 * Test method for {@link persistence.EmployeeBroker#tryLogin(java.lang.String, java.lang.String)}.
+	 */
+	@Test
+	public void testTryLogin()
+		{
+		/*
+		 * Create sample username/password strings. These would normally be
+		 * entered by the user in the web interface. "user1" exists in the test
+		 * data and should return an employee object. "fakeUser" does not exist
+		 * and should throw an exception.
+		 */
+		String user1 = "user3", user2 = "fakeUser";
+		String password1 = "password", password2 = "pass";
+		
+		// Try to use login credentials to get an employee object.
+		System.out.println("Attempting login with 'user3'/'password'");
+		try
+			{
+			Employee loggedIn = empBroker.tryLogin(user1, password1);
+			
+			/*
+			 * If the above line passes with no errors, you could then add the
+			 * employee object to the database. For now, we'll just print that the
+			 * login was successful, and the contents of the employee object that
+			 * was returned.
+			 */
+
+			System.out.println("Login Successful:");
+			System.out.println(loggedIn);
+			}
+		catch (InvalidLoginException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		catch (SQLException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		
+		System.out.println("\nAttempting login with 'fakeUser'/'pass'");
+		try
+			{
+			Employee loggedIn = empBroker.tryLogin(user2, password2);
+			
+			/*
+			 * The above line should fail since the username/pass are not in the
+			 * DB, and an exception will be thrown instead.
+			 */
+			}
+		catch (InvalidLoginException e)
+			{
+			/*
+			 * For now we'll just catch the exception and print its message.
+			 * Instead, you might do something in the UI when this exception is
+			 * caught to tell them that their login failed or was incorrect.
+			 */
+			System.out.println(e.getMessage());
+			assertTrue(true);
+			}
+		catch (SQLException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		}
+	
+	}
