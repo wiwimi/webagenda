@@ -448,11 +448,10 @@ public class EmployeeBroker extends Broker<Employee>
 			// Results exist, get total number of rows to create array of same
 			// size.
 			int resultCount = rs.getRow();
+			empList = new Employee[resultCount];
 			
 			// Return ResultSet to beginning to start retrieving employees.
 			rs.beforeFirst();
-			empList = new Employee[resultCount];
-			
 			for (int i = 0; i < resultCount && rs.next(); i++)
 				{
 				Employee emp = new Employee();
