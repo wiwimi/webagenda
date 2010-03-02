@@ -55,7 +55,9 @@ public class LocationBroker extends Broker<Location>
 			if (searchTemplate.getName() == null)
 				throw new DBException("Can not search with null name.");
 			
-			select = String.format("SELECT * FROM `WebAgenda`.`LOCATION` WHERE locName LIKE '%s%%'",searchTemplate.getName());
+			select = String.format(
+					"SELECT * FROM `WebAgenda`.`LOCATION` WHERE locName LIKE '%s%%'",
+					searchTemplate.getName());
 			}
 		
 		// Get DB connection, send query, and reopen connection for other users.
@@ -83,10 +85,39 @@ public class LocationBroker extends Broker<Location>
 	 * @see persistence.Broker#update(business.BusinessObject)
 	 */
 	@Override
-	public boolean update(Location updateObj) throws DBException
+	public boolean update(Location updateLocation) throws DBException
 		{
-		// TODO Auto-generated method stub
-		return false;
+		if (updateLocation == null)
+			throw new NullPointerException("Can not update null employee.");
+		
+		if (updateLocation.getName() == null)
+			throw new NullPointerException(
+					"Can not update location without a name.");
+		
+		// Create sql update statement from employee object.
+		String update = String.format(
+				"UPDATE `WebAgenda`.`LOCATION` SET locDescription = '%s' WHERE locName = '%s';",
+				updateLocation.getDesc(),updateLocation.getName());
+		
+		// Get DB connection, send update, and reopen connection for other users.
+		try
+			{
+			DBConnection conn = this.getConnection();
+			Statement stmt = conn.getConnection().createStatement();
+			int updateRowCount = stmt.executeUpdate(update);
+			conn.setAvailable(true);
+			
+			// Ensure
+			if (updateRowCount != 1)
+				throw new DBException(
+						"Failed to update location: rowcount incorrect.");
+			}
+		catch (SQLException e)
+			{
+			throw new DBException("Failed to update location.", e);
+			}
+		
+		return true;
 		}
 
 	/* (non-Javadoc)

@@ -19,14 +19,14 @@ public class Employee extends BusinessObject
 	 * Identifier for the user. The name employee does not reflect their
 	 * position. Cannot be negative.
 	 */
-	private Integer	employee_id				= null;
+	private Integer	empID				= null;
 	
 	/**
 	 * Like employee_id, supervisor doesn't entail the position; it's the
 	 * authoritative figure for the employee. Cannot be negative, if this user
 	 * has no supervisor, this value should point to the employee_id.
 	 */
-	private Integer	supervisor				= null;
+	private Integer	supervisorID				= null;
 	
 	/**
 	 * User's first name, or preferred name. Name values cannot be changed by
@@ -46,7 +46,7 @@ public class Employee extends BusinessObject
 	 * general use, it can be made required by certain positions that may require
 	 * users to be over the age of 16/18/21.
 	 */
-	private Date		birth_date				= null;
+	private Date		birthDate				= null;
 
 	/**
 	 * User's e-mail address that they want information sent to. Is changeable by
@@ -69,19 +69,24 @@ public class Employee extends BusinessObject
 	private String		password					= null;
 	
 	/**
+	 * The last time at which the employee logged into the system.
+	 */
+	private Timestamp		lastLogin				= null;
+
+	/**
 	 * Location refers to the location in the business or company. If more than
 	 * one locations exist, such as multiple buildings, instances, or groups of
 	 * working units, this can be specified. Is not required, but if set may
 	 * influence automatic schedule generation.
 	 */
-	private Location	preferred_location	= null;
+	private Location	prefLocation	= null;
 	
 	/**
 	 * Position is the job that an Employee prefers to work at. This assumes that
 	 * multiple positions for work are available. May influence the automatically
 	 * generated schedule.
 	 */
-	private Position	preferred_position	= null;
+	private Position	prefPosition	= null;
 	
 	/**
 	 * The permission set as a string. Both level and version can be parsed from
@@ -90,13 +95,8 @@ public class Employee extends BusinessObject
 	 * permissions. This value must be equivalent to the key of an
 	 * already-existing permissions set.
 	 */
-	private String		permission_level		= null;
+	private String		pLevel		= null;
 	
-	/**
-	 * The last time at which the employee logged into the system.
-	 */
-	private Timestamp		lastLogin				= null;
-
 	/**
 	 * Boolean value that represents if the user can access their account; all
 	 * accounts are saved in the database and can only be deleted when explicitly
@@ -115,7 +115,7 @@ public class Employee extends BusinessObject
 	 * apply through mobile device/browser views (mobile device meaning native
 	 * mobile apps.)
 	 */
-	private Settings	user_settings			= null;
+	private Settings	userSettings			= null;
 
 	/**
 	 * Base constructor for a new employee object. Is required to create a new employee, but values can be null or invalid if using an employee
@@ -131,50 +131,50 @@ public class Employee extends BusinessObject
 	 */
 	public Employee(int empID, String fname, String lname, Date birthdate, String username, String password,  String plevel)
 	{
-		this.employee_id = empID;
+		this.empID = empID;
 		this.givenName = fname;
 		this.familyName = lname;
-		this.birth_date = birthdate;
+		this.birthDate = birthdate;
 		this.username = username;
 		this.password = password;
-		this.permission_level = plevel;
+		this.pLevel = plevel;
 	}
 	
 	/** Produces a blank template of an employee */
 	public Employee()
-	{
-	}
+		{
+		}
 	
 	/**
 	 * @return the employee_id
 	 */
-	public Integer getEmployee_id()
+	public Integer getEmpID()
 		{
-		return employee_id;
+		return empID;
 		}
 
 	/**
-	 * @param employeeId the employee_id to set
+	 * @param employeeId the employeeId to set
 	 */
-	public void setEmployee_id(Integer employeeId)
+	public void setEmpID(Integer employeeId)
 		{
-		employee_id = employeeId;
+		empID = employeeId;
 		}
 
 	/**
 	 * @return the supervisor
 	 */
-	public Integer getSupervisor()
+	public Integer getSupervisorID()
 		{
-		return supervisor;
+		return supervisorID;
 		}
 
 	/**
-	 * @param supervisor the supervisor to set
+	 * @param supervisorId the supervisorId to set
 	 */
-	public void setSupervisor(Integer supervisor)
+	public void setSupervisorID(Integer supervisorId)
 		{
-		this.supervisor = supervisor;
+		this.supervisorID = supervisorId;
 		}
 
 	/**
@@ -260,59 +260,59 @@ public class Employee extends BusinessObject
 	/**
 	 * @return the preferred_location
 	 */
-	public Location getPreferred_location()
+	public Location getPrefLocation()
 		{
-		return preferred_location;
+		return prefLocation;
 		}
 
 	/**
 	 * @param preferredLocation the preferred_location to set
 	 */
-	public void setPreferred_location(Location preferredLocation)
+	public void setPrefLocation(Location preferredLocation)
 		{
-		preferred_location = preferredLocation;
+		prefLocation = preferredLocation;
 		}
 
-	public void setPreferred_location(String preferredLocation)
+	public void setPrefLocation(String preferredLocation)
 	{
-		preferred_location = new Location(preferredLocation);
+		prefLocation = new Location(preferredLocation);
 	}
 	
 	/**
 	 * @return the preferred_position
 	 */
-	public Position getPreferred_position()
+	public Position getPrefPosition()
 		{
-		return preferred_position;
+		return prefPosition;
 		}
 
 	/**
 	 * @param preferredPosition the preferred_position to set
 	 */
-	public void setPreferred_position(Position preferredPosition)
+	public void setPrefPosition(Position preferredPosition)
 		{
-		preferred_position = preferredPosition;
+		prefPosition = preferredPosition;
 		}
 	
-	public void setPreferred_position(String preferredPosition)
+	public void setPrefPosition(String preferredPosition)
 	{
-		preferred_position = new Position(preferredPosition);
+		prefPosition = new Position(preferredPosition);
 	}
 
 	/**
 	 * @return the permission_level
 	 */
-	public String getPermission_level()
+	public String getPLevel()
 		{
-		return permission_level;
+		return pLevel;
 		}
 
 	/**
 	 * @param permissionLevel the permission_level to set
 	 */
-	public void setPermission_level(String permissionLevel)
+	public void setPLevel(String permissionLevel)
 		{
-		permission_level = permissionLevel;
+		pLevel = permissionLevel;
 		}
 
 	/**
@@ -334,17 +334,17 @@ public class Employee extends BusinessObject
 	/**
 	 * @return the birth_date
 	 */
-	public Date getBirth_date()
+	public Date getBirthDate()
 		{
-		return birth_date;
+		return birthDate;
 		}
 
 	/**
 	 * @param birthDate the birth_date to set
 	 */
-	public void setBirth_date(Date birthDate)
+	public void setBirthDate(Date birthDate)
 		{
-		birth_date = birthDate;
+		this.birthDate = birthDate;
 		}
 
 	/**
@@ -366,23 +366,23 @@ public class Employee extends BusinessObject
 	/**
 	 * @return the user_settings
 	 */
-	public Settings getUser_settings()
+	public Settings getUserSettings()
 		{
-		return user_settings;
+		return userSettings;
 		}
 
 	/**
 	 * @param userSettings the user_settings to set
 	 */
-	public void setUser_settings(Settings userSettings)
+	public void setUserSettings(Settings userSettings)
 		{
-		user_settings = userSettings;
+		this.userSettings = userSettings;
 		}
 	
 	@Override
 	public String toString()
 		{
-		return employee_id + ";" + supervisor + ";" + givenName + ";" + familyName + ";" + birth_date + ";" + email + ";" + username + ";" + password + ";" + preferred_location + ";" + preferred_position + ";" + permission_level + ";" + lastLogin + ";" + active;
+		return empID + ";" + supervisorID + ";" + givenName + ";" + familyName + ";" + birthDate + ";" + email + ";" + username + ";" + password + ";" + prefLocation + ";" + prefPosition + ";" + pLevel + ";" + lastLogin + ";" + active;
 		}
 	
 	}

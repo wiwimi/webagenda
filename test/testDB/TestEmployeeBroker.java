@@ -55,12 +55,12 @@ public class TestEmployeeBroker
 		
 		Employee newEmp = new Employee();
 		
-		newEmp.setEmployee_id(80000);
+		newEmp.setEmpID(80000);
 		newEmp.setGivenName("Bilbo");
 		newEmp.setFamilyName("Baggins");
 		newEmp.setUsername("bilb01");
 		newEmp.setPassword("password");
-		newEmp.setPermission_level("2a");
+		newEmp.setPLevel("2a");
 		newEmp.setActive(true);
 		
 		//Add employee
@@ -79,7 +79,7 @@ public class TestEmployeeBroker
 		
 		//Create employee to use for ID search and deletion.
 		Employee empSearchDelete = new Employee();
-		empSearchDelete.setEmployee_id(80000);
+		empSearchDelete.setEmpID(80000);
 		
 		//Try to delete employee.
 		try
@@ -141,13 +141,13 @@ public class TestEmployeeBroker
 		
 		//Create employees to search by an employee ID, and all active employees.
 		Employee searchEmp1 = new Employee();
-		searchEmp1.setEmployee_id(5);
+		searchEmp1.setEmpID(5);
 		
 		Employee searchEmp2 = new Employee();
 		searchEmp2.setActive(true);
 		
 		Employee searchEmp3 = new Employee();
-		searchEmp3.setSupervisor(3);
+		searchEmp3.setSupervisorID(3);
 		
 		//Run searches
 		Employee[] byID = null, byActive = null, bySupervisor = null;
@@ -199,12 +199,12 @@ public class TestEmployeeBroker
 		
 		Employee newEmp = new Employee();
 		
-		newEmp.setEmployee_id(80000);
+		newEmp.setEmpID(80000);
 		newEmp.setGivenName("Bilbo");
 		newEmp.setFamilyName("Baggins");
 		newEmp.setUsername("bilb01");
 		newEmp.setPassword("password");
-		newEmp.setPermission_level("2a");
+		newEmp.setPLevel("2a");
 		newEmp.setActive(true);
 		
 		//Add employee
@@ -223,7 +223,7 @@ public class TestEmployeeBroker
 		
 		//Modify new employee and send in as update.
 		newEmp.setLastLogin(new Timestamp(System.currentTimeMillis()));
-		newEmp.setBirth_date(new Date(System.currentTimeMillis() - (20l * 1000l * 60l * 60l * 24l * 365l)));
+		newEmp.setBirthDate(new Date(System.currentTimeMillis() - (20l * 1000l * 60l * 60l * 24l * 365l)));
 		newEmp.setEmail("fakeemail@fake.com");
 		try
 			{
@@ -240,7 +240,7 @@ public class TestEmployeeBroker
 		
 		//Create employee to use for ID search and deletion.
 		Employee empSearchDelete = new Employee();
-		empSearchDelete.setEmployee_id(80000);
+		empSearchDelete.setEmpID(80000);
 		
 		//Search for employee employee.
 		try
