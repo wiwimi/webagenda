@@ -258,7 +258,7 @@ label {
 
 	#sidebar .upperDashboard
 	{
-		font-size: 73%;
+		font-size: 75%;
 		font-family:Verdana;
 	    line-height: 1.0 em;
 		padding: 10px;
@@ -282,7 +282,7 @@ label {
 
 	#sidebar .upperRectangle
 	{
-		font-size: 73%;
+		font-size: 75%;
 		font-family:Verdana;
 	    line-height: 1.0 em;
 		padding: 1px;
@@ -306,7 +306,7 @@ label {
 
 	#sidebar .upperRectangleCurrent
 	{
-		font-size: 73%;
+		font-size: 75%;
 		font-family:Verdana;
 	    line-height: 1.0 em;
 		padding: 1px;
@@ -516,10 +516,7 @@ label {
 		content:url(../lib/images/icons/Color/001_41.png);
 	}
 	
-p.error
-{
-	color:red;
-}
+
 	
 	
 

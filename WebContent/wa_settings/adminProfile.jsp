@@ -8,7 +8,7 @@
 <title>Web Agenda- Admin's Profile</title>
 
 <!--  Includes -->
-<jsp:include page="../wa_includes/PageLayoutAdmin.jsp"/>
+<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
 
 <!-- Libraries -->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>

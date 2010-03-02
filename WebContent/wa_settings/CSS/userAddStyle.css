@@ -38,7 +38,7 @@
 	position:realtive;
 }
 
-#updateProfileForm label
+#updateProfileForm label.label
 {
 	width: 7em;
 	font-weight: 700;
@@ -50,26 +50,6 @@
 	line-height: 1.8;
 	vertical-align: top;
 	width:200px;
-}
-
-#password_li label 
-{ 
-	position: relative; 
-	width: 200px; 
-}
-#password_li input
-	{
-	    
-	    margin-right: 5%;
-	    
-	}
-
-#confirmpass_li label
-{ 
-	  
-	position: relative; 
-	float: left; 
-	width: 200px;
 }
 
 

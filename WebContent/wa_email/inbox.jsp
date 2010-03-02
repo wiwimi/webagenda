@@ -11,7 +11,7 @@
 <title>Web Agenda - E-mail</title>
 
 <!-- Includes -->
-<jsp:include page="../wa_includes/PageLayoutAdmin.jsp"/>
+<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
 
 <!--Javascript Files -->
 <script type="text/javascript" src="../lib/js/dashboard.js"></script>

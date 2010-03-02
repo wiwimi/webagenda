@@ -18,7 +18,7 @@
 <title>Web Agenda - Compose</title>
 
 <!-- Includes -->
-<jsp:include page="../wa_includes/PageLayoutAdmin.jsp"/>
+<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
 
 </head>
 <body>

@@ -8,23 +8,25 @@
 <title>Web Agenda- Adding a User</title>
 
 <!--  Includes -->
-<jsp:include page="../wa_includes/PageLayoutAdmin.jsp"/>
-
+<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
 
 <!-- Libraries -->
-<script type="text/javascript" src ="../lib/js/jquery-1.3.2.min.js"></script>
+<script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
+<script src="../lib/js/jquery2.js" type="text/javascript"></script>
 
-<script type="text/javascript" src="../lib/js/jquery.datepick.js"></script>
 
 <!-- Javascript Files -->
+<script type="text/javascript" src="../lib/js/jquery.datepick.js"></script>
 <script type="text/javascript" src="../lib/js/dashboard.js"></script>
 <script type="text/javascript" src="../lib/js/calendar.js"></script>
+<script type="text/javascript" src="../lib/js/val.js"></script>
+
 
 
 <!--  CSS files -->
 <link rel="stylesheet" href="CSS/user.css" type="text/css"></link>
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="CSS/validation.css" type="text/css"></link>
+<link rel="stylesheet" href="../CSS/validation.css" type="text/css"></link>
 <style type="text/css">@import "../CSS/jquery.datepick.css";</style> 
 
 </head>
@@ -48,7 +50,7 @@
 		
 
 		<div id ="userForm">
-			<form class="addUserForm" method="post">
+			<form class="validatedForm" method="post">
 			 <div id="personal">
 				 	<div id="searchArea">
 				 	
@@ -66,12 +68,12 @@
 							<p>	<label> Family Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="familyName" size ="30"> </p>
 							<p>	<label> Date of Birth: <em class="asterisk"> * </em> </label> <input type="text" name ="dob" id="dob" size ="10"></p>
 
-					       <div id="email">
-								<label for="email"> Personal E-mail: <em class="asterisk"> * </em> </label> 
-							    <div id="confirmEmail_img"></div>
-							    <input name="confirmEmail" id="confirmpass" type="text" size ="30" maxlength="30" />
-								<div id="confirmEmail_msg"></div>
-						   </div>
+					       <div class="validated" id="email_li">
+				                  <label for="email">email:</label>
+				                  <div id="email_img"></div>
+								<input name="email" id="email" type="email" maxlength="20"  />
+				                  <div id="email_msg"></div>
+				          </div>
 					
 				</fieldset>
 			</div>
@@ -120,7 +122,6 @@
 					</p>		
 								<!--This should be populated from MaintainPermission use case -->
 					
-					<p>
 							<label id="theSelect" class="theSelect"> Permission level: </label>  
 									<select name="plevel" size=3>
 											<option value="1">Level 1</option>

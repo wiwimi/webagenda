@@ -8,23 +8,20 @@
 <title>Web Agenda- User's Profile</title>
 
 <!--  Includes -->
-<jsp:include page="../wa_includes/PageLayoutAdmin.jsp"/>
+<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
 
 <!-- Libraries -->
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-<style type="text/css">@import "../lib/js/jquery.datepick.css";</style> 
-<script type="text/javascript" src="../lib/js/jquery.datepick.js"></script>
+<script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
+
 
 <!-- Javascript Files -->
-<script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
 <script type="text/javascript" src="../lib/js/dashboard.js"></script>
-<script type="text/javascript" src="../lib/js/jquery2.js"></script>
-<script type="text/javascript" src="../lib/js/val.js"></script>
+
 
 <!--  CSS files -->
 <link rel="stylesheet" href="CSS/userAddStyle.css" type="text/css"></link>
 <link rel="stylesheet" href="CSS/settings.css" type="text/css"></link>
-<link rel="stylesheet" href="CSS/validation.css" type="text/css"></link>
+
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 
 </head>
@@ -43,7 +40,7 @@
 			<div class="widgetLowerRectangle" id="passwordLowerRectangle">
 	
 				<div id ="updateProfileForm">
-					<form class="updateProfileForm" method="post">
+					<form class="validatedForm" method="post">
 		
 						<fieldset>
 								<legend > Account Settings </legend>

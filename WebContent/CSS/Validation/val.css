@@ -1,0 +1,14 @@
+
+#commentForm { width: 500px; }
+#commentForm label { width: 250px; }
+#commentForm label.error
+#form { width: 670px; }
+#form label.error {
+	margin-left: 10px;
+	width: auto;
+	display: inline;
+}
+#newsletter_topics label.error {
+	display: none;
+	margin-left: 103px;
+}

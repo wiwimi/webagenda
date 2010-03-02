@@ -9,7 +9,7 @@
 <title>Web Agenda- User's Profile</title>
 
 <!--  Includes -->
-<jsp:include page="../wa_includes/PageLayoutUser.jsp"/>
+<jsp:include page="../wa_includes/pageLayoutUser.jsp"/>
 
 <!-- Libraries -->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>

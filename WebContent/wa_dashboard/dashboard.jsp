@@ -25,7 +25,7 @@ if(session.getAttribute("username") != null)
 <title>Web Agenda - Dashboard</title>
 
 <!--  Includes -->
-<jsp:include page="../wa_includes/PageLayoutAdmin.jsp"/>
+<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
 </head>
 <body>
 
