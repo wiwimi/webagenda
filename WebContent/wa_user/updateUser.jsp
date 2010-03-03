@@ -1,4 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+
+<%@ page import="business.Employee" %>
+<%@ page import="persistence.EmployeeBroker" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -70,24 +74,29 @@
 					</tfoot>
 					
 					<tbody>
-
+						<% 
+							EmployeeBroker broker = EmployeeBroker.getBroker();
+						
+							int count = broker.getEmpCount();
+							
+							Employee emp = new Employee();
+							emp.setActive(true);
+							Employee[] empArray = broker.get(emp);
+							
+							for(int index = 0; index < count; index++)
+							{
+						%>
 									<tr>
-									<td><a href="add_user.jsp"><div id="profileImage">Test</div></a></td>
-									<td><a href="add_user.jsp">Test</a></td>
-									<td><a href="add_user.jsp">Test</a></td>
-									<td> <a href="add_user.jsp">Test</a> </td>
-									<td> <a href="add_user.jsp">Test</a> </td>
-									<td> <a href="add_user.jsp">Test</a> </td>
+									<td><a href="add_user.jsp"><div id="profileImage"><%= empArray[index].getUsername() %></div></a></td>
+									<td><a href="add_user.jsp"><%= empArray[index].getEmpID() %></a></td>
+									<td><a href="add_user.jsp"><%= empArray[index].getFamilyName() %></a></td>
+									<td> <a href="add_user.jsp"><%= empArray[index].getGivenName() %></a> </td>
+									<td> <a href="add_user.jsp"><%= empArray[index].getPrefPosition() %></a> </td>
+									<td> <a href="add_user.jsp"><%= empArray[index].getSupervisorID() %></a> </td>
 									</tr>
-									
-									<tr>
-									<td><a href="add_user.jsp"><div id="profileImage">Test</div></a></td>
-									<td><a href="add_user.jsp">Test</a></td>
-									<td><a href="add_user.jsp">Test</a></td>
-									<td> <a href="add_user.jsp">Test</a>  </td>
-									<td> <a href="add_user.jsp">Test</a> </td>
-									<td> <a href="add_user.jsp">Test</a> </td>
-									</tr>
+						<% 
+							}
+						%>			
 								
 					</tbody>
 				</table>
