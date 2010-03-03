@@ -217,13 +217,13 @@ public class EmployeeBroker extends Broker<Employee>
 			comp = comp + (searchTemplate.getSupervisorID() != null ? "supervisorID = " + searchTemplate.getSupervisorID() : "");
 			// Given Name
 			comp = comp + (searchTemplate.getGivenName() != null ? (comp.equals("") ? "" : " AND ") +
-					"givenName = '" + searchTemplate.getGivenName() + "'" : "");
+					"givenName LIKE '" + searchTemplate.getGivenName() + "%'" : "");
 			// Family Name
 			comp = comp + (searchTemplate.getFamilyName() != null ? (comp.equals("") ? "" : " AND ") +
-					"familyName = '" + searchTemplate.getFamilyName() + "'" : "");
+					"familyName LIKE '" + searchTemplate.getFamilyName() + "%'" : "");
 			// Email
 			comp = comp + (searchTemplate.getEmail() != null ? (comp.equals("") ? "" : " AND ") +
-					"email = '" + searchTemplate.getEmail() + "'" : "");
+					"email LIKE '" + searchTemplate.getEmail() + "%'" : "");
 			// Username
 			comp = comp + (searchTemplate.getUsername() != null ? (comp.equals("") ? "" : " AND ") +
 					"username = '" + searchTemplate.getUsername() + "'" : "");
@@ -232,10 +232,10 @@ public class EmployeeBroker extends Broker<Employee>
 					"password = '" + searchTemplate.getPassword() + "'" : "");
 			// Preferred Position
 			comp = comp + (searchTemplate.getPrefPosition() != null ? (comp.equals("") ? "" : " AND ") +
-					"prefPosition = '" + searchTemplate.getPrefPosition() + "'" : "");
+					"prefPosition LIKE '" + searchTemplate.getPrefPosition() + "%'" : "");
 			// Preferred Location
 			comp = comp + (searchTemplate.getPrefLocation() != null ? (comp.equals("") ? "" : " AND ") +
-					"prefLocation = '" + searchTemplate.getPrefLocation() + "'" : "");
+					"prefLocation LIKE '" + searchTemplate.getPrefLocation() + "%'" : "");
 			// Active State.
 			comp = comp + (searchTemplate.getActive() != null ? (comp.equals("") ? "" : " AND ") +
 					"active = " + searchTemplate.getActive() : "");
@@ -306,49 +306,41 @@ public class EmployeeBroker extends Broker<Employee>
 		if (updateEmployee == null)
 			throw new NullPointerException("Can not update null employee.");
 		
+		/*
+		 * Make sure all "not null" DB fields are filled. Expand this to throw a
+		 * DBAddException with the exception message saying exactly what fields
+		 * are missing.
+		 */
+		String nullMsg = "Missing Required Fields:";
 		if (updateEmployee.getEmpID() == null)
-			throw new NullPointerException(
-					"Can not update employee without emp ID.");
+			nullMsg = nullMsg + " EmpID";
+		if (updateEmployee.getGivenName() == null)
+			nullMsg = nullMsg + " GivenName";
+		if (updateEmployee.getFamilyName() == null)
+			nullMsg = nullMsg + " FamilyName";
+		if (updateEmployee.getUsername() == null)
+			nullMsg = nullMsg + " Username";
+		if (updateEmployee.getPassword() == null)
+			nullMsg = nullMsg + " Password";
+		if (updateEmployee.getPLevel() == null)
+			nullMsg = nullMsg + " PermissionLevel";
+		if (!nullMsg.equals("Missing Required Fields:"))
+			throw new DBException(nullMsg);
 		
 		// Create sql update statement from employee object.
-		String update = "UPDATE `WebAgenda`.`EMPLOYEE` SET ";
-		String set = "";
-		
-		// Use all non-null fields for update.
-		// Supervisor ID
-		set = set + (updateEmployee.getSupervisorID() != null ? "supervisorID = " + updateEmployee.getSupervisorID() : "");
-		// Given Name
-		set = set + (updateEmployee.getGivenName() != null ? (set.equals("") ? "" : ", ") +
-				"givenName = '" + updateEmployee.getGivenName() + "'" : "");
-		// Family Name
-		set = set + (updateEmployee.getFamilyName() != null ? (set.equals("") ? "" : ", ") +
-				"familyName = '" + updateEmployee.getFamilyName() + "'" : "");
-		// Email
-		set = set + (updateEmployee.getEmail() != null ? (set.equals("") ? "" : ", ") +
-				"email = '" + updateEmployee.getEmail() + "'" : "");
-		// Username
-		set = set + (updateEmployee.getUsername() != null ? (set.equals("") ? "" : ", ") +
-				"username = '" + updateEmployee.getUsername() + "'" : "");
-		// Password
-		set = set + (updateEmployee.getPassword() != null ? (set.equals("") ? "" : ", ") +
-				"password = '" + updateEmployee.getPassword() + "'" : "");
-		// LastLogin
-		set = set + (updateEmployee.getLastLogin() != null ? (set.equals("") ? "" : ", ") +
-				"lastLogin = NOW()" : "");
-		// Preferred Position
-		set = set + (updateEmployee.getPrefPosition() != null ? (set.equals("") ? "" : ", ") +
-				"prefPosition = '" +	updateEmployee.getPrefPosition() + "'"	: "");
-		// Preferred Location
-		set = set + (updateEmployee.getPrefLocation() != null ? (set.equals("") ? "" : ", ") +
-				"prefLocation = '" + updateEmployee.getPrefLocation() + "'" : "");
-		// Active State.
-		set = set + (updateEmployee.getActive() != null ? (set.equals("") ? "" : ", ") +
-				"active = " + updateEmployee.getActive() : "");
-		
-		// TODO if set is empty, throw error as nothing is being updated.
-		
-		update = update + set + " WHERE empID = " +
-				updateEmployee.getEmpID() + ";";
+		String update = String.format(
+				"UPDATE `WebAgenda`.`EMPLOYEE` SET supervisorID = %i, givenName = '%s', familyName = '%s', email = %s, username = '%s', password = '%s', lastLogin = %s, prefPosition = %s, prefLocation = %s, active = '%s' WHERE empID = %i;",
+				(updateEmployee.getSupervisorID() != null ? updateEmployee.getSupervisorID() : "NULL"),
+				updateEmployee.getGivenName(),
+				updateEmployee.getFamilyName(),
+				(updateEmployee.getEmail() != null ? "'"+updateEmployee.getEmail()+"'" : "NULL"),
+				updateEmployee.getUsername(),
+				updateEmployee.getPassword(),
+				(updateEmployee.getLastLogin() != null ? "'"+updateEmployee.getLastLogin()+"'" : "NULL"),
+				(updateEmployee.getPrefPosition() != null ? "'"+updateEmployee.getPrefPosition()+"'" : "NULL"),
+				(updateEmployee.getPrefLocation() != null ? "'"+updateEmployee.getPrefLocation()+"'" : "NULL"),
+				updateEmployee.getActive(),
+				updateEmployee.getEmpID());
 		
 		// Get DB connection, send update, and reopen connection for other users.
 		try
