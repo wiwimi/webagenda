@@ -12,18 +12,23 @@
 
 <!-- Libraries -->
 <script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
-
+<script src="../lib/js/jquery.validate.js" type="text/javascript"></script>
 
 <!-- Javascript Files -->
-<script type="text/javascript" src="../lib/js/dashboard.js"></script>
+<script src="../lib/js/cmxforms.js" type="text/javascript"></script>
+<script src= "../lib/js/val.js" type="text/javascript"> </script>
 
-
-<!--  CSS files -->
+<!-- CSS -->
 <link rel="stylesheet" href="CSS/userAddStyle.css" type="text/css"></link>
 <link rel="stylesheet" href="CSS/settings.css" type="text/css"></link>
 
-<link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 
+<link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/val.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/screen.css" />
+
+
+	
 </head>
 <body>
 	<div id="instructions">
@@ -40,30 +45,28 @@
 			<div class="widgetLowerRectangle" id="passwordLowerRectangle">
 	
 				<div id ="updateProfileForm">
-					<form class="validatedForm" method="post">
-		
-						<fieldset>
+					<form class="validatedForm" id="form" method="post" enctype="multipart/form-data">
+					
+					<fieldset>
 								<legend > Account Settings </legend>
-									<label for="old_pwd"> Old Password: <em class="asterisk"> * </em> </label> 
+								<div>
+									<label for="old_pwd" class = "label"> Old Password: <em class="asterisk"> * </em> </label> 
 									<input type="password"  name ="old_pwd" id="old_pwd" size ="6" maxlength="8"/> 
-										 	
-									<div class="validated" id="password_li">
-										 <label for="password"> New Password: <em class="asterisk"> * </em> </label> 
-										 <input class="validated" type="password"  name ="password" id="password" size ="6" maxlength="8"/> 
-									  	 <span id="pwdInfo"> 6 - 8 alphanumeric characters</span> 
-									</div>
-									 <div id="confirmpass_li">
-									     <label for="confirmpass"> New Password: <em class="asterisk"> * </em> </label> 
-									      <div id="confirmpass_img"></div>
-									     <input name="confirmpass" id="confirmpass" type="password" size ="6" maxlength="8" />
-									 	 <div id="confirmpass_msg"></div>
-									 </div>
-									 
-									 
+								</div>
+								
+								<div>	 	
+									
+									<label for="password" class = "label" > New Password: <em class="asterisk"> * </em> </label> 
+									<input type="password"  name ="password" id="password"/> 
+								</div>	
+								<div>
+									<label for="confirm_password" class = "label" >Confirm password  <em class="asterisk"> * </em>  </label>
+									<input id="confirm_password" name="confirm_password" type="password" />
+								</div>	 
 						</fieldset>
-						
+						<br> 
 						<input type="submit" name="submit" class="button" value="Save"> 
-						<input type="submit" name="clear" class="button" value="Clear Screen"> 
+						<input type="reset" name="clear" class="button" value="Clear Screen"> 
 						<br></br>
 					</form>
 				</div>                  <!-- End updateProfileForm -->
