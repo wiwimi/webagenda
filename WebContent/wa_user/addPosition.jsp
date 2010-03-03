@@ -32,18 +32,18 @@
 		<div class="widgetLowerRectangle" id="skillLowerRectangle">
 
 		<div id ="userForm">
-			<form class="addPositionForm" method="post">
+			<form class="addPositionForm" id="form" method="post">
 			<div id="position">
 			
 			<div id="searchArea">
 						<input type="submit" name="submit" class="button" value="Save"> 
 						<input type="button" name="submit" class="button" value="Search" onClick="location.href='update_position.jsp';"> 
-						<input type="submit" name="clear" class="button" value="Clear Screen"> 
+						<input type="reset" name="clear" class="button" value="Clear Screen"> 
 						<br></br>
 			</div>
 				
 				 <fieldset>
-					<legend > Position Details
+					<legend > Position Details </legend>
 					
 							<p>	<label> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="skillName" size ="30"> </p>
 							
@@ -64,7 +64,6 @@
 							<textarea  name="descreption" cols="23" rows="6" tabindex="101"></textarea>
 					
 					
-					</legend>
 				</fieldset>
 			
 				       <div id="searchArea">

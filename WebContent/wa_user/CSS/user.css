@@ -3,11 +3,12 @@
 /*Author: Noorin*/
 
 
-#userForm input, select
+#userForm input, select, textarea
 
 {
 	background-color: #FFFFFF;
 	font-family: cochin,Verdana, Times,helvetica,sans-serif;
+	border: 1px solid #000080;
 	border:solid 1px #aacfe4;
 }
 
@@ -49,7 +50,7 @@
 {
 	width: 7em;
 	float: left;
-	font-weight: 700;
+	font-weight: 600;
 	font-size: 14px;
 	font-family: Arial,  Verdana, Helvetica, sans-serif;
 	text-align: right;
@@ -75,7 +76,6 @@
 	  font-family: cochin, Verdana, georgia, Times, helvetica,sans-serif;
 	  font-size:80%;
 	  color:black;
-	
 	  background-color:#E6E6E6   ;
 	  border: 1px solid #000061;
 	  padding-top: 2px;
@@ -128,13 +128,6 @@ fieldset.focussed {
 	content: url(../../lib/images/icons/Color/001_54.png)	
 }
 
-#searchArea
-{
-	position:relative;
-	top:10px;
-	right:10px;
-	float:right;
-}
 #tableArea
 {
 	position:relative;
@@ -249,8 +242,4 @@ tbody
 	top:5px;
 	content: url(../../lib/images/icons/Color/001_54.png)
 }
-#instructions
-{ 
-	font-family:Arial; 
-	font-size:100%;
-}
+

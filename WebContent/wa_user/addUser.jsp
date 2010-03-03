@@ -77,8 +77,8 @@
 			<fieldset>
 				<legend> Working Preferences </legend>
 					<p>	<label id="theSelect" class="theSelect"> Status: <em class="asterisk"> * </em> </label> 
-							        <select name="status" >
-											<option value="enabled" > Enabled</option> 
+							        <select name="status">
+											<option value="enabled"> Enabled</option> 
 											<option value="disabled" >Disabled</option>  
 									</select> 
 					</p>

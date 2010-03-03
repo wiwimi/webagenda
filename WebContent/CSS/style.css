@@ -515,6 +515,19 @@ label {
 		top:5px;
 		content:url(../lib/images/icons/Color/001_41.png);
 	}
+	#instructions
+	{ 
+		font-family:Arial; 
+		font-size:100%;
+	}
+	
+	#searchArea
+	{
+		position:relative;
+		top:10px;
+		right:10px;
+		float:right;
+	}
 	
 
 	
