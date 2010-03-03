@@ -12,22 +12,21 @@
 
 <!-- Libraries -->
 <script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
-<script src="../lib/js/jquery2.js" type="text/javascript"></script>
-
+<script src="../lib/js/jquery.validate.js" type="text/javascript"></script>
 
 <!-- Javascript Files -->
+<script src="../lib/js/cmxforms.js" type="text/javascript"></script>
+<script src= "../lib/js/val.js" type="text/javascript"> </script>
 <script type="text/javascript" src="../lib/js/jquery.datepick.js"></script>
-<script type="text/javascript" src="../lib/js/dashboard.js"></script>
 <script type="text/javascript" src="../lib/js/calendar.js"></script>
-<script type="text/javascript" src="../lib/js/val.js"></script>
-
-
 
 <!--  CSS files -->
 <link rel="stylesheet" href="CSS/user.css" type="text/css"></link>
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="../CSS/validation.css" type="text/css"></link>
 <style type="text/css">@import "../CSS/jquery.datepick.css";</style> 
+<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/val.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/screen.css" />
+
 
 </head>
 <body>
@@ -47,41 +46,37 @@
 			
 		<div class="widgetLowerRectangle" id="usersLowerRectangle">
 		
-		
-
 		<div id ="userForm">
-			<form class="validatedForm" method="post">
+			<form class="validatedForm" id="form" method="post">
 			 <div id="personal">
 				 	<div id="searchArea">
 				 	
 				            <input type="submit" name="submit" class="button" value="Save"> 
-							<input type="button" name="submit" class="button" value="Search" onClick="location.href='update_user.jsp';">
+							<input type="button" name="submit" class="button" value="Search" onClick="location.href='updateUser.jsp';">
 							<input type="submit" name="submit" class="button" value="Delete"> 
-							<input type="submit" name="clear" class="button" value="Clear Screen">
+							<input type="reset" name="clear" class="button" value="Clear Screen">
 							
 					</div>
 			
 				 <fieldset>
 					<legend > Personal </legend>
 					
-							<p>	<label> Given Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="givenName" size ="30"> </p>
-							<p>	<label> Family Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="familyName" size ="30"> </p>
-							<p>	<label> Date of Birth: <em class="asterisk"> * </em> </label> <input type="text" name ="dob" id="dob" size ="10"></p>
+							<p>	<label class ="label"> Given Name:  <em class="asterisk"> * </em> </label> <input type="text"  name ="givenName" class ="required" size ="30"> </p>
+							<p>	<label class ="label"> Family Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="familyName"  class ="required"  size ="30"> </p>
+							<p>	<label class ="label"> Date of Birth: <em class="asterisk"> * </em> </label> <input type="text" name ="dob" id="dob" class ="required"  size ="10"></p>
 
-					       <div class="validated" id="email_li">
-				                  <label for="email">email:</label>
-				                  <div id="email_img"></div>
-								<input name="email" id="email" type="email" maxlength="20"  />
-				                  <div id="email_msg"></div>
-				          </div>
+				            <p>
+				          		<label for="cemail" class="label"> E-Mail<em class="asterisk"> * </em></label>
+			               		<input id="cemail" name="email" class="required email" />
+			                </p>
 					
 				</fieldset>
 			</div>
 			
 			<div id="work">
 			<fieldset>
-				<legend> Working Preferences 
-					<p>	<label> Status: <em class="asterisk"> * </em> </label> 
+				<legend> Working Preferences </legend>
+					<p>	<label id="theSelect" class="theSelect"> Status: <em class="asterisk"> * </em> </label> 
 							        <select name="status" >
 											<option value="enabled" > Enabled</option> 
 											<option value="disabled" >Disabled</option>  
@@ -128,15 +123,14 @@
 											<option value="2">Level 1a</option>
 											<option value="3">Level 2b</option>
 									</select>
-				</legend>
 				</fieldset>
 				</div>
 				<div id="searchArea">
-						<input type="submit" name="submit" class="button" value="Save"> 
-						<input type="button" name="submit" class="button" value="Search" onClick="location.href='update_user.jsp';"> 
-						<input type="submit" name="submit" class="button" value="Delete">
-						<input type="submit" name="clear" class="button" value="Clear Screen"> 
-						<br></br>
+						 <input type="submit" name="submit" class="button" value="Save"> 
+							<input type="button" name="submit" class="button" value="Search" onClick="location.href='updateUser.jsp';">
+							<input type="submit" name="submit" class="button" value="Delete"> 
+							<input type="reset" name="clear" class="button" value="Clear Screen"> 
+				<br></br>
 				</div>
 				</form>
 			</div>

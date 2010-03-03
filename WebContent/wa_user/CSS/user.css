@@ -45,7 +45,7 @@
 	position:realtive;
 }
 
-#userForm label
+#userForm label.theSelect, label.label
 {
 	width: 7em;
 	float: left;
@@ -253,12 +253,4 @@ tbody
 { 
 	font-family:Arial; 
 	font-size:100%;
-}
-.error 
-{
-	    font: normal 10px arial;
-	    padding: 3px;
-	    margin: 3px;
-	    background-color: #ffc;
-	    border: 1px solid #c00;
 }
