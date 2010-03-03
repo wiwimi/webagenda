@@ -529,6 +529,23 @@ label {
 		float:right;
 	}
 	
+	.plugins .row-actions-visible {
+	padding: 0;
+}
+	.row-actions {
+		visibility: hidden;
+		padding: 2px 0 0;
+	}
+	tr:hover .row-actions,
+	div.comment-item:hover .row-actions {
+		visibility: visible;
+	}
+	
+	.row-actions-visible {
+		padding: 2px 0 0;
+		cursor: pointer;
+	}
+	
 
 	
 	
