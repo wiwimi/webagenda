@@ -173,7 +173,7 @@ public class EmployeeBroker extends Broker<Employee>
 		boolean success;
 		try
 			{
-			DBConnection conn = employeeBroker.getConnection();
+			DBConnection conn = this.getConnection();
 			Statement stmt = conn.getConnection().createStatement();
 			int result = stmt.executeUpdate(delete);
 			
@@ -265,6 +265,37 @@ public class EmployeeBroker extends Broker<Employee>
 		return foundEmployees;
 		}
 	
+	/**
+	 * Gets the current total number of active employees stored within the system.
+	 * 
+	 * @return the number of active employees in the system.
+	 * @throws DBException if there is an error when querying the database.
+	 */
+	public int getEmpCount() throws DBException
+		{
+		String count = "SELECT COUNT(*) FROM `WebAgenda`.`EMPLOYEE` WHERE active = TRUE;";
+		
+		// Get DB connection, send update, and reopen connection for other users.
+		int numEmps = 0;
+		try
+			{
+			DBConnection conn = this.getConnection();
+			Statement stmt = conn.getConnection().createStatement();
+			ResultSet countResult = stmt.executeQuery(count);
+			conn.setAvailable(true);
+			
+			countResult.beforeFirst();
+			countResult.next();
+			numEmps = countResult.getInt(1);
+			}
+		catch (SQLException e)
+			{
+			throw new DBException("Failed to count employees", e);
+			}
+		
+		return numEmps;
+		}
+	
 	/*
 	 * (non-Javadoc)
 	 * @see persistence.Broker#update(business.BusinessObject)
@@ -327,7 +358,6 @@ public class EmployeeBroker extends Broker<Employee>
 			int updateRowCount = stmt.executeUpdate(update);
 			conn.setAvailable(true);
 			
-			// Ensure
 			if (updateRowCount != 1)
 				throw new DBException(
 						"Failed to update employee: rowcount incorrect.");
