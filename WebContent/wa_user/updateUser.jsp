@@ -86,7 +86,7 @@
 									<tr>
 									<td>
 											
-											<a href="addUser.jsp"><div id="profileImage"><%= empArray[index].getUsername() %></div></a>
+											<a href="addUser.jsp"><div id="profileImage"> <b> <%= empArray[index].getUsername() %> </b></div></a>
 										    <div class="row-actions"><span class='edit'>
 										    <a href="#"> Edit </a>   | </span>  <span class='delete'>
 										    <a class='submitdelete' href='#'>Delete</a></span></div>
