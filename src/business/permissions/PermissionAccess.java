@@ -3,9 +3,8 @@
  */
 package business.permissions;
 
-import persistence.PermissionBroker;
 import business.Employee;
-import messagelog.Logging;
+
 import exception.DBException;
 import exception.InvalidPermissionException;
 
@@ -44,7 +43,7 @@ public class PermissionAccess {
 	 * 
 	 * @return
 	 */
-	public Permissions getRootLevel()
+	protected Permissions getRootLevel()
 	{
 		return new Permissions();
 	}
@@ -53,7 +52,7 @@ public class PermissionAccess {
 	 * Returns the lowest-level default permission level to the user
 	 * @return PermissionLevel default
 	 */
-	public PermissionLevel getDefault()
+	protected PermissionLevel getDefault()
 	{	
 		return PermissionLevel.getDefault();
 	}
@@ -66,7 +65,7 @@ public class PermissionAccess {
 	 * @param version char version 
 	 * @return PermissionLevel with level and version.
 	 */
-	public PermissionLevel getLevel(int level, char version)
+	protected PermissionLevel getLevel(int level, char version)
 	{
 		PermissionLevel p_level = getDefault();
 		p_level.setLevel(level);
@@ -83,7 +82,7 @@ public class PermissionAccess {
 	 * @param pl PermissionLevel that is to be modified
 	 * @return PermissionLevel with permissions in it.
 	 */
-	public PermissionLevel setPermissions(Permissions p,PermissionLevel pl) throws InvalidPermissionException
+	protected PermissionLevel setPermissions(Permissions p,PermissionLevel pl) throws InvalidPermissionException
 	{
 		// set to blank permissions level with parameter level's level and version
 		PermissionLevel new_pl = null; 
@@ -118,7 +117,7 @@ public class PermissionAccess {
 	 * @param trustedLevel
 	 * @return Permissions object with assigned permissions.
 	 */
-	public Permissions getCustomPermission(boolean canEditSched, boolean canReadSched,
+	protected Permissions getCustomPermission(boolean canEditSched, boolean canReadSched,
 			boolean canReadOldSched, boolean canViewResources, boolean canChangePermissions,
 			boolean canReadLogs,boolean canAccessReports, boolean canRequestDaysOff,
 			int maxDaysOff, boolean canTakeVacations, int maxVacationDays,
