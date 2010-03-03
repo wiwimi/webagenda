@@ -21,7 +21,7 @@ public class LocationBroker extends Broker<Location>
 	private static volatile LocationBroker	locationBroker	= null;
 	
 	/**
-	 * Constructor for EmployeeBroker
+	 * Constructor for LocationBroker
 	 */
 	private LocationBroker()
 		{
@@ -30,9 +30,9 @@ public class LocationBroker extends Broker<Location>
 		}
 	
 	/**
-	 * Returns an object-based Employee Broker object.
+	 * Returns an object-based Location Broker object.
 	 * 
-	 * @return EmployeeBroker result from the Broker request as its respective
+	 * @return LocationBroker result from the Broker request as its respective
 	 *         Broker object.
 	 */
 	public static LocationBroker getBroker()
@@ -51,7 +51,7 @@ public class LocationBroker extends Broker<Location>
 	public boolean create(Location createLocation) throws DBException
 		{
 		if (createLocation == null)
-			throw new NullPointerException("Can not create null employee.");
+			throw new NullPointerException("Can not create null location.");
 		
 		if (createLocation.getName() == null)
 			throw new DBException("Missing Required Fields: Name");
@@ -81,13 +81,13 @@ public class LocationBroker extends Broker<Location>
 			
 			if (result != 1)
 				throw new DBException(
-						"Failed to create employee, result count incorrect: " +
+						"Failed to create location, result count incorrect: " +
 								result);
 			}
 		catch (SQLException e)
 			{
 			// TODO Need additional SQL exception processing here.
-			throw new DBException("Failed to create employee.", e);
+			throw new DBException("Failed to create location.", e);
 			}
 		
 		return true;
@@ -168,7 +168,7 @@ public class LocationBroker extends Broker<Location>
 			throw new DBException("Failed to complete location search.",e);
 			}
 		
-		// Return employees that matched search.
+		// Return locations that matched search.
 		return foundLocations;
 		}
 
@@ -179,13 +179,13 @@ public class LocationBroker extends Broker<Location>
 	public boolean update(Location updateLocation) throws DBException
 		{
 		if (updateLocation == null)
-			throw new NullPointerException("Can not update null employee.");
+			throw new NullPointerException("Can not update null location.");
 		
 		if (updateLocation.getName() == null)
 			throw new NullPointerException(
 					"Can not update location without a name.");
 		
-		// Create sql update statement from employee object.
+		// Create sql update statement from location object.
 		String update = String.format(
 				"UPDATE `WebAgenda`.`LOCATION` SET locDescription = '%s' WHERE locName = '%s';",
 				updateLocation.getDesc(),updateLocation.getName());
@@ -227,7 +227,7 @@ public class LocationBroker extends Broker<Location>
 			int resultCount = rs.getRow();
 			locList = new Location[resultCount];
 			
-			// Return ResultSet to beginning to start retrieving employees.
+			// Return ResultSet to beginning to start retrieving locations.
 			rs.beforeFirst();
 			for (int i = 0; i < resultCount && rs.next(); i++)
 				{
