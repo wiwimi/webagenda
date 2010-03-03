@@ -59,28 +59,37 @@ public class Login extends HttpServlet
 	{
         response.setContentType("text/html;charset=UTF-8");
         
+        //Get the username and password from the submitted login form and store them as string's
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         
+        //Create or get the session object from the HTTPSession object
         HttpSession loginSession = request.getSession();
-
+        
         PrintWriter out = response.getWriter();
         try 
         {
         	EmployeeBroker empBroker = EmployeeBroker.getBroker();
         	Employee loggedIn = empBroker.tryLogin(username, password);
         	
+        	//Set a session to be equal to the employee object returned from the broker
+        	//This is so that we can just pass it around the interface for information
+        	loginSession.setAttribute("currentEmployee", loggedIn);
+        	
         	System.out.println("Login Worked!");
         	
             //Login is successful
+        	//create a session variable for just the currently logged in user's username
             loginSession.setAttribute("username", username);
-            	
+            
+            //redirect the user to the dashbaord
             response.sendRedirect("wa_dashboard/dashboard.jsp");
         } 
         catch (InvalidLoginException e)
 		{
         	//login was unsuccessful
         	System.out.println("Login Didn't work!");
+        	//Because the login was unsucsseful redirect the user back to the login.jsp with an error message
         	response.sendRedirect(("wa_login/login.jsp?LoginAttempt=1"));
 			e.printStackTrace();
 		} 
