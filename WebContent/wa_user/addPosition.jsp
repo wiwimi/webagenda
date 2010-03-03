@@ -47,7 +47,6 @@
 			
 			<div id="searchArea">
 						<input type="submit" name="submit" class="button" value="Save"> 
-						<input type="submit" name="delete" class="button" value="Delete">
 						<input type="button" name="submit" class="button" value="Search" onClick="location.href='updatePosition.jsp';"> 
 						<input type="reset" name="clear" class="button" value="Clear Screen"> 
 						<br></br>
@@ -79,7 +78,6 @@
 			
 				       <div id="searchArea">
 						<input type="submit" name="submit" class="button" value="Save"> 
-						<input type="submit" name="delete" class="button" value="Delete"> 
 						<input type="button" name="submit" class="button" value="Search" onClick="location.href='updatePosition.jsp';"> 
 						<input type="reset" name="clear" class="button" value="Clear Screen"> 
 						<br></br>

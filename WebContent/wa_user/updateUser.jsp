@@ -44,9 +44,6 @@
 			<div id="searchArea">
 				<input type="text" value="" size=30></input><button type="submit" value="Search">Search</button>
 			</div>
-			
-		
-			
 			<div id="tableArea">
 							<div class="userAdmin">
 				<table class="sortable" id="userTable">
