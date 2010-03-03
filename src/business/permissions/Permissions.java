@@ -91,7 +91,7 @@ public class Permissions extends BusinessObject {
 	 * communication with other employees. Spamming of these privilleges can result in their suspension if
 	 * an authority deems it.
 	 */
-	public Permissions()
+	protected Permissions()
 	{
 		
 	}

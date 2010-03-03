@@ -3,8 +3,11 @@
  */
 package testDB;
 
+import java.sql.Date;
+
 import exception.DBException;
 
+import business.Employee;
 import business.permissions.PermissionAccess;
 import business.permissions.PermissionLevel;
 import persistence.PermissionBroker;
@@ -53,6 +56,19 @@ public class TestPermissions {
 		catch(DBException e2)
 		{
 			e2.printStackTrace();
+		}
+		
+		System.out.println("CREATE");
+		try {
+			Employee e= new Employee(234,"Guy","Guy",new Date(0),"user234","password","2a");
+			PermissionLevel pl = PermissionAccess.getAccess().getLevel(0, ' ');
+			pl = PermissionAccess.getAccess().setPermissions(PermissionAccess.getAccess().getLevel0(), pl);
+			boolean b = PermissionAccess.getAccess().createPermissionLevel(pl, e);
+			System.out.println(b);
+		}
+		catch(Exception E)
+		{
+			E.printStackTrace();
 		}
 	}
 

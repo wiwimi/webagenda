@@ -124,17 +124,17 @@ public class Employee extends BusinessObject
 	 * @param empID int employee id
 	 * @param fname String first name
 	 * @param lname String last (family) name
-	 * @param birthdate Date birthdate
+	 * @param date Date birthdate
 	 * @param username String username for employee account
 	 * @param password String password for employee account
 	 * @param plevel String permission level (formats: #, ##, #c, ##c -- "0", "43","3a","34i" are acceptable)
 	 */
-	public Employee(int empID, String fname, String lname, Date birthdate, String username, String password,  String plevel)
+	public Employee(int empID, String fname, String lname, Date date, String username, String password,  String plevel)
 	{
 		this.empID = empID;
 		this.givenName = fname;
 		this.familyName = lname;
-		this.birthDate = birthdate;
+		this.birthDate = date;
 		this.username = username;
 		this.password = password;
 		this.pLevel = plevel;

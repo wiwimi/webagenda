@@ -3,7 +3,10 @@
  */
 package business.permissions;
 
+import persistence.PermissionBroker;
+import business.Employee;
 import messagelog.Logging;
+import exception.DBException;
 import exception.InvalidPermissionException;
 
 /**
@@ -37,13 +40,13 @@ public class PermissionAccess {
 	}
 	
 	/**
-	 * Static method to edit a permission level. 
+	 * Method to edit a permission level. 
 	 * 
 	 * @param to_change PermissionLevel that is to be changed.
 	 * @param user_permissions PermissionLevel of user attempting to change permissions
 	 * @return PermissionLevel changed level
 	 */
-	public static PermissionLevel editPermissionLevel
+	public PermissionLevel editPermissionLevel
 		(PermissionLevel to_change, PermissionLevel user_permissions) throws InvalidPermissionException
 	{
 		// Make sure that user changing the permissions is at least higher
@@ -61,6 +64,16 @@ public class PermissionAccess {
 			System.out.println("user cannot perform action");
 		}
 		return null;
+	}
+	
+	/**
+	 * Permissions level default 0 is returned
+	 * 
+	 * @return
+	 */
+	public Permissions getLevel0()
+	{
+		return new Permissions();
 	}
 	
 	/**
@@ -159,6 +172,45 @@ public class PermissionAccess {
 		
 		
 		return p;
+	}
+	
+	
+	
+	// ------------------------------------ Methods for manipulating permissions ------------------------------------- //
+	
+	public boolean createPermissionLevel(PermissionLevel create, Employee creator) throws DBException, InvalidPermissionException
+	{
+		// Retrieve permission level from employee
+		int level = -1;
+		char version = ' ';
+		String str = creator.getPLevel();
+		if(Character.isLetter(str.charAt(str.length() - 1))) {
+			// The last character in the string is a letter (version)
+			level = Integer.parseInt(str.substring(0,str.length() - 1));
+			version = str.charAt(str.length() -1);
+		}
+		else {
+			try {
+				level = Integer.parseInt(str);
+				// No versioning.
+			}
+			catch(NumberFormatException nfE)
+			{
+				nfE.printStackTrace();
+			}
+		}
+		// Determine whether employee permission level is higher than the set they want to create
+		if(level <= create.getLevel()) {
+			// If the employee has a lower level than the permission they want to create, deny it
+			throw new InvalidPermissionException("Employee " + creator.getEmpID() + " attempted to create a PermissionLevel " + level + " outside their access.");
+		}
+		
+		// FIXME: Check permissions to ensure that user can create a permission level
+		create.setDescription("Test Data Permission Level");
+		System.out.println(create.getLevel_permissions());
+		// ...
+		
+		return PermissionBroker.getBroker().create(create);
 	}
 	
 }

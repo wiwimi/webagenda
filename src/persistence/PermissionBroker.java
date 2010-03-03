@@ -57,8 +57,67 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 
 	@Override
 	public boolean create(PermissionLevel createObj) throws DBException {
-		// TODO Auto-generated method stub
-		return false;
+		if (createObj == null)
+			throw new NullPointerException("Can not create null permission level.");
+		
+		
+		/*
+		 * Make sure all "not null" DB fields are filled. Expand this to throw a
+		 * DBAddException with the exception message saying exactly what fields
+		 * are missing.
+		 */
+		String nullMsg = "Missing Required Fields:";
+		if (createObj.getLevel_permissions() == null)
+			nullMsg = nullMsg + " Permissions Object,";
+		if (createObj.getLevel() < 0)
+			nullMsg = nullMsg + " Valid ID,";
+		if ((!Character.isLetter(createObj.getVersion())) && (createObj.getVersion() != ' '))
+			nullMsg = nullMsg + " Valid Version,";
+		if (!nullMsg.equals("Missing Required Fields:"))
+			throw new DBException(nullMsg);
+				
+		/*
+		 * Create insert string. 
+		 */
+		String insert = "INSERT INTO `WebAgenda`.`PERMISSIONSET` "
+								+ "(`plevel`, `canEditSched`, `canReadSched`, `canReadOldSched`, `canViewResources`, `canChangePermissions`, " +
+										"`canReadLogs`, `canAccessReports`, `canRequestDaysOff`, `maxDaysOff`, `canTakeVacations`, `maxVacationDays`, " +
+										"`canTakeEmergencyDays`, `canViewInactiveEmps`,`canSendNotifications`,`trusted`)"
+								+ " VALUES ('" + createObj.getLevel() + createObj.getVersion()  + "', " + createObj.getLevel_permissions().isCanEditSchedule() + ", " +
+								createObj.getLevel_permissions().isCanReadSchedule() + ", " + createObj.getLevel_permissions().isCanReadOldSchedule() + ", " + 
+								createObj.getLevel_permissions().isCanViewResources() + ", " + createObj.getLevel_permissions().isCanChangePermissions() + ", " + 
+								createObj.getLevel_permissions().isCanReadLogs() + ", " + createObj.getLevel_permissions().isCanAccessReports() + ", " + 
+								createObj.getLevel_permissions().isCanRequestDaysOff() + ", " + createObj.getLevel_permissions().getMaxDaysOff() + ", " + 
+								createObj.getLevel_permissions().isCanTakeVacations() + ", " + createObj.getLevel_permissions().getMaxVacationDays() + ", " + 
+								createObj.getLevel_permissions().isCanTakeEmergencyDays() + ", " + createObj.getLevel_permissions().isCanViewInactiveEmployees() + ", " +
+								createObj.getLevel_permissions().isCanSendNotifications() + ", " + createObj.getLevel_permissions().getTrusted() + ")";
+						System.out.println(insert);
+		
+		/*
+		 * Send insert to database. SQL errors such as primary key already in use
+		 * will be caught, and turned into our own DBAddException, so this method
+		 * will only have one type of exception that needs to be caught. If the
+		 * insert is successful, return true.
+		 */
+		try
+			{
+			DBConnection conn = this.getConnection();
+			Statement stmt = conn.getConnection().createStatement();
+			int result = stmt.executeUpdate(insert);
+			conn.setAvailable(true);
+			
+			if (result != 1)
+				throw new DBException(
+						"Failed to create employee, result count incorrect: " +
+								result);
+			}
+		catch (SQLException e)
+			{
+			// TODO May need additional SQL exception processing here.
+			throw new DBException("Failed to create PermissionLevel ", e);
+			}
+		
+		return true;
 	}
 
 	@Override
@@ -150,6 +209,42 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 		return foundPermissions;
 	}
 
+	/**
+	 * Method that finds all permission levels where the level equals or is below the searchTemplate's level.
+	 * 
+	 * @param int level 
+	 * @return PermissionLevel[] Levels below parameter
+	 * @throws DBException 
+	 */
+	public PermissionLevel[] getAllBelow(int level) throws DBException {
+		
+		if(level < 0) throw new DBException("Unable to search for Permission Levels with a negative value");
+		// Create sql select statement from permission level object.
+		String select = "SELECT * FROM `WebAgenda`.`PERMISSIONSET` ORDER BY plevel;";
+		
+		PermissionLevel[] foundPermissions = null;
+		try {
+			DBConnection conn = this.getConnection();
+			Statement stmt = conn.getConnection().createStatement();
+			System.out.println(select);
+			ResultSet searchResults = stmt.executeQuery(select);
+			conn.setAvailable(true);
+			
+			if(!searchResults.last()) {
+				// Results are null
+				System.out.println("No results found.");
+			}
+			foundPermissions = parseResults(searchResults);
+		}
+		catch (SQLException e) {
+			throw new DBException("Failed to search for permission level.",e);
+		}
+		
+		
+		
+		return foundPermissions;
+	}
+	
 	@Override
 	public boolean update(PermissionLevel updateObj) throws DBException {
 		// TODO Auto-generated method stub
@@ -213,5 +308,6 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 			}
 		return permList;
 	}
+	
 	
 }
