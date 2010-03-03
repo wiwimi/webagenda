@@ -35,7 +35,7 @@
 </div>
 </div>
 
-<div id="middle">
+<div id="middle"> 
 
 <div id="sidebar">
 	<!-- Gray colour for rectangles -->
@@ -69,8 +69,8 @@
 		<div id= "scheduleLowerRectangle" class = "lowerRectangle">
 			
 			<b> <a href ="../wa_schedule/schedule.jsp" > View Schedule  </a> </b> <br>
-			<b> <a href ="../wa_schedule/request_change.jsp" > Request Shift Change </a> </b> <br>
-			<b> <a href ="../wa_schedule/shift_exchange_pool.jsp" > Availability </a> </b> <br>
+			<b> <a href ="../wa_schedule/requestChange.jsp" > Request Shift Change </a> </b> <br>
+			<b> <a href ="../wa_schedule/shiftExchangePool.jsp" > Availability </a> </b> <br>
 			<b> <a href ="../wa_schedule/" > Create schedule </a> </b> <br>
 		</div>
 		
@@ -88,7 +88,7 @@
 		
 		<div id= "usersLowerRectangle" class = "lowerRectangle">
 			
-			<b> <a href ="../wa_user/add_user.jsp" > Users </a> </b> <br>
+			<b> <a href ="../wa_user/addUser.jsp" > Users </a> </b> <br>
 			
 		</div>
 		<br>
@@ -103,9 +103,9 @@
 		
 		<div id= "locationsLowerRectangle" class = "lowerRectangle">
 			
-			<b> <a href ="../wa_location/add_location.jsp"> Locations </a> </b> <br>
-			<b> <a href ="../wa_user/add_skill.jsp" > Skills </a> </b> <br>
-			<b> <a href ="../wa_user/add_position.jsp" > Positions </a> </b> <br>
+			<b> <a href ="../wa_location/addLocation.jsp"> Locations </a> </b> <br>
+			<b> <a href ="../wa_user/addSkill.jsp" > Skills </a> </b> <br>
+			<b> <a href ="../wa_user/addPosition.jsp" > Positions </a> </b> <br>
 		
 		</div>
 		
@@ -160,20 +160,13 @@
 		
 		<div id= "settingsLowerRectangle" class = "lowerRectangle">
 			
-			<b> <a href ="../wa_settings/security_settings.jsp"> Security </a> </b> <br>
-			<b> <a href ="../wa_settings/Password.jsp"> Change Password </a> </b> <br>
-			<b> <a href ="../wa_settings/admin_profile.jsp"> Admin's Profile </a> </b> <br>
-			<b> <a href ="../wa_settings/corporate_settings.jsp" > Corporate's Profile </a> </b> <br>
+			<b> <a href ="../wa_settings/securitySettings.jsp"> Security </a> </b> <br>
+			<b> <a href ="../wa_settings/password.jsp"> Change Password </a> </b> <br>
+			<b> <a href ="../wa_settings/adminprofile.jsp"> Admin's Profile </a> </b> <br>
+			<b> <a href ="../wa_settings/corporateSettings.jsp" > Corporate's Profile </a> </b> <br>
 		</div>
-		
-		
 	</div>
 	<!-- End sidebar div -->
 	<!-- End of Header file -->
-	
-	
-
-</body>
-</html>
 </body>
 </html>
