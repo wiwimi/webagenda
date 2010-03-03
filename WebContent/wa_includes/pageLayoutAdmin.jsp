@@ -31,7 +31,7 @@
 	<div id="headerTitle">Deerfoot Inn and Casino	
 	</div>
 <div id="userArea">
-	<h6>Welcome: <%out.println(session.getAttribute("username")); %> | <a href="#">Settings</a> | Logout</h6>
+	<h6>Welcome: <%out.println(session.getAttribute("username")); %> | <a href="#">Settings</a> | <a href="../logout">Logout</a></h6>
 </div>
 </div>
 </div>
