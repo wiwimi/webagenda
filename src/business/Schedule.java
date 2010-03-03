@@ -12,7 +12,7 @@ import business.schedule.WorkingShift;
  * @version 0.01.00
  *
  */
-public class Schedule {
+public class Schedule extends BusinessObject {
 
 	/** Date when the schedule starts. */
 	private Date start_date									= null;
