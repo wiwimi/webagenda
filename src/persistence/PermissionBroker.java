@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import exception.DBException;
+import exception.InvalidPermissionException;
 
 import application.DBConnection;
 import business.permissions.*;
@@ -120,10 +121,37 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 		return true;
 	}
 
+	/*
+	 * By default, this method will not delete the admin permission level (100).
+	 * 
+	 * (non-Javadoc)
+	 * @see persistence.Broker#delete(business.BusinessObject)
+	 */
 	@Override
 	public boolean delete(PermissionLevel deleteObj) throws DBException {
-		// TODO Auto-generated method stub
-		return false;
+		if(deleteObj == null)
+			throw new NullPointerException();
+		 
+		boolean success = false;
+		String delete = "DELETE FROM `WebAgenda`.`PERMISSIONSET` WHERE plevel = " + deleteObj.getLevel() + deleteObj.getVersion() +";";
+		try {
+			DBConnection conn = this.getConnection();
+			Statement stmt = conn.getConnection().createStatement();
+			int result = stmt.executeUpdate(delete);
+			conn.setAvailable(true);
+			if (result != 1)
+				throw new DBException(
+						"Failed to delete permission level " + deleteObj.getLevel() + deleteObj.getVersion() + ": " + 
+								result);
+			success = true;
+		}
+		catch (SQLException e)
+		{
+		// TODO May need additional SQL exception processing here.
+		throw new DBException("Failed to delete permission level.", e);
+		}
+		
+		return success;
 	}
 
 	@Override
@@ -245,10 +273,65 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 		return foundPermissions;
 	}
 	
+	/*
+	 * In the very nature of this method call, the primary key or PermissionLevel value itself cannot be changed
+	 * once created. It must be deleted and re-created. The front-end can (aka should) do this automatically.
+	 * (non-Javadoc)
+	 * @see persistence.Broker#update(business.BusinessObject)
+	 */
 	@Override
 	public boolean update(PermissionLevel updateObj) throws DBException {
-		// TODO Auto-generated method stub
-		return false;
+		if(updateObj == null)
+			throw new NullPointerException();
+		 
+		boolean success = false;
+		String update = "UPDATE `WebAgenda`.`PERMISSIONSET` ";
+		String set = "SET "; // This string is modified to contain fields being set and their changed values
+		String where = " WHERE plevel = " + updateObj.getLevel() + updateObj.getVersion();
+		
+		Permissions p = updateObj.getLevel_permissions();
+		
+		set += "plevel = " + updateObj.getLevel() + updateObj.getVersion();
+		set += ", canEditSched = " + p.isCanEditSchedule();
+		set += ", canReadSched = " + p.isCanReadSchedule();
+		set += ", canReadOldSched = " + p.isCanReadOldSchedule();
+		set += ", canViewResources = " + p.isCanViewResources();
+		set += ", canChangePermissions = " + p.isCanChangePermissions();
+		set += ", canReadLogs = " + p.isCanReadLogs();
+		set += ", canAccessReports = " + p.isCanAccessReports();
+		set += ", canRequestDaysOff = " + p.isCanRequestDaysOff();
+		set += ", maxDaysOff = " + p.getMaxDaysOff();
+		set += ", canTakeVacations = " + p.isCanTakeVacations();
+		set += ", maxVacationDays = " + p.getMaxVacationDays();
+		set += ", canTakeEmergencyDays = " + p.isCanTakeEmergencyDays();
+		set += ", canViewInactiveEmps = " + p.isCanViewInactiveEmployees();
+		set += ", canSendNotifications = " + p.isCanSendNotifications();
+		set += ", trusted = " + p.getTrusted();
+		
+		// Update all values in SET string
+		
+		update = update + set + where;
+		
+		try {
+			DBConnection conn = this.getConnection();
+			Statement stmt = conn.getConnection().createStatement();
+			System.out.println(update);
+			int result = stmt.executeUpdate(update);
+			conn.setAvailable(true);
+			
+			if (result != 1)
+				throw new DBException(
+						"Failed to update permission level " + updateObj.getLevel() + updateObj.getVersion() + ": " + 
+								result);
+			success = true;
+		}
+		catch (SQLException e)
+		{
+		// TODO May need additional SQL exception processing here.
+		throw new DBException("Failed to update permission level.", e);
+		}
+		
+		return success;
 	}
 
 	@Override
@@ -299,10 +382,15 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 				}
 				
 				plevel = PermissionAccess.getAccess().getLevel(level, version);
-				PermissionLevel new_level = PermissionAccess.getAccess().setPermissions(p, plevel);
-				// Set values
-				
-				permList[i] = new_level;
+				PermissionLevel new_level = null;
+				try {
+					// Set values
+					new_level = PermissionAccess.getAccess().setPermissions(p, plevel);
+					permList[i] = new_level;
+				} catch (InvalidPermissionException e) {
+					// By having nothing in catch, PermissionLevel that cannot be set (as it is not null) will be ignored.
+					// This should not affect the method in a bad way.
+				}
 				}
 			
 			}

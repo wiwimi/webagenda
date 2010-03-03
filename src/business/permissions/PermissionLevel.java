@@ -3,6 +3,7 @@
  */
 package business.permissions;
 
+import exception.InvalidPermissionException;
 import business.BusinessObject;
 
 
@@ -126,18 +127,17 @@ public class PermissionLevel extends BusinessObject {
 	
 	/**
 	 * Method that will set the new Permissions for this PermissionLevel object.
-	 * In order to re-assign permissions, the level and version must be confirmed
-	 * so that the permission level will be overwritten or saved as a different
-	 * permission level.
+	 * Any validation of setting changes should be done in PermissionAccess
+	 * class.
 	 * 
 	 * @param p Permissions object
 	 * @param level int level (0-99)
 	 * @param version char version (blank as default, or 'a' to 'z')
 	 */
-	protected void setPermission(Permissions p,int level, char version)
+	protected void setPermission(Permissions p,int level, char version) throws InvalidPermissionException
 	{
 		if(level_permissions == null) this.level_permissions = p;
-		//FIXME:
+		else throw new InvalidPermissionException("Permissions cannot be changed");
 	}
 	
 	/**

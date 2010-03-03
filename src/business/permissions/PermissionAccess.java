@@ -40,33 +40,6 @@ public class PermissionAccess {
 	}
 	
 	/**
-	 * Method to edit a permission level. 
-	 * 
-	 * @param to_change PermissionLevel that is to be changed.
-	 * @param user_permissions PermissionLevel of user attempting to change permissions
-	 * @return PermissionLevel changed level
-	 */
-	public PermissionLevel editPermissionLevel
-		(PermissionLevel to_change, PermissionLevel user_permissions) throws InvalidPermissionException
-	{
-		// Make sure that user changing the permissions is at least higher
-		if(user_permissions.getLevel() < to_change.getLevel()) {
-			System.out.println("User is above specified level and can perform action");
-		}
-		// Make sure that user, if the same level as the changing permission, is trusted to that level + 1
-		else if((user_permissions.getLevel() == to_change.getLevel()) && (user_permissions.getLevel_permissions().getTrusted() > to_change.getLevel())) {
-			System.out.println("User is trusted and can perform action");
-		}
-		// If user just doesn't have proper permissions to change. This will log an error to permissions.log file.
-		else {
-			Logging.writeToLog(Logging.PERM_LOG, Logging.ERR_ENTRY, "User with permission level " + 
-					user_permissions.getLevel() + " tried to modify permission level " + to_change.getLevel());
-			System.out.println("user cannot perform action");
-		}
-		return null;
-	}
-	
-	/**
 	 * Permissions level default 0 is returned
 	 * 
 	 * @return
@@ -110,7 +83,7 @@ public class PermissionAccess {
 	 * @param pl PermissionLevel that is to be modified
 	 * @return PermissionLevel with permissions in it.
 	 */
-	public PermissionLevel setPermissions(Permissions p,PermissionLevel pl)
+	public PermissionLevel setPermissions(Permissions p,PermissionLevel pl) throws InvalidPermissionException
 	{
 		// set to blank permissions level with parameter level's level and version
 		PermissionLevel new_pl = null; 
@@ -178,6 +151,16 @@ public class PermissionAccess {
 	
 	// ------------------------------------ Methods for manipulating permissions ------------------------------------- //
 	
+	/**
+	 * Method that limits access to Permission resources, but allows a user (creator variable) to create a Permission Level as
+	 * specified by the create variable.
+	 * 
+	 * @param PermissionLevel create - Level to create
+	 * @param Employee creator - Employee requesting creation of Permissionlevel
+	 * @return boolean true if created successfully
+	 * @throws DBException 
+	 * @throws InvalidPermissionException if user does not have permission to create permission level
+	 */
 	public boolean createPermissionLevel(PermissionLevel create, Employee creator) throws DBException, InvalidPermissionException
 	{
 		// Retrieve permission level from employee
@@ -202,15 +185,88 @@ public class PermissionAccess {
 		// Determine whether employee permission level is higher than the set they want to create
 		if(level <= create.getLevel()) {
 			// If the employee has a lower level than the permission they want to create, deny it
-			throw new InvalidPermissionException("Employee " + creator.getEmpID() + " attempted to create a PermissionLevel " + level + " outside their access.");
+			throw new InvalidPermissionException("Employee " + creator.getEmpID() + " attempted to create a PermissionLevel " + 
+					create.getLevel() + " outside their access " + level + version + ".");
 		}
 		
 		// FIXME: Check permissions to ensure that user can create a permission level
 		create.setDescription("Test Data Permission Level");
-		System.out.println(create.getLevel_permissions());
 		// ...
 		
 		return PermissionBroker.getBroker().create(create);
 	}
 	
+	/**
+	 * TODO: canModifyUser permission also checks
+	 * 
+	 * @param delete
+	 * @param requester
+	 * @return
+	 * @throws InvalidPermissionException 
+	 * @throws DBException 
+	 */
+	public boolean deletePermissionLevel(PermissionLevel delete, Employee requester) throws InvalidPermissionException, DBException
+	{
+		// Retrieve permission level from employee
+		int level = -1;
+		char version = ' ';
+		String str = requester.getPLevel();
+		if(Character.isLetter(str.charAt(str.length() - 1))) {
+			// The last character in the string is a letter (version)
+			level = Integer.parseInt(str.substring(0,str.length() - 1));
+			version = str.charAt(str.length() -1);
+		}
+		else {
+			try {
+				level = Integer.parseInt(str);
+				// No versioning.
+			}
+			catch(NumberFormatException nfE)
+			{
+				nfE.printStackTrace();
+			}
+		}
+		// Determine whether employee permission level is higher than the set they want to delete
+		if(level <= delete.getLevel()) {
+			// If the employee has a lower level than the permission they want to delete, deny it
+			throw new InvalidPermissionException("Employee " + requester.getEmpID() + " attempted to delete a PermissionLevel " + 
+					delete.getLevel() + " outside their access " + level + version + ".");
+		}
+		// FIXME: Check permissions to ensure that user can delete a permission level
+		
+		// ...
+		
+		
+		return PermissionBroker.getBroker().delete(delete);
+	}
+	
+	public boolean updatePermissionLevel(PermissionLevel update, Employee requester) throws InvalidPermissionException, DBException
+	{
+		int level = -1;
+		char version = ' ';
+		String str = requester.getPLevel();
+		if(Character.isLetter(str.charAt(str.length() - 1))) {
+			// The last character in the string is a letter (version)
+			level = Integer.parseInt(str.substring(0,str.length() - 1));
+			version = str.charAt(str.length() -1);
+		}
+		else {
+			try {
+				level = Integer.parseInt(str);
+				// No versioning.
+			}
+			catch(NumberFormatException nfE)
+			{
+				nfE.printStackTrace();
+			}
+		}
+		// Determine whether employee permission level is higher than the set they want to delete
+		if(level <= update.getLevel()) {
+			// If the employee has a lower level than the permission they want to delete, deny it
+			throw new InvalidPermissionException("Employee " + requester.getEmpID() + " attempted to update a PermissionLevel " + 
+					update.getLevel() + " outside their access " + level + version + ".");
+		}
+		
+		return PermissionBroker.getBroker().update(update);
+	}
 }
