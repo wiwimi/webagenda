@@ -17,6 +17,32 @@ import business.schedule.Location;
  */
 public class LocationBroker extends Broker<Location>
 	{
+	/** Static representation of the broker */
+	private static volatile LocationBroker	locationBroker	= null;
+	
+	/**
+	 * Constructor for EmployeeBroker
+	 */
+	private LocationBroker()
+		{
+		super.initConnectionThread(); // Start the connection monitor, checking
+		// for old connections.
+		}
+	
+	/**
+	 * Returns an object-based Employee Broker object.
+	 * 
+	 * @return EmployeeBroker result from the Broker request as its respective
+	 *         Broker object.
+	 */
+	public static LocationBroker getBroker()
+		{
+		if (locationBroker == null)
+			{
+			locationBroker = new LocationBroker();
+			}
+		return locationBroker;
+		}
 
 	/* (non-Javadoc)
 	 * @see persistence.Broker#create(business.BusinessObject)
@@ -73,8 +99,34 @@ public class LocationBroker extends Broker<Location>
 	@Override
 	public boolean delete(Location deleteLocation) throws DBException
 		{
-		// TODO Auto-generated method stub
-		return false;
+		if (deleteLocation == null)
+			throw new NullPointerException("Can not delete null location.");
+		
+		if (deleteLocation.getName() == null)
+			throw new DBException("Missing Required Field: Name");
+		
+		String delete = String.format(
+				"DELETE FROM `WebAgenda`.`Location` WHERE locName = '%s';",
+				deleteLocation.getName());
+		
+		boolean success;
+		try
+			{
+			DBConnection conn = this.getConnection();
+			Statement stmt = conn.getConnection().createStatement();
+			int result = stmt.executeUpdate(delete);
+			
+			if (result != 1)
+				throw new DBException("Failed to delete location, result count incorrect: " +	result);
+			else
+				success = true;
+			}
+		catch (SQLException e)
+			{
+			throw new DBException("Failed to delete location.",e);
+			}
+		
+		return success;
 		}
 
 	/* (non-Javadoc)
