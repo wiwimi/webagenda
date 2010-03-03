@@ -71,7 +71,7 @@ public class PermissionAccess {
 	 * 
 	 * @return
 	 */
-	public Permissions getLevel0()
+	public Permissions getRootLevel()
 	{
 		return new Permissions();
 	}
