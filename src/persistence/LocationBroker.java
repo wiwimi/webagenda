@@ -22,17 +22,56 @@ public class LocationBroker extends Broker<Location>
 	 * @see persistence.Broker#create(business.BusinessObject)
 	 */
 	@Override
-	public boolean create(Location createObj) throws DBException
+	public boolean create(Location createLocation) throws DBException
 		{
-		// TODO Auto-generated method stub
-		return false;
+		if (createLocation == null)
+			throw new NullPointerException("Can not create null employee.");
+		
+		if (createLocation.getName() == null)
+			throw new DBException("Missing Required Fields: Name");
+		
+		/*
+		 * Create insert string.
+		 */
+		String insert = String.format(
+				"INSERT INTO `WebAgenda`.`LOCATION` " +
+				"(`locName`, `locDescription`)" +
+				" VALUES (%s,%s);",
+				createLocation.getName(),
+				(createLocation.getDesc() == null ? "NULL" : "'" + createLocation.getDesc() + "'"));
+				
+		/*
+		 * Send insert to database. SQL errors such as primary key already in use
+		 * will be caught, and turned into our own DBAddException, so this method
+		 * will only have one type of exception that needs to be caught. If the
+		 * insert is successful, return true.
+		 */
+		try
+			{
+			DBConnection conn = this.getConnection();
+			Statement stmt = conn.getConnection().createStatement();
+			int result = stmt.executeUpdate(insert);
+			conn.setAvailable(true);
+			
+			if (result != 1)
+				throw new DBException(
+						"Failed to create employee, result count incorrect: " +
+								result);
+			}
+		catch (SQLException e)
+			{
+			// TODO Need additional SQL exception processing here.
+			throw new DBException("Failed to create employee.", e);
+			}
+		
+		return true;
 		}
 
 	/* (non-Javadoc)
 	 * @see persistence.Broker#delete(business.BusinessObject)
 	 */
 	@Override
-	public boolean delete(Location deleteObj) throws DBException
+	public boolean delete(Location deleteLocation) throws DBException
 		{
 		// TODO Auto-generated method stub
 		return false;
