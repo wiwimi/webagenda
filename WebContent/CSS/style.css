@@ -529,6 +529,9 @@ label {
 		float:right;
 	}
 	
+	/* This was added to create a cursor over selected fields on any of the table
+	It is also used for the edit and delete options found in the tables*/
+	
 	.plugins .row-actions-visible {
 	padding: 0;
 }

@@ -75,13 +75,11 @@
 										<td>
 											
 											<a href="addUser.jsp"><div id="profileImage">Test</div></a>
-											<br />
 										    <div class="row-actions"><span class='edit'>
-										    <a href="#">Edit</a> |</span><span class='delete'>
+										    <a href="#"> Edit </a> |</span><span class='delete'>
 										    <a class='submitdelete' href='#'>Delete</a></span></div>
 										</td>
 									<td><a href="addUser.jsp"> Test </a>
-									
 									
 									</td>
 									<td><a href="add_user.jsp">Test</a></td>
