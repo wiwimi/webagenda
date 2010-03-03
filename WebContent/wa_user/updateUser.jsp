@@ -84,7 +84,13 @@
 							{
 						%>
 									<tr>
-									<td><a href="add_user.jsp"><div id="profileImage"><%= empArray[index].getUsername() %></div></a></td>
+									<td>
+											
+											<a href="addUser.jsp"><div id="profileImage"><%= empArray[index].getUsername() %></div></a>
+										    <div class="row-actions"><span class='edit'>
+										    <a href="#"> Edit </a>   | </span>  <span class='delete'>
+										    <a class='submitdelete' href='#'>Delete</a></span></div>
+									</td>
 									<td><a href="add_user.jsp"><%= empArray[index].getEmpID() %></a></td>
 									<td><a href="add_user.jsp"><%= empArray[index].getFamilyName() %></a></td>
 									<td> <a href="add_user.jsp"><%= empArray[index].getGivenName() %></a> </td>
