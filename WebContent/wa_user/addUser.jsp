@@ -66,8 +66,8 @@
 							<p>	<label class ="label"> Date of Birth: <em class="asterisk"> * </em> </label> <input type="text" name ="dob" id="dob" class ="required"  size ="10"></p>
 
 				            <p>
-				          		<label for="cemail" class="label"> E-Mail<em class="asterisk"> * </em></label>
-			               		<input id="cemail" name="email" class="required email" />
+				          		<label for="cemail" class="label"> E-Mail</label>
+			               		<input id="cemail" name="email"/>
 			                </p>
 					
 				</fieldset>

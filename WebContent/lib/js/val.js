@@ -29,7 +29,7 @@ $().ready(function() {
 				equalTo: "#password"
 			},
 			email: {
-				required: true,
+				required: false,
 				email: true
 			},
 			topic: {

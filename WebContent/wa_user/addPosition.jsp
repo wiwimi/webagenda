@@ -31,6 +31,7 @@
 	<div id="instructions">
 		Fields marked with <em class="asterisk" > *</em> are required.
 		<br></br>
+		<br></br>
 	</div>
 
 		<div id="skillWidget" class="fullWidget">
@@ -55,7 +56,7 @@
 				 <fieldset>
 					<legend > Position Details </legend>
 					
-							<p>	<label class="label"> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="skillName" size ="30"> </p>
+							<p>	<label class="label"> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="skillName" class="required" size ="30"> </p>
 							
 							
 								<!--This should be populated from MaintainSkills use case -->
