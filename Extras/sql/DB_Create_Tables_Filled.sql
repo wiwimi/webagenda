@@ -4,6 +4,8 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
 DROP SCHEMA IF EXISTS `WebAgenda` ;
 CREATE SCHEMA IF NOT EXISTS `WebAgenda` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ;
+DROP SCHEMA IF EXISTS `new_schema1` ;
+CREATE SCHEMA IF NOT EXISTS `new_schema1` ;
 
 -- -----------------------------------------------------
 -- Table `WebAgenda`.`PERMISSIONSET`
@@ -15,6 +17,7 @@ CREATE  TABLE IF NOT EXISTS `WebAgenda`.`PERMISSIONSET` (
   `canEditSched` TINYINT(1) NOT NULL DEFAULT 0 ,
   `canReadSched` TINYINT(1) NOT NULL DEFAULT 1 ,
   `canReadOldSched` TINYINT(1) NOT NULL DEFAULT 0 ,
+  `canManageEmployee` TINYINT(1) NOT NULL DEFAULT 0 ,
   `canViewResources` TINYINT(1) NOT NULL DEFAULT 0 ,
   `canChangePermissions` TINYINT(1) NOT NULL DEFAULT 0 ,
   `canReadLogs` TINYINT(1) NOT NULL DEFAULT 0 ,
@@ -397,8 +400,8 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- Data for table `WebAgenda`.`PERMISSIONSET`
 -- -----------------------------------------------------
 SET AUTOCOMMIT=0;
-insert into `WebAgenda`.`PERMISSIONSET` (`plevel`, `canEditSched`, `canReadSched`, `canReadOldSched`, `canViewResources`, `canChangePermissions`, `canReadLogs`, `canAccessReports`, `canRequestDaysOff`, `maxDaysOff`, `canTakeVacations`, `maxVacationDays`, `canTakeEmergencyDays`, `canViewInactiveEmps`, `canSendNotifications`, `trusted`) values ('1a', false, true, false, false, false, false, false, false, 0, false, 0, true, false, false, '1');
-insert into `WebAgenda`.`PERMISSIONSET` (`plevel`, `canEditSched`, `canReadSched`, `canReadOldSched`, `canViewResources`, `canChangePermissions`, `canReadLogs`, `canAccessReports`, `canRequestDaysOff`, `maxDaysOff`, `canTakeVacations`, `maxVacationDays`, `canTakeEmergencyDays`, `canViewInactiveEmps`, `canSendNotifications`, `trusted`) values ('2a', true, true, true, true, true, true, true, true, 5, true, 20, true, true, true, '2');
+insert into `WebAgenda`.`PERMISSIONSET` (`plevel`, `canEditSched`, `canReadSched`, `canReadOldSched`, `canManageEmployee`, `canViewResources`, `canChangePermissions`, `canReadLogs`, `canAccessReports`, `canRequestDaysOff`, `maxDaysOff`, `canTakeVacations`, `maxVacationDays`, `canTakeEmergencyDays`, `canViewInactiveEmps`, `canSendNotifications`, `trusted`) values ('1a', false, true, false, false, false, false, false, false, false, 0, false, 0, true, false, false, '1');
+insert into `WebAgenda`.`PERMISSIONSET` (`plevel`, `canEditSched`, `canReadSched`, `canReadOldSched`, `canManageEmployee`, `canViewResources`, `canChangePermissions`, `canReadLogs`, `canAccessReports`, `canRequestDaysOff`, `maxDaysOff`, `canTakeVacations`, `maxVacationDays`, `canTakeEmergencyDays`, `canViewInactiveEmps`, `canSendNotifications`, `trusted`) values ('2a', true, true, true, true, true, true, true, true, true, 5, true, 20, true, true, true, '2');
 
 COMMIT;
 
