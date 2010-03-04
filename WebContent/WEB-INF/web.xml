@@ -19,4 +19,24 @@
     <servlet-name>Logout</servlet-name>
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>addUser</display-name>
+    <servlet-name>addUser</servlet-name>
+    <servlet-class>update.addUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>addUser</servlet-name>
+    <url-pattern>/addUser</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>addLocation</display-name>
+    <servlet-name>addLocation</servlet-name>
+    <servlet-class>update.addLocation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>addLocation</servlet-name>
+    <url-pattern>/addLocation</url-pattern>
+  </servlet-mapping>
 </web-app>

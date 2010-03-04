@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page import="persistence.LocationBroker" %>
+<%@ page import="business.schedule.Location" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- Author: Noorin -->
 <html>
@@ -39,34 +42,31 @@
 		<div class="widgetLowerRectangle" id="locationsLowerRectangle">
 
 		<div id ="addLocation">
-			<form class="addLocationForm" id="form" method="post">
+			<form class="addLocationForm" action="AddLocation" id="form" method="post">
 			<div id="location">
-				 <div id="searchArea">
-					        <input type="submit" name="submit" class="button" value="Save"> 
+			
+			 <div id="searchArea">
+					        <input type="submit" name="submit"  class="button" value="Add"  > 
 							<input type="button" name="submit" class="button"  onClick="location.href='updateLocation.jsp'" value="Search" > 
 					       	<input type="reset" name="clear" class="button" value="Clear Screen"> 
 			     </div>
 				 <fieldset>
 					<legend > Location Details </legend>
 					
-							<p>	<label class="label"> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="locationName" class="required" size ="30"> </p>
+							<p>	<label class="label"> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="locName" class="required" size ="30"> </p>
 							
 							<p>	<label class="label"> Description: </label></p>
-							<textarea  name="descreption" cols="23" rows="6" tabindex="101"></textarea>
-					
+							<textarea  name="desc" cols="23" rows="6" tabindex="101"></textarea>
 				</fieldset>
-					   
-			
-				
-						<div id="searchArea">
-					        <input type="submit" name="submit" class="button" value="Save"> 
-							<input type="button" name="submit" class="button"  onClick="location.href='updateLocation.jsp'" value="Search" > 
-							<input type="reset" name="clear" class="button" value="Clear Screen"> 
-			            </div>
-			     </div>
-				</form>
-			</div>
-			</div>
+				<div id="searchArea">
+						        <input type="submit" name="submit"  class="button" value="Add" > 
+								<input type="button" name="submit" class="button"  onClick="location.href='updateLocation.jsp'" value="Search" > 
+								<input type="reset" name="clear" class="button" value="Clear Screen"> 
+				</div>
+			  </div>
+		      </form>
+		</div>
+	</div>
 
 </div>
 <div id="footer"></div>
