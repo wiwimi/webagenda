@@ -66,7 +66,7 @@
 
 				            <p>
 				          		<label for="cemail" class="label"> E-Mail</label>
-			               		<input id="cemail" name="email"/>
+			               		<input type="text" id="cemail" name="email"/>
 			                </p>
 					
 				</fieldset>

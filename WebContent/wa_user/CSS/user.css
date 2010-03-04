@@ -3,7 +3,7 @@
 /*Author: Noorin*/
 
 
-#userForm input, select, textarea
+#userForm input[type=text], select, textarea
 
 {
 	background-color: #FFFFFF;
@@ -88,7 +88,7 @@
 }
 #userForm input.button:hover
 {
-	background-color:#989898   ;
+	background-color:#989898;
 	color:white;
 	
 }

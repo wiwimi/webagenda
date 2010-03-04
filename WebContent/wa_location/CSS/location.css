@@ -2,7 +2,7 @@
 
 /*Author:Noorin*/
 
-#addLocation input, select, textarea
+#addLocation input[type=text], select, textarea
 
 {
 	background-color: #FFFFFF;
