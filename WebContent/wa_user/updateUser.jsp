@@ -86,16 +86,16 @@
 									<tr>
 									<td>
 											
-											<a href="addUser.jsp"><div id="profileImage"> <b> <%= empArray[index].getUsername() %> </b></div></a>
+											<a href="updateUserProfile.jsp"><div id="profileImage"> <b> <%= empArray[index].getUsername() %> </b></div></a>
 										    <div class="row-actions"><span class='edit'>
-										    <a href="#"> Edit </a>   | </span>  <span class='delete'>
+										    <a href="updateUserProfile.jsp?id=<%= empArray[index].getEmpID() %>"> Edit </a>   | </span>  <span class='delete'>
 										    <a class='submitdelete' href='#'>Delete</a></span></div>
 									</td>
-									<td><a href="add_user.jsp"><%= empArray[index].getEmpID() %></a></td>
-									<td><a href="add_user.jsp"><%= empArray[index].getFamilyName() %></a></td>
-									<td> <a href="add_user.jsp"><%= empArray[index].getGivenName() %></a> </td>
-									<td> <a href="add_user.jsp"><%= empArray[index].getPrefPosition() %></a> </td>
-									<td> <a href="add_user.jsp"><%= empArray[index].getSupervisorID() %></a> </td>
+									<td><a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getEmpID() %></a></td>
+									<td><a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getFamilyName() %></a></td>
+									<td> <a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getGivenName() %></a> </td>
+									<td> <a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getPrefPosition() %></a> </td>
+									<td> <a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getSupervisorID() %></a> </td>
 									</tr>
 						<% 
 							}

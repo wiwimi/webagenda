@@ -121,7 +121,7 @@
 					
 					<p>
 							<label id="theSelect" class="theSelect"> Permission level: </label>  
-									<input id="permissionBox" type="text" size="30" maxlength="30" value="" name="permissionBox" />
+									<input id="permissionBox" type="text" size="30" maxlength="30" value="<%= empArray[0].getPLevel()%>" name="permissionBox" />
 				</fieldset>
 				</div>
 				<div id="searchArea">
