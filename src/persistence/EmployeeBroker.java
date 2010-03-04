@@ -363,6 +363,32 @@ public class EmployeeBroker extends Broker<Employee>
 		return true;
 		}
 	
+	public boolean updateLastLoginTime(int empID, Timestamp time) throws DBException, DBDownException
+		{
+		String update = String.format("UPDATE `WebAgenda`.`EMPLOYEE` SET lastLogin = '%s' WHERE empID = %s",
+				time.toString(),
+				empID);
+		
+		// Get DB connection, send update, and reopen connection for other users.
+		try
+			{
+			DBConnection conn = this.getConnection();
+			Statement stmt = conn.getConnection().createStatement();
+			int updateRowCount = stmt.executeUpdate(update);
+			conn.setAvailable(true);
+			
+			if (updateRowCount != 1)
+				throw new DBException(
+						"Failed to update employee: rowcount incorrect.");
+			}
+		catch (SQLException e)
+			{
+			throw new DBException("Failed to update login time.", e);
+			}
+		
+		return true;
+		}
+	
 	/**
 	 * Validates the given username and password by attempting to retrieve a
 	 * matching employee from the database. If found, the employee object will be
@@ -396,12 +422,9 @@ public class EmployeeBroker extends Broker<Employee>
 		Employee loggedIn = results[0];
 		
 		// Update employee record in DB with new lastLogin time.
-		Employee updateLoginTime = new Employee();
-		updateLoginTime.setEmpID(loggedIn.getEmpID());
-		updateLoginTime.setLastLogin(new Timestamp(System.currentTimeMillis()));
-		boolean successful = update(updateLoginTime);
-		if (!successful)
-			throw new DBException("Failed to update login time.");
+		Timestamp time = new Timestamp(System.currentTimeMillis());
+		loggedIn.setLastLogin(time);
+		updateLastLoginTime(loggedIn.getEmpID(), time);
 		
 		// TODO Pull full permissions object into this employee as well.
 		

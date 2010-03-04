@@ -2,7 +2,7 @@
 <classpath>
 	<classpathentry excluding="lib/|oldClasses/persistence/CacheTable.java|oldClasses/application/AppDriver.java" kind="src" path="src"/>
 	<classpathentry kind="src" path="lib"/>
-	<classpathentry kind="src" path="test"/>
+	<classpathentry excluding="testDB/TestPermissions.java" kind="src" path="test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/com.sun.enterprise.jst.server.runtimeTarget/GlassFish v3 Java EE 6">
 		<attributes>
