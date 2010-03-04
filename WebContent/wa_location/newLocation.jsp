@@ -42,7 +42,7 @@
 		<div class="widgetLowerRectangle" id="locationsLowerRectangle">
 
 		<div id ="addLocation">
-			<form class="addLocationForm" action="../AddLocation"  method="post">
+			<form class="addLocationForm" action="../AddLocation" method="POST">
 			<div id="location">
 			
 			 <div id="searchArea">

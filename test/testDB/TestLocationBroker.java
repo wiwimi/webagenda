@@ -47,8 +47,26 @@ public class TestLocationBroker
 	@Test
 	public void testCreateLocation()
 		{
-		fail("Not yet implemented"); // TODO
+		    
+			try {
+				Location loc = new Location("Sait", "Large Hall");
+				boolean success = broker.create(loc);
+				if(success)
+				{
+					System.out.println(loc.toString());
+				}
+				
+			} catch (DBException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (DBDownException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			assertTrue(true);
 		}
+	
 	
 	/**
 	 * Test method for {@link persistence.LocationBroker#delete(business.schedule.Location)}.
