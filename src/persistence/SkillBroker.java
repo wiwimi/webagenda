@@ -9,6 +9,7 @@ import java.sql.Statement;
 
 import application.DBConnection;
 import business.schedule.Skill;
+import exception.DBDownException;
 import exception.DBException;
 
 /**
@@ -32,7 +33,7 @@ public class SkillBroker extends Broker<Skill> {
 	}
 
 	@Override
-	public boolean create(Skill createObj) throws DBException {
+	public boolean create(Skill createObj) throws DBException, DBDownException {
 		if (createObj == null)
 			throw new NullPointerException("Can not create null Skill.");
 		
@@ -77,7 +78,7 @@ public class SkillBroker extends Broker<Skill> {
 	}
 
 	@Override
-	public boolean delete(Skill deleteObj) throws DBException {
+	public boolean delete(Skill deleteObj) throws DBException, DBDownException {
 		if (deleteObj== null)
 			throw new NullPointerException("Can not delete null skill.");
 		
@@ -110,7 +111,7 @@ public class SkillBroker extends Broker<Skill> {
 
 	@Override
 	public Skill[] get(Skill searchTemplate)
-			throws DBException {
+			throws DBException, DBDownException {
 String select;
 		
 		if (searchTemplate == null)
@@ -173,7 +174,7 @@ String select;
 	}
 
 	@Override
-	public boolean update(Skill updateObj) throws DBException {
+	public boolean update(Skill updateObj) throws DBException, DBDownException {
 		if (updateObj == null)
 			throw new NullPointerException("Can not update null skill.");
 		

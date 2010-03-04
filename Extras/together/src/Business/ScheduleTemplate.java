@@ -9,7 +9,7 @@ public class ScheduleTemplate {
     /**
      * The collection of shifts that belong to the Schedule Template. 
      */
-    private Shift[] shifts;
+    private ShiftTemplate[] shifts;
 
     /**
      * The employee who created the Schedule Template. 
@@ -22,7 +22,7 @@ public class ScheduleTemplate {
      * @supplierQualifier defines
      * @clientCardinality 1 
      */
-    private Shift lnkShift;
+    private ShiftTemplate lnkShift;
 
     /**
      * @clientCardinality 0..*

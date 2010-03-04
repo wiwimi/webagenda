@@ -9,6 +9,7 @@ import java.sql.Timestamp;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import exception.DBDownException;
 import exception.DBException;
 import exception.InvalidLoginException;
 import persistence.EmployeeBroker;
@@ -76,6 +77,10 @@ public class TestEmployeeBroker
 			e.printStackTrace();
 			fail();
 			}
+		catch (DBDownException e)
+			{
+			e.printStackTrace();
+			}
 		
 		//Create employee to use for ID search and deletion.
 		Employee empSearchDelete = new Employee();
@@ -93,6 +98,10 @@ public class TestEmployeeBroker
 			e.printStackTrace();
 			fail();
 			}
+		catch (DBDownException e)
+			{
+			e.printStackTrace();
+			}
 		
 		//Search for disabled employee.
 		try
@@ -107,6 +116,10 @@ public class TestEmployeeBroker
 			e.printStackTrace();
 			fail();
 			}
+		catch (DBDownException e)
+			{
+			e.printStackTrace();
+			}
 		
 		//Delete the test user.
 		try
@@ -119,6 +132,10 @@ public class TestEmployeeBroker
 			{
 			e.printStackTrace();
 			fail();
+			}
+		catch (DBDownException e)
+			{
+			e.printStackTrace();
 			}
 		}
 	
@@ -161,6 +178,10 @@ public class TestEmployeeBroker
 			{
 			e.printStackTrace();
 			fail();
+			}
+		catch (DBDownException e)
+			{
+			e.printStackTrace();
 			}
 		
 		assertNotNull(byID);
@@ -220,6 +241,10 @@ public class TestEmployeeBroker
 			e.printStackTrace();
 			fail();
 			}
+		catch (DBDownException e)
+			{
+			e.printStackTrace();
+			}
 		
 		//Modify new employee and send in as update.
 		newEmp.setLastLogin(new Timestamp(System.currentTimeMillis()));
@@ -236,6 +261,10 @@ public class TestEmployeeBroker
 			{
 			e1.getCause().printStackTrace();
 			fail();
+			}
+		catch (DBDownException e)
+			{
+			e.printStackTrace();
 			}
 		
 		//Create employee to use for ID search and deletion.
@@ -257,6 +286,10 @@ public class TestEmployeeBroker
 			e.printStackTrace();
 			fail();
 			}
+		catch (DBDownException e)
+			{
+			e.printStackTrace();
+			}
 		
 		//Delete the test user.
 		try
@@ -269,6 +302,10 @@ public class TestEmployeeBroker
 			{
 			e.printStackTrace();
 			fail();
+			}
+		catch (DBDownException e)
+			{
+			e.printStackTrace();
 			}
 		}
 	
@@ -315,6 +352,10 @@ public class TestEmployeeBroker
 			e.printStackTrace();
 			fail();
 			}
+		catch (DBDownException e)
+			{
+			e.printStackTrace();
+			}
 		
 		System.out.println("\nAttempting login with 'fakeUser'/'pass'");
 		try
@@ -342,6 +383,10 @@ public class TestEmployeeBroker
 			{
 			e.printStackTrace();
 			fail();
+			}
+		catch (DBDownException e)
+			{
+			e.printStackTrace();
 			}
 		}
 	

@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import exception.DBDownException;
 import exception.DBException;
 import exception.InvalidLoginException;
 import application.DBConnection;
@@ -50,7 +51,7 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @see persistence.Broker#create(business.BusinessObject)
 	 */
 	@Override
-	public boolean create(Employee createEmp) throws DBException
+	public boolean create(Employee createEmp) throws DBException, DBDownException
 		{
 		if (createEmp == null)
 			throw new NullPointerException("Can not create null employee.");
@@ -136,7 +137,7 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @return
 	 * @throws DBException
 	 */
-	public boolean disable(Employee disableEmp) throws DBException
+	public boolean disable(Employee disableEmp) throws DBException, DBDownException
 		{
 		if (disableEmp == null)
 			throw new NullPointerException("Can not delete null employee.");
@@ -158,7 +159,7 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @see persistence.Broker#delete(business.BusinessObject)
 	 */
 	@Override
-	public boolean delete(Employee deleteEmp) throws DBException
+	public boolean delete(Employee deleteEmp) throws DBException, DBDownException
 		{
 		if (deleteEmp == null)
 			throw new NullPointerException("Can not delete null employee.");
@@ -195,7 +196,7 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @see persistence.Broker#get(business.BusinessObject)
 	 */
 	@Override
-	public Employee[] get(Employee searchTemplate) throws DBException
+	public Employee[] get(Employee searchTemplate) throws DBException, DBDownException
 		{
 		if (searchTemplate == null)
 			throw new NullPointerException(
@@ -271,7 +272,7 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @return the number of active employees in the system.
 	 * @throws DBException if there is an error when querying the database.
 	 */
-	public int getEmpCount() throws DBException
+	public int getEmpCount() throws DBException, DBDownException
 		{
 		String count = "SELECT COUNT(*) FROM `WebAgenda`.`EMPLOYEE` WHERE active = TRUE;";
 		
@@ -301,7 +302,7 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @see persistence.Broker#update(business.BusinessObject)
 	 */
 	@Override
-	public boolean update(Employee updateEmployee) throws DBException
+	public boolean update(Employee updateEmployee) throws DBException, DBDownException
 		{
 		if (updateEmployee == null)
 			throw new NullPointerException("Can not update null employee.");
@@ -377,7 +378,7 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @throws NullPointerException
 	 */
 	public Employee tryLogin(String username, String password)
-			throws InvalidLoginException, DBException
+			throws InvalidLoginException, DBException, DBDownException
 		{
 		if (username == null || password == null)
 			throw new InvalidLoginException(

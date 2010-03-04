@@ -6,6 +6,8 @@ package application;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import com.mysql.jdbc.exceptions.jdbc4.CommunicationsException;
+import exception.DBDownException;
 
 /**
  * @author Daniel Wehr, Daniel Kettle
@@ -20,7 +22,7 @@ public class ConnectionManager
 	private static Object	db_drv_instance	= null;
 	private static String	db_url				= "jdbc:mysql://localhost:3306/" + db_name;
 	
-	public static DBConnection getConnection()
+	public static DBConnection getConnection() throws DBDownException
 		{
 		Connection conn = null;
 		try
@@ -30,6 +32,10 @@ public class ConnectionManager
 				db_drv_instance = Class.forName(db_driver).newInstance();
 				}
 			conn = DriverManager.getConnection(db_url, db_user, db_pass);
+			}
+		catch (CommunicationsException e)
+			{
+			throw new DBDownException("Database Down",e);
 			}
 		catch (InstantiationException e)
 			{

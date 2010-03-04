@@ -3,29 +3,42 @@
 package Business;
 
 /**
- * Contains a list of what positions must be filled by employees within a given range of time.
+ * Working shifts determine which employees are working at what times for a specific schedule.
  */
 public class Shift {
     /**
-     * The time at which work begins for the employees assigned to the shift. 
+     * Returns an array containing the start and end time of a working shift. 
+     */
+    public Time[] getTimes(){}
+
+    /**
+     * The starting time of this working shift. 
      */
     private Time startTime;
 
     /**
-     * The time at which work ends for the employees assigned to the shift. 
+     * The end time of this working shift. 
      */
     private Time endTime;
 
     /**
-     * The positions that are required for the shift. 
+     * The employees that will be working during the times set by the working shift. 
      */
-    private ShiftPos[] positions;
+    private Employee[] employees;
 
     /**
-     * @clientQualifier contains
-     * @supplierCardinality 1..*
-     * @supplierQualifier required by
-     * @clientCardinality 1 
+     * @supplierQualifier contains
+     * @clientCardinality 1..*
+     * @clientQualifier is contained by
+     * @supplierCardinality 1 
      */
-    private ShiftPos lnkShiftPos;
+    private Schedule lnkSchedule;
+
+    /**
+     * @clientCardinality 0..*
+     * @supplierCardinality 1..*
+     * @clientQualifier contains
+     * @supplierQualifier works 
+     */
+    private Employee lnkEmployee;
 }

@@ -10,6 +10,7 @@ import business.Employee;
 import business.permissions.PermissionAccess;
 import business.permissions.PermissionLevel;
 
+import exception.DBDownException;
 import exception.DBException;
 import exception.InvalidPermissionException;
 import exception.PermissionBrokerViolationException;
@@ -53,17 +54,22 @@ public class PermissionBroker extends Broker<PermissionLevel>{
 		} catch (InvalidPermissionException e) {
 			
 			throw new DBException("A Permission conflict occured. Please view the permission log file.");
+		} catch (DBDownException e) {
+			e.printStackTrace();
 		}
+		return false;
 	}
 
 	@Override
 	public boolean delete(PermissionLevel deleteObj) throws DBException {
-		
 		try {
 			return PermissionAccess.getAccess().deletePermissionLevel(deleteObj, employee);
 		} catch (InvalidPermissionException e) {	
 			throw new DBException("A Permission conflict occured. Please view the permission log file.");
+		} catch (DBDownException e) {
+			e.printStackTrace();
 		}
+		return false;
 	}
 
 	@Override
@@ -88,7 +94,10 @@ public class PermissionBroker extends Broker<PermissionLevel>{
 			return PermissionAccess.getAccess().updatePermissionLevel(updateObj, employee);
 		} catch (InvalidPermissionException e) {	
 			throw new DBException("A Permission conflict occured. Please view the permission log file.");
+		} catch (DBDownException e) {
+			e.printStackTrace();
 		}
+		return false;
 	}
 	
 	

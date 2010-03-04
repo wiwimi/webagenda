@@ -9,7 +9,7 @@ public class Employee {
     /**
      * Retrieves the list of active working shifts that the employee is currently scheduled for. 
      */
-    public WorkingShift[] getWorkingTimes(){}
+    public Shift[] getWorkingTimes(){}
 
     /**
      * Retrieves the last time that the employee logged into the system. 

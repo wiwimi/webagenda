@@ -1,6 +1,7 @@
 package testDB;
 
 
+import exception.DBDownException;
 import exception.InitializedLogFileException;
 
 import application.DBConnection;
@@ -10,12 +11,21 @@ public class TestConnectionHandler {
 
 	public TestConnectionHandler() throws InterruptedException {
 	EmployeeBroker.getBroker().initConnectionThread();
-	DBConnection dbc0 = EmployeeBroker.getBroker().getConnection();
-	
-	DBConnection dbc1 = EmployeeBroker.getBroker().getConnection();
-	DBConnection dbc2 = EmployeeBroker.getBroker().getConnection();
-	DBConnection dbc3 = EmployeeBroker.getBroker().getConnection();
-	DBConnection dbc4 = EmployeeBroker.getBroker().getConnection();
+	DBConnection dbc0 = null, dbc1 = null, dbc2 = null, dbc3 = null, dbc4 = null;
+	try
+		{
+		dbc0 = EmployeeBroker.getBroker().getConnection();
+		
+		dbc1 = EmployeeBroker.getBroker().getConnection();
+		dbc2 = EmployeeBroker.getBroker().getConnection();
+		dbc3 = EmployeeBroker.getBroker().getConnection();
+		dbc4 = EmployeeBroker.getBroker().getConnection();
+		}
+	catch (DBDownException e)
+		{
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		}
 	
 	Thread.sleep(10000);
 	

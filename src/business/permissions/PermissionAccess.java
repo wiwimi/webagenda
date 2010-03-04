@@ -5,6 +5,7 @@ package business.permissions;
 
 import business.Employee;
 
+import exception.DBDownException;
 import exception.DBException;
 import exception.InvalidPermissionException;
 
@@ -160,7 +161,7 @@ public class PermissionAccess {
 	 * @throws DBException 
 	 * @throws InvalidPermissionException if user does not have permission to create permission level
 	 */
-	public boolean createPermissionLevel(PermissionLevel create, Employee creator) throws DBException, InvalidPermissionException
+	public boolean createPermissionLevel(PermissionLevel create, Employee creator) throws DBException, DBDownException , InvalidPermissionException
 	{
 		// Retrieve permission level from employee
 		int level = -1;
@@ -204,7 +205,7 @@ public class PermissionAccess {
 	 * @throws InvalidPermissionException 
 	 * @throws DBException 
 	 */
-	public boolean deletePermissionLevel(PermissionLevel delete, Employee requester) throws InvalidPermissionException, DBException
+	public boolean deletePermissionLevel(PermissionLevel delete, Employee requester) throws InvalidPermissionException, DBDownException, DBException
 	{
 		// Retrieve permission level from employee
 		int level = -1;
@@ -239,7 +240,7 @@ public class PermissionAccess {
 		return PermissionBroker.getBroker().delete(delete);
 	}
 	
-	public boolean updatePermissionLevel(PermissionLevel update, Employee requester) throws InvalidPermissionException, DBException
+	public boolean updatePermissionLevel(PermissionLevel update, Employee requester) throws InvalidPermissionException, DBException, DBDownException
 	{
 		int level = -1;
 		char version = ' ';

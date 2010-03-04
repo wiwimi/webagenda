@@ -6,6 +6,7 @@ package persistence;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import exception.DBDownException;
 import exception.DBException;
 import application.DBConnection;
 import business.schedule.Location;
@@ -48,7 +49,7 @@ public class LocationBroker extends Broker<Location>
 	 * @see persistence.Broker#create(business.BusinessObject)
 	 */
 	@Override
-	public boolean create(Location createLocation) throws DBException
+	public boolean create(Location createLocation) throws DBException, DBDownException
 		{
 		if (createLocation == null)
 			throw new NullPointerException("Can not create null location.");
@@ -97,7 +98,7 @@ public class LocationBroker extends Broker<Location>
 	 * @see persistence.Broker#delete(business.BusinessObject)
 	 */
 	@Override
-	public boolean delete(Location deleteLocation) throws DBException
+	public boolean delete(Location deleteLocation) throws DBException, DBDownException
 		{
 		if (deleteLocation == null)
 			throw new NullPointerException("Can not delete null location.");
@@ -133,7 +134,7 @@ public class LocationBroker extends Broker<Location>
 	 * @see persistence.Broker#get(business.BusinessObject)
 	 */
 	@Override
-	public Location[] get(Location searchTemplate) throws DBException
+	public Location[] get(Location searchTemplate) throws DBException, DBDownException
 		{
 		String select;
 		
@@ -176,7 +177,7 @@ public class LocationBroker extends Broker<Location>
 	 * @see persistence.Broker#update(business.BusinessObject)
 	 */
 	@Override
-	public boolean update(Location updateLocation) throws DBException
+	public boolean update(Location updateLocation) throws DBException, DBDownException
 		{
 		if (updateLocation == null)
 			throw new NullPointerException("Can not update null location.");

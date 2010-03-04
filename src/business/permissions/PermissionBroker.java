@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 
 import java.sql.SQLException;
 import java.sql.Statement;
+import exception.DBDownException;
 import exception.DBException;
 import exception.InvalidPermissionException;
 
@@ -58,7 +59,7 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 	}
 
 	@Override
-	public boolean create(PermissionLevel createObj) throws DBException {
+	public boolean create(PermissionLevel createObj) throws DBException, DBDownException {
 		if (createObj == null)
 			throw new NullPointerException("Can not create null permission level.");
 		
@@ -129,7 +130,7 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 	 * @see persistence.Broker#delete(business.BusinessObject)
 	 */
 	@Override
-	public boolean delete(PermissionLevel deleteObj) throws DBException {
+	public boolean delete(PermissionLevel deleteObj) throws DBException, DBDownException {
 		if(deleteObj == null)
 			throw new NullPointerException();
 		 
@@ -156,7 +157,7 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 	}
 
 	@Override
-	public PermissionLevel[] get(PermissionLevel searchTemplate) throws DBException {
+	public PermissionLevel[] get(PermissionLevel searchTemplate) throws DBException, DBDownException {
 		
 		if(searchTemplate == null)
 			throw new NullPointerException();
@@ -245,7 +246,7 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 	 * @return PermissionLevel[] Levels below parameter
 	 * @throws DBException 
 	 */
-	public PermissionLevel[] getAllBelow(int level) throws DBException {
+	public PermissionLevel[] getAllBelow(int level) throws DBException, DBDownException {
 		
 		if(level < 0) throw new DBException("Unable to search for Permission Levels with a negative value");
 		// Create sql select statement from permission level object.
@@ -281,7 +282,7 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 	 * @see persistence.Broker#update(business.BusinessObject)
 	 */
 	@Override
-	public boolean update(PermissionLevel updateObj) throws DBException {
+	public boolean update(PermissionLevel updateObj) throws DBException, DBDownException {
 		if(updateObj == null)
 			throw new NullPointerException();
 		 

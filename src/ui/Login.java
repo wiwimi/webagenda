@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import exception.DBDownException;
 import exception.DBException;
 import exception.InvalidLoginException;
 import business.Employee;
@@ -94,6 +95,11 @@ public class Login extends HttpServlet
 			e.printStackTrace();
 		} 
         catch (DBException e)
+		{
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		}
+        catch (DBDownException e)
 		{
 		// TODO Auto-generated catch block
 		e.printStackTrace();

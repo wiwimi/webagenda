@@ -5,6 +5,7 @@ package persistence;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import exception.DBDownException;
 import exception.DBException;
 
 import utilities.*;
@@ -49,7 +50,7 @@ public abstract class Broker<E extends BusinessObject>
 	 * @param createObj The object to add to the database.
 	 * @return true if the create was successful, otherwise false.
 	 */
-	public abstract boolean create(E createObj) throws DBException;
+	public abstract boolean create(E createObj) throws DBException, DBDownException;
 	
 	/**
 	 * Retrieves data from the database and return them as objects.
@@ -59,7 +60,7 @@ public abstract class Broker<E extends BusinessObject>
 	 *           criteria. If the primary key is filled in the search object,
 	 *           only that will be used and all others will be ignored.
 	 */
-	public abstract E[] get(E searchTemplate) throws DBException;
+	public abstract E[] get(E searchTemplate) throws DBException, DBDownException;
 	
 	/**
 	 * Applies all changes to the updated object to its equivalent record within
@@ -70,7 +71,7 @@ public abstract class Broker<E extends BusinessObject>
 	 * @param updateObj The previously retrieved object that has been updated.
 	 * @return true if the update was successful, otherwise false.
 	 */
-	public abstract boolean update(E updateObj) throws DBException;
+	public abstract boolean update(E updateObj) throws DBException, DBDownException;
 	
 	/**
 	 * Removes the record from the database that is equivalent to the given
@@ -81,7 +82,7 @@ public abstract class Broker<E extends BusinessObject>
 	 * @param deleteObj
 	 * @return true if the delete was successful, otherwise false.
 	 */
-	public abstract boolean delete(E deleteObj) throws DBException;
+	public abstract boolean delete(E deleteObj) throws DBException, DBDownException;
 	
 	/**
 	 * Parses a ResultSet returned by a select query back into cachable objects.
@@ -95,7 +96,7 @@ public abstract class Broker<E extends BusinessObject>
 	/**
 	 * @return
 	 */
-	public DBConnection getConnection()
+	public DBConnection getConnection() throws DBDownException
 		{
 		DBConnection returnConnection = null;
 		/*
