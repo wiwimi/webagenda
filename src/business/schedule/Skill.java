@@ -33,6 +33,12 @@ public class Skill extends BusinessObject {
 		this.name = name;
 		}
 	
+	/** Produces a blank template of an skill */
+	public Skill()
+		{
+		
+		}
+	
 	public Skill(String name, String desc)
 		{
 		this.name = name;
