@@ -50,13 +50,13 @@
 		<div class="widgetLowerRectangle" id="usersLowerRectangle">
 		
 		<% 
-		EmployeeBroker broker = EmployeeBroker.getBroker();
+			EmployeeBroker broker = EmployeeBroker.getBroker();
 		
-		int count = broker.getEmpCount();
+			int count = broker.getEmpCount();
 		
-		Employee emp = new Employee();
-		emp.setEmpID(Integer.parseInt(request.getParameter("id")));
-		Employee[] empArray = broker.get(emp);
+			Employee emp = new Employee();
+			emp.setEmpID(Integer.parseInt(request.getParameter("id")));
+			Employee[] empArray = broker.get(emp);
 		%>
 
 		<div id ="userForm">
@@ -64,21 +64,21 @@
 			 <div id="personal">
 				 	<div id="searchArea">
 				 	
-				            <input type="submit" name="submit" class="button" value="Save"> 
-				            <input type="submit" name="cancel" class="button" value="Cancel">
-							<input type="submit" name="submit" class="button" value="Delete"> 
+				            <input type="submit" name="submit" class="button" value="Save" onClick="location.href='../updateUserInfo';"> 
+				            <input type="submit" name="cancel" class="button" value="Cancel" onClick="location.href='updateUser.jsp';">
+							<input type="submit" name="submit" class="button" value="Delete" onClick="location.href='#';"> 
 							
 					</div>
 			
 				 <fieldset>
 					<legend > Personal </legend>
 					
-							<p>	<label> First Name: <em class="asterisk"> * </em> </label> <input type="text"  value="<%= empArray[0].getGivenName()%>" name ="givenName" size ="30"> </p>
-							<p>	<label> Last Name: <em class="asterisk"> * </em> </label> <input type="text"  value="<%= empArray[0].getFamilyName()%>" name ="familyName" size ="30"> </p>
-							<p>	<label> Date of Birth: <em class="asterisk"> * </em> </label> <input type="text" name ="dob" value="<%= empArray[0].getBirthDate()%>" id="dob" size ="10"></p>
+							<p>	<label id="theSelect" class="theSelect" > First Name: <em class="asterisk"> * </em> </label> <input type="text"  value="<%= empArray[0].getGivenName()%>" name ="givenName" size ="30"> </p>
+							<p>	<label id="theSelect" class="theSelect" > Last Name: <em class="asterisk"> * </em> </label> <input type="text"  value="<%= empArray[0].getFamilyName()%>" name ="familyName" size ="30"> </p>
+							<p>	<label id="theSelect" class="theSelect" > Date of Birth: <em class="asterisk"> * </em> </label> <input type="text" name ="dob" value="<%= empArray[0].getBirthDate()%>" id="dob" size ="10"></p>
 
 					       <div id="email">
-								<label for="email"> E-mail: <em class="asterisk"> * </em> </label> 
+								<label id="theSelect" class="theSelect"  for="email"> E-mail: <em class="asterisk"> * </em> </label> 
 							    <input name="confirmEmail" value="<%= empArray[0].getEmail()%>" id="confirmpass" type="text" size ="30" maxlength="30" />
 						   </div>
 
@@ -93,6 +93,12 @@
 											<option value="enabled" > Enabled</option> 
 											<option value="disabled" >Disabled</option>  
 									</select> 
+					</p>
+					
+					<p>
+						<label id="theSelect" class="theSelect" for="empId">Employee Id:</label>
+						<input type="text" name="empId" size="30" maxLength="30" disabled="disabled" value="<%= empArray[0].getEmpID() %>"/>
+						<button type="submit" value="edit">edit</button>
 					</p>
 									
 							<!--This should be populated from MaintainJobType use case -->
@@ -125,8 +131,8 @@
 				</fieldset>
 				</div>
 				<div id="searchArea">
-						<input type="submit" name="submit" class="button" value="Save"> 
-						<input type="submit" name="cancel" class="button" value="Cancel"> 
+						<input type="submit" name="submit" class="button" value="Save" onclick="../updateUserInfo"> 
+						<input type="submit" name="cancel" class="button" value="Cancel" onClick="updateUser.jsp"> 
 						<input type="submit" name="submit" class="button" value="Delete">
 						<br></br>
 				</div>

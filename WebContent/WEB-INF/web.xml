@@ -39,4 +39,14 @@
     <servlet-name>addLocation</servlet-name>
     <url-pattern>/addLocation</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateUserInfo</display-name>
+    <servlet-name>UpdateUserInfo</servlet-name>
+    <servlet-class>uiConnection.users.UpdateUserInfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateUserInfo</servlet-name>
+    <url-pattern>/updateUserInfo</url-pattern>
+  </servlet-mapping>
 </web-app>
