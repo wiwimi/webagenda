@@ -19,7 +19,7 @@ import persistence.LocationBroker;
  */
 public class TestLocationBroker
 	{
-	LocationBroker broker;
+	private LocationBroker broker;
 	
 	/**
 	 * @throws java.lang.Exception

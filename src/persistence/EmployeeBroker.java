@@ -242,6 +242,14 @@ public class EmployeeBroker extends Broker<Employee>
 					"active = " + searchTemplate.getActive() : "");
 			}
 		
+		if (comp.equals(""))
+			{
+			//Nothing being searched for, return array with a single empty employee.
+			Employee[] empArr = new Employee[1];
+			empArr[0] = new Employee();
+			return empArr;
+			}
+		
 		// Add comparisons and close select statement.
 		select = select + comp + ";";
 		
