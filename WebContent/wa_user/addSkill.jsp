@@ -45,7 +45,7 @@
 			
 			<div id="searchArea">
 						<input type="submit" name="submit" class="button" value="Save"> 
-						<input type="button" name="submit" class="button" value="Search" onClick="location.href='updateUser.jsp';"> 
+						<input type="button" name="submit" class="button" value="Search" onClick="location.href='updateSkill.jsp';"> 
 						<input type="reset" name="clear" class="button" value="Clear Screen"> 
 						<br></br>
 			</div>
@@ -64,7 +64,7 @@
 				
 				<div id="searchArea">
 						<input type="submit" name="submit" class="button" value="Save"> 
-						<input type="button" name="submit" class="button" value="Search" onClick="location.href='updatUser.jsp';">
+						<input type="button" name="submit" class="button" value="Search" onClick="location.href='updatSkill.jsp';">
 						<input type="reset" name="clear" class="button" value="Clear Screen"> 
 						<br></br>
 				</div>
