@@ -72,8 +72,8 @@
 							for(int index = 0; index <skillArray.length; index++)
 							{
 						%>
-									<tr>
-									<td>
+							<tr>
+							   <td>
 											
 									<a href="addSkill.jsp?=<%=skillArray[index].getName()%>"> <b> <%=skillArray[index].getName()%> </b></div></a>
 									<div class="row-actions"><span class='edit'>
@@ -83,6 +83,7 @@
 								<td>
 									<a href="addSkill.jsp?=<%= skillArray[index].getName() %>"> <%=skillArray[index].getDesc()%> </a>
 								</td>
+							</tr>
 						<% 
 							}
 						%>			

@@ -85,14 +85,12 @@
 									<a href="addLocation.jsp"><div id="locationImage"> <b> <%=locArray[index].getName()%> </b></div></a>
 									<div class="row-actions"><span class='edit'>
 									<a href="#"> Edit </a>   | </span>  <span class='delete'>
-									<a class='submitdelete' href='#'>Delete</a></span></div>
+									<a class='submitdelete' href='updateLocation.jsp' onClick="confirmDelete();">
+										Delete
+									</a></span></div>
 								</td>
 								<td>
-								
-								
-									<%=locArray[index].getDesc()%>
-								
-								
+									<a href="AddLocation?=<%=locArray[index].getName() %>"> <%=locArray[index].getDesc()%> </a>
 								</td>
 						<% 
 							}
@@ -100,14 +98,20 @@
 								
 					</tbody>
 				</table>
-				
 			</div>
-			
 			</div> <!-- End Table Area -->
-			
 		</div>
 </div>
 <div id="footer"></div>
 
+<script type="text/javascript">
+						function confirmDelete()
+						{
+						    var answer = confirm("Are you sure you want to delete this location?");
+						} 
+</script>
+
 </body>
 </html>
+
+

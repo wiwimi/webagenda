@@ -42,11 +42,11 @@
 		<div class="widgetLowerRectangle" id="locationsLowerRectangle">
 
 		<div id ="addLocation">
-			<form class="addLocationForm" action="AddLocation" id="form" method="post">
+			<form class="addLocationForm" action="../AddLocation"  method="post">
 			<div id="location">
 			
 			 <div id="searchArea">
-					        <input type="submit" name="submit"  class="button" value="Add"  > 
+					        <input type="submit" name="submit"  class="button" value="Add" > 
 							<input type="button" name="submit" class="button"  onClick="location.href='updateLocation.jsp'" value="Search" > 
 					       	<input type="reset" name="clear" class="button" value="Clear Screen"> 
 			     </div>
@@ -70,6 +70,5 @@
 
 </div>
 <div id="footer"></div>
-
 </body>
 </html>
