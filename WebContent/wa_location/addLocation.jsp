@@ -44,8 +44,7 @@
 				 <div id="searchArea">
 					        <input type="submit" name="submit" class="button" value="Save"> 
 							<input type="button" name="submit" class="button"  onClick="location.href='updateLocation.jsp'" value="Search" > 
-					        <input type="submit" name="submit" class="button" value="Delete">
-							<input type="reset" name="clear" class="button" value="Clear Screen"> 
+					       	<input type="reset" name="clear" class="button" value="Clear Screen"> 
 			     </div>
 				 <fieldset>
 					<legend > Location Details </legend>
@@ -62,7 +61,6 @@
 						<div id="searchArea">
 					        <input type="submit" name="submit" class="button" value="Save"> 
 							<input type="button" name="submit" class="button"  onClick="location.href='updateLocation.jsp'" value="Search" > 
-					        <input type="submit" name="submit" class="button" value="Delete">
 							<input type="reset" name="clear" class="button" value="Clear Screen"> 
 			            </div>
 			     </div>

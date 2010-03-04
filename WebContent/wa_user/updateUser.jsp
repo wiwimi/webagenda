@@ -69,7 +69,6 @@
 							<th>Supervisor</th>
 						</tr>
 					</tfoot>
-					
 					<tbody>
 						<% 
 							EmployeeBroker broker = EmployeeBroker.getBroker();
