@@ -49,7 +49,7 @@ public class TestLocationBroker
 		{
 		    
 			try {
-				Location loc = new Location("Sait", "Large Hall");
+				Location loc = new Location("Sait", "");
 				boolean success = broker.create(loc);
 				if(success)
 				{

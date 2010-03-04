@@ -42,10 +42,13 @@ public class AddLocation extends HttpServlet {
 				try {
 					    
 						LocationBroker broker = LocationBroker.getBroker();
+						broker.initConnectionThread();
+						
 						Location loc = new Location(locName, desc);
+						
 						success = broker.create(loc);
 						response.sendRedirect("wa_user/newUser.jsp");
-					if (success==true)
+					if (success)
 					{
 						response.sendRedirect("wa_dashboard/dashboard.jsp");
 					}
