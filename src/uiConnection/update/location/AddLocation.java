@@ -2,83 +2,112 @@ package uiConnection.update.location;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-
+import java.sql.SQLException;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import exception.DBDownException;
 import exception.DBException;
-import persistence.LocationBroker;
-import business.schedule.Location;
+import exception.InvalidLoginException;
+import business.Employee;
+import persistence.EmployeeBroker;
 
 /**
- * Servlet implementation class addLocation
+ * Servlet implementation class Login
  */
-public class AddLocation extends HttpServlet {
+@WebServlet(name="Login", urlPatterns={"/login"})
+public class AddLocation extends HttpServlet 
+{
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-      protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-		    throws ServletException, IOException 
-		    {
-		        response.setContentType("text/html;charset=UTF-8");
-		        
-		      //Create or get the session object from the HTTPSession object
-		        HttpSession session = request.getSession();
-		        PrintWriter out = response.getWriter();
-		        
-		        String locName = request.getParameter("locName");
-				String desc = request.getParameter("desc");	
-				
-				
-				boolean success;
-				
-				try {
-						LocationBroker broker = LocationBroker.getBroker();
-						Location loc = new Location(locName, desc);
-						System.out.println("dnt");
-						success = broker.create(loc);
-						if (success==true)
-						{
-							System.out.println(success);
-						}
-						
-						 //redirect the user to the location page
-			            response.sendRedirect("wa_location/newLocation.jsp");
-			            
-			            
-				} catch (DBException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (DBDownException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-		   }
-    public AddLocation() {
+    public AddLocation() 
+    {
         super();
         // TODO Auto-generated constructor stub
     }
+    
+    /** 
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+    } 
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		// TODO Auto-generated method stub
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
-		response.sendRedirect("wa_location/newLocation.jsp");
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+        response.setContentType("text/html;charset=UTF-8");
+        
+        //Get the username and password from the submitted login form and store them as string's
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        
+        //Create or get the session object from the HTTPSession object
+        HttpSession loginSession = request.getSession();
+        
+        PrintWriter out = response.getWriter();
+        try 
+        {
+        	EmployeeBroker empBroker = EmployeeBroker.getBroker();
+        	Employee loggedIn = empBroker.tryLogin(username, password);
+        	
+        	//Set a session to be equal to the employee object returned from the broker
+        	//This is so that we can just pass it around the interface for information
+        	loginSession.setAttribute("currentEmployee", loggedIn);
+        	
+        	System.out.println("Login Worked!");
+        	
+            //Login is successful
+        	//create a session variable for just the currently logged in user's username
+            loginSession.setAttribute("username", username);
+            
+            //redirect the user to the dashbaord
+            response.sendRedirect("wa_dashboard/dashboard.jsp");
+        } 
+        catch (InvalidLoginException e)
+		{
+        	//login was unsuccessful
+        	System.out.println("Login Didn't work!");
+        	//Because the login was unsucsseful redirect the user back to the login.jsp with an error message
+        	response.sendRedirect(("wa_login/login.jsp?LoginAttempt=1"));
+			e.printStackTrace();
+		} 
+        catch (DBException e)
+		{
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		}
+        catch (DBDownException e)
+		{
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		} 
+        finally
+	     {
+	         out.close();
+	     }
 	}
 
 }
