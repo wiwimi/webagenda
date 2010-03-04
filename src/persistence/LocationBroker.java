@@ -63,7 +63,7 @@ public class LocationBroker extends Broker<Location>
 		String insert = String.format(
 				"INSERT INTO `WebAgenda`.`Location` " +
 				"(`locName`, `locDescription`)" +
-				" VALUES (%s,%s);",
+				" VALUES ('%s',%s);",
 				createLocation.getName(),
 				(createLocation.getDesc() == null ? "NULL" : "'" + createLocation.getDesc() + "'"));
 				
