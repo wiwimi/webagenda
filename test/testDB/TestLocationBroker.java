@@ -49,7 +49,7 @@ public class TestLocationBroker
 		{
 		    
 			try {
-				Location loc = new Location("Apex", "");
+				Location loc = new Location("Casino", "");
 				boolean success = broker.create(loc);
 				if(success)
 				{
@@ -58,10 +58,10 @@ public class TestLocationBroker
 				
 			} catch (DBException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				//e.printStackTrace();
 			} catch (DBDownException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				//e.printStackTrace();
 			}
 			
 			assertTrue(true);
@@ -74,8 +74,23 @@ public class TestLocationBroker
 	@Test
 	public void testDeleteLocation()
 		{
-		fail("Not yet implemented"); // TODO
+
+		    
+			try {
+				Location loc = new Location("Casino");
+				broker.delete(loc);
+				
+			} catch (DBException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (DBDownException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			assertTrue(true);
 		}
+		
 	
 	/**
 	 * Test method for {@link persistence.LocationBroker#get(business.schedule.Location)}.
