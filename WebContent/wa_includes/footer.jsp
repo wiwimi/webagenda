@@ -4,12 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-
-
-<!--  CSS files -->
-<link rel="stylesheet" href="CSS/style.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="../CSS/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../CSS/headerStyle.css" type="text/css" media="screen" />
 
 </head>
 <body>

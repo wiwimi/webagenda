@@ -82,3 +82,50 @@ input
 	font-size:1.2em;
 	color:#363636;
 }
+
+label {
+	font-family: cochin;
+}
+
+#container {
+	min-width: 1200px;
+}
+
+#header {
+	background-color: #282828;
+	width: 100%;
+	height: 100px;
+}
+
+#headerTitle 
+{
+	float:left;
+	position: relative;
+	margin-left:20px;
+	margin-top:65px;
+	color: white;
+	font-family: Cochin;
+	font-size: 2.5em;
+}
+#footer 
+{
+	float:left;
+	position: relative;
+	top: 2em;
+	background-color: #282828;
+	width: 100%;
+	height: 100px;
+}
+#middle {
+	color: black;
+	font-family: cochin;
+	min-height: 100px;
+	padding-top: 20px;
+	float:left;
+	width:100%;
+	
+}
+	 
+	
+
+	
