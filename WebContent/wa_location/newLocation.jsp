@@ -17,6 +17,8 @@
 <!-- Libraries -->
 <script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
 <script src="../lib/js/jquery.validate.js" type="text/javascript"></script>
+<script src ="../lib/js/jquery.flashmessenger.js"   type ="text/javascript"> </script>
+
 
 <!-- Javascript Files -->
 <script src="../lib/js/cmxforms.js" type="text/javascript"></script>
@@ -27,13 +29,60 @@
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/val.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/screen.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Flash/flashmessenger.css" />
 
 </head>
 <body>
 	<div id="instructions">
 	        Fields marked with <em class="asterisk" > *</em> are required.
 	</div>
+	
 <br></br>
+ 			  <% 
+					if(request.getParameter("message") != null)
+					{
+						if(request.getParameter("message").equals("true"))
+						{
+							//out.println("Location was added");
+			  %>
+				
+							<script type="text/javascript">
+		
+								$(function()
+								    {
+										
+										    $.flashMessenger("The location has been successfully created", 
+											{ 	
+												modal:true, 
+												autoClose: false 
+											});	
+										
+										
+								    });
+								</script>
+			
+			    <% 			   
+						}
+						else if(request.getParameter("message").equals("false"))
+						{
+				%>
+							
+							<script type="text/javascript">
+								$(function()
+								    {
+										
+								       $.flashMessenger("Make sure location's name is unique.",
+								        {
+											   modal:true,
+							    		       clsName:"err", 
+								    		   autoClose:false
+								    	 }); 
+								   }); 
+							</script>
+				<%
+						}
+					}
+				%>
 		<div id="locationWidget" class="fullWidget">
 			<div class="widgetUpperRectangle" id="locationsUpperRectangle">
 				<div class="widgetTitle" id="locationsWidgetTitle">Locations</div>
@@ -42,7 +91,7 @@
 		<div class="widgetLowerRectangle" id="locationsLowerRectangle">
 
 		<div id ="addLocation">
-			<form class="addLocationForm" action="../AddLocation" method="POST">
+			<form class="addLocationForm" action="../AddLocation" id="form" method="POST">
 			<div id="location">
 			
 			 <div id="searchArea">
@@ -50,7 +99,7 @@
 							<input type="button" name="submit" class="button"  onClick="location.href='updateLocation.jsp'" value="Search" > 
 					       	<input type="reset" name="clear" class="button" value="Clear Screen"> 
 			     </div>
-				 <fieldset>
+			     <fieldset>
 					<legend > Location Details </legend>
 					
 							<p>	<label class="label"> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="locName" class="required" size ="30"> </p>
@@ -70,5 +119,6 @@
 
 </div>
 <div id="footer"></div>
+
 </body>
 </html>

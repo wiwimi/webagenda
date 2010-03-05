@@ -36,7 +36,6 @@ public class AddLocation extends HttpServlet {
 		        String locName = request.getParameter("locName");
 				String desc = request.getParameter("desc");	
 				
-				
 				boolean success;
 				
 				try {
@@ -45,23 +44,30 @@ public class AddLocation extends HttpServlet {
 						broker.initConnectionThread();
 						
 						Location loc = new Location(locName, desc);
-						
 						success = broker.create(loc);
-						response.sendRedirect("wa_user/newUser.jsp");
+						
 					if (success)
 					{
-						response.sendRedirect("wa_dashboard/dashboard.jsp");
+						//Confirm that the user was added
+						response.sendRedirect("wa_location/newLocation.jsp?message=true");
 					}
-					else
-					{
-						response.sendRedirect("wa_user/newUser.jsp");
-					}
-				} catch (DBException e) {
+				}
+				catch (DBException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+					// Failed to add the location
+					response.sendRedirect("wa_location/newLocation.jsp?message=false");
+					
 				} catch (DBDownException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+					// Failed to add the location
+					response.sendRedirect("wa_location/newLocation.jsp?message=false");
+				}
+				catch(Exception e)
+				{
+					// Failed to add the location
+					response.sendRedirect("wa_location/newLocation.jsp?message=false");
 				}
 				finally
 				{
