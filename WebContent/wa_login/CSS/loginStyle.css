@@ -35,12 +35,12 @@
 	
 }
 
-label
+label, #rememberMe
 {
-	width: 4em;
+	width: 8em;
 	float: left;
 	text-align: right;
-	margin-right: 0.5em;
+	margin-right: 0.7em;
 	display: block;
 	margin-top:5px;
 }
@@ -53,6 +53,7 @@ label
 
 #rememberMe
 {
+	
 	color:#363636;
 }
 

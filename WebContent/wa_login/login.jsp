@@ -35,9 +35,10 @@
 				<label for="username">Username:</label>
 				<input type="text" name="username" size=20/><br>
 				<label for="password">Password: </label>
-				<input type="password" name="password" size=20></input><br>
-				<div id="rememberMe">Remember Me?<input type="checkbox" name="rememberMe"></div>
-				<p class="submit"><input type="submit" value="Login" /></p>
+				<input type="password" name="password" size=20></input> <br></br> 
+				<div id="rememberMe" > Remember Me? <input type="checkbox" name="rememberMe">  </div>
+			    <br> <br></br><br></br>
+				<div><input type="submit" value="Login" /></div>
 			</form>
 		</div>
 			<div id="forgotPassword">
