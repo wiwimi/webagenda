@@ -16,6 +16,8 @@
 
 <!-- Libraries -->
 <script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
+
+<!-- Plug-ins -->
 <script src="../lib/js/jquery.validate.js" type="text/javascript"></script>
 <script src ="../lib/js/jquery.flashmessenger.js"   type ="text/javascript"> </script>
 

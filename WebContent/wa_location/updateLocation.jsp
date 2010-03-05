@@ -14,6 +14,9 @@
 <!--  Includes -->
 <jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
 
+<!-- Libraries -->
+<script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>	
+
 <!--  CSS files -->
 <link rel="stylesheet" href="CSS/user.css" type="text/css"></link>
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
@@ -22,12 +25,13 @@
 
 <!-- Sorttable is under the X11 licence, it is an open source project.-->
 <!-- Javascript Files -->
+
+<script type="text/javascript" src="../lib/js/jquery-impromptu.3.0.min.js"></script>
 <script src="../lib/js/sorttable.js" type ="text/javascript"></script>
 <script type="text/javascript" src="../lib/js/dashboard.js"></script>
-<script type="text/javascript" src="../lib/js/jquery-impromptu.3.0.min.js"></script>
 
-<!-- Libraries -->
-<script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>	
+
+
 
 </head>
 <body>
@@ -98,13 +102,19 @@
 						<% 
 							}
 						%>			
-								
+					
+					
+						
 					</tbody>
+					
 				</table>
 			</div>
 			</div> <!-- End Table Area -->
 		</div>
 </div>
+
+						
+					
 <div id="footer"></div>
 
 <script type="text/javascript">
