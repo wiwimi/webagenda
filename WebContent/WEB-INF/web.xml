@@ -49,4 +49,14 @@
     <servlet-name>UpdateUserInfo</servlet-name>
     <url-pattern>/updateUserInfo</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteLocation</display-name>
+    <servlet-name>DeleteLocation</servlet-name>
+    <servlet-class>uiConnection.update.location.DeleteLocation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteLocation</servlet-name>
+    <url-pattern>/DeleteLocation</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -73,7 +73,7 @@
 								$(function()
 								    {
 										
-								       $.flashMessenger("Make sure location's name is unique.",
+								       $.flashMessenger("The name you provided has already been used.",
 								        {
 											   modal:true,
 							    		       clsName:"err", 
