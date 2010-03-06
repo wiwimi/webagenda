@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import exception.DBException;
-import business.Schedule;
+import business.schedule.Schedule;
 import messagelog.Logging;
 
 /**

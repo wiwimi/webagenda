@@ -1,7 +1,7 @@
 /**
  * business - Shift.java
  */
-package business;
+package business.schedule;
 
 import java.sql.Time;
 

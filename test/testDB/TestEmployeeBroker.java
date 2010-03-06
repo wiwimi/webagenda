@@ -61,7 +61,7 @@ public class TestEmployeeBroker
 		newEmp.setFamilyName("Baggins");
 		newEmp.setUsername("bilb01");
 		newEmp.setPassword("password");
-		newEmp.setPLevel("2a");
+		newEmp.setPLevel("1a");
 		newEmp.setActive(true);
 		
 		//Add employee
@@ -82,14 +82,11 @@ public class TestEmployeeBroker
 			e.printStackTrace();
 			}
 		
-		//Create employee to use for ID search and deletion.
-		Employee empSearchDelete = new Employee();
-		empSearchDelete.setEmpID(80000);
 		
-		//Try to delete employee.
+		//Try to disable the employee.
 		try
 			{
-			boolean disabled = empBroker.disable(empSearchDelete);
+			boolean disabled = empBroker.disable(newEmp);
 			assertTrue(disabled);
 			System.out.println("Employee disabled: "+ disabled);
 			}
@@ -106,9 +103,12 @@ public class TestEmployeeBroker
 		//Search for disabled employee.
 		try
 			{
-			empSearchDelete.setActive(false);
-			Employee[] results = empBroker.get(empSearchDelete);
-			assertFalse(results[0].getActive());
+			Employee empSearchDisabled = new Employee();
+			empSearchDisabled.setEmpID(80000);
+			Employee[] results = empBroker.get(empSearchDisabled);
+			if (results == null)
+				fail("Employee search failed, disabled employee not returned.");
+			assertFalse("Employee was not disabled ",results[0].getActive());
 			System.out.println("Employee retrieved: "+results[0]);
 			}
 		catch (DBException e)
@@ -120,11 +120,15 @@ public class TestEmployeeBroker
 			{
 			e.printStackTrace();
 			}
+		catch (NullPointerException e)
+			{
+			e.printStackTrace();
+			}
 		
 		//Delete the test user.
 		try
 			{
-			boolean deleted = empBroker.delete(empSearchDelete);
+			boolean deleted = empBroker.delete(newEmp);
 			assertTrue(deleted);
 			System.out.println("Employee deleted: "+ deleted);
 			}
@@ -158,13 +162,13 @@ public class TestEmployeeBroker
 		
 		//Create employees to search by an employee ID, and all active employees.
 		Employee searchEmp1 = new Employee();
-		searchEmp1.setEmpID(5);
+		searchEmp1.setEmpID(38202);
 		
 		Employee searchEmp2 = new Employee();
 		searchEmp2.setActive(true);
 		
 		Employee searchEmp3 = new Employee();
-		searchEmp3.setSupervisorID(3);
+		searchEmp3.setSupervisorID(28472);
 		
 		//Run searches
 		Employee[] byID = null, byActive = null, bySupervisor = null;
@@ -182,6 +186,7 @@ public class TestEmployeeBroker
 		catch (DBDownException e)
 			{
 			e.printStackTrace();
+			fail();
 			}
 		
 		assertNotNull(byID);

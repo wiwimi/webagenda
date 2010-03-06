@@ -1,11 +1,11 @@
 /**
  * business - Schedule.java
  */
-package business;
+package business.schedule;
 
 import java.util.Date;
 
-import business.schedule.WorkingShift;
+import business.BusinessObject;
 
 /**
  * @author peon-dev

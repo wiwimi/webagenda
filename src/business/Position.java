@@ -1,59 +1,100 @@
 /**
- * business - Position.java
+ * business.schedule - Position.java
  */
 package business;
 
+
 /**
- * @author dann
- * @version 0.01.00
- * @license GPL 2
+ * This class represents a Position that an employee can work. It is used
+ * extensively in Scheduling for auto-generation; it places employees that can
+ * work certain positions in those positions that are required for a completely
+ * schedule to be generated. (No errors)
+ * 
+ * @author peon-dev, Daniel Wehr
+ * @version 0.2.0
  */
 public class Position extends BusinessObject {
 
-	/** The name of the position that is being filled */
-	private String position_name = null;
-	/** A description of the position's purpose, optional */
-	private String position_desc = null;
+	/**
+	 * This attribute represents the name of the position. It is unique and
+	 * should accurately represent the the position.
+	 */
+	private String name	= null;
 	
-	public Position(String pos_name)
-	{
-		this.position_name = pos_name;
-	}
+	/**
+	 * This attribute is a description of the name of the position. It is
+	 * optional, but may aid in informed decisions that new users may require
+	 * when scheduling.
+	 */
+	private String desc	= null;
 	
-	public Position(String pos_name, String pos_desc)
-	{
-		this.position_desc = pos_desc;
-		this.position_name = pos_name;
-	}
+	/**
+	 * Creates an empty position with no name or description.
+	 */
+	public Position()
+		{
+		}
+	
+	/**
+	 * Creates a position with a name and no description.
+	 * 
+	 * @param newName The name of the position.
+	 */
+	public Position(String newName)
+		{
+		name = newName;
+		}
+	
+	/**
+	 * Creates a position with a name and description.
+	 * 
+	 * @param newName The name of the position.
+	 * @param newDesc The description of the position.
+	 */
+	public Position(String newName, String newDesc)
+		{
+		name = newName;
+		desc = newDesc;
+		}
 
 	/**
-	 * @return the position_name
+	 * @return the name
 	 */
-	public String getPosition_name() {
-		return position_name;
-	}
+	public String getName()
+		{
+		return name;
+		}
 
 	/**
-	 * @return the position_desc
+	 * @param name the name to set
 	 */
-	public String getPosition_desc() {
-		return position_desc;
-	}
+	public void setName(String name)
+		{
+		this.name = name;
+		}
 
 	/**
-	 * @param positionName the position_name to set
+	 * @return the desc
 	 */
-	public void setPosition_name(String positionName) {
-		position_name = positionName;
-	}
+	public String getDesc()
+		{
+		return desc;
+		}
 
 	/**
-	 * @param positionDesc the position_desc to set
+	 * @param desc the desc to set
 	 */
-	public void setPosition_desc(String positionDesc) {
-		position_desc = positionDesc;
-	}
-	
-	
-	
+	public void setDesc(String desc)
+		{
+		this.desc = desc;
+		}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString()
+		{
+		return name;
+		}
 }

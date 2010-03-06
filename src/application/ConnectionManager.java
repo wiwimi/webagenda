@@ -31,7 +31,8 @@ public class ConnectionManager
 				{
 				db_drv_instance = Class.forName(db_driver).newInstance();
 				}
-			conn = DriverManager.getConnection(db_url, db_user, db_pass);
+			// +"&noAccessToProcedureBodies=true"
+			conn = DriverManager.getConnection(db_url+"?user="+db_user+"&password="+db_pass);
 			}
 		catch (CommunicationsException e)
 			{

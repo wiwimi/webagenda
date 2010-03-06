@@ -79,14 +79,14 @@ public class Employee extends BusinessObject
 	 * working units, this can be specified. Is not required, but if set may
 	 * influence automatic schedule generation.
 	 */
-	private Location	prefLocation	= null;
+	private String	prefLocation	= null;
 	
 	/**
 	 * Position is the job that an Employee prefers to work at. This assumes that
 	 * multiple positions for work are available. May influence the automatically
 	 * generated schedule.
 	 */
-	private Position	prefPosition	= null;
+	private String	prefPosition	= null;
 	
 	/**
 	 * The permission set as a string. Both level and version can be parsed from
@@ -260,7 +260,7 @@ public class Employee extends BusinessObject
 	/**
 	 * @return the preferred_location
 	 */
-	public Location getPrefLocation()
+	public String getPrefLocation()
 		{
 		return prefLocation;
 		}
@@ -268,20 +268,15 @@ public class Employee extends BusinessObject
 	/**
 	 * @param preferredLocation the preferred_location to set
 	 */
-	public void setPrefLocation(Location preferredLocation)
+	public void setPrefLocation(String preferredLocation)
 		{
 		prefLocation = preferredLocation;
 		}
-
-	public void setPrefLocation(String preferredLocation)
-	{
-		prefLocation = new Location(preferredLocation);
-	}
 	
 	/**
 	 * @return the preferred_position
 	 */
-	public Position getPrefPosition()
+	public String getPrefPosition()
 		{
 		return prefPosition;
 		}
@@ -289,15 +284,10 @@ public class Employee extends BusinessObject
 	/**
 	 * @param preferredPosition the preferred_position to set
 	 */
-	public void setPrefPosition(Position preferredPosition)
+	public void setPrefPosition(String preferredPosition)
 		{
 		prefPosition = preferredPosition;
 		}
-	
-	public void setPrefPosition(String preferredPosition)
-	{
-		prefPosition = new Position(preferredPosition);
-	}
 
 	/**
 	 * @return the permission_level

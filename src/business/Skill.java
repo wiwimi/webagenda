@@ -1,9 +1,8 @@
 /**
  * business - Skill.java
  */
-package business.schedule;
+package business;
 
-import business.BusinessObject;
 
 /**
  * Skill is an object that is applied to an employee that determines

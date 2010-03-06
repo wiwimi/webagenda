@@ -4,17 +4,22 @@
 package business.schedule;
 
 import java.sql.Time;
-import business.Shift;
 
 /**
  * @author peon-dev
  * @version 0.01.00
  *
- * @see business.Shift
+ * @see business.schedule.Shift
  */
 public class WorkingShift extends Shift {
 	
 	/** Represents the ID of the user who will be working the shift represented in this class. */
 	private int employee_id									= -1;
 	
+	public WorkingShift(Time start, Time end)
+		{
+		super(start, end);
+		// TODO Auto-generated constructor stub
+		}
+
 }

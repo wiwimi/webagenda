@@ -12,21 +12,21 @@ DROP TABLE IF EXISTS `WebAgenda`.`PERMISSIONSET` ;
 
 CREATE  TABLE IF NOT EXISTS `WebAgenda`.`PERMISSIONSET` (
   `plevel` VARCHAR(10) NOT NULL ,
-  `canEditSched` TINYINT(1) NOT NULL DEFAULT 0 ,
-  `canReadSched` TINYINT(1) NOT NULL DEFAULT 1 ,
-  `canReadOldSched` TINYINT(1) NOT NULL DEFAULT 0 ,
-  `canManageEmployee` TINYINT(1) NOT NULL DEFAULT 0 ,
-  `canViewResources` TINYINT(1) NOT NULL DEFAULT 0 ,
-  `canChangePermissions` TINYINT(1) NOT NULL DEFAULT 0 ,
-  `canReadLogs` TINYINT(1) NOT NULL DEFAULT 0 ,
-  `canAccessReports` TINYINT(1) NOT NULL DEFAULT 0 ,
-  `canRequestDaysOff` TINYINT(1) NOT NULL DEFAULT 0 ,
+  `canEditSched` TINYINT(1)  NOT NULL DEFAULT 0 ,
+  `canReadSched` TINYINT(1)  NOT NULL DEFAULT 1 ,
+  `canReadOldSched` TINYINT(1)  NOT NULL DEFAULT 0 ,
+  `canManageEmployee` TINYINT(1)  NOT NULL DEFAULT 0 ,
+  `canViewResources` TINYINT(1)  NOT NULL DEFAULT 0 ,
+  `canChangePermissions` TINYINT(1)  NOT NULL DEFAULT 0 ,
+  `canReadLogs` TINYINT(1)  NOT NULL DEFAULT 0 ,
+  `canAccessReports` TINYINT(1)  NOT NULL DEFAULT 0 ,
+  `canRequestDaysOff` TINYINT(1)  NOT NULL DEFAULT 0 ,
   `maxDaysOff` INT NOT NULL ,
-  `canTakeVacations` TINYINT(1) NOT NULL DEFAULT 0 ,
+  `canTakeVacations` TINYINT(1)  NOT NULL DEFAULT 0 ,
   `maxVacationDays` INT NOT NULL ,
-  `canTakeEmergencyDays` TINYINT(1) NOT NULL DEFAULT 0 ,
-  `canViewInactiveEmps` TINYINT(1) NOT NULL DEFAULT 0 ,
-  `canSendNotifications` TINYINT(1) NOT NULL DEFAULT 0 ,
+  `canTakeEmergencyDays` TINYINT(1)  NOT NULL DEFAULT 0 ,
+  `canViewInactiveEmps` TINYINT(1)  NOT NULL DEFAULT 0 ,
+  `canSendNotifications` TINYINT(1)  NOT NULL DEFAULT 0 ,
   `trusted` VARCHAR(10) NOT NULL DEFAULT 0 ,
   PRIMARY KEY (`plevel`) )
 ENGINE = InnoDB;
@@ -62,8 +62,9 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `WebAgenda`.`EMPLOYEE` ;
 
 CREATE  TABLE IF NOT EXISTS `WebAgenda`.`EMPLOYEE` (
-  `empID` INT NOT NULL ,
-  `supervisorID` INT NULL ,
+  `empRecordID` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
+  `empID` INT UNSIGNED NOT NULL ,
+  `supRecordID` INT UNSIGNED NULL ,
   `givenName` VARCHAR(70) NOT NULL ,
   `familyName` VARCHAR(70) NOT NULL ,
   `birthDate` DATE NULL ,
@@ -74,13 +75,16 @@ CREATE  TABLE IF NOT EXISTS `WebAgenda`.`EMPLOYEE` (
   `prefPosition` VARCHAR(45) NULL ,
   `prefLocation` VARCHAR(45) NULL ,
   `plevel` VARCHAR(10) NOT NULL ,
-  `active` TINYINT(1) NOT NULL DEFAULT 1 ,
-  PRIMARY KEY (`empID`) ,
+  `active` TINYINT(1)  NOT NULL DEFAULT 1 ,
+  PRIMARY KEY (`empRecordID`) ,
   INDEX `fk_EMPLOYEE_PERMISSIONSET` (`plevel` ASC) ,
   INDEX `fk_EMPLOYEE_LOCATION` (`prefLocation` ASC) ,
   INDEX `fk_EMPLOYEE_POSITION` (`prefPosition` ASC) ,
   UNIQUE INDEX `username_UNIQUE` (`username` ASC) ,
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) ,
+  UNIQUE INDEX `empID_UNIQUE` (`empID` ASC) ,
+  INDEX `empID_IDX` (`empID` ASC) ,
+  INDEX `fk_EMPLOYEE_EMPLOYEE1` (`supRecordID` ASC) ,
   CONSTRAINT `fk_EMPLOYEE_PERMISSIONSET`
     FOREIGN KEY (`plevel` )
     REFERENCES `WebAgenda`.`PERMISSIONSET` (`plevel` )
@@ -95,6 +99,11 @@ CREATE  TABLE IF NOT EXISTS `WebAgenda`.`EMPLOYEE` (
     FOREIGN KEY (`prefPosition` )
     REFERENCES `WebAgenda`.`POSITION` (`positionName` )
     ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_EMPLOYEE_EMPLOYEE1`
+    FOREIGN KEY (`supRecordID` )
+    REFERENCES `WebAgenda`.`EMPLOYEE` (`empRecordID` )
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -105,11 +114,11 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `WebAgenda`.`NOTIFICATION` ;
 
 CREATE  TABLE IF NOT EXISTS `WebAgenda`.`NOTIFICATION` (
-  `notificationID` INT NOT NULL ,
-  `senderID` INT NULL ,
-  `recipientID` INT NOT NULL ,
-  `sentTime` DATETIME NOT NULL ,
-  `viewed` TINYINT(1) NOT NULL DEFAULT 0 ,
+  `notificationID` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
+  `senderID` INT UNSIGNED NULL ,
+  `recipientID` INT UNSIGNED NOT NULL ,
+  `sentTime` TIMESTAMP NOT NULL ,
+  `viewed` TINYINT(1)  NOT NULL DEFAULT 0 ,
   `message` VARCHAR(300) NOT NULL ,
   `type` VARCHAR(20) NOT NULL ,
   PRIMARY KEY (`notificationID`) ,
@@ -117,12 +126,12 @@ CREATE  TABLE IF NOT EXISTS `WebAgenda`.`NOTIFICATION` (
   INDEX `fk_NOTIFICATION_EMPLOYEE_recipient` (`recipientID` ASC) ,
   CONSTRAINT `fk_NOTIFICATION_EMPLOYEE_sender`
     FOREIGN KEY (`senderID` )
-    REFERENCES `WebAgenda`.`EMPLOYEE` (`empID` )
+    REFERENCES `WebAgenda`.`EMPLOYEE` (`empRecordID` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_NOTIFICATION_EMPLOYEE_recipient`
     FOREIGN KEY (`recipientID` )
-    REFERENCES `WebAgenda`.`EMPLOYEE` (`empID` )
+    REFERENCES `WebAgenda`.`EMPLOYEE` (`empRecordID` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -146,14 +155,14 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `WebAgenda`.`EMPSKILL` ;
 
 CREATE  TABLE IF NOT EXISTS `WebAgenda`.`EMPSKILL` (
-  `empID` INT NOT NULL ,
+  `empRecordID` INT UNSIGNED NOT NULL ,
   `skillName` VARCHAR(45) NOT NULL ,
-  PRIMARY KEY (`empID`, `skillName`) ,
-  INDEX `fk_EMPSKILL_EMPLOYEE` (`empID` ASC) ,
+  PRIMARY KEY (`empRecordID`, `skillName`) ,
+  INDEX `fk_EMPSKILL_EMPLOYEE` (`empRecordID` ASC) ,
   INDEX `fk_EMPSKILL_SKILL` (`skillName` ASC) ,
   CONSTRAINT `fk_EMPSKILL_EMPLOYEE`
-    FOREIGN KEY (`empID` )
-    REFERENCES `WebAgenda`.`EMPLOYEE` (`empID` )
+    FOREIGN KEY (`empRecordID` )
+    REFERENCES `WebAgenda`.`EMPLOYEE` (`empRecordID` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_EMPSKILL_SKILL`
@@ -194,33 +203,33 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `WebAgenda`.`SCHEDULETEMPLATE` ;
 
 CREATE  TABLE IF NOT EXISTS `WebAgenda`.`SCHEDULETEMPLATE` (
-  `scheduleTemplateID` INT NOT NULL ,
-  `creatorID` INT NOT NULL ,
-  PRIMARY KEY (`scheduleTemplateID`) ,
+  `schedTempID` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
+  `creatorID` INT UNSIGNED NOT NULL ,
+  PRIMARY KEY (`schedTempID`) ,
   INDEX `fk_SCHEDULETEMPLATE_EMPLOYEE1` (`creatorID` ASC) ,
   CONSTRAINT `fk_SCHEDULETEMPLATE_EMPLOYEE1`
     FOREIGN KEY (`creatorID` )
-    REFERENCES `WebAgenda`.`EMPLOYEE` (`empID` )
+    REFERENCES `WebAgenda`.`EMPLOYEE` (`empRecordID` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `WebAgenda`.`SHIFT`
+-- Table `WebAgenda`.`SHIFTTEMPLATE`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `WebAgenda`.`SHIFT` ;
+DROP TABLE IF EXISTS `WebAgenda`.`SHIFTTEMPLATE` ;
 
-CREATE  TABLE IF NOT EXISTS `WebAgenda`.`SHIFT` (
-  `shiftID` INT NOT NULL ,
-  `shiftReqID` INT NOT NULL ,
+CREATE  TABLE IF NOT EXISTS `WebAgenda`.`SHIFTTEMPLATE` (
+  `shiftTempID` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
+  `schedTempID` INT UNSIGNED NOT NULL ,
   `startTime` TIME NOT NULL ,
   `endTime` TIME NOT NULL ,
-  PRIMARY KEY (`shiftID`, `shiftReqID`) ,
-  INDEX `fk_SHIFT_SHIFTREQS` (`shiftReqID` ASC) ,
+  PRIMARY KEY (`shiftTempID`, `schedTempID`) ,
+  INDEX `fk_SHIFT_SHIFTREQS` (`schedTempID` ASC) ,
   CONSTRAINT `fk_SHIFT_SHIFTREQS`
-    FOREIGN KEY (`shiftReqID` )
-    REFERENCES `WebAgenda`.`SCHEDULETEMPLATE` (`scheduleTemplateID` )
+    FOREIGN KEY (`schedTempID` )
+    REFERENCES `WebAgenda`.`SCHEDULETEMPLATE` (`schedTempID` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -232,15 +241,15 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `WebAgenda`.`SHIFTPOS` ;
 
 CREATE  TABLE IF NOT EXISTS `WebAgenda`.`SHIFTPOS` (
-  `shiftID` INT NOT NULL ,
+  `shiftID` INT UNSIGNED NOT NULL ,
   `positionName` VARCHAR(45) NOT NULL ,
-  `posCount` INT NOT NULL ,
+  `posCount` INT UNSIGNED NOT NULL ,
   PRIMARY KEY (`shiftID`, `positionName`) ,
   INDEX `fk_SHIFTPOS_SHIFT` (`shiftID` ASC) ,
   INDEX `fk_SHIFTPOS_POSITION` (`positionName` ASC) ,
   CONSTRAINT `fk_SHIFTPOS_SHIFT`
     FOREIGN KEY (`shiftID` )
-    REFERENCES `WebAgenda`.`SHIFT` (`shiftID` )
+    REFERENCES `WebAgenda`.`SHIFTTEMPLATE` (`shiftTempID` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_SHIFTPOS_POSITION`
@@ -257,31 +266,31 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `WebAgenda`.`SCHEDULE` ;
 
 CREATE  TABLE IF NOT EXISTS `WebAgenda`.`SCHEDULE` (
-  `scheduleID` INT NOT NULL ,
+  `scheduleID` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `startDate` DATE NOT NULL ,
   `endDate` DATE NOT NULL ,
-  `creatorID` INT NOT NULL ,
+  `creatorID` INT UNSIGNED NOT NULL ,
   PRIMARY KEY (`scheduleID`) ,
   INDEX `fk_SCHEDULE_EMPLOYEE1` (`creatorID` ASC) ,
   CONSTRAINT `fk_SCHEDULE_EMPLOYEE1`
     FOREIGN KEY (`creatorID` )
-    REFERENCES `WebAgenda`.`EMPLOYEE` (`empID` )
+    REFERENCES `WebAgenda`.`EMPLOYEE` (`empRecordID` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `WebAgenda`.`WORKINGSHIFT`
+-- Table `WebAgenda`.`SHIFT`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `WebAgenda`.`WORKINGSHIFT` ;
+DROP TABLE IF EXISTS `WebAgenda`.`SHIFT` ;
 
-CREATE  TABLE IF NOT EXISTS `WebAgenda`.`WORKINGSHIFT` (
-  `workingShiftID` INT NOT NULL ,
-  `scheduleID` INT NOT NULL ,
+CREATE  TABLE IF NOT EXISTS `WebAgenda`.`SHIFT` (
+  `shiftID` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
+  `scheduleID` INT UNSIGNED NOT NULL ,
   `startTime` TIME NOT NULL ,
   `endTime` TIME NOT NULL ,
-  PRIMARY KEY (`workingShiftID`, `scheduleID`) ,
+  PRIMARY KEY (`shiftID`, `scheduleID`) ,
   INDEX `fk_WORKINGSHIFT_SCHEDULE` (`scheduleID` ASC) ,
   CONSTRAINT `fk_WORKINGSHIFT_SCHEDULE`
     FOREIGN KEY (`scheduleID` )
@@ -292,24 +301,24 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `WebAgenda`.`WORKINGEMP`
+-- Table `WebAgenda`.`EMPSHIFT`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `WebAgenda`.`WORKINGEMP` ;
+DROP TABLE IF EXISTS `WebAgenda`.`EMPSHIFT` ;
 
-CREATE  TABLE IF NOT EXISTS `WebAgenda`.`WORKINGEMP` (
-  `workingShiftID` INT NOT NULL ,
-  `empID` INT NOT NULL ,
-  PRIMARY KEY (`workingShiftID`, `empID`) ,
-  INDEX `fk_WORKINGEMP_EMPLOYEE` (`empID` ASC) ,
-  INDEX `fk_WORKINGEMP_WORKINGSHIFT` (`workingShiftID` ASC) ,
+CREATE  TABLE IF NOT EXISTS `WebAgenda`.`EMPSHIFT` (
+  `shiftID` INT UNSIGNED NOT NULL ,
+  `empRecordID` INT UNSIGNED NOT NULL ,
+  PRIMARY KEY (`shiftID`, `empRecordID`) ,
+  INDEX `fk_WORKINGEMP_EMPLOYEE` (`empRecordID` ASC) ,
+  INDEX `fk_WORKINGEMP_WORKINGSHIFT` (`shiftID` ASC) ,
   CONSTRAINT `fk_WORKINGEMP_EMPLOYEE`
-    FOREIGN KEY (`empID` )
-    REFERENCES `WebAgenda`.`EMPLOYEE` (`empID` )
+    FOREIGN KEY (`empRecordID` )
+    REFERENCES `WebAgenda`.`EMPLOYEE` (`empRecordID` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_WORKINGEMP_WORKINGSHIFT`
-    FOREIGN KEY (`workingShiftID` )
-    REFERENCES `WebAgenda`.`WORKINGSHIFT` (`workingShiftID` )
+    FOREIGN KEY (`shiftID` )
+    REFERENCES `WebAgenda`.`SHIFT` (`shiftID` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -326,9 +335,67 @@ CREATE  TABLE IF NOT EXISTS `WebAgenda`.`GLOBALSETTINGS` (
 ENGINE = InnoDB;
 
 
-DROP USER 'WABroker';
+-- -----------------------------------------------------
+-- Table `WebAgenda`.`RULE`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `WebAgenda`.`RULE` ;
+
+CREATE  TABLE IF NOT EXISTS `WebAgenda`.`RULE` (
+  `ruleID` INT NOT NULL AUTO_INCREMENT ,
+  `shiftTempID` INT UNSIGNED NOT NULL ,
+  `ruleType` VARCHAR(45) NOT NULL ,
+  `ruleValue` VARCHAR(45) NOT NULL ,
+  PRIMARY KEY (`ruleID`) ,
+  INDEX `fk_RULE_SHIFTTEMPLATE1` (`shiftTempID` ASC) ,
+  CONSTRAINT `fk_RULE_SHIFTTEMPLATE1`
+    FOREIGN KEY (`shiftTempID` )
+    REFERENCES `WebAgenda`.`SHIFTTEMPLATE` (`shiftTempID` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- procedure createEmployee
+-- -----------------------------------------------------
+
+DELIMITER $$
+DROP procedure IF EXISTS `WebAgenda`.`createEmployee` $$
+CREATE PROCEDURE `WebAgenda`.`createEmployee`
+    (IN inEmpID INT, IN inSupID INT, IN inGivenName VARCHAR(70), IN inFamilyName VARCHAR(70),
+    IN inBirthDate DATE, IN inEmail VARCHAR(20), IN inUsername VARCHAR(20), IN inPassword VARCHAR(20),
+    IN inPosition VARCHAR(20), IN inLocation VARCHAR(20), IN inPLevel VARCHAR(20), OUT result BOOLEAN)
+BEGIN
+    DECLARE numRows INT;
+    DECLARE supID INT;
+    
+    SELECT empRecordID
+    INTO supID
+    FROM `WebAgenda`.`Employee`
+    WHERE empID = inSupID;
+	
+    INSERT INTO `WebAgenda`.`Employee`
+        (`empID`,`supRecordID`,`givenName`,`familyName`,`birthDate`,`email`,
+        `username`,`password`,`prefPosition`,`prefLocation`,`plevel`)
+    VALUES
+        (inEmpID,supID,inGivenName,inFamilyName,inBirthDate,inEmail,
+        inUsername,inPassword,inPosition,inLocation,inPLevel);
+    
+    SET numRows = ROW_COUNT();
+    
+    IF numROWS > 0 THEN
+        SET result = TRUE;
+    ELSE
+        SET result = FALSE;
+    END IF;
+END $$
+
+DELIMITER ;
+
+DROP USER 'WABroker'@'localhost';
 CREATE USER 'WABroker'@'localhost' IDENTIFIED BY 'password';
 
+grant SELECT ON `mysql`.`proc` to 'WABroker'@'localhost';
 grant DELETE on TABLE `WebAgenda`.`EMPLOYEE` to 'WABroker'@'localhost';
 grant INSERT on TABLE `WebAgenda`.`EMPLOYEE` to 'WABroker'@'localhost';
 grant UPDATE on TABLE `WebAgenda`.`EMPLOYEE` to 'WABroker'@'localhost';
@@ -369,10 +436,10 @@ grant DELETE on TABLE `WebAgenda`.`SCHEDULETEMPLATE` to 'WABroker'@'localhost';
 grant INSERT on TABLE `WebAgenda`.`SCHEDULETEMPLATE` to 'WABroker'@'localhost';
 grant SELECT on TABLE `WebAgenda`.`SCHEDULETEMPLATE` to 'WABroker'@'localhost';
 grant UPDATE on TABLE `WebAgenda`.`SCHEDULETEMPLATE` to 'WABroker'@'localhost';
-grant DELETE on TABLE `WebAgenda`.`SHIFT` to 'WABroker'@'localhost';
-grant INSERT on TABLE `WebAgenda`.`SHIFT` to 'WABroker'@'localhost';
-grant SELECT on TABLE `WebAgenda`.`SHIFT` to 'WABroker'@'localhost';
-grant UPDATE on TABLE `WebAgenda`.`SHIFT` to 'WABroker'@'localhost';
+grant DELETE on TABLE `WebAgenda`.`SHIFTTEMPLATE` to 'WABroker'@'localhost';
+grant INSERT on TABLE `WebAgenda`.`SHIFTTEMPLATE` to 'WABroker'@'localhost';
+grant SELECT on TABLE `WebAgenda`.`SHIFTTEMPLATE` to 'WABroker'@'localhost';
+grant UPDATE on TABLE `WebAgenda`.`SHIFTTEMPLATE` to 'WABroker'@'localhost';
 grant DELETE on TABLE `WebAgenda`.`SHIFTPOS` to 'WABroker'@'localhost';
 grant INSERT on TABLE `WebAgenda`.`SHIFTPOS` to 'WABroker'@'localhost';
 grant SELECT on TABLE `WebAgenda`.`SHIFTPOS` to 'WABroker'@'localhost';
@@ -381,14 +448,19 @@ grant DELETE on TABLE `WebAgenda`.`SKILL` to 'WABroker'@'localhost';
 grant INSERT on TABLE `WebAgenda`.`SKILL` to 'WABroker'@'localhost';
 grant SELECT on TABLE `WebAgenda`.`SKILL` to 'WABroker'@'localhost';
 grant UPDATE on TABLE `WebAgenda`.`SKILL` to 'WABroker'@'localhost';
-grant DELETE on TABLE `WebAgenda`.`WORKINGEMP` to 'WABroker'@'localhost';
-grant INSERT on TABLE `WebAgenda`.`WORKINGEMP` to 'WABroker'@'localhost';
-grant SELECT on TABLE `WebAgenda`.`WORKINGEMP` to 'WABroker'@'localhost';
-grant UPDATE on TABLE `WebAgenda`.`WORKINGEMP` to 'WABroker'@'localhost';
-grant DELETE on TABLE `WebAgenda`.`WORKINGSHIFT` to 'WABroker'@'localhost';
-grant INSERT on TABLE `WebAgenda`.`WORKINGSHIFT` to 'WABroker'@'localhost';
-grant SELECT on TABLE `WebAgenda`.`WORKINGSHIFT` to 'WABroker'@'localhost';
-grant UPDATE on TABLE `WebAgenda`.`WORKINGSHIFT` to 'WABroker'@'localhost';
+grant DELETE on TABLE `WebAgenda`.`EMPSHIFT` to 'WABroker'@'localhost';
+grant INSERT on TABLE `WebAgenda`.`EMPSHIFT` to 'WABroker'@'localhost';
+grant SELECT on TABLE `WebAgenda`.`EMPSHIFT` to 'WABroker'@'localhost';
+grant UPDATE on TABLE `WebAgenda`.`EMPSHIFT` to 'WABroker'@'localhost';
+grant DELETE on TABLE `WebAgenda`.`SHIFT` to 'WABroker'@'localhost';
+grant INSERT on TABLE `WebAgenda`.`SHIFT` to 'WABroker'@'localhost';
+grant SELECT on TABLE `WebAgenda`.`SHIFT` to 'WABroker'@'localhost';
+grant UPDATE on TABLE `WebAgenda`.`SHIFT` to 'WABroker'@'localhost';
+grant EXECUTE on procedure `WebAgenda`.`createEmployee` to 'WABroker'@'localhost';
+grant DELETE on TABLE `WebAgenda`.`RULE` to 'WABroker'@'localhost';
+grant INSERT on TABLE `WebAgenda`.`RULE` to 'WABroker'@'localhost';
+grant SELECT on TABLE `WebAgenda`.`RULE` to 'WABroker'@'localhost';
+grant UPDATE on TABLE `WebAgenda`.`RULE` to 'WABroker'@'localhost';
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
@@ -427,15 +499,15 @@ COMMIT;
 -- Data for table `WebAgenda`.`EMPLOYEE`
 -- -----------------------------------------------------
 SET AUTOCOMMIT=0;
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supervisorID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (1, NULL, 'Chaney', 'Henson', NULL, NULL, 'user1', 'password', NULL, 'General Manager', 'Mohave Grill', '2a', true);
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supervisorID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (2, 1, 'Ray', 'Oliver', NULL, NULL, 'user2', 'password', NULL, 'Executive Chef', 'Mohave Grill', '1a', true);
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supervisorID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (3, 1, 'Audra', 'Gordon', NULL, NULL, 'user3', 'password', NULL, 'Front of House Mgr.', 'Mohave Grill', '1a', true);
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supervisorID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (4, 2, 'Rina', 'Pruitt', NULL, NULL, 'user4', 'password', NULL, 'Cook', 'Mohave Grill', '1a', true);
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supervisorID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (5, 2, 'Quinn', 'Hart', NULL, NULL, 'user5', 'password', NULL, 'Cook', 'Mohave Grill', '1a', true);
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supervisorID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (6, 2, 'Sierra', 'Dean', NULL, NULL, 'user6', 'password', NULL, 'Cook', 'Mohave Grill', '1a', true);
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supervisorID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (7, 3, 'Sylvia', 'Dyer', NULL, NULL, 'user7', 'password', NULL, 'Waiter', 'Mohave Grill', '1a', true);
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supervisorID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (8, 3, 'Kay', 'Bates', NULL, NULL, 'user8', 'password', NULL, 'Waiter', 'Mohave Grill', '1a', true);
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supervisorID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (9, 3, 'Luke', 'Garrison', NULL, NULL, 'user9', 'password', NULL, 'Waiter', 'Mohave Grill', '1a', true);
+insert into `WebAgenda`.`EMPLOYEE` (`empRecordID`, `empID`, `supRecordID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (1, 12314, NULL, 'Chaney', 'Henson', NULL, NULL, 'user1', 'password', NULL, 'General Manager', 'Mohave Grill', '2a', true);
+insert into `WebAgenda`.`EMPLOYEE` (`empRecordID`, `empID`, `supRecordID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (2, 28472, 1, 'Ray', 'Oliver', NULL, NULL, 'user2', 'password', NULL, 'Executive Chef', 'Mohave Grill', '1a', true);
+insert into `WebAgenda`.`EMPLOYEE` (`empRecordID`, `empID`, `supRecordID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (3, 29379, 1, 'Audra', 'Gordon', NULL, NULL, 'user3', 'password', NULL, 'Front of House Mgr.', 'Mohave Grill', '1a', true);
+insert into `WebAgenda`.`EMPLOYEE` (`empRecordID`, `empID`, `supRecordID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (4, 38382, 2, 'Rina', 'Pruitt', NULL, NULL, 'user4', 'password', NULL, 'Cook', 'Mohave Grill', '1a', true);
+insert into `WebAgenda`.`EMPLOYEE` (`empRecordID`, `empID`, `supRecordID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (5, 38202, 2, 'Quinn', 'Hart', NULL, NULL, 'user5', 'password', NULL, 'Cook', 'Mohave Grill', '1a', true);
+insert into `WebAgenda`.`EMPLOYEE` (`empRecordID`, `empID`, `supRecordID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (6, 39280, 2, 'Sierra', 'Dean', NULL, NULL, 'user6', 'password', NULL, 'Cook', 'Mohave Grill', '1a', true);
+insert into `WebAgenda`.`EMPLOYEE` (`empRecordID`, `empID`, `supRecordID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (7, 39202, 3, 'Sylvia', 'Dyer', NULL, NULL, 'user7', 'password', NULL, 'Waiter', 'Mohave Grill', '1a', true);
+insert into `WebAgenda`.`EMPLOYEE` (`empRecordID`, `empID`, `supRecordID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (8, 39203, 3, 'Kay', 'Bates', NULL, NULL, 'user8', 'password', NULL, 'Waiter', 'Mohave Grill', '1a', true);
+insert into `WebAgenda`.`EMPLOYEE` (`empRecordID`, `empID`, `supRecordID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (9, 30293, 3, 'Luke', 'Garrison', NULL, NULL, 'user9', 'password', NULL, 'Waiter', 'Mohave Grill', '1a', true);
 
 COMMIT;
 
@@ -452,13 +524,13 @@ COMMIT;
 -- Data for table `WebAgenda`.`EMPSKILL`
 -- -----------------------------------------------------
 SET AUTOCOMMIT=0;
-insert into `WebAgenda`.`EMPSKILL` (`empID`, `skillName`) values (2, 'Cooking');
-insert into `WebAgenda`.`EMPSKILL` (`empID`, `skillName`) values (4, 'Cooking');
-insert into `WebAgenda`.`EMPSKILL` (`empID`, `skillName`) values (5, 'Cooking');
-insert into `WebAgenda`.`EMPSKILL` (`empID`, `skillName`) values (6, 'Cooking');
-insert into `WebAgenda`.`EMPSKILL` (`empID`, `skillName`) values (7, 'Serving');
-insert into `WebAgenda`.`EMPSKILL` (`empID`, `skillName`) values (8, 'Serving');
-insert into `WebAgenda`.`EMPSKILL` (`empID`, `skillName`) values (9, 'Serving');
+insert into `WebAgenda`.`EMPSKILL` (`empRecordID`, `skillName`) values (2, 'Cooking');
+insert into `WebAgenda`.`EMPSKILL` (`empRecordID`, `skillName`) values (4, 'Cooking');
+insert into `WebAgenda`.`EMPSKILL` (`empRecordID`, `skillName`) values (5, 'Cooking');
+insert into `WebAgenda`.`EMPSKILL` (`empRecordID`, `skillName`) values (6, 'Cooking');
+insert into `WebAgenda`.`EMPSKILL` (`empRecordID`, `skillName`) values (7, 'Serving');
+insert into `WebAgenda`.`EMPSKILL` (`empRecordID`, `skillName`) values (8, 'Serving');
+insert into `WebAgenda`.`EMPSKILL` (`empRecordID`, `skillName`) values (9, 'Serving');
 
 COMMIT;
 

@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import application.DBConnection;
-import business.schedule.Skill;
+import business.Skill;
 import exception.DBDownException;
 import exception.DBException;
 
