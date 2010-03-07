@@ -1,4 +1,4 @@
-package uiConnection.update.location;
+package uiConnection.update.user;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

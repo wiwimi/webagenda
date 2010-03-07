@@ -59,4 +59,54 @@
     <servlet-name>DeleteLocation</servlet-name>
     <url-pattern>/DeleteLocation</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddSkill</display-name>
+    <servlet-name>AddSkill</servlet-name>
+    <servlet-class>uiConnection.update.skill.AddSkill</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddSkill</servlet-name>
+    <url-pattern>/AddSkill</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteSkill</display-name>
+    <servlet-name>DeleteSkill</servlet-name>
+    <servlet-class>uiConnection.update.skill.DeleteSkill</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteSkill</servlet-name>
+    <url-pattern>/DeleteSkill</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteUser</display-name>
+    <servlet-name>DeleteUser</servlet-name>
+    <servlet-class>uiConnection.update.user.DeleteUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteUser</servlet-name>
+    <url-pattern>/DeleteUser</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeletePosition</display-name>
+    <servlet-name>DeletePosition</servlet-name>
+    <servlet-class>uiConnection.update.position.DeletePosition</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeletePosition</servlet-name>
+    <url-pattern>/DeletePosition</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddPosition</display-name>
+    <servlet-name>AddPosition</servlet-name>
+    <servlet-class>uiConnection.update.position.AddPosition</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddPosition</servlet-name>
+    <url-pattern>/AddPosition</url-pattern>
+  </servlet-mapping>
 </web-app>
