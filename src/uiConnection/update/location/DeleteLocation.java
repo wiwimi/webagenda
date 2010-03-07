@@ -31,14 +31,11 @@ public class DeleteLocation extends HttpServlet {
 		    {
     	  
 		        response.setContentType("text/html;charset=UTF-8");
-				response.sendRedirect("wa_location/updateLocation.jsp?message=false");
 		      //Create or get the session object from the HTTPSession object
 		       // HttpSession session = request.getSession();
 		       
 		        PrintWriter out = response.getWriter();
 		        String locName = request.getParameter("locName");
-		        out.println("Hellow");
-		        out.println(locName);
 		        
 		        boolean success;
 				
@@ -92,6 +89,8 @@ public class DeleteLocation extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		processRequest(request, response);
 	}
 
 	/**
@@ -99,13 +98,6 @@ public class DeleteLocation extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		processRequest(request, response);
-		
-
-		
-		
-		//response.sendRedirect("wa_location/newLocation.jsp");
 		
 	}
 
