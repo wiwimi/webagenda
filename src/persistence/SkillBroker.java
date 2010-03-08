@@ -97,7 +97,7 @@ public class SkillBroker extends Broker<Skill> {
 			int result = stmt.executeUpdate(delete);
 			
 			if (result != 1)
-				throw new DBException("Failed to delete location, result count incorrect: " +	result);
+				throw new DBException("Failed to delete skill, result count incorrect: " +	result);
 			else
 				success = true;
 			}

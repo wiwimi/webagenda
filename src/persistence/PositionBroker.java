@@ -82,8 +82,34 @@ public class PositionBroker extends Broker<Position> {
 	@Override
 	public boolean delete(Position deleteObj) throws DBException,
 			DBDownException {
-		// TODO Auto-generated method stub
-		return false;
+		if (deleteObj== null)
+			throw new NullPointerException("Can not delete null position.");
+		
+		if (deleteObj.getName() == null)
+			throw new DBException("Missing Required Field: Name");
+		
+		String delete = String.format(
+				"DELETE FROM `WebAgenda`.`POSITION` WHERE positionName = '%s';",
+				deleteObj.getName());
+		
+		boolean success;
+		try
+			{
+			DBConnection conn = this.getConnection();
+			Statement stmt = conn.getConnection().createStatement();
+			int result = stmt.executeUpdate(delete);
+			
+			if (result != 1)
+				throw new DBException("Failed to delete position, result count incorrect: " +	result);
+			else
+				success = true;
+			}
+		catch (SQLException e)
+			{
+			throw new DBException("Failed to delete position.",e);
+			}
+		
+		return success;
 	}
 
 	@Override
@@ -153,8 +179,37 @@ public class PositionBroker extends Broker<Position> {
 	@Override
 	public boolean update(Position updateObj) throws DBException,
 			DBDownException {
-		// TODO Auto-generated method stub
-		return false;
+		if (updateObj == null)
+			throw new NullPointerException("Can not update null position.");
+		
+		if (updateObj.getName() == null)
+			throw new NullPointerException(
+					"Can not update position without a name.");
+		
+		// Create sql update statement from employee object.
+		String update = String.format(
+				"UPDATE `WebAgenda`.`POSITION` SET positionDescription = '%s' WHERE positionName = '%s';",
+				updateObj.getDescription(),updateObj.getName());
+		
+		// Get DB connection, send update, and reopen connection for other users.
+		try
+			{
+			DBConnection conn = this.getConnection();
+			Statement stmt = conn.getConnection().createStatement();
+			int updateRowCount = stmt.executeUpdate(update);
+			conn.setAvailable(true);
+			
+			// Ensure
+			if (updateRowCount != 1)
+				throw new DBException(
+						"Failed to update position: rowcount incorrect.");
+			}
+		catch (SQLException e)
+			{
+			throw new DBException("Failed to update position.", e);
+			}
+		
+		return true;
 	}
 
 }

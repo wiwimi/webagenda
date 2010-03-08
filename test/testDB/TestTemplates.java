@@ -23,12 +23,17 @@ public class TestTemplates {
 			Position[] posarray = pbrok.get(new Position("Cook"));
 			for(Position p : posarray)
 				System.out.println(p);
-			
+			System.out.println(pbrok.delete(new Position("Fryer")));
 			pbrok.create(new Position("Fryer"));
 			
 			posarray = pbrok.get(new Position("Fryer"));
+			pbrok.update(new Position("Fryer","someone who fries food"));
+			posarray = pbrok.get(new Position("Cook"));
 			for(Position p : posarray)
 				System.out.println(p);
+			
+			pbrok.get(new Position("Fryer"));
+			
 		} catch (DBException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
