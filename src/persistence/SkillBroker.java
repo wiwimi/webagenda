@@ -47,7 +47,7 @@ public class SkillBroker extends Broker<Skill> {
 				"INSERT INTO `WebAgenda`.`SKILL` " +
 				"(`skillName`, `skillDescription`)" +
 				" VALUES (%s,%s);",
-				createObj.getName(),
+				"'" + createObj.getName() + "'",
 				(createObj.getDesc() == null ? "NULL" : "'" + createObj.getDesc() + "'"));
 				
 		/*

@@ -36,8 +36,47 @@ public class PositionBroker extends Broker<Position> {
 	@Override
 	public boolean create(Position createObj) throws DBException,
 			DBDownException {
-		// TODO Auto-generated method stub
-		return false;
+		if (createObj == null)
+			throw new NullPointerException("Can not create null Position.");
+		
+		if (createObj.getName() == null)
+			throw new DBException("Missing Required Fields: Name");
+		
+		/*
+		 * Create insert string.
+		 */
+		String insert = String.format(
+				"INSERT INTO `WebAgenda`.`POSITION` " +
+				"(`positionName`, `positionDescription`)" +
+				" VALUES (%s,%s);",
+				"'" + createObj.getName() + "'",
+				(createObj.getDescription() == null ? "NULL" : "'" + createObj.getDescription() + "'"));
+				
+		/*
+		 * Send insert to database. SQL errors such as primary key already in use
+		 * will be caught, and turned into our own DBAddException, so this method
+		 * will only have one type of exception that needs to be caught. If the
+		 * insert is successful, return true.
+		 */
+		try
+			{
+			DBConnection conn = this.getConnection();
+			Statement stmt = conn.getConnection().createStatement();
+			int result = stmt.executeUpdate(insert);
+			conn.setAvailable(true);
+			
+			if (result != 1)
+				throw new DBException(
+						"Failed to create position, result count incorrect: " +
+								result);
+			}
+		catch (SQLException e)
+			{
+			// TODO Need additional SQL exception processing here.
+			throw new DBException("Failed to create position.", e);
+			}
+		
+		return true;
 	}
 
 	@Override

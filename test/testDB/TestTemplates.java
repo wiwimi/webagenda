@@ -20,8 +20,15 @@ public class TestTemplates {
 		
 		PositionBroker pbrok = PositionBroker.getBroker();
 		try {
-			int i = pbrok.get(new Position("Cook")).length;
-			System.out.println(i);
+			Position[] posarray = pbrok.get(new Position("Cook"));
+			for(Position p : posarray)
+				System.out.println(p);
+			
+			pbrok.create(new Position("Fryer"));
+			
+			posarray = pbrok.get(new Position("Fryer"));
+			for(Position p : posarray)
+				System.out.println(p);
 		} catch (DBException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
