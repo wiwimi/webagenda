@@ -4,53 +4,120 @@
 package business.schedule;
 
 import java.sql.Time;
+import utilities.DoubleLinkedList;
 
 /**
- * @author peon-dev
- * @version 0.01.00
- *
+ * @author Daniel Kettle, Daniel Wehr
+ * @version 0.2.0
  */
-public class Shift {
-
-	/** When the working shift starts */
-	private Time start_time									= null;
-	/** When the working shift ends */
-	private Time end_time									= null;
-
-	public Shift(Time start, Time end)
+public class Shift
 	{
-		this.start_time = start;
-		this.end_time = end;
-	}
+	
+	/**
+	 * The internal DB ID of the shift. This is for broker use only.
+	 */
+	private Integer shiftID = null;
+	
+	/**
+	 * The internal DB ID of the schedule the shift belongs to. This is for
+	 * broker use only.
+	 */
+	private Integer schedID = null;
+	
+	/**
+	 * The time at which the shift begins.
+	 */
+	private Time startTime = null;
+	
+	/**
+	 * The time at which the shift ends.
+	 */
+	private Time endTime = null;
+	
+	/**
+	 * The employees that will be working during this shift.
+	 */
+	private DoubleLinkedList<String> employees = new DoubleLinkedList<String>();
+	
+	/**
+	 * Default/Empty constructor.
+	 */
+	public Shift() {}
 
 	/**
-	 * @return the start_time
+	 * @return the shiftID
 	 */
-	public Time getStart_time() {
-		return start_time;
-	}
+	public Integer getShiftID()
+		{
+		return shiftID;
+		}
 
 	/**
-	 * @return the end_time
+	 * @param shiftID the shiftID to set
 	 */
-	public Time getEnd_time() {
-		return end_time;
-	}
+	public void setShiftID(Integer shiftID)
+		{
+		this.shiftID = shiftID;
+		}
 
 	/**
-	 * @param startTime the start_time to set
+	 * @return the schedID
 	 */
-	public void setStart_time(Time startTime) {
-		start_time = startTime;
-	}
+	public Integer getSchedID()
+		{
+		return schedID;
+		}
 
 	/**
-	 * @param endTime the end_time to set
+	 * @param schedID the schedID to set
 	 */
-	public void setEnd_time(Time endTime) {
-		end_time = endTime;
-	}
+	public void setSchedID(Integer schedID)
+		{
+		this.schedID = schedID;
+		}
+
+	/**
+	 * @return the startTime
+	 */
+	public Time getStartTime()
+		{
+		return startTime;
+		}
+
+	/**
+	 * @param startTime the startTime to set
+	 */
+	public void setStartTime(Time startTime)
+		{
+		this.startTime = startTime;
+		}
+
+	/**
+	 * @return the endTime
+	 */
+	public Time getEndTime()
+		{
+		return endTime;
+		}
+
+	/**
+	 * @param endTime the endTime to set
+	 */
+	public void setEndTime(Time endTime)
+		{
+		this.endTime = endTime;
+		}
+
+	/**
+	 * @return the employees
+	 */
+	public DoubleLinkedList<String> getEmployees()
+		{
+		return employees;
+		}
 	
 	
 	
-}
+	
+	
+	}
