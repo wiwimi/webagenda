@@ -47,7 +47,7 @@ public class NotificationBroker extends Broker<Notification> {
 		 */
 		String insert = String.format(
 				"INSERT INTO `WebAgenda`.`NOTIFICATION` " +
-				"(`notificationID`, `senderID`,`recipientID`,`sentTime`,`viewed`,`message`,`type`)" +
+				"(`notificationID`, `senderID`,`recipientID`,`viewed`,`message`,`type`)" +
 				" VALUES (%s,%s,%s,%s,%s,%s);",
 				createObj.getNotificationID(), createObj.getSenderID(), createObj.getRecipientID(),
 				createObj.isViewed(),
