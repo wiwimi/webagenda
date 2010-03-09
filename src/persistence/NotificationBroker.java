@@ -23,18 +23,69 @@ import business.schedule.Location;
  */
 public class NotificationBroker extends Broker<Notification> {
 
+	private static volatile NotificationBroker nbrok = null;
+	
+	private NotificationBroker()
+	{
+		
+	}
+	
+	public static NotificationBroker getBroker()
+	{
+		if(nbrok == null) nbrok = new NotificationBroker();
+		return nbrok;
+	}
+	
 	@Override
 	public boolean create(Notification createObj) throws DBException,
 			DBDownException {
-		// TODO Auto-generated method stub
-		return false;
+		if (createObj == null)
+			throw new NullPointerException("Can not create null notification.");
+		
+		/*
+		 * Create insert string.
+		 */
+		String insert = String.format(
+				"INSERT INTO `WebAgenda`.`NOTIFICATION` " +
+				"(`notificationID`, `senderID`,`recipientID`,`sentTime`,`viewed`,`message`,`type`)" +
+				" VALUES (%s,%s,%s,NOW(),%s,%s,%s);",
+				createObj.getNotificationID(), createObj.getSenderID(), createObj.getRecipientID(),
+				createObj.isViewed(),
+				(createObj.getMessage() == null ? "NULL" : "'" + createObj.getMessage() + "'"),
+				(createObj.getType() == null ? "NULL" : "'" + createObj.getType() + "'"));
+		System.out.println(insert);		
+		/*
+		 * Send insert to database. SQL errors such as primary key already in use
+		 * will be caught, and turned into our own DBAddException, so this method
+		 * will only have one type of exception that needs to be caught. If the
+		 * insert is successful, return true.
+		 */
+		try
+			{
+			DBConnection conn = this.getConnection();
+			Statement stmt = conn.getConnection().createStatement();
+			int result = stmt.executeUpdate(insert);
+			conn.setAvailable(true);
+			
+			if (result != 1)
+				throw new DBException(
+						"Failed to create notification, result count incorrect: " +
+								result);
+			}
+		catch (SQLException e)
+			{
+			// TODO Need additional SQL exception processing here.
+			throw new DBException("Failed to create notification.", e);
+			}
+		
+		return true;
 	}
 
 	@Override
 	public boolean delete(Notification deleteObj) throws DBException,
 			DBDownException {
 		if (deleteObj == null)
-			throw new NullPointerException("Can not delete null location.");
+			throw new NullPointerException("Can not delete null notification.");
 		
 		String delete = String.format(
 				"DELETE FROM `WebAgenda`.`NOTIFICATION` WHERE notificationID = '%s';",
