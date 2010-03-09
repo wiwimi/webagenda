@@ -37,10 +37,11 @@ public class AddLocation extends HttpServlet {
 				String desc = request.getParameter("desc");	
 				
 				boolean success;
+				LocationBroker broker = null;
 				
 				try {
 					    
-						LocationBroker broker = LocationBroker.getBroker();
+						broker = LocationBroker.getBroker();
 						broker.initConnectionThread();
 						
 						Location loc = new Location(locName, desc);
@@ -72,6 +73,7 @@ public class AddLocation extends HttpServlet {
 				finally
 				{
 					out.close();
+					broker.stopConnectionThread();
 				}
 		   }
     public AddLocation() {

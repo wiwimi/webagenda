@@ -57,11 +57,11 @@
 								<div>	 	
 									
 									<label for="password" class = "label" > New Password: <em class="asterisk"> * </em> </label> 
-									<input type="password"  name ="password" id="password"/> 
+									<input type="password"  name ="password" id="password" size ="6" maxlength="8"//> 
 								</div>	
 								<div>
 									<label for="confirm_password" class = "label" >Confirm password  <em class="asterisk"> * </em>  </label>
-									<input id="confirm_password" name="confirm_password" type="password" />
+									<input id="confirm_password" name="confirm_password" type="password" size ="6" maxlength="8"/>
 								</div>	 
 						</fieldset>
 						<br> 

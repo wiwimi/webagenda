@@ -62,7 +62,7 @@
 							<script type="text/javascript">
 								$(function()
 								    {
-										$.flashMessenger("The location was not delete, please contact your Admin.",
+										$.flashMessenger("The location was not deleted, please contact your Admin.",
 								        {
 											   modal:true,
 							    		       clsName:"err", 
@@ -85,7 +85,9 @@
 			</div>
 			
 			<div id="searchArea">
-				<input type="text" value="" size=30></input><button type="submit" value="Search">Search</button>
+				<input type="text" size=30/>
+				<input type="submit" name="search"  class="button" value="Search" > 
+				
 			</div>
 			<div id="tableArea">
 							<div class="userAdmin">
@@ -105,31 +107,41 @@
 					<tbody>
 						<% 
 							LocationBroker broker = LocationBroker.getBroker();
-							Location loc = new Location("");
-							Location[] locArray = broker.get(loc);
-							for (Location printLoc : locArray)
+							Location loc= null;
+							if(request.getParameter("locName").equals(null))
 							{
-								System.out.println(printLoc);
+								
+								loc = new Location("");
 							}
-							for(int index = 0; index < locArray.length; index++)
+							else
 							{
-						%>
-								<tr>
-								<td>
-											
-									<a href="addLocation.jsp"><div id="locationImage"> <b> <%=locArray[index].getName()%> </b></div></a>
-									<div class="row-actions"><span class='edit'>
-									<a href="#"> Edit </a>   | </span>  <span class='delete'>
-									<a href="javascript:;" onClick="removeLocation('<%=locArray[index].getName()%>');">
-										Delete
-									</a></span></div>
-								</td>
-								<td>
-									<a href="addLocation.jsp?=<%=locArray[index].getName()%>"> <%=locArray[index].getDesc()%> </a>
-								</td>
-						<% 
+								loc =new Location(request.getParameter("locName"));
 							}
-						%>			
+								Location[] locArray = broker.get(loc);
+								for (Location printLoc : locArray)
+								{
+									System.out.println(printLoc);
+								}
+								for(int index = 0; index < locArray.length; index++)
+								{
+							%>
+									<tr>
+									<td>
+												
+										<a href="addLocation.jsp"><div id="locationImage"> <b> <%=locArray[index].getName()%> </b></div></a>
+										<div class="row-actions"><span class='edit'>
+										<a href="#"> Edit </a>   | </span>  <span class='delete'>
+										<a href="javascript:;" onClick="removeLocation('<%=locArray[index].getName()%>');">
+											Delete
+										</a></span></div>
+									</td>
+									<td>
+										<a href="addLocation.jsp?=<%=locArray[index].getName()%>"> <%=locArray[index].getDesc()%> </a>
+									</td>
+							<% 
+								}
+							
+							%>			
 					</tbody>
 				</table>
 			</div>
@@ -155,7 +167,6 @@
 				});
 			 }
 </script>
-
 </body>
 </html>
 

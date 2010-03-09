@@ -241,5 +241,10 @@ tbody
 	top:5px;
 	content: url(../../lib/images/icons/Color/001_54.png)
 }
+h1
+{
+	color: gray;
+	
+}
 
 

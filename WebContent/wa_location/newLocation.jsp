@@ -2,6 +2,8 @@
 <%@ page import="persistence.LocationBroker" %>
 <%@ page import="business.schedule.Location" %>
 
+<%@ page import="java.util.*" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- Author: Noorin -->
 <html>
@@ -27,7 +29,7 @@
 <script src= "../lib/js/val.js" type="text/javascript"> </script>
 
 <!--  CSS files -->
-<link rel="stylesheet" href="CSS/location.css" type="text/css"></link>
+<link rel="stylesheet" href="../CSS/creationForm.css" type="text/css"></link>
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/val.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/screen.css" />
@@ -92,13 +94,13 @@
 			
 		<div class="widgetLowerRectangle" id="locationsLowerRectangle">
 
-		<div id ="addLocation">
-			<form class="addLocationForm" action="../AddLocation" id="form" method="POST">
+		<div id ="creationForm">
+			<form class="addLocationForm" action="../AddLocation" id="form" name="form" method="POST">
 			<div id="location">
 			
 			 <div id="searchArea">
 					        <input type="submit" name="submit"  class="button" value="Add" > 
-							<input type="button" name="submit" class="button"  onClick="location.href='updateLocation.jsp'" value="Search" > 
+							<input type="button" name="submit" class="button"  onClick="location.href='updateLocation.jsp?locName=' + form.locName.value" value="Search" > 
 					       	<input type="reset" name="clear" class="button" value="Clear Screen"> 
 			     </div>
 			     <fieldset>
@@ -111,7 +113,7 @@
 				</fieldset>
 				<div id="searchArea">
 						        <input type="submit" name="submit"  class="button" value="Add" > 
-								<input type="button" name="submit" class="button"  onClick="location.href='updateLocation.jsp'" value="Search" > 
+								<input type="button" name="submit" class="button"  onClick="location.href='updateLocation.jsp?locName=' + form.locName.value" value="Search" > 
 								<input type="reset" name="clear" class="button" value="Clear Screen"> 
 				</div>
 			  </div>

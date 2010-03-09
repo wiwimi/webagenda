@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page import="persistence.SkillBroker" %>
+<%@ page import="business.Skill" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- Author: Noorin -->
 <html>
@@ -17,14 +20,14 @@
 <!-- Javascript Files -->
 <script src="../lib/js/cmxforms.js" type="text/javascript"></script>
 <script src= "../lib/js/val.js" type="text/javascript"> </script>
+<script type="text/javascript" src="../lib/js/popup.js"></script>
 
 <!--  CSS files -->
 <link rel="stylesheet" href="CSS/user.css" type="text/css"></link>
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/val.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/screen.css" />
-
-
+<link rel="stylesheet" href="../CSS/Popup/popup.css" type="text/css"></link>
 
 </head>
 <body>
@@ -58,17 +61,14 @@
 							<p>	<label class="label"> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="skillName" class="required" size ="30"> </p>
 							
 							
-								<!--This should be populated from MaintainSkills use case -->
-							<p>
-									<label id="theSelect" class="theSelect"> Required Skills: </label>  
-											<select name="skills" size=3 multiple>
-													<option value="1">Accounting</option>
-													<option value="2">Cooking</option>
-													<option value="3">Event Planning</option>
-											</select>
-											<br></br>
-											<br></br>
-							</p>		
+									<!--This should be populated from MaintainSkills use case -->
+							 	<div id="skillsButton">
+								<p>
+										<label id="theSelect" class="theSelect"> Required Skills: </label>	
+										<input id="prefSkillsBox" type="text" size="30" maxlength="30" disabled="disabled" value="skills go here" name="prefSkillsBox" />
+										<input type="button" name="submit" class="button" value="edit"/>
+								</p>
+								</div>	
 							
 							<p>	<label class="label"> Description: </label></p>
 							<textarea  name="descreption" cols="23" rows="6" tabindex="101"></textarea>
@@ -88,6 +88,62 @@
 			</div>
 
 </div>
+				<div id="popupContact2">
+					<a id="popupContactClose2">x</a>
+					<h1>Skills</h1>
+					<div id="tableArea">
+							<div class="userAdmin">
+				<table class="sortable" id="userTable">
+					<thead class="head">
+						<tr class="headerRow">
+							<th>Name</th>
+							<th>Description</th>
+				
+						</tr>
+					</thead>
+					
+					<tfoot class="foot">
+						<tr class="headerRow">
+							<th>Name</th>
+							<th>Description</th>
+						</tr>
+					</tfoot>
+					<tbody>
+						<% 
+							SkillBroker broker2 = SkillBroker.getBroker();
+							
+							Skill skill = new Skill("");
+							Skill[] skillArray = broker2.get(skill);
+							
+							for(int index = 0; index <skillArray.length; index++)
+							{
+						%>
+							<tr>
+							   <td>
+											
+									<a href="newSkill.jsp?=<%=skillArray[index].getName()%>"> <b> <%=skillArray[index].getName()%> </b></a>
+								    
+								</td>
+								<td>
+										<input type="checkbox" name="option"> 
+								</td>
+							</tr>
+						<% 
+							}
+						%>			
+								
+					</tbody>
+				</table>
+				
+			</div>
+			
+			</div> <!-- End Table Area -->
+			
+			<p>
+				<input type="button" name="save" class="button" value="Save"/>
+			</p>
+			</div>
+<div id="backgroundPopup"></div>
 <div id="footer"></div>
 
 </body>
