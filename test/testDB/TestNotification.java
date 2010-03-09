@@ -25,7 +25,15 @@ public class TestNotification {
 		
 		NotificationBroker nbrok = NotificationBroker.getBroker();
 		try {
+			Notification[] nots = nbrok.get(null); // get all
+			for(int i = 0; i < nots.length; i++)
+			{
+				System.out.println(nots[i]);
+			}
+			
+			nbrok.delete(new Notification(3,5,5,false,"Hello World","test"));
 			boolean b = nbrok.create(new Notification(3, 5, 5,false, "Hello World", "test"));
+			
 			System.out.println(b);
 		} catch (DBException e) {
 			// TODO Auto-generated catch block

@@ -42,6 +42,13 @@ public class Notification extends BusinessObject {
 		this.type = type;
 	}
 	
+	public Notification(int notificationID,int senderID,int recipientID,
+			Timestamp time, boolean viewed, String message, String type)
+	{
+		this(notificationID,senderID,recipientID,viewed,message,type);
+		this.sentTime = time;
+	}
+	
 	
 	/**
 	 * @return the notificationID

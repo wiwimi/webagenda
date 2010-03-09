@@ -53,7 +53,6 @@ public class NotificationBroker extends Broker<Notification> {
 				createObj.isViewed(),
 				(createObj.getMessage() == null ? "NULL" : "'" + createObj.getMessage() + "'"),
 				(createObj.getType() == null ? "NULL" : "'" + createObj.getType() + "'"));
-		System.out.println(insert);		
 		/*
 		 * Send insert to database. SQL errors such as primary key already in use
 		 * will be caught, and turned into our own DBAddException, so this method
@@ -128,7 +127,7 @@ public class NotificationBroker extends Broker<Notification> {
 			}
 		
 		// Get DB connection, send query, and reopen connection for other users.
-		// Parse returned ResultSet into array of locations.
+		// Parse returned ResultSet into array of notifications.
 		Notification[] foundNotifications;
 		try
 			{
@@ -144,7 +143,7 @@ public class NotificationBroker extends Broker<Notification> {
 			throw new DBException("Failed to complete location search.",e);
 			}
 		
-		// Return locations that matched search.
+		// Return notifications that matched search.
 		return foundNotifications;
 	}
 
@@ -160,7 +159,7 @@ public class NotificationBroker extends Broker<Notification> {
 			int resultCount = rs.getRow();
 			noteList = new Notification[resultCount];
 			
-			// Return ResultSet to beginning to start retrieving locations.
+			// Return ResultSet to beginning to start retrieving notifications.
 			rs.beforeFirst();
 			for (int i = 0; i < resultCount && rs.next(); i++)
 				{
@@ -181,11 +180,11 @@ public class NotificationBroker extends Broker<Notification> {
 		if (updateObj == null)
 			throw new NullPointerException("Can not update null notification.");
 		
-		// Create sql update statement from location object.
+		// Create sql update statement from notification object.
 		String update = String.format(
 				"UPDATE `WebAgenda`.`NOTIFICATION` SET senderID = '%s',recipientID = '%s', sentTime = '%s',  viewed = '%s', " +
 				"message = '%s', type = '%s' " +
-				"WHERE notificationID = '%s';",
+				"WHERE notificationID = %s;",
 				updateObj.getSenderID(), updateObj.getRecipientID(), updateObj.getSentTime(), updateObj.isViewed(), updateObj.getMessage(),
 				updateObj.getType(), updateObj.getNotificationID());
 		
