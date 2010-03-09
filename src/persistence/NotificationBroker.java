@@ -11,6 +11,7 @@ import exception.DBDownException;
 import exception.DBException;
 import application.DBConnection;
 import business.Notification;
+import business.schedule.Location;
 
 
 /**
@@ -32,15 +33,68 @@ public class NotificationBroker extends Broker<Notification> {
 	@Override
 	public boolean delete(Notification deleteObj) throws DBException,
 			DBDownException {
-		// TODO Auto-generated method stub
-		return false;
+		if (deleteObj == null)
+			throw new NullPointerException("Can not delete null location.");
+		
+		String delete = String.format(
+				"DELETE FROM `WebAgenda`.`NOTIFICATION` WHERE notificationID = '%s';",
+				deleteObj.getNotificationID());
+		
+		boolean success;
+		try
+			{
+			DBConnection conn = this.getConnection();
+			Statement stmt = conn.getConnection().createStatement();
+			int result = stmt.executeUpdate(delete);
+			
+			if (result != 1)
+				throw new DBException("Failed to delete notification, result count incorrect: " +	result);
+			else
+				success = true;
+			}
+		catch (SQLException e)
+			{
+			throw new DBException("Failed to delete notification.",e);
+			}
+		
+		return success;
 	}
 
 	@Override
 	public Notification[] get(Notification searchTemplate) throws DBException,
 			DBDownException {
-		// TODO Auto-generated method stub
-		return null;
+		String select;
+		
+		if (searchTemplate == null)
+			{
+			select = "SELECT * FROM `WebAgenda`.`NOTIFICATION`;";
+			}
+		else
+			{
+			select = String.format(
+					"SELECT * FROM `WebAgenda`.`NOTIFICATION` WHERE notificationID LIKE '%s%%'",
+					searchTemplate.getNotificationID());
+			}
+		
+		// Get DB connection, send query, and reopen connection for other users.
+		// Parse returned ResultSet into array of locations.
+		Notification[] foundNotifications;
+		try
+			{
+			DBConnection conn = this.getConnection();
+			Statement stmt = conn.getConnection().createStatement();
+			ResultSet searchResults = stmt.executeQuery(select);
+			conn.setAvailable(true);
+			
+			foundNotifications = parseResults(searchResults);
+			}
+		catch (SQLException e)
+			{
+			throw new DBException("Failed to complete location search.",e);
+			}
+		
+		// Return locations that matched search.
+		return foundNotifications;
 	}
 
 	@Override

@@ -107,7 +107,7 @@ public class LocationBroker extends Broker<Location>
 			throw new DBException("Missing Required Field: Name");
 		
 		String delete = String.format(
-				"DELETE FROM `WebAgenda`.`Location` WHERE locName = '%s';",
+				"DELETE FROM `WebAgenda`.`LOCATION` WHERE locName = '%s';",
 				deleteLocation.getName());
 		
 		boolean success;
