@@ -31,13 +31,12 @@ public class Notification extends BusinessObject {
 	// FIXME: I'm a little unsure of how notifications are supposed to be
 	// constructed. Modify if wrong.
 	
-	public Notification(int notificationID,int senderID,int recipientID,Timestamp sentTime,
+	public Notification(int notificationID,int senderID,int recipientID,
 			boolean viewed, String message, String type)
 	{
 		this.notificationID = notificationID;
 		this.senderID = senderID;
 		this.recipientID = recipientID;
-		this.sentTime = sentTime;
 		this.viewed = viewed;
 		this.message = message;
 		this.type = type;

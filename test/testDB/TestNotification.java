@@ -25,7 +25,7 @@ public class TestNotification {
 		
 		NotificationBroker nbrok = NotificationBroker.getBroker();
 		try {
-			boolean b = nbrok.create(new Notification(5, 5, 5, new Timestamp(100L), false, "Hello World", "test"));
+			boolean b = nbrok.create(new Notification(5, 5, 5,false, "Hello World", "test"));
 			System.out.println(b);
 		} catch (DBException e) {
 			// TODO Auto-generated catch block
