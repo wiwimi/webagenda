@@ -3,6 +3,8 @@
 <%@ page import="business.schedule.Location" %>
 <%@ page import="persistence.SkillBroker" %>
 <%@ page import="business.Skill" %>
+<%@ page import="business.schedule.Position" %>
+<%@ page import="persistence.PositionBroker" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- Author: Noorin -->
@@ -96,12 +98,14 @@
 						<input type="button" name="submit" class="button" value="edit"/>
 					</p>
 							<!--This should be populated from MaintainJobType use case -->
+				    <div id="posButton">
 					<p>
 						
 							<label id="theSelect" class="theSelect"> Preferred Positions: </label>  
 							<input id="prefPositionBox" type="text" size="30" maxlength="30" disabled="disabled" value="positions go here" name="prefPositionBox" />
 							<input type="button" name="submit" class="button" value="edit"/>
-					</p>	
+					</p>
+					</div>
 							<!--This should be populated from MaintainLocation use case -->
 					<div id="locationsButton">
 				    <p>		
@@ -143,7 +147,7 @@
 
 			</div>
 			
-			<div id="popupContact">
+			<div id="locationsPopup">
 				<a id="popupContactClose">x</a>
 				<h1>Locations</h1>
 					<div id="tableArea">
@@ -195,7 +199,7 @@
 			</p>
 			</div>
 			
-				<div id="popupContact2">
+				<div id="skillsPopup">
 					<a id="popupContactClose2">x</a>
 					<h1>Skills</h1>
 					<div id="tableArea">
@@ -250,6 +254,63 @@
 				<input type="button" name="save" class="button" value="Save"/>
 			</p>
 			</div>
+			
+			<div id="positionsPopup">
+					<a id="#posPopupClose">x</a>
+					<h1>Positions</h1>
+					<div id="tableArea">
+							<div class="userAdmin">
+				<table class="sortable" id="userTable">
+					<thead class="head">
+						<tr class="headerRow">
+							<th>Name</th>
+							<th>Description</th>
+				
+						</tr>
+					</thead>
+					
+					<tfoot class="foot">
+						<tr class="headerRow">
+							<th>Name</th>
+							<th>Description</th>
+						</tr>
+					</tfoot>
+					<tbody>
+						<% 
+							PositionBroker broker3 = PositionBroker.getBroker();
+							
+							Position pos = new Position("");
+							Position[] posArray = broker3.get(pos);
+							
+							for(int index = 0; index <posArray.length; index++)
+							{
+						%>
+							<tr>
+							   <td>
+											
+									<a href="newPosition.jsp?=<%=posArray[index].getName()%>"> <b> <%=posArray[index].getName()%> </b></a>
+								
+								</td>
+								<td>
+										<input type="checkbox" name="option"> 
+								</td>
+							</tr>
+						<% 
+							}
+						%>			
+								
+					</tbody>
+				</table>
+				
+			</div>
+			
+			</div> <!-- End Table Area -->
+			
+			<p>
+				<input type="button" name="save" class="button" value="Save"/>
+			</p>
+			</div>
+			
 
 <div id="backgroundPopup"></div>
 

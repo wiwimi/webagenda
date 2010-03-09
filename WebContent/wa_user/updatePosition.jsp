@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
-<%@ page import="business.Position" %>
+<%@ page import="business.schedule.Position" %>
 <%@ page import="persistence.PositionBroker" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -66,8 +66,7 @@
 							PositionBroker broker = PositionBroker.getBroker();
 							
 							Position pos = new Position("");
-							Position[] posArray=null;
-							//broker.create(pos);
+							Position[] posArray = broker.get(pos);
 							
 							for(int index = 0; index <posArray.length; index++)
 							{
@@ -81,7 +80,7 @@
 									<a class='submitdelete' href='#'>Delete</a></span></div>
 								</td>
 								<td>
-									<a href="newPosition.jsp?=<%= posArray[index].getName() %>"> <%=posArray[index].getDesc()%> </a>
+									<a href="newPosition.jsp?=<%= posArray[index].getName() %>"> <%=posArray[index].getDescription()%> </a>
 								</td>
 							</tr>
 						<% 
