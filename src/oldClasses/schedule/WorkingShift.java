@@ -1,11 +1,12 @@
 /**
  * business - WorkingShift.java
  */
-package business.schedule;
+package oldClasses.schedule;
 
 import java.sql.Time;
 
 import business.BusinessObject;
+import business.schedule.Shift;
 
 
 /**

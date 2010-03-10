@@ -1,7 +1,7 @@
 /**
  * business.schedule - WorkingSchedule.java
  */
-package business.schedule;
+package oldClasses.schedule;
 
 import business.BusinessObject;
 

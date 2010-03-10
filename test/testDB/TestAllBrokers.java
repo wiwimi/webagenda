@@ -78,7 +78,7 @@ public class TestAllBrokers {
 			
 			for(BusinessObject o : bo) {
 				brokers[current_broker].create(bo[current_broker]);
-				assertEquals(brokers[current_broker].get(bo[current_broker]), bo[current_broker]);
+				assertEquals(brokers[current_broker].get(bo[current_broker]).toString(), bo[current_broker]);
 				current_broker++;
 			}
 		} catch (DBException e) {
