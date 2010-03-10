@@ -88,7 +88,7 @@
 			</div>
 
 </div>
-				<div id="popupContact2">
+				<div id="skillsPopup">
 					<a id="popupContactClose2">x</a>
 					<h1>Skills</h1>
 					<div id="tableArea">

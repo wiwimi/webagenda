@@ -6,6 +6,9 @@
 <%@ page import="business.schedule.Position" %>
 <%@ page import="persistence.PositionBroker" %>
 
+<%@ page import="business.Employee" %>
+<%@ page import="persistence.EmployeeBroker" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- Author: Noorin -->
 <html>
@@ -80,7 +83,7 @@
 					
 				</fieldset>
 			</div>
-			<div id="button7">
+			
 			<div id="work">
 			<fieldset>
 				<legend> Working Preferences </legend>
@@ -92,11 +95,13 @@
 					</p>
 									
 							<!--This should be populated from MaintainJobType use case -->
+					<div id="empButton">
 					<p>
 						<label id="theSelect" class="theSelect" for="empId">Employee Id:</label>
 						<input type="text" name="empId" size="30" maxLength="30" disabled="disabled" value=""/>
 						<input type="button" name="submit" class="button" value="edit"/>
 					</p>
+					</div>
 							<!--This should be populated from MaintainJobType use case -->
 				    <div id="posButton">
 					<p>
@@ -134,7 +139,6 @@
 					</p>
 				</fieldset>
 				</div>
-				</div> <!--End button div-->
 				<div id="searchArea">
 						    <input type="submit" name="submit" class="button" value="Save"> 
 							<input type="button" name="submit" class="button" value="Search" onClick="location.href='updateUser.jsp';">
@@ -156,13 +160,13 @@
 					<thead class="head">
 						<tr class="headerRow">
 							<th>Name</th>
-							<th>Description</th>
+							<td> <input type="checkbox" name="option"> </td>
 						</tr>
 					</thead>
 					<tfoot class="foot">
 						<tr class="headerRow">
 							<th>Name</th>
-							<th>Description</th>
+							<td> <input type="checkbox" name="option"> </td>
 						</tr>
 					</tfoot>
 					<tbody>
@@ -208,7 +212,7 @@
 					<thead class="head">
 						<tr class="headerRow">
 							<th>Name</th>
-							<th>Description</th>
+							<td> <input type="checkbox" name="option"> </td>
 				
 						</tr>
 					</thead>
@@ -216,7 +220,7 @@
 					<tfoot class="foot">
 						<tr class="headerRow">
 							<th>Name</th>
-							<th>Description</th>
+							<td> <input type="checkbox" name="option"> </td>
 						</tr>
 					</tfoot>
 					<tbody>
@@ -255,65 +259,112 @@
 			</p>
 			</div>
 			
+			<div id="idPopup">
+			<a id="idPopupClose">x</a>
+					<h1>Employees</h1>
+				<div id="tableArea">
+								<div class="userAdmin">
+					<table class="sortable" id="userTable">
+						<thead class="head">
+							<tr class="headerRow">
+								<th>Employee ID</th>
+								<th>Family Name</th>
+								<th>Given Name</th>
+								<td> <input type="checkbox" name="option"> </td>
+							 </tr>
+						</thead>
+						
+						<tfoot class="foot">
+							<tr class="headerRow">
+								<th>Employee ID</th>
+								<th>Family Name</th>
+								<th>Given Name</th>
+								<td> <input type="checkbox" name="option"> </td>
+							</tr>
+						</tfoot>
+						<tbody>
+							<% 
+								EmployeeBroker empBroker = EmployeeBroker.getBroker();
+							
+								int count = empBroker.getEmpCount();
+								
+								Employee emp = new Employee();
+								emp.setActive(true);
+								Employee[] empArray = empBroker.get(emp);
+								
+								for(int index = 0; index < count; index++)
+								{
+							%>
+										<tr>
+											<td><a href="updateUserProfile.jsp"><div id="profileImage"> <b> <%= empArray[index].getEmpID() %> </b></div></a></td>
+											<td><a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getFamilyName() %></a></td>
+											<td><a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getGivenName() %></a></td>
+											<td> <input type="checkbox" name="option"> </td>
+										</tr>
+							<% 
+								}
+							%>			
+						
+						</tbody>
+					</table>
+					
+				</div>
+				</div> <!-- End Table Area -->
+					<p>
+						<input type="button" name="save" class="button" value="Save"/>
+					</p>
+			</div> <!-- End empPopup div -->
+			
 			<div id="positionsPopup">
-					<a id="#posPopupClose">x</a>
+					<a id="posPopupClose">x</a>
 					<h1>Positions</h1>
 					<div id="tableArea">
-							<div class="userAdmin">
-				<table class="sortable" id="userTable">
-					<thead class="head">
-						<tr class="headerRow">
-							<th>Name</th>
-							<th>Description</th>
-				
-						</tr>
-					</thead>
-					
-					<tfoot class="foot">
-						<tr class="headerRow">
-							<th>Name</th>
-							<th>Description</th>
-						</tr>
-					</tfoot>
-					<tbody>
-						<% 
-							PositionBroker broker3 = PositionBroker.getBroker();
-							
-							Position pos = new Position("");
-							Position[] posArray = broker3.get(pos);
-							
-							for(int index = 0; index <posArray.length; index++)
-							{
-						%>
-							<tr>
-							   <td>
+						<div class="userAdmin">
+							<table class="sortable" id="userTable">
+								<thead class="head">
+									<tr class="headerRow">
+										<th>Name</th>
+										<td> <input type="checkbox" name="option"> </td>
+									</tr>
+								</thead>
+								<tfoot class="foot">
+									<tr class="headerRow">
+										<th>Name</th>
+										<td> <input type="checkbox" name="option"> </td>
+									</tr>
+								</tfoot>
+								<tbody>
+									<% 
+										PositionBroker broker3 = PositionBroker.getBroker();
+										Position pos = new Position("");
+										Position[] posArray = broker3.get(pos);
+										
+										for(int index = 0; index <posArray.length; index++)
+										{
+									%>
+										<tr>
+										   <td>
+														
+												<a href="newPosition.jsp?=<%=posArray[index].getName()%>"> <b> <%=posArray[index].getName()%> </b></a>
 											
-									<a href="newPosition.jsp?=<%=posArray[index].getName()%>"> <b> <%=posArray[index].getName()%> </b></a>
-								
-								</td>
-								<td>
-										<input type="checkbox" name="option"> 
-								</td>
-							</tr>
-						<% 
-							}
-						%>			
-								
-					</tbody>
-				</table>
-				
-			</div>
-			
-			</div> <!-- End Table Area -->
-			
-			<p>
-				<input type="button" name="save" class="button" value="Save"/>
-			</p>
-			</div>
-			
-
+											</td>
+											<td>
+													<input type="checkbox" name="option"> 
+											</td>
+										</tr>
+									<% 
+										}
+									%>			
+											
+								</tbody>
+							</table>
+					</div> <!-- End User Admin div -->
+				</div> <!-- End Table Area -->
+				<p>
+					<input type="button" name="save" class="button" value="Save"/>
+				</p>
+			</div> <!-- End positionsPopup div -->
 <div id="backgroundPopup"></div>
-
 <div id="footer"></div>
 </body>
 </html>

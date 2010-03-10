@@ -12,28 +12,28 @@ background:#000000;
 border:1px solid #cecece;
 z-index:1;
 }
-#locationsPopup, #skillsPopup,  #positionsPopup{
+
+#locationsPopup, #skillsPopup,  #positionsPopup, #idPopup{
 display:none;
 position:relative;
 _position:absolute; /* hack for internet explorer 6*/
-height:384px;
 width:408px;
 background:#FFFFFF;
 border:2px solid #cecece;
 z-index:2;
 padding:12px;
-font-size:13px;
+font-size:100%;
 }
 #locationsPopup h1, #skillsPopup h1,  #positionsPopup h1{
 text-align:left;
 color:	#505050 ;
-font-size:22px;
+font-size:200%;
 font-weight:700;
 border-bottom:1px dotted #D3D3D3;
 padding-bottom:2px;
 margin-bottom:20px;
 }
-#locationsPopup input.button, #skillsPopup input.button, #positionsPopup input.button{
+#locationsPopup input.button, #skillsPopup input.button, #positionsPopup input.button, #idPopup input.button{
 font-family: cochin, Verdana, georgia, Times, helvetica,sans-serif;
 	  font-size:100%;
 	  color:black;
@@ -48,9 +48,9 @@ font-family: cochin, Verdana, georgia, Times, helvetica,sans-serif;
 	  float:right;
 	  
 }
-	#popupContactClose, #popupContactClose2, #posPopupClose
+	#popupContactClose, #popupContactClose2, #posPopupClose, #idPopupClose
 	{
-		font-size:14px;
+		font-size:100%;
 		line-height:14px;
 		right:6px;
 		top:4px;

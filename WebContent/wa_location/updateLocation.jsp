@@ -15,7 +15,7 @@
 <!-- Libraries -->
 <script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>	
 
-<!-- Plugins -->
+<!-- Plug-ins -->
 <script src ="../lib/js/jquery.flashmessenger.js"   type ="text/javascript"> </script>
 
 <!--  CSS files -->
@@ -35,16 +35,17 @@
 <body>
 <br></br>
 
-			<% 
+		
+ 			  <% 
 					if(request.getParameter("message") != null)
 					{
 						if(request.getParameter("message").equals("true"))
 						{
-							//out.println("Location was deleted");
-			 %>
+			  %>
 				
 							<script type="text/javascript">
-		                           $(function()
+		
+								$(function()
 								    {
 										
 										    $.flashMessenger("The location has been successfully deleted", 
@@ -52,17 +53,22 @@
 												modal:true, 
 												autoClose: false 
 											});	
-									 });
+										
+										
+								    });
 								</script>
-			   <% 			   
+			
+			    <% 			   
 						}
-							else if(request.getParameter("message").equals("false"))
+						else if(request.getParameter("message").equals("false"))
 						{
 				%>
+							
 							<script type="text/javascript">
 								$(function()
 								    {
-										$.flashMessenger("The location was not deleted, please contact your Admin.",
+										
+								       $.flashMessenger("An error occured while deleting the location. Please contact your admin",
 								        {
 											   modal:true,
 							    		       clsName:"err", 
@@ -74,6 +80,8 @@
 						}
 					}
 				%>
+			 
+			
 		<div id="locationsWidget" class="fullWidget">
 			<div class="widgetUpperRectangle" id="locationssWidgetUpperRectangle">
 				<div class="widgetTitle" id="locationsTitle">Locations</div>
