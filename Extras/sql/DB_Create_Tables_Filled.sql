@@ -205,8 +205,10 @@ DROP TABLE IF EXISTS `WebAgenda`.`SCHEDULETEMPLATE` ;
 CREATE  TABLE IF NOT EXISTS `WebAgenda`.`SCHEDULETEMPLATE` (
   `schedTempID` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `creatorID` INT UNSIGNED NOT NULL ,
+  `name` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`schedTempID`) ,
   INDEX `fk_SCHEDULETEMPLATE_EMPLOYEE1` (`creatorID` ASC) ,
+  UNIQUE INDEX `name_UNIQUE` (`name` ASC) ,
   CONSTRAINT `fk_SCHEDULETEMPLATE_EMPLOYEE1`
     FOREIGN KEY (`creatorID` )
     REFERENCES `WebAgenda`.`EMPLOYEE` (`empRecordID` )
@@ -241,14 +243,14 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `WebAgenda`.`SHIFTPOS` ;
 
 CREATE  TABLE IF NOT EXISTS `WebAgenda`.`SHIFTPOS` (
-  `shiftID` INT UNSIGNED NOT NULL ,
+  `shiftTempID` INT UNSIGNED NOT NULL ,
   `positionName` VARCHAR(45) NOT NULL ,
   `posCount` INT UNSIGNED NOT NULL ,
-  PRIMARY KEY (`shiftID`, `positionName`) ,
-  INDEX `fk_SHIFTPOS_SHIFT` (`shiftID` ASC) ,
+  PRIMARY KEY (`shiftTempID`, `positionName`) ,
+  INDEX `fk_SHIFTPOS_SHIFT` (`shiftTempID` ASC) ,
   INDEX `fk_SHIFTPOS_POSITION` (`positionName` ASC) ,
   CONSTRAINT `fk_SHIFTPOS_SHIFT`
-    FOREIGN KEY (`shiftID` )
+    FOREIGN KEY (`shiftTempID` )
     REFERENCES `WebAgenda`.`SHIFTTEMPLATE` (`shiftTempID` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
@@ -301,11 +303,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `WebAgenda`.`EMPSHIFT`
+-- Table `WebAgenda`.`SHIFTEMP`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `WebAgenda`.`EMPSHIFT` ;
+DROP TABLE IF EXISTS `WebAgenda`.`SHIFTEMP` ;
 
-CREATE  TABLE IF NOT EXISTS `WebAgenda`.`EMPSHIFT` (
+CREATE  TABLE IF NOT EXISTS `WebAgenda`.`SHIFTEMP` (
   `shiftID` INT UNSIGNED NOT NULL ,
   `empRecordID` INT UNSIGNED NOT NULL ,
   PRIMARY KEY (`shiftID`, `empRecordID`) ,
@@ -356,25 +358,25 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- procedure createEmployee
+-- procedure CREATEEMPLOYEE
 -- -----------------------------------------------------
 
 DELIMITER $$
-DROP procedure IF EXISTS `WebAgenda`.`createEmployee` $$
-CREATE PROCEDURE `WebAgenda`.`createEmployee`
+DROP procedure IF EXISTS `WebAgenda`.`CREATEEMPLOYEE` $$
+CREATE PROCEDURE `WebAgenda`.`CREATEEMPLOYEE`
     (IN inEmpID INT, IN inSupID INT, IN inGivenName VARCHAR(70), IN inFamilyName VARCHAR(70),
-    IN inBirthDate DATE, IN inEmail VARCHAR(20), IN inUsername VARCHAR(20), IN inPassword VARCHAR(20),
-    IN inPosition VARCHAR(20), IN inLocation VARCHAR(20), IN inPLevel VARCHAR(20), OUT result BOOLEAN)
+    IN inBirthDate DATE, IN inEmail VARCHAR(50), IN inUsername VARCHAR(20), IN inPassword VARCHAR(8),
+    IN inPosition VARCHAR(45), IN inLocation VARCHAR(45), IN inPLevel VARCHAR(10), OUT result BOOLEAN)
 BEGIN
     DECLARE numRows INT;
     DECLARE supID INT;
     
     SELECT empRecordID
     INTO supID
-    FROM `WebAgenda`.`Employee`
+    FROM `WebAgenda`.`EMPLOYEE`
     WHERE empID = inSupID;
 	
-    INSERT INTO `WebAgenda`.`Employee`
+    INSERT INTO `WebAgenda`.`EMPLOYEE`
         (`empID`,`supRecordID`,`givenName`,`familyName`,`birthDate`,`email`,
         `username`,`password`,`prefPosition`,`prefLocation`,`plevel`)
     VALUES
@@ -448,15 +450,15 @@ grant DELETE on TABLE `WebAgenda`.`SKILL` to 'WABroker'@'localhost';
 grant INSERT on TABLE `WebAgenda`.`SKILL` to 'WABroker'@'localhost';
 grant SELECT on TABLE `WebAgenda`.`SKILL` to 'WABroker'@'localhost';
 grant UPDATE on TABLE `WebAgenda`.`SKILL` to 'WABroker'@'localhost';
-grant DELETE on TABLE `WebAgenda`.`EMPSHIFT` to 'WABroker'@'localhost';
-grant INSERT on TABLE `WebAgenda`.`EMPSHIFT` to 'WABroker'@'localhost';
-grant SELECT on TABLE `WebAgenda`.`EMPSHIFT` to 'WABroker'@'localhost';
-grant UPDATE on TABLE `WebAgenda`.`EMPSHIFT` to 'WABroker'@'localhost';
+grant DELETE on TABLE `WebAgenda`.`SHIFTEMP` to 'WABroker'@'localhost';
+grant INSERT on TABLE `WebAgenda`.`SHIFTEMP` to 'WABroker'@'localhost';
+grant SELECT on TABLE `WebAgenda`.`SHIFTEMP` to 'WABroker'@'localhost';
+grant UPDATE on TABLE `WebAgenda`.`SHIFTEMP` to 'WABroker'@'localhost';
 grant DELETE on TABLE `WebAgenda`.`SHIFT` to 'WABroker'@'localhost';
 grant INSERT on TABLE `WebAgenda`.`SHIFT` to 'WABroker'@'localhost';
 grant SELECT on TABLE `WebAgenda`.`SHIFT` to 'WABroker'@'localhost';
 grant UPDATE on TABLE `WebAgenda`.`SHIFT` to 'WABroker'@'localhost';
-grant EXECUTE on procedure `WebAgenda`.`createEmployee` to 'WABroker'@'localhost';
+grant EXECUTE on procedure `WebAgenda`.`CREATEEMPLOYEE` to 'WABroker'@'localhost';
 grant DELETE on TABLE `WebAgenda`.`RULE` to 'WABroker'@'localhost';
 grant INSERT on TABLE `WebAgenda`.`RULE` to 'WABroker'@'localhost';
 grant SELECT on TABLE `WebAgenda`.`RULE` to 'WABroker'@'localhost';
@@ -541,5 +543,42 @@ SET AUTOCOMMIT=0;
 insert into `WebAgenda`.`POSSKILL` (`positionName`, `skillName`) values ('Executive Chef', 'Cooking');
 insert into `WebAgenda`.`POSSKILL` (`positionName`, `skillName`) values ('Cook', 'Cooking');
 insert into `WebAgenda`.`POSSKILL` (`positionName`, `skillName`) values ('Waiter', 'Serving');
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `WebAgenda`.`SCHEDULETEMPLATE`
+-- -----------------------------------------------------
+SET AUTOCOMMIT=0;
+insert into `WebAgenda`.`SCHEDULETEMPLATE` (`schedTempID`, `creatorID`, `name`) values (1, 1, 'Test Template');
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `WebAgenda`.`SHIFTTEMPLATE`
+-- -----------------------------------------------------
+SET AUTOCOMMIT=0;
+insert into `WebAgenda`.`SHIFTTEMPLATE` (`shiftTempID`, `schedTempID`, `startTime`, `endTime`) values (1, 1, '08:00:00', '17:00:00');
+insert into `WebAgenda`.`SHIFTTEMPLATE` (`shiftTempID`, `schedTempID`, `startTime`, `endTime`) values (2, 1, '32:00:00', '41:00:00');
+insert into `WebAgenda`.`SHIFTTEMPLATE` (`shiftTempID`, `schedTempID`, `startTime`, `endTime`) values (3, 1, '56:00:00', '65:00:00');
+insert into `WebAgenda`.`SHIFTTEMPLATE` (`shiftTempID`, `schedTempID`, `startTime`, `endTime`) values (4, 1, '80:00:00', '89:00:00');
+insert into `WebAgenda`.`SHIFTTEMPLATE` (`shiftTempID`, `schedTempID`, `startTime`, `endTime`) values (5, 1, '104:00:00', '113:00:00');
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `WebAgenda`.`SHIFTPOS`
+-- -----------------------------------------------------
+SET AUTOCOMMIT=0;
+insert into `WebAgenda`.`SHIFTPOS` (`shiftTempID`, `positionName`, `posCount`) values (1, 'Cook', 3);
+insert into `WebAgenda`.`SHIFTPOS` (`shiftTempID`, `positionName`, `posCount`) values (1, 'Waiter', 3);
+insert into `WebAgenda`.`SHIFTPOS` (`shiftTempID`, `positionName`, `posCount`) values (2, 'Cook', 3);
+insert into `WebAgenda`.`SHIFTPOS` (`shiftTempID`, `positionName`, `posCount`) values (2, 'Waiter', 3);
+insert into `WebAgenda`.`SHIFTPOS` (`shiftTempID`, `positionName`, `posCount`) values (3, 'Cook', 3);
+insert into `WebAgenda`.`SHIFTPOS` (`shiftTempID`, `positionName`, `posCount`) values (3, 'Waiter', 3);
+insert into `WebAgenda`.`SHIFTPOS` (`shiftTempID`, `positionName`, `posCount`) values (4, 'Cook', 3);
+insert into `WebAgenda`.`SHIFTPOS` (`shiftTempID`, `positionName`, `posCount`) values (4, 'Waiter', 3);
+insert into `WebAgenda`.`SHIFTPOS` (`shiftTempID`, `positionName`, `posCount`) values (5, 'Cook', 3);
+insert into `WebAgenda`.`SHIFTPOS` (`shiftTempID`, `positionName`, `posCount`) values (5, 'Waiter', 3);
 
 COMMIT;
