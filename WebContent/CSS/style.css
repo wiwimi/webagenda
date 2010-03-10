@@ -421,7 +421,7 @@
 		content:url(../lib/images/icons/BlckWhite/001_45.png);
 	}
 	
-	#usersTitle, #usersWidgetTitle
+	#usersTitle
 	{
 		font-weight:bold;
 		font-size:1.2em;
@@ -455,7 +455,7 @@
 		content:url(../lib/images/icons/BlckWhite/001_46.png);
 	}
 	
-	#helpTitle, #helpWidgetTitle
+	#helpTitle
 	{
 		font-weight:bold;
 		font-size:1.2em;
@@ -469,7 +469,7 @@
 		content:url(../lib/images/icons/BlckWhite/001_39.png);
 	}
 	
-	#locationsTitle, #locationsWidgetTitle
+	#locationsTitle
 	{
 		font-weight:bold;
 		font-size:1.2em;
@@ -551,6 +551,8 @@
 		padding: 2px 0 0;
 		cursor: pointer;
 	}
+	
+	
 	
 
 	

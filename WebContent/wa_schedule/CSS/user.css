@@ -40,10 +40,9 @@
 	display: inline-block;
 	line-height: 1.8;
 	vertical-align: top;
-	width:10%;
+	width:30%;
 	font: cochin, Times, Verdana, helvetica,sans-serif;
 	font-weight:bold;
-
 }
 .asterisk
 {
@@ -51,27 +50,6 @@
 	font-style: normal;
 	color: #f00;
 }
-
-#userForm input.button
-{ 
-	  color:#000061; 
-	  font: cochin, Times, Verdana, helvetica,sans-serif;
-	  font-weight:bold;
-	  border: 1px solid #000061;
-	  padding-top: 3px;
-	  padding-bottom: 3px;
-	 -webkit-border-top-left-radius:5px; 
-	 -webkit-border-top-right-radius:5px;
-	 -webkit-border-bottom-left-radius:5px; 
-	 -webkit-border-bottom-right-radius:5px;
-	  -moz-border-radius:10px;
-}
-#userForm input.button:hover
-{
-	color:white;
-	background:#000061
-}
-
 fieldset
 {
 	height:75%;
@@ -79,10 +57,9 @@ fieldset
 	margin-right:10px;
 	border:white;
 	border-top:1px solid gray;
-	
-	
 }
-fieldset.focussed {
+fieldset.focussed 
+	{
  border: 1px solid #000061;
 }
 

@@ -68,7 +68,7 @@
 	color: #f00;
 }
 
-#creationForm input.button
+input.button
 { 
 	  font-family: cochin, Verdana, georgia, Times, helvetica,sans-serif;
 	  font-size:80%;
@@ -83,7 +83,7 @@
 	  -moz-border-radius:5px;
 	  
 }
-#creationForm input.button:hover
+input.button:hover
 {
 	color:white;
 	background:#736F6E
