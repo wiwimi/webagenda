@@ -80,101 +80,99 @@
 						}
 					}
 				%>
-			 
-			
-		<div id="locationsWidget" class="fullWidget">
-			<div class="widgetUpperRectangle" id="locationssWidgetUpperRectangle">
-				<div class="widgetTitle" id="locationsTitle">Locations</div>
-		</div>
-			
-		<div class="widgetLowerRectangle" id="locationsWidgetLowerRectangle">
-			<div id="locationsIcon">
-				<h3>Locations</h3>
+			 <div id="locationWidget" class="fullWidget">
+			<div class="widgetUpperRectangle" id="locationsUpperRectangle">
+				<div class="widgetTitle" id="locationsWidgetTitle">Locations</div>
 			</div>
+			<div class="widgetLowerRectangle" id="locationsLowerRectangle">
+				<div id="locationsIcon">
+						<h3>Locations</h3>
+				</div>
+				<div id="searchArea">
+						<input type="text" size=30/>
+						<input type="submit" name="search"  class="button" value="Search" > 
+				</div>
+				<div id="tableArea">
+					<div class="userAdmin">
+						<table class="sortable" id="userTable">
+							<thead class="head">
+								<tr class="headerRow">
+									<th>Name</th>
+									<th>Description</th>
+								</tr>
+							</thead>
+							<tfoot class="foot">
+								<tr class="headerRow">
+									<th>Name</th>
+									<th>Description</th>
+								</tr>
+							</tfoot>
+							<tbody>
+								<% 
+									LocationBroker broker = LocationBroker.getBroker();
+									Location loc= null;
+									if(request.getParameter("locName").equals(null))
+									{
+										
+										loc = new Location("");
+									}
+									else
+									{
+										loc =new Location(request.getParameter("locName"));
+									}
+										Location[] locArray = broker.get(loc);
+										for (Location printLoc : locArray)
+										{
+											System.out.println(printLoc);
+										}
+										for(int index = 0; index < locArray.length; index++)
+										{
+									%>
+											<tr>
+											<td>
+														
+												<a href="addLocation.jsp"><div id="locationImage"> <b> <%=locArray[index].getName()%> </b></div></a>
+												<div class="row-actions"><span class='edit'>
+												<a href="#"> Edit </a>   | </span>  <span class='delete'>
+												<a href="javascript:;" onClick="removeLocation('<%=locArray[index].getName()%>');">
+													Delete
+												</a></span></div>
+											</td>
+											<td>
+												<a href="addLocation.jsp?=<%=locArray[index].getName()%>"> <%=locArray[index].getDesc()%> </a>
+											</td>
+									<% 
+										}
+									
+									%>			
+								</tbody>
+							</table>
+						</div>
+					</div> <!-- End tableArea -->
+				</div> <!-- End widgetLowerRectangle -->
+			</div> <!-- End locationsWidget -->
 			
-			<div id="searchArea">
-				<input type="text" size=30/>
-				<input type="submit" name="search"  class="button" value="Search" > 
-				
-			</div>
-			<div id="tableArea">
-							<div class="userAdmin">
-				<table class="sortable" id="userTable">
-					<thead class="head">
-						<tr class="headerRow">
-							<th>Name</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tfoot class="foot">
-						<tr class="headerRow">
-							<th>Name</th>
-							<th>Description</th>
-						</tr>
-					</tfoot>
-					<tbody>
-						<% 
-							LocationBroker broker = LocationBroker.getBroker();
-							Location loc= null;
-							if(request.getParameter("locName").equals(null))
+			
+<div id="footer"></div>
+
+	<script type="text/javascript">
+				function removeLocation(id)
+				{
+					var txt = 'Are you sure you want to remove this Location?<input type="hidden" id="locName" name="locName" value="'+ id +'" />';
+					
+					$.prompt(txt,{buttons:{Delete:true, Cancel:false},
+						callback: function(v,m,f){
+							
+							if(v) 
 							{
-								
-								loc = new Location("");
+								window.location= '../DeleteLocation?locName='+id;								
 							}
 							else
-							{
-								loc =new Location(request.getParameter("locName"));
-							}
-								Location[] locArray = broker.get(loc);
-								for (Location printLoc : locArray)
-								{
-									System.out.println(printLoc);
-								}
-								for(int index = 0; index < locArray.length; index++)
-								{
-							%>
-									<tr>
-									<td>
-												
-										<a href="addLocation.jsp"><div id="locationImage"> <b> <%=locArray[index].getName()%> </b></div></a>
-										<div class="row-actions"><span class='edit'>
-										<a href="#"> Edit </a>   | </span>  <span class='delete'>
-										<a href="javascript:;" onClick="removeLocation('<%=locArray[index].getName()%>');">
-											Delete
-										</a></span></div>
-									</td>
-									<td>
-										<a href="addLocation.jsp?=<%=locArray[index].getName()%>"> <%=locArray[index].getDesc()%> </a>
-									</td>
-							<% 
-								}
-							
-							%>			
-					</tbody>
-				</table>
-			</div>
-			</div> <!-- End Table Area -->
-		</div>
-</div>
-<div id="footer"></div>
-<script type="text/javascript">
-			function removeLocation(id)
-			{
-				var txt = 'Are you sure you want to remove this Location?<input type="hidden" id="locName" name="locName" value="'+ id +'" />';
-				
-				$.prompt(txt,{buttons:{Delete:true, Cancel:false},
-					callback: function(v,m,f){
-						
-						if(v) 
-						{
-							window.location= '../DeleteLocation?locName='+id;								
+							{}
 						}
-						else
-						{}
-					}
-				});
-			 }
-</script>
+					});
+				 }
+	</script>
 </body>
 </html>
 

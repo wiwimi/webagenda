@@ -1,258 +1,261 @@
-body {
+	body 
+	{
+	}
 	
-}
-
-label {
-	/*color: white;*/
-	font-family: cochin;
-}
-
-#container {
-	min-width: 1200px;
-}
-
-#header {
-	background-color: #282828;
-	width: 100%;
-	height: 100px;
-}
-
-#headerTitle 
-{
-	float:left;
-	position: relative;
-	margin-left:20px;
-	margin-top:65px;
-	color: white;
-	font-family: Cochin;
-	font-size: 2.5em;
-}
-
-#loginArea 
-{
-	float:right;
-	width: 630px;
-	height: 100px;
-	position: relative;
-	color:white;
+	label 
+	{
+		/*color: white;*/
+		font-family: cochin;
+	}
 	
-}
-
-#rememberMe {
-	color: white;
-	font-family: cochin;
-	margin-left: 90px;
-}
-
-#middle {
-	color: black;
-	font-family: cochin;
-	min-height: 100px;
-	padding-top: 20px;
-	float:left;
-	width:100%;
+	#container 
+	{
+		min-width: 1200px;
+	}
 	
-}
-
-#footer 
-{
-	float:left;
-	position: relative;
-	top: 2em;
-	background-color: #282828;
-	width: 100%;
-	height: 100px;
-}
-	 	
+	#header 
+	{
+		background-color: #282828;
+		width: 100%;
+		height: 100px;
+	}
 	
-/*This starts the widgets section, full widgets take up the 2 columns where as half widgets take up half the column*/
-
-#middleContent
-{
-	position:relative;
-	float:left;
-	min-width:400px;
-	width:80%;
-}
-
-.fullWidget
-{
-	position:relative;
-	width:80%;
-	float:left;
-}
-
-.halfWidget
-{
-	float:left;
-	width:80%;
-}
-
-.fullWidgetDashboard
-{
-	position:relative;
-	width:97%;
-	float:left;
-}
-
-.halfWidgetDashboard
-{
-	float:left;
-	width:100%;
-}
-
-.column
-{
-	float:left;
-	width:48%;
-	margin:0 5px;
-}
-
-.widgetUpperRectangle
-{
+	#headerTitle 
+	{
 		float:left;
-		font-size: 1.2em;
-	    line-height: 1.0 em;
-		padding: 2px;
-		color: Black;
-		background-image:url(../lib/images/content/sideBarHeaderCurrentBack.png);
-		background-repeat:x-repeat;
-		border-style: solid;
-		border-width: 1px;
-		border-color: gray;
-		width : 100%;
-		text-align: center;
 		position: relative;
-		-webkit-border-top-left-radius:10px; 
-		-webkit-border-top-right-radius:10px;
-}
-.widgetLowerRectangle
-{
+		margin-left:20px;
+		margin-top:65px;
+		color: white;
+		font-family: Cochin;
+		font-size: 2.5em;
+	}
+	
+	#loginArea 
+	{
+		float:right;
+		width: 630px;
+		height: 100px;
+		position: relative;
+		color:white;
+	}
+	
+	#rememberMe 
+	{
+		color: white;
+		font-family: cochin;
+		margin-left: 90px;
+	}
+	
+	#middle 
+	{
+		color: black;
+		font-family: cochin;
+		min-height: 100px;
+		padding-top: 20px;
 		float:left;
-	    line-height: 1.0 em;
-		padding: 2px;
-		color: Black;
-		background-color: white;
-		border-style: solid;
-		border-width: 1px;
-		border-color: gray;
-		width : 100%;
-		min-height : 50 px;
-		text-align: left;
+		width:100%;
+	}
+	
+	#footer 
+	{
+		float:left;
+		position: relative;
+		top: 2em;
+		background-color: #282828;
+		width: 100%;
+		height: 100px;
+	}
+		 	
+		
+	/*This starts the widgets section, full widgets take up the 2 columns where as half widgets take up half the column*/
+	
+	#middleContent
+	{
 		position:relative;
-		margin-bottom:20px;
-}
-
-.widgetTitle
-{
-	float:center;
-}
-
-#quickLinksTitle:before
-{
-	position:relative;
-	top:5px;
-	content: url(../lib/images/icons/Color/001_43.png);
-}
-
-#contentHolder
-{
-	margin-left:20px;
-	width:100%;
-	height:82px;
-	overflow:hidden;
-}
-
-#quickLinksWidget
-{
+		float:left;
+		min-width:400px;
+		width:80%;
+	}
 	
-}
-
-#quickLinksLowerRectangle
-{
-	overflow:hidden;
+	.fullWidget
+	{
+		position:relative;
+		width:80%;
+		float:left;
+	}
 	
-}
-
-#scheduleLowerRectangle
-{
-	overflow:hidden;
-}
-
-#skillLowerRectangle
-{
-	overflow:hidden;
-}
-
-#skillWidgetTitle:before
-{
-	position:relative;
-	top:5px;
-	content: url(../lib/images/icons/Vista/PNG/Config-Tools.png);
-}
-
-#notificationsWidgetTitle:before
-{
-	position:relative;
-	top:5px;
-	content: url(../lib/images/icons/Color/001_11.png);
-}
-
-#mailWidgetTitle:before
-{
-	position:relative;
-	top:5px;
-	content: url(../lib/images/icons/Color/001_45.png);
-}
-
-#helpWidgetTitle:before
-{
-	position:relative;
-	top:5px;
-	content: url(../lib/images/icons/Color/001_38.png);
-}
-
-#notification
-{
-	position:relative;
-	top:-31px;
-	background-color:#fdfcd8;
-	float:left;
-	width:80%;
-	border-bottom:solid;
-	border-width:1px;
-	border-color:#8B8B8B;
-	text-align:center;
-	font-size:1.2em;
-	padding-top:5px;
-	padding-bottom:5px;
-}
-
-#notificationText:before
-{
-	position:relative;
-	top:5px;
-	content:url(../lib/images/icons/Color/001_11.png);
-}
-
-#notificationCloseButton
-{
-	position:absolute;
-	float:right;
-	right:40px;
-	top:14px;
-	height:20px;
-	padding:2px;
-	background-image:url(../lib/images/content/HeaderGradient.png);
-	background-repeat:x-repeat;
-	border:solid;
-	border-width:1px;
-	border-color:#8B8B8B;
-	-webkit-border-top-left-radius:5px; 
-	-webkit-border-top-right-radius:5px;
-}
+	.halfWidget
+	{
+		float:left;
+		width:80%;
+	}
 	
-/*author: Noorin*/
+	.fullWidgetDashboard
+	{
+		position:relative;
+		width:97%;
+		float:left;
+	}
+	
+	.halfWidgetDashboard
+	{
+		float:left;
+		width:100%;
+	}
+	
+	.column
+	{
+		float:left;
+		width:48%;
+		margin:0 5px;
+	}
+	
+	.widgetUpperRectangle
+	{
+			float:left;
+			font-size: 1.2em;
+		    line-height: 1.0 em;
+			padding: 2px;
+			color: Black;
+			background-image:url(../lib/images/content/sideBarHeaderCurrentBack.png);
+			background-repeat:x-repeat;
+			border-style: solid;
+			border-width: 1px;
+			border-color: gray;
+			width : 100%;
+			text-align: center;
+			position: relative;
+			-webkit-border-top-left-radius:10px; 
+			-webkit-border-top-right-radius:10px;
+	}
+	.widgetLowerRectangle
+	{
+			float:left;
+		    line-height: 1.0 em;
+			padding: 2px;
+			color: Black;
+			background-color: white;
+			border-style: solid;
+			border-width: 1px;
+			border-color: gray;
+			width : 100%;
+			min-height : 50 px;
+			text-align: left;
+			position:relative;
+			margin-bottom:20px;
+	}
+	
+	.widgetTitle
+	{
+		float:center;
+	}
+	
+	#quickLinksTitle:before
+	{
+		position:relative;
+		top:5px;
+		content: url(../lib/images/icons/Color/001_43.png);
+	}
+	
+	#contentHolder
+	{
+		margin-left:20px;
+		width:100%;
+		height:82px;
+		overflow:hidden;
+	}
+	
+	#quickLinksWidget
+	{
+		
+	}
+	
+	#quickLinksLowerRectangle
+	{
+		overflow:hidden;
+		
+	}
+	
+	#scheduleLowerRectangle
+	{
+		overflow:hidden;
+	}
+	
+	#skillLowerRectangle
+	{
+		overflow:hidden;
+	}
+	
+	#skillWidgetTitle:before
+	{
+		position:relative;
+		top:5px;
+		content: url(../lib/images/icons/Vista/PNG/Config-Tools.png);
+	}
+	
+	#notificationsWidgetTitle:before
+	{
+		position:relative;
+		top:5px;
+		content: url(../lib/images/icons/Color/001_11.png);
+	}
+	
+	#mailWidgetTitle:before
+	{
+		position:relative;
+		top:5px;
+		content: url(../lib/images/icons/Color/001_45.png);
+	}
+	
+	#helpWidgetTitle:before
+	{
+		position:relative;
+		top:5px;
+		content: url(../lib/images/icons/Color/001_38.png);
+	}
+	
+	#notification
+	{
+		position:relative;
+		top:-31px;
+		background-color:#fdfcd8;
+		float:left;
+		width:80%;
+		border-bottom:solid;
+		border-width:1px;
+		border-color:#8B8B8B;
+		text-align:center;
+		font-size:1.2em;
+		padding-top:5px;
+		padding-bottom:5px;
+	}
+	
+	#notificationText:before
+	{
+		position:relative;
+		top:5px;
+		content:url(../lib/images/icons/Color/001_11.png);
+	}
+	
+	#notificationCloseButton
+	{
+		position:absolute;
+		float:right;
+		right:40px;
+		top:14px;
+		height:20px;
+		padding:2px;
+		background-image:url(../lib/images/content/HeaderGradient.png);
+		background-repeat:x-repeat;
+		border:solid;
+		border-width:1px;
+		border-color:#8B8B8B;
+		-webkit-border-top-left-radius:5px; 
+		-webkit-border-top-right-radius:5px;
+	}
+		
+	/*author: Noorin*/
 	
 	/* Dark gray Background for dash-board upper rectangle */
 
@@ -302,7 +305,7 @@ label {
 		-moz-border-radius:4px;
 	}
 	
-		/* Gray colour for rectangles */
+	/* Gray colour for rectangles */
 
 	#sidebar .upperRectangleCurrent
 	{
@@ -325,7 +328,7 @@ label {
 	
 
 
-/* White Background for boxes */
+	/* White Background for boxes */
 
 	#sidebar .lowerRectangle
 	{
@@ -439,7 +442,7 @@ label {
 		content:url(../lib/images/icons/Color/001_54.png);
 	}
 	
-	#mailTitle, #mailWidgetTitle
+	#mailTitle
 	{
 		font-weight:bold;
 		font-size:1.2em;
@@ -517,7 +520,7 @@ label {
 	}
 	#instructions
 	{ 
-		font-family:Arial; 
+		font-family: cochin, Arial,  Verdana, Helvetica, sans-serif; 
 		font-size:100%;
 	}
 	

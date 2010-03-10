@@ -1,9 +1,38 @@
-body,img,p,h1,h2,h3,h4,h5,h6,fieldset,form,table,td,ul,li,pre,blockquote,code{ margin:0; padding:0; border:0; }
-			body{ font: 100% Georgia, "Times New Roman", serif; background-color: #ffffff; color: #565656; text-align: center; }
-			div.wrapper{ position: relative; margin: 0  auto 30px auto; width: 500px; text-align: left; border: solid 1px #aaaaaa; }
-			#users{  }
-			#users .user{ border: solid 1px #bbbbbb; background-color: #dddddd; padding: 10px; margin: 5px; }
-			#users .user .controls{ float: right; }
+/*Updated by Noorin*/
+
+body,img,p,h1,h2,h3,h4,h5,h6,fieldset,form,table,td,ul,li,pre,blockquote,code
+	{ 	
+		margin:0;
+		padding:0;
+		border:0;
+	}
+	body
+	{ 
+		font: 100% Georgia, "Times New Roman", serif; 
+		background-color: #ffffff; color: #565656; 
+		text-align: center; 
+		
+	}
+	div.wrapper
+	{ 
+		position: relative; 
+		margin: 0  auto 30px auto; 
+		width: 500px; text-align: 
+		left; 
+		border: solid 1px #aaaaaa; 
+	}
+	#users
+	{  }
+	#users .user
+	{ 
+		border: solid 1px #bbbbbb; 
+		background-color: #dddddd; 
+		padding: 10px; margin: 5px;
+	}
+	#users .user .controls
+	{ 
+		float: right; 
+	}
 			
 			/*-------------impromptu---------- */
 			.jqifade{ position: absolute; background-color: #aaaaaa; }
