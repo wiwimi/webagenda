@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import business.Employee;
 import business.permissions.PermissionAccess;
 import business.permissions.PermissionLevel;
+import business.permissions.*;
 
 import exception.DBDownException;
 import exception.DBException;
@@ -74,8 +75,8 @@ public class PermissionBroker extends Broker<PermissionLevel>{
 
 	@Override
 	public PermissionLevel[] get(PermissionLevel searchTemplate)
-			throws DBException {
-		return null;
+			throws DBException, DBDownException {
+		return business.permissions.PermissionBroker.getBroker().get(searchTemplate);
 	}
 
 	/**

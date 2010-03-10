@@ -176,7 +176,7 @@ public class EmployeeBroker extends Broker<Employee>
 			throw new DBException("Missing Required Field: EmpID");
 		
 		String delete = String.format(
-				"DELETE FROM `WebAgenda`.`Employee` WHERE empID = %s;",
+				"DELETE FROM `WebAgenda`.`EMPLOYEE` WHERE empID = %s;",
 				deleteEmp.getEmpID()+"");
 		
 		boolean success;
@@ -211,7 +211,7 @@ public class EmployeeBroker extends Broker<Employee>
 					"Can not search with null employee template.");
 		
 		// Create sql select statement from employee object.
-		String select = "SELECT emp.*,sup.empID AS 'supID' FROM `WebAgenda`.`Employee` emp LEFT JOIN `WebAgenda`.`Employee` sup ON emp.supRecordID = sup.empRecordID WHERE ";
+		String select = "SELECT emp.*,sup.empID AS 'supID' FROM `WebAgenda`.`EMPLOYEE` emp LEFT JOIN `WebAgenda`.`Employee` sup ON emp.supRecordID = sup.empRecordID WHERE ";
 		String comp = "";
 		
 		if (searchTemplate.getEmpID() != null)
