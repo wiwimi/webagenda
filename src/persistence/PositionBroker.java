@@ -64,6 +64,7 @@ public class PositionBroker extends Broker<Position> {
 		try
 			{
 			DBConnection conn = this.getConnection();
+			conn.getConnection().setAutoCommit(false); // Temporarily while skills are checked for integrity
 			Statement stmt = conn.getConnection().createStatement();
 			int result = stmt.executeUpdate(insert);
 			conn.setAvailable(true);
@@ -72,6 +73,7 @@ public class PositionBroker extends Broker<Position> {
 				throw new DBException(
 						"Failed to create position, result count incorrect: " +
 								result);
+			conn.getConnection().setAutoCommit(true);
 			}
 		catch (SQLException e)
 			{
@@ -132,10 +134,12 @@ public class PositionBroker extends Broker<Position> {
 			select = String.format(
 					"SELECT * FROM `WebAgenda`.`POSITION` WHERE positionName LIKE '%s%%'",
 					searchTemplate.getName());
+			System.out.println(select);
 			}
 		
 		// Get DB connection, send query, and reopen connection for other users.
 		// Parse returned ResultSet into array of positions.
+		
 		Position[] foundPositions;
 		DBConnection conn = null;
 		try
@@ -145,10 +149,12 @@ public class PositionBroker extends Broker<Position> {
 			ResultSet searchResults = stmt.executeQuery(select);
 			
 			foundPositions = parseResults(searchResults);
+			System.out.println("Position[] has " + foundPositions.length + " length");
+			Skill[] skills = null;
 			for(Position p : foundPositions)
 			{
 				select = String.format(
-						"SELECT * FROM `WebAgenda`.`POSSKILL` WHERE positionName = " + p.getName() + ";");
+						"SELECT * FROM `WebAgenda`.`POSSKILL` WHERE positionName = '" + p.getName() + "';");
 				stmt = conn.getConnection().createStatement();
 				searchResults = stmt.executeQuery(select);
 				p.setPos_skills(parseSkills(searchResults));
@@ -160,9 +166,7 @@ public class PositionBroker extends Broker<Position> {
 			{
 			throw new DBException("Failed to complete position search.",e);
 			}
-		
-		
-		
+			
 		// Return locations that matched search.
 		return foundPositions;
 	}
@@ -189,7 +193,6 @@ public class PositionBroker extends Broker<Position> {
 				posList[i] = pos;
 				}
 			}
-		
 		
 		return posList;
 	}
