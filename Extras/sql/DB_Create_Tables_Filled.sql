@@ -225,6 +225,7 @@ DROP TABLE IF EXISTS `WebAgenda`.`SHIFTTEMPLATE` ;
 CREATE  TABLE IF NOT EXISTS `WebAgenda`.`SHIFTTEMPLATE` (
   `shiftTempID` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `schedTempID` INT UNSIGNED NOT NULL ,
+  `day` INT UNSIGNED NOT NULL ,
   `startTime` TIME NOT NULL ,
   `endTime` TIME NOT NULL ,
   PRIMARY KEY (`shiftTempID`, `schedTempID`) ,
@@ -558,11 +559,11 @@ COMMIT;
 -- Data for table `WebAgenda`.`SHIFTTEMPLATE`
 -- -----------------------------------------------------
 SET AUTOCOMMIT=0;
-insert into `WebAgenda`.`SHIFTTEMPLATE` (`shiftTempID`, `schedTempID`, `startTime`, `endTime`) values (1, 1, '08:00:00', '17:00:00');
-insert into `WebAgenda`.`SHIFTTEMPLATE` (`shiftTempID`, `schedTempID`, `startTime`, `endTime`) values (2, 1, '32:00:00', '41:00:00');
-insert into `WebAgenda`.`SHIFTTEMPLATE` (`shiftTempID`, `schedTempID`, `startTime`, `endTime`) values (3, 1, '56:00:00', '65:00:00');
-insert into `WebAgenda`.`SHIFTTEMPLATE` (`shiftTempID`, `schedTempID`, `startTime`, `endTime`) values (4, 1, '80:00:00', '89:00:00');
-insert into `WebAgenda`.`SHIFTTEMPLATE` (`shiftTempID`, `schedTempID`, `startTime`, `endTime`) values (5, 1, '104:00:00', '113:00:00');
+insert into `WebAgenda`.`SHIFTTEMPLATE` (`shiftTempID`, `schedTempID`, `day`, `startTime`, `endTime`) values (1, 1, 2, '08:00:00', '17:00:00');
+insert into `WebAgenda`.`SHIFTTEMPLATE` (`shiftTempID`, `schedTempID`, `day`, `startTime`, `endTime`) values (2, 1, 3, '08:00:00', '17:00:00');
+insert into `WebAgenda`.`SHIFTTEMPLATE` (`shiftTempID`, `schedTempID`, `day`, `startTime`, `endTime`) values (3, 1, 4, '08:00:00', '17:00:00');
+insert into `WebAgenda`.`SHIFTTEMPLATE` (`shiftTempID`, `schedTempID`, `day`, `startTime`, `endTime`) values (4, 1, 5, '08:00:00', '17:00:00');
+insert into `WebAgenda`.`SHIFTTEMPLATE` (`shiftTempID`, `schedTempID`, `day`, `startTime`, `endTime`) values (5, 1, 6, '08:00:00', '17:00:00');
 
 COMMIT;
 

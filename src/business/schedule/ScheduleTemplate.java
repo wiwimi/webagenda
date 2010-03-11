@@ -25,6 +25,11 @@ public class ScheduleTemplate extends BusinessObject
 	private Integer creatorID = null;
 	
 	/**
+	 * The name given to the template.
+	 */
+	private String name;
+	
+	/**
 	 * The list of shift templates that are part of the schedule template.
 	 */
 	private DoubleLinkedList<ShiftTemplate> shiftTemplates = new DoubleLinkedList<ShiftTemplate>();
@@ -33,6 +38,13 @@ public class ScheduleTemplate extends BusinessObject
 	 * Default/Empty constructor.
 	 */
 	public ScheduleTemplate() {}
+	
+	public ScheduleTemplate(Integer schedTempID, Integer creatorID, String name)
+		{
+		this.schedTempID = schedTempID;
+		this.creatorID = creatorID;
+		this.name = name;
+		}
 
 	/**
 	 * @return the schedTempID
@@ -64,6 +76,22 @@ public class ScheduleTemplate extends BusinessObject
 	public void setCreatorID(Integer creatorID)
 		{
 		this.creatorID = creatorID;
+		}
+
+	/**
+	 * @return the name
+	 */
+	public String getName()
+		{
+			return name;
+		}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name)
+		{
+			this.name = name;
 		}
 
 	/**

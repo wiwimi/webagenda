@@ -3,7 +3,6 @@
  */
 package business.schedule;
 
-import java.sql.Time;
 import utilities.DoubleLinkedList;
 import business.BusinessObject;
 
@@ -27,14 +26,26 @@ public class ShiftTemplate extends BusinessObject
 	private Integer schedTempID = null;
 	
 	/**
+	 * The day of the week that the shift is on.<br>
+	 * 1 = Sunday.<br />
+	 * 2 = Monday.<br />
+	 * 3 = Tuesday.<br />
+	 * 4 = Wednesday.<br />
+	 * 5 = Thursday.<br />
+	 * 6 = Friday.<br />
+	 * 7 = Saturday.
+	 */
+	private Integer day = null;
+	
+	/**
 	 * The time at which the shift begins.
 	 */
-	private Time startTime = null;
+	private String startTime = null;
 	
 	/**
 	 * The time at which the shift ends.
 	 */
-	private Time endTime = null;
+	private String endTime = null;
 	
 	/**
 	 * A list of the positions which are needed during the shift.
@@ -45,6 +56,23 @@ public class ShiftTemplate extends BusinessObject
 	 * Default/Empty Constructor.
 	 */
 	public ShiftTemplate() {}
+	
+	/**
+	 * Creates a new shiftTemplate holding a record from the database.
+	 * 
+	 * @param shiftTempID
+	 * @param schedTempID
+	 * @param startTime
+	 * @param endTime
+	 */
+	public ShiftTemplate(Integer shiftTempID, Integer schedTempID, Integer day, String startTime, String endTime)
+		{
+		this.shiftTempID = shiftTempID;
+		this.schedTempID = schedTempID;
+		this.day = day;
+		this.startTime = startTime;
+		this.endTime = endTime;
+		}
 
 	/**
 	 * @return the shiftTempID
@@ -79,9 +107,25 @@ public class ShiftTemplate extends BusinessObject
 		}
 
 	/**
+	 * @return the day
+	 */
+	public Integer getDay()
+		{
+			return day;
+		}
+
+	/**
+	 * @param day the day to set
+	 */
+	public void setDay(Integer day)
+		{
+			this.day = day;
+		}
+
+	/**
 	 * @return the startTime
 	 */
-	public Time getStartTime()
+	public String getStartTime()
 		{
 		return startTime;
 		}
@@ -89,7 +133,7 @@ public class ShiftTemplate extends BusinessObject
 	/**
 	 * @param startTime the startTime to set
 	 */
-	public void setStartTime(Time startTime)
+	public void setStartTime(String startTime)
 		{
 		this.startTime = startTime;
 		}
@@ -97,7 +141,7 @@ public class ShiftTemplate extends BusinessObject
 	/**
 	 * @return the endTime
 	 */
-	public Time getEndTime()
+	public String getEndTime()
 		{
 		return endTime;
 		}
@@ -105,7 +149,7 @@ public class ShiftTemplate extends BusinessObject
 	/**
 	 * @param endTime the endTime to set
 	 */
-	public void setEndTime(Time endTime)
+	public void setEndTime(String endTime)
 		{
 		this.endTime = endTime;
 		}

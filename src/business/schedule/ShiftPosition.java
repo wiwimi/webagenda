@@ -34,6 +34,13 @@ public class ShiftPosition extends BusinessObject
 	 */
 	public ShiftPosition() {}
 
+	public ShiftPosition(Integer shiftTempID, String posName, Integer posCount)
+		{
+		this.shiftTempID = shiftTempID;
+		this.posName = posName;
+		this.posCount = posCount;
+		}
+	
 	/**
 	 * @return the shiftTempID
 	 */

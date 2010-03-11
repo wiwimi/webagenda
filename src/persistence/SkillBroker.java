@@ -116,7 +116,7 @@ String select;
 		
 		if (searchTemplate == null)
 			{
-			select = "SELECT * FROM `WebAgenda`.`SKILL`;";
+			select = "SELECT * FROM `WebAgenda`.`Skill`;";
 			}
 		else
 			{
@@ -124,7 +124,7 @@ String select;
 				throw new DBException("Can not search with null name.");
 			
 			select = String.format(
-					"SELECT * FROM `WebAgenda`.`SKILL` WHERE skillName LIKE '%s%%'",
+					"SELECT * FROM `WebAgenda`.`Skill` WHERE skillName LIKE '%s%%'",
 					searchTemplate.getName());
 			}
 		

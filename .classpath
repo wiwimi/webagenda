@@ -11,7 +11,6 @@
 	</classpathentry>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry exported="true" kind="lib" path="/home/dann/workspace/WebAgendaNew/lib/DoubleLinkedList-DK.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/mysql-connector-java-5.1.11-bin.jar"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="build/classes"/>

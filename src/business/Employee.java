@@ -5,7 +5,6 @@ package business;
 
 import java.sql.Date;
 import java.sql.Timestamp;
-import business.schedule.*;
 
 /**
  * @author peon-dev, Daniel Wehr

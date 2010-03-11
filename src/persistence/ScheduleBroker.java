@@ -54,15 +54,15 @@ public class ScheduleBroker extends Broker<Schedule> {
 	}
 
 	@Override
-	public Schedule[] parseResults(ResultSet rs) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public boolean update(Schedule updateObj) throws DBException {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public Schedule[] parseResults(ResultSet rs) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	
