@@ -148,7 +148,7 @@ public class LocationBroker extends Broker<Location>
 				throw new DBException("Can not search with null name.");
 			
 			select = String.format(
-					"SELECT * FROM `WebAgenda`.`LOCATION` WHERE locName LIKE '%s%%'",
+					"SELECT * FROM `WebAgenda`.`LOCATION` WHERE locName LIKE '%%%s%%'",
 					searchTemplate.getName());
 			}
 		

@@ -7,13 +7,12 @@ import business.BusinessObject;
 import business.Skill;
 
 /**
- * @author peon-dev
- * @version 0.01.00
- *
  * This class represents a Position that an employee can work. It is used extensively in Scheduling for
  * auto-generation; it places employees that can work certain positions in those positions that are
  * required for a completely schedule to be generated. (No errors)
- * 
+ *
+ * @author peon-dev
+ * @version 0.2.0
  */
 public class Position extends BusinessObject {
 
@@ -25,6 +24,15 @@ public class Position extends BusinessObject {
 	 * decisions that new users may require when scheduling. */
 	private String description						= null;
 	private Skill[] pos_skills						= null;
+	
+	public Position() 
+	{
+	}
+	
+	public Position(String pos_name)
+	{
+		this.name = pos_name;
+	}
 	
 	public Position(String pos_name, Skill[] skills)
 	{
