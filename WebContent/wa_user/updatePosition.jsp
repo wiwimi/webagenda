@@ -65,7 +65,7 @@
 						<% 
 							PositionBroker broker = PositionBroker.getBroker();
 							
-							Position pos = new Position("");
+							Position pos = new Position("",null);
 							Position[] posArray = broker.get(pos);
 							
 							for(int index = 0; index <posArray.length; index++)

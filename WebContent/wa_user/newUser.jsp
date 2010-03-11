@@ -336,7 +336,7 @@
 								<tbody>
 									<% 
 										PositionBroker broker3 = PositionBroker.getBroker();
-										Position pos = new Position("");
+										Position pos = new Position("",null);
 										Position[] posArray = broker3.get(pos);
 										
 										for(int index = 0; index <posArray.length; index++)
