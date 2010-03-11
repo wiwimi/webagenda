@@ -4,6 +4,7 @@
 package business.schedule;
 
 import business.BusinessObject;
+import business.Skill;
 
 /**
  * @author peon-dev
@@ -23,15 +24,17 @@ public class Position extends BusinessObject {
 	/** This attribute is a description of the name of the position. It is optional, but may aid in informed
 	 * decisions that new users may require when scheduling. */
 	private String description						= null;
+	private Skill[] pos_skills						= null;
 	
-	public Position(String pos_name)
-	{
-		name = pos_name;
-	}
-	
-	public Position(String pos_name, String pos_desc)
+	public Position(String pos_name, Skill[] skills)
 	{
 		this.name = pos_name;
+		this.pos_skills = skills;
+	}
+	
+	public Position(String pos_name, String pos_desc, Skill[] skills)
+	{
+		this(pos_name, skills);
 		this.description = pos_desc;
 	}
 
@@ -68,6 +71,22 @@ public class Position extends BusinessObject {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	/**
+	 * @return the pos_skills
+	 */
+	public Skill[] getPos_skills() {
+		return pos_skills;
+	}
+
+	/**
+	 * @param posSkills the pos_skills to set
+	 */
+	public void setPos_skills(Skill[] posSkills) {
+		pos_skills = posSkills;
+	}
+	
+	
 	
 	
 }

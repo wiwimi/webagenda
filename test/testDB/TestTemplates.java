@@ -20,19 +20,19 @@ public class TestTemplates {
 		
 		PositionBroker pbrok = PositionBroker.getBroker();
 		try {
-			Position[] posarray = pbrok.get(new Position("Cook"));
+			Position[] posarray = pbrok.get(new Position("Cook",null));
 			for(Position p : posarray)
 				System.out.println(p);
-			System.out.println(pbrok.delete(new Position("Fryer")));
-			pbrok.create(new Position("Fryer"));
+			System.out.println(pbrok.delete(new Position("Fryer",null)));
+			pbrok.create(new Position("Fryer",null));
 			
-			posarray = pbrok.get(new Position("Fryer"));
-			pbrok.update(new Position("Fryer","someone who fries food"));
-			posarray = pbrok.get(new Position("Cook"));
+			posarray = pbrok.get(new Position("Fryer",null));
+			pbrok.update(new Position("Fryer","someone who fries food",null));
+			posarray = pbrok.get(new Position("Cook",null));
 			for(Position p : posarray)
 				System.out.println(p);
 			
-			pbrok.get(new Position("Fryer"));
+			pbrok.get(new Position("Fryer",null));
 			
 		} catch (DBException e) {
 			// TODO Auto-generated catch block

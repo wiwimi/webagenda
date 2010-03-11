@@ -10,6 +10,7 @@ import java.sql.Statement;
 import exception.DBDownException;
 import exception.DBException;
 import application.DBConnection;
+import business.Skill;
 import business.schedule.Position;
 
 /**
@@ -18,6 +19,8 @@ import business.schedule.Position;
  * @license GPL 2
  */
 public class PositionBroker extends Broker<Position> {
+	
+	// Working on retriving skills along with Positions
 
 	private static volatile PositionBroker pbrok = null;
 	
@@ -134,19 +137,31 @@ public class PositionBroker extends Broker<Position> {
 		// Get DB connection, send query, and reopen connection for other users.
 		// Parse returned ResultSet into array of positions.
 		Position[] foundPositions;
+		DBConnection conn = null;
 		try
 			{
-			DBConnection conn = this.getConnection();
+			conn = this.getConnection();
 			Statement stmt = conn.getConnection().createStatement();
 			ResultSet searchResults = stmt.executeQuery(select);
-			conn.setAvailable(true);
 			
 			foundPositions = parseResults(searchResults);
+			for(Position p : foundPositions)
+			{
+				select = String.format(
+						"SELECT * FROM `WebAgenda`.`POSSKILL` WHERE positionName = " + p.getName() + ";");
+				stmt = conn.getConnection().createStatement();
+				searchResults = stmt.executeQuery(select);
+				p.setPos_skills(parseSkills(searchResults));
+			}
+			
+			conn.setAvailable(true);
 			}
 		catch (SQLException e)
 			{
 			throw new DBException("Failed to complete position search.",e);
 			}
+		
+		
 		
 		// Return locations that matched search.
 		return foundPositions;
@@ -166,14 +181,46 @@ public class PositionBroker extends Broker<Position> {
 			
 			// Return ResultSet to beginning to start retrieving locations.
 			rs.beforeFirst();
+			Position pos = null;
 			for (int i = 0; i < resultCount && rs.next(); i++)
 				{
-				Position pos = new Position(rs.getString("positionName"),rs.getString("positionDescription"));
+				pos = new Position(rs.getString("positionName"),rs.getString("positionDescription"),
+						null);
 				posList[i] = pos;
 				}
 			}
 		
+		
 		return posList;
+	}
+	
+	/**
+	 * Method to parse and return all the skills that would be associated to positions that would
+	 * be returned.
+	 * 
+	 * @param rs ResultSet of an executed Statement object to grab positions and skills from the
+	 * position-skill table.
+	 * @return Skill[] array of Skills that match up with positions being returned.
+	 * @throws SQLException
+	 */
+	private Skill[] parseSkills(ResultSet rs) throws SQLException {
+		Skill[] posSkill = null;
+		
+		if(rs.last())
+		{
+			int resultCount = rs.getRow();
+			posSkill = new Skill[resultCount];
+			rs.beforeFirst();
+			Skill skill = null;
+			for(int i = 0; i < resultCount && rs.next(); i++)
+			{
+				skill = new Skill(rs.getString("skillName"),rs.getString("skillDescription"));
+				posSkill[i] = skill;
+			}
+			
+		}
+		
+		return posSkill;
 	}
 
 	@Override

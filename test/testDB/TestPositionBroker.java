@@ -36,7 +36,7 @@ public class TestPositionBroker {
 		 
 		try {
 			
-			Position pos = new Position("Admin", "");
+			Position pos = new Position("Admin", "",null);
 			boolean success = broker.create(pos);
 			
 			System.out.println(success); // Is not printed out
@@ -64,7 +64,7 @@ public class TestPositionBroker {
 	@Test
 	public void testDeletePosition() {
 		try {
-			Position pos = new Position("Admin");
+			Position pos = new Position("Admin",null);
 			broker.delete(pos);
 			
 		} catch (DBException e) {
@@ -82,7 +82,7 @@ public class TestPositionBroker {
 	public void testGetPosition() {
 		{
 			//Use an empty string for the skill name so that all names are matched.
-			Position get = new Position("");
+			Position get = new Position("",null);
 			
 			//Get all skills and print them to console.
 			try

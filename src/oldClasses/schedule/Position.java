@@ -1,7 +1,9 @@
 /**
  * business.schedule - Position.java
  */
-package business;
+package oldClasses.schedule;
+
+import business.BusinessObject;
 
 
 /**

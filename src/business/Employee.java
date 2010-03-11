@@ -106,7 +106,7 @@ public class Employee extends BusinessObject
 	 * wants to browse inactive user, or generate reports on active/inactive
 	 * users.
 	 */
-	private Boolean	active					= null;
+	private Boolean	active					= false;
 	
 	/**
 	 * An object that contains the personal visual settings of a user; loaded

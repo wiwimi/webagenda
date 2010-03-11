@@ -138,6 +138,7 @@ public class PermissionLevel extends BusinessObject {
 	{
 		if(level_permissions == null) this.level_permissions = p;
 		else throw new InvalidPermissionException("Permissions cannot be changed");
+		//FIXME: is somethign missing? Why level and version params?
 	}
 	
 	/**
@@ -157,5 +158,18 @@ public class PermissionLevel extends BusinessObject {
 		return new PermissionLevel(p, level, version);
 	}
 	
+	/*
+	 * As a side note, the "" + version is required in this method.
+	 * Without the extra "" being added, it will actually add the value of the char (ascii value) to
+	 * the level, resulting in improper level representations.
+	 * Ex: 1a becomes 98, 2a becomes 99.
+	 * (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString()
+	{
+		return level + "" + version +";" + description + ";" + level_permissions.toString();
+	}
 	
 }
