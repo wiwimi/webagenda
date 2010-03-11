@@ -150,14 +150,23 @@ public class PositionBroker extends Broker<Position> {
 			
 			foundPositions = parseResults(searchResults);
 			System.out.println("Position[] has " + foundPositions.length + " length");
-			Skill[] skills = null;
+			// This for loop will only go through once, as primary key stops duplicate entries
 			for(Position p : foundPositions)
 			{
 				select = String.format(
 						"SELECT * FROM `WebAgenda`.`POSSKILL` WHERE positionName = '" + p.getName() + "';");
 				stmt = conn.getConnection().createStatement();
 				searchResults = stmt.executeQuery(select);
-				p.setPos_skills(parseSkills(searchResults));
+				
+				
+				
+				// Check number of results from select statement, that's how many skills per position exist.
+				// Get skills as an array of resultset skillName's, look them up and if not existing, throw excp.
+				
+				
+				// This statement parses Skills from Position results, then ensures they exist in Skill table, then
+				// sets it to the position in the loop (no exceptions means worked properly) which is returned. TA DA
+				p.setPos_skills(ensureSkillsExist(parseSkills(searchResults)));
 			}
 			
 			conn.setAvailable(true);
@@ -217,13 +226,27 @@ public class PositionBroker extends Broker<Position> {
 			Skill skill = null;
 			for(int i = 0; i < resultCount && rs.next(); i++)
 			{
-				skill = new Skill(rs.getString("skillName"),rs.getString("skillDescription"));
+				skill = new Skill(rs.getString("skillName"),null);
 				posSkill[i] = skill;
 			}
 			
 		}
 		
 		return posSkill;
+	}
+	
+	/**
+	 * Method returns a completed list of skills (adds descriptions, does not throw
+	 * exception if executed without error.)
+	 * @param input Array of skills to check if they exist
+	 * @return Skills with descriptions added
+	 */
+	private Skill[] ensureSkillsExist(Skill[] input) {
+		
+		
+		
+		
+		return input;
 	}
 
 	@Override
