@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-
 <%@ page import="business.Employee" %>
 <%@ page import="persistence.EmployeeBroker" %>
 
@@ -14,13 +13,14 @@
 <jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
 
 <!--  CSS files -->
-<link rel="stylesheet" href="CSS/user.css" type="text/css"></link>
+<link rel="stylesheet" href="CSS/table.css" type="text/css"></link>
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 
 <!-- Sorttable is under the X11 licence, it is an open source project.-->
 <!-- Javascript Files -->
 <script src="../lib/js/sorttable.js" type ="text/javascript"></script>
 <script type="text/javascript" src="../lib/js/dashboard.js"></script>
+
 
 
 <!-- Libraries -->
@@ -42,7 +42,10 @@
 			</div>
 			
 			<div id="searchArea">
-				<input type="text" value="" size=30></input><button type="submit" value="Search">Search</button>
+			<form id="form">
+					<input type="text" size=30/ name="empName">
+					<input type="submit" name="search"  class="button" value="Search" onClick="location.href='newUser.jsp?empName=' + form.empName.value"> 
+			</form>
 			</div>
 			<div id="tableArea">
 							<div class="userAdmin">
@@ -71,35 +74,42 @@
 					</tfoot>
 					<tbody>
 						<% 
-							EmployeeBroker broker = EmployeeBroker.getBroker();
-						
-							int count = broker.getEmpCount();
-							
-							Employee emp = new Employee();
-							emp.setActive(true);
-							Employee[] empArray = broker.get(emp);
-							
-							for(int index = 0; index < count; index++)
+						    Employee emp = new Employee();
+						    
+						    if(request.getParameter("empId").equals(null) ||request.getParameter("empId").equals(""))
 							{
-						%>
-									<tr>
-									<td>
-											
-											<a href="updateUserProfile.jsp"><div id="profileImage"> <b> <%= empArray[index].getUsername() %> </b></div></a>
-										    <div class="row-actions"><span class='edit'>
-										    <a href="updateUserProfile.jsp?id=<%= empArray[index].getEmpID() %>"> Edit </a>   | </span>  <span class='delete'>
-										    <a class='submitdelete' href='#'>Delete</a></span></div>
-									</td>
-											<td><a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getEmpID() %></a></td>
-											<td><a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getFamilyName() %></a></td>
-											<td> <a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getGivenName() %></a> </td>
-											<td> <a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getPrefPosition() %></a> </td>
-											<td> <a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getSupervisorID() %></a> </td>
-									</tr>
-						<% 
+								emp.setActive(true);
 							}
-						%>			
+							else
+							{
+								int empInteger = Integer.parseInt(request.getParameter("empId"));
+								emp.setEmpID(empInteger);
+							}
+							EmployeeBroker broker = EmployeeBroker.getBroker();
+							int count = broker.getEmpCount();
+							Employee[] empArray = broker.get(emp);
 								
+								for(int index = 0; index < count; index++)
+								{
+							%>
+										<tr>
+										<td>
+												
+												<a href="updateUserProfile.jsp"><div id="profileImage"> <b> <%= empArray[index].getUsername() %> </b></div></a>
+											    <div class="row-actions"><span class='edit'>
+											    <a href="updateUserProfile.jsp?id=<%= empArray[index].getEmpID() %>"> Edit </a>   | </span>  <span class='delete'>
+											    <a class='submitdelete' href='#'>Delete</a></span></div>
+										</td>
+												<td><a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getEmpID() %></a></td>
+												<td><a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getFamilyName() %></a></td>
+												<td> <a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getGivenName() %></a> </td>
+												<td> <a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getPrefPosition() %></a> </td>
+												<td> <a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getSupervisorID() %></a> </td>
+										</tr>
+							<% 
+								}
+							%>			
+									
 					</tbody>
 				</table>
 				

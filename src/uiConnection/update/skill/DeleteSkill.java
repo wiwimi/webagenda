@@ -1,16 +1,76 @@
 package uiConnection.update.skill;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import persistence.SkillBroker;
+import business.Skill;
+import exception.DBDownException;
+import exception.DBException;
+
 /**
  * Servlet implementation class DeleteSkill
  */
+@WebServlet(name="DeleteSkill", urlPatterns={"/DeleteSkill"})
 public class DeleteSkill extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	/**
+     * @see HttpServlet#HttpServlet()
+     */
+      protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+		    throws ServletException, IOException 
+		    {
+    	  
+		        response.setContentType("text/html;charset=UTF-8");
+		          //Create or get the session object from the HTTPSession object
+		          // HttpSession session = request.getSession();
+		       
+		        PrintWriter out = response.getWriter();
+		        String skillName = request.getParameter("skillName");
+		        boolean success;
+				
+				try {
+					    SkillBroker broker = SkillBroker.getBroker();
+						broker.initConnectionThread();
+						
+						Skill skill = new Skill(skillName);
+						success = broker.delete(skill);
+						
+					if (success)
+					{
+						//Confirm that the user was deleted
+						response.sendRedirect("wa_user/updateSkill.jsp?message=true");
+					}
+				}
+				catch (DBException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					// Failed to delete the location
+					response.sendRedirect("wa_user/updateSkill.jsp?message=false");
+					
+				} catch (DBDownException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					// Failed to add the location
+					response.sendRedirect("wa_user/updateSkill.jsp?message=false");
+				}
+				catch(Exception e)
+				{
+					// Failed to add the location
+					response.sendRedirect("wa_user/updateSkill.jsp?message=false");
+				}
+				finally
+				{
+					out.close();
+				}
+		   }
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -25,6 +85,8 @@ public class DeleteSkill extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		processRequest(request, response);
 	}
 
 	/**
@@ -32,6 +94,8 @@ public class DeleteSkill extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		
 	}
 
 }

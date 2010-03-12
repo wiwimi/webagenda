@@ -124,6 +124,98 @@ public class TestLocationBroker
 		assertTrue(true);
 		}
 	
+	@Test
+	public void testGetLocation2()
+		{
+		//Use an empty string for the location name so that all names are matched.
+		Location get = new Location("Mohave Grill");
+		
+		//Get all locations and print them to console.
+		try
+			{
+			Location[] results = broker.get(get);
+			for (Location printLoc : results)
+				{
+				System.out.println(printLoc);
+				}
+			}
+		catch (DBException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		catch (DBDownException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		
+		assertTrue(true);
+		}
+	@Test
+	public void testGetLocation3()
+		{
+		//Use an empty string for the location name so that all names are matched.
+		Location get = new Location("Mohave");
+		
+		//Get all locations and print them to console.
+		try
+			{
+			Location[] results = broker.get(get);
+			for (Location printLoc : results)
+				{
+				System.out.println(printLoc);
+				}
+			}
+		catch (DBException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		catch (DBDownException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		
+		assertTrue(true);
+		}
+	
+	@Test
+	public void testGetLocation4()
+		{
+		//Use an empty string for the location name so that all names are matched.
+		
+		Location get = new Location("Grill");
+		
+		//Get all locations and print them to console.
+		try
+			{
+			Location[] results = broker.get(get);
+		
+			if(results==null || results.length==0)
+				System.out.println("There are no results");
+		
+			
+			for (Location printLoc : results)
+				{
+				System.out.println(printLoc);
+				}
+			}
+		catch (DBException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		catch (DBDownException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		
+		assertTrue(true);
+		}
+	
 	/**
 	 * Test method for {@link persistence.LocationBroker#update(business.schedule.Location)}.
 	 */

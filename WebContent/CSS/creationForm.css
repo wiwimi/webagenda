@@ -45,7 +45,7 @@
 	pading-top:0;
 }
 
-#creationForm label.label
+#creationForm label.label, #creationForm label.theSelect
 {
 	width: 7em;
 	float: left;
@@ -108,6 +108,14 @@ fieldset.focussed {
 	color:#151B54; 
 	font: bold 110% cochin, Times, Verdana, helvetica,sans-serif;
 }
+#formButtons
+{
+	position:relative;
+	top:10px;
+	right:10px;
+	float:right;
+}
+	
 
 
 

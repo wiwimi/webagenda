@@ -30,6 +30,8 @@
 
 <!--  CSS files -->
 <link rel="stylesheet" href="../CSS/creationForm.css" type="text/css"></link>
+<link rel="stylesheet" href="CSS/table.css" type="text/css"></link>
+<link rel="stylesheet" href="CSS/user.css" type="text/css"></link>
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/val.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/screen.css" />
@@ -40,8 +42,6 @@
 	<div id="instructions">
 	        Fields marked with <em class="asterisk" > *</em> are required.
 	</div>
-	
-<br></br>
  			  <% 
 					if(request.getParameter("message") != null)
 					{
@@ -98,7 +98,7 @@
 			<form class="addLocationForm" action="../AddLocation" id="form" name="form" method="POST">
 			<div id="location">
 			
-			 <div id="searchArea">
+			 <div id="formButtons">
 					        <input type="submit" name="submit"  class="button" value="Add" > 
 							<input type="button" name="submit" class="button"  onClick="location.href='updateLocation.jsp?locName=' + form.locName.value" value="Search" > 
 					       	<input type="reset" name="clear" class="button" value="Clear Screen"> 
@@ -111,7 +111,7 @@
 							<p>	<label class="label"> Description: </label></p>
 							<textarea  name="desc" cols="23" rows="6" tabindex="101"></textarea>
 				</fieldset>
-				<div id="searchArea">
+				<div id="formButtons">
 						        <input type="submit" name="submit"  class="button" value="Add" > 
 								<input type="button" name="submit" class="button"  onClick="location.href='updateLocation.jsp?locName=' + form.locName.value" value="Search" > 
 								<input type="reset" name="clear" class="button" value="Clear Screen"> 

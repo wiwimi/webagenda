@@ -208,7 +208,7 @@ $(document).ready(function(){
 		loadPopup3();
 	});
 	
-	$("#empButton").click(function(){
+	$("#empIdButton").click(function(){
 		//centering with css
 		centerIdPopup();
 		//load popup

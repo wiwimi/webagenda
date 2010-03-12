@@ -1,19 +1,18 @@
 @CHARSET "ISO-8859-1";
 
 /*Author: Noorin*/
-
-#locationsIcon
+#usersIcon
 {
 	font-size:1.2em;
 	float:left;
 	margin-left:20px;
 }
 
-#locationsIcon h3:before
+#usersIcon h3:before
 {
 	position:relative;
 	top:5px;
-	content: url(../../lib/images/icons/Color/001_40.png)	
+	content: url(../../lib/images/icons/Color/001_54.png)	
 }
 
 #tableArea
@@ -42,8 +41,6 @@ tr
 	border-color: inherit;
 	display: table-row;
 	vertical-align: inherit;
-	font-size:100%;
-	font-family: cochin, Arial,  Verdana, Helvetica, sans-serif; 
 }
 
 tr:hover
@@ -56,9 +53,6 @@ td
 {
 	display: table-cell;
 	vertical-align: inherit;
-	font-family: cochin, Arial,  Verdana, Helvetica, sans-serif; 
-	font-size:100%;
-	
 }
 
 td a
@@ -129,11 +123,16 @@ tbody
 	
 }
 
-#locationImage:before
+#profileImage:before
 {
 	position:relative;
 	top:5px;
-	content: url(../../lib/images/icons/Color/001_40.png)
+	content: url(../../lib/images/icons/Color/001_54.png)
+}
+h1
+{
+	color: gray;
+	
 }
 
 

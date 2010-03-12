@@ -4,6 +4,7 @@
 <%@ page import="persistence.SkillBroker" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- Author: Noorin -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -13,37 +14,80 @@
 <!--  Includes -->
 <jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
 
+<!-- Libraries -->
+<script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
+
+<!-- Plug-ins -->
+<script src ="../lib/js/jquery.flashmessenger.js"   type ="text/javascript"> </script>
+
 <!--  CSS files -->
-<link rel="stylesheet" href="CSS/user.css" type="text/css"></link>
-<link rel="stylesheet" href="CSS/skill.css" type="text/css"></link>
+<link rel="stylesheet" href="CSS/table.css" type="text/css"></link>
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Confirmation/confirm.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Flash/flashmessenger.css" />
 
 <!-- Sorttable is under the X11 licence, it is an open source project.-->
 <!-- Javascript Files -->
+
 <script src="../lib/js/sorttable.js" type ="text/javascript"></script>
+<script type="text/javascript" src="../lib/js/jquery-impromptu.3.0.min.js"></script>
 <script type="text/javascript" src="../lib/js/dashboard.js"></script>
-
-
-<!-- Libraries -->
-<script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>	
+<script type="text/javascript" src="../lib/js/deleteSkill.js"></script>
 
 </head>
 <body>
 <br></br>
-		
-		<div id="skillsWidget" class="fullWidget">
+			 <% 
+					if(request.getParameter("message") != null)
+					{
+						if(request.getParameter("message").equals("true"))
+						{
+			 %>
+							<script type="text/javascript">
+											$(function()
+										    {
+												
+												    $.flashMessenger("The skill has been successfully deleted", 
+													{ 	
+														modal:true, 
+														autoClose: false 
+													});	
+											});
+							</script>
+			   <% 			   
+						 }
+						else if(request.getParameter("message").equals("false"))
+						{
+				%>
+							<script type="text/javascript">
+								$(function()
+								    {
+										$.flashMessenger("An error occured while deleting the Skill. Please contact your admin",
+								        {
+											   modal:true,
+							    		       clsName:"err", 
+								    		   autoClose:false
+								    	 }); 
+								   }); 
+							</script>
+				<%
+						}
+					}
+				%>
+
+	<div id="skillsWidget" class="fullWidget">
 			<div class="widgetUpperRectangle" id="skillsWidgetUpperRectangle">
 				<div class="widgetTitle" id="skillsTitle">Skills</div>
 		</div>
-			
 		<div class="widgetLowerRectangle" id="skillsWidgetLowerRectangle">
-
-			<div id="skillsIcon">
+		<div id="skillsIcon">
 				<h3>Skills</h3>
 			</div>
-			
 			<div id="searchArea">
-				<input type="text" value="" size=30></input><button type="submit" value="Search">Search</button>
+			<form id="form">
+				<input type="text" size=30/ name="skillName">
+				<input type="submit" name="search"  class="button" value="Search" onClick="location.href='newSkill.jsp?skillName=' + form.skillName.value"> 
+			</form>
 			</div>
 			<div id="tableArea">
 							<div class="userAdmin">
@@ -52,10 +96,8 @@
 						<tr class="headerRow">
 							<th>Name</th>
 							<th>Description</th>
-				
 						</tr>
 					</thead>
-					
 					<tfoot class="foot">
 						<tr class="headerRow">
 							<th>Name</th>
@@ -65,7 +107,6 @@
 					<tbody>
 						<% 
 							SkillBroker broker = SkillBroker.getBroker();
-							
 							Skill skill = new Skill("");
 							Skill[] skillArray = broker.get(skill);
 							
@@ -74,30 +115,38 @@
 						%>
 							<tr>
 							   <td>
-											
-									<a href="addSkill.jsp?=<%=skillArray[index].getName()%>"> <b> <%=skillArray[index].getName()%> </b></div></a>
+									<a href="newSkill.jsp?=<%=skillArray[index].getName()%>"> <b> <%=skillArray[index].getName()%> </b></div></a>
 									<div class="row-actions"><span class='edit'>
 									<a href="#"> Edit </a>   | </span>  <span class='delete'>
-									<a class='submitdelete' href='#'>Delete</a></span></div>
+									<a href="javascript:;" onClick="removeSkill('<%=skillArray[index].getName()%>');">
+										Delete</a></span></div>
 								</td>
 								<td>
-									<a href="addSkill.jsp?=<%= skillArray[index].getName() %>"> <%=skillArray[index].getDesc()%> </a>
-								</td>
-							</tr>
-						<% 
-							}
-						%>			
-								
+								     <%
+								     	if(skillArray[index].getDesc()!=null && skillArray[index].getDesc().equals(""))
+								     	{
+								     %>
+								     		<a href="newSkill.jsp?=<%= skillArray[index].getName() %>"> <%=skillArray[index].getDesc()%> </a>
+								     <%	}
+								     	else
+								     	{
+								     %>
+								     		<a href="newSkill.jsp?=<%= skillArray[index].getName() %>"> None </a>
+								     <%
+								     	} 
+							 }
+								     %>
+						  </td>	
 					</tbody>
 				</table>
-				
 			</div>
-			
-			</div> <!-- End Table Area -->
-			
-		</div>
+		</div> <!-- End Table Area -->
+	</div>
 </div>
 <div id="footer"></div>
-
 </body>
 </html>
+
+		
+												
+												

@@ -522,16 +522,14 @@
 	{ 
 		font-family: cochin, Arial,  Verdana, Helvetica, sans-serif; 
 		font-size:100%;
+		padding-bottom:1%;
 	}
-	
 	#searchArea
 	{
-		position:relative;
-		top:10px;
-		right:10px;
-		float:right;
-	}
-	
+	    padding-left:70%;
+	    padding-bottom:1%;
+    }
+
 	/* This was added to create a cursor over selected fields on any of the table
 	It is also used for the edit and delete options found in the tables*/
 	
