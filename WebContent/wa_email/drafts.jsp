@@ -3,18 +3,19 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- Author: Noorin -->
 
-
 <html>
 <head>
-
-
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<title>Web Agenda - Drafts</title>
+
+<!-- Includes -->
+<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
 
 <!--  CSS files -->
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="CSS/email.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="CSS/inbox.css" type="text/css" media="screen" />
-
+<link rel="stylesheet" href="CSS/table.css" type="text/css" media="screen" />
 
 <!--  Libraries -->
 <script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
@@ -26,16 +27,8 @@
 <script type="text/javascript" src="../lib/js/dashboard.js"></script>
 <script src="../lib/js/zebraTable.js" type ="text/javascript"></script>
 
-<title>Web Agenda - Drafts</title>
-
-<!-- Includes -->
-<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
-
-
 </head>
 <body>
-
-<div id= "email" class = "strippedTable">
 
 <div id="mailWidget" class="fullWidget">
 			<div class="widgetUpperRectangle" id="mailWidgetUpperRectangle">
@@ -53,65 +46,45 @@
 			</h6>
 			</div>
 			
-			<div class = "border" summary ="inbox">
-
-				<table class = "sortable">
-					<thead>
-						<tr>
-							<th> <input type=checkbox name="sort"> </input>  </th>
-							<th> <b> To </b> </th>
-							<th> <b>Subject </b> </th>
-							<th> <b>Date </b> </th>
-						</tr>
+			<div id="tableArea">
+							<div class="userAdmin">
+				<table class="sortable" id="userTable">
+					<thead class="head">
+						<tr class="headerRow">
+						    <th> <input type="checkbox"></input></th>
+							<th>To</th>
+							<th>Subject</th>
+							<th>Date</th>
+				    </tr>
 					</thead>
+					<tfoot class="foot">
+						<tr class="headerRow">
+						    <th> <input type="checkbox"></input></th>
+							<th>To</th>
+							<th>Subject</th>
+							<th>Date</th>
+						</tr>
+					</tfoot>
 					<tbody>
-						
 						<tr>
-							<th> <input type=checkbox name="sort"></input> </th>
-							<td> Joseph </td>
-							<td> Can you take my shift ? </td>
-							<td> Feb/02/03 </td>
-						
+							<th> <input type="checkbox"></input> </th>
+							<td></td>
+							<td></td>
+							<td></td>
 						</tr>
 						<tr>
-							<th> <input type=checkbox name="sort"></input> </th>
-							<td> Noorin </td>
-							<td> Late today ? </td>
-							<td> Feb/01/03 </td>
-						
-						</tr>
-						
-						<tr>
-							<th> <input type=checkbox name="sort"></input> </th>
-							<td> Ali </td>
-							<td> Sick leave ? </td>
-							<td> Jan/02/03 </td>
-						
-						</tr>
-						
-						<tr>
-							<th> </th>
-							<td>  </td>
-							<td>  </td>
-							<td>  </td>
-						
-						</tr>
-						
-						<tr>
-							<th>  </th>
-							<td>  </td>
-							<td>  </td>
-							<td>  </td>
-					
-						
+							<th> <input type="checkbox"></input> </th>
+							<td></td>
+							<td></td>
+							<td></td>
 						</tr>
 					</tbody>
-	
 				</table>
+			</div>
+		</div> <!-- End Table Area -->
 	</div>
-	</div>
-</div>
-</div>
+ </div>
+
 
 <div id="footer"></div>
 </body>

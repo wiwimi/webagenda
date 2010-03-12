@@ -12,23 +12,62 @@
 <!--  Includes -->
 <jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
 
+<!-- Libraries -->
+<script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>	
+
 <!--  CSS files -->
 <link rel="stylesheet" href="CSS/table.css" type="text/css"></link>
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Confirmation/confirm.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Flash/flashmessenger.css" />
 
 <!-- Sorttable is under the X11 licence, it is an open source project.-->
 <!-- Javascript Files -->
 <script src="../lib/js/sorttable.js" type ="text/javascript"></script>
 <script type="text/javascript" src="../lib/js/dashboard.js"></script>
-
-
-
-<!-- Libraries -->
-<script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>	
+<script type="text/javascript" src="../lib/js/jquery-impromptu.3.0.min.js"></script>
+<script type="text/javascript" src="../lib/js/deleteUser.js"></script>
 
 </head>
 <body>
-<br></br>
+
+		<% 
+					if(request.getParameter("message") != null)
+					{
+						if(request.getParameter("message").equals("true"))
+						{
+			 %>
+							<script type="text/javascript">
+											$(function()
+										    {
+												
+												    $.flashMessenger("The user has been successfully deleted", 
+													{ 	
+														modal:true, 
+														autoClose: false 
+													});	
+											});
+							</script>
+			   <% 			   
+						 }
+						else if(request.getParameter("message").equals("false"))
+						{
+				%>
+							<script type="text/javascript">
+								$(function()
+								    {
+										$.flashMessenger("An error occured while deleting the User. Please contact your admin",
+								        {
+											   modal:true,
+							    		       clsName:"err", 
+								    		   autoClose:false
+								    	 }); 
+								   }); 
+							</script>
+				<%
+						}
+					}
+				%>
 		
 		<div id="usersWidget" class="fullWidget">
 			<div class="widgetUpperRectangle" id="usersWidgetUpperRectangle">
@@ -92,20 +131,20 @@
 								for(int index = 0; index < count; index++)
 								{
 							%>
-										<tr>
+									<tr>
 										<td>
-												
-												<a href="updateUserProfile.jsp"><div id="profileImage"> <b> <%= empArray[index].getUsername() %> </b></div></a>
-											    <div class="row-actions"><span class='edit'>
-											    <a href="updateUserProfile.jsp?id=<%= empArray[index].getEmpID() %>"> Edit </a>   | </span>  <span class='delete'>
-											    <a class='submitdelete' href='#'>Delete</a></span></div>
+											<a href="newUser.jsp?=<%=empArray[index].getUsername()%>"> <div id="profileImage"> <b><%=empArray[index].getUsername()%> </b></div></a>
+											<div class="row-actions"><span class='edit'>
+											<a href="#"> Edit </a>   | </span>  <span class='delete'>
+											<a href="javascript:;" onClick="removeUser('<%=empArray[index].getEmpID()%>');">
+											Delete</a></span></div>
 										</td>
-												<td><a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getEmpID() %></a></td>
-												<td><a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getFamilyName() %></a></td>
-												<td> <a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getGivenName() %></a> </td>
-												<td> <a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getPrefPosition() %></a> </td>
-												<td> <a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getSupervisorID() %></a> </td>
-										</tr>
+										<td><a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getEmpID() %></a></td>
+										<td><a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getFamilyName() %></a></td>
+										<td> <a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getGivenName() %></a> </td>
+										<td> <a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getPrefPosition() %></a> </td>
+										<td> <a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getSupervisorID() %></a> </td>
+								   </tr>
 							<% 
 								}
 							%>			

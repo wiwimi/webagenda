@@ -7,7 +7,13 @@
 <%@ page import="persistence.PositionBroker" %>
 <%@ page import="business.Employee" %>
 <%@ page import="persistence.EmployeeBroker" %>
+<%@ page import="business.permissions.PermissionBroker" %>
+<%@ page import="business.permissions.PermissionLevel" %>
+<%@ page import="business.permissions.PermissionAccess" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+
 <!-- Author: Noorin -->
 <html>
 <head>
@@ -120,10 +126,10 @@
 						<p>	<label class ="label"> Given Name:  <em class="asterisk"> * </em> </label> <input type="text"  name ="givenName" class ="required" size ="30"> </p>
 						<p>	<label class ="label"> Family Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="familyName"  class ="required"  size ="30"> </p>
 						<p>	<label class ="label"> Date of Birth: </label> <input type="text" name ="dob" id="dob" class ="required"  size ="10"></p>
-						<p>	<label class ="label"> Username: </label> <input type="text" name ="username" id="username"   size ="10"></p>
+						<p>	<label class ="label"> Username: </label> <input type="text" name ="username" id="username"   size ="30"></p>
 	                    <p>
 					         <label for="cemail" class="label"> E-Mail</label>
-				             <input type="text" id="cemail" name="email"/>
+				             <input type="text" id="cemail" name="email" size="30"/>
 				        </p>
 					</fieldset>
 				</div>
@@ -137,11 +143,17 @@
 								</select> 
 						</p>
 										
-						<!--This should be populated from MaintainJobType use case -->
+						<!--This should be populated from the database -->
 					    <p>
-							<label id="theSelect" class="theSelect" for="empId">Employee Id:</label>
-							<input type="text" name="empId" size="30" maxLength="30" value=""/>
-							<input id="empIdButton" type="button" name="submit" class="button" value="Edit"/>
+							<label id="theSelect" class="theSelect" for="empId">Employee Id: <em class="asterisk"> * </em> </label>
+							<input type="text" name="empId" class="required" size="30" maxLength="30" value=""/>
+						</p>
+						
+						<!--This should be populated from the database -->
+					    <p>
+							<label id="theSelect" class="theSelect" for="supervisorId">Supervisor Id:</label>
+							<input type="text" name="supId" size="30" maxLength="30" value=""/>
+							<input id="empIdButton" id="supIdButton" type="button" name="submit" class="button" value="Edit"/>
 						</p>
 					
 						
@@ -157,7 +169,7 @@
 						<!--This should be populated from MaintainLocation use case -->
 						<div id="locationsButton">
 					    <p>		
-							<label id="theSelect" class="theSelect"> Preferred Locations: </label>  
+							<label id="theSelect" class="theSelect"> Preferred Location: </label>  
 							<input id="prefLocationBox" type="text" size="30" maxlength="30" disabled="disabled" value="Edit locations" name="prefLocationBox" />
 							<input type="button" name="submit" class="button" value="Edit"/>
 					    </p>
@@ -176,7 +188,7 @@
 						<p>
 							<label id="theSelect" class="theSelect"> Permission level: </label>  
 							<input id="permissionBox" type="text" size="30" maxlength="30" value="" name="permissionBox" />
-							   <input type="button" name="submit" class="button" value="edit"/>
+							   <input type="button" id="perButton" name="submit" class="button" value="edit"/>
 						</p>
 					</fieldset>
 					</div>
@@ -202,13 +214,13 @@
 							<thead class="head">
 								<tr class="headerRow">
 									<th>Name</th>
-									<td> <input type="checkbox" name="option"> </td>
+									<th> </th>
 								</tr>
 							</thead>
 							<tfoot class="foot">
 								<tr class="headerRow">
 									<th>Name</th>
-									<td> <input type="checkbox" name="option"> </td>
+									<th></th>
 								</tr>
 							</tfoot>
 							<tbody>
@@ -231,7 +243,7 @@
 												<a href="addLocation.jsp"><div id="locationImage"> <b> <%=locArray[index].getName()%> </b></div></a>
 											</td>
 											<td>
-												<input type="checkbox" name="option"> 
+												<input type="radio" name="option"> 
 											</td>
 									<% 
 										}

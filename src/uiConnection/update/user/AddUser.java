@@ -39,10 +39,11 @@ public class AddUser extends HttpServlet {
 				String givenName = request.getParameter("givenName");
 				String[] pos_skills = request.getParameterValues("skill");
 				String status =  request.getParameter("status");
-				String[] pos = request.getParameterValues("pos");
+				String pos = request.getParameter("pos");
 				String email=request.getParameter("email");
 				String username = request.getParameter("username");
 				String[] permLevel = request.getParameterValues("permLevel");
+				String[] prefLocations = request.getParameterValues("locations");
 				
 				Employee emp = new Employee();
 				if (status.equals("enabled"))
@@ -54,7 +55,7 @@ public class AddUser extends HttpServlet {
 				emp.setGivenName(givenName);
 				emp.setUsername(username);
 				emp.setEmail(email);
-				emp.setPrefLocation(preferredLocation);
+				emp.setPrefLocation(prefLocations);
 				
 				
 				

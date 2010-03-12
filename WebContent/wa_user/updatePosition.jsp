@@ -33,9 +33,7 @@
 <script type="text/javascript" src="../lib/js/deletePosition.js"></script>
 </head>
 <body>
-<br></br>
-
- <% 
+			<% 
 					if(request.getParameter("message") != null)
 					{
 						if(request.getParameter("message").equals("true"))
@@ -72,8 +70,6 @@
 						}
 					}
 				%>
-
-		
 		<div id="skillsWidget" class="fullWidget">
 			<div class="widgetUpperRectangle" id="positionssWidgetUpperRectangle">
 				<div class="widgetTitle" id="positionsTitle">Positions</div>
