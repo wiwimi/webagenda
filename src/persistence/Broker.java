@@ -76,8 +76,7 @@ public abstract class Broker<E extends BusinessObject>
 	/**
 	 * Removes the record from the database that is equivalent to the given
 	 * object. The object to be deleted must have originally been retrieved from
-	 * the database. TODO An exception will be thrown if the record to be deleted
-	 * does not exist in the database.
+	 * the database.
 	 * 
 	 * @param deleteObj
 	 * @return true if the delete was successful, otherwise false.

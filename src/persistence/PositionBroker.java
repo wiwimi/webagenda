@@ -36,6 +36,12 @@ public class PositionBroker extends Broker<Position> {
 		return pbrok;
 	}
 	
+	/*
+	 * Do we want it so that this method checks for existing Skill[]s and throw an exception if not found,
+	 * or create on demand? 
+	 * (non-Javadoc)
+	 * @see persistence.Broker#create(business.BusinessObject)
+	 */
 	@Override
 	public boolean create(Position createObj) throws DBException,
 			DBDownException {
@@ -84,6 +90,11 @@ public class PositionBroker extends Broker<Position> {
 		return true;
 	}
 
+	/*
+	 * FIXME: !!! Check every delete to ensure that there are no orphaned Skill objects.
+	 * (non-Javadoc)
+	 * @see persistence.Broker#delete(business.BusinessObject)
+	 */
 	@Override
 	public boolean delete(Position deleteObj) throws DBException,
 			DBDownException {
@@ -101,8 +112,10 @@ public class PositionBroker extends Broker<Position> {
 		try
 			{
 			DBConnection conn = this.getConnection();
+			
 			Statement stmt = conn.getConnection().createStatement();
 			int result = stmt.executeUpdate(delete);
+			
 			
 			if (result != 1)
 				throw new DBException("Failed to delete position, result count incorrect: " +	result);
@@ -238,17 +251,27 @@ public class PositionBroker extends Broker<Position> {
 	/**
 	 * Method returns a completed list of skills (adds descriptions, does not throw
 	 * exception if executed without error.)
+	 * - Checks to ensure that skills exist in skill broker.
 	 * @param input Array of skills to check if they exist
 	 * @return Skills with descriptions added
+	 * @throws DBDownException 
+	 * @throws DBException 
 	 */
-	private Skill[] ensureSkillsExist(Skill[] input) {
+	private Skill[] ensureSkillsExist(Skill[] input) throws DBException, DBDownException {
 		
-		
-		
-		
+		for(Skill s : input) {
+			if(s != null)
+				SkillBroker.getBroker().get(s);
+		}
 		return input;
 	}
 
+	/*
+	 * If the Skill[] parameter is not null, then we must parse it
+	 * 
+	 * (non-Javadoc)
+	 * @see persistence.Broker#update(business.BusinessObject)
+	 */
 	@Override
 	public boolean update(Position updateObj) throws DBException,
 			DBDownException {
@@ -268,8 +291,17 @@ public class PositionBroker extends Broker<Position> {
 		try
 			{
 			DBConnection conn = this.getConnection();
+			
+			if(updateObj.getPos_skills() != null)
+			{
+				// We must check skills, if it throws an exception then update will fail.
+				// If skills[] is null and update erases them, that's fine because null always exists.
+				ensureSkillsExist(updateObj.getPos_skills());
+			}
+			
 			Statement stmt = conn.getConnection().createStatement();
 			int updateRowCount = stmt.executeUpdate(update);
+		
 			conn.setAvailable(true);
 			
 			// Ensure

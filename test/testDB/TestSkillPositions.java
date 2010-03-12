@@ -41,10 +41,43 @@ public class TestSkillPositions {
 
 	@Test
 	public void testCreatePosition() {
+		
+//		try {
+//			pbrok.delete(new Position("Waiter",null));
+//		} catch (DBException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		} catch (DBDownException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+		
+		
+		
+//		try {
+//			Position p = new Position("Waiter",null);
+//			pbrok.create(p);
+//			Position[] pos;
+//			pos = PositionBroker.getBroker().get(p);
+//			assertEquals(pos[0],p);
+//		} catch (DBException e) {
+//			// TODO Auto-generated catch block
+//			System.out.println("DB Exception: " + e.getLocalizedMessage());
+//		} catch (DBDownException e) {
+//			// TODO Auto-generated catch block
+//			System.out.println("DBDown Exception");
+//		}
+		
+		
 		try {
-			Position[] pos = pbrok.getBroker().get(new Position("Waiter",null));
-			for(Position p : pos)
-				System.out.println(p);
+			
+			
+			Position testP = new Position("Nobody",null);
+			boolean b = pbrok.create(testP);
+			System.out.println(b);
+			assertEquals(PositionBroker.getBroker().get(testP)[0],testP);
+			pbrok.delete(testP);
+			
 		} catch (DBException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

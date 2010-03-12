@@ -9,6 +9,7 @@ import java.sql.Statement;
 
 import application.DBConnection;
 import business.Skill;
+import business.schedule.Position;
 import exception.DBDownException;
 import exception.DBException;
 
@@ -112,11 +113,11 @@ public class SkillBroker extends Broker<Skill> {
 	@Override
 	public Skill[] get(Skill searchTemplate)
 			throws DBException, DBDownException {
-String select;
+		String select;
 		
 		if (searchTemplate == null)
 			{
-			select = "SELECT * FROM `WebAgenda`.`Skill`;";
+			select = "SELECT * FROM `WebAgenda`.`SKILL`;";
 			}
 		else
 			{
@@ -124,7 +125,7 @@ String select;
 				throw new DBException("Can not search with null name.");
 			
 			select = String.format(
-					"SELECT * FROM `WebAgenda`.`Skill` WHERE skillName LIKE '%s%%'",
+					"SELECT * FROM `WebAgenda`.`SKILL` WHERE skillName LIKE '%s%%'",
 					searchTemplate.getName());
 			}
 		
@@ -207,7 +208,6 @@ String select;
 		
 		return true;
 	}
-	
 	
 	
 }

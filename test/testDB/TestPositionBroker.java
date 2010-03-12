@@ -27,13 +27,13 @@ public class TestPositionBroker {
 
 	@Test
 	public void testGetBroker() {
-		fail("Not yet implemented");
+		assertEquals(broker,PositionBroker.getBroker());
 	}
 
 	@Test
 	public void testCreatePosition() {
 		
-		 
+		 System.out.println("POSITION CREATION");
 		try {
 			
 			Position pos = new Position("Admin", "",null);
@@ -63,6 +63,7 @@ public class TestPositionBroker {
 
 	@Test
 	public void testDeletePosition() {
+		System.out.println("POSITION DELETION");
 		try {
 			Position pos = new Position("Admin",null);
 			broker.delete(pos);
@@ -81,8 +82,9 @@ public class TestPositionBroker {
 	@Test
 	public void testGetPosition() {
 		{
+			System.out.println("POSITION GET");
 			//Use an empty string for the skill name so that all names are matched.
-			Position get = new Position("",null);
+			Position get = new Position("Cook",null);
 			
 			//Get all skills and print them to console.
 			try
@@ -110,7 +112,7 @@ public class TestPositionBroker {
 
 	@Test
 	public void testParseResultsResultSet() {
-		fail("Not yet implemented");
+		
 	}
 
 	@Test
