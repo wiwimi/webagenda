@@ -31,9 +31,10 @@ public class AddUser extends HttpServlet {
 		    throws ServletException, IOException 
 		    {
 		        response.setContentType("text/html;charset=UTF-8");
-		      
-		        //Create or get the session object from the HTTPSession object
-		        //HttpSession session = request.getSession();
+		        
+		        Employee emp = new Employee();
+		        
+		        
 		        PrintWriter out = response.getWriter();
 		        String familyName = request.getParameter("familyName");
 				String givenName = request.getParameter("givenName");
@@ -42,10 +43,15 @@ public class AddUser extends HttpServlet {
 				String pos = request.getParameter("pos");
 				String email=request.getParameter("email");
 				String username = request.getParameter("username");
-				String[] permLevel = request.getParameterValues("permLevel");
-				String[] prefLocations = request.getParameterValues("locations");
+				String permLevel = request.getParameter("permLevel");
+				String location= request.getParameter("location");
 				
-				Employee emp = new Employee();
+				String empId = request.getParameter("empId");
+				String supId = request.getParameter("supId");
+				
+				int empIdInt = Integer.parseInt(empId);
+				int supIdInt = Integer.parseInt(supId);
+				
 				if (status.equals("enabled"))
 					emp.setActive(true);
 				else
@@ -55,9 +61,11 @@ public class AddUser extends HttpServlet {
 				emp.setGivenName(givenName);
 				emp.setUsername(username);
 				emp.setEmail(email);
-				emp.setPrefLocation(prefLocations);
-				
-				
+				emp.setPrefLocation(location);
+				emp.setPrefPosition(pos);
+				emp.setEmpID(empIdInt);
+				emp.setSupervisorID(supIdInt);
+				emp.setPLevel(permLevel);
 				
 				if (pos_skills != null) 
 				{
@@ -67,7 +75,7 @@ public class AddUser extends HttpServlet {
 				         Skill tempSkill = new Skill(pos_skills[i]);
 				         skills[i] = (tempSkill);
 				      }
-				   } 
+				} 
 				boolean success;
 				EmployeeBroker broker = null;
 				
@@ -76,31 +84,31 @@ public class AddUser extends HttpServlet {
 						broker = EmployeeBroker.getBroker();
 						broker.initConnectionThread();
 						
-						Position pos = new Position(posName, desc, skills);
-						success = broker.create(pos);
+						
+						success = broker.create(emp);
 						
 					if (success)
 					{
 						//Confirm that the user was added
-						response.sendRedirect("wa_user/newPosition.jsp?message=true");
+						response.sendRedirect("wa_user/newUser.jsp?message=true");
 					}
 				}
 				catch (DBException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-					// Failed to add the position
-					response.sendRedirect("wa_user/newPosition.jsp?message=false");
+					// Failed to add the user
+					response.sendRedirect("wa_user/newUser.jsp?message=false");
 					
 				} catch (DBDownException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-					// Failed to add the position
-					response.sendRedirect("wa_user/newPosition.jsp?message=false");
+					// Failed to add the user
+					response.sendRedirect("wa_user/newUser.jsp?message=false");
 				}
 				catch(Exception e)
 				{
-					// Failed to add the position
-					response.sendRedirect("wa_user/newPosition.jsp?message=false");
+					// Failed to add the user
+					response.sendRedirect("wa_user/newUser.jsp?message=false");
 				}
 				finally
 				{
