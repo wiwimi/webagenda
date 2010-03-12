@@ -179,7 +179,9 @@ public class PositionBroker extends Broker<Position> {
 				
 				// This statement parses Skills from Position results, then ensures they exist in Skill table, then
 				// sets it to the position in the loop (no exceptions means worked properly) which is returned. TA DA
-				p.setPos_skills(ensureSkillsExist(parseSkills(searchResults)));
+				Skill[] skill_check = parseSkills(searchResults);
+				if(skill_check != null)
+					p.setPos_skills(ensureSkillsExist(skill_check));
 			}
 			
 			conn.setAvailable(true);

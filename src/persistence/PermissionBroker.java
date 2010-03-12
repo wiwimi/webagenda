@@ -101,7 +101,19 @@ public class PermissionBroker extends Broker<PermissionLevel>{
 		return false;
 	}
 	
-	
+	public PermissionLevel[] getAllBelow(Employee emp) throws DBException, DBDownException
+	{
+		String str = emp.getPLevel();
+		if(Character.isLetter(str.charAt(str.length() - 1)))
+		{
+			return business.permissions.PermissionBroker.getBroker().getAllBelow(
+					Integer.parseInt(str.substring(0,str.length() - 1)));
+		}
+		else {
+			return business.permissions.PermissionBroker.getBroker().getAllBelow(
+					Integer.parseInt(str));
+		}
+	}
 	
 	
 }
