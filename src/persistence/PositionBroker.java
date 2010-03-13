@@ -60,7 +60,7 @@ public class PositionBroker extends Broker<Position> {
 				" VALUES (%s,%s);",
 				"'" + createObj.getName() + "'",
 				(createObj.getDescription() == null ? "NULL" : "'" + createObj.getDescription() + "'"));
-				
+				System.out.println(insert);
 		/*
 		 * Send insert to database. SQL errors such as primary key already in use
 		 * will be caught, and turned into our own DBAddException, so this method
@@ -73,13 +73,36 @@ public class PositionBroker extends Broker<Position> {
 			conn.getConnection().setAutoCommit(false); // Temporarily while skills are checked for integrity
 			Statement stmt = conn.getConnection().createStatement();
 			int result = stmt.executeUpdate(insert);
+			
+			// create posskill entries
+			if(createObj.getPos_skills() != null)
+			{
+				for(int i = 0; i < createObj.getPos_skills().length; i++) {
+					try {
+						insert = "INSERT INTO `WebAgenda`.`POSSKILL` " +
+								"(`positionName`,`skillName`)" + 
+								" VALUES (" + 
+								"'" + createObj.getName() + "'," +
+								"'" + createObj.getPos_skills()[i] + "')";
+						System.out.println(insert);
+						stmt = conn.getConnection().createStatement();
+						result = stmt.executeUpdate(insert);
+					}
+					catch(SQLException e) {
+						System.out.println("--  " + createObj.getPos_skills()[i] + 
+						"not created. May already exist under this Position.");
+						conn.getConnection().rollback();
+					}
+				}
+			}
+			conn.getConnection().setAutoCommit(true);
 			conn.setAvailable(true);
 			
 			if (result != 1)
 				throw new DBException(
 						"Failed to create position, result count incorrect: " +
 								result);
-			conn.getConnection().setAutoCommit(true);
+			
 			}
 		catch (SQLException e)
 			{
@@ -92,6 +115,7 @@ public class PositionBroker extends Broker<Position> {
 
 	/*
 	 * FIXME: !!! Check every delete to ensure that there are no orphaned Skill objects.
+	 * A delete is only successful if the previous skills associated to it are deleted.
 	 * (non-Javadoc)
 	 * @see persistence.Broker#delete(business.BusinessObject)
 	 */
@@ -104,23 +128,45 @@ public class PositionBroker extends Broker<Position> {
 		if (deleteObj.getName() == null)
 			throw new DBException("Missing Required Field: Name");
 		
-		String delete = String.format(
-				"DELETE FROM `WebAgenda`.`POSITION` WHERE positionName = '%s';",
-				deleteObj.getName());
-		
+		String delete = null;
 		boolean success;
 		try
 			{
 			DBConnection conn = this.getConnection();
+			conn.getConnection().setAutoCommit(false); // Temporarily while skills are checked for integrity
+			Statement stmt = null;
+			int result = 0;
 			
-			Statement stmt = conn.getConnection().createStatement();
-			int result = stmt.executeUpdate(delete);
 			
+			if(deleteObj.getPos_skills() != null) {
+				for(int i = 0; i < deleteObj.getPos_skills().length; i++) {
+					try {
+						delete = String.format(
+								"DELETE FROM `WebAgenda`.`POSSKILL` WHERE positionName = '%s' AND skillName = '%s';",
+								deleteObj.getName(), deleteObj.getPos_skills()[i]);
+						stmt = conn.getConnection().createStatement();
+						result = stmt.executeUpdate(delete);
+					} catch(SQLException e) {
+						System.out.println("--  " + deleteObj.getPos_skills()[i] + 
+								"not deleted. May not exist under this Position.");
+						conn.getConnection().rollback();
+						throw new DBException(deleteObj.getPos_skills()[i] + " did not exist or was unable to be deleted.");
+								 
+					}
+				}
+			}
+			delete = String.format(
+					"DELETE FROM `WebAgenda`.`POSITION` WHERE positionName = '%s';",
+					deleteObj.getName());
 			
+			stmt = conn.getConnection().createStatement();
+			result = stmt.executeUpdate(delete);
 			if (result != 1)
 				throw new DBException("Failed to delete position, result count incorrect: " +	result);
 			else
 				success = true;
+			conn.getConnection().setAutoCommit(true); 
+			conn.setAvailable(true);
 			}
 		catch (SQLException e)
 			{

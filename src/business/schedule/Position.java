@@ -46,12 +46,6 @@ public class Position extends BusinessObject {
 		this.description = pos_desc;
 	}
 
-	@Override
-	public String toString()
-		{
-		return name;
-		}
-
 	/**
 	 * @return the name
 	 */
@@ -94,7 +88,15 @@ public class Position extends BusinessObject {
 		pos_skills = posSkills;
 	}
 	
-	
+	@Override
+	public String toString()
+	{
+		String str = name;
+		if(pos_skills != null)
+			for(Skill s : pos_skills)
+				str += s;
+		return str;
+	}
 	
 	
 }

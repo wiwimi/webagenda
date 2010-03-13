@@ -13,6 +13,7 @@ import business.Skill;
 import business.schedule.Position;
 
 import persistence.PositionBroker;
+import persistence.SkillBroker;
 
 public class TestSkillPositions {
 
@@ -75,8 +76,13 @@ public class TestSkillPositions {
 			Position testP = new Position("Nobody",null);
 			boolean b = pbrok.create(testP);
 			System.out.println(b);
-			assertEquals(PositionBroker.getBroker().get(testP)[0],testP);
-			pbrok.delete(testP);
+			assertEquals(PositionBroker.getBroker().get(testP)[0].equals(testP));
+			b = pbrok.delete(testP);
+			System.out.println(b);
+			
+			System.out.println("Starting Creation Test With Skill[]");
+			pbrok.create(newpos);
+			pbrok.delete(newpos);
 			
 		} catch (DBException e) {
 			// TODO Auto-generated catch block
@@ -85,6 +91,11 @@ public class TestSkillPositions {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	private void assertEquals(boolean equals) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Test

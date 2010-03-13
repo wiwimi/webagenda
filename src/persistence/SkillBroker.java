@@ -59,6 +59,7 @@ public class SkillBroker extends Broker<Skill> {
 		 */
 		try
 			{
+			System.out.println(insert);
 			DBConnection conn = this.getConnection();
 			Statement stmt = conn.getConnection().createStatement();
 			int result = stmt.executeUpdate(insert);
