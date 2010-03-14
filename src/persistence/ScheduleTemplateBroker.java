@@ -106,7 +106,7 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 		}
 
 	@Override
-	public boolean update(ScheduleTemplate updateObj) throws DBException,
+	public boolean update(ScheduleTemplate oldObj, ScheduleTemplate updateObj) throws DBException,
 			DBDownException
 		{
 		// TODO Auto-generated method stub

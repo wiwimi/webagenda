@@ -319,7 +319,7 @@ public class PositionBroker extends Broker<Position> {
 	 * @see persistence.Broker#update(business.BusinessObject)
 	 */
 	@Override
-	public boolean update(Position updateObj) throws DBException,
+	public boolean update(Position oldObj, Position updateObj) throws DBException,
 			DBDownException {
 		if (updateObj == null)
 			throw new NullPointerException("Can not update null position.");

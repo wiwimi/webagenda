@@ -54,7 +54,7 @@ public class ScheduleBroker extends Broker<Schedule> {
 	}
 
 	@Override
-	public boolean update(Schedule updateObj) throws DBException {
+	public boolean update(Schedule oldObj, Schedule updateObj) throws DBException {
 		// TODO Auto-generated method stub
 		return false;
 	}

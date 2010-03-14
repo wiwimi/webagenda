@@ -145,24 +145,6 @@ public class EmployeeBroker extends Broker<Employee>
 		return result;
 		}
 	
-	/**
-	 * Disables the employee in the system rather than fully deleting it.
-	 * 
-	 * @param disableEmp 
-	 * @return
-	 * @throws DBException
-	 */
-	public boolean disable(Employee disableEmp) throws DBException, DBDownException
-		{
-		if (disableEmp == null)
-			throw new NullPointerException("Can not disable null employee.");
-		
-		//Set emp to disabled and pass to update method.
-		disableEmp.setActive(false);
-		
-		return update(disableEmp);
-		}
-	
 	/* (non-Javadoc)
 	 * @see persistence.Broker#delete(business.BusinessObject)
 	 */
@@ -319,7 +301,7 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @see persistence.Broker#update(business.BusinessObject)
 	 */
 	@Override
-	public boolean update(Employee updateEmployee) throws DBException, DBDownException
+	public boolean update(Employee oldEmployee, Employee updateEmployee) throws DBException, DBDownException
 		{
 		if (updateEmployee == null)
 			throw new NullPointerException("Can not update null employee.");

@@ -26,7 +26,6 @@ import application.DBConnection;
  */
 public abstract class Broker<E extends BusinessObject>
 	{
-	
 	/** Double linked list for holding connection objects. List changes dynamically depending on
 	 * the need of the application, old connections will be closed and removed periodically. */
 	private DoubleLinkedList<DBConnection>	connections	= new DoubleLinkedList<DBConnection>();
@@ -44,7 +43,7 @@ public abstract class Broker<E extends BusinessObject>
 	
 	/**
 	 * Accepts a newly made object, and creates its equivalent record within the
-	 * database. TODO An exception will be thrown if there is already a record in
+	 * database. An exception will be thrown if there is already a record in
 	 * the database with the same primary key.
 	 * 
 	 * @param createObj The object to add to the database.
@@ -63,22 +62,23 @@ public abstract class Broker<E extends BusinessObject>
 	public abstract E[] get(E searchTemplate) throws DBException, DBDownException;
 	
 	/**
-	 * Applies all changes to the updated object to its equivalent record within
+	 * Applies all changes from the updated object to its equivalent record within
 	 * the database. The updated object must have originally been retrieved from
-	 * the database. TODO An exception will be thrown if the record to be updated
+	 * the database. An exception will be thrown if the record to be updated
 	 * does not exist in the database.
 	 * 
-	 * @param updateObj The previously retrieved object that has been updated.
+	 * @param oldObj The previously retrieved object.
+	 * @param updateObj The new version of the retrieved object, with updated attributes.
 	 * @return true if the update was successful, otherwise false.
 	 */
-	public abstract boolean update(E updateObj) throws DBException, DBDownException;
+	public abstract boolean update(E oldObj, E updateObj) throws DBException, DBDownException;
 	
 	/**
 	 * Removes the record from the database that is equivalent to the given
 	 * object. The object to be deleted must have originally been retrieved from
 	 * the database.
 	 * 
-	 * @param deleteObj
+	 * @param deleteObj The object to be deleted from the database.
 	 * @return true if the delete was successful, otherwise false.
 	 */
 	public abstract boolean delete(E deleteObj) throws DBException, DBDownException;
@@ -101,7 +101,7 @@ public abstract class Broker<E extends BusinessObject>
 		{
 		DBConnection returnConnection = null;
 		/*
-		 * TODO - This method will return a current available database connection,
+		 * This method will return a current available database connection,
 		 * or create a new one if needed to support additional load.
 		 */
 		

@@ -266,7 +266,7 @@ public class PermissionAccess {
 			throw new InvalidPermissionException("Employee " + requester.getEmpID() + " attempted to update a PermissionLevel " + 
 					update.getLevel() + " outside their access " + level + version + ".");
 		}
-		
-		return PermissionBroker.getBroker().update(update);
+		//TODO null parameter in update need to be filled by permissionlevel object that was previously retrieved from DB.
+		return PermissionBroker.getBroker().update(null, update);
 	}
 }

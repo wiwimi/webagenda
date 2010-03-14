@@ -98,7 +98,7 @@ public class PermissionBroker extends Broker<PermissionLevel>{
 	}
 
 	@Override
-	public boolean update(PermissionLevel updateObj) throws DBException {
+	public boolean update(PermissionLevel oldObj, PermissionLevel updateObj) throws DBException {
 		try {
 			return PermissionAccess.getAccess().updatePermissionLevel(updateObj, employee);
 		} catch (InvalidPermissionException e) {	

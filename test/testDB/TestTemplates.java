@@ -27,7 +27,7 @@ public class TestTemplates {
 			pbrok.create(new Position("Fryer",null));
 			
 			posarray = pbrok.get(new Position("Fryer",null));
-			pbrok.update(new Position("Fryer","someone who fries food",null));
+			pbrok.update(null,new Position("Fryer","someone who fries food",null));
 			posarray = pbrok.get(new Position("Cook",null));
 			for(Position p : posarray)
 				System.out.println(p);

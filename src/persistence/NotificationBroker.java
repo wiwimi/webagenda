@@ -11,7 +11,6 @@ import exception.DBDownException;
 import exception.DBException;
 import application.DBConnection;
 import business.Notification;
-import business.schedule.Location;
 
 
 /**
@@ -175,7 +174,7 @@ public class NotificationBroker extends Broker<Notification> {
 	}
 
 	@Override
-	public boolean update(Notification updateObj) throws DBException,
+	public boolean update(Notification oldUpdate, Notification updateObj) throws DBException,
 			DBDownException {
 		if (updateObj == null)
 			throw new NullPointerException("Can not update null notification.");

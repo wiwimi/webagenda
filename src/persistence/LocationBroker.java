@@ -177,7 +177,7 @@ public class LocationBroker extends Broker<Location>
 	 * @see persistence.Broker#update(business.BusinessObject)
 	 */
 	@Override
-	public boolean update(Location updateLocation) throws DBException, DBDownException
+	public boolean update(Location oldLocation, Location updateLocation) throws DBException, DBDownException
 		{
 		if (updateLocation == null)
 			throw new NullPointerException("Can not update null location.");

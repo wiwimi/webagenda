@@ -82,30 +82,12 @@ public class TestEmployeeBroker
 			e.printStackTrace();
 			}
 		
-		
-		//Try to disable the employee.
+		//Search for employee.
 		try
 			{
-			boolean disabled = empBroker.disable(newEmp);
-			assertTrue(disabled);
-			System.out.println("Employee disabled: "+ disabled);
-			}
-		catch (DBException e)
-			{
-			e.printStackTrace();
-			fail();
-			}
-		catch (DBDownException e)
-			{
-			e.printStackTrace();
-			}
-		
-		//Search for disabled employee.
-		try
-			{
-			Employee empSearchDisabled = new Employee();
-			empSearchDisabled.setEmpID(80000);
-			Employee[] results = empBroker.get(empSearchDisabled);
+			Employee empSearch = new Employee();
+			empSearch.setEmpID(80000);
+			Employee[] results = empBroker.get(empSearch);
 			if (results == null)
 				fail("Employee search failed, disabled employee not returned.");
 			assertFalse("Employee was not disabled ",results[0].getActive());
@@ -257,7 +239,7 @@ public class TestEmployeeBroker
 		newEmp.setEmail("fakeemail@fake.com");
 		try
 			{
-			boolean successful = empBroker.update(newEmp);
+			boolean successful = empBroker.update(null,newEmp);
 			assertTrue(successful);
 			System.out.println("Employee updated: "+successful);
 			System.out.println(newEmp);

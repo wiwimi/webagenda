@@ -282,7 +282,7 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 	 * @see persistence.Broker#update(business.BusinessObject)
 	 */
 	@Override
-	public boolean update(PermissionLevel updateObj) throws DBException, DBDownException {
+	public boolean update(PermissionLevel oldObj, PermissionLevel updateObj) throws DBException, DBDownException {
 		if(updateObj == null)
 			throw new NullPointerException();
 		 

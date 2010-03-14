@@ -99,10 +99,10 @@ public class TestSkillPositions {
 		Position p = new Position("Cook","A person who cooks things",new Skill[]{new Skill("Cooking")});
 		
 		try {
-			pbrok.update(p);
+			pbrok.update(null,p);
 			assertEquals(p.getDescription(),pbrok.get(p)[0].getDescription());
 			p.setDescription(null);
-			pbrok.update(p);
+			pbrok.update(null,p);
 			
 		} catch (DBException e) {
 			// TODO Auto-generated catch block
