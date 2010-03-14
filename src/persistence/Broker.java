@@ -92,6 +92,8 @@ public abstract class Broker<E extends BusinessObject>
 	 */
 	public abstract E[] parseResults(ResultSet rs) throws SQLException;
 	
+	
+	
 	/**
 	 * @return
 	 */

@@ -36,6 +36,8 @@ public class PermissionBroker extends Broker<PermissionLevel>{
 	 * that object. If it is null, exceptions will be thrown. */
 	private Employee employee = null;
 	
+	private static volatile PermissionBroker pbrok = null; 
+	
 	/**
 	 * Constructor that initializes an Employee object that will be used for every method call 
 	 * and validated against.
@@ -77,6 +79,12 @@ public class PermissionBroker extends Broker<PermissionLevel>{
 	public PermissionLevel[] get(PermissionLevel searchTemplate)
 			throws DBException, DBDownException {
 		return business.permissions.PermissionBroker.getBroker().get(searchTemplate);
+	}
+	
+	public static PermissionBroker getBroker(Employee e) throws PermissionBrokerViolationException
+	{
+		if(pbrok == null) pbrok = new PermissionBroker(e);
+		return pbrok;
 	}
 
 	/**

@@ -94,7 +94,7 @@ public class Position extends BusinessObject {
 		String str = name;
 		if(pos_skills != null)
 			for(Skill s : pos_skills)
-				str += s;
+				str += ";" + s;
 		return str;
 	}
 	

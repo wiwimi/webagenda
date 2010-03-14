@@ -41,48 +41,14 @@ public class TestSkillPositions {
 	}
 
 	@Test
-	public void testCreatePosition() {
-		
-//		try {
-//			pbrok.delete(new Position("Waiter",null));
-//		} catch (DBException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		} catch (DBDownException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		}
-		
-		
-		
-//		try {
-//			Position p = new Position("Waiter",null);
-//			pbrok.create(p);
-//			Position[] pos;
-//			pos = PositionBroker.getBroker().get(p);
-//			assertEquals(pos[0],p);
-//		} catch (DBException e) {
-//			// TODO Auto-generated catch block
-//			System.out.println("DB Exception: " + e.getLocalizedMessage());
-//		} catch (DBDownException e) {
-//			// TODO Auto-generated catch block
-//			System.out.println("DBDown Exception");
-//		}
-		
-		
+	public void testCreatePosition() {		
 		try {
 			
 			
-			Position testP = new Position("Nobody",null);
-			boolean b = pbrok.create(testP);
-			System.out.println(b);
-			assertEquals(PositionBroker.getBroker().get(testP)[0].equals(testP));
-			b = pbrok.delete(testP);
-			System.out.println(b);
+			Boolean b = pbrok.create(newpos);
 			
-			System.out.println("Starting Creation Test With Skill[]");
-			pbrok.create(newpos);
-			pbrok.delete(newpos);
+			assertEquals(new Boolean(true),b);
+			
 			
 		} catch (DBException e) {
 			// TODO Auto-generated catch block
@@ -93,29 +59,58 @@ public class TestSkillPositions {
 		}
 	}
 
-	private void assertEquals(boolean equals) {
-		// TODO Auto-generated method stub
+	@Test
+	public void testDeletePosition() {
+		
+		Boolean b;
+		try {
+			b = pbrok.delete(newpos);
+			assertEquals(new Boolean(true),b);
+		} catch (DBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (DBDownException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
 	@Test
-	public void testDeletePosition() {
-		fail("Not yet implemented");
-	}
-
-	@Test
 	public void testGetPosition() {
-		fail("Not yet implemented");
+		try {
+			assertEquals(new Position("Cook",new Skill[]{new Skill("Cooking")}).toString(),pbrok.get(new Position("Cook"))[0].toString());
+		} catch (DBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (DBDownException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Test
 	public void testParseResultsResultSet() {
-		fail("Not yet implemented");
+		// THIS WILL NOT BE IMPLEMENTED UNTIL FURTHER NOTICE
 	}
 
 	@Test
 	public void testUpdatePosition() {
-		fail("Not yet implemented");
+		Position p = new Position("Cook","A person who cooks things",new Skill[]{new Skill("Cooking")});
+		
+		try {
+			pbrok.update(p);
+			assertEquals(p.getDescription(),pbrok.get(p)[0].getDescription());
+			p.setDescription(null);
+			pbrok.update(p);
+			
+		} catch (DBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (DBDownException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

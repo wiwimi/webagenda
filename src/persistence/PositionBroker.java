@@ -84,7 +84,6 @@ public class PositionBroker extends Broker<Position> {
 								" VALUES (" + 
 								"'" + createObj.getName() + "'," +
 								"'" + createObj.getPos_skills()[i] + "')";
-						System.out.println(insert);
 						stmt = conn.getConnection().createStatement();
 						result = stmt.executeUpdate(insert);
 					}
@@ -315,8 +314,7 @@ public class PositionBroker extends Broker<Position> {
 	}
 
 	/*
-	 * If the Skill[] parameter is not null, then we must parse it
-	 * 
+	 * Update does not affect position skill relations, only descriptions.
 	 * (non-Javadoc)
 	 * @see persistence.Broker#update(business.BusinessObject)
 	 */
@@ -340,15 +338,10 @@ public class PositionBroker extends Broker<Position> {
 			{
 			DBConnection conn = this.getConnection();
 			
-			if(updateObj.getPos_skills() != null)
-			{
-				// We must check skills, if it throws an exception then update will fail.
-				// If skills[] is null and update erases them, that's fine because null always exists.
-				ensureSkillsExist(updateObj.getPos_skills());
-			}
-			
 			Statement stmt = conn.getConnection().createStatement();
 			int updateRowCount = stmt.executeUpdate(update);
+			
+			ensureSkillsExist(updateObj.getPos_skills());
 		
 			conn.setAvailable(true);
 			
