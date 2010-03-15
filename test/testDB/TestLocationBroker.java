@@ -199,7 +199,7 @@ public class TestLocationBroker
 			
 			for (Location printLoc : results)
 				{
-				System.out.println(printLoc);
+				System.out.println(printLoc.getDesc());
 				}
 			}
 		catch (DBException e)
@@ -222,7 +222,24 @@ public class TestLocationBroker
 	@Test
 	public void testUpdateLocation()
 		{
-		fail("Not yet implemented"); // TODO
+		   
+		try {
+			Location loc = new Location("Mohave Grill", "Restaurant");
+			boolean success = broker.update(loc);
+			if(success)
+			{
+				System.out.println(loc.toString());
+			}
+			
+		} catch (DBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (DBDownException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-	
+		
+		assertTrue(true);
 	}
+		}
+

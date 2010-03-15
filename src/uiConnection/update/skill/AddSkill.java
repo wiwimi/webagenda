@@ -15,7 +15,7 @@ import persistence.SkillBroker;
 import business.Skill;
 
 /**
- * Servlet implementation class addLocation
+ * Servlet implementation class addSkill
  */
 @WebServlet(name="AddSkill", urlPatterns={"/AddSkill"})
 public class AddSkill extends HttpServlet {

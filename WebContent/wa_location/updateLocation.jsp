@@ -1,175 +1,88 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-
 <%@ page import="persistence.LocationBroker" %>
 <%@ page import="business.schedule.Location" %>
-<%@ page import = "exception.DBDownException" %>
-<%@ page import = "exception.DBException" %>
+<%@ page import="java.util.*" %>
 
-<!--Author: Noorin-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- Author: Noorin -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Web Agenda- Updating Location</title>
+
+<title>WebAgenda -Updating Location- </title>
+
 <!--  Includes -->
 <jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
 
 <!-- Libraries -->
-<script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>	
+<script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
 
 <!-- Plug-ins -->
+<script src="../lib/js/jquery.validate.js" type="text/javascript"></script>
 <script src ="../lib/js/jquery.flashmessenger.js"   type ="text/javascript"> </script>
 
-<!--  CSS files -->
-<link rel="stylesheet" href="CSS/table.css" type="text/css"></link>
-<link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
-<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Confirmation/confirm.css" />
-<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Flash/flashmessenger.css" />
-
-
-<!-- Sorttable is under the X11 licence, it is an open source project.-->
 <!-- Javascript Files -->
-<script type="text/javascript" src="../lib/js/jquery-impromptu.3.0.min.js"></script>
-<script src="../lib/js/sorttable.js" type ="text/javascript"></script>
-<script type="text/javascript" src="../lib/js/dashboard.js"></script>
-<script type="text/javascript" src="../lib/js/deleteLocation.js"></script>
+<script src="../lib/js/cmxforms.js" type="text/javascript"></script>
+<script src= "../lib/js/val.js" type="text/javascript"> </script>
+
+<!--  CSS files -->
+<link rel="stylesheet" href="../CSS/creationForm.css" type="text/css"></link>
+<link rel="stylesheet" href="CSS/table.css" type="text/css"></link>
+<link rel="stylesheet" href="CSS/user.css" type="text/css"></link>
+<link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/val.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/screen.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Flash/flashmessenger.css" />
 
 </head>
 <body>
-<br></br>  
-		<% 
-					if(request.getParameter("message") != null)
-					{
-						if(request.getParameter("message").equals("true"))
-						{
-							//out.println("Location was deleted");
-	    %>
-						<script type="text/javascript">
-									$(function()
-								    {
-											$.flashMessenger("The location has been successfully created", 
-											{ 	
-												modal:true, 
-												autoClose: false 
-											});	
-									});
-								</script>
-				<% 			   
-						}
-						else if(request.getParameter("message").equals("false"))
-						{
-				%>
-							
-							<script type="text/javascript">
-								$(function()
-								    {
-										
-								       $.flashMessenger("The name you provided has already been used.",
-								        {
-											   modal:true,
-							    		       clsName:"err", 
-								    		   autoClose:false
-								    	 }); 
-								   }); 
-							</script>
-				<%
-						}
-					}
-				%>
-			 <div id="locationWidget" class="fullWidget">
-			<div class="widgetUpperRectangle" id="locationsUpperRectangle">
+	<div id="instructions">
+	        Fields marked with <em class="asterisk" > *</em> are required.
+	</div>
+ <div id="locationWidget" class="fullWidget">
+	<div class="widgetUpperRectangle" id="locationsUpperRectangle">
 				<div class="widgetTitle" id="locationsWidgetTitle">Locations</div>
 			</div>
-			<div class="widgetLowerRectangle" id="locationsLowerRectangle">
-				<div id="locationsIcon">
-						<h3>Locations</h3>
-				</div>
-				<div id="searchArea">
-				<form id="form">
-						<input type="text" size=30/ name="locName">
-						<input type="submit" name="search"  class="button" value="Search" onClick="location.href='newLocation.jsp?locName=' + form.locName.value"> 
-				</form>
-				</div>
-				<div id="tableArea">
-					<div class="userAdmin">
-						<table class="sortable" id="userTable">
-							<thead class="head">
-								<tr class="headerRow">
-									<th>Name</th>
-									<th>Description</th>
-								</tr>
-							</thead>
-							<tfoot class="foot">
-								<tr class="headerRow">
-									<th>Name</th>
-									<th>Description</th>
-								</tr>
-							</tfoot>
-							<tbody>
-								<% 
-								  try{
-									LocationBroker broker = LocationBroker.getBroker();
-									Location loc= null;
-									
-									if(request.getParameter("locName").equals(null))
-									{
-										
-										loc = new Location("");
-									}
-									else
-									{
-										loc =new Location(request.getParameter("locName"));
-									}
-									Location[] locArray = broker.get(loc);
-									
-									if (locArray.length==0 || locArray==null)
-									{
-								%>
-								         <tr>
-											<td>There are no results to display</td>
-									     </tr>
-								<%
-									}
-									else
-									{
-										    locArray = broker.get(loc);
-											for(int index = 0; index < locArray.length; index++)
-											{
-								%>
-												<tr>
-												<td>
-													<a href="newLocation.jsp"><div id="locationImage"> <b> <%=locArray[index].getName()%> </b></div></a>
-													<div class="row-actions"><span class='edit'>
-													<a href="#"> Edit </a>   | </span>  <span class='delete'>
-													<a href="javascript:;" onClick="removeLocation('<%=locArray[index].getName()%>');">
-														Delete
-													</a></span></div>
-												</td>
-												<td>
-													<a href="newLocation.jsp?=<%=locArray[index].getName()%>"> <%=locArray[index].getDesc()%> </a>
-												</td>
-								<% 
-											} 
-									  }
-								  }
-									catch (DBException e)
-									{
-										e.printStackTrace();
-										
-									}
-									catch (DBDownException e)
-									{
-										e.printStackTrace();
-									}
-								%>			
-								</tbody>
-							</table>
-						</div>
-					</div> <!-- End tableArea -->
-				</div> <!-- End widgetLowerRectangle -->
-			</div> <!-- End locationsWidget -->
+			
+		<div class="widgetLowerRectangle" id="locationsLowerRectangle">
+
+		<div id ="creationForm">
+			<form class="addLocationForm" action="../UpdateLocation" id="form" name="form" method="POST">
+			<div id="location">
+			
+			 <div id="formButtons">
+					        <input type="submit" name="submit"  class="button" value="Update" > 
+							<input type="button" name="submit" class="button"  onClick="location.href='searchResults.jsp?locName=' + form.locName.value" value="Search" > 
+					       	<input type="reset" name="clear" class="button" value="Clear Screen"> 
+			     </div>
+			     <fieldset>
+					<legend > Location Details </legend>
+					
+					<%
+						String loc = request.getParameter("location");
+					    StringTokenizer st = new StringTokenizer(loc);
+					    String locName="", locDesc="";
+					    String[] results = loc.split(",");
+					    locName= results[0];
+					    locDesc= results[1];
+
+					
+					%>
+							<p>	<label class="label"> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="locName" value ="<%=locName%>" class="required" size ="30"> </p>
+							
+							<p>	<label class="label"> Description: </label></p>
+							<textarea  name="desc" cols="23" rows="6" tabindex="101"> <%=locDesc%> </textarea>
+				</fieldset>
+				<div id="formButtons">
+						        <input type="submit" name="submit"  class="button" value="Update" > 
+								<input type="button" name="submit" class="button"  onClick="location.href='searchResults.jsp?locName=' + form.locName.value" value="Search" > 
+								<input type="reset" name="clear" class="button" value="Clear Screen"> 
+			     </div>
+			  </div>
+		    </form>
+		</div>
+	</div>
+</div>
 <div id="footer"></div>
 </body>
 </html>
-
-

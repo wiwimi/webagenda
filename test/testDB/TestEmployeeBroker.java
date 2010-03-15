@@ -125,6 +125,112 @@ public class TestEmployeeBroker
 			}
 		}
 	
+
+	/**
+	 * Test method for {@link persistence.EmployeeBroker#create(business.Employee)},
+	 * {@link persistence.EmployeeBroker#disable(business.Employee)} and
+	 * {@link persistence.EmployeeBroker#delete(business.Employee)}.
+	 */
+	@Test
+	public void testCreateDisableDeleteEmployee2()
+		{
+		System.out.println("******************** CREATE/DELETE TEST ********************");
+		
+		Employee newEmp = new Employee();
+		
+		newEmp.setEmpID(80002);
+		newEmp.setGivenName("Bilbo");
+		newEmp.setFamilyName("Baggins");
+		newEmp.setUsername("bilb01");
+		newEmp.setPassword("password");
+		newEmp.setPLevel("1a");
+		newEmp.setActive(true);
+		
+		
+		newEmp.setEmail("email@YAHOO.CA");
+		newEmp.setPrefLocation("Mohave Grill");
+		newEmp.setPrefPosition("admin");
+	
+		//Add employee
+		boolean successful;
+		try
+			{
+			successful = empBroker.create(newEmp);
+			assertTrue(successful);
+			System.out.println("Employee added: "+successful);
+			}
+		catch (DBException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		catch (DBDownException e)
+			{
+			e.printStackTrace();
+			}
+		
+		
+		//Try to disable the employee.
+		try
+			{
+			boolean disabled = empBroker.disable(newEmp);
+			assertTrue(disabled);
+			System.out.println("Employee disabled: "+ disabled);
+			}
+		catch (DBException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		catch (DBDownException e)
+			{
+			e.printStackTrace();
+			}
+		
+		//Search for disabled employee.
+		try
+			{
+			Employee empSearchDisabled = new Employee();
+			empSearchDisabled.setEmpID(80002);
+			Employee[] results = empBroker.get(empSearchDisabled);
+			if (results == null)
+				fail("Employee search failed, disabled employee not returned.");
+			assertFalse("Employee was not disabled ",results[0].getActive());
+			System.out.println("Employee retrieved: "+results[0]);
+			}
+		catch (DBException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		catch (DBDownException e)
+			{
+			e.printStackTrace();
+			}
+		catch (NullPointerException e)
+			{
+			e.printStackTrace();
+			}
+		
+		//Delete the test user.
+		try
+			{
+			boolean deleted = empBroker.delete(newEmp);
+			assertTrue(deleted);
+			System.out.println("Employee deleted: "+ deleted);
+			}
+		catch (DBException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		catch (DBDownException e)
+			{
+			e.printStackTrace();
+			}
+		}
+	
+	
 	/**
 	 * Test method for {@link persistence.EmployeeBroker#delete(business.Employee)}.
 	 */

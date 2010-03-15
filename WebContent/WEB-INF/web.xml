@@ -109,4 +109,14 @@
     <servlet-name>AddPosition</servlet-name>
     <url-pattern>/AddPosition</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateLocation</display-name>
+    <servlet-name>UpdateLocation</servlet-name>
+    <servlet-class>uiConnection.update.location.UpdateLocation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateLocation</servlet-name>
+    <url-pattern>/UpdateLocation</url-pattern>
+  </servlet-mapping>
 </web-app>

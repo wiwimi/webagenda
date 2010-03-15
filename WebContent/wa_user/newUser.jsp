@@ -85,22 +85,6 @@
 							</script>
 				<%
 						}
-						else if(request.getParameter("message").equals("skill"))
-						{
-				%>
-								<script type="text/javascript">
-								$(function()
-								    {
-										$.flashMessenger("Please select at least 1 skill using the 'edit' button.",
-								        {
-											   modal:true,
-							    		       clsName:"err", 
-								    		   autoClose:false
-								    	 }); 
-								   }); 
-							</script>
-				<%
-						}
 					}
 				%>
 		<div id="instructions">
@@ -114,7 +98,7 @@
 			</div>
 		<div class="widgetLowerRectangle" id="usersLowerRectangle">
 		<div id ="creationForm">
-			<form class="validatedForm" action="../AddUser.jsp" id="form" method="post">
+			<form class="validatedForm" action="../AddUser" id="form" method="post">
 				 <div id="personal">
 					 	<div id="formButtons">
 					 	    <input type="submit" name="submit" class="button" value="Add"> 
@@ -125,8 +109,8 @@
 					<legend > Personal </legend>
 						<p>	<label class ="label"> Given Name:  <em class="asterisk"> * </em> </label> <input type="text"  name ="givenName" class ="required" size ="30"> </p>
 						<p>	<label class ="label"> Family Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="familyName"  class ="required"  size ="30"> </p>
-						<p>	<label class ="label"> Date of Birth: </label> <input type="text" name ="dob" id="dob" class ="required"  size ="10"></p>
-						<p>	<label class ="label"> Username: </label> <input type="text" name ="username" id="username"   size ="30"></p>
+						<p>	<label class ="label"> Date of Birth: </label> <input type="text" name ="dob" id="dob" size ="10"></p>
+						<p>	<label class ="label"> Username: </label> <input type="text" name ="user" id="user"   size ="30"></p>
 	                    <p>
 					         <label for="cemail" class="label"> E-Mail</label>
 				             <input type="text" id="cemail" name="email" size="30"/>
@@ -152,7 +136,7 @@
 						<!--This should be populated from the database -->
 					    <p>
 							<label id="theSelect" class="theSelect" for="supervisorId">Supervisor Id:</label>
-							<input type="text" name="supId" size="30" maxLength="30" value=""/>
+							<input type="text" size="30" disabled="disabled" value="Edit Supervisor Id" maxLength="30" value=""/>
 							<input id="empIdButton" id="supIdButton" type="button" name="submit" class="button" value="Edit"/>
 						</p>
 					
@@ -243,7 +227,7 @@
 												<a href="addLocation.jsp"><div id="locationImage"> <b> <%=locArray[index].getName()%> </b></div></a>
 											</td>
 											<td>
-												<input type="radio" name="option"> 
+												<input type="radio" name="loc"> 
 											</td>
 									<% 
 										}
@@ -294,7 +278,7 @@
 										
 										</td>
 										<td>
-												<input type="checkbox" name="option"> 
+												<input type="checkbox" name="skill"> 
 										</td>
 									</tr>
 								<% 
@@ -350,7 +334,7 @@
 											<td><a href="updateUserProfile.jsp"><div id="profileImage"> <b> <%= empArray[index].getEmpID() %> </b></div></a></td>
 											<td><a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getFamilyName() %></a></td>
 											<td><a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getGivenName() %></a></td>
-											<td> <input type="radio" name="option"> </td>
+											<td> <input type="radio" name="supId"> </td>
 										</tr>
 							<% 
 								}
@@ -399,7 +383,7 @@
 											
 											</td>
 											<td>
-													<input type="radio" name="option"> 
+													<input type="radio" name="pos" value=""> 
 											</td>
 										</tr>
 									<% 

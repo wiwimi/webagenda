@@ -18,23 +18,22 @@
 
 <!-- Libraries -->
 <script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
-
-<!-- Plug-ins -->
 <script src="../lib/js/jquery.validate.js" type="text/javascript"></script>
-<script src ="../lib/js/jquery.flashmessenger.js"   type ="text/javascript"> </script>
-
 
 <!-- Javascript Files -->
 <script src="../lib/js/cmxforms.js" type="text/javascript"></script>
 <script src= "../lib/js/val.js" type="text/javascript"> </script>
+<script type="text/javascript" src="../lib/js/popup.js"></script>
+<script src ="../lib/js/jquery.flashmessenger.js"   type ="text/javascript"> </script>
+<script type="text/javascript" src="../lib/js/deletePosition.js"></script>
 
 <!--  CSS files -->
 <link rel="stylesheet" href="../CSS/creationForm.css" type="text/css"></link>
 <link rel="stylesheet" href="CSS/table.css" type="text/css"></link>
-<link rel="stylesheet" href="CSS/user.css" type="text/css"></link>
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/val.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/screen.css" />
+<link rel="stylesheet" href="../CSS/Popup/popup.css" type="text/css"></link>
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Flash/flashmessenger.css" />
 
 </head>
@@ -42,40 +41,33 @@
 	<div id="instructions">
 	        Fields marked with <em class="asterisk" > *</em> are required.
 	</div>
- 			  <% 
+	
+	<% 
 					if(request.getParameter("message") != null)
 					{
 						if(request.getParameter("message").equals("true"))
 						{
-							//out.println("Location was added");
-			  %>
-				
+			 %>
 							<script type="text/javascript">
-		
-								$(function()
-								    {
-										
-										    $.flashMessenger("The location has been successfully created", 
-											{ 	
-												modal:true, 
-												autoClose: false 
-											});	
-										
-										
-								    });
-								</script>
-			
-			    <% 			   
-						}
+											$(function()
+										    {
+												
+												    $.flashMessenger("The location has been successfully created", 
+													{ 	
+														modal:true, 
+														autoClose: false 
+													});	
+											});
+							</script>
+			   <% 			   
+						 }
 						else if(request.getParameter("message").equals("false"))
 						{
 				%>
-							
 							<script type="text/javascript">
 								$(function()
 								    {
-										
-								       $.flashMessenger("The name you provided has already been used.",
+										$.flashMessenger("An error occured while deleting the Position. Please contact your admin",
 								        {
 											   modal:true,
 							    		       clsName:"err", 
@@ -87,6 +79,7 @@
 						}
 					}
 				%>
+	
 		<div id="locationWidget" class="fullWidget">
 			<div class="widgetUpperRectangle" id="locationsUpperRectangle">
 				<div class="widgetTitle" id="locationsWidgetTitle">Locations</div>
@@ -100,7 +93,7 @@
 			
 			 <div id="formButtons">
 					        <input type="submit" name="submit"  class="button" value="Add" > 
-							<input type="button" name="submit" class="button"  onClick="location.href='updateLocation.jsp?locName=' + form.locName.value" value="Search" > 
+							<input type="button" name="submit" class="button"  onClick="location.href='searchResults.jsp?locName=' + form.locName.value" value="Search" > 
 					       	<input type="reset" name="clear" class="button" value="Clear Screen"> 
 			     </div>
 			     <fieldset>
@@ -113,7 +106,7 @@
 				</fieldset>
 				<div id="formButtons">
 						        <input type="submit" name="submit"  class="button" value="Add" > 
-								<input type="button" name="submit" class="button"  onClick="location.href='updateLocation.jsp?locName=' + form.locName.value" value="Search" > 
+								<input type="button" name="submit" class="button"  onClick="location.href='searchResults.jsp?locName=' + form.locName.value" value="Search" > 
 								<input type="reset" name="clear" class="button" value="Clear Screen"> 
 				</div>
 			  </div>

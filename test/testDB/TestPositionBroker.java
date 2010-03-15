@@ -6,6 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import business.Skill;
 import business.schedule.Position;
 import exception.DBDownException;
 import exception.DBException;
@@ -42,12 +43,12 @@ public class TestPositionBroker {
 			System.out.println(success); // Is not printed out
 			if(success)
 			{
-				System.out.println("Added the skill !!!");
+				System.out.println("Added the position !!!");
 				System.out.println(pos.toString());
 			}
 			else if(!success)
 			{
-				System.out.println("Failed to add the skill !!!");
+				System.out.println("Failed to add the position !!!");
 			}
 			
 		} catch (DBException e) {
@@ -83,16 +84,22 @@ public class TestPositionBroker {
 	public void testGetPosition() {
 		{
 			System.out.println("POSITION GET");
-			//Use an empty string for the skill name so that all names are matched.
-			Position get = new Position("Cook",null);
 			
-			//Get all skills and print them to console.
+			//Use an empty string for the positions name so that all names are matched.
+			Position get = new Position("test5",null);
+			
+			//Get all Positions and print them to console.
 			try
 				{
 				Position[] results = broker.get(get);
 				for (Position printLoc : results)
 					{
 					System.out.println(printLoc);
+					System.out.println("SKILLS REQUIRED");
+					Skill[] skills = printLoc.getPos_skills();
+					System.out.println(" Skill Length " + skills.length);
+					for(int i=0; i<skills.length; i++)
+						System.out.println(skills[i]);
 					}
 				}
 			catch (DBException e)

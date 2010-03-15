@@ -32,14 +32,13 @@ public class AddPosition extends HttpServlet {
 		        PrintWriter out = response.getWriter();
 		        String posName = request.getParameter("posName");
 				String desc = request.getParameter("desc");
-				String[] pos_skills = request.getParameterValues("skill");
+				String[] pos_skills = request.getParameterValues("skillSetForm.skill");
 				Skill[] skills = null;
 				   if (pos_skills != null) 
 				   {
 					   skills= new Skill[pos_skills.length];
 				      for (int i = 0; i < pos_skills.length; i++) 
 				      {
-				         out.println ("<b>"+pos_skills[i]+"<b>");
 				         Skill tempSkill = new Skill(pos_skills[i]);
 				         skills[i] = (tempSkill);
 				         
@@ -62,6 +61,7 @@ public class AddPosition extends HttpServlet {
 					{
 						//Confirm that the user was added
 						response.sendRedirect("wa_user/newPosition.jsp?message=true");
+						
 					}
 				}
 				catch (DBException e) {

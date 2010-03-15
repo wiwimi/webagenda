@@ -49,7 +49,7 @@ public class AddLocation extends HttpServlet {
 						
 					if (success)
 					{
-						//Confirm that the user was added
+						//Confirm that the location was added
 						response.sendRedirect("wa_location/newLocation.jsp?message=true");
 					}
 				}

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +21,7 @@ import business.schedule.Position;
 /**
  * Servlet implementation class addUser
  */
+@WebServlet(name="AddUser", urlPatterns={"/AddUser"})
 public class AddUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -37,84 +39,26 @@ public class AddUser extends HttpServlet {
 		        
 		        PrintWriter out = response.getWriter();
 		        String familyName = request.getParameter("familyName");
+		        
 				String givenName = request.getParameter("givenName");
+				
 				String[] pos_skills = request.getParameterValues("skill");
 				String status =  request.getParameter("status");
 				String pos = request.getParameter("pos");
 				String email=request.getParameter("email");
-				String username = request.getParameter("username");
-				String permLevel = request.getParameter("permLevel");
+				String username = request.getParameter("user");
+				//String permLevel = request.getParameter("permLevel");
 				String location= request.getParameter("location");
 				
 				String empId = request.getParameter("empId");
 				String supId = request.getParameter("supId");
 				
-				int empIdInt = Integer.parseInt(empId);
-				int supIdInt = Integer.parseInt(supId);
+				//int empIdInt = Integer.parseInt(empId);
+				//int supIdInt = Integer.parseInt(supId);
 				
-				if (status.equals("enabled"))
-					emp.setActive(true);
-				else
-					emp.setActive(false);
+				response.sendRedirect("wa_user/newUser.jsp?message=" + pos);
 				
-				emp.setFamilyName(familyName);
-				emp.setGivenName(givenName);
-				emp.setUsername(username);
-				emp.setEmail(email);
-				emp.setPrefLocation(location);
-				emp.setPrefPosition(pos);
-				emp.setEmpID(empIdInt);
-				emp.setSupervisorID(supIdInt);
-				emp.setPLevel(permLevel);
 				
-				if (pos_skills != null) 
-				{
-					  Skill[] skills= new Skill[pos_skills.length];
-				      for (int i = 0; i < pos_skills.length; i++) 
-				      {
-				         Skill tempSkill = new Skill(pos_skills[i]);
-				         skills[i] = (tempSkill);
-				      }
-				} 
-				boolean success;
-				EmployeeBroker broker = null;
-				
-				try {
-					    
-						broker = EmployeeBroker.getBroker();
-						broker.initConnectionThread();
-						
-						
-						success = broker.create(emp);
-						
-					if (success)
-					{
-						//Confirm that the user was added
-						response.sendRedirect("wa_user/newUser.jsp?message=true");
-					}
-				}
-				catch (DBException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-					// Failed to add the user
-					response.sendRedirect("wa_user/newUser.jsp?message=false");
-					
-				} catch (DBDownException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-					// Failed to add the user
-					response.sendRedirect("wa_user/newUser.jsp?message=false");
-				}
-				catch(Exception e)
-				{
-					// Failed to add the user
-					response.sendRedirect("wa_user/newUser.jsp?message=false");
-				}
-				finally
-				{
-					out.close();
-					broker.stopConnectionThread();
-				}
 		   }
        
     /**

@@ -135,19 +135,15 @@
 						<input type="reset" name="clear" class="button" value="Clear Screen"> 
 						<br></br>
 			          </div>
-				</div>
-				</form>
-			</div>
-			</div>
-</div>
-				<div id="skillsPopup">
+				  </div>
+			<!--  Popup Section -->	 
+			<div id="skillsPopup">
 					<a id="popupContactClose2">x</a>
 					<h1>Skills</h1>
 					<div id="instructions">
 						Closing the screen saves the selected items.
 					</div>
-				<form name="skillSetForm">
-					<div id="tableArea">
+				     <div id="tableArea">
 						<div class="userAdmin">
 							<table class="sortable" id="userTable">
 								<thead class="head">
@@ -176,7 +172,7 @@
 												<a href="newSkill.jsp?=<%=skillArray[index].getName()%>"> <b> <%=skillArray[index].getName()%> </b></a>
 											</td>
 											<td>
-													<input type="checkbox" name="skill"> 
+													<input type="checkbox" name="skill" value="<%=skillArray[index].getName()%>"> 
 											</td>
 										</tr>
 									<% 
@@ -187,8 +183,12 @@
 							</table>
 						  </div>
 						</div> <!-- End Table Area -->
-					 </form>
 				</div>
+				
+			  </form>
+			</div>
+		 </div>
+       </div>
 <div id="backgroundPopup"></div>
 <div id="footer"></div>
 
