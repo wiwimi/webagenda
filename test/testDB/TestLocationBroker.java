@@ -45,52 +45,39 @@ public class TestLocationBroker
 	 * Test method for {@link persistence.LocationBroker#create(business.schedule.Location)}.
 	 */
 	@Test
-	public void testCreateLocation()
+	public void testCreateDeleteLocation()
 		{
+		Location loc = new Location("Casino", "Test Location");
 		    
-			try {
-				Location loc = new Location("Casino", "");
-				boolean success = broker.create(loc);
-				if(success)
-				{
-					System.out.println(loc.toString());
-				}
-				
-			} catch (DBException e) {
-				// TODO Auto-generated catch block
-				//e.printStackTrace();
-			} catch (DBDownException e) {
-				// TODO Auto-generated catch block
-				//e.printStackTrace();
+		try {
+			boolean success = broker.create(loc);
+			if(success)
+			{
+				System.out.println(loc.toString());
 			}
 			
-			assertTrue(true);
-		}
-	
-	
-	/**
-	 * Test method for {@link persistence.LocationBroker#delete(business.schedule.Location)}.
-	 */
-	@Test
-	public void testDeleteLocation()
-		{
-
-		    
-			try {
-				Location loc = new Location("Casino");
-				broker.delete(loc);
-				
-			} catch (DBException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (DBDownException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			assertTrue(true);
+		} catch (DBException e) {
+			e.printStackTrace();
+			fail();
+		} catch (DBDownException e) {
+			e.printStackTrace();
+			fail();
 		}
 		
+		//Attempt to delete the test location.
+		try {
+		broker.delete(loc);
+		
+		} catch (DBException e) {
+			e.printStackTrace();
+			fail();
+		} catch (DBDownException e) {
+			e.printStackTrace();
+			fail();
+		}
+		
+		assertTrue(true);
+		}
 	
 	/**
 	 * Test method for {@link persistence.LocationBroker#get(business.schedule.Location)}.
@@ -127,7 +114,7 @@ public class TestLocationBroker
 	@Test
 	public void testGetLocation2()
 		{
-		//Use an empty string for the location name so that all names are matched.
+		//Search for full name.
 		Location get = new Location("Mohave Grill");
 		
 		//Get all locations and print them to console.
@@ -155,7 +142,7 @@ public class TestLocationBroker
 	@Test
 	public void testGetLocation3()
 		{
-		//Use an empty string for the location name so that all names are matched.
+		//Search for beginning part of location name.
 		Location get = new Location("Mohave");
 		
 		//Get all locations and print them to console.
@@ -184,8 +171,7 @@ public class TestLocationBroker
 	@Test
 	public void testGetLocation4()
 		{
-		//Use an empty string for the location name so that all names are matched.
-		
+		//Search for end part of location name.
 		Location get = new Location("Grill");
 		
 		//Get all locations and print them to console.
@@ -199,7 +185,7 @@ public class TestLocationBroker
 			
 			for (Location printLoc : results)
 				{
-				System.out.println(printLoc.getDesc());
+				System.out.println("Description: "+printLoc.getDesc());
 				}
 			}
 		catch (DBException e)
@@ -222,21 +208,38 @@ public class TestLocationBroker
 	@Test
 	public void testUpdateLocation()
 		{
+		Location oldLoc = new Location("Mohave Grill", null);
+		Location newLoc = new Location("Mohave Grill", "Restaurant");
 		   
 		try {
-			Location loc = new Location("Mohave Grill", "Restaurant");
-			boolean success = broker.update(null,loc);
+			boolean success = broker.update(oldLoc,newLoc);
 			if(success)
 			{
-				System.out.println(loc.toString());
+				System.out.println(newLoc.toString());
 			}
 			
 		} catch (DBException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			fail();
 		} catch (DBDownException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			fail();
+		}
+		
+		//Reverse the changes of the update.
+		try {
+			boolean success = broker.update(newLoc,oldLoc);
+			if(success)
+			{
+				System.out.println(oldLoc.toString());
+			}
+		
+		} catch (DBException e) {
+			e.printStackTrace();
+			fail();
+		} catch (DBDownException e) {
+			e.printStackTrace();
+			fail();
 		}
 		
 		assertTrue(true);

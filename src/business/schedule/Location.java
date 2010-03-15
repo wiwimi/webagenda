@@ -29,16 +29,16 @@ public class Location extends BusinessObject
 	 */
 	private String	desc	= null;
 	
-	public Location(String name)
-		{
-		this.name = name;
-		}
-	
 	/** Produces a blank template of an location */
 	public Location()
 		{
 		}
 	
+	public Location(String name)
+	{
+	this.name = name;
+	}
+
 	public Location(String name, String desc)
 		{
 		this.name = name;

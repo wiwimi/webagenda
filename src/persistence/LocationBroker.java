@@ -120,7 +120,7 @@ public class LocationBroker extends Broker<Location>
 			int result = stmt.executeUpdate(delete);
 			
 			if (result != 1)
-				throw new DBChangeException("Location changed or deleted by another user.");
+				throw new DBChangeException("Location not found, likely changed or deleted by another user.");
 			else
 				success = true;
 			}
@@ -194,11 +194,11 @@ public class LocationBroker extends Broker<Location>
 		
 		// Create sql update statement from location object.
 		String update = String.format(
-				"UPDATE `WebAgenda`.`LOCATION` SET locName = '%s', locDescription = %s WHERE locName = '%s' && locDescrption = %s;",
+				"UPDATE `WebAgenda`.`LOCATION` SET locName = '%s', locDescription = %s WHERE locName = '%s' AND locDescription %s;",
 				updateLocation.getName(),
 				(updateLocation.getDesc() == null ? "NULL" : "'"+updateLocation.getDesc()+"'"),
 				oldLocation.getName(),
-				(oldLocation.getDesc() == null ? "NULL" : "'"+oldLocation.getDesc()+"'"));
+				(oldLocation.getDesc() == null ? "IS NULL" : "= '"+oldLocation.getDesc()+"'"));
 		
 		// Get DB connection, send update, and reopen connection for other users.
 		try
