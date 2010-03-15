@@ -99,7 +99,7 @@ public class LocationBroker extends Broker<Location>
 	 * @see persistence.Broker#delete(business.BusinessObject)
 	 */
 	@Override
-	public boolean delete(Location deleteLocation) throws DBException, DBChangeException, DBInUseException, DBDownException
+	public boolean delete(Location deleteLocation) throws DBException, DBChangeException, DBDownException
 		{
 		if (deleteLocation == null)
 			throw new NullPointerException("Can not delete null location.");
@@ -108,9 +108,9 @@ public class LocationBroker extends Broker<Location>
 			throw new DBException("Missing Required Field: Name");
 		
 		String delete = String.format(
-				"DELETE FROM `WebAgenda`.`LOCATION` WHERE locName = '%s' AND locDescription = %s;",
+				"DELETE FROM `WebAgenda`.`LOCATION` WHERE locName = '%s' AND locDescription %s;",
 				deleteLocation.getName(),
-				(deleteLocation.getDesc() == null ? "NULL" : "'"+deleteLocation.getDesc()+"'"));
+				(deleteLocation.getDesc() == null ? "IS NULL" : "= '"+deleteLocation.getDesc()+"'"));
 		
 		boolean success;
 		try
@@ -126,11 +126,6 @@ public class LocationBroker extends Broker<Location>
 			}
 		catch (SQLException e)
 			{
-			/*
-			 * TODO Throw DBInUseException if the SQLException caught indicates
-			 * that this location can't be deleted because it is still being used
-			 * as a preferred location by some employees.
-			 */
 			throw new DBException("Failed to delete location.",e);
 			}
 		
