@@ -50,7 +50,7 @@ public class TestEmployeeBroker
 	 * {@link persistence.EmployeeBroker#delete(business.Employee)}.
 	 */
 	@Test
-	public void testCreateDisableDeleteEmployee()
+	public void testCreateDeleteEmployee()
 		{
 		System.out.println("******************** CREATE/DELETE TEST ********************");
 		
@@ -89,8 +89,7 @@ public class TestEmployeeBroker
 			empSearch.setEmpID(80000);
 			Employee[] results = empBroker.get(empSearch);
 			if (results == null)
-				fail("Employee search failed, disabled employee not returned.");
-			assertFalse("Employee was not disabled ",results[0].getActive());
+				fail("Employee search failed, employee not returned.");
 			System.out.println("Employee retrieved: "+results[0]);
 			}
 		catch (DBException e)
@@ -132,7 +131,7 @@ public class TestEmployeeBroker
 	 * {@link persistence.EmployeeBroker#delete(business.Employee)}.
 	 */
 	@Test
-	public void testCreateDisableDeleteEmployee2()
+	public void testCreateDeleteEmployee2()
 		{
 		System.out.println("******************** CREATE/DELETE TEST ********************");
 		
@@ -145,8 +144,6 @@ public class TestEmployeeBroker
 		newEmp.setPassword("password");
 		newEmp.setPLevel("1a");
 		newEmp.setActive(true);
-		
-		
 		newEmp.setEmail("email@YAHOO.CA");
 		newEmp.setPrefLocation("Mohave Grill");
 		newEmp.setPrefPosition("admin");
@@ -169,24 +166,6 @@ public class TestEmployeeBroker
 			e.printStackTrace();
 			}
 		
-		
-		//Try to disable the employee.
-		try
-			{
-			boolean disabled = empBroker.disable(newEmp);
-			assertTrue(disabled);
-			System.out.println("Employee disabled: "+ disabled);
-			}
-		catch (DBException e)
-			{
-			e.printStackTrace();
-			fail();
-			}
-		catch (DBDownException e)
-			{
-			e.printStackTrace();
-			}
-		
 		//Search for disabled employee.
 		try
 			{
@@ -194,8 +173,7 @@ public class TestEmployeeBroker
 			empSearchDisabled.setEmpID(80002);
 			Employee[] results = empBroker.get(empSearchDisabled);
 			if (results == null)
-				fail("Employee search failed, disabled employee not returned.");
-			assertFalse("Employee was not disabled ",results[0].getActive());
+				fail("Employee search failed, employee not returned.");
 			System.out.println("Employee retrieved: "+results[0]);
 			}
 		catch (DBException e)
@@ -277,9 +255,9 @@ public class TestEmployeeBroker
 			fail();
 			}
 		
-		assertNotNull(byID);
-		assertNotNull(byActive);
-		assertNotNull(bySupervisor);
+		assertNotNull("No ID results.",byID);
+		assertNotNull("No active results.",byActive);
+		assertNotNull("No supervisor results.",bySupervisor);
 		
 		// PRINT RESULTS! :D
 		// This is just using the basic toString that dumps all data.
@@ -360,14 +338,10 @@ public class TestEmployeeBroker
 			e.printStackTrace();
 			}
 		
-		//Create employee to use for ID search and deletion.
-		Employee empSearchDelete = new Employee();
-		empSearchDelete.setEmpID(80000);
-		
 		//Search for employee employee.
 		try
 			{
-			Employee[] results = empBroker.get(empSearchDelete);
+			Employee[] results = empBroker.get(newEmp);
 			System.out.println("Employee retrieved: "+results[0]);
 			
 			//Check accuracy of SQL Date.
@@ -387,7 +361,7 @@ public class TestEmployeeBroker
 		//Delete the test user.
 		try
 			{
-			boolean deleted = empBroker.delete(empSearchDelete);
+			boolean deleted = empBroker.delete(newEmp);
 			assertTrue(deleted);
 			System.out.println("Employee deleted: "+ deleted);
 			}

@@ -6,8 +6,10 @@ package persistence;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import exception.DBChangeException;
 import exception.DBDownException;
 import exception.DBException;
+import exception.DBInUseException;
 import application.DBConnection;
 import business.schedule.Location;
 
@@ -87,7 +89,6 @@ public class LocationBroker extends Broker<Location>
 			}
 		catch (SQLException e)
 			{
-			// TODO Need additional SQL exception processing here.
 			throw new DBException("Failed to create location.", e);
 			}
 		
@@ -98,7 +99,7 @@ public class LocationBroker extends Broker<Location>
 	 * @see persistence.Broker#delete(business.BusinessObject)
 	 */
 	@Override
-	public boolean delete(Location deleteLocation) throws DBException, DBDownException
+	public boolean delete(Location deleteLocation) throws DBException, DBChangeException, DBInUseException, DBDownException
 		{
 		if (deleteLocation == null)
 			throw new NullPointerException("Can not delete null location.");
@@ -107,8 +108,9 @@ public class LocationBroker extends Broker<Location>
 			throw new DBException("Missing Required Field: Name");
 		
 		String delete = String.format(
-				"DELETE FROM `WebAgenda`.`LOCATION` WHERE locName = '%s';",
-				deleteLocation.getName());
+				"DELETE FROM `WebAgenda`.`LOCATION` WHERE locName = '%s' AND locDescription = %s;",
+				deleteLocation.getName(),
+				(deleteLocation.getDesc() == null ? "NULL" : "'"+deleteLocation.getDesc()+"'"));
 		
 		boolean success;
 		try
@@ -118,12 +120,17 @@ public class LocationBroker extends Broker<Location>
 			int result = stmt.executeUpdate(delete);
 			
 			if (result != 1)
-				throw new DBException("Failed to delete location, result count incorrect: " +	result);
+				throw new DBChangeException("Location changed or deleted by another user.");
 			else
 				success = true;
 			}
 		catch (SQLException e)
 			{
+			/*
+			 * TODO Throw DBInUseException if the SQLException caught indicates
+			 * that this location can't be deleted because it is still being used
+			 * as a preferred location by some employees.
+			 */
 			throw new DBException("Failed to delete location.",e);
 			}
 		
@@ -177,19 +184,21 @@ public class LocationBroker extends Broker<Location>
 	 * @see persistence.Broker#update(business.BusinessObject)
 	 */
 	@Override
-	public boolean update(Location oldLocation, Location updateLocation) throws DBException, DBDownException
+	public boolean update(Location oldLocation, Location updateLocation) throws DBException, DBChangeException, DBDownException
 		{
 		if (updateLocation == null)
 			throw new NullPointerException("Can not update null location.");
 		
 		if (updateLocation.getName() == null)
-			throw new NullPointerException(
-					"Can not update location without a name.");
+			throw new NullPointerException("Missing Required Field: Name");
 		
 		// Create sql update statement from location object.
 		String update = String.format(
-				"UPDATE `WebAgenda`.`LOCATION` SET locDescription = '%s' WHERE locName = '%s';",
-				updateLocation.getDesc(),updateLocation.getName());
+				"UPDATE `WebAgenda`.`LOCATION` SET locName = '%s', locDescription = %s WHERE locName = '%s' && locDescrption = %s;",
+				updateLocation.getName(),
+				(updateLocation.getDesc() == null ? "NULL" : "'"+updateLocation.getDesc()+"'"),
+				oldLocation.getName(),
+				(oldLocation.getDesc() == null ? "NULL" : "'"+oldLocation.getDesc()+"'"));
 		
 		// Get DB connection, send update, and reopen connection for other users.
 		try
@@ -199,10 +208,9 @@ public class LocationBroker extends Broker<Location>
 			int updateRowCount = stmt.executeUpdate(update);
 			conn.setAvailable(true);
 			
-			// Ensure
+			// Check if row was updated.
 			if (updateRowCount != 1)
-				throw new DBException(
-						"Failed to update location: rowcount incorrect.");
+				throw new DBChangeException("Location changed or deleted by another user.");
 			}
 		catch (SQLException e)
 			{

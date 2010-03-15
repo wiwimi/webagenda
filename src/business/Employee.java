@@ -13,79 +13,79 @@ import java.sql.Timestamp;
 public class Employee extends BusinessObject
 	{
 	private static final long	serialVersionUID	= -1671744709578725501L;
-
+	
 	/**
 	 * Identifier for the user. The name employee does not reflect their
 	 * position. Cannot be negative.
 	 */
-	private Integer	empID				= null;
+	private Integer				empID					= null;
 	
 	/**
 	 * Like employee_id, supervisor doesn't entail the position; it's the
 	 * authoritative figure for the employee. Cannot be negative, if this user
 	 * has no supervisor, this value should point to the employee_id.
 	 */
-	private Integer	supervisorID				= null;
+	private Integer				supervisorID		= null;
 	
 	/**
 	 * User's first name, or preferred name. Name values cannot be changed by
 	 * current user, they have to be changed by a higher authority with
 	 * permissions to do so, they cannnot be changed by current user.
 	 */
-	private String		givenName				= null;
+	private String					givenName			= null;
 	
 	/**
 	 * User's last name, family name, or referenced name. May depend on culture
 	 * how this is used. Has the same constraints as the firstname.
 	 */
-	private String		familyName				= null;
+	private String					familyName			= null;
 	
 	/**
 	 * The date of birth for the employee. While not required by the system for
 	 * general use, it can be made required by certain positions that may require
 	 * users to be over the age of 16/18/21.
 	 */
-	private Date		birthDate				= null;
-
+	private Date					birthDate			= null;
+	
 	/**
 	 * User's e-mail address that they want information sent to. Is changeable by
 	 * the user. It is highly recommended that this be set.
 	 */
-	private String		email						= null;
+	private String					email					= null;
 	
 	/**
 	 * Name that is entered into the username field when logging into the system;
 	 * does not reflect personal data such as name or id, while allowing users to
 	 * communicate with each other in a recognizable format. Cannot be null.
 	 */
-	private String		username					= null;
+	private String					username				= null;
 	
 	/**
 	 * Password for logging onto the system. This is only used when creating a
 	 * new employee to assign the initial password. All other password
 	 * verification and changing functions are handled by the employee broker.
 	 */
-	private String		password					= null;
+	private String					password				= null;
 	
 	/**
 	 * The last time at which the employee logged into the system.
 	 */
-	private Timestamp		lastLogin				= null;
-
+	private Timestamp				lastLogin			= null;
+	
 	/**
 	 * Location refers to the location in the business or company. If more than
 	 * one locations exist, such as multiple buildings, instances, or groups of
 	 * working units, this can be specified. Is not required, but if set may
 	 * influence automatic schedule generation.
 	 */
-	private String	prefLocation	= null;
+	private String					prefLocation		= null;
 	
 	/**
 	 * Position is the job that an Employee prefers to work at. This assumes that
 	 * multiple positions for work are available. May influence the automatically
 	 * generated schedule.
 	 */
-	private String	prefPosition	= null;
+	private String					prefPosition		= null;
 	
 	/**
 	 * The permission set as a string. Both level and version can be parsed from
@@ -94,7 +94,7 @@ public class Employee extends BusinessObject
 	 * permissions. This value must be equivalent to the key of an
 	 * already-existing permissions set.
 	 */
-	private String		pLevel		= null;
+	private String					pLevel				= null;
 	
 	/**
 	 * Boolean value that represents if the user can access their account; all
@@ -105,7 +105,7 @@ public class Employee extends BusinessObject
 	 * wants to browse inactive user, or generate reports on active/inactive
 	 * users.
 	 */
-	private Boolean	active					= false;
+	private Boolean				active				= null;
 	
 	/**
 	 * An object that contains the personal visual settings of a user; loaded
@@ -114,11 +114,12 @@ public class Employee extends BusinessObject
 	 * apply through mobile device/browser views (mobile device meaning native
 	 * mobile apps.)
 	 */
-	private Settings	userSettings			= null;
-
+	private Settings				userSettings		= null;
+	
 	/**
-	 * Base constructor for a new employee object. Is required to create a new employee, but values can be null or invalid if using an employee
-	 * object as an object to search criteria off of.
+	 * Base constructor for a new employee object. Is required to create a new
+	 * employee, but values can be null or invalid if using an employee object as
+	 * an object to search criteria off of.
 	 * 
 	 * @param empID int employee id
 	 * @param fname String first name
@@ -126,10 +127,12 @@ public class Employee extends BusinessObject
 	 * @param date Date birthdate
 	 * @param username String username for employee account
 	 * @param password String password for employee account
-	 * @param plevel String permission level (formats: #, ##, #c, ##c -- "0", "43","3a","34i" are acceptable)
+	 * @param plevel String permission level (formats: #, ##, #c, ##c -- "0",
+	 *           "43","3a","34i" are acceptable)
 	 */
-	public Employee(int empID, String fname, String lname, Date date, String username, String password,  String plevel)
-	{
+	public Employee(int empID, String fname, String lname, Date date,
+			String username, String password, String plevel)
+		{
 		this.empID = empID;
 		this.givenName = fname;
 		this.familyName = lname;
@@ -137,7 +140,7 @@ public class Employee extends BusinessObject
 		this.username = username;
 		this.password = password;
 		this.pLevel = plevel;
-	}
+		}
 	
 	/** Produces a blank template of an employee */
 	public Employee()
@@ -151,7 +154,7 @@ public class Employee extends BusinessObject
 		{
 		return empID;
 		}
-
+	
 	/**
 	 * @param employeeId the employeeId to set
 	 */
@@ -159,7 +162,7 @@ public class Employee extends BusinessObject
 		{
 		empID = employeeId;
 		}
-
+	
 	/**
 	 * @return the supervisor
 	 */
@@ -167,7 +170,7 @@ public class Employee extends BusinessObject
 		{
 		return supervisorID;
 		}
-
+	
 	/**
 	 * @param supervisorId the supervisorId to set
 	 */
@@ -175,7 +178,7 @@ public class Employee extends BusinessObject
 		{
 		this.supervisorID = supervisorId;
 		}
-
+	
 	/**
 	 * @return the givenName
 	 */
@@ -183,7 +186,7 @@ public class Employee extends BusinessObject
 		{
 		return givenName;
 		}
-
+	
 	/**
 	 * @param givenName the givenName to set
 	 */
@@ -191,7 +194,7 @@ public class Employee extends BusinessObject
 		{
 		this.givenName = givenName;
 		}
-
+	
 	/**
 	 * @return the familyName
 	 */
@@ -199,7 +202,7 @@ public class Employee extends BusinessObject
 		{
 		return familyName;
 		}
-
+	
 	/**
 	 * @param familyName the familyName to set
 	 */
@@ -207,7 +210,7 @@ public class Employee extends BusinessObject
 		{
 		this.familyName = familyName;
 		}
-
+	
 	/**
 	 * @return the email
 	 */
@@ -215,7 +218,7 @@ public class Employee extends BusinessObject
 		{
 		return email;
 		}
-
+	
 	/**
 	 * @param email the email to set
 	 */
@@ -223,7 +226,7 @@ public class Employee extends BusinessObject
 		{
 		this.email = email;
 		}
-
+	
 	/**
 	 * @return the username
 	 */
@@ -231,7 +234,7 @@ public class Employee extends BusinessObject
 		{
 		return username;
 		}
-
+	
 	/**
 	 * @param username the username to set
 	 */
@@ -239,7 +242,7 @@ public class Employee extends BusinessObject
 		{
 		this.username = username;
 		}
-
+	
 	/**
 	 * @return the password
 	 */
@@ -247,7 +250,7 @@ public class Employee extends BusinessObject
 		{
 		return password;
 		}
-
+	
 	/**
 	 * @param password the password to set
 	 */
@@ -255,7 +258,7 @@ public class Employee extends BusinessObject
 		{
 		this.password = password;
 		}
-
+	
 	/**
 	 * @return the preferred_location
 	 */
@@ -263,7 +266,7 @@ public class Employee extends BusinessObject
 		{
 		return prefLocation;
 		}
-
+	
 	/**
 	 * @param preferredLocation the preferred_location to set
 	 */
@@ -279,7 +282,7 @@ public class Employee extends BusinessObject
 		{
 		return prefPosition;
 		}
-
+	
 	/**
 	 * @param preferredPosition the preferred_position to set
 	 */
@@ -287,7 +290,7 @@ public class Employee extends BusinessObject
 		{
 		prefPosition = preferredPosition;
 		}
-
+	
 	/**
 	 * @return the permission_level
 	 */
@@ -295,7 +298,7 @@ public class Employee extends BusinessObject
 		{
 		return pLevel;
 		}
-
+	
 	/**
 	 * @param permissionLevel the permission_level to set
 	 */
@@ -303,7 +306,7 @@ public class Employee extends BusinessObject
 		{
 		pLevel = permissionLevel;
 		}
-
+	
 	/**
 	 * @return the active
 	 */
@@ -311,7 +314,7 @@ public class Employee extends BusinessObject
 		{
 		return active;
 		}
-
+	
 	/**
 	 * @param active the active to set
 	 */
@@ -319,7 +322,7 @@ public class Employee extends BusinessObject
 		{
 		this.active = active;
 		}
-
+	
 	/**
 	 * @return the birth_date
 	 */
@@ -327,7 +330,7 @@ public class Employee extends BusinessObject
 		{
 		return birthDate;
 		}
-
+	
 	/**
 	 * @param birthDate the birth_date to set
 	 */
@@ -335,7 +338,7 @@ public class Employee extends BusinessObject
 		{
 		this.birthDate = birthDate;
 		}
-
+	
 	/**
 	 * @return the lastLogin
 	 */
@@ -343,7 +346,7 @@ public class Employee extends BusinessObject
 		{
 		return lastLogin;
 		}
-
+	
 	/**
 	 * @param lastLogin the lastLogin to set
 	 */
@@ -351,7 +354,7 @@ public class Employee extends BusinessObject
 		{
 		this.lastLogin = lastLogin;
 		}
-
+	
 	/**
 	 * @return the user_settings
 	 */
@@ -359,7 +362,7 @@ public class Employee extends BusinessObject
 		{
 		return userSettings;
 		}
-
+	
 	/**
 	 * @param userSettings the user_settings to set
 	 */
@@ -371,7 +374,10 @@ public class Employee extends BusinessObject
 	@Override
 	public String toString()
 		{
-		return empID + ";" + supervisorID + ";" + givenName + ";" + familyName + ";" + birthDate + ";" + email + ";" + username + ";" + password + ";" + prefLocation + ";" + prefPosition + ";" + pLevel + ";" + lastLogin + ";" + active;
+		return empID + ";" + supervisorID + ";" + givenName + ";" + familyName +
+				";" + birthDate + ";" + email + ";" + username + ";" + password +
+				";" + prefLocation + ";" + prefPosition + ";" + pLevel + ";" +
+				lastLogin + ";" + active;
 		}
 	
 	}

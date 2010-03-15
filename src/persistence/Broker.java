@@ -5,6 +5,7 @@ package persistence;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import exception.DBChangeException;
 import exception.DBDownException;
 import exception.DBException;
 
@@ -71,7 +72,7 @@ public abstract class Broker<E extends BusinessObject>
 	 * @param updateObj The new version of the retrieved object, with updated attributes.
 	 * @return true if the update was successful, otherwise false.
 	 */
-	public abstract boolean update(E oldObj, E updateObj) throws DBException, DBDownException;
+	public abstract boolean update(E oldObj, E updateObj) throws DBException, DBChangeException, DBDownException;
 	
 	/**
 	 * Removes the record from the database that is equivalent to the given
@@ -81,7 +82,7 @@ public abstract class Broker<E extends BusinessObject>
 	 * @param deleteObj The object to be deleted from the database.
 	 * @return true if the delete was successful, otherwise false.
 	 */
-	public abstract boolean delete(E deleteObj) throws DBException, DBDownException;
+	public abstract boolean delete(E deleteObj) throws DBException, DBChangeException, DBDownException;
 	
 	/**
 	 * Parses a ResultSet returned by a select query back into cachable objects.

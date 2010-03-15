@@ -193,51 +193,46 @@ public class EmployeeBroker extends Broker<Employee>
 					"Can not search with null employee template.");
 		
 		// Create sql select statement from employee object.
-		String select = "SELECT emp.*,sup.empID AS 'supID' FROM `WebAgenda`.`EMPLOYEE` emp LEFT JOIN `WebAgenda`.`EMPLOYEE` sup ON emp.supRecordID = sup.empRecordID WHERE ";
+		String select = "SELECT * FROM `WebAgenda`.`EMPLOYEE` emp WHERE ";
 		String comp = "";
 		
 		if (searchTemplate.getEmpID() != null)
 			{
 			// If an employee ID is given, use only that for search.
-			comp = "emp.empID = " + searchTemplate.getEmpID();
+			comp = "empID = " + searchTemplate.getEmpID();
 			}
 		else
 			{
 			// Use all other non-null fields for search if no employee ID is given.
 			// Supervisor ID
-			comp = comp + (searchTemplate.getSupervisorID() != null ? "sup.empID = " + searchTemplate.getSupervisorID() : "");
+			comp = comp + (searchTemplate.getSupervisorID() != null ? "supID = " + searchTemplate.getSupervisorID() : "");
 			// Given Name
 			comp = comp + (searchTemplate.getGivenName() != null ? (comp.equals("") ? "" : " AND ") +
-					"emp.givenName LIKE '" + searchTemplate.getGivenName() + "%'" : "");
+					"givenName LIKE '%" + searchTemplate.getGivenName() + "%'" : "");
 			// Family Name
 			comp = comp + (searchTemplate.getFamilyName() != null ? (comp.equals("") ? "" : " AND ") +
-					"emp.familyName LIKE '" + searchTemplate.getFamilyName() + "%'" : "");
+					"familyName LIKE '%" + searchTemplate.getFamilyName() + "%'" : "");
 			// Email
 			comp = comp + (searchTemplate.getEmail() != null ? (comp.equals("") ? "" : " AND ") +
-					"emp.email LIKE '" + searchTemplate.getEmail() + "%'" : "");
+					"email LIKE '%" + searchTemplate.getEmail() + "%'" : "");
 			// Username
 			comp = comp + (searchTemplate.getUsername() != null ? (comp.equals("") ? "" : " AND ") +
-					"emp.username = '" + searchTemplate.getUsername() + "'" : "");
-			// Password
-			comp = comp + (searchTemplate.getPassword() != null ? (comp.equals("") ? "" : " AND ") +
-					"emp.password = '" + searchTemplate.getPassword() + "'" : "");
+					"username LIKE '%" + searchTemplate.getUsername() + "%'" : "");
 			// Preferred Position
 			comp = comp + (searchTemplate.getPrefPosition() != null ? (comp.equals("") ? "" : " AND ") +
-					"emp.prefPosition LIKE '" + searchTemplate.getPrefPosition() + "%'" : "");
+					"prefPosition LIKE '%" + searchTemplate.getPrefPosition() + "%'" : "");
 			// Preferred Location
 			comp = comp + (searchTemplate.getPrefLocation() != null ? (comp.equals("") ? "" : " AND ") +
-					"emp.prefLocation LIKE '" + searchTemplate.getPrefLocation() + "%'" : "");
+					"prefLocation LIKE '%" + searchTemplate.getPrefLocation() + "%'" : "");
 			// Active State.
 			comp = comp + (searchTemplate.getActive() != null ? (comp.equals("") ? "" : " AND ") +
-					"emp.active = " + searchTemplate.getActive() : "");
+					"active = " + searchTemplate.getActive() : "");
 			}
 		
 		if (comp.equals(""))
 			{
-			//Nothing being searched for, return array with a single empty employee.
-			Employee[] empArr = new Employee[1];
-			empArr[0] = new Employee();
-			return empArr;
+			//Nothing being searched for, return null.
+			return null;
 			}
 		
 		// Add comparisons and close select statement.
@@ -246,7 +241,7 @@ public class EmployeeBroker extends Broker<Employee>
 		
 		// Get DB connection, send query, and reopen connection for other users.
 		// Parse returned ResultSet into array of employees.
-		Employee[] foundEmployees;
+		Employee[] foundEmployees = null;
 		try
 			{
 			DBConnection conn = this.getConnection();
@@ -329,7 +324,8 @@ public class EmployeeBroker extends Broker<Employee>
 		
 		// Create sql update statement from employee object.
 		String update = String.format(
-				"UPDATE `WebAgenda`.`EMPLOYEE` SET supRecordID = %s, givenName = '%s', familyName = '%s', email = %s, username = '%s', password = '%s', lastLogin = %s, prefPosition = %s, prefLocation = %s, active = %s WHERE empID = %s;",
+				"UPDATE `WebAgenda`.`EMPLOYEE` SET empID = %s, supID = %s, givenName = '%s', familyName = '%s', email = %s, username = '%s', password = '%s', lastLogin = %s, prefPosition = %s, prefLocation = %s, active = %s WHERE empID = %s;",
+				updateEmployee.getEmpID(),
 				(updateEmployee.getSupervisorID() != null ? updateEmployee.getSupervisorID() + "" : "NULL"),
 				updateEmployee.getGivenName(),
 				updateEmployee.getFamilyName(),

@@ -225,7 +225,7 @@ public class TestLocationBroker
 		   
 		try {
 			Location loc = new Location("Mohave Grill", "Restaurant");
-			boolean success = broker.update(loc);
+			boolean success = broker.update(null,loc);
 			if(success)
 			{
 				System.out.println(loc.toString());
