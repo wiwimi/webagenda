@@ -27,15 +27,15 @@ public class Skill extends BusinessObject {
 	 */
 	private String	desc	= null;
 	
-	public Skill(String name)
-		{
-		this.name = name;
-		}
-	
 	/** Produces a blank template of an skill */
 	public Skill()
 		{
 		
+		}
+
+	public Skill(String name)
+		{
+		this.name = name;
 		}
 	
 	public Skill(String name, String desc)

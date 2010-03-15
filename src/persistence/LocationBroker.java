@@ -9,7 +9,6 @@ import java.sql.Statement;
 import exception.DBChangeException;
 import exception.DBDownException;
 import exception.DBException;
-import exception.DBInUseException;
 import application.DBConnection;
 import business.schedule.Location;
 
@@ -99,7 +98,7 @@ public class LocationBroker extends Broker<Location>
 	 * @see persistence.Broker#delete(business.BusinessObject)
 	 */
 	@Override
-	public boolean delete(Location deleteLocation) throws DBException, DBChangeException, DBDownException
+	public boolean delete(Location deleteLocation) throws DBChangeException, DBException, DBDownException
 		{
 		if (deleteLocation == null)
 			throw new NullPointerException("Can not delete null location.");
@@ -112,7 +111,6 @@ public class LocationBroker extends Broker<Location>
 				deleteLocation.getName(),
 				(deleteLocation.getDesc() == null ? "IS NULL" : "= '"+deleteLocation.getDesc()+"'"));
 		
-		boolean success;
 		try
 			{
 			DBConnection conn = this.getConnection();
@@ -120,16 +118,14 @@ public class LocationBroker extends Broker<Location>
 			int result = stmt.executeUpdate(delete);
 			
 			if (result != 1)
-				throw new DBChangeException("Location not found, likely changed or deleted by another user.");
-			else
-				success = true;
+				throw new DBChangeException("Location not found, may have been changed or deleted by another user.");
 			}
 		catch (SQLException e)
 			{
 			throw new DBException("Failed to delete location.",e);
 			}
 		
-		return success;
+		return true;
 		}
 
 	/* (non-Javadoc)
@@ -179,13 +175,17 @@ public class LocationBroker extends Broker<Location>
 	 * @see persistence.Broker#update(business.BusinessObject)
 	 */
 	@Override
-	public boolean update(Location oldLocation, Location updateLocation) throws DBException, DBChangeException, DBDownException
+	public boolean update(Location oldLocation, Location updateLocation) throws DBChangeException, DBException, DBDownException
 		{
 		if (updateLocation == null)
-			throw new NullPointerException("Can not update null location.");
+			throw new NullPointerException("Update location must not be null.");
+		if (oldLocation == null)
+			throw new NullPointerException("Old location must not be null.");
 		
 		if (updateLocation.getName() == null)
-			throw new NullPointerException("Missing Required Field: Name");
+			throw new NullPointerException("Update location missing required field: Name");
+		if (oldLocation.getName() == null)
+			throw new NullPointerException("Old location missing required field: Name");
 		
 		// Create sql update statement from location object.
 		String update = String.format(
@@ -205,7 +205,7 @@ public class LocationBroker extends Broker<Location>
 			
 			// Check if row was updated.
 			if (updateRowCount != 1)
-				throw new DBChangeException("Location changed or deleted by another user.");
+				throw new DBChangeException("Location not found, may have been changed or deleted by another user.");
 			}
 		catch (SQLException e)
 			{
