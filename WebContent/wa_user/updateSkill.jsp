@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-
-<%@ page import="business.Skill" %>
 <%@ page import="persistence.SkillBroker" %>
+<%@ page import="business.Skill" %>
+<%@ page import="java.util.*" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- Author: Noorin -->
@@ -9,7 +9,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>Web Agenda- Updating Skill </title>
+<title>Web Agenda- Skills</title>
 
 <!--  Includes -->
 <jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
@@ -18,51 +18,55 @@
 <script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
 
 <!-- Plug-ins -->
+<script src="../lib/js/jquery.validate.js" type="text/javascript"></script>
 <script src ="../lib/js/jquery.flashmessenger.js"   type ="text/javascript"> </script>
 
-<!--  CSS files -->
-<link rel="stylesheet" href="CSS/table.css" type="text/css"></link>
-<link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
-<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Confirmation/confirm.css" />
-<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Flash/flashmessenger.css" />
-
-<!-- Sorttable is under the X11 licence, it is an open source project.-->
 <!-- Javascript Files -->
-
-<script src="../lib/js/sorttable.js" type ="text/javascript"></script>
-<script type="text/javascript" src="../lib/js/jquery-impromptu.3.0.min.js"></script>
-<script type="text/javascript" src="../lib/js/dashboard.js"></script>
+<script src="../lib/js/cmxforms.js" type="text/javascript"></script>
+<script src= "../lib/js/val.js" type="text/javascript"> </script>
 <script type="text/javascript" src="../lib/js/deleteSkill.js"></script>
 
+<!--  CSS files -->
+<link rel="stylesheet" href="../CSS/creationForm.css" type="text/css"></link>
+<link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../CSS/Validation/val.css" type="text/css" media="screen"/>
+<link rel="stylesheet" href="../CSS/Validation/screen.css" type="text/css" media="screen"/>
+<link rel="stylesheet" href="../CSS/Flash/flashmessenger.css" type="text/css" media="screen"/>
 </head>
 <body>
-<br></br>
-			 <% 
-					if(request.getParameter("message") != null)
+		<div id="instructions">
+			Fields marked with <em class="asterisk" > *</em> are required.
+		</div>
+			<% 
+					if(request.getParameter("update") != null)
 					{
-						if(request.getParameter("message").equals("true"))
+						if(request.getParameter("update").equals("true"))
 						{
-			 %>
-							<script type="text/javascript">
-											$(function()
-										    {
-												
-												    $.flashMessenger("The skill has been successfully deleted", 
-													{ 	
-														modal:true, 
-														autoClose: false 
-													});	
-											});
-							</script>
-			   <% 			   
-						 }
-						else if(request.getParameter("message").equals("false"))
+							//out.println("Skill was added");
+			%>
+				              <script type="text/javascript">
+		
+								$(function()
+								    {
+										
+										    $.flashMessenger("The skill has been successfully updated", 
+											{ 	
+												modal:true, 
+												autoClose: false 
+											});	
+									});
+								</script>
+			
+			    <% 			   
+						}
+						else if(request.getParameter("update").equals("false"))
 						{
 				%>
 							<script type="text/javascript">
 								$(function()
 								    {
-										$.flashMessenger("An error occured while deleting the Skill. Please contact your admin",
+										
+								       $.flashMessenger("The name you provided has already been used.",
 								        {
 											   modal:true,
 							    		       clsName:"err", 
@@ -74,79 +78,60 @@
 						}
 					}
 				%>
-
-	<div id="skillsWidget" class="fullWidget">
-			<div class="widgetUpperRectangle" id="skillsWidgetUpperRectangle">
-				<div class="widgetTitle" id="skillsTitle">Skills</div>
-		</div>
-		<div class="widgetLowerRectangle" id="skillsWidgetLowerRectangle">
-		<div id="skillsIcon">
-				<h3>Skills</h3>
+		<div id="skillWidget" class="fullWidget">
+			<div class="widgetUpperRectangle" id="skillUpperRectangle">
+				<div class="widgetTitle" id="skillWidgetTitle">Skills </div>
 			</div>
-			<div id="searchArea">
-			<form id="form">
-				<input type="text" size=30/ name="skillName">
-				<input type="submit" name="search"  class="button" value="Search" onClick="location.href='newSkill.jsp?skillName=' + form.skillName.value"> 
+			
+		<div class="widgetLowerRectangle" id="skillLowerRectangle">
+		
+        <div id ="creationForm">
+			<form class="addSkillForm" action="../UpdateSkill" id="form" method="post">
+			<div id="skill">
+			
+			<div id="formButtons">
+						<input type="submit" name="submit" class="button" value="Update"> 
+						<input type="button" name="submit" class="button" value="Search" onClick="location.href='updateSkill.jsp';"> 
+						<input type="reset" name="clear" class="button" value="Clear Screen"> 
+						<br></br>
+			</div>
+				 <fieldset>
+					<legend > Skill Details </legend>
+					
+					<%
+						String skill = request.getParameter("skill");
+					    
+					    String skillName="", skillDesc="";
+					    
+					    if(skill!=null)
+					    {
+					    	StringTokenizer st = new StringTokenizer(skill);
+						    String[] results = skill.split(",");
+						    skillName= results[0];
+						    if(results.length>1)
+						    skillDesc= results[1];
+						    Skill oldSkill = new Skill(skillName, skillDesc);
+						    session.setAttribute("oldSkill",oldSkill);
+					    }
+                   %>
+					
+							<p>	<label class="label"> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="skillName" class="required" value="<%=skillName%>" size ="30"> </p>
+							<p>	<label class="label"> Description: </label></p>
+							<textarea  name="skillDesc" cols="23" rows="6" tabindex="101"> <%=skillDesc%> </textarea>
+				</fieldset>
+			
+				</div>
+				<div id="searchArea">
+						<input type="submit" name="submit" class="button" value="Update"> 
+						<input type="button" name="submit" class="button" value="Search" onClick="location.href='updatSkill.jsp';">
+						<input type="reset" name="clear" class="button" value="Clear Screen"> 
+						<br></br>
+				</div>
 			</form>
-			</div>
-			<div id="tableArea">
-							<div class="userAdmin">
-				<table class="sortable" id="userTable">
-					<thead class="head">
-						<tr class="headerRow">
-							<th>Name</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tfoot class="foot">
-						<tr class="headerRow">
-							<th>Name</th>
-							<th>Description</th>
-						</tr>
-					</tfoot>
-					<tbody>
-						<% 
-							SkillBroker broker = SkillBroker.getBroker();
-							Skill skill = new Skill("");
-							Skill[] skillArray = broker.get(skill);
-							
-							for(int index = 0; index <skillArray.length; index++)
-							{
-						%>
-							<tr>
-							   <td>
-									<a href="newSkill.jsp?=<%=skillArray[index].getName()%>"> <b> <%=skillArray[index].getName()%> </b></div></a>
-									<div class="row-actions"><span class='edit'>
-									<a href="#"> Edit </a>   | </span>  <span class='delete'>
-									<a href="javascript:;" onClick="removeSkill('<%=skillArray[index].getName()%>');">
-										Delete</a></span></div>
-								</td>
-								<td>
-								     <%
-								     	if(skillArray[index].getDesc()!=null && skillArray[index].getDesc().equals(""))
-								     	{
-								     %>
-								     		<a href="newSkill.jsp?=<%= skillArray[index].getName() %>"> <%=skillArray[index].getDesc()%> </a>
-								     <%	}
-								     	else
-								     	{
-								     %>
-								     		<a href="newSkill.jsp?=<%= skillArray[index].getName() %>"> None </a>
-								     <%
-								     	} 
-							 }
-								     %>
-						  </td>	
-					</tbody>
-				</table>
-			</div>
-		</div> <!-- End Table Area -->
+		</div>
 	</div>
 </div>
 <div id="footer"></div>
+
 </body>
 </html>
-
-		
-												
-												

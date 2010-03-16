@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-
 <%@ page import="persistence.LocationBroker" %>
 <%@ page import="business.schedule.Location" %>
 <%@ page import = "exception.DBDownException" %>
@@ -11,6 +10,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Web Agenda- Updating Location</title>
+
 <!--  Includes -->
 <jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
 
@@ -19,20 +19,19 @@
 
 <!-- Plug-ins -->
 <script src ="../lib/js/jquery.flashmessenger.js"   type ="text/javascript"> </script>
+<script type="text/javascript" src="../lib/js/jquery-impromptu.3.0.min.js"></script>
+
+<!-- Sorttable is under the X11 licence, it is an open source project.-->
+<!-- Javascript Files -->
+<script src="../lib/js/sorttable.js" type ="text/javascript"></script>
+<script type="text/javascript" src="../lib/js/dashboard.js"></script>
+<script type="text/javascript" src="../lib/js/deleteLocation.js"></script>
 
 <!--  CSS files -->
 <link rel="stylesheet" href="CSS/table.css" type="text/css"></link>
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Confirmation/confirm.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Flash/flashmessenger.css" />
-
-
-<!-- Sorttable is under the X11 licence, it is an open source project.-->
-<!-- Javascript Files -->
-<script type="text/javascript" src="../lib/js/jquery-impromptu.3.0.min.js"></script>
-<script src="../lib/js/sorttable.js" type ="text/javascript"></script>
-<script type="text/javascript" src="../lib/js/dashboard.js"></script>
-<script type="text/javascript" src="../lib/js/deleteLocation.js"></script>
 
 </head>
 <body>
@@ -44,7 +43,7 @@
 						{
 							//out.println("Location was deleted");
 	    %>
-						<script type="text/javascript">
+								<script type="text/javascript">
 									$(function()
 								    {
 											$.flashMessenger("The location has been successfully deleted", 
@@ -76,47 +75,6 @@
 						}
 					}
 				%>
-				
-				<% 
-					if(request.getParameter("update") != null)
-					{
-						if(request.getParameter("update").equals("true"))
-						{
-							//out.println("Location was deleted");
-	          %>
-						<script type="text/javascript">
-									$(function()
-								    {
-											$.flashMessenger("The location has been successfully updated", 
-											{ 	
-												modal:true, 
-												autoClose: false 
-											});	
-									});
-								</script>
-				<% 			   
-						}
-						else if(request.getParameter("update").equals("false"))
-						{
-				%>
-							
-							<script type="text/javascript">
-								$(function()
-								    {
-										
-								       $.flashMessenger("The name you provided has already been used.",
-								        {
-											   modal:true,
-							    		       clsName:"err", 
-								    		   autoClose:false
-								    	 }); 
-								   }); 
-							</script>
-				<%
-						}
-					}
-				%>
-				
 				
 	   <div id="locationWidget" class="fullWidget">
 			<div class="widgetUpperRectangle" id="locationsUpperRectangle">
@@ -153,7 +111,7 @@
 									LocationBroker broker = LocationBroker.getBroker();
 									Location loc= null;
 									
-									if(request.getParameter("locName").equals(null))
+									if(request.getParameter("locName").equals(null) || request.getParameter("locName").equals(""))
 									{
 										
 										loc = new Location("");
@@ -177,12 +135,13 @@
 										    locArray = broker.get(loc);
 											for(int index = 0; index < locArray.length; index++)
 											{
+												
 								%>
 												<tr>
 												<td>
 													<a href="updateLocation.jsp?location=<%=locArray[index].getName()%>"><div id="locationImage"> <b> <%=locArray[index].getName()%> </b></div></a>
 													<div class="row-actions"><span class='edit'>
-													<a href="updateLocation.jsp?location=<%=locArray[index].getName() + "," +  locArray[index].getDesc()%> "> Edit </a>   | </span>  <span class='delete'>
+													<a href="updateLocation.jsp?location=<%=locArray[index].getName() + "," +  locArray[index].getDesc() %> "> Edit </a>   | </span>  <span class='delete'>
 													<a href="javascript:;" onClick="removeLocation('<%=locArray[index].getName()%>');">
 														Delete
 													</a></span></div>

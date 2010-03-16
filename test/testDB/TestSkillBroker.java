@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import business.Skill;
+import business.schedule.Location;
 import exception.DBDownException;
 import exception.DBException;
 import persistence.SkillBroker;
@@ -79,7 +80,7 @@ public class TestSkillBroker {
 				Skill[] results = broker.get(get);
 				for (Skill printLoc : results)
 					{
-					System.out.println(printLoc);
+					System.out.println(printLoc + " " + printLoc.getDesc());
 					}
 				}
 			catch (DBException e)
@@ -98,8 +99,44 @@ public class TestSkillBroker {
 	}
 
 	@Test
-	public void testUpdateSkill() {
-		fail("Not yet implemented");
+	public void testUpdateSkill() 
+	{
+		Skill oldSkill = new Skill("Cooking", null);
+		Skill newSkill = new Skill("Cooking", "Cook");
+		   
+		try {
+			boolean success = broker.update(oldSkill,newSkill);
+			if(success)
+			{
+				System.out.println(newSkill.toString());
+			}
+			
+		} catch (DBException e) {
+			e.printStackTrace();
+			fail();
+		} catch (DBDownException e) {
+			e.printStackTrace();
+			fail();
+		}
+		
+		//Reverse the changes of the update.
+		try {
+			boolean success = broker.update(newSkill,oldSkill);
+			if(success)
+			{
+				System.out.println(oldSkill.toString());
+			}
+		
+		} catch (DBException e) {
+			e.printStackTrace();
+			fail();
+		} catch (DBDownException e) {
+			e.printStackTrace();
+			fail();
+		}
+		
+		
+		
+		assertTrue(true);
 	}
-
 }

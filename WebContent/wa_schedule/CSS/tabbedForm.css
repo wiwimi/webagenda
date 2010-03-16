@@ -1,0 +1,98 @@
+@CHARSET "ISO-8859-1";
+
+/*Author:Noorin*/
+
+input[type=text], select, textarea
+
+{
+	background-color: #FFFFFF;
+	font-family: cochin,Verdana, Times,helvetica,sans-serif;
+	border: 1px solid #000080;
+	border:solid 1px #aacfe4;
+}
+input:focus
+{
+	background-color:#E0E0E0;
+}
+
+
+label, theSelect
+{
+	width: 7em;
+	float: left;
+	font-weight: 550;
+	font-size: 14px;
+	font-family: Arial,  Verdana, Helvetica, sans-serif;
+	text-align: right;
+	margin-right: 2.0em;
+	display: block;
+	display: inline-block;
+	line-height: 1.8;
+	vertical-align: top;
+	width:200px;
+
+}
+.asterisk
+{
+	font-weight: bold;
+	font-style: normal;
+	color: #f00;
+}
+
+input.button
+{ 
+	  font-family: cochin, Verdana, georgia, Times, helvetica,sans-serif;
+	  font-size:80%;
+	  color:black;
+	  background-color:#E6E6E6;
+	  padding-top: 2px;
+	  padding-bottom: 2px;
+	 -webkit-border-top-left-radius:2px; 
+	 -webkit-border-top-right-radius:2px;
+	 -webkit-border-bottom-left-radius:2px; 
+	 -webkit-border-bottom-right-radius:2px;
+	  -moz-border-radius:5px;
+	  
+}
+input.button:hover
+{
+	color:white;
+	background:#736F6E
+}
+
+fieldset
+{
+	height:75%;
+	border:white;
+	border-top:1px solid gray;
+	
+	
+}
+
+legend
+{
+	color:#151B54; 
+	font: bold 100% cochin, Times, Verdana, helvetica,sans-serif;
+}
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -31,9 +31,7 @@ public class DeleteLocation extends HttpServlet {
 		    {
     	  
 		        response.setContentType("text/html;charset=UTF-8");
-		      //Create or get the session object from the HTTPSession object
-		       // HttpSession session = request.getSession();
-		       
+		      
 		        PrintWriter out = response.getWriter();
 		        String locName = request.getParameter("locName");
 		        

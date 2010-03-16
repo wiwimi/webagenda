@@ -36,9 +36,49 @@
 
 </head>
 <body>
-	<div id="instructions">
-	        Fields marked with <em class="asterisk" > *</em> are required.
-	</div>
+<div id="instructions">
+	   Fields marked with <em class="asterisk" > *</em> are required.
+</div>
+
+	<%
+					if(request.getParameter("update") != null)
+					{
+						if(request.getParameter("update").equals("true"))
+						{
+							//out.println("Location was updated");
+	            %>
+						<script type="text/javascript">
+									$(function()
+								    {
+											$.flashMessenger("The location has been successfully updated", 
+											{ 	
+												modal:true, 
+												autoClose: false 
+											});	
+									});
+						</script>
+				<% 			   
+						}
+						else if(request.getParameter("update").equals("false"))
+						{
+				%>
+							
+							<script type="text/javascript">
+								$(function()
+								    {
+										
+								       $.flashMessenger("The name you provided has already been used.",
+								        {
+											   modal:true,
+							    		       clsName:"err", 
+								    		   autoClose:false
+								    	 }); 
+								   }); 
+							</script>
+				<%
+						}
+					}
+				%>
  <div id="locationWidget" class="fullWidget">
 	<div class="widgetUpperRectangle" id="locationsUpperRectangle">
 				<div class="widgetTitle" id="locationsWidgetTitle">Locations</div>
@@ -60,18 +100,25 @@
 					
 					<%
 						String loc = request.getParameter("location");
-					    StringTokenizer st = new StringTokenizer(loc);
-					    String locName="", locDesc="";
-					    String[] results = loc.split(",");
-					    locName= results[0];
-					    locDesc= results[1];
+					String locName="", locDesc="";
+						
+					if(loc!=null)
+						{
+						    StringTokenizer st = new StringTokenizer(loc);
+						    String[] results = loc.split(",");
+						    locName= results[0];
+						    if(results.length>1)
+						    locDesc= results[1];
+						    Location oldLoc = new Location(locName, locDesc);
+						    session.setAttribute("oldLoc",oldLoc);
+						}
 
 					
 					%>
 							<p>	<label class="label"> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="locName" value ="<%=locName%>" class="required" size ="30"> </p>
 							
 							<p>	<label class="label"> Description: </label></p>
-							<textarea  name="desc" cols="23" rows="6" tabindex="101"> <%=locDesc%> </textarea>
+							<textarea  name="locDesc" cols="23" rows="6" tabindex="101"> <%=locDesc%> </textarea>
 				</fieldset>
 				<div id="formButtons">
 						        <input type="submit" name="submit"  class="button" value="Update" > 

@@ -91,8 +91,8 @@
 			<div id="skill">
 			
 			<div id="formButtons">
-						<input type="submit" name="submit" class="button" value="Save"> 
-						<input type="button" name="submit" class="button" value="Search" onClick="location.href='updateSkill.jsp';"> 
+						<input type="submit" name="submit" class="button" value="Add"> 
+						<input type="button" name="submit" class="button" value="Search" onClick="location.href='skillSearchResults.jsp';"> 
 						<input type="reset" name="clear" class="button" value="Clear Screen"> 
 						<br></br>
 			</div>
@@ -106,8 +106,8 @@
 			
 				</div>
 				<div id="searchArea">
-						<input type="submit" name="submit" class="button" value="Save"> 
-						<input type="button" name="submit" class="button" value="Search" onClick="location.href='updatSkill.jsp';">
+						<input type="submit" name="submit" class="button" value="Add"> 
+						<input type="button" name="submit" class="button" value="Search" onClick="location.href='skillSearchResults.jsp';">
 						<input type="reset" name="clear" class="button" value="Clear Screen"> 
 						<br></br>
 				</div>

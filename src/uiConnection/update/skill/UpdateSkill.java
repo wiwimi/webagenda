@@ -2,80 +2,89 @@ package uiConnection.update.skill;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import persistence.SkillBroker;
-import business.Skill;
 import exception.DBDownException;
 import exception.DBException;
+import persistence.SkillBroker;
+import business.Skill;
 
 /**
- * Servlet implementation class DeleteSkill
+ * Servlet implementation class UpdateLocation
  */
-@WebServlet(name="DeleteSkill", urlPatterns={"/DeleteSkill"})
-public class DeleteSkill extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	
-	/**
+@WebServlet(name="UpdateSkill", urlPatterns={"/UpdateSkill"})
+public class UpdateSkill extends HttpServlet {
+	private static final long serialVersionUID = 2L;
+       
+    /**
      * @see HttpServlet#HttpServlet()
      */
       protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 		    throws ServletException, IOException 
 		    {
-    	  
 		        response.setContentType("text/html;charset=UTF-8");
-		          //Create or get the session object from the HTTPSession object
-		          // HttpSession session = request.getSession();
-		       
+		      
+		        //Create or get the session object from the HTTPSession object
+			    HttpSession session = request.getSession();
+		        
 		        PrintWriter out = response.getWriter();
 		        String skillName = request.getParameter("skillName");
-		        boolean success;
+				String skillDesc = request.getParameter("skillDesc");	
+				
+				boolean success=false;
+				SkillBroker broker = null;
+			    Skill oldSkill=null, newSkill=null;
 				
 				try {
-					    SkillBroker broker = SkillBroker.getBroker();
+					    broker = SkillBroker.getBroker();
 						broker.initConnectionThread();
 						
-						Skill skill = new Skill(skillName);
-						success = broker.delete(skill);
+						newSkill = new Skill(skillName, skillDesc);
+						oldSkill = (Skill) session.getAttribute("oldSkill");
+						oldSkill = new Skill(oldSkill.getName(), oldSkill.getDesc());
+						success = broker.update(oldSkill, newSkill);
 						
 					if (success)
 					{
-						//Confirm that the user was deleted
-						response.sendRedirect("wa_user/skillSearchResults.jsp?delete=true");
+						//Confirm that the location was updated
+						response.sendRedirect("wa_user/updateSkill.jsp?update=true");
 					}
 				}
 				catch (DBException e) {
+					
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-					// Failed to delete the location
-					response.sendRedirect("wa_user/skillSearchResults.jsp?delete=false");
+					
+					// Failed to update the location
+					response.sendRedirect("wa_user/updateSkill.jsp?update=false");
 					
 				} catch (DBDownException e) {
+					
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-					// Failed to add the location
-					response.sendRedirect("wa_user/skillSearchResults.jsp?delete=false");
+					
+					// Failed to update the location
+					response.sendRedirect("wa_user/updateSkill.jsp?update=false");
 				}
 				catch(Exception e)
 				{
-					// Failed to add the location
-					response.sendRedirect("wa_user/skillSearchResults.jsp?message=false");
+					e.printStackTrace();
+					
+					// Failed to update the location
+					response.sendRedirect("wa_user/updateSkill.jsp?update=false");
 				}
 				finally
 				{
 					out.close();
+					broker.stopConnectionThread();
 				}
 		   }
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public DeleteSkill() {
+    public UpdateSkill() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -85,8 +94,6 @@ public class DeleteSkill extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		processRequest(request, response);
 	}
 
 	/**
@@ -94,8 +101,7 @@ public class DeleteSkill extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		
+		processRequest(request, response);
 	}
 
 }
