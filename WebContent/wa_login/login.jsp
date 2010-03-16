@@ -29,7 +29,7 @@
 			}
 		%>
 		
-		<div id="loginArea">
+		<div id="loginAreaLoginForm">
 			<form action="../login" method="POST">
 			
 				<label for="username">Username:</label>

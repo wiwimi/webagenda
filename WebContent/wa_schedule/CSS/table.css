@@ -1,0 +1,138 @@
+@CHARSET "ISO-8859-1";
+
+/*Author: Noorin*/
+#usersIcon
+{
+	font-size:1.2em;
+	float:left;
+	margin-left:20px;
+}
+
+#usersIcon h3:before
+{
+	position:relative;
+	top:5px;
+	content: url(../../lib/images/icons/Color/001_54.png)	
+}
+
+#tableArea
+{
+	position:relative;
+	left:2.5%;
+	width:95%;
+}
+
+#userTable
+{
+	-webkit-border-bottom-left-radius: 4px 4px;
+	-webkit-border-bottom-right-radius: 4px 4px;
+	border-spacing: 0px 0px;
+	-webkit-border-top-left-radius: 4px 4px;
+	-webkit-border-top-right-radius: 4px 4px;
+	border-style: solid;
+	border-width: 1px;
+	clear: both;
+	margin: 0px;
+	width: 100%;
+}
+
+tr
+{
+	border-color: inherit;
+	display: table-row;
+	vertical-align: inherit;
+}
+
+tr:hover
+{
+	background-color:#C8C8C8 ;
+	
+}
+
+td
+{
+	display: table-cell;
+	vertical-align: inherit;
+}
+
+td a
+{
+	position:relative;
+	left:5px;
+	text-decoration: none;
+	color:black;
+}
+
+td a:hover
+{
+	text-decoration:underline;
+}
+
+
+thead
+{
+	border-color: inherit;
+	display: table-header-group;
+	vertical-align: left;
+	background-image:url(../../lib/images/content/HeaderGradient.png);
+	background-repeat:x-repeat;
+	color:black;
+}
+
+.headerRow:hover
+{
+	background-image:url(../../lib/images/content/HeaderGradient.png);
+	background-repeat:x-repeat;
+}
+
+tfoot
+{
+	border-color: inherit;
+	display: table-footer-group;
+	vertical-align: left;
+	background-image:url(../../lib/images/content/HeaderGradient.png);
+	background-repeat:x-repeat;
+	color:black;
+}
+
+tbody
+{
+	border-color: inherit;
+	display: table-row-group;
+	vertical-align: middle;
+	color:black;
+}
+
+#usertable tr, .usertable.th
+{
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	font-size: 11px;
+	vertical-align: text-top;
+}
+
+#userTable th
+{
+	line-height: 1.3em;
+	padding: 7px 7px 8px;
+	text-align: left;
+}
+
+#profileImage
+{
+	
+}
+
+#profileImage:before
+{
+	position:relative;
+	top:5px;
+	content: url(../../lib/images/icons/Color/001_54.png)
+}
+h1
+{
+	color: gray;
+	
+}
+
+

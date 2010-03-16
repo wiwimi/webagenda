@@ -26,8 +26,9 @@
 	background-color:#363636;
 }
 
-#loginArea
+#loginAreaLoginForm
 {
+	position:relative;
 	margin:0 auto;
 	top:50px;
 	color:#363636;
