@@ -2,6 +2,7 @@ package uiConnection.update.location;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.StringTokenizer;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -31,18 +32,28 @@ public class DeleteLocation extends HttpServlet {
 		    {
     	  
 		        response.setContentType("text/html;charset=UTF-8");
-		      
+		        String locName ="", locDesc = "";
 		        PrintWriter out = response.getWriter();
-		        String locName = request.getParameter("locName");
+		        String loc = request.getParameter("loc");
+		        Location delLoc =null;
 		        
-		        boolean success;
+		        if(loc!=null)
+				{
+				    String[] results = loc.split(",");
+				    locName= results[0];
+				    if(results.length>1)
+				    locDesc= results[1];
+				}
+		        
+		        boolean success=false;
 				
 				try {
 					    LocationBroker broker = LocationBroker.getBroker();
 						broker.initConnectionThread();
 						
-						Location loc = new Location(locName);
-						success = broker.delete(loc);
+						delLoc = new Location(locName, locDesc);
+						Location[] results = broker.get(delLoc);
+						success = broker.delete(results[0]);
 						
 					if (success)
 					{
@@ -52,14 +63,17 @@ public class DeleteLocation extends HttpServlet {
 				}
 				catch (DBException e) {
 					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
+					
 					// Failed to delete the location
 					response.sendRedirect("wa_location/searchResults.jsp?delete=false");
 					
 				} catch (DBDownException e) {
 					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
-					// Failed to add the location
+					// Failed to delete the location
 					response.sendRedirect("wa_location/searchResults.jsp?delete=false");
 				}
 				catch(Exception e)

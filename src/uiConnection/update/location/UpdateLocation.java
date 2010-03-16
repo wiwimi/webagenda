@@ -47,7 +47,10 @@ public class UpdateLocation extends HttpServlet {
 						
 						newLoc = new Location(locName, locDesc);
 						oldLoc = (Location) session.getAttribute("oldLoc");
-						oldLoc = new Location(oldLoc.getName(), oldLoc.getDesc());
+						Location[] results = broker.get(oldLoc);
+						oldLoc = new Location(results[0].getName(), results[0].getDesc());
+						
+						if(results!=null)
 						success = broker.update(oldLoc, newLoc);
 						
 					if (success)
@@ -64,6 +67,8 @@ public class UpdateLocation extends HttpServlet {
 					// Failed to update the location
 					response.sendRedirect("wa_location/updateLocation.jsp?update=false");
 					
+					
+					
 				} catch (DBDownException e) {
 					
 					// TODO Auto-generated catch block
@@ -71,6 +76,8 @@ public class UpdateLocation extends HttpServlet {
 					
 					// Failed to update the location
 					response.sendRedirect("wa_location/updateLocation.jsp?update=false");
+					
+					
 				}
 				catch(Exception e)
 				{

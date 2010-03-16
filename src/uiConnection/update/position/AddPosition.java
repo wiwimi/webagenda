@@ -31,8 +31,9 @@ public class AddPosition extends HttpServlet {
 		        //HttpSession session = request.getSession();
 		        PrintWriter out = response.getWriter();
 		        String posName = request.getParameter("posName");
-				String desc = request.getParameter("desc");
-				String[] pos_skills = request.getParameterValues("skillSetForm.skill");
+				String posDesc = request.getParameter("posDesc");
+				String[] pos_skills = request.getParameterValues("skill");
+				
 				Skill[] skills = null;
 				   if (pos_skills != null) 
 				   {
@@ -41,6 +42,7 @@ public class AddPosition extends HttpServlet {
 				      {
 				         Skill tempSkill = new Skill(pos_skills[i]);
 				         skills[i] = (tempSkill);
+				         out.println(skills[i]);
 				         
 				      }
 				   } 
@@ -54,13 +56,13 @@ public class AddPosition extends HttpServlet {
 						broker = PositionBroker.getBroker();
 						broker.initConnectionThread();
 						
-						Position pos = new Position(posName, desc, skills);
+						Position pos = new Position(posName, posDesc, skills);
 						success = broker.create(pos);
 						
 					if (success)
 					{
 						//Confirm that the user was added
-						response.sendRedirect("wa_user/newPosition.jsp?message=true");
+						//response.sendRedirect("wa_user/newPosition.jsp?message=true");
 						
 					}
 				}

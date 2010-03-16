@@ -86,7 +86,7 @@ public class TestPositionBroker {
 			System.out.println("POSITION GET");
 			
 			//Use an empty string for the positions name so that all names are matched.
-			Position get = new Position("test5",null);
+			Position get = new Position("",null);
 			
 			//Get all Positions and print them to console.
 			try

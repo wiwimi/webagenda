@@ -127,7 +127,7 @@
 								</div>	
 							
 							<p>	<label class="label"> Description: </label></p>
-							<textarea  name="desc" cols="23" rows="6" tabindex="101"></textarea>
+							<textarea  name="posDesc" cols="23" rows="6" tabindex="101"></textarea>
 				</fieldset>
 						<div id="formButtons">
 						<input type="submit" name="submit" class="button" value="Add"> 
@@ -184,8 +184,7 @@
 						  </div>
 						</div> <!-- End Table Area -->
 				</div>
-				
-			  </form>
+			</form>
 			</div>
 		 </div>
        </div>

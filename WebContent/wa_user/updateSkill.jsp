@@ -91,7 +91,7 @@
 			
 			<div id="formButtons">
 						<input type="submit" name="submit" class="button" value="Update"> 
-						<input type="button" name="submit" class="button" value="Search" onClick="location.href='updateSkill.jsp';"> 
+						<input type="button" name="submit" class="button" value="Search" onClick="location.href='skillSearchResults.jsp';"> 
 						<input type="reset" name="clear" class="button" value="Clear Screen"> 
 						<br></br>
 			</div>
@@ -105,7 +105,6 @@
 					    
 					    if(skill!=null)
 					    {
-					    	StringTokenizer st = new StringTokenizer(skill);
 						    String[] results = skill.split(",");
 						    skillName= results[0];
 						    if(results.length>1)
@@ -123,7 +122,7 @@
 				</div>
 				<div id="searchArea">
 						<input type="submit" name="submit" class="button" value="Update"> 
-						<input type="button" name="submit" class="button" value="Search" onClick="location.href='updatSkill.jsp';">
+						<input type="button" name="submit" class="button" value="Search" onClick="location.href='skillSearchResults.jsp';">
 						<input type="reset" name="clear" class="button" value="Clear Screen"> 
 						<br></br>
 				</div>

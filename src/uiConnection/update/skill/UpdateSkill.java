@@ -46,7 +46,11 @@ public class UpdateSkill extends HttpServlet {
 						
 						newSkill = new Skill(skillName, skillDesc);
 						oldSkill = (Skill) session.getAttribute("oldSkill");
-						oldSkill = new Skill(oldSkill.getName(), oldSkill.getDesc());
+						Skill[] results = broker.get(oldSkill);
+						
+						oldSkill = new Skill(results[0].getName(), results[0].getDesc());
+					
+						if(results!=null)
 						success = broker.update(oldSkill, newSkill);
 						
 					if (success)

@@ -142,7 +142,7 @@
 													<a href="updateLocation.jsp?location=<%=locArray[index].getName()%>"><div id="locationImage"> <b> <%=locArray[index].getName()%> </b></div></a>
 													<div class="row-actions"><span class='edit'>
 													<a href="updateLocation.jsp?location=<%=locArray[index].getName() + "," +  locArray[index].getDesc() %> "> Edit </a>   | </span>  <span class='delete'>
-													<a href="javascript:;" onClick="removeLocation('<%=locArray[index].getName()%>');">
+													<a href="javascript:;" onClick="removeLocation('<%=locArray[index].getName()%>', '<%=locArray[index].getDesc()%>');">
 														Delete
 													</a></span></div>
 												</td>

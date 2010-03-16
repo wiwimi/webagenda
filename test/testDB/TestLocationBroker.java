@@ -78,6 +78,28 @@ public class TestLocationBroker
 		
 		assertTrue(true);
 		}
+	
+	@Test
+	public void testDeleteLocation()
+		{
+		Location loc = new Location("Mac Grill", "Restaurant");
+		    
+		try {
+			boolean success = broker.delete(loc);
+			if(success)
+			{
+				System.out.println(loc.toString());
+			}
+			
+		} catch (DBException e) {
+			e.printStackTrace();
+			fail();
+		} catch (DBDownException e) {
+			e.printStackTrace();
+			fail();
+		}
+		assertTrue(true);
+		}
 	/**
 	 * Test method for {@link persistence.LocationBroker#get(business.schedule.Location)}.
 	 */
@@ -86,11 +108,12 @@ public class TestLocationBroker
 		{
 		//Use an empty string for the location name so that all names are matched.
 		Location get = new Location("");
-		
+
 		//Get all locations and print them to console.
 		try
 			{
 			Location[] results = broker.get(get);
+			
 			for (Location printLoc : results)
 				{
 				System.out.println(printLoc);
@@ -243,5 +266,5 @@ public class TestLocationBroker
 		
 		assertTrue(true);
 	}
-		}
+}
 

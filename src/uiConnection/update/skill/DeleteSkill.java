@@ -2,6 +2,7 @@ package uiConnection.update.skill;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.StringTokenizer;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import persistence.SkillBroker;
 import business.Skill;
+import business.schedule.Location;
 import exception.DBDownException;
 import exception.DBException;
 
@@ -29,19 +31,32 @@ public class DeleteSkill extends HttpServlet {
 		    {
     	  
 		        response.setContentType("text/html;charset=UTF-8");
-		          //Create or get the session object from the HTTPSession object
-		          // HttpSession session = request.getSession();
+		          
 		       
 		        PrintWriter out = response.getWriter();
-		        String skillName = request.getParameter("skillName");
-		        boolean success;
+		        String skill = request.getParameter("skill");
+		        
+		        Skill delSkill =null;
+		        String skillName="", skillDesc="";
+		        
+		        if(skill!=null)
+				{
+				    String[] results = skill.split(",");
+				    skillName= results[0];
+				    if(results.length>1)
+				    skillDesc= results[1];
+				}
+		        boolean success=false;
 				
 				try {
 					    SkillBroker broker = SkillBroker.getBroker();
 						broker.initConnectionThread();
 						
-						Skill skill = new Skill(skillName);
-						success = broker.delete(skill);
+						delSkill = new Skill(skillName, skillDesc);
+						Skill[] results = broker.get(delSkill);
+						
+						if(results!=null)
+						success = broker.delete(results[0]);
 						
 					if (success)
 					{
