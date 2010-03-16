@@ -67,7 +67,7 @@
 								$(function()
 								    {
 										
-								       $.flashMessenger("The name you provided has already been used.",
+								       $.flashMessenger("The attempt to update failed.",
 								        {
 											   modal:true,
 							    		       clsName:"err", 

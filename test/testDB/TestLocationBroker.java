@@ -78,7 +78,6 @@ public class TestLocationBroker
 		
 		assertTrue(true);
 		}
-	
 	/**
 	 * Test method for {@link persistence.LocationBroker#get(business.schedule.Location)}.
 	 */
