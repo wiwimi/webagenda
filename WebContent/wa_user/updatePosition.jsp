@@ -70,7 +70,7 @@
 								$(function()
 								    {
 										
-								       $.flashMessenger("The name you provided has already been used.",
+								       $.flashMessenger("Failed to update the position.",
 								        {
 											   modal:true,
 							    		       clsName:"err", 
@@ -78,25 +78,7 @@
 								    	 }); 
 								   }); 
 							</script>
-				<%
-						}
-						else if(request.getParameter("message").equals("skill"))
-						{
-				%>
-				
-						<script type="text/javascript">
-								$(function()
-								    {
-										
-								       $.flashMessenger("Please select at least 1 skill using the 'edit' button.",
-								        {
-											   modal:true,
-							    		       clsName:"err", 
-								    		   autoClose:false
-								    	 }); 
-								   }); 
-							</script>
-				
+			
 				<%
 						}
 					}

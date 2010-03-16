@@ -6,9 +6,10 @@
 
 {
 	background-color: #FFFFFF;
-	font-family: cochin,Verdana, Times,helvetica,sans-serif;
+	font-family: cochin,Verdana, Times,helvetica,sans-serif 100%;;
 	border: 1px solid #000080;
 	border:solid 1px #aacfe4;
+	
 }
 #creationForm input:focus
 {

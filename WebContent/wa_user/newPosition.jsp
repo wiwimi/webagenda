@@ -101,9 +101,9 @@
 	
 		<div id="positionWidget" class="fullWidget">
 			<div class="widgetUpperRectangle" id="positionUpperRectangle">
-				<div class="widgetTitle" id="positionWidgetTitle">Positions </div>
+				<div class="widgetTitle" id="positionsWidgetTitle">Positions </div>
 			</div>
-		<div class="widgetLowerRectangle" id="positionLowerRectangle">
+		<div class="widgetLowerRectangle" id="positionsLowerRectangle">
 		<div id ="creationForm">
 			<form class="addPositionForm" action="../AddPosition" id="form" method="post">
 			<div id="position">

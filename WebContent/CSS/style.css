@@ -484,6 +484,28 @@
 	}
 	
 	
+	#positionsTitle:before
+	{
+		position:relative;
+		top:5px;
+		content:url(../lib/images/icons/Color/001_57.png);
+	}
+	
+	#positionsTitle
+	{
+		font-weight:bold;
+		font-size:1.2em;
+	}
+	
+	
+	#positionsWidgetTitle:before
+	{
+		position:relative;
+		top:5px;
+		content:url(../lib/images/icons/Color/001_57.png);
+	}
+	
+	
 	#locationsTitle:before
 	{
 		position:relative;
