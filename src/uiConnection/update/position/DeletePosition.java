@@ -7,8 +7,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import persistence.PositionBroker;
+import business.Employee;
 import business.schedule.Position;
 import exception.DBDownException;
 import exception.DBException;
@@ -27,8 +29,9 @@ public class DeletePosition extends HttpServlet {
 		    {
     	  
 		        response.setContentType("text/html;charset=UTF-8");
-		          //Create or get the session object from the HTTPSession object
-		          // HttpSession session = request.getSession();
+		         
+		        //Create or get the session object from the HTTPSession object
+		        HttpSession session = request.getSession();
 		       
 		        PrintWriter out = response.getWriter();
 		        String posName = request.getParameter("posName");
@@ -38,8 +41,10 @@ public class DeletePosition extends HttpServlet {
 					    PositionBroker broker = PositionBroker.getBroker();
 						broker.initConnectionThread();
 						
+						Employee user = (Employee)session.getAttribute("currentEmployee");
+						
 						Position pos = new Position(posName);
-						success = broker.delete(pos);
+						success = broker.delete(pos, user);
 						
 					if (success)
 					{

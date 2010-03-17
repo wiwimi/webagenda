@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import exception.DBDownException;
 import exception.DBException;
 import persistence.SkillBroker;
+import business.Employee;
 import business.Skill;
 
 /**
@@ -44,9 +45,11 @@ public class UpdateSkill extends HttpServlet {
 					    broker = SkillBroker.getBroker();
 						broker.initConnectionThread();
 						
+						Employee user = (Employee)session.getAttribute("currentEmployee");
+						
 						newSkill = new Skill(skillName, skillDesc);
 						oldSkill = (Skill) session.getAttribute("oldSkill");
-						Skill[] results = broker.get(oldSkill);
+						Skill[] results = broker.get(oldSkill, user);
 						
 						oldSkill = new Skill(results[0].getName(), results[0].getDesc());
 					

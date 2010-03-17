@@ -2,17 +2,14 @@ package uiConnection.update.location;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.StringTokenizer;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import persistence.LocationBroker;
+import business.Employee;
 import business.schedule.Location;
 import exception.DBDownException;
 import exception.DBException;
@@ -33,6 +30,10 @@ public class DeleteLocation extends HttpServlet {
     	  
 		        response.setContentType("text/html;charset=UTF-8");
 		        PrintWriter out = response.getWriter();
+		        
+		        //Create or get the session object from the HTTPSession object
+		        HttpSession session = request.getSession();
+		        
 		        String locName  = request.getParameter("locName");
 		        String locDesc  = request.getParameter("locDesc");
 		        Location delLoc =null;
@@ -42,10 +43,12 @@ public class DeleteLocation extends HttpServlet {
 				try {
 					    LocationBroker broker = LocationBroker.getBroker();
 						broker.initConnectionThread();
-			
+						
+						Employee user = (Employee)session.getAttribute("currentEmployee");
+						
 						delLoc = new Location(locName, locDesc);
-						Location[] results = broker.get(delLoc);
-						success = broker.delete(results[0]);
+						Location[] results = broker.get(delLoc, user);
+						success = broker.delete(results[0], user);
 						
 					if (success)
 					{

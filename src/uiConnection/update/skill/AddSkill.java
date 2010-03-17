@@ -8,10 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import exception.DBDownException;
 import exception.DBException;
 import persistence.SkillBroker;
+import business.Employee;
 import business.Skill;
 
 /**
@@ -30,7 +32,8 @@ public class AddSkill extends HttpServlet {
 		        response.setContentType("text/html;charset=UTF-8");
 		      
 		        //Create or get the session object from the HTTPSession object
-		        //HttpSession session = request.getSession();
+		        HttpSession session = request.getSession();
+		        
 		        PrintWriter out = response.getWriter();
 		        String skillName = request.getParameter("skillName");
 				String desc = request.getParameter("desc");	
@@ -42,8 +45,10 @@ public class AddSkill extends HttpServlet {
 					    broker = SkillBroker.getBroker();
 						broker.initConnectionThread();
 						
+						Employee user = (Employee)session.getAttribute("currentEmployee");
+						
 						Skill skill = new Skill(skillName, desc);
-						success = broker.create(skill);
+						success = broker.create(skill, user);
 						
 					if (success)
 					{

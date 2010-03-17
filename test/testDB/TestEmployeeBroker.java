@@ -143,7 +143,11 @@ public class TestEmployeeBroker
 			{
 			e.printStackTrace();
 			}
-			catch (InvalidPermissionException e)
+		catch (InvalidPermissionException e)
+			{
+			e.printStackTrace();
+			}
+		catch (PermissionViolationException e)
 			{
 			e.printStackTrace();
 			}
@@ -244,6 +248,10 @@ public class TestEmployeeBroker
 			e.printStackTrace();
 			}
 		catch (InvalidPermissionException e)
+			{
+			e.printStackTrace();
+			}
+		catch (PermissionViolationException e)
 			{
 			e.printStackTrace();
 			}

@@ -6,6 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import persistence.EmployeeBroker;
 import business.Employee;
 import exception.DBDownException;
@@ -26,6 +28,10 @@ public class DeleteUser extends HttpServlet {
     	  
 		        response.setContentType("text/html;charset=UTF-8");
 		        PrintWriter out = response.getWriter();
+		        
+		        //Create or get the session object from the HTTPSession object
+		        HttpSession session = request.getSession();
+		        
 		        String empId = request.getParameter("empId");
 		        boolean success;
 				
@@ -36,8 +42,10 @@ public class DeleteUser extends HttpServlet {
 						Employee emp = new Employee();
 						int empIdInt = Integer.parseInt(empId);
 						
+						Employee user = (Employee)session.getAttribute("currentEmployee");
+						
 						emp.setEmpID(empIdInt);
-						success = broker.delete(emp);
+						success = broker.delete(emp, user);
 						
 					if (success)
 					{

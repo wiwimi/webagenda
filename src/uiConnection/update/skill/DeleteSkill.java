@@ -9,8 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import persistence.SkillBroker;
+import business.Employee;
 import business.Skill;
 import business.schedule.Location;
 import exception.DBDownException;
@@ -30,6 +32,9 @@ public class DeleteSkill extends HttpServlet {
 		    throws ServletException, IOException 
 		    {
     	  		response.setContentType("text/html;charset=UTF-8");
+    	  		
+    	  		 //Create or get the session object from the HTTPSession object
+		        HttpSession session = request.getSession();
 		          
 		        PrintWriter out = response.getWriter();
 		        String skillName = request.getParameter("skillName");
@@ -43,11 +48,13 @@ public class DeleteSkill extends HttpServlet {
 					    SkillBroker broker = SkillBroker.getBroker();
 						broker.initConnectionThread();
 						
+						Employee user = (Employee)session.getAttribute("currentEmployee");
+						
 						delSkill = new Skill(skillName, skillDesc);
-						Skill[] results = broker.get(delSkill);
+						Skill[] results = broker.get(delSkill, user);
 						
 						if(results!=null)
-						success = broker.delete(results[0]);
+						success = broker.delete(results[0], user);
 						
 					if (success)
 					{
