@@ -4,11 +4,15 @@
 package testDB;
 
 import static org.junit.Assert.*;
+
+import java.sql.Date;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import exception.DBDownException;
 import exception.DBException;
+import business.Employee;
 import business.schedule.Location;
 import persistence.LocationBroker;
 
@@ -20,6 +24,9 @@ import persistence.LocationBroker;
 public class TestLocationBroker
 	{
 	private LocationBroker broker;
+	private Date d;
+	private Employee user;
+	
 	
 	/**
 	 * @throws java.lang.Exception
@@ -29,6 +36,7 @@ public class TestLocationBroker
 		{
 		broker = LocationBroker.getBroker();
 		broker.initConnectionThread();
+		user = new Employee(12314, "Chaney", "Henson",  d, "user1", "password",  "2a" );
 		}
 	
 	/**
@@ -39,6 +47,7 @@ public class TestLocationBroker
 		{
 		broker.stopConnectionThread();
 		broker = null;
+		user=null;
 		}
 	
 	/**
@@ -50,7 +59,7 @@ public class TestLocationBroker
 		Location loc = new Location("Casino", "Test Location");
 		    
 		try {
-			boolean success = broker.create(loc);
+			boolean success = broker.create(loc, user);
 			if(success)
 			{
 				System.out.println(loc.toString());
@@ -66,7 +75,7 @@ public class TestLocationBroker
 		
 		//Attempt to delete the test location.
 		try {
-		broker.delete(loc);
+		broker.delete(loc, user);
 		
 		} catch (DBException e) {
 			e.printStackTrace();
@@ -85,7 +94,7 @@ public class TestLocationBroker
 		Location loc = new Location("Mac Grill", "Restaurant");
 		    
 		try {
-			boolean success = broker.delete(loc);
+			boolean success = broker.delete(loc, user);
 			if(success)
 			{
 				System.out.println(loc.toString());
@@ -112,7 +121,7 @@ public class TestLocationBroker
 		//Get all locations and print them to console.
 		try
 			{
-			Location[] results = broker.get(get);
+			Location[] results = broker.get(get, user);
 			
 			for (Location printLoc : results)
 				{
@@ -142,7 +151,7 @@ public class TestLocationBroker
 		//Get all locations and print them to console.
 		try
 			{
-			Location[] results = broker.get(get);
+			Location[] results = broker.get(get, user);
 			for (Location printLoc : results)
 				{
 				System.out.println(printLoc);
@@ -170,7 +179,7 @@ public class TestLocationBroker
 		//Get all locations and print them to console.
 		try
 			{
-			Location[] results = broker.get(get);
+			Location[] results = broker.get(get, user);
 			for (Location printLoc : results)
 				{
 				System.out.println(printLoc);
@@ -199,7 +208,7 @@ public class TestLocationBroker
 		//Get all locations and print them to console.
 		try
 			{
-			Location[] results = broker.get(get);
+			Location[] results = broker.get(get, user);
 		
 			if(results==null || results.length==0)
 				System.out.println("There are no results");

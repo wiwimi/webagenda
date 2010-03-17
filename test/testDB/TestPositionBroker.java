@@ -2,10 +2,13 @@ package testDB;
 
 import static org.junit.Assert.*;
 
+import java.sql.Date;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import business.Employee;
 import business.Skill;
 import business.schedule.Position;
 import exception.DBDownException;
@@ -14,16 +17,21 @@ import persistence.PositionBroker;
 
 public class TestPositionBroker {
 	private PositionBroker broker;
+	private Date d;
+	private Employee user;
+	
 	@Before
 	public void setUp() throws Exception {
 		broker = PositionBroker.getBroker();
 		broker.initConnectionThread();
+		user = new Employee(12314, "Chaney", "Henson",  d, "user1", "password",  "2a" );
 	}
 
 	@After
 	public void tearDown() throws Exception {
 		broker.stopConnectionThread();
 		broker = null;
+		user= null;
 	}
 
 	@Test
@@ -38,7 +46,7 @@ public class TestPositionBroker {
 		try {
 			
 			Position pos = new Position("Admin", "",null);
-			boolean success = broker.create(pos);
+			boolean success = broker.create(pos, user);
 			
 			System.out.println(success); // Is not printed out
 			if(success)
@@ -67,7 +75,7 @@ public class TestPositionBroker {
 		System.out.println("POSITION DELETION");
 		try {
 			Position pos = new Position("Admin",null);
-			broker.delete(pos);
+			broker.delete(pos, user);
 			
 		} catch (DBException e) {
 			// TODO Auto-generated catch block
@@ -91,7 +99,7 @@ public class TestPositionBroker {
 			//Get all Positions and print them to console.
 			try
 				{
-				Position[] results = broker.get(get);
+				Position[] results = broker.get(get, user);
 				for (Position printLoc : results)
 					{
 					System.out.println(printLoc);
@@ -130,12 +138,16 @@ public class TestPositionBroker {
 		//Get all Positions and print them to console.
 		try
 			{
-			Position[] results = broker.get(oldPos);
+			Position[] results = broker.get(oldPos, user);
 			Position updatePos = new Position("WaiterUpdated");
 			
 			if(results!=null)
 			{
 				success = broker.update(oldPos, updatePos);
+				System.out.println(success);
+			}
+			else
+			{
 				System.out.println(success);
 			}
 			}

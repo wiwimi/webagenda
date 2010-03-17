@@ -4,11 +4,15 @@
 package testDB;
 
 import static org.junit.Assert.*;
+
+import java.sql.Date;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import exception.DBDownException;
 import exception.DBException;
+import business.Employee;
 import business.schedule.ScheduleTemplate;
 import business.schedule.ShiftPosition;
 import business.schedule.ShiftTemplate;
@@ -25,6 +29,8 @@ import utilities.DoubleLinkedList;
 public class TestScheduleTemplateBroker
 	{
 	ScheduleTemplateBroker stb = null;
+	private Date d;
+	private Employee user;
 	
 	/**
 	 * @throws java.lang.Exception
@@ -33,7 +39,7 @@ public class TestScheduleTemplateBroker
 	public void setUp() throws Exception
 		{
 		stb = ScheduleTemplateBroker.getBroker();
-		
+		user = new Employee(12314, "Chaney", "Henson",  d, "user1", "password",  "2a" );
 		}
 	
 	/**
@@ -43,6 +49,7 @@ public class TestScheduleTemplateBroker
 	public void tearDown() throws Exception
 		{
 		stb = null;
+		user = null;
 		}
 	
 	/**
@@ -58,7 +65,7 @@ public class TestScheduleTemplateBroker
 		ScheduleTemplate[] results = null;
 		try
 			{
-			results = stb.get(search);
+			results = stb.get(search, user);
 			}
 		catch (DBException e)
 			{

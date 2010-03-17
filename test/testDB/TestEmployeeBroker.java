@@ -12,6 +12,7 @@ import org.junit.Test;
 import exception.DBDownException;
 import exception.DBException;
 import exception.InvalidLoginException;
+import exception.InvalidPermissionException;
 import persistence.EmployeeBroker;
 import business.Employee;
 
@@ -23,6 +24,9 @@ import business.Employee;
 public class TestEmployeeBroker
 	{
 	private EmployeeBroker empBroker;
+	private Date d;
+	private Employee user;
+	
 	
 	/**
 	 * @throws java.lang.Exception
@@ -32,6 +36,8 @@ public class TestEmployeeBroker
 		{
 		empBroker = EmployeeBroker.getBroker();
 		empBroker.initConnectionThread();
+		user = new Employee(12314, "Chaney", "Henson",  d, "user1", "password",  "2a" );
+		
 		}
 	
 	/**
@@ -42,6 +48,7 @@ public class TestEmployeeBroker
 		{
 		empBroker.stopConnectionThread();
 		empBroker = null;
+		user = null;
 		}
 	
 	/**
@@ -61,14 +68,14 @@ public class TestEmployeeBroker
 		newEmp.setFamilyName("Baggins");
 		newEmp.setUsername("bilb01");
 		newEmp.setPassword("password");
-		newEmp.setPLevel("1a");
+		//newEmp.setPLevel("1a");
 		newEmp.setActive(true);
 		
 		//Add employee
 		boolean successful;
 		try
 			{
-			successful = empBroker.create(newEmp);
+			successful = empBroker.create(newEmp, user);
 			assertTrue(successful);
 			System.out.println("Employee added: "+successful);
 			}
@@ -81,13 +88,18 @@ public class TestEmployeeBroker
 			{
 			e.printStackTrace();
 			}
+		catch (InvalidPermissionException  e)
+			{
+			e.printStackTrace();
+			}
 		
 		//Search for employee.
 		try
 			{
 			Employee empSearch = new Employee();
 			empSearch.setEmpID(80000);
-			Employee[] results = empBroker.get(empSearch);
+			
+			Employee[] results = empBroker.get(empSearch, user);
 			if (results == null)
 				fail("Employee search failed, employee not returned.");
 			System.out.println("Employee retrieved: "+results[0]);
@@ -105,11 +117,15 @@ public class TestEmployeeBroker
 			{
 			e.printStackTrace();
 			}
+		catch (InvalidPermissionException e)
+			{
+			e.printStackTrace();
+			}
 		
 		//Delete the test user.
 		try
 			{
-			boolean deleted = empBroker.delete(newEmp);
+			boolean deleted = empBroker.delete(newEmp, user);
 			assertTrue(deleted);
 			System.out.println("Employee deleted: "+ deleted);
 			}
@@ -119,6 +135,10 @@ public class TestEmployeeBroker
 			fail();
 			}
 		catch (DBDownException e)
+			{
+			e.printStackTrace();
+			}
+			catch (InvalidPermissionException e)
 			{
 			e.printStackTrace();
 			}
@@ -142,7 +162,7 @@ public class TestEmployeeBroker
 		newEmp.setFamilyName("Baggins");
 		newEmp.setUsername("bilb01");
 		newEmp.setPassword("password");
-		newEmp.setPLevel("1a");
+		//newEmp.setPLevel("1a");
 		newEmp.setActive(true);
 		newEmp.setEmail("email@YAHOO.CA");
 		newEmp.setPrefLocation("Mohave Grill");
@@ -152,7 +172,7 @@ public class TestEmployeeBroker
 		boolean successful;
 		try
 			{
-			successful = empBroker.create(newEmp);
+			successful = empBroker.create(newEmp, user);
 			assertTrue(successful);
 			System.out.println("Employee added: "+successful);
 			}
@@ -165,13 +185,17 @@ public class TestEmployeeBroker
 			{
 			e.printStackTrace();
 			}
+			catch (InvalidPermissionException e)
+			{
+			e.printStackTrace();
+			}
 		
 		//Search for disabled employee.
 		try
 			{
 			Employee empSearchDisabled = new Employee();
 			empSearchDisabled.setEmpID(80002);
-			Employee[] results = empBroker.get(empSearchDisabled);
+			Employee[] results = empBroker.get(empSearchDisabled, user);
 			if (results == null)
 				fail("Employee search failed, employee not returned.");
 			System.out.println("Employee retrieved: "+results[0]);
@@ -189,11 +213,15 @@ public class TestEmployeeBroker
 			{
 			e.printStackTrace();
 			}
+		catch (InvalidPermissionException e)
+		{
+		e.printStackTrace();
+		}
 		
 		//Delete the test user.
 		try
 			{
-			boolean deleted = empBroker.delete(newEmp);
+			boolean deleted = empBroker.delete(newEmp, user);
 			assertTrue(deleted);
 			System.out.println("Employee deleted: "+ deleted);
 			}
@@ -206,7 +234,11 @@ public class TestEmployeeBroker
 			{
 			e.printStackTrace();
 			}
-		}
+		catch (InvalidPermissionException e)
+			{
+			e.printStackTrace();
+			}
+			}
 	
 	
 	/**
@@ -240,9 +272,9 @@ public class TestEmployeeBroker
 		Employee[] byID = null, byActive = null, bySupervisor = null;
 		try
 			{
-			byID = empBroker.get(searchEmp1);
-			byActive = empBroker.get(searchEmp2);
-			bySupervisor = empBroker.get(searchEmp3);
+			byID = empBroker.get(searchEmp1, user);
+			byActive = empBroker.get(searchEmp2, user);
+			bySupervisor = empBroker.get(searchEmp3, user);
 			}
 		catch (DBException e)
 			{
@@ -250,6 +282,11 @@ public class TestEmployeeBroker
 			fail();
 			}
 		catch (DBDownException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		catch (InvalidPermissionException e)
 			{
 			e.printStackTrace();
 			fail();
@@ -296,13 +333,13 @@ public class TestEmployeeBroker
 		newEmp.setFamilyName("Baggins");
 		newEmp.setUsername("bilb01");
 		newEmp.setPassword("password");
-		newEmp.setPLevel("2a");
+		//newEmp.setPLevel("2a", user);
 		newEmp.setActive(true);
 		
 		//Add employee
 		try
 			{
-			boolean successful = empBroker.create(newEmp);
+			boolean successful = empBroker.create(newEmp, user);
 			assertTrue(successful);
 			System.out.println("Employee added: "+successful);
 			System.out.println(newEmp);
@@ -313,6 +350,10 @@ public class TestEmployeeBroker
 			fail();
 			}
 		catch (DBDownException e)
+			{
+			e.printStackTrace();
+			}
+		catch (InvalidPermissionException e)
 			{
 			e.printStackTrace();
 			}
@@ -341,7 +382,7 @@ public class TestEmployeeBroker
 		//Search for employee employee.
 		try
 			{
-			Employee[] results = empBroker.get(newEmp);
+			Employee[] results = empBroker.get(newEmp, user);
 			System.out.println("Employee retrieved: "+results[0]);
 			
 			//Check accuracy of SQL Date.
@@ -357,11 +398,15 @@ public class TestEmployeeBroker
 			{
 			e.printStackTrace();
 			}
+		catch (InvalidPermissionException e)
+			{
+			e.printStackTrace();
+			}
 		
 		//Delete the test user.
 		try
 			{
-			boolean deleted = empBroker.delete(newEmp);
+			boolean deleted = empBroker.delete(newEmp, user);
 			assertTrue(deleted);
 			System.out.println("Employee deleted: "+ deleted);
 			}
@@ -371,6 +416,10 @@ public class TestEmployeeBroker
 			fail();
 			}
 		catch (DBDownException e)
+			{
+			e.printStackTrace();
+			}
+		catch (InvalidPermissionException e)
 			{
 			e.printStackTrace();
 			}
@@ -423,6 +472,10 @@ public class TestEmployeeBroker
 			{
 			e.printStackTrace();
 			}
+		catch (InvalidPermissionException e)
+			{
+			e.printStackTrace();
+			}
 		
 		System.out.println("\nAttempting login with 'fakeUser'/'pass'");
 		try
@@ -452,6 +505,10 @@ public class TestEmployeeBroker
 			fail();
 			}
 		catch (DBDownException e)
+			{
+			e.printStackTrace();
+			}
+		catch (InvalidPermissionException e)
 			{
 			e.printStackTrace();
 			}

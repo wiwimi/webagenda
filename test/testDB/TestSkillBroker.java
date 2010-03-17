@@ -2,10 +2,13 @@ package testDB;
 
 import static org.junit.Assert.*;
 
+import java.sql.Date;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import business.Employee;
 import business.Skill;
 import business.schedule.Location;
 import exception.DBDownException;
@@ -14,16 +17,20 @@ import persistence.SkillBroker;
 
 public class TestSkillBroker {
 	private SkillBroker broker;
+	private Date d;
+	private Employee user;
 	@Before
 	public void setUp() throws Exception {
 		broker = SkillBroker.getBroker();
 		broker.initConnectionThread();
+		user = new Employee(12314, "Chaney", "Henson",  d, "user1", "password",  "2a" );
 	}
 
 	@After
 	public void tearDown() throws Exception {
 		broker.stopConnectionThread();
 		broker = null;
+		user=null;
 	}
 
 	@Test
@@ -33,7 +40,7 @@ public class TestSkillBroker {
 		try {
 			
 			Skill skill = new Skill("Dancing", null);
-			boolean success = broker.create(skill);
+			boolean success = broker.create(skill, user);
 			
 			System.out.println(success); // Is not printed out
 			if(success)
@@ -56,7 +63,7 @@ public class TestSkillBroker {
 		
 		try {
 			Skill skill = new Skill("Dancing");
-			broker.delete(skill);
+			broker.delete(skill, user);
 		
 		} catch (DBException e) {
 			e.printStackTrace();
@@ -77,7 +84,7 @@ public class TestSkillBroker {
 			//Get all skills and print them to console.
 			try
 				{
-				Skill[] results = broker.get(get);
+				Skill[] results = broker.get(get, user);
 				for (Skill printLoc : results)
 					{
 					System.out.println(printLoc + " " + printLoc.getDesc());

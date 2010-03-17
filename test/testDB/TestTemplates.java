@@ -3,8 +3,11 @@
  */
 package testDB;
 
+import java.sql.Date;
+
 import exception.DBDownException;
 import exception.DBException;
+import business.Employee;
 import business.schedule.Position;
 import persistence.PositionBroker;
 
@@ -20,19 +23,21 @@ public class TestTemplates {
 		
 		PositionBroker pbrok = PositionBroker.getBroker();
 		try {
-			Position[] posarray = pbrok.get(new Position("Cook",null));
+			Date d;
+			Employee user = new Employee(12314, "Chaney", "Henson",  d, "user1", "password",  "2a" );
+			Position[] posarray = pbrok.get(new Position("Cook",null), user);
 			for(Position p : posarray)
 				System.out.println(p);
-			System.out.println(pbrok.delete(new Position("Fryer",null)));
-			pbrok.create(new Position("Fryer",null));
+			System.out.println(pbrok.delete(new Position("Fryer",null), user));
+			pbrok.create(new Position("Fryer",null), user);
 			
-			posarray = pbrok.get(new Position("Fryer",null));
+			posarray = pbrok.get(new Position("Fryer",null), user);
 			pbrok.update(null,new Position("Fryer","someone who fries food",null));
-			posarray = pbrok.get(new Position("Cook",null));
+			posarray = pbrok.get(new Position("Cook",null), user);
 			for(Position p : posarray)
 				System.out.println(p);
 			
-			pbrok.get(new Position("Fryer",null));
+			pbrok.get(new Position("Fryer",null), user);
 			
 		} catch (DBException e) {
 			// TODO Auto-generated catch block

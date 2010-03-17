@@ -45,6 +45,7 @@ public class AddLocation extends HttpServlet {
 						broker.initConnectionThread();
 						
 						Location loc = new Location(locName, desc);
+						Employee emp = new Employee()
 						success = broker.create(loc);
 						
 					if (success)
