@@ -7,7 +7,7 @@ function removeSkill(skillName, skillDesc)
 			
 			if(v) 
 			{
-				window.location= '../DeleteSkill?skill='+ skillName + "," + skillDesc;								
+				window.location= '../DeleteSkill?skillName='+ skillName + "&skillDesc=" + skillDesc;								
 			}
 			else
 			{}

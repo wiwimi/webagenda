@@ -102,16 +102,23 @@
 					<legend > Position Details </legend>
 					
 					<%
-						String pos = request.getParameter("position");
-					    StringTokenizer st = new StringTokenizer(pos);
-					    String posName="", posDesc="";
+						String posName = request.getParameter("posName");
+					    String posDesc = request.getParameter("posDesc");
+					    
+					    String[] pos_skills = request.getParameterValues("skill");
+					    
 					    Skill[] skills = null;
+						   if (pos_skills != null) 
+						   {
+							  skills= new Skill[pos_skills.length];
+						      for (int i = 0; i < pos_skills.length; i++) 
+						      {
+						         Skill tempSkill = new Skill(pos_skills[i]);
+						         skills[i] = (tempSkill);
+						         
+						      }
+						   } 
 						
-					    String[] results = pos.split(",");
-					    posName= results[0];
-					    if(results.length>1)
-					    posDesc= results[1];
-					 
 					    Position oldLoc = new Position(posName, posDesc, skills);
 					    session.setAttribute("oldLoc",oldLoc);
 					 %>
@@ -173,7 +180,7 @@
 												<a href="newSkill.jsp?=<%=skillArray[index].getName()%>"> <b> <%=skillArray[index].getName()%> </b></a>
 											</td>
 											<td>
-													<input type="checkbox" name="skill" value="<%=skillArray[index].getName()%>"> 
+													<input type="checkbox" name="skill" value="<%=skills[index].getName()%>"> 
 											</td>
 										</tr>
 									<% 

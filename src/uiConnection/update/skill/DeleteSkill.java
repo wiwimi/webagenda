@@ -29,23 +29,14 @@ public class DeleteSkill extends HttpServlet {
       protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 		    throws ServletException, IOException 
 		    {
-    	  
-		        response.setContentType("text/html;charset=UTF-8");
+    	  		response.setContentType("text/html;charset=UTF-8");
 		          
-		       
 		        PrintWriter out = response.getWriter();
-		        String skill = request.getParameter("skill");
+		        String skillName = request.getParameter("skillName");
+		        String skillDesc = request.getParameter("skillDesc");
 		        
 		        Skill delSkill =null;
-		        String skillName="", skillDesc="";
 		        
-		        if(skill!=null)
-				{
-				    String[] results = skill.split(",");
-				    skillName= results[0];
-				    if(results.length>1)
-				    skillDesc= results[1];
-				}
 		        boolean success=false;
 				
 				try {
@@ -61,25 +52,25 @@ public class DeleteSkill extends HttpServlet {
 					if (success)
 					{
 						//Confirm that the user was deleted
-						response.sendRedirect("wa_user/skillSearchResults.jsp?delete=true");
+						response.sendRedirect("wa_user/skillSearchResults.jsp?delete=true&skillName= ");
 					}
 				}
 				catch (DBException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					// Failed to delete the location
-					response.sendRedirect("wa_user/skillSearchResults.jsp?delete=false");
+					response.sendRedirect("wa_user/skillSearchResults.jsp?delete=false&skillName =");
 					
 				} catch (DBDownException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					// Failed to add the location
-					response.sendRedirect("wa_user/skillSearchResults.jsp?delete=false");
+					response.sendRedirect("wa_user/skillSearchResults.jsp?delete=false&skillName= ");
 				}
 				catch(Exception e)
 				{
 					// Failed to add the location
-					response.sendRedirect("wa_user/skillSearchResults.jsp?message=false");
+					response.sendRedirect("wa_user/skillSearchResults.jsp?message=false&skillName= ");
 				}
 				finally
 				{

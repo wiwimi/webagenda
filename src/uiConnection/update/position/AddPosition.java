@@ -42,7 +42,6 @@ public class AddPosition extends HttpServlet {
 				      {
 				         Skill tempSkill = new Skill(pos_skills[i]);
 				         skills[i] = (tempSkill);
-				         out.println(skills[i]);
 				         
 				      }
 				   } 

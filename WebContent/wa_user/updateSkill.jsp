@@ -99,19 +99,11 @@
 					<legend > Skill Details </legend>
 					
 					<%
-						String skill = request.getParameter("skill");
+						String skillName = request.getParameter("skillName");
+					    String skillDesc = request.getParameter("skillDesc");
 					    
-					    String skillName="", skillDesc="";
-					    
-					    if(skill!=null)
-					    {
-						    String[] results = skill.split(",");
-						    skillName= results[0];
-						    if(results.length>1)
-						    skillDesc= results[1];
-						    Skill oldSkill = new Skill(skillName, skillDesc);
-						    session.setAttribute("oldSkill",oldSkill);
-					    }
+					    Skill oldSkill = new Skill(skillName, skillDesc);
+						session.setAttribute("oldSkill",oldSkill);
                    %>
 					
 							<p>	<label class="label"> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="skillName" class="required" value="<%=skillName%>" size ="30"> </p>

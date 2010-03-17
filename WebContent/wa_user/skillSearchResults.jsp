@@ -117,7 +117,7 @@
 							   <td>
 									<a href="update.jsp?=<%=skillArray[index].getName()%>"> <b> <%=skillArray[index].getName()%> </b></div></a>
 									<div class="row-actions"><span class='edit'>
-									<a href="updateSkill.jsp?skill=<%=skillArray[index].getName() + "," +  skillArray[index].getDesc() %> "> Edit </a>   | </span>   <span class='delete'>
+									<a href="updateSkill.jsp?skillName=<%=skillArray[index].getName()%>&skillDesc=<%= skillArray[index].getDesc()%> "> Edit </a>   | </span>   <span class='delete'>
 									<a href="javascript:;" onClick="removeSkill('<%=skillArray[index].getName()%>', '<%=skillArray[index].getDesc()%>' );">
 										Delete</a></span></div>
 								</td>
