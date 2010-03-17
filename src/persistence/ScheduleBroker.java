@@ -4,6 +4,7 @@
 package persistence;
 
 import java.sql.ResultSet;
+import business.Employee;
 import java.sql.SQLException;
 
 import exception.DBException;
@@ -36,25 +37,25 @@ public class ScheduleBroker extends Broker<Schedule> {
 	}
 
 	@Override
-	public boolean create(Schedule createObj) throws DBException {
+	public boolean create(Schedule createObj,Employee caller) throws DBException {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean delete(Schedule deleteObj) throws DBException {
+	public boolean delete(Schedule deleteObj,Employee caller) throws DBException {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public Schedule[] get(Schedule searchTemplate) throws DBException {
+	public Schedule[] get(Schedule searchTemplate,Employee caller) throws DBException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean update(Schedule oldObj, Schedule updateObj) throws DBException {
+	public boolean update(Schedule updateObj,Employee caller) throws DBException {
 		// TODO Auto-generated method stub
 		return false;
 	}

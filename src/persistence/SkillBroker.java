@@ -9,9 +9,9 @@ import java.sql.Statement;
 
 import application.DBConnection;
 import business.Skill;
-import exception.DBChangeException;
 import exception.DBDownException;
 import exception.DBException;
+import business.Employee;
 
 /**
  * @author dann
@@ -34,7 +34,7 @@ public class SkillBroker extends Broker<Skill> {
 	}
 
 	@Override
-	public boolean create(Skill createObj) throws DBException, DBDownException {
+	public boolean create(Skill createObj,Employee caller) throws DBException, DBDownException {
 		if (createObj == null)
 			throw new NullPointerException("Can not create null Skill.");
 		
@@ -80,7 +80,7 @@ public class SkillBroker extends Broker<Skill> {
 	}
 
 	@Override
-	public boolean delete(Skill deleteObj) throws DBChangeException, DBException, DBDownException {
+	public boolean delete(Skill deleteObj,Employee caller) throws DBException, DBDownException {
 		if (deleteObj== null)
 			throw new NullPointerException("Can not delete null skill.");
 		
@@ -88,30 +88,31 @@ public class SkillBroker extends Broker<Skill> {
 			throw new DBException("Missing Required Field: Name");
 		
 		String delete = String.format(
-				"DELETE FROM `WebAgenda`.`SKILL` WHERE skillName = '%s' AND skillDescription %s;",
-				deleteObj.getName(),
-				(deleteObj.getDesc() == null ? "IS NULL" : "= '"+deleteObj.getDesc()+"'"));
+				"DELETE FROM `WebAgenda`.`SKILL` WHERE skillName = '%s';",
+				deleteObj.getName());
 		
+		boolean success;
 		try
 			{
 			DBConnection conn = this.getConnection();
 			Statement stmt = conn.getConnection().createStatement();
 			int result = stmt.executeUpdate(delete);
 			
-			//Ensure row was updated.
 			if (result != 1)
-				throw new DBChangeException("Skill not found, may have been changed or deleted by another user.");
+				throw new DBException("Failed to delete skill, result count incorrect: " +	result);
+			else
+				success = true;
 			}
 		catch (SQLException e)
 			{
 			throw new DBException("Failed to delete skill.",e);
 			}
 		
-		return true;
+		return success;
 	}
 
 	@Override
-	public Skill[] get(Skill searchTemplate)
+	public Skill[] get(Skill searchTemplate,Employee caller)
 			throws DBException, DBDownException {
 		String select;
 		
@@ -151,46 +152,6 @@ public class SkillBroker extends Broker<Skill> {
 	}
 
 	@Override
-	public boolean update(Skill oldSkill, Skill updateSkill) throws DBChangeException, DBException, DBDownException {
-		if (updateSkill == null)
-			throw new NullPointerException("Update skill must not be null.");
-		if (oldSkill == null)
-			throw new NullPointerException("Old skill must not be null.");
-		
-		if (updateSkill.getName() == null)
-			throw new NullPointerException("Update skill missing required field: Name");
-		if (oldSkill.getName() == null)
-			throw new NullPointerException("Old skill missing required field: Name");
-		
-		// Create sql update statement from employee object.
-		String update = String.format(
-				"UPDATE `WebAgenda`.`SKILL` SET skillName = '%s', skillDescription = %s WHERE skillName = '%s' AND skillDescription %s;",
-				updateSkill.getName(),
-				(updateSkill.getDesc() == null ? "NULL" : "'"+updateSkill.getDesc()+"'"),
-				oldSkill.getName(),
-				(oldSkill.getDesc() == null ? "IS NULL" : "= '"+oldSkill.getDesc()+"'"));
-		
-		// Get DB connection, send update, and reopen connection for other users.
-		try
-			{
-			DBConnection conn = this.getConnection();
-			Statement stmt = conn.getConnection().createStatement();
-			int updateRowCount = stmt.executeUpdate(update);
-			conn.setAvailable(true);
-			
-			//Ensure row as updated.
-			if (updateRowCount != 1)
-				throw new DBChangeException("Skill not found, may have been changed or deleted by another user.");
-			}
-		catch (SQLException e)
-			{
-			throw new DBException("Failed to update skill.", e);
-			}
-		
-		return true;
-	}
-
-	@Override
 	public Skill[] parseResults(ResultSet rs) throws SQLException {
 		// List will be returned as null if no results are found.
 		Skill[] skillList = null;
@@ -212,6 +173,41 @@ public class SkillBroker extends Broker<Skill> {
 			}
 		
 		return skillList;
+	}
+
+	@Override
+	public boolean update(Skill updateObj,Employee caller) throws DBException, DBDownException {
+		if (updateObj == null)
+			throw new NullPointerException("Can not update null skill.");
+		
+		if (updateObj.getName() == null)
+			throw new NullPointerException(
+					"Can not update skill without a name.");
+		
+		// Create sql update statement from employee object.
+		String update = String.format(
+				"UPDATE `WebAgenda`.`SKILL` SET skillDescription = '%s' WHERE skillName = '%s';",
+				updateObj.getDesc(),updateObj.getName());
+		
+		// Get DB connection, send update, and reopen connection for other users.
+		try
+			{
+			DBConnection conn = this.getConnection();
+			Statement stmt = conn.getConnection().createStatement();
+			int updateRowCount = stmt.executeUpdate(update);
+			conn.setAvailable(true);
+			
+			// Ensure
+			if (updateRowCount != 1)
+				throw new DBException(
+						"Failed to update skill: rowcount incorrect.");
+			}
+		catch (SQLException e)
+			{
+			throw new DBException("Failed to update skill.", e);
+			}
+		
+		return true;
 	}
 	
 	

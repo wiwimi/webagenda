@@ -11,8 +11,10 @@ import java.sql.Timestamp;
 import exception.DBDownException;
 import exception.DBException;
 import exception.InvalidLoginException;
+import exception.InvalidPermissionException;
 import application.DBConnection;
 import business.Employee;
+import business.permissions.PermissionLevel;
 
 /**
  * @author peon-dev, Daniel Wehr
@@ -47,15 +49,57 @@ public class EmployeeBroker extends Broker<Employee>
 		return employeeBroker;
 		}
 	
+	
+	/**
+	 * Method that contains all throwable conditions when attempting to access broker methods of EmployeeBroker.
+	 * TODO: Do all proper permission checks for broker methods
+	 * 
+	 * @param target Employee of desired create, update or delete.
+	 * @param caller Employee that invokes the method
+	 * 
+	 * @throws InvalidPermissionException
+	 * @throws DBException
+	 * @throws DBDownException
+	 * @throws PermissionBrokerViolationException 
+	 */
+	private PermissionLevel checkPermissions(Employee target, Employee caller) 
+		throws InvalidPermissionException, DBException, DBDownException
+	{
+		PermissionLevel pl = null;
+		if(caller.getLevel() < target.getLevel()) {
+			// Do not allow creation access
+			throw new InvalidPermissionException("User cannot create Permission Levels.");
+		}
+		else if(caller.getLevel() == target.getLevel()) {
+			pl = persistence.PermissionBroker.getBroker(caller).get(target.getLevel(), target.getVersion(), caller)[0];
+			if(pl == null)
+				throw new InvalidPermissionException("No matches for caller's Permission Level found");
+			if(pl.getLevel_permissions().getTrusted() <= caller.getLevel()) {
+				throw new InvalidPermissionException("User is not trusted to the level required to perform this action");
+				
+			}
+			else {
+				// Trusted to create this Permission
+				// TODO: Log this method's results, allow user to continue
+			}
+		}
+		return pl;
+	}
+	
+	
+	
 	/*
 	 * (non-Javadoc)
 	 * @see persistence.Broker#create(business.BusinessObject)
 	 */
 	@Override
-	public boolean create(Employee createEmp) throws DBException, DBDownException
+	public boolean create(Employee createEmp, Employee caller) throws DBException, DBDownException
 		{
 		if (createEmp == null)
 			throw new NullPointerException("Can not create null employee.");
+		if(caller == null)
+			throw new DBException("Cannot parse PermissionLevel when invoking Employee is null");
+		
 		
 		/*
 		 * Make sure all "not null" DB fields are filled. Expand this to throw a
@@ -73,8 +117,8 @@ public class EmployeeBroker extends Broker<Employee>
 			nullMsg = nullMsg + " Username";
 		if (createEmp.getPassword() == null)
 			nullMsg = nullMsg + " Password";
-		if (createEmp.getPLevel() == null)
-			nullMsg = nullMsg + " PermissionLevel";
+		if (createEmp.getLevel() < 0)
+			nullMsg = nullMsg + " [negative] PermissionLevel";
 		if (!nullMsg.equals("Missing Required Fields:"))
 			throw new DBException(nullMsg);
 		
@@ -123,7 +167,7 @@ public class EmployeeBroker extends Broker<Employee>
 			else
 				cs.setString(10, createEmp.getPrefLocation());
 			
-			cs.setString(11, createEmp.getPLevel());
+			cs.setString(11, createEmp.getLevel() + "" + createEmp.getVersion());
 			
 			//Run procedure.
 			cs.execute();
@@ -145,11 +189,32 @@ public class EmployeeBroker extends Broker<Employee>
 		return result;
 		}
 	
+	/**
+	 * Disables the employee in the system rather than fully deleting it.
+	 * 
+	 * @param disableEmp 
+	 * @return
+	 * @throws DBException
+	 */
+	public boolean disable(Employee disableEmp, Employee caller) throws DBException, DBDownException
+		{
+		if (disableEmp == null)
+			throw new NullPointerException("Can not disable null employee.");
+		
+		if(caller == null)
+			throw new DBException("Cannot parse PermissionLevel when invoking Employee is null");
+		
+		//Set emp to disabled and pass to update method.
+		disableEmp.setActive(false);
+		
+		return update(disableEmp,caller);
+		}
+	
 	/* (non-Javadoc)
 	 * @see persistence.Broker#delete(business.BusinessObject)
 	 */
 	@Override
-	public boolean delete(Employee deleteEmp) throws DBException, DBDownException
+	public boolean delete(Employee deleteEmp, Employee caller) throws DBException, DBDownException
 		{
 		if (deleteEmp == null)
 			throw new NullPointerException("Can not delete null employee.");
@@ -186,53 +251,60 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @see persistence.Broker#get(business.BusinessObject)
 	 */
 	@Override
-	public Employee[] get(Employee searchTemplate) throws DBException, DBDownException
+	public Employee[] get(Employee searchTemplate,Employee caller) throws DBException, DBDownException
 		{
 		if (searchTemplate == null)
 			throw new NullPointerException(
 					"Can not search with null employee template.");
+		if(caller == null)
+			throw new DBException("Cannot parse PermissionLevel when invoking Employee is null");
 		
 		// Create sql select statement from employee object.
-		String select = "SELECT * FROM `WebAgenda`.`EMPLOYEE` emp WHERE ";
+		String select = "SELECT emp.*,sup.empID AS 'supID' FROM `WebAgenda`.`EMPLOYEE` emp LEFT JOIN `WebAgenda`.`EMPLOYEE` sup ON emp.supRecordID = sup.empRecordID WHERE ";
 		String comp = "";
 		
 		if (searchTemplate.getEmpID() != null)
 			{
 			// If an employee ID is given, use only that for search.
-			comp = "empID = " + searchTemplate.getEmpID();
+			comp = "emp.empID = " + searchTemplate.getEmpID();
 			}
 		else
 			{
 			// Use all other non-null fields for search if no employee ID is given.
 			// Supervisor ID
-			comp = comp + (searchTemplate.getSupervisorID() != null ? "supID = " + searchTemplate.getSupervisorID() : "");
+			comp = comp + (searchTemplate.getSupervisorID() != null ? "sup.empID = " + searchTemplate.getSupervisorID() : "");
 			// Given Name
 			comp = comp + (searchTemplate.getGivenName() != null ? (comp.equals("") ? "" : " AND ") +
-					"givenName LIKE '%" + searchTemplate.getGivenName() + "%'" : "");
+					"emp.givenName LIKE '" + searchTemplate.getGivenName() + "%'" : "");
 			// Family Name
 			comp = comp + (searchTemplate.getFamilyName() != null ? (comp.equals("") ? "" : " AND ") +
-					"familyName LIKE '%" + searchTemplate.getFamilyName() + "%'" : "");
+					"emp.familyName LIKE '" + searchTemplate.getFamilyName() + "%'" : "");
 			// Email
 			comp = comp + (searchTemplate.getEmail() != null ? (comp.equals("") ? "" : " AND ") +
-					"email LIKE '%" + searchTemplate.getEmail() + "%'" : "");
+					"emp.email LIKE '" + searchTemplate.getEmail() + "%'" : "");
 			// Username
 			comp = comp + (searchTemplate.getUsername() != null ? (comp.equals("") ? "" : " AND ") +
-					"username LIKE '%" + searchTemplate.getUsername() + "%'" : "");
+					"emp.username = '" + searchTemplate.getUsername() + "'" : "");
+			// Password
+			comp = comp + (searchTemplate.getPassword() != null ? (comp.equals("") ? "" : " AND ") +
+					"emp.password = '" + searchTemplate.getPassword() + "'" : "");
 			// Preferred Position
 			comp = comp + (searchTemplate.getPrefPosition() != null ? (comp.equals("") ? "" : " AND ") +
-					"prefPosition LIKE '%" + searchTemplate.getPrefPosition() + "%'" : "");
+					"emp.prefPosition LIKE '" + searchTemplate.getPrefPosition() + "%'" : "");
 			// Preferred Location
 			comp = comp + (searchTemplate.getPrefLocation() != null ? (comp.equals("") ? "" : " AND ") +
-					"prefLocation LIKE '%" + searchTemplate.getPrefLocation() + "%'" : "");
+					"emp.prefLocation LIKE '" + searchTemplate.getPrefLocation() + "%'" : "");
 			// Active State.
 			comp = comp + (searchTemplate.getActive() != null ? (comp.equals("") ? "" : " AND ") +
-					"active = " + searchTemplate.getActive() : "");
+					"emp.active = " + searchTemplate.getActive() : "");
 			}
 		
 		if (comp.equals(""))
 			{
-			//Nothing being searched for, return null.
-			return null;
+			//Nothing being searched for, return array with a single empty employee.
+			Employee[] empArr = new Employee[1];
+			empArr[0] = new Employee();
+			return empArr;
 			}
 		
 		// Add comparisons and close select statement.
@@ -241,7 +313,7 @@ public class EmployeeBroker extends Broker<Employee>
 		
 		// Get DB connection, send query, and reopen connection for other users.
 		// Parse returned ResultSet into array of employees.
-		Employee[] foundEmployees = null;
+		Employee[] foundEmployees;
 		try
 			{
 			DBConnection conn = this.getConnection();
@@ -296,10 +368,12 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @see persistence.Broker#update(business.BusinessObject)
 	 */
 	@Override
-	public boolean update(Employee oldEmployee, Employee updateEmployee) throws DBException, DBDownException
+	public boolean update(Employee updateEmployee, Employee caller) throws DBException, DBDownException
 		{
 		if (updateEmployee == null)
 			throw new NullPointerException("Can not update null employee.");
+		if(caller == null)
+			throw new DBException("Cannot parse PermissionLevel when invoking Employee is null");
 		
 		/*
 		 * Make sure all "not null" DB fields are filled. Expand this to throw a
@@ -317,15 +391,14 @@ public class EmployeeBroker extends Broker<Employee>
 			nullMsg = nullMsg + " Username";
 		if (updateEmployee.getPassword() == null)
 			nullMsg = nullMsg + " Password";
-		if (updateEmployee.getPLevel() == null)
-			nullMsg = nullMsg + " PermissionLevel";
+		if (updateEmployee.getLevel() < 0)
+			nullMsg = nullMsg + " PermissionLevel [ < 0 ]";
 		if (!nullMsg.equals("Missing Required Fields:"))
 			throw new DBException(nullMsg);
 		
 		// Create sql update statement from employee object.
 		String update = String.format(
-				"UPDATE `WebAgenda`.`EMPLOYEE` SET empID = %s, supID = %s, givenName = '%s', familyName = '%s', email = %s, username = '%s', password = '%s', lastLogin = %s, prefPosition = %s, prefLocation = %s, active = %s WHERE empID = %s;",
-				updateEmployee.getEmpID(),
+				"UPDATE `WebAgenda`.`EMPLOYEE` SET supRecordID = %s, givenName = '%s', familyName = '%s', email = %s, username = '%s', password = '%s', lastLogin = %s, prefPosition = %s, prefLocation = %s, active = %s WHERE empID = %s;",
 				(updateEmployee.getSupervisorID() != null ? updateEmployee.getSupervisorID() + "" : "NULL"),
 				updateEmployee.getGivenName(),
 				updateEmployee.getFamilyName(),
@@ -421,7 +494,8 @@ public class EmployeeBroker extends Broker<Employee>
 		loginEmp.setUsername(username);
 		loginEmp.setPassword(password);
 		loginEmp.setActive(true);
-		Employee[] results = get(loginEmp);
+		// get() method does not check for permisison levels, so loginEmp can be used.
+		Employee[] results = get(loginEmp,loginEmp);
 		
 		if (results == null)
 			throw new InvalidLoginException("Username or password invalid.");
@@ -459,19 +533,23 @@ public class EmployeeBroker extends Broker<Employee>
 			rs.beforeFirst();
 			for (int i = 0; i < resultCount && rs.next(); i++)
 				{
-				Employee emp = new Employee();
-				emp.setEmpID(rs.getInt("empID"));
-				emp.setSupervisorID(rs.getInt("supID"));
-				emp.setGivenName(rs.getString("givenName"));
-				emp.setFamilyName(rs.getString("familyName"));
-				emp.setBirthDate(rs.getDate("birthDate"));
-				emp.setEmail(rs.getString("email"));
-				emp.setUsername(rs.getString("username"));
+				Employee emp;
+				
+				emp = new Employee(
+					rs.getInt("empID"),
+					rs.getString("givenName"),
+					rs.getString("familyName"),
+					rs.getDate("birthDate"),
+					rs.getString("email"),
+					rs.getString("username"),
+					rs.getString("plevel")
+				);
+				
+				emp.setActive(rs.getBoolean("active"));
 				emp.setLastLogin(rs.getTimestamp("lastLogin"));
 				emp.setPrefPosition(rs.getString("prefPosition"));
 				emp.setPrefLocation(rs.getString("prefLocation"));
-				emp.setPLevel(rs.getString("plevel"));
-				emp.setActive(rs.getBoolean("active"));
+				emp.setSupervisorID(rs.getInt("supID"));
 				
 				if (emp.getSupervisorID() == 0)
 					emp.setSupervisorID(null);

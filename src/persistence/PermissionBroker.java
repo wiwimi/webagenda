@@ -7,14 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import business.Employee;
-import business.permissions.PermissionAccess;
-import business.permissions.PermissionLevel;
 import business.permissions.*;
 
 import exception.DBDownException;
 import exception.DBException;
 import exception.InvalidPermissionException;
-import exception.PermissionBrokerViolationException;
 
 /**
  * @author peon-dev
@@ -44,44 +41,34 @@ public class PermissionBroker extends Broker<PermissionLevel>{
 	 * 
 	 * @param emp Employee calling PermisionBroker in permissions package.
 	 */
-	public PermissionBroker(Employee emp) throws PermissionBrokerViolationException
+	public PermissionBroker(Employee emp) throws DBException
 	{
-		if(this.employee == null) throw new PermissionBrokerViolationException("A null value was detected instead of an Employee.");
+		if(this.employee == null) throw new DBException("A null value was detected instead of an Employee.");
 		this.employee = emp;
 	}
 	
 	@Override
-	public boolean create(PermissionLevel createObj) throws DBException {	
-		try {
-			return PermissionAccess.getAccess().createPermissionLevel(createObj, employee);
-		} catch (InvalidPermissionException e) {
-			
-			throw new DBException("A Permission conflict occured. Please view the permission log file.");
-		} catch (DBDownException e) {
-			e.printStackTrace();
-		}
-		return false;
+	public boolean create(PermissionLevel createObj, Employee emp) throws DBException, DBDownException, InvalidPermissionException {
+		return PermissionAccess.getAccess().createPermissionLevel(createObj, emp);
 	}
 
 	@Override
-	public boolean delete(PermissionLevel deleteObj) throws DBException {
-		try {
-			return PermissionAccess.getAccess().deletePermissionLevel(deleteObj, employee);
-		} catch (InvalidPermissionException e) {	
-			throw new DBException("A Permission conflict occured. Please view the permission log file.");
-		} catch (DBDownException e) {
-			e.printStackTrace();
-		}
-		return false;
+	public boolean delete(PermissionLevel deleteObj, Employee caller) throws DBException, InvalidPermissionException, DBDownException {
+		return PermissionAccess.getAccess().deletePermissionLevel(deleteObj, caller);
 	}
 
 	@Override
-	public PermissionLevel[] get(PermissionLevel searchTemplate)
+	public PermissionLevel[] get(PermissionLevel searchTemplate, Employee caller)
 			throws DBException, DBDownException {
-		return business.permissions.PermissionBroker.getBroker().get(searchTemplate);
+		return business.permissions.PermissionBroker.getBroker().get(searchTemplate,caller);
 	}
 	
-	public static PermissionBroker getBroker(Employee e) throws PermissionBrokerViolationException
+	public PermissionLevel[] get(int level, char version, Employee emp) throws DBException, DBDownException
+	{
+		return business.permissions.PermissionBroker.getBroker().get(level, version, emp);
+	}
+	
+	public static PermissionBroker getBroker(Employee e) throws DBException
 	{
 		if(pbrok == null) pbrok = new PermissionBroker(e);
 		return pbrok;
@@ -98,30 +85,17 @@ public class PermissionBroker extends Broker<PermissionLevel>{
 	}
 
 	@Override
-	public boolean update(PermissionLevel oldObj, PermissionLevel updateObj) throws DBException {
-		try {
-			return PermissionAccess.getAccess().updatePermissionLevel(updateObj, employee);
-		} catch (InvalidPermissionException e) {	
-			throw new DBException("A Permission conflict occured. Please view the permission log file.");
-		} catch (DBDownException e) {
-			e.printStackTrace();
-		}
-		return false;
+	public boolean update(PermissionLevel updateObj, Employee caller) throws DBException, InvalidPermissionException, DBDownException {
+		return PermissionAccess.getAccess().updatePermissionLevel(updateObj, employee);
+
 	}
 	
 	public PermissionLevel[] getAllBelow(Employee emp) throws DBException, DBDownException
 	{
-		String str = emp.getPLevel();
-		if(Character.isLetter(str.charAt(str.length() - 1)))
-		{
-			return business.permissions.PermissionBroker.getBroker().getAllBelow(
-					Integer.parseInt(str.substring(0,str.length() - 1)));
-		}
-		else {
-			return business.permissions.PermissionBroker.getBroker().getAllBelow(
-					Integer.parseInt(str));
-		}
+		return business.permissions.PermissionBroker.getBroker().getAllBelow(
+					emp.getLevel());
 	}
 	
+
 	
 }

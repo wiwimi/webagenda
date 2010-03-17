@@ -88,15 +88,6 @@ public class Employee extends BusinessObject
 	private String					prefPosition		= null;
 	
 	/**
-	 * The permission set as a string. Both level and version can be parsed from
-	 * it and represents the entirety of the user's permissions. Can only be
-	 * changed in the broker by a user with higher permission levels and explicit
-	 * permissions. This value must be equivalent to the key of an
-	 * already-existing permissions set.
-	 */
-	private String					pLevel				= null;
-	
-	/**
 	 * Boolean value that represents if the user can access their account; all
 	 * accounts are saved in the database and can only be deleted when explicitly
 	 * requested; since some records cannot be deleted (see tax records),
@@ -115,6 +106,9 @@ public class Employee extends BusinessObject
 	 * mobile apps.)
 	 */
 	private Settings				userSettings		= null;
+	
+	private char version								= ' ';
+	private int level									= 0;
 	
 	/**
 	 * Base constructor for a new employee object. Is required to create a new
@@ -139,7 +133,9 @@ public class Employee extends BusinessObject
 		this.birthDate = date;
 		this.username = username;
 		this.password = password;
-		this.pLevel = plevel;
+		
+		// TODO: Parse plevel into file
+		
 		}
 	
 	/** Produces a blank template of an employee */
@@ -292,22 +288,6 @@ public class Employee extends BusinessObject
 		}
 	
 	/**
-	 * @return the permission_level
-	 */
-	public String getPLevel()
-		{
-		return pLevel;
-		}
-	
-	/**
-	 * @param permissionLevel the permission_level to set
-	 */
-	public void setPLevel(String permissionLevel)
-		{
-		pLevel = permissionLevel;
-		}
-	
-	/**
 	 * @return the active
 	 */
 	public Boolean getActive()
@@ -376,8 +356,22 @@ public class Employee extends BusinessObject
 		{
 		return empID + ";" + supervisorID + ";" + givenName + ";" + familyName +
 				";" + birthDate + ";" + email + ";" + username + ";" + password +
-				";" + prefLocation + ";" + prefPosition + ";" + pLevel + ";" +
+				";" + prefLocation + ";" + prefPosition + ";" + level + version + ";" +
 				lastLogin + ";" + active;
 		}
+
+	/**
+	 * @return the version
+	 */
+	public char getVersion() {
+		return version;
+	}
+
+	/**
+	 * @return the level
+	 */
+	public int getLevel() {
+		return level;
+	}
 	
 	}

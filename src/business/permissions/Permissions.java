@@ -72,6 +72,11 @@ public class Permissions extends BusinessObject {
 	 * stops a user from coming into work. Reasons are requested when setting an emergency day off, but optional.
 	 * Superiors are notified of these events so they can review reasons for the absence especially  */
 	private boolean canTakeEmergencyDays				= true; // Emergency situations
+	/** canManageEmployees means that a user can modify Employee attributes including Permissions and PermissionLevel
+	 * up to their current permission level - 1. In the event that a business would desire having administration
+	 * that cannot modify employees, this should be set to false. That way Employee-specific administration
+	 * is kept in the hands of those trusted, or those set with the task of such a job. */
+	private boolean canManageEmployees					= false;
 	/** canViewInactiveEmployees is a permission that allows a user to not only queue inactive employee profiles 
 	 * when making requests of the system, but also browse their resource information like a normal employee.
 	 * Recommended for creating reports and sys admins. */
@@ -235,6 +240,14 @@ public class Permissions extends BusinessObject {
 	 */
 	protected void setTrusted(int trusted) {
 		this.trusted = trusted;
+	}
+
+	public void setCanManageEmployees(boolean canManageEmployees) {
+		this.canManageEmployees = canManageEmployees;
+	}
+
+	public boolean isCanManageEmployees() {
+		return canManageEmployees;
 	}
 	
 	

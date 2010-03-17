@@ -5,14 +5,15 @@ package persistence;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import exception.DBChangeException;
 import exception.DBDownException;
 import exception.DBException;
+import exception.InvalidPermissionException;
 
 import utilities.*;
 
 import messagelog.Logging;
 import business.BusinessObject;
+import business.Employee;
 import application.ConnectionManager;
 import application.DBConnection;
 
@@ -27,6 +28,7 @@ import application.DBConnection;
  */
 public abstract class Broker<E extends BusinessObject>
 	{
+	
 	/** Double linked list for holding connection objects. List changes dynamically depending on
 	 * the need of the application, old connections will be closed and removed periodically. */
 	private DoubleLinkedList<DBConnection>	connections	= new DoubleLinkedList<DBConnection>();
@@ -44,13 +46,13 @@ public abstract class Broker<E extends BusinessObject>
 	
 	/**
 	 * Accepts a newly made object, and creates its equivalent record within the
-	 * database. An exception will be thrown if there is already a record in
+	 * database. TODO An exception will be thrown if there is already a record in
 	 * the database with the same primary key.
 	 * 
 	 * @param createObj The object to add to the database.
 	 * @return true if the create was successful, otherwise false.
 	 */
-	public abstract boolean create(E createObj) throws DBException, DBDownException;
+	public abstract boolean create(E createObj, Employee caller) throws DBException, DBDownException, InvalidPermissionException;
 	
 	/**
 	 * Retrieves data from the database and return them as objects.
@@ -60,29 +62,28 @@ public abstract class Broker<E extends BusinessObject>
 	 *           criteria. If the primary key is filled in the search object,
 	 *           only that will be used and all others will be ignored.
 	 */
-	public abstract E[] get(E searchTemplate) throws DBException, DBDownException;
+	public abstract E[] get(E searchTemplate, Employee caller) throws DBException, DBDownException, InvalidPermissionException;
 	
 	/**
-	 * Applies all changes from the updated object to its equivalent record within
+	 * Applies all changes to the updated object to its equivalent record within
 	 * the database. The updated object must have originally been retrieved from
-	 * the database. An exception will be thrown if the record to be updated
+	 * the database. TODO An exception will be thrown if the record to be updated
 	 * does not exist in the database.
 	 * 
-	 * @param oldObj The previously retrieved object.
-	 * @param updateObj The new version of the retrieved object, with updated attributes.
+	 * @param updateObj The previously retrieved object that has been updated.
 	 * @return true if the update was successful, otherwise false.
 	 */
-	public abstract boolean update(E oldObj, E updateObj) throws DBException, DBChangeException, DBDownException;
+	public abstract boolean update(E updateObj, Employee caller) throws DBException, DBDownException, InvalidPermissionException;
 	
 	/**
 	 * Removes the record from the database that is equivalent to the given
 	 * object. The object to be deleted must have originally been retrieved from
 	 * the database.
 	 * 
-	 * @param deleteObj The object to be deleted from the database.
+	 * @param deleteObj
 	 * @return true if the delete was successful, otherwise false.
 	 */
-	public abstract boolean delete(E deleteObj) throws DBException, DBChangeException, DBDownException;
+	public abstract boolean delete(E deleteObj, Employee caller) throws DBException, DBDownException, InvalidPermissionException;
 	
 	/**
 	 * Parses a ResultSet returned by a select query back into cachable objects.
@@ -102,7 +103,7 @@ public abstract class Broker<E extends BusinessObject>
 		{
 		DBConnection returnConnection = null;
 		/*
-		 * This method will return a current available database connection,
+		 * TODO - This method will return a current available database connection,
 		 * or create a new one if needed to support additional load.
 		 */
 		
@@ -151,6 +152,71 @@ public abstract class Broker<E extends BusinessObject>
 			runConnectionThread = false;
 			}
 	
+		
+		/**
+		 * Emulates the parsing of level and version from a String object. If fails, will return false, otherwise
+		 * will return true. This should be used when testing for valid inputs without creating new PermissionLevels
+		 * which is also where this method's contents are found (duplicated).
+		 * (This method is called by every PermissionBroker method
+		 * 
+		 * FIXME: This method expects a blank following the int.
+		 * 
+		 * @param str String to parse
+		 * @return boolean true if valid.
+		 */
+		public boolean isPermissionLevelInputValid(String str)
+		{
+			boolean b = false;
+			try {
+				if(Character.isLetter(str.charAt(str.length() - 1)))
+				{
+					// substring is inclusive / exclusive
+					int i = Integer.parseInt(str.substring(0,str.length() - 1));
+					if(i >= 0) {
+						Character.isLetter(str.charAt(str.length() - 1));
+						b = true;
+					}
+				}
+				else {
+					int i = Integer.parseInt(str);
+					if(i >= 0) b = true;
+				}
+			}
+			catch(Exception E)
+			{
+				b = false;
+			}
+			return b;
+		}
+		
+		/**
+		 * Method to return the Level only of a permission level string.
+		 * @param str
+		 * @return
+		 */
+		public int getLevel(String str)
+		{
+			try {
+				if(Character.isLetter(str.charAt(str.length() - 1)))
+				{
+					// substring is inclusive / exclusive
+					int i = Integer.parseInt(str.substring(0,str.length() - 1));
+					if(i >= 0) {
+						return i;
+					}
+				}
+				else {
+					int i = Integer.parseInt(str);
+					return i;
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				
+			}
+			return 0;
+		}
+		
 		/**
 		 * Class to monitor a list of db connections for each broker, closing
 		 * them when they are old and unused within a certain time period

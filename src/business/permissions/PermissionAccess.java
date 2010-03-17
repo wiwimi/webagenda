@@ -104,6 +104,7 @@ public class PermissionAccess {
 	 * @param canEditSched
 	 * @param canReadSched
 	 * @param canReadOldSched
+	 * @param canManageEmployee
 	 * @param canViewResources
 	 * @param canChangePermissions
 	 * @param canReadLogs
@@ -119,7 +120,7 @@ public class PermissionAccess {
 	 * @return Permissions object with assigned permissions.
 	 */
 	protected Permissions getCustomPermission(boolean canEditSched, boolean canReadSched,
-			boolean canReadOldSched, boolean canViewResources, boolean canChangePermissions,
+			boolean canReadOldSched, boolean canManageEmployee, boolean canViewResources, boolean canChangePermissions,
 			boolean canReadLogs,boolean canAccessReports, boolean canRequestDaysOff,
 			int maxDaysOff, boolean canTakeVacations, int maxVacationDays,
 			boolean canTakeEmergencyDays, boolean canViewInactiveEmps,
@@ -130,6 +131,7 @@ public class PermissionAccess {
 		p.setCanEditSchedule(canEditSched);
 		p.setCanReadSchedule(canReadSched);
 		p.setCanReadOldSchedule(canReadOldSched);
+		p.setCanManageEmployees(canManageEmployee);
 		p.setCanViewResources(canViewResources);
 		p.setCanChangePermissions(canChangePermissions);
 		p.setCanReadLogs(canReadLogs);
@@ -163,37 +165,18 @@ public class PermissionAccess {
 	 */
 	public boolean createPermissionLevel(PermissionLevel create, Employee creator) throws DBException, DBDownException , InvalidPermissionException
 	{
-		// Retrieve permission level from employee
-		int level = -1;
-		char version = ' ';
-		String str = creator.getPLevel();
-		if(Character.isLetter(str.charAt(str.length() - 1))) {
-			// The last character in the string is a letter (version)
-			level = Integer.parseInt(str.substring(0,str.length() - 1));
-			version = str.charAt(str.length() -1);
-		}
-		else {
-			try {
-				level = Integer.parseInt(str);
-				// No versioning.
-			}
-			catch(NumberFormatException nfE)
-			{
-				nfE.printStackTrace();
-			}
-		}
 		// Determine whether employee permission level is higher than the set they want to create
-		if(level <= create.getLevel()) {
+		if(creator.getLevel() <= create.getLevel()) {
 			// If the employee has a lower level than the permission they want to create, deny it
 			throw new InvalidPermissionException("Employee " + creator.getEmpID() + " attempted to create a PermissionLevel " + 
-					create.getLevel() + " outside their access " + level + version + ".");
+					create.getLevel() + " outside their access " + creator.getLevel() + creator.getVersion() + ".");
 		}
 		
 		// FIXME: Check permissions to ensure that user can create a permission level
 		create.setDescription("Test Data Permission Level");
 		// ...
 		
-		return PermissionBroker.getBroker().create(create);
+		return PermissionBroker.getBroker().create(create,creator);
 	}
 	
 	/**
@@ -201,72 +184,17 @@ public class PermissionAccess {
 	 * 
 	 * @param delete
 	 * @param requester
-	 * @return
+	 * @return boolean true if successful
 	 * @throws InvalidPermissionException 
 	 * @throws DBException 
 	 */
 	public boolean deletePermissionLevel(PermissionLevel delete, Employee requester) throws InvalidPermissionException, DBDownException, DBException
 	{
-		// Retrieve permission level from employee
-		int level = -1;
-		char version = ' ';
-		String str = requester.getPLevel();
-		if(Character.isLetter(str.charAt(str.length() - 1))) {
-			// The last character in the string is a letter (version)
-			level = Integer.parseInt(str.substring(0,str.length() - 1));
-			version = str.charAt(str.length() -1);
-		}
-		else {
-			try {
-				level = Integer.parseInt(str);
-				// No versioning.
-			}
-			catch(NumberFormatException nfE)
-			{
-				nfE.printStackTrace();
-			}
-		}
-		// Determine whether employee permission level is higher than the set they want to delete
-		if(level <= delete.getLevel()) {
-			// If the employee has a lower level than the permission they want to delete, deny it
-			throw new InvalidPermissionException("Employee " + requester.getEmpID() + " attempted to delete a PermissionLevel " + 
-					delete.getLevel() + " outside their access " + level + version + ".");
-		}
-		// FIXME: Check permissions to ensure that user can delete a permission level
-		
-		// ...
-		
-		
-		return PermissionBroker.getBroker().delete(delete);
+		return PermissionBroker.getBroker().delete(delete,requester);
 	}
 	
 	public boolean updatePermissionLevel(PermissionLevel update, Employee requester) throws InvalidPermissionException, DBException, DBDownException
 	{
-		int level = -1;
-		char version = ' ';
-		String str = requester.getPLevel();
-		if(Character.isLetter(str.charAt(str.length() - 1))) {
-			// The last character in the string is a letter (version)
-			level = Integer.parseInt(str.substring(0,str.length() - 1));
-			version = str.charAt(str.length() -1);
-		}
-		else {
-			try {
-				level = Integer.parseInt(str);
-				// No versioning.
-			}
-			catch(NumberFormatException nfE)
-			{
-				nfE.printStackTrace();
-			}
-		}
-		// Determine whether employee permission level is higher than the set they want to delete
-		if(level <= update.getLevel()) {
-			// If the employee has a lower level than the permission they want to delete, deny it
-			throw new InvalidPermissionException("Employee " + requester.getEmpID() + " attempted to update a PermissionLevel " + 
-					update.getLevel() + " outside their access " + level + version + ".");
-		}
-		//TODO null parameter in update need to be filled by permissionlevel object that was previously retrieved from DB.
-		return PermissionBroker.getBroker().update(null, update);
+		return PermissionBroker.getBroker().update(update,requester);
 	}
 }

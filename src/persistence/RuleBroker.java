@@ -8,11 +8,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import application.DBConnection;
-import business.Notification;
 import business.schedule.Rule;
 
 import exception.DBDownException;
 import exception.DBException;
+import business.Employee;
 
 /**
  * @author dann
@@ -35,7 +35,7 @@ public class RuleBroker extends Broker<Rule> {
 	}
 
 	@Override
-	public boolean create(Rule createObj) throws DBException, DBDownException {
+	public boolean create(Rule createObj,Employee caller) throws DBException, DBDownException {
 		if (createObj == null)
 			throw new NullPointerException("Can not create null notification.");
 		
@@ -77,7 +77,7 @@ public class RuleBroker extends Broker<Rule> {
 	}
 
 	@Override
-	public boolean delete(Rule deleteObj) throws DBException, DBDownException {
+	public boolean delete(Rule deleteObj,Employee caller) throws DBException, DBDownException {
 		if (deleteObj == null)
 			throw new NullPointerException("Can not delete null notification.");
 		
@@ -106,7 +106,7 @@ public class RuleBroker extends Broker<Rule> {
 	}
 
 	@Override
-	public Rule[] get(Rule searchTemplate) throws DBException, DBDownException {
+	public Rule[] get(Rule searchTemplate,Employee caller) throws DBException, DBDownException {
 		String select;
 		
 		if (searchTemplate == null)
@@ -168,7 +168,7 @@ public class RuleBroker extends Broker<Rule> {
 	}
 
 	@Override
-	public boolean update(Rule oldObj, Rule updateObj) throws DBException, DBDownException {
+	public boolean update(Rule updateObj,Employee caller) throws DBException, DBDownException {
 		if (updateObj == null)
 			throw new NullPointerException("Can not update null rule.");
 		

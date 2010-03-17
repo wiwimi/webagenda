@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import business.Employee;
 import exception.DBDownException;
 import exception.DBException;
 import exception.InvalidPermissionException;
@@ -15,7 +17,8 @@ import application.DBConnection;
 import persistence.Broker;
 import messagelog.Logging;
 
-//TODO: PermissionBroker needs access to permission tables and permission level tables
+//TODO: PermissionBroker needs to ensure that employee has a permission set capable of ensuring actions are
+// backed up by permission level. get() method may need to ignore the employee parameter, only checking if null to allow this.
 
 /**
  * @author peon-dev
@@ -57,13 +60,56 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 		}
 		return broker_permissions;
 	}
+	
+	/**
+	 * Method that contains all throwable conditions when attempting to access broker methods of PermissionBroker.
+	 * 
+	 * 
+	 * @param plevel PermissionLevel of desired create, update or delete.
+	 * @param caller Employee that invokes the method
+	 * 
+	 * @throws InvalidPermissionException
+	 * @throws DBException
+	 * @throws DBDownException
+	 */
+	private void checkPermissions(PermissionLevel plevel, Employee caller) throws InvalidPermissionException, DBException, DBDownException
+	{
+		if(caller.getLevel() < plevel.getLevel()) {
+			// Do not allow creation access
+			throw new InvalidPermissionException("User cannot create Permission Levels.");
+		}
+		else if(caller.getLevel() == plevel.getLevel()) {
+			PermissionLevel pl = get(PermissionAccess.getAccess().getLevel(caller.getLevel(), caller.getVersion()),caller)[0];
+			if(pl == null)
+				throw new InvalidPermissionException("No matches for caller's Permission Level found");
+			if(pl.getLevel_permissions().getTrusted() <= plevel.getLevel()) {
+				throw new InvalidPermissionException("User is not trusted to the level required to perform this action");
+				
+			}
+			else {
+				// Trusted to create this Permission
+				// TODO: Log this method's results, allow user to continue
+			}
+		}
+	}
 
+	/**
+	 * Public method that allows other Brokers to determine what the trusted level of a specified employee
+	 * is. 
+	 * @param caller
+	 * @return int trusted level
+	 * @throws DBException
+	 * @throws DBDownException
+	 */
+	public int trustedLevelOf(Employee caller) throws DBException, DBDownException
+	{
+		return get(PermissionAccess.getAccess().getLevel(caller.getLevel(), caller.getVersion()),caller)[0].getLevel_permissions().getTrusted();
+	}
+	
 	@Override
-	public boolean create(PermissionLevel createObj) throws DBException, DBDownException {
+	public boolean create(PermissionLevel createObj, Employee caller) throws DBException, DBDownException, InvalidPermissionException {
 		if (createObj == null)
 			throw new NullPointerException("Can not create null permission level.");
-		
-		
 		/*
 		 * Make sure all "not null" DB fields are filled. Expand this to throw a
 		 * DBAddException with the exception message saying exactly what fields
@@ -78,16 +124,19 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 			nullMsg = nullMsg + " Valid Version,";
 		if (!nullMsg.equals("Missing Required Fields:"))
 			throw new DBException(nullMsg);
-				
+		
+		checkPermissions(createObj, caller); // This will throw any exceptions due to invalid permission access
+		
 		/*
 		 * Create insert string. 
 		 */
 		String insert = "INSERT INTO `WebAgenda`.`PERMISSIONSET` "
-								+ "(`plevel`, `canEditSched`, `canReadSched`, `canReadOldSched`, `canViewResources`, `canChangePermissions`, " +
+								+ "(`plevel`, `canEditSched`, `canReadSched`, `canReadOldSched`, `canManageEmployee`, `canViewResources`, `canChangePermissions`, " +
 										"`canReadLogs`, `canAccessReports`, `canRequestDaysOff`, `maxDaysOff`, `canTakeVacations`, `maxVacationDays`, " +
 										"`canTakeEmergencyDays`, `canViewInactiveEmps`,`canSendNotifications`,`trusted`)"
 								+ " VALUES ('" + createObj.getLevel() + createObj.getVersion()  + "', " + createObj.getLevel_permissions().isCanEditSchedule() + ", " +
-								createObj.getLevel_permissions().isCanReadSchedule() + ", " + createObj.getLevel_permissions().isCanReadOldSchedule() + ", " + 
+								createObj.getLevel_permissions().isCanReadSchedule() + ", " + createObj.getLevel_permissions().isCanReadOldSchedule() + ", " +
+								createObj.getLevel_permissions().isCanManageEmployees() + ", " + 
 								createObj.getLevel_permissions().isCanViewResources() + ", " + createObj.getLevel_permissions().isCanChangePermissions() + ", " + 
 								createObj.getLevel_permissions().isCanReadLogs() + ", " + createObj.getLevel_permissions().isCanAccessReports() + ", " + 
 								createObj.getLevel_permissions().isCanRequestDaysOff() + ", " + createObj.getLevel_permissions().getMaxDaysOff() + ", " + 
@@ -130,10 +179,12 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 	 * @see persistence.Broker#delete(business.BusinessObject)
 	 */
 	@Override
-	public boolean delete(PermissionLevel deleteObj) throws DBException, DBDownException {
+	public boolean delete(PermissionLevel deleteObj, Employee caller) throws DBException, DBDownException, InvalidPermissionException {
 		if(deleteObj == null)
 			throw new NullPointerException();
 		 
+		checkPermissions(deleteObj, caller); // This will throw any exceptions due to invalid permission access
+		
 		boolean success = false;
 		String delete = "DELETE FROM `WebAgenda`.`PERMISSIONSET` WHERE plevel = " + deleteObj.getLevel() + deleteObj.getVersion() +";";
 		try {
@@ -157,10 +208,14 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 	}
 
 	@Override
-	public PermissionLevel[] get(PermissionLevel searchTemplate) throws DBException, DBDownException {
+	public PermissionLevel[] get(PermissionLevel searchTemplate, Employee caller) throws DBException, DBDownException {
 		
 		if(searchTemplate == null)
 			throw new NullPointerException();
+		if(caller == null) 
+			throw new DBException("Cannot parse PermissionLevel when invoking Employee is null");
+		
+		//TODO: only return items that are at < caller level unless a permission exists
 		
 		// Create sql select statement from permission level object.
 		String select = "SELECT * FROM `WebAgenda`.`PERMISSIONSET` ";
@@ -187,6 +242,8 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 				comparisons = comparisons + " AND canReadSched = " + perm.isCanReadSchedule();
 				// Can read an older schedule
 				comparisons = comparisons + " AND canReadOldSched = " + perm.isCanReadOldSchedule();
+				// Can set employee attributes
+				comparisons = comparisons + " AND canManageEmployee = " + perm.isCanManageEmployees();
 				// Can view resources
 				comparisons = comparisons + " AND canViewResources = " + perm.isCanViewResources();
 				// Can change permissions (up to current level - 1)
@@ -275,6 +332,23 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 		return foundPermissions;
 	}
 	
+	/**
+	 * An alterate get method that returns get() results using level and version as opposed to a
+	 * permission level object. This is mainly for convenience, as methods that return PermissionLevels
+	 * are protected to prevent access.
+	 * 
+	 * @param level int level
+	 * @param version char version (letter or space only)
+	 * @param caller
+	 * @return results of get() method using level and version attributes
+	 * @throws DBException
+	 * @throws DBDownException
+	 */
+	public PermissionLevel[] get(int level, char version, Employee caller) throws DBException, DBDownException
+	{
+		return get(PermissionAccess.getAccess().getLevel(level, version),caller);
+	}
+	
 	/*
 	 * In the very nature of this method call, the primary key or PermissionLevel value itself cannot be changed
 	 * once created. It must be deleted and re-created. The front-end can (aka should) do this automatically.
@@ -282,10 +356,10 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 	 * @see persistence.Broker#update(business.BusinessObject)
 	 */
 	@Override
-	public boolean update(PermissionLevel oldObj, PermissionLevel updateObj) throws DBException, DBDownException {
+	public boolean update(PermissionLevel updateObj, Employee caller) throws DBException, DBDownException, InvalidPermissionException {
 		if(updateObj == null)
 			throw new NullPointerException();
-		 
+		checkPermissions(updateObj, caller); // This will throw any exceptions due to invalid permission access
 		boolean success = false;
 		String update = "UPDATE `WebAgenda`.`PERMISSIONSET` ";
 		String set = "SET "; // This string is modified to contain fields being set and their changed values
@@ -305,6 +379,7 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 		set += ", maxDaysOff = " + p.getMaxDaysOff();
 		set += ", canTakeVacations = " + p.isCanTakeVacations();
 		set += ", maxVacationDays = " + p.getMaxVacationDays();
+		set += ", canManageEmployee = " + p.isCanManageEmployees();
 		set += ", canTakeEmergencyDays = " + p.isCanTakeEmergencyDays();
 		set += ", canViewInactiveEmps = " + p.isCanViewInactiveEmployees();
 		set += ", canSendNotifications = " + p.isCanSendNotifications();
@@ -358,7 +433,8 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 				{
 				// Create a fully-customizable permission object
 				Permissions p = PermissionAccess.getAccess().getCustomPermission(
-						rs.getBoolean("canEditSched"), rs.getBoolean("canReadSched"), rs.getBoolean("canReadOldSched"), rs.getBoolean("canViewResources"), 
+						rs.getBoolean("canEditSched"), rs.getBoolean("canReadSched"), rs.getBoolean("canReadOldSched"), 
+						rs.getBoolean("canManageEmployee"), rs.getBoolean("canViewResources"), 
 						rs.getBoolean("canChangePermissions"), rs.getBoolean("canReadLogs"), rs.getBoolean("canAccessReports"), 
 						rs.getBoolean("canRequestDaysOff"), rs.getInt("maxDaysOff"), rs.getBoolean("canTakeVacations"), rs.getInt("maxVacationDays"), 
 						rs.getBoolean("canTakeEmergencyDays"), rs.getBoolean("canViewInactiveEmps"), rs.getBoolean("canSendNotifications"), 

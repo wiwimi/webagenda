@@ -13,6 +13,7 @@ import application.DBConnection;
 import business.schedule.ScheduleTemplate;
 import business.schedule.ShiftPosition;
 import business.schedule.ShiftTemplate;
+import business.Employee;
 
 /**
  * 
@@ -51,7 +52,7 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 		}
 
 	@Override
-	public boolean create(ScheduleTemplate createObj) throws DBException,
+	public boolean create(ScheduleTemplate createObj,Employee caller) throws DBException,
 			DBDownException
 		{
 		// TODO Auto-generated method stub
@@ -59,7 +60,7 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 		}
 
 	@Override
-	public boolean delete(ScheduleTemplate deleteObj) throws DBException,
+	public boolean delete(ScheduleTemplate deleteObj,Employee caller) throws DBException,
 			DBDownException
 		{
 		// TODO Auto-generated method stub
@@ -70,7 +71,7 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 	 * @see persistence.Broker#get(business.BusinessObject)
 	 */
 	@Override
-	public ScheduleTemplate[] get(ScheduleTemplate searchTemplate)
+	public ScheduleTemplate[] get(ScheduleTemplate searchTemplate,Employee caller)
 			throws DBException, DBDownException
 		{
 		// Get all schedule templates for the given creator.
@@ -106,7 +107,7 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 		}
 
 	@Override
-	public boolean update(ScheduleTemplate oldObj, ScheduleTemplate updateObj) throws DBException,
+	public boolean update(ScheduleTemplate updateObj,Employee caller) throws DBException,
 			DBDownException
 		{
 		// TODO Auto-generated method stub

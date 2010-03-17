@@ -10,6 +10,7 @@ import java.sql.Statement;
 import exception.DBDownException;
 import exception.DBException;
 import application.DBConnection;
+import business.Employee;
 import business.Notification;
 
 
@@ -36,7 +37,7 @@ public class NotificationBroker extends Broker<Notification> {
 	}
 	
 	@Override
-	public boolean create(Notification createObj) throws DBException,
+	public boolean create(Notification createObj, Employee caller) throws DBException,
 			DBDownException {
 		if (createObj == null)
 			throw new NullPointerException("Can not create null notification.");
@@ -80,7 +81,7 @@ public class NotificationBroker extends Broker<Notification> {
 	}
 
 	@Override
-	public boolean delete(Notification deleteObj) throws DBException,
+	public boolean delete(Notification deleteObj, Employee caller) throws DBException,
 			DBDownException {
 		if (deleteObj == null)
 			throw new NullPointerException("Can not delete null notification.");
@@ -110,7 +111,7 @@ public class NotificationBroker extends Broker<Notification> {
 	}
 
 	@Override
-	public Notification[] get(Notification searchTemplate) throws DBException,
+	public Notification[] get(Notification searchTemplate, Employee caller) throws DBException,
 			DBDownException {
 		String select;
 		
@@ -174,7 +175,7 @@ public class NotificationBroker extends Broker<Notification> {
 	}
 
 	@Override
-	public boolean update(Notification oldUpdate, Notification updateObj) throws DBException,
+	public boolean update(Notification updateObj, Employee caller) throws DBException,
 			DBDownException {
 		if (updateObj == null)
 			throw new NullPointerException("Can not update null notification.");

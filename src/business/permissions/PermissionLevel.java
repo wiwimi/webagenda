@@ -79,7 +79,7 @@ public class PermissionLevel extends BusinessObject {
 		this.version = version;
 		this.description = description;
 	}
-	
+		
 	/**
 	 * Returns a permission level based on the most restrictive default level,
 	 * also referred to as a template or blank permission level as no changes have

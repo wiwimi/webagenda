@@ -10,6 +10,7 @@ import java.sql.Statement;
 import exception.DBDownException;
 import exception.DBException;
 import application.DBConnection;
+import business.Employee;
 import business.Skill;
 import business.schedule.Position;
 
@@ -43,7 +44,7 @@ public class PositionBroker extends Broker<Position> {
 	 * @see persistence.Broker#create(business.BusinessObject)
 	 */
 	@Override
-	public boolean create(Position createObj) throws DBException,
+	public boolean create(Position createObj, Employee caller) throws DBException,
 			DBDownException {
 		if (createObj == null)
 			throw new NullPointerException("Can not create null Position.");
@@ -119,7 +120,7 @@ public class PositionBroker extends Broker<Position> {
 	 * @see persistence.Broker#delete(business.BusinessObject)
 	 */
 	@Override
-	public boolean delete(Position deleteObj) throws DBException,
+	public boolean delete(Position deleteObj, Employee caller) throws DBException,
 			DBDownException {
 		if (deleteObj== null)
 			throw new NullPointerException("Can not delete null position.");
@@ -176,7 +177,7 @@ public class PositionBroker extends Broker<Position> {
 	}
 
 	@Override
-	public Position[] get(Position searchTemplate) throws DBException,
+	public Position[] get(Position searchTemplate, Employee caller) throws DBException,
 			DBDownException {
 		String select;
 		
@@ -226,7 +227,7 @@ public class PositionBroker extends Broker<Position> {
 				// sets it to the position in the loop (no exceptions means worked properly) which is returned. TA DA
 				Skill[] skill_check = parseSkills(searchResults);
 				if(skill_check != null)
-					p.setPos_skills(ensureSkillsExist(skill_check));
+					p.setPos_skills(ensureSkillsExist(skill_check,caller));
 			}
 			
 			conn.setAvailable(true);
@@ -304,11 +305,11 @@ public class PositionBroker extends Broker<Position> {
 	 * @throws DBDownException 
 	 * @throws DBException 
 	 */
-	private Skill[] ensureSkillsExist(Skill[] input) throws DBException, DBDownException {
+	private Skill[] ensureSkillsExist(Skill[] input,Employee caller) throws DBException, DBDownException {
 		
 		for(Skill s : input) {
 			if(s != null)
-				SkillBroker.getBroker().get(s);
+				SkillBroker.getBroker().get(s, caller);
 		}
 		return input;
 	}
@@ -319,7 +320,7 @@ public class PositionBroker extends Broker<Position> {
 	 * @see persistence.Broker#update(business.BusinessObject)
 	 */
 	@Override
-	public boolean update(Position oldObj, Position updateObj) throws DBException,
+	public boolean update(Position updateObj, Employee caller) throws DBException,
 			DBDownException {
 		if (updateObj == null)
 			throw new NullPointerException("Can not update null position.");
@@ -341,7 +342,7 @@ public class PositionBroker extends Broker<Position> {
 			Statement stmt = conn.getConnection().createStatement();
 			int updateRowCount = stmt.executeUpdate(update);
 			
-			ensureSkillsExist(updateObj.getPos_skills());
+			ensureSkillsExist(updateObj.getPos_skills(),caller);
 		
 			conn.setAvailable(true);
 			
