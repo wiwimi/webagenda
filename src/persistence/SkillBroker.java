@@ -166,7 +166,7 @@ public class SkillBroker extends Broker<Skill> {
 		String update = String.format(
 				"UPDATE `WebAgenda`.`SKILL` SET skillName = '%s', skillDescription = %s WHERE skillName = '%s' AND skillDescription %s;",
 				updateSkill.getName(),
-				(updateSkill.getDesc() == null ? "NULL" : updateSkill.getDesc()),
+				(updateSkill.getDesc() == null ? "NULL" : "'"+updateSkill.getDesc()+"'"),
 				oldSkill.getName(),
 				(oldSkill.getDesc() == null ? "IS NULL" : "= '"+oldSkill.getDesc()+"'"));
 		
