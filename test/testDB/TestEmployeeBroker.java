@@ -13,6 +13,7 @@ import exception.DBDownException;
 import exception.DBException;
 import exception.InvalidLoginException;
 import exception.InvalidPermissionException;
+import exception.PermissionViolationException;
 import persistence.EmployeeBroker;
 import business.Employee;
 
@@ -91,6 +92,10 @@ public class TestEmployeeBroker
 		catch (InvalidPermissionException  e)
 			{
 			e.printStackTrace();
+			}
+		catch (PermissionViolationException e) 
+			{
+				e.printStackTrace();
 			}
 		
 		//Search for employee.
@@ -185,9 +190,13 @@ public class TestEmployeeBroker
 			{
 			e.printStackTrace();
 			}
-			catch (InvalidPermissionException e)
+		catch (InvalidPermissionException e)
 			{
 			e.printStackTrace();
+			}
+		catch (PermissionViolationException e) 
+			{
+				e.printStackTrace();
 			}
 		
 		//Search for disabled employee.
