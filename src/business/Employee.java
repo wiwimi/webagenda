@@ -6,6 +6,8 @@ package business;
 import java.sql.Date;
 import java.sql.Timestamp;
 
+import exception.DBException;
+
 /**
  * @author peon-dev, Daniel Wehr
  * @version 0.3.0
@@ -123,9 +125,10 @@ public class Employee extends BusinessObject
 	 * @param password String password for employee account
 	 * @param plevel String permission level (formats: #, ##, #c, ##c -- "0",
 	 *           "43","3a","34i" are acceptable)
+	 * @throws DBException 
 	 */
 	public Employee(int empID, String fname, String lname, Date date,
-			String username, String password, String plevel)
+			String username, String password, String plevel) throws DBException
 		{
 		this.empID = empID;
 		this.givenName = fname;
@@ -135,8 +138,36 @@ public class Employee extends BusinessObject
 		this.password = password;
 		
 		// TODO: Parse plevel into file
-		
+		if(Character.isLetter(plevel.charAt(plevel.length() - 1)))
+		{
+			this.version = plevel.charAt(plevel.length() - 1);
+			try {
+				int i = Integer.parseInt(plevel.substring(0,plevel.length() - 1));
+				if(i < 0) throw new DBException("Cannot create an employee with a negative permission level");
+				this.level = i;
+			}
+			catch(NumberFormatException nfE) {
+				throw new DBException("Permission Level " + plevel + " is in an invalid format");
+			}
 		}
+		else {
+			
+			try {
+				int i = Integer.parseInt(plevel);
+				if(i < 0) throw new DBException("Cannot create an employee with a negative permission level");
+				this.level = i;
+				this.version = ' ';
+			}
+			catch(NumberFormatException nfE) {
+				throw new DBException("Permission Level " + plevel + " is in an invalid format.");
+			}
+		}
+		}
+	
+	public void parsePermissionLevel(String plevel)
+	{
+		
+	}
 	
 	/** Produces a blank template of an employee */
 	public Employee()

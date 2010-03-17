@@ -535,15 +535,20 @@ public class EmployeeBroker extends Broker<Employee>
 				{
 				Employee emp;
 				
-				emp = new Employee(
-					rs.getInt("empID"),
-					rs.getString("givenName"),
-					rs.getString("familyName"),
-					rs.getDate("birthDate"),
-					rs.getString("email"),
-					rs.getString("username"),
-					rs.getString("plevel")
-				);
+				try {
+					emp = new Employee(
+						rs.getInt("empID"),
+						rs.getString("givenName"),
+						rs.getString("familyName"),
+						rs.getDate("birthDate"),
+						rs.getString("email"),
+						rs.getString("username"),
+						rs.getString("plevel")
+					);
+				} catch (DBException e) {
+					// TODO Auto-generated catch block
+					throw new SQLException("Attempting to create an Employee with an Invalid Permission Level");
+				}
 				
 				emp.setActive(rs.getBoolean("active"));
 				emp.setLastLogin(rs.getTimestamp("lastLogin"));

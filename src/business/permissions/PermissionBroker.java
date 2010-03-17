@@ -371,6 +371,7 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 		set += ", canEditSched = " + p.isCanEditSchedule();
 		set += ", canReadSched = " + p.isCanReadSchedule();
 		set += ", canReadOldSched = " + p.isCanReadOldSchedule();
+		set += ", canManageEmployee = " + p.isCanManageEmployees();
 		set += ", canViewResources = " + p.isCanViewResources();
 		set += ", canChangePermissions = " + p.isCanChangePermissions();
 		set += ", canReadLogs = " + p.isCanReadLogs();
@@ -379,7 +380,6 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 		set += ", maxDaysOff = " + p.getMaxDaysOff();
 		set += ", canTakeVacations = " + p.isCanTakeVacations();
 		set += ", maxVacationDays = " + p.getMaxVacationDays();
-		set += ", canManageEmployee = " + p.isCanManageEmployees();
 		set += ", canTakeEmergencyDays = " + p.isCanTakeEmergencyDays();
 		set += ", canViewInactiveEmps = " + p.isCanViewInactiveEmployees();
 		set += ", canSendNotifications = " + p.isCanSendNotifications();
