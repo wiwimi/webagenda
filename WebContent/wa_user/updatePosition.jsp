@@ -43,9 +43,9 @@
 		Fields marked with <em class="asterisk" > *</em> are required.
 	</div>
 			<% 
-					if(request.getParameter("message") != null)
+					if(request.getParameter("update") != null)
 					{
-						if(request.getParameter("message").equals("true"))
+						if(request.getParameter("update").equals("true"))
 						{
 							//out.println("Position was added");
 			 %>
@@ -63,7 +63,7 @@
 								</script>
 			<% 			   
 						}
-						else if(request.getParameter("message").equals("false"))
+						else if(request.getParameter("update").equals("false"))
 						{
 			%>
 							<script type="text/javascript">
@@ -90,11 +90,11 @@
 			</div>
 		<div class="widgetLowerRectangle" id="positionLowerRectangle">
 		<div id ="creationForm">
-			<form class="addPositionForm" action="../AddPosition" id="form" method="post">
+			<form class="addPositionForm" action="../UpdatePosition" id="form" method="post">
 			<div id="position">
 				<div id="formButtons">
-						<input type="submit" name="submit" class="button" value="Add"> 
-						<input type="button" name="submit" class="button" value="Search" onClick="location.href='updatePosition.jsp';"> 
+						<input type="submit" name="submit" class="button" value="Update"> 
+						<input type="button" name="submit" class="button" value="Search" onClick="location.href='posSearchResults.jsp';"> 
 						<input type="reset" name="clear" class="button" value="Clear Screen"> 
 						<br></br>
 			</div>
@@ -105,25 +105,13 @@
 						String posName = request.getParameter("posName");
 					    String posDesc = request.getParameter("posDesc");
 					    
-					    String[] pos_skills = request.getParameterValues("skill");
-					    
 					    Skill[] skills = null;
-						   if (pos_skills != null) 
-						   {
-							  skills= new Skill[pos_skills.length];
-						      for (int i = 0; i < pos_skills.length; i++) 
-						      {
-						         Skill tempSkill = new Skill(pos_skills[i]);
-						         skills[i] = (tempSkill);
-						         
-						      }
-						   } 
 						
-					    Position oldLoc = new Position(posName, posDesc, skills);
-					    session.setAttribute("oldLoc",oldLoc);
+						Position oldPos = new Position(posName, posDesc);
+					    session.setAttribute("oldPos",oldPos);
 					 %>
 					
-						<p>	<label class="label"> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="posName" class="required" size ="30"> </p>
+						<p>	<label class="label"> Name: <em class="asterisk"> * </em> </label> <input type="text" value="<%=posName %>" name ="posName" class="required" size ="30"> </p>
 							
 								<!--This should be populated from MaintainSkills use case -->
 							 	<div id="skillsButton">
@@ -135,11 +123,11 @@
 								</div>	
 							
 							<p>	<label class="label"> Description: </label></p>
-							<textarea  name="desc" cols="23" rows="6" tabindex="101"></textarea>
+							<textarea  name="posDesc" cols="23" rows="6" tabindex="101"><%=posDesc%></textarea>
 				</fieldset>
 						<div id="formButtons">
-						<input type="submit" name="submit" class="button" value="Add"> 
-						<input type="button" name="submit" class="button" value="Search" onClick="location.href='updatePosition.jsp';"> 
+						<input type="submit" name="submit" class="button" value="Update"> 
+						<input type="button" name="submit" class="button" value="Search" onClick="location.href='posSearchResults.jsp';"> 
 						<input type="reset" name="clear" class="button" value="Clear Screen"> 
 						<br></br>
 			          </div>
@@ -180,25 +168,22 @@
 												<a href="newSkill.jsp?=<%=skillArray[index].getName()%>"> <b> <%=skillArray[index].getName()%> </b></a>
 											</td>
 											<td>
-													<input type="checkbox" name="skill" value="<%=skills[index].getName()%>"> 
+													<input type="checkbox" name="skill" > 
 											</td>
 										</tr>
 									<% 
 										}
 									%>			
-											
 								</tbody>
 							</table>
 						  </div>
 						</div> <!-- End Table Area -->
-				</div>
-				
-			  </form>
+			    	</div>
+			   </form>
 			</div>
 		 </div>
        </div>
 <div id="backgroundPopup"></div>
 <div id="footer"></div>
-
 </body>
 </html>

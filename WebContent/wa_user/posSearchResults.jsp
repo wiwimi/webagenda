@@ -34,9 +34,9 @@
 </head>
 <body>
 			<% 
-					if(request.getParameter("message") != null)
+					if(request.getParameter("delete") != null)
 					{
-						if(request.getParameter("message").equals("true"))
+						if(request.getParameter("delete").equals("true"))
 						{
 			 %>
 							<script type="text/javascript">
@@ -52,7 +52,7 @@
 							</script>
 			   <% 			   
 						 }
-						else if(request.getParameter("message").equals("false"))
+						else if(request.getParameter("delete").equals("false"))
 						{
 				%>
 							<script type="text/javascript">
@@ -118,7 +118,7 @@
 							   <td>
 									<a href="newPostion.jsp?=<%=posArray[index].getName()%>"> <b> <%=posArray[index].getName()%> </b></div></a>
 									<div class="row-actions"><span class='edit'>
-									<a href="updatePosition?posName=<%=posArray[index].getName()%>&posDesc=<%=posArray[index].getDescription()%>" > Edit </a>   | </span>  <span class='delete'>
+									<a href="updatePosition.jsp?posName=<%=posArray[index].getName()%>&posDesc=<%=posArray[index].getDescription()%>" > Edit </a>   | </span>  <span class='delete'>
 									<a href="javascript:;" onClick="removePosition('<%=posArray[index].getName()%>');">
 										Delete</a></span></div>
 								</td>

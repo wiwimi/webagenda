@@ -35,33 +35,26 @@ public class UpdatePosition extends HttpServlet {
 		        
 		        PrintWriter out = response.getWriter();
 		        String posName = request.getParameter("posName");
-				String posDesc = request.getParameter("desc");	
+				String posDesc = request.getParameter("posDesc");	
 				
 				boolean success=false;
 				PositionBroker broker = null;
 				Position oldPos=null, newPos=null;
-				String[] pos_skills = request.getParameterValues("skillSetForm.skill");
+				//String[] pos_skills = request.getParameterValues("skillSetForm.skill");
 				Skill[] skills = null;
-				   if (pos_skills != null) 
-				   {
-					   skills= new Skill[pos_skills.length];
-				      for (int i = 0; i < pos_skills.length; i++) 
-				      {
-				         Skill tempSkill = new Skill(pos_skills[i]);
-				         skills[i] = (tempSkill);
-				         
-				      }
-				   } 
 				
+			
 				try {
-					    
 						broker = PositionBroker.getBroker();
 						broker.initConnectionThread();
 						
 						newPos = new Position(posName, posDesc, skills);
 						oldPos = (Position) session.getAttribute("oldPos");
-						oldPos = new Position(oldPos.getName(), oldPos.getDescription(),oldPos.getPos_skills() );
-						success = broker.update(oldPos, newPos);
+						
+						Position[] results = broker.get(oldPos);
+						
+						success = broker.update(results[0], newPos);
+						
 						
 					if (success)
 					{
@@ -75,7 +68,7 @@ public class UpdatePosition extends HttpServlet {
 					e.printStackTrace();
 					
 					// Failed to update the location
-					response.sendRedirect("wa_user/updatePosition.jsp?update=false");
+					//response.sendRedirect("wa_user/updatePosition.jsp?update=false");
 					
 				} catch (DBDownException e) {
 					
@@ -83,14 +76,14 @@ public class UpdatePosition extends HttpServlet {
 					e.printStackTrace();
 					
 					// Failed to update the location
-					response.sendRedirect("wa_user/updatePosition.jsp?update=false");
+					//response.sendRedirect("wa_user/updatePosition.jsp?update=false");
 				}
 				catch(Exception e)
 				{
 					e.printStackTrace();
 					
 					// Failed to update the location
-					response.sendRedirect("wa_user/updatePosition.jsp?update=false");
+					//response.sendRedirect("wa_user/updatePosition.jsp?update=false");
 				}
 				finally
 				{

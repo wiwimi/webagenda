@@ -61,7 +61,7 @@ public class AddPosition extends HttpServlet {
 					if (success)
 					{
 						//Confirm that the user was added
-						//response.sendRedirect("wa_user/newPosition.jsp?message=true");
+						response.sendRedirect("wa_user/newPosition.jsp?message=true");
 						
 					}
 				}
