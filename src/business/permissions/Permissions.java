@@ -37,7 +37,9 @@ public class Permissions extends BusinessObject {
 	/** canChangePermissions is a permission that allows the current employee level to modify permissions of lower
 	 * levels. The optimal permission level for this to work is n -2, where n is the user who can change permissions.
 	 * Because a user's permission level cannot be elevated to the same level as the elevating user, so a supervisor
-	 * cannot make a non-supervisor the same status as them, this will fail if used incorrectly. */
+	 * cannot make a non-supervisor the same status as them, this will fail if used incorrectly. 
+	 * This permission also affects deleting and creating permissions and permission levels. If false, user cannot
+	 * manage permissions in any way, regardless of level. */
 	private boolean canChangePermissions				= false;
 	/** canReadLogs is a permission more for administrators and those interested in viewing program history for 
 	 * violations and irregular unexpected behavior. It also lists actions performed by users and the time they occur;

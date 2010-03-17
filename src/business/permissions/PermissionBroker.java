@@ -12,6 +12,7 @@ import business.Employee;
 import exception.DBDownException;
 import exception.DBException;
 import exception.InvalidPermissionException;
+import exception.PermissionViolationException;
 
 import application.DBConnection;
 import persistence.Broker;
@@ -72,25 +73,26 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 	 * @throws DBException
 	 * @throws DBDownException
 	 */
-	private void checkPermissions(PermissionLevel plevel, Employee caller) throws InvalidPermissionException, DBException, DBDownException
+	private PermissionLevel checkPermission(PermissionLevel plevel, Employee caller) throws InvalidPermissionException, DBException, DBDownException
 	{
+		PermissionLevel pl = null;
 		if(caller.getLevel() < plevel.getLevel()) {
 			// Do not allow creation access
 			throw new InvalidPermissionException("User cannot create Permission Levels.");
 		}
 		else if(caller.getLevel() == plevel.getLevel()) {
-			PermissionLevel pl = get(PermissionAccess.getAccess().getLevel(caller.getLevel(), caller.getVersion()),caller)[0];
+			pl = get(PermissionAccess.getAccess().getLevel(caller.getLevel(), caller.getVersion()),caller)[0];
 			if(pl == null)
 				throw new InvalidPermissionException("No matches for caller's Permission Level found");
 			if(pl.getLevel_permissions().getTrusted() <= plevel.getLevel()) {
 				throw new InvalidPermissionException("User is not trusted to the level required to perform this action");
-				
 			}
 			else {
 				// Trusted to create this Permission
 				// TODO: Log this method's results, allow user to continue
 			}
 		}
+		return pl;
 	}
 
 	/**
@@ -107,9 +109,13 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 	}
 	
 	@Override
-	public boolean create(PermissionLevel createObj, Employee caller) throws DBException, DBDownException, InvalidPermissionException {
+	public boolean create(PermissionLevel createObj, Employee caller) throws DBException, DBDownException, InvalidPermissionException, PermissionViolationException {
 		if (createObj == null)
 			throw new NullPointerException("Can not create null permission level.");
+		
+		if(caller == null)
+			throw new DBException("Cannot parse PermissionLevel when invoking Employee is null");
+		
 		/*
 		 * Make sure all "not null" DB fields are filled. Expand this to throw a
 		 * DBAddException with the exception message saying exactly what fields
@@ -125,7 +131,9 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 		if (!nullMsg.equals("Missing Required Fields:"))
 			throw new DBException(nullMsg);
 		
-		checkPermissions(createObj, caller); // This will throw any exceptions due to invalid permission access
+		PermissionLevel pl = checkPermission(createObj, caller); // This will throw any exceptions due to invalid permission access
+		if(pl.getLevel_permissions().isCanChangePermissions())
+			throw new PermissionViolationException("User is not authorized to Create a PermissionLevel");
 		
 		/*
 		 * Create insert string. 
@@ -179,11 +187,15 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 	 * @see persistence.Broker#delete(business.BusinessObject)
 	 */
 	@Override
-	public boolean delete(PermissionLevel deleteObj, Employee caller) throws DBException, DBDownException, InvalidPermissionException {
+	public boolean delete(PermissionLevel deleteObj, Employee caller) throws DBException, DBDownException, InvalidPermissionException, PermissionViolationException {
 		if(deleteObj == null)
 			throw new NullPointerException();
+		if(caller == null) 
+			throw new DBException("Cannot parse PermissionLevel when invoking Employee is null");
 		 
-		checkPermissions(deleteObj, caller); // This will throw any exceptions due to invalid permission access
+		PermissionLevel pl = checkPermission(deleteObj, caller); // This will throw any exceptions due to invalid permission access
+		if(pl.getLevel_permissions().isCanChangePermissions())
+			throw new PermissionViolationException("User is not authorized to Delete a PermissionLevel");
 		
 		boolean success = false;
 		String delete = "DELETE FROM `WebAgenda`.`PERMISSIONSET` WHERE plevel = " + deleteObj.getLevel() + deleteObj.getVersion() +";";
@@ -356,10 +368,17 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 	 * @see persistence.Broker#update(business.BusinessObject)
 	 */
 	@Override
-	public boolean update(PermissionLevel oldObj, PermissionLevel updateObj, Employee caller) throws DBException, DBDownException, InvalidPermissionException {
+	public boolean update(PermissionLevel oldObj, PermissionLevel updateObj, Employee caller) throws DBException, DBDownException, InvalidPermissionException, PermissionViolationException {
 		if(updateObj == null)
 			throw new NullPointerException();
-		checkPermissions(updateObj, caller); // This will throw any exceptions due to invalid permission access
+		if(caller == null)
+			throw new DBException("Cannot parse PermissionLevel when invoking Employee is null");
+		
+		PermissionLevel pl = checkPermission(updateObj, caller); // This will throw any exceptions due to invalid permission access
+		
+		if(pl.getLevel_permissions().isCanChangePermissions())
+			throw new PermissionViolationException("User is not authorized to Delete a PermissionLevel");
+		
 		boolean success = false;
 		String update = "UPDATE `WebAgenda`.`PERMISSIONSET` ";
 		String set = "SET "; // This string is modified to contain fields being set and their changed values

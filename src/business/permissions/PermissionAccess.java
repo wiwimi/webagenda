@@ -8,6 +8,7 @@ import business.Employee;
 import exception.DBDownException;
 import exception.DBException;
 import exception.InvalidPermissionException;
+import exception.PermissionViolationException;
 
 /**
  * @author dann
@@ -162,20 +163,10 @@ public class PermissionAccess {
 	 * @return boolean true if created successfully
 	 * @throws DBException 
 	 * @throws InvalidPermissionException if user does not have permission to create permission level
+	 * @throws PermissionViolationException 
 	 */
-	public boolean createPermissionLevel(PermissionLevel create, Employee creator) throws DBException, DBDownException , InvalidPermissionException
-	{
-		// Determine whether employee permission level is higher than the set they want to create
-		if(creator.getLevel() <= create.getLevel()) {
-			// If the employee has a lower level than the permission they want to create, deny it
-			throw new InvalidPermissionException("Employee " + creator.getEmpID() + " attempted to create a PermissionLevel " + 
-					create.getLevel() + " outside their access " + creator.getLevel() + creator.getVersion() + ".");
-		}
-		
-		// FIXME: Check permissions to ensure that user can create a permission level
-		create.setDescription("Test Data Permission Level");
-		// ...
-		
+	public boolean createPermissionLevel(PermissionLevel create, Employee creator) throws DBException, DBDownException , InvalidPermissionException, PermissionViolationException
+	{	
 		return PermissionBroker.getBroker().create(create,creator);
 	}
 	
@@ -187,13 +178,14 @@ public class PermissionAccess {
 	 * @return boolean true if successful
 	 * @throws InvalidPermissionException 
 	 * @throws DBException 
+	 * @throws PermissionViolationException 
 	 */
-	public boolean deletePermissionLevel(PermissionLevel delete, Employee requester) throws InvalidPermissionException, DBDownException, DBException
+	public boolean deletePermissionLevel(PermissionLevel delete, Employee requester) throws InvalidPermissionException, DBDownException, DBException, PermissionViolationException
 	{
 		return PermissionBroker.getBroker().delete(delete,requester);
 	}
 	
-	public boolean updatePermissionLevel(PermissionLevel old, PermissionLevel update, Employee requester) throws InvalidPermissionException, DBException, DBDownException
+	public boolean updatePermissionLevel(PermissionLevel old, PermissionLevel update, Employee requester) throws InvalidPermissionException, DBException, DBDownException, PermissionViolationException
 	{
 		return PermissionBroker.getBroker().update(old, update,requester);
 	}

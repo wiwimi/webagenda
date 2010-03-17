@@ -12,6 +12,7 @@ import business.permissions.*;
 import exception.DBDownException;
 import exception.DBException;
 import exception.InvalidPermissionException;
+import exception.PermissionViolationException;
 
 /**
  * @author peon-dev
@@ -48,12 +49,12 @@ public class PermissionBroker extends Broker<PermissionLevel>{
 	}
 	
 	@Override
-	public boolean create(PermissionLevel createObj, Employee emp) throws DBException, DBDownException, InvalidPermissionException {
+	public boolean create(PermissionLevel createObj, Employee emp) throws DBException, DBDownException, InvalidPermissionException, PermissionViolationException {
 		return PermissionAccess.getAccess().createPermissionLevel(createObj, emp);
 	}
 
 	@Override
-	public boolean delete(PermissionLevel deleteObj, Employee caller) throws DBException, InvalidPermissionException, DBDownException {
+	public boolean delete(PermissionLevel deleteObj, Employee caller) throws DBException, InvalidPermissionException, DBDownException, PermissionViolationException {
 		return PermissionAccess.getAccess().deletePermissionLevel(deleteObj, caller);
 	}
 
@@ -85,7 +86,7 @@ public class PermissionBroker extends Broker<PermissionLevel>{
 	}
 
 	@Override
-	public boolean update(PermissionLevel oldPL, PermissionLevel updateObj, Employee caller) throws DBException, InvalidPermissionException, DBDownException {
+	public boolean update(PermissionLevel oldPL, PermissionLevel updateObj, Employee caller) throws DBException, InvalidPermissionException, DBDownException, PermissionViolationException {
 		return PermissionAccess.getAccess().updatePermissionLevel(oldPL, updateObj, employee);
 
 	}

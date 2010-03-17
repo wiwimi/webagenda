@@ -102,7 +102,7 @@ public class EmployeeBroker extends Broker<Employee>
 		
 		PermissionLevel pl = checkPermissions(createEmp,caller); /// will throw exceptions if permission 'levels' are invalid (doesn't detect individual ones)
 		if(!pl.getLevel_permissions().isCanManageEmployees()) {
-			throw new PermissionViolationException("User is not authorized to Create an Emplyoee");
+			throw new PermissionViolationException("User is not authorized to Create an Employee");
 		}
 		
 		
@@ -201,8 +201,10 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @return
 	 * @throws DBException
 	 * @throws InvalidPermissionException 
+	 * @throws PermissionViolationException 
 	 */
-	public boolean disable(Employee oldEmp, Employee disableEmp, Employee caller) throws DBException, DBDownException, InvalidPermissionException
+	public boolean disable(Employee oldEmp, Employee disableEmp, Employee caller) 
+		throws DBException, DBDownException, InvalidPermissionException, PermissionViolationException
 		{
 		if (disableEmp == null)
 			throw new NullPointerException("Can not disable null employee.");
@@ -220,7 +222,7 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @see persistence.Broker#delete(business.BusinessObject)
 	 */
 	@Override
-	public boolean delete(Employee deleteEmp, Employee caller) throws DBException, DBDownException, InvalidPermissionException
+	public boolean delete(Employee deleteEmp, Employee caller) throws DBException, DBDownException, InvalidPermissionException, PermissionViolationException
 		{
 		if (deleteEmp == null)
 			throw new NullPointerException("Can not delete null employee.");
@@ -228,7 +230,11 @@ public class EmployeeBroker extends Broker<Employee>
 		if (deleteEmp.getEmpID() == null)
 			throw new DBException("Missing Required Field: EmpID");
 		
-		checkPermissions(deleteEmp,caller); /// will throw exceptions if permission 'levels' are invalid (doesn't detect individual ones)
+		PermissionLevel pl = checkPermissions(deleteEmp,caller); /// will throw exceptions if permission 'levels' are invalid (doesn't detect individual ones)
+		if(!pl.getLevel_permissions().isCanManageEmployees()) {
+			throw new PermissionViolationException("User is not authorized to Delete [Disable] an Emplyoee");
+		}
+		
 		
 		String delete = String.format(
 				"DELETE FROM `WebAgenda`.`EMPLOYEE` WHERE empID = %s;",
@@ -378,14 +384,17 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @see persistence.Broker#update(business.BusinessObject)
 	 */
 	@Override
-	public boolean update(Employee oldObj, Employee updateEmployee, Employee caller) throws DBException, DBDownException, InvalidPermissionException
+	public boolean update(Employee oldObj, Employee updateEmployee, Employee caller) throws DBException, DBDownException, InvalidPermissionException, PermissionViolationException
 		{
 		if (updateEmployee == null)
 			throw new NullPointerException("Can not update null employee.");
 		if(caller == null)
 			throw new DBException("Cannot parse PermissionLevel when invoking Employee is null");
 		
-		checkPermissions(updateEmployee,caller); /// will throw exceptions if permission 'levels' are invalid (doesn't detect individual ones)
+		PermissionLevel pl = checkPermissions(updateEmployee,caller); /// will throw exceptions if permission 'levels' are invalid (doesn't detect individual ones)
+		if(!pl.getLevel_permissions().isCanManageEmployees()) {
+			throw new PermissionViolationException("User is not authorized to Update an Emplyoee");
+		}
 		
 		/*
 		 * Make sure all "not null" DB fields are filled. Expand this to throw a

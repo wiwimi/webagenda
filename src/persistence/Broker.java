@@ -63,7 +63,7 @@ public abstract class Broker<E extends BusinessObject>
 	 *           criteria. If the primary key is filled in the search object,
 	 *           only that will be used and all others will be ignored.
 	 */
-	public abstract E[] get(E searchTemplate, Employee caller) throws DBException, DBDownException, InvalidPermissionException, PermissionViolationException;
+	public abstract E[] get(E searchTemplate, Employee caller) throws DBException, DBDownException, InvalidPermissionException;
 	
 	/**
 	 * Applies all changes to the updated object to its equivalent record within
