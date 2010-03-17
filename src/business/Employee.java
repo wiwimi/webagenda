@@ -136,9 +136,8 @@ public class Employee extends BusinessObject
 		this.birthDate = date;
 		this.username = username;
 		this.password = password;
-		
-		// TODO: Parse plevel into file
-		if(Character.isLetter(plevel.charAt(plevel.length() - 1)))
+		if(plevel.length() != 3) throw new DBException("Invalid permission level format");
+		if(Character.isLetter(plevel.charAt(plevel.length() - 1)) || plevel.charAt(plevel.length() - 1) == ' ')
 		{
 			this.version = plevel.charAt(plevel.length() - 1);
 			try {
@@ -151,7 +150,6 @@ public class Employee extends BusinessObject
 			}
 		}
 		else {
-			
 			try {
 				int i = Integer.parseInt(plevel);
 				if(i < 0) throw new DBException("Cannot create an employee with a negative permission level");
@@ -164,10 +162,20 @@ public class Employee extends BusinessObject
 		}
 		}
 	
-	public void parsePermissionLevel(String plevel)
-	{
-		
-	}
+	public Employee(int empID, String fname, String lname, Date date,
+			String username, String password, int lvl, char ver) throws DBException
+		{
+		this.empID = empID;
+		this.givenName = fname;
+		this.familyName = lname;
+		this.birthDate = date;
+		this.username = username;
+		this.password = password;
+		if(lvl < 0) throw new DBException("Cannot create an employee with a negative permission level");
+		this.level = lvl;
+		if(!Character.isLetter(ver) && ver != ' ') throw new DBException("Version specified is not a letter character or a non-version (space) character");
+		this.version = ver;
+		}
 	
 	/** Produces a blank template of an employee */
 	public Employee()

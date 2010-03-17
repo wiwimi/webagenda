@@ -73,7 +73,7 @@ public abstract class Broker<E extends BusinessObject>
 	 * @param updateObj The previously retrieved object that has been updated.
 	 * @return true if the update was successful, otherwise false.
 	 */
-	public abstract boolean update(E updateObj, Employee caller) throws DBException, DBDownException, InvalidPermissionException;
+	public abstract boolean update(E oldObj, E newObj, Employee caller) throws DBException, DBDownException, InvalidPermissionException;
 	
 	/**
 	 * Removes the record from the database that is equivalent to the given

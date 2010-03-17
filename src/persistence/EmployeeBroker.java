@@ -22,7 +22,7 @@ import business.permissions.PermissionLevel;
  */
 public class EmployeeBroker extends Broker<Employee>
 	{
-	/** Static representation of the broker */
+	/** Static representation of the broker. Initialized the first time called. */
 	private static volatile EmployeeBroker	employeeBroker	= null;
 	
 	/**
@@ -59,8 +59,7 @@ public class EmployeeBroker extends Broker<Employee>
 	 * 
 	 * @throws InvalidPermissionException
 	 * @throws DBException
-	 * @throws DBDownException
-	 * @throws PermissionBrokerViolationException 
+	 * @throws DBDownException 
 	 */
 	private PermissionLevel checkPermissions(Employee target, Employee caller) 
 		throws InvalidPermissionException, DBException, DBDownException
@@ -93,13 +92,14 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @see persistence.Broker#create(business.BusinessObject)
 	 */
 	@Override
-	public boolean create(Employee createEmp, Employee caller) throws DBException, DBDownException
+	public boolean create(Employee createEmp, Employee caller) throws DBException, DBDownException, InvalidPermissionException
 		{
 		if (createEmp == null)
 			throw new NullPointerException("Can not create null employee.");
 		if(caller == null)
 			throw new DBException("Cannot parse PermissionLevel when invoking Employee is null");
 		
+		checkPermissions(createEmp,caller); /// will throw exceptions if permission 'levels' are invalid (doesn't detect individual ones)
 		
 		/*
 		 * Make sure all "not null" DB fields are filled. Expand this to throw a
@@ -195,8 +195,9 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @param disableEmp 
 	 * @return
 	 * @throws DBException
+	 * @throws InvalidPermissionException 
 	 */
-	public boolean disable(Employee disableEmp, Employee caller) throws DBException, DBDownException
+	public boolean disable(Employee disableEmp, Employee caller) throws DBException, DBDownException, InvalidPermissionException
 		{
 		if (disableEmp == null)
 			throw new NullPointerException("Can not disable null employee.");
@@ -214,13 +215,15 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @see persistence.Broker#delete(business.BusinessObject)
 	 */
 	@Override
-	public boolean delete(Employee deleteEmp, Employee caller) throws DBException, DBDownException
+	public boolean delete(Employee deleteEmp, Employee caller) throws DBException, DBDownException, InvalidPermissionException
 		{
 		if (deleteEmp == null)
 			throw new NullPointerException("Can not delete null employee.");
 		
 		if (deleteEmp.getEmpID() == null)
 			throw new DBException("Missing Required Field: EmpID");
+		
+		checkPermissions(deleteEmp,caller); /// will throw exceptions if permission 'levels' are invalid (doesn't detect individual ones)
 		
 		String delete = String.format(
 				"DELETE FROM `WebAgenda`.`EMPLOYEE` WHERE empID = %s;",
@@ -251,13 +254,15 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @see persistence.Broker#get(business.BusinessObject)
 	 */
 	@Override
-	public Employee[] get(Employee searchTemplate,Employee caller) throws DBException, DBDownException
+	public Employee[] get(Employee searchTemplate,Employee caller) throws DBException, DBDownException, InvalidPermissionException
 		{
 		if (searchTemplate == null)
 			throw new NullPointerException(
 					"Can not search with null employee template.");
 		if(caller == null)
 			throw new DBException("Cannot parse PermissionLevel when invoking Employee is null");
+		
+		checkPermissions(searchTemplate,caller); /// will throw exceptions if permission 'levels' are invalid (doesn't detect individual ones)
 		
 		// Create sql select statement from employee object.
 		String select = "SELECT emp.*,sup.empID AS 'supID' FROM `WebAgenda`.`EMPLOYEE` emp LEFT JOIN `WebAgenda`.`EMPLOYEE` sup ON emp.supRecordID = sup.empRecordID WHERE ";
@@ -368,12 +373,14 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @see persistence.Broker#update(business.BusinessObject)
 	 */
 	@Override
-	public boolean update(Employee updateEmployee, Employee caller) throws DBException, DBDownException
+	public boolean update(Employee updateEmployee, Employee caller) throws DBException, DBDownException, InvalidPermissionException
 		{
 		if (updateEmployee == null)
 			throw new NullPointerException("Can not update null employee.");
 		if(caller == null)
 			throw new DBException("Cannot parse PermissionLevel when invoking Employee is null");
+		
+		checkPermissions(updateEmployee,caller); /// will throw exceptions if permission 'levels' are invalid (doesn't detect individual ones)
 		
 		/*
 		 * Make sure all "not null" DB fields are filled. Expand this to throw a
@@ -479,12 +486,13 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @return The employee object for the employee that has logged in.
 	 * @throws InvalidLoginException when the username or password does not match
 	 *            a record in the database.
+	 * @throws InvalidPermissionException 
 	 * @throws SQLException if there was an issue with the database connection or
 	 *            search query.
 	 * @throws NullPointerException
 	 */
 	public Employee tryLogin(String username, String password)
-			throws InvalidLoginException, DBException, DBDownException
+			throws InvalidLoginException, DBException, DBDownException, InvalidPermissionException
 		{
 		if (username == null || password == null)
 			throw new InvalidLoginException(
