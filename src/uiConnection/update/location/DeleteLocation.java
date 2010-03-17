@@ -32,18 +32,10 @@ public class DeleteLocation extends HttpServlet {
 		    {
     	  
 		        response.setContentType("text/html;charset=UTF-8");
-		        String locName ="", locDesc = "";
 		        PrintWriter out = response.getWriter();
-		        String loc = request.getParameter("loc");
+		        String locName  = request.getParameter("locName");
+		        String locDesc  = request.getParameter("locDesc");
 		        Location delLoc =null;
-		        
-		        if(loc!=null)
-				{
-				    String[] results = loc.split(",");
-				    locName= results[0];
-				    if(results.length>1)
-				    locDesc= results[1];
-				}
 		        
 		        boolean success=false;
 				

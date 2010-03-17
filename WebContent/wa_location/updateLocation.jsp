@@ -99,22 +99,11 @@
 					<legend > Location Details </legend>
 					
 					<%
-						String loc = request.getParameter("location");
-					String locName="", locDesc="";
-						
-					if(loc!=null)
-						{
-						    StringTokenizer st = new StringTokenizer(loc);
-						    String[] results = loc.split(",");
-						    locName= results[0];
-						    if(results.length>1)
-						    locDesc= results[1];
-						    Location oldLoc = new Location(locName, locDesc);
-						    session.setAttribute("oldLoc",oldLoc);
-						}
-
-					
-					%>
+						String locName = request.getParameter("locName");
+						String locDesc= request.getParameter("locDesc");
+						Location oldLoc = new Location(locName, locDesc);
+						session.setAttribute("oldLoc",oldLoc);
+				    %>
 							<p>	<label class="label"> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="locName" value ="<%=locName%>" class="required" size ="30"> </p>
 							
 							<p>	<label class="label"> Description: </label></p>

@@ -181,12 +181,11 @@
 							<input type="button" name="submit" class="button" value="Search" onClick="location.href='updateUser.jsp';">
 							<input type="reset" name="clear" class="button" value="Clear Screen"> 
 					</div>
-				</form>
-			</div>
-			</div>
-            </div>
-			
-			<div id="locationsPopup">
+					
+					
+					<!-- The Pop up Screens -->
+					
+					<div id="locationsPopup">
 				<a id="popupContactClose">x</a>
 				<h1>Locations</h1>
 				<div id="instructions">
@@ -396,6 +395,14 @@
 				</div> <!-- End Table Area -->
 			</div> <!-- End positionsPopup div -->
 <div id="backgroundPopup"></div>
+
+					
+				</form>
+			</div>
+			</div>
+            </div>
+			
+			
 <div id="footer"></div>
 </body>
 </html>
