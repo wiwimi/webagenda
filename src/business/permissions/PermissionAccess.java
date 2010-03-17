@@ -193,8 +193,8 @@ public class PermissionAccess {
 		return PermissionBroker.getBroker().delete(delete,requester);
 	}
 	
-	public boolean updatePermissionLevel(PermissionLevel update, Employee requester) throws InvalidPermissionException, DBException, DBDownException
+	public boolean updatePermissionLevel(PermissionLevel old, PermissionLevel update, Employee requester) throws InvalidPermissionException, DBException, DBDownException
 	{
-		return PermissionBroker.getBroker().update(update,requester);
+		return PermissionBroker.getBroker().update(old, update,requester);
 	}
 }

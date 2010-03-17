@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import exception.DBDownException;
 import exception.DBException;
 import exception.InvalidPermissionException;
+import exception.PermissionViolationException;
 
 import utilities.*;
 
@@ -52,7 +53,7 @@ public abstract class Broker<E extends BusinessObject>
 	 * @param createObj The object to add to the database.
 	 * @return true if the create was successful, otherwise false.
 	 */
-	public abstract boolean create(E createObj, Employee caller) throws DBException, DBDownException, InvalidPermissionException;
+	public abstract boolean create(E createObj, Employee caller) throws DBException, DBDownException, InvalidPermissionException, PermissionViolationException;
 	
 	/**
 	 * Retrieves data from the database and return them as objects.
@@ -62,7 +63,7 @@ public abstract class Broker<E extends BusinessObject>
 	 *           criteria. If the primary key is filled in the search object,
 	 *           only that will be used and all others will be ignored.
 	 */
-	public abstract E[] get(E searchTemplate, Employee caller) throws DBException, DBDownException, InvalidPermissionException;
+	public abstract E[] get(E searchTemplate, Employee caller) throws DBException, DBDownException, InvalidPermissionException, PermissionViolationException;
 	
 	/**
 	 * Applies all changes to the updated object to its equivalent record within
@@ -73,7 +74,7 @@ public abstract class Broker<E extends BusinessObject>
 	 * @param updateObj The previously retrieved object that has been updated.
 	 * @return true if the update was successful, otherwise false.
 	 */
-	public abstract boolean update(E oldObj, E newObj, Employee caller) throws DBException, DBDownException, InvalidPermissionException;
+	public abstract boolean update(E oldObj, E newObj, Employee caller) throws DBException, DBDownException, InvalidPermissionException, PermissionViolationException;
 	
 	/**
 	 * Removes the record from the database that is equivalent to the given
@@ -83,7 +84,7 @@ public abstract class Broker<E extends BusinessObject>
 	 * @param deleteObj
 	 * @return true if the delete was successful, otherwise false.
 	 */
-	public abstract boolean delete(E deleteObj, Employee caller) throws DBException, DBDownException, InvalidPermissionException;
+	public abstract boolean delete(E deleteObj, Employee caller) throws DBException, DBDownException, InvalidPermissionException, PermissionViolationException;
 	
 	/**
 	 * Parses a ResultSet returned by a select query back into cachable objects.

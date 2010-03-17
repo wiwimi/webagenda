@@ -12,6 +12,7 @@ import exception.DBDownException;
 import exception.DBException;
 import exception.InvalidLoginException;
 import exception.InvalidPermissionException;
+import exception.PermissionViolationException;
 import application.DBConnection;
 import business.Employee;
 import business.permissions.PermissionLevel;
@@ -67,7 +68,7 @@ public class EmployeeBroker extends Broker<Employee>
 		PermissionLevel pl = null;
 		if(caller.getLevel() < target.getLevel()) {
 			// Do not allow creation access
-			throw new InvalidPermissionException("User cannot create Permission Levels.");
+			throw new InvalidPermissionException("User cannot create Employees.");
 		}
 		else if(caller.getLevel() == target.getLevel()) {
 			pl = persistence.PermissionBroker.getBroker(caller).get(target.getLevel(), target.getVersion(), caller)[0];
@@ -92,14 +93,18 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @see persistence.Broker#create(business.BusinessObject)
 	 */
 	@Override
-	public boolean create(Employee createEmp, Employee caller) throws DBException, DBDownException, InvalidPermissionException
+	public boolean create(Employee createEmp, Employee caller) throws DBException, DBDownException, InvalidPermissionException, PermissionViolationException
 		{
 		if (createEmp == null)
 			throw new NullPointerException("Can not create null employee.");
 		if(caller == null)
 			throw new DBException("Cannot parse PermissionLevel when invoking Employee is null");
 		
-		checkPermissions(createEmp,caller); /// will throw exceptions if permission 'levels' are invalid (doesn't detect individual ones)
+		PermissionLevel pl = checkPermissions(createEmp,caller); /// will throw exceptions if permission 'levels' are invalid (doesn't detect individual ones)
+		if(!pl.getLevel_permissions().isCanManageEmployees()) {
+			throw new PermissionViolationException("User is not authorized to Create an Emplyoee");
+		}
+		
 		
 		/*
 		 * Make sure all "not null" DB fields are filled. Expand this to throw a

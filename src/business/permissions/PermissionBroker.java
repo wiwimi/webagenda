@@ -356,7 +356,7 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 	 * @see persistence.Broker#update(business.BusinessObject)
 	 */
 	@Override
-	public boolean update(PermissionLevel updateObj, Employee caller) throws DBException, DBDownException, InvalidPermissionException {
+	public boolean update(PermissionLevel oldObj, PermissionLevel updateObj, Employee caller) throws DBException, DBDownException, InvalidPermissionException {
 		if(updateObj == null)
 			throw new NullPointerException();
 		checkPermissions(updateObj, caller); // This will throw any exceptions due to invalid permission access

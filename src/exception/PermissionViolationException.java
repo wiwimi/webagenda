@@ -1,5 +1,5 @@
 /**
- * exception - PermissionBrokerViolationException.java
+ * exception - PermissionViolationException.java
  */
 package exception;
 
@@ -8,7 +8,7 @@ package exception;
  * @version 0.01.00
  * @license GPL 2
  */
-public class PermissionBrokerViolationException extends Exception {
+public class PermissionViolationException extends Exception {
 
 	/**
 	 * 
@@ -18,14 +18,14 @@ public class PermissionBrokerViolationException extends Exception {
 	/**
 	 * 
 	 */
-	public PermissionBrokerViolationException() {
+	public PermissionViolationException() {
 		super();
 	}
 
 	/**
 	 * @param arg0
 	 */
-	public PermissionBrokerViolationException(String arg0) {
+	public PermissionViolationException(String arg0) {
 		super(arg0);
 		// TODO Auto-generated constructor stub
 	}
@@ -33,7 +33,7 @@ public class PermissionBrokerViolationException extends Exception {
 	/**
 	 * @param arg0
 	 */
-	public PermissionBrokerViolationException(Throwable arg0) {
+	public PermissionViolationException(Throwable arg0) {
 		super(arg0);
 		// TODO Auto-generated constructor stub
 	}
@@ -42,7 +42,7 @@ public class PermissionBrokerViolationException extends Exception {
 	 * @param arg0
 	 * @param arg1
 	 */
-	public PermissionBrokerViolationException(String arg0, Throwable arg1) {
+	public PermissionViolationException(String arg0, Throwable arg1) {
 		super(arg0, arg1);
 		// TODO Auto-generated constructor stub
 	}

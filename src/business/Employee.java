@@ -143,6 +143,7 @@ public class Employee extends BusinessObject
 			try {
 				int i = Integer.parseInt(plevel.substring(0,plevel.length() - 1));
 				if(i < 0) throw new DBException("Cannot create an employee with a negative permission level");
+				if(i > 99) throw new DBException("Level is too high to create. 0-99 are acceptable levels");
 				this.level = i;
 			}
 			catch(NumberFormatException nfE) {
@@ -172,6 +173,7 @@ public class Employee extends BusinessObject
 		this.username = username;
 		this.password = password;
 		if(lvl < 0) throw new DBException("Cannot create an employee with a negative permission level");
+		if(lvl > 99) throw new DBException("Level is too high to create. 0-99 are acceptable levels");
 		this.level = lvl;
 		if(!Character.isLetter(ver) && ver != ' ') throw new DBException("Version specified is not a letter character or a non-version (space) character");
 		this.version = ver;
