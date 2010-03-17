@@ -176,7 +176,7 @@ public class SkillBroker extends Broker<Skill> {
 	}
 
 	@Override
-	public boolean update(Skill updateObj,Employee caller) throws DBException, DBDownException {
+	public boolean update(Skill oldSkill, Skill updateObj,Employee caller) throws DBException, DBDownException {
 		if (updateObj == null)
 			throw new NullPointerException("Can not update null skill.");
 		

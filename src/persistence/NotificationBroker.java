@@ -175,7 +175,7 @@ public class NotificationBroker extends Broker<Notification> {
 	}
 
 	@Override
-	public boolean update(Notification updateObj, Employee caller) throws DBException,
+	public boolean update(Notification oldNotification, Notification updateObj, Employee caller) throws DBException,
 			DBDownException {
 		if (updateObj == null)
 			throw new NullPointerException("Can not update null notification.");

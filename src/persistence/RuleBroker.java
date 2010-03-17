@@ -168,7 +168,7 @@ public class RuleBroker extends Broker<Rule> {
 	}
 
 	@Override
-	public boolean update(Rule updateObj,Employee caller) throws DBException, DBDownException {
+	public boolean update(Rule oldRule, Rule updateObj,Employee caller) throws DBException, DBDownException {
 		if (updateObj == null)
 			throw new NullPointerException("Can not update null rule.");
 		

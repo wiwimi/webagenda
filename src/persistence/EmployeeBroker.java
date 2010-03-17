@@ -197,7 +197,7 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @throws DBException
 	 * @throws InvalidPermissionException 
 	 */
-	public boolean disable(Employee disableEmp, Employee caller) throws DBException, DBDownException, InvalidPermissionException
+	public boolean disable(Employee oldEmp, Employee disableEmp, Employee caller) throws DBException, DBDownException, InvalidPermissionException
 		{
 		if (disableEmp == null)
 			throw new NullPointerException("Can not disable null employee.");
@@ -208,7 +208,7 @@ public class EmployeeBroker extends Broker<Employee>
 		//Set emp to disabled and pass to update method.
 		disableEmp.setActive(false);
 		
-		return update(disableEmp,caller);
+		return update(oldEmp, disableEmp,caller);
 		}
 	
 	/* (non-Javadoc)
@@ -373,7 +373,7 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @see persistence.Broker#update(business.BusinessObject)
 	 */
 	@Override
-	public boolean update(Employee updateEmployee, Employee caller) throws DBException, DBDownException, InvalidPermissionException
+	public boolean update(Employee oldObj, Employee updateEmployee, Employee caller) throws DBException, DBDownException, InvalidPermissionException
 		{
 		if (updateEmployee == null)
 			throw new NullPointerException("Can not update null employee.");
