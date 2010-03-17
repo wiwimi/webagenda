@@ -197,12 +197,12 @@
 						<tbody>
 							<% 
 								EmployeeBroker empBroker = EmployeeBroker.getBroker();
-							
+								Employee user = (Employee) session.getAttribute("currentEmployee");
 								int count = empBroker.getEmpCount();
 								
 								Employee emp = new Employee();
 								emp.setActive(true);
-								Employee[] empArray = empBroker.get(emp);
+								Employee[] empArray = empBroker.get(emp, user);
 								
 								for(int index = 0; index < count; index++)
 								{

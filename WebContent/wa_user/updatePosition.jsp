@@ -4,6 +4,7 @@
 <%@ page import="business.schedule.Position" %>
 <%@ page import="business.Skill" %>
 <%@ page import="java.util.*" %>
+<%@ page import="business.Employee" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- Author: Noorin -->
@@ -155,10 +156,12 @@
 									</tr>
 								</tfoot>
 								<tbody>
-									<% 
+									<%  
+										Employee user = (Employee) session.getAttribute("currentEmployee");
+									
 										SkillBroker broker = SkillBroker.getBroker();
 										Skill skill = new Skill("");
-										Skill[] skillArray = broker.get(skill);
+										Skill[] skillArray = broker.get(skill, user);
 										
 										for(int index = 0; index<skillArray.length; index++)
 										{

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="persistence.LocationBroker" %>
+<%@ page import="business.Employee" %>
 <%@ page import="business.schedule.Location" %>
 <%@ page import = "exception.DBDownException" %>
 <%@ page import = "exception.DBException" %>
@@ -108,6 +109,7 @@
 							<tbody>
 								<% 
 								  try{
+									Employee user = (Employee) session.getAttribute("currentEmployee");
 									LocationBroker broker = LocationBroker.getBroker();
 									Location loc= null;
 									String locName ="";
@@ -115,26 +117,25 @@
 									
 									if(request.getParameter("locName").equals(null) || request.getParameter("locName").equals(""))
 									{
-										
 										loc = new Location("");
 									}
 									else
 									{
 										loc =new Location(request.getParameter("locName"));
 									}
-									Location[] locArray = broker.get(loc);
+									Location[] locArray = broker.get(loc, user);
 									
 									if (locArray.length==0 || locArray==null)
 									{
 								%>
-								         <tr>
+								      	<tr>
 											<td>There are no results to display</td>
-									     </tr>
+									    </tr>
 								<%
 									}
 									else
 									{
-										    locArray = broker.get(loc);
+										    locArray = broker.get(loc, user);
 											for(int index = 0; index < locArray.length; index++)
 											{
 												

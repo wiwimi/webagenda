@@ -207,30 +207,27 @@
 								</tr>
 							</tfoot>
 							<tbody>
+								<%Employee user = (Employee)session.getAttribute("currentEmployee"); %>
 								<% 
-										LocationBroker broker = LocationBroker.getBroker();
-										Location loc= null;
-										
-										loc = new Location("");
-										Location[] locArray = broker.get(loc);
-										for (Location printLoc : locArray)
-										{
-											System.out.println(printLoc);
-										}
-										for(int index = 0; index < locArray.length; index++)
-										{
-									%>
-											<tr>
+									LocationBroker locBroker = LocationBroker.getBroker();
+									Location loc= null;
+									loc = new Location("");
+									Location[] locArray = locBroker.get(loc, user);
+									
+									for(int index = 0; index < locArray.length; index++)
+									{
+								%>
+										<tr>
 											<td>
-														
 												<a href="addLocation.jsp"><div id="locationImage"> <b> <%=locArray[index].getName()%> </b></div></a>
 											</td>
 											<td>
 												<input type="radio" name="loc"> 
 											</td>
-									<% 
-										}
-									%>
+										</tr>
+								<% 
+									}
+								%>
 								</tbody>
 						</table>
 					</div>
@@ -250,7 +247,6 @@
 								<tr class="headerRow">
 									<th>Name</th>
 									<td> <input type="checkbox" name="option"> </td>
-						
 								</tr>
 							</thead>
 					
@@ -262,10 +258,9 @@
 							</tfoot>
 							<tbody>
 								<% 
-									SkillBroker broker2 = SkillBroker.getBroker();
-									
+									SkillBroker skBroker = SkillBroker.getBroker();
 									Skill skill = new Skill("");
-									Skill[] skillArray = broker2.get(skill);
+									Skill[] skillArray = skBroker.get(skill, user);
 									
 									for(int index = 0; index <skillArray.length; index++)
 									{
@@ -324,7 +319,7 @@
 								
 								Employee emp = new Employee();
 								emp.setActive(true);
-								Employee[] empArray = empBroker.get(emp);
+								Employee[] empArray = empBroker.get(emp, user);
 								
 								for(int index = 0; index < count; index++)
 								{
@@ -368,9 +363,9 @@
 								</tfoot>
 								<tbody>
 									<% 
-										PositionBroker broker3 = PositionBroker.getBroker();
+										PositionBroker posBroker = PositionBroker.getBroker();
 										Position pos = new Position("",null);
-										Position[] posArray = broker3.get(pos);
+										Position[] posArray = posBroker.get(pos, user);
 										
 										for(int index = 0; index <posArray.length; index++)
 										{

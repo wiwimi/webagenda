@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="business.schedule.Position" %>
 <%@ page import="persistence.PositionBroker" %>
+<%@ page import="business.Employee" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- Author: Noorin -->
@@ -106,10 +107,11 @@
 					</tfoot>
 					<tbody>
 						<% 
+							Employee user = (Employee)session.getAttribute("currentEmployee");	
+						
 							PositionBroker broker = PositionBroker.getBroker();
-							
 							Position pos = new Position("",null);
-							Position[] posArray = broker.get(pos);
+							Position[] posArray = broker.get(pos, user);
 							
 							for(int index = 0; index <posArray.length; index++)
 							{

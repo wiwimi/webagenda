@@ -53,10 +53,12 @@
 			EmployeeBroker broker = EmployeeBroker.getBroker();
 		
 			int count = broker.getEmpCount();
-		
+			
+			Employee user = (Employee) session.getAttribute("currentEmployee");
+			
 			Employee emp = new Employee();
 			emp.setEmpID(Integer.parseInt(request.getParameter("id")));
-			Employee[] empArray = broker.get(emp);
+			Employee[] empArray = broker.get(emp, user);
 		%>
 
 		<div id ="userForm">
@@ -127,7 +129,7 @@
 					
 					<p>
 							<label id="theSelect" class="theSelect"> Permission level: </label>  
-									<input id="permissionBox" type="text" size="30" maxlength="30" value="<%= empArray[0].getPLevel()%>" name="permissionBox" />
+									<input id="permissionBox" type="text" size="30" maxlength="30" value="<%= empArray[0].getLevel()%>" name="permissionBox" />
 				</fieldset>
 				</div>
 				<div id="searchArea">

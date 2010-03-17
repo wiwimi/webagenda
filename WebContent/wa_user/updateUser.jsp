@@ -124,9 +124,10 @@
 								int empInteger = Integer.parseInt(request.getParameter("empId"));
 								emp.setEmpID(empInteger);
 							}
+						    Employee user = (Employee) session.getAttribute("currentEmployee");
 							EmployeeBroker broker = EmployeeBroker.getBroker();
 							int count = broker.getEmpCount();
-							Employee[] empArray = broker.get(emp);
+							Employee[] empArray = broker.get(emp, user);
 								
 								for(int index = 0; index < count; index++)
 								{

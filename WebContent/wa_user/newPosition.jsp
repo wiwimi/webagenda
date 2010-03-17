@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="persistence.SkillBroker" %>
+<%@ page import="persistence.EmployeeBroker" %>
 <%@ page import="business.Skill" %>
+<%@ page import="business.Employee" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- Author: Noorin -->
@@ -159,9 +161,10 @@
 								</tfoot>
 								<tbody>
 									<% 
+										Employee user = (Employee) session.getAttribute("currentEmployee");
 										SkillBroker broker = SkillBroker.getBroker();
 										Skill skill = new Skill("");
-										Skill[] skillArray = broker.get(skill);
+										Skill[] skillArray = broker.get(skill, user);
 										
 										for(int index = 0; index<skillArray.length; index++)
 										{
