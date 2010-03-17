@@ -97,7 +97,7 @@ public class TestPositionBroker {
 					System.out.println(printLoc);
 					System.out.println("SKILLS REQUIRED");
 					Skill[] skills = printLoc.getPos_skills();
-					System.out.println(" Skill Length " + skills.length);
+					
 					for(int i=0; i<skills.length; i++)
 						System.out.println(skills[i]);
 					}
@@ -119,6 +119,38 @@ public class TestPositionBroker {
 
 	@Test
 	public void testUpdatePosition() {
-		fail("Not yet implemented");
+		System.out.println("POSITION Update");
+		
+		Skill[] skills = new Skill[1];
+		Skill skill = new Skill ("Cooking");
+		skills[0] = skill;
+		Position oldPos = new Position("Cook", null, skills);
+		boolean success = false;
+		
+		//Get all Positions and print them to console.
+		try
+			{
+			Position[] results = broker.get(oldPos);
+			Position updatePos = new Position("WaiterUpdated");
+			
+			if(results!=null)
+			{
+				success = broker.update(oldPos, updatePos);
+				System.out.println(success);
+			}
+			}
+		catch (DBException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		catch (DBDownException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		
+		assertTrue(true);
+		}
 	}
-}
+

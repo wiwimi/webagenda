@@ -107,7 +107,7 @@
 					    
 					    Skill[] skills = null;
 						
-						Position oldPos = new Position(posName, posDesc);
+						Position oldPos = new Position(posName);
 					    session.setAttribute("oldPos",oldPos);
 					 %>
 					

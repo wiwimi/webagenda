@@ -53,7 +53,15 @@ public class UpdatePosition extends HttpServlet {
 						
 						Position[] results = broker.get(oldPos);
 						
-						success = broker.update(results[0], newPos);
+						out.println(newPos.getName());
+						out.println(newPos.getDescription());
+						out.println(oldPos.getName());
+						out.println(oldPos.getDescription());
+						
+						if(results!=null)
+						success = broker.update(oldPos, newPos);
+						
+						out.println(success);
 						
 						
 					if (success)
