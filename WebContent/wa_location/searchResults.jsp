@@ -110,6 +110,8 @@
 								  try{
 									LocationBroker broker = LocationBroker.getBroker();
 									Location loc= null;
+									String locName ="";
+									
 									
 									if(request.getParameter("locName").equals(null) || request.getParameter("locName").equals(""))
 									{

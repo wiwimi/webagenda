@@ -11,7 +11,7 @@ function removeLocation(locName, locDesc)
 			
 			if(v) 
 			{
-				window.location= '../DeleteLocation?loc='+ locName + "&locDesc=" + locDesc;		
+				window.location= '../DeleteLocation?locName='+ locName + "&locDesc=" + locDesc;		
 				
 			}
 			else
