@@ -27,31 +27,28 @@
 <!-- Includes -->
 <jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
 
-
 </head>
 <body>
 
 <div id= "email" class = "strippedTable">
-
-<div id="mailWidget" class="fullWidget">
-			<div class="widgetUpperRectangle" id="mailWidgetUpperRectangle">
-				<div class="widgetTitle" id="mailWidgetTitle">E-mail</div>
-			</div>
+	<div id="mailWidget" class="fullWidget">
+		<div class="widgetUpperRectangle" id="mailWidgetUpperRectangle">
+			<div class="widgetTitle" id="mailWidgetTitle">E-mail</div>
+		</div>
 			
-			<div class="widgetLowerRectangle" id="mailWidgetLowerRectangle">
+		<div class="widgetLowerRectangle" id="mailWidgetLowerRectangle">
 			
-			<div id="emailOptions">
+		<div id="emailOptions">
 			<h6> 
-			<a href ="sent.jsp"> Sent </a> | 
-			<a href ="drafts.jsp"> Drafts </a> |
-			<a href ="compose.jsp"> Compose </a> | 
-			<a href =""> Delete </a> <!--  Prompts the user to select a message if none of the checkboces were checked -->
+				<a href ="sent.jsp"> Sent </a> | 
+				<a href ="drafts.jsp"> Drafts </a> |
+				<a href ="compose.jsp"> Compose </a> | 
+				<a href =""> Delete </a> <!--  Prompts the user to select a message if none of the checkboces were checked -->
 			</h6>
-			</div>
+		</div>
 			
-			<div class = "border" summary ="inbox">
-
-				<table class = "sortable">
+		<div class = "border" summary ="inbox">
+			<table class = "sortable">
 					<thead>
 						<tr>
 							<th> <input type=checkbox name="sort"> </input>  </th>
@@ -61,52 +58,41 @@
 						</tr>
 					</thead>
 					<tbody>
-						
 						<tr>
 							<th> <input type=checkbox name="sort"></input> </th>
 							<td> Joseph </td>
 							<td> Can you take my shift ? </td>
 							<td> Feb/02/03 </td>
-						
 						</tr>
 						<tr>
 							<th> <input type=checkbox name="sort"></input> </th>
 							<td> Noorin </td>
 							<td> Late today ? </td>
 							<td> Feb/01/03 </td>
-						
 						</tr>
-						
 						<tr>
 							<th> <input type=checkbox name="sort"></input> </th>
 							<td> Ali </td>
 							<td> Sick leave ? </td>
 							<td> Jan/02/03 </td>
-						
 						</tr>
-						
 						<tr>
-							<th> </th>
-							<td>  </td>
-							<td>  </td>
-							<td>  </td>
-						
+							<th></th>
+							<td> </td>
+							<td> </td>
+							<td> </td>
 						</tr>
-						
 						<tr>
 							<th>  </th>
 							<td>  </td>
 							<td>  </td>
 							<td>  </td>
-					
-						
-						</tr>
+					   </tr>
 					</tbody>
-	
 				</table>
+			</div>
+		</div>
 	</div>
-	</div>
-</div>
 </div>
 
 <div id="footer"></div>

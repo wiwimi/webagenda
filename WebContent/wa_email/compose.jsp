@@ -21,36 +21,33 @@
 
 </head>
 <body>
-
-
 	<form id="post-form" action="" method="post">
 		<div id="message">
 			<div id="mailWidget" class="fullWidget">
-						<div class="widgetUpperRectangle" id="mailWidgetUpperRectangle">
-							<div class="widgetTitle" id="mailWidgetTitle">E-mail</div>
-						</div>
+				<div class="widgetUpperRectangle" id="mailWidgetUpperRectangle">
+					<div class="widgetTitle" id="mailWidgetTitle">E-mail</div>
+				</div>
 			<div class="widgetLowerRectangle" id="mailWidgetLowerRectangle">
-			
-			<div id= "emailOptions">
-				<h6> 
-					<a href ="" id="send"> Send </a> | 
-					<a href ="" id="draft"> Draft </a> |
-					<a href ="" id="close"> Close </a> |  <!-- Close must take the user to the inbox page -->
-					<a href ="" id="clear"> Clear Screen </a> 
-				</h6>
+				<div id= "emailOptions">
+					<h6> 
+						<a href ="" id="send"> Send </a> | 
+						<a href ="" id="draft"> Draft </a> |
+						<a href ="" id="close"> Close </a> |  <!-- Close must take the user to the inbox page -->
+						<a href ="" id="clear"> Clear Screen </a> 
+					</h6>
+				</div>
+				<div id="messageDetails">
+					<p><label> To:  </label> <input type="text"  name ="recipent"> </p>
+					<p><label> Subject:  </label> <input type="text"  name ="subject"></p>
+				</div>
+				
+				<div id="messageContainer">
+				        <textarea  name="message" cols="120" rows="17" tabindex="101"></textarea>
+				</div>
 			</div>
-			<div id="messageDetails">
-				<p><label> To:  </label> <input type="text"  name ="recipent"> </p>
-				<p><label> Subject:  </label> <input type="text"  name ="subject"></p>
 			</div>
-			
-			<div id="messageContainer">
-			        <textarea  name="message" cols="120" rows="17" tabindex="101"></textarea>
-			</div>
-		</div>
-	</div>
-</div>	
-</form>
+		</div>	
+	</form>
 
 <div id="footer"></div>
 
