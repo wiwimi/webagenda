@@ -127,13 +127,12 @@ public class Employee extends BusinessObject
 	 *           "43","3a","34i" are acceptable)
 	 * @throws DBException 
 	 */
-	public Employee(int empID, String fname, String lname, Date date,
+	public Employee(int empID, String fname, String lname,
 			String username, String password, String plevel) throws DBException
 		{
 		this.empID = empID;
 		this.givenName = fname;
 		this.familyName = lname;
-		this.birthDate = date;
 		this.username = username;
 		this.password = password;
 		if(plevel.length() > 3 || plevel.length() == 0) throw new DBException("Invalid permission level format");
@@ -176,13 +175,12 @@ public class Employee extends BusinessObject
 		}
 		}
 	
-	public Employee(int empID, String fname, String lname, Date date,
+	public Employee(int empID, String fname, String lname,
 			String username, String password, int lvl, char ver) throws DBException
 		{
 		this.empID = empID;
 		this.givenName = fname;
 		this.familyName = lname;
-		this.birthDate = date;
 		this.username = username;
 		this.password = password;
 		if(lvl < 0) throw new DBException("Cannot create an employee with a negative permission level");
