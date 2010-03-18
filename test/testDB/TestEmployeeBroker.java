@@ -18,7 +18,7 @@ import persistence.EmployeeBroker;
 import business.Employee;
 
 /**
- * @author Daniel Wehr
+ * @author Daniel Wehr, Daniel Kettle
  * @version 0.1.0
  *
  */
@@ -62,21 +62,21 @@ public class TestEmployeeBroker
 		{
 		System.out.println("******************** CREATE/DELETE TEST ********************");
 		
-		Employee newEmp = new Employee();
-		
-		newEmp.setEmpID(80000);
-		newEmp.setGivenName("Bilbo");
-		newEmp.setFamilyName("Baggins");
-		newEmp.setUsername("bilb01");
-		newEmp.setPassword("password");
-		//newEmp.setPLevel("1a");
-		newEmp.setActive(true);
-		
+		Employee newEmp = null;
+		try {
+			newEmp = new Employee(80000,"Bilbo","Baggins",null,"bilb01","password",1,'a');
+			newEmp.setActive(true);
+		} catch (DBException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		System.out.println(newEmp);
 		//Add employee
 		boolean successful;
 		try
 			{
 			successful = empBroker.create(newEmp, user);
+			System.out.println(successful);
 			assertTrue(successful);
 			System.out.println("Employee added: "+successful);
 			}
@@ -164,14 +164,15 @@ public class TestEmployeeBroker
 		{
 		System.out.println("******************** CREATE/DELETE TEST ********************");
 		
-		Employee newEmp = new Employee();
-		
-		newEmp.setEmpID(80002);
-		newEmp.setGivenName("Bilbo");
-		newEmp.setFamilyName("Baggins");
-		newEmp.setUsername("bilb01");
-		newEmp.setPassword("password");
-		//newEmp.setPLevel("1a");
+		Employee newEmp = null;
+		try {
+			newEmp = new Employee(80002,"Bilbo","Baggins",null,"bilb01","password",
+					"1a");
+		} catch (DBException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
 		newEmp.setActive(true);
 		newEmp.setEmail("email@YAHOO.CA");
 		newEmp.setPrefLocation("Mohave Grill");
@@ -373,11 +374,10 @@ public class TestEmployeeBroker
 		catch (InvalidPermissionException e)
 			{
 			e.printStackTrace();
-			}
-		catch (PermissionViolationException e)
-			{
+			} catch (PermissionViolationException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-			}
+		}
 		
 		//Modify new employee and send in as update.
 		newEmp.setLastLogin(new Timestamp(System.currentTimeMillis()));
@@ -385,7 +385,7 @@ public class TestEmployeeBroker
 		newEmp.setEmail("fakeemail@fake.com");
 		try
 			{
-			boolean successful = empBroker.update(null,newEmp, user);
+			boolean successful = empBroker.update(null,newEmp,user);
 			assertTrue(successful);
 			System.out.println("Employee updated: "+successful);
 			System.out.println(newEmp);
@@ -398,15 +398,13 @@ public class TestEmployeeBroker
 		catch (DBDownException e)
 			{
 			e.printStackTrace();
-			}
-		catch (InvalidPermissionException e) 
-			{
+			} catch (InvalidPermissionException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-			}
-		catch (PermissionViolationException e) 
-			{
+		} catch (PermissionViolationException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-			}
+		}
 	
 		//Search for employee employee.
 		try
@@ -451,11 +449,10 @@ public class TestEmployeeBroker
 		catch (InvalidPermissionException e)
 			{
 			e.printStackTrace();
-			}
-		catch (PermissionViolationException e)
-			{
+			} catch (PermissionViolationException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-			}
+		}
 		}
 	
 	/**
