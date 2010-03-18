@@ -40,158 +40,151 @@
 	<div id="instructions">
 		Fields marked with <em class="asterisk" > *</em> are required.
 	</div>
-			<% 
-					if(request.getParameter("message") != null)
-					{
-						if(request.getParameter("message").equals("true"))
+	<% 
+		if(request.getParameter("message") != null)
+		{
+			if(request.getParameter("message").equals("true"))
+			{
+				//out.println("Position was added");
+	 %>
+	              <script type="text/javascript">
+						$(function()
 						{
-							//out.println("Position was added");
-			 %>
-				              <script type="text/javascript">
-		
-								$(function()
-								    {
-										
-										    $.flashMessenger("The position has been successfully created", 
-											{ 	
-												modal:true, 
-												autoClose: false 
-											});	
-									});
-								</script>
-			<% 			   
-						}
-						else if(request.getParameter("message").equals("false"))
-						{
-			%>
-							<script type="text/javascript">
-								$(function()
-								    {
-										
-								       $.flashMessenger("The name you provided has already been used.",
-								        {
-											   modal:true,
-							    		       clsName:"err", 
-								    		   autoClose:false
-								    	 }); 
-								   }); 
-							</script>
-				<%
-						}
-						else if(request.getParameter("message").equals("skill"))
-						{
-				%>
-				
-						<script type="text/javascript">
-								$(function()
-								    {
-										
-								       $.flashMessenger("Please select at least 1 skill using the 'edit' button.",
-								        {
-											   modal:true,
-							    		       clsName:"err", 
-								    		   autoClose:false
-								    	 }); 
-								   }); 
-							</script>
-				
-				<%
-						}
-					}
-				%>
-	
-		<div id="positionWidget" class="fullWidget">
-			<div class="widgetUpperRectangle" id="positionUpperRectangle">
-				<div class="widgetTitle" id="positionsWidgetTitle">Positions </div>
-			</div>
+						  $.flashMessenger("The position has been successfully created", 
+						  { 	
+								modal:true, 
+								autoClose: false 
+						   });	
+						});
+					</script>
+	<% 			   
+			}
+			else if(request.getParameter("message").equals("false"))
+			{
+	%>
+				<script type="text/javascript">
+					$(function()
+					    {
+							
+					       $.flashMessenger("The name you provided has already been used.",
+					        {
+								   modal:true,
+				    		       clsName:"err", 
+					    		   autoClose:false
+					    	 }); 
+					   }); 
+				</script>
+	<%
+			}
+			else if(request.getParameter("message").equals("skill"))
+			{
+	%>
+				<script type="text/javascript">
+					$(function()
+				    {
+							
+					    $.flashMessenger("Please select at least 1 skill using the 'edit' button.",
+					    {
+							modal:true,
+				    		clsName:"err", 
+					    	autoClose:false
+					    }); 
+				   }); 
+				</script>
+	<%
+			}
+		}
+	%>
+	<div id="positionWidget" class="fullWidget">
+		<div class="widgetUpperRectangle" id="positionUpperRectangle">
+			<div class="widgetTitle" id="positionsWidgetTitle">Positions </div>
+		</div>
 		<div class="widgetLowerRectangle" id="positionsLowerRectangle">
 		<div id ="creationForm">
 			<form class="addPositionForm" action="../AddPosition" id="form" method="post">
-			<div id="position">
-				<div id="formButtons">
+				<div id="position">
+					<div id="formButtons">
 						<input type="submit" name="submit" class="button" value="Add"> 
 						<input type="button" name="submit" class="button" value="Search" onClick="location.href='posSearchResults.jsp';"> 
 						<input type="reset" name="clear" class="button" value="Clear Screen"> 
 						<br></br>
-			</div>
-				<fieldset>
-					<legend > Position Details </legend>
-						<p>	<label class="label"> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="posName" class="required" size ="30"> </p>
-							
+					</div>
+					<fieldset>
+						<legend > Position Details </legend>
+							<p>	<label class="label"> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="posName" class="required" size ="30"> </p>
+								
 								<!--This should be populated from MaintainSkills use case -->
+							 	
 							 	<div id="skillsButton">
-								<p>
+									<p>
 										<label id="theSelect" class="label"> Required Skills: <em class="asterisk"> * </em> </label>	
 										<input id="prefSkillsBox" type="text" class ="required" size="30" maxlength="30" disabled="disabled" value="skills go here" name="prefSkillsBox" />
 										<input type="button" name="submit" class="button" value="edit"/>
-								</p>
+									</p>
 								</div>	
-							
 							<p>	<label class="label"> Description: </label></p>
 							<textarea  name="posDesc" cols="23" rows="6" tabindex="101"></textarea>
-				</fieldset>
-						<div id="formButtons">
-						<input type="submit" name="submit" class="button" value="Add"> 
-						<input type="button" name="submit" class="button" value="Search" onClick="location.href='posSearchResults.jsp';"> 
-						<input type="reset" name="clear" class="button" value="Clear Screen"> 
-						<br></br>
-			          </div>
-				  </div>
+					</fieldset>
+					<div id="formButtons">
+							<input type="submit" name="submit" class="button" value="Add"> 
+							<input type="button" name="submit" class="button" value="Search" onClick="location.href='posSearchResults.jsp';"> 
+							<input type="reset" name="clear" class="button" value="Clear Screen"> 
+				      </div>
+				 </div>
+				 
 			<!--  Popup Section -->	 
 			<div id="skillsPopup">
-					<a id="popupContactClose2">x</a>
+				<a id="popupContactClose2">x</a>
 					<h1>Skills</h1>
-					<div id="instructions">
-						Closing the screen saves the selected items.
-					</div>
-				     <div id="tableArea">
-						<div class="userAdmin">
-							<table class="sortable" id="userTable">
-								<thead class="head">
-									<tr class="headerRow">
-										<th>Name</th>
-										<th>Description</th>
-									</tr>
-								</thead>
-								<tfoot class="foot">
-									<tr class="headerRow">
-										<th>Name</th>
-										<th>Description</th>
-									</tr>
-								</tfoot>
-								<tbody>
-									<% 
-										Employee user = (Employee) session.getAttribute("currentEmployee");
-										SkillBroker broker = SkillBroker.getBroker();
-										Skill skill = new Skill("");
-										Skill[] skillArray = broker.get(skill, user);
-										
-										for(int index = 0; index<skillArray.length; index++)
-										{
-									%>
-										<tr>
-										   <td>
-												<a href="newSkill.jsp?=<%=skillArray[index].getName()%>"> <b> <%=skillArray[index].getName()%> </b></a>
-											</td>
-											<td>
-													<input type="checkbox" name="skill" value="<%=skillArray[index].getName()%>"> 
-											</td>
+						 <div id="instructions">
+							Closing the screen saves the selected items.
+						 </div>
+					     <div id="tableArea">
+							<div class="userAdmin">
+								<table class="sortable" id="userTable">
+									<thead class="head">
+										<tr class="headerRow">
+											<th>Name</th>
+											<th>Description</th>
 										</tr>
-									<% 
-										}
-									%>			
+									</thead>
+									<tfoot class="foot">
+										<tr class="headerRow">
+											<th>Name</th>
+											<th>Description</th>
+										</tr>
+									</tfoot>
+									<tbody>
+										<% 
+											Employee user = (Employee) session.getAttribute("currentEmployee");
+											SkillBroker broker = SkillBroker.getBroker();
+											Skill skill = new Skill("");
+											Skill[] skillArray = broker.get(skill, user);
 											
-								</tbody>
-							</table>
-						  </div>
-						</div> <!-- End Table Area -->
+											for(int index = 0; index<skillArray.length; index++)
+											{
+										%>
+												<tr>
+												   <td>
+														<a href="newSkill.jsp?=<%=skillArray[index].getName()%>"> <b> <%=skillArray[index].getName()%> </b></a>
+													</td>
+													<td>
+														<input type="checkbox" name="skill" value="<%=skillArray[index].getName()%>"> 
+													</td>
+												</tr>
+										<% 
+											}
+										%>			
+									</tbody>
+								</table>
+							  </div>
+							</div> <!-- End Table Area -->
+						</div>
+					</form>
 				</div>
-			</form>
-			</div>
-		 </div>
-       </div>
-<div id="backgroundPopup"></div>
-<div id="footer"></div>
-
-</body>
+		 	</div>
+        </div>
+		<div id="backgroundPopup"></div>
+		<div id="footer"></div>
+	</body>
 </html>
