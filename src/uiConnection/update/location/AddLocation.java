@@ -33,7 +33,7 @@ public class AddLocation extends HttpServlet {
 		        response.setContentType("text/html;charset=UTF-8");
 		      
 		        //Create or get the session object from the HTTPSession object
-		        //HttpSession session = request.getSession();
+		        HttpSession session = request.getSession();
 		        PrintWriter out = response.getWriter();
 		        String locName = request.getParameter("locName");
 				String desc = request.getParameter("desc");	
@@ -46,7 +46,7 @@ public class AddLocation extends HttpServlet {
 						broker.initConnectionThread();
 						
 						Location loc = new Location(locName, desc);
-						Employee user = new Employee(12314, "Chaney", "Henson","user1", "password",  "2a" );
+						Employee user = (Employee)session.getAttribute("currentEmployee");
 						
 						success = broker.create(loc, user);
 						

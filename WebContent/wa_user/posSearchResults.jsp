@@ -20,18 +20,18 @@
 <!-- Plug-ins -->
 <script src ="../lib/js/jquery.flashmessenger.js"   type ="text/javascript"> </script>	
 
-<!--  CSS files -->
-<link rel="stylesheet" href="CSS/table.css" type="text/css"></link>
-<link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
-<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Confirmation/confirm.css" />
-<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Flash/flashmessenger.css" />
-
 <!-- Sorttable is under the X11 licence, it is an open source project.-->
 <!-- Javascript Files -->
 <script src="../lib/js/sorttable.js" type ="text/javascript"></script>
 <script type="text/javascript" src="../lib/js/dashboard.js"></script>
 <script type="text/javascript" src="../lib/js/jquery-impromptu.3.0.min.js"></script>
 <script type="text/javascript" src="../lib/js/deletePosition.js"></script>
+
+<!--  CSS files -->
+<link rel="stylesheet" href="CSS/table.css" type="text/css"></link>
+<link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Confirmation/confirm.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Flash/flashmessenger.css" />
 </head>
 <body>
 			<% 

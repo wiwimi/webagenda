@@ -17,7 +17,6 @@ import persistence.PositionBroker;
 
 public class TestPositionBroker {
 	private PositionBroker broker;
-	private Date d;
 	private Employee user;
 	
 	@Before

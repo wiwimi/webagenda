@@ -30,8 +30,8 @@
 
 <!--  CSS files -->
 <link rel="stylesheet" href="CSS/table.css" type="text/css"></link>
-<link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Confirmation/confirm.css" />
+<link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Flash/flashmessenger.css" />
 
 </head>

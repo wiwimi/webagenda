@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import exception.DBDownException;
 import exception.DBException;
 import persistence.PositionBroker;
+import business.Employee;
 import business.Skill;
 import business.schedule.Position;;
 
@@ -51,21 +52,19 @@ public class UpdatePosition extends HttpServlet {
 						newPos = new Position(posName, posDesc, skills);
 						oldPos = (Position) session.getAttribute("oldPos");
 						
-						//FIXME pass in the logged in employee object (from session) instead of null.
-						Position[] results = broker.get(oldPos, null);
+						Employee user = (Employee)session.getAttribute("currentEmployee");
 						
-						out.println(newPos.getName());
-						out.println(newPos.getDescription());
-						out.println(oldPos.getName());
-						out.println(oldPos.getDescription());
+						//FIXME pass in the logged in employee object (from session) instead of null.
+						Position[] results = broker.get(oldPos, user);
+						
+						//out.println(newPos.getName());
+						//out.println(newPos.getDescription());
+						//out.println(oldPos.getName());
+						//out.println(oldPos.getDescription());
 						
 						if(results!=null)
 						//FIXME pass in the logged in employee object (from session) instead of null.
-						success = broker.update(oldPos, newPos, null);
-						
-						out.println(success);
-						
-						
+							success = broker.update(oldPos, newPos, user);
 					if (success)
 					{
 						//Confirm that the location was updated
