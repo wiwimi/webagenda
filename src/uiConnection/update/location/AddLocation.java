@@ -37,7 +37,6 @@ public class AddLocation extends HttpServlet {
 		        PrintWriter out = response.getWriter();
 		        String locName = request.getParameter("locName");
 				String desc = request.getParameter("desc");	
-				Date d=null;
 				boolean success;
 				LocationBroker broker = null;
 				
@@ -47,7 +46,7 @@ public class AddLocation extends HttpServlet {
 						broker.initConnectionThread();
 						
 						Location loc = new Location(locName, desc);
-						Employee user = new Employee(12314, "Chaney", "Henson",  d, "user1", "password",  "2a" );
+						Employee user = new Employee(12314, "Chaney", "Henson","user1", "password",  "2a" );
 						
 						success = broker.create(loc, user);
 						
