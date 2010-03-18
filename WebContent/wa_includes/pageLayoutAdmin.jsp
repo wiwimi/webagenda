@@ -46,15 +46,12 @@ if(session.getAttribute("username") == null)
 	<!-- Gray colour for rectangles -->
 		
 		<div id= "dashboardUpperRectangle" class="upperRectangleCurrent">
-		
 			<div class="sidebarTitle" id="dashboardTitle">Dashboard</div>
-		
 		</div>
 		
 		<!-- White Background for boxes-->
 		
 		<div id = "dashboardLowerRectangle" class = "lowerRectangle">
-			
 			<b> <a href ="../wa_dashboard/dashboard.jsp" > Dashboard  </a> </b> <br>
 			<b> <a href ="" > Reports </a> </b> <br>
 		</div>
@@ -64,15 +61,12 @@ if(session.getAttribute("username") == null)
 		<!-- Gray colour for rectangles -->
 		
 		<div id = "scheduleUpperRectangle" class="upperRectangle">
-		
 			<div class="sidebarTitle" id="scheduleTitle">Schedule</div>
-		
 		</div>
 		
 		<!-- White Background for boxes-->
 		
 		<div id= "scheduleLowerRectangle" class = "lowerRectangle">
-			
 			<b> <a href ="../wa_schedule/schedule.jsp" > View Schedule  </a> </b> <br>
 			<b> <a href ="../wa_schedule/requestChange.jsp" > Request Shift Change </a> </b> <br>
 			<b> <a href ="../wa_schedule/shiftExchangePool.jsp" > Availability </a> </b> <br>
@@ -84,9 +78,7 @@ if(session.getAttribute("username") == null)
 		<!-- Gray colour for rectangles -->
 		
 		<div id ="usersUpperRectangle" class="upperRectangle">
-		
 			<div class="sidebarTitle" id="usersTitle">Users</div>
-		
 		</div>
 		
 		<!-- White Background for boxes-->
@@ -118,9 +110,7 @@ if(session.getAttribute("username") == null)
 		<!-- Gray colour for rectangles -->
 		
 		<div id="mailUpperRectangle" class="upperRectangle">
-		
 			<div class="sidebarTitle" id="mailTitle"> Mail</div>
-		
 		</div>
 		
 		<!-- White Background for boxes-->
@@ -131,43 +121,32 @@ if(session.getAttribute("username") == null)
 			<b> <a href ="../wa_email/compose.jsp"> Compose </a> </b> <br>
 			<b> <a href ="../wa_email/drafts.jsp"> Drafts </a> </b> <br>
 			<b> <a href =" " > Notifications </a> </b> <br>
-			
-		
 		</div>
 		
 		<br>
-		
 		<div id= "helpUpperRectangle" class="upperRectangle">
-		
 			<div class="sidebarTitle" id="helpTitle">Help</div>
-		
 		</div>
 		
 		<!-- White Background for boxes-->
 		
 		<div id= "helpLowerRectangle" class = "lowerRectangle">
-			
 			<b> <a href =" " > Search Help </a> </b> <br>
 			<b> <a href ="../wa_help/contactAdmin.jsp">  Contact Admin </a> </b> <br>
 			<b> <a href =" " > Online Help </a> </b> <br>
 		</div>
 		
 		<br>
-		
-		
 		<div id= "settingsUpperRectangle" class="upperRectangle">
-		
 			<div class="sidebarTitle" id="settingsTitle">Settings</div>
-		
 		</div>
 		
 		<!-- White Background for boxes-->
 		
 		<div id= "settingsLowerRectangle" class = "lowerRectangle">
-			
 			<b> <a href ="../wa_settings/securitySettings.jsp"> Security </a> </b> <br>
 			<b> <a href ="../wa_settings/password.jsp"> Change Password </a> </b> <br>
-			<b> <a href ="../wa_settings/adminprofile.jsp"> Admin's Profile </a> </b> <br>
+			<b> <a href ="../wa_settings/adminProfile.jsp"> Admin's Profile </a> </b> <br>
 			<b> <a href ="../wa_settings/corporateSettings.jsp" > Corporate's Profile </a> </b> <br>
 		</div>
 	</div>

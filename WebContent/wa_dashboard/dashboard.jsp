@@ -4,8 +4,7 @@
 if(session.getAttribute("username") != null)
 {
 %>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-    	               "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
 <head>
@@ -28,7 +27,6 @@ if(session.getAttribute("username") != null)
 <jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
 </head>
 <body>
-
 	<div id="notification">
 		<div id="notificationText">This is a test notification</div>
 		<div id="notificationCloseButton">Close</div>
@@ -36,37 +34,35 @@ if(session.getAttribute("username") != null)
 	
 	<!-- Start middle Content div -->
 	<div id="middleContent">
-	
 		<div id="quickLinksWidget" class="fullWidgetDashboard">
 			<div class="widgetUpperRectangle" id="quickLinksUpperRectangle">
 				<div class="widgetTitle" id="quickLinksTitle">Quick Links</div>
 			</div>
 			
-			
 			<div class="widgetLowerRectangle" id="quickLinksLowerRectangle">
-			<div id="contentHolder">
-				<a href="#"><div class="linkBox">test</div></a>
-				<a href="#"><div class="linkBox">test</div></a>
-				<a href="#"><div class="linkBox">test</div></a>
-				<a href="#"><div class="linkBox">test</div></a>
-				<a href="#"><div class="linkBox">test</div></a>
-				<a href="#"><div class="linkBox">test</div></a>
-				<a href="#"><div class="linkBox">test</div></a>
-				<a href="#"><div class="linkBox">test</div></a>
-				<a href="#"><div class="linkBox">test</div></a>
-				<a href="#"><div class="linkBox">test</div></a>
-				<a href="#"><div class="linkBox">test</div></a>
-				<a href="#"><div class="linkBox">test</div></a>
-				<a href="#"><div class="linkBox">test</div></a>
-				<a href="#"><div class="linkBox">test</div></a>
-				<a href="#"><div class="linkBox">test</div></a>
-				<a href="#"><div class="linkBox">test</div></a>
-				<a href="#"><div class="linkBox">test</div></a>
-				<a href="#"><div class="linkBox">test</div></a>
-				<a href="#"><div class="linkBox">test</div></a>
-				<a href="#"><div class="linkBox">test</div></a>
+				<div id="contentHolder">
+					<a href="#"><div class="linkBox">test</div></a>
+					<a href="#"><div class="linkBox">test</div></a>
+					<a href="#"><div class="linkBox">test</div></a>
+					<a href="#"><div class="linkBox">test</div></a>
+					<a href="#"><div class="linkBox">test</div></a>
+					<a href="#"><div class="linkBox">test</div></a>
+					<a href="#"><div class="linkBox">test</div></a>
+					<a href="#"><div class="linkBox">test</div></a>
+					<a href="#"><div class="linkBox">test</div></a>
+					<a href="#"><div class="linkBox">test</div></a>
+					<a href="#"><div class="linkBox">test</div></a>
+					<a href="#"><div class="linkBox">test</div></a>
+					<a href="#"><div class="linkBox">test</div></a>
+					<a href="#"><div class="linkBox">test</div></a>
+					<a href="#"><div class="linkBox">test</div></a>
+					<a href="#"><div class="linkBox">test</div></a>
+					<a href="#"><div class="linkBox">test</div></a>
+					<a href="#"><div class="linkBox">test</div></a>
+					<a href="#"><div class="linkBox">test</div></a>
+					<a href="#"><div class="linkBox">test</div></a>
+				</div>
 			</div>
-		</div>
 		</div>
 		
 		<div id="scheduleWidget" class="fullWidgetDashboard">
@@ -96,18 +92,12 @@ if(session.getAttribute("username") != null)
 				<div class="widgetUpperRectangle" id="mailWidgetUpperRectangle">
 					<div class="widgetTitle" id="mailWidgetTitle">Mail(1)</div>
 				</div>
-			
 				<div class="widgetLowerRectangle" id="mailWidgetLowerRectangle">
 					some widget data here
 				</div>
 			</div>
 		</div>
-		
-	</div>
-	</div>
-	<!-- End middle content div -->
-
-
+	</div>	<!-- End middle content div -->
 <div id="footer"></div>
 
 </body>

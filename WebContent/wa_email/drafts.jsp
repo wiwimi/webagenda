@@ -38,55 +38,53 @@
 			<div class="widgetLowerRectangle" id="mailWidgetLowerRectangle">
 			
 			<div id="emailOptions">
-			<h6> 
-			<a href ="sent.jsp" id="sent"> Sent </a> | 
-			<a href ="drafts.jsp" id="draft"> Drafts </a> |
-			<a href ="compose.jsp" id="compose"> Compose </a> | 
-			<a href ="" id="delete"> Delete </a>
-			</h6>
+				<h6> 
+					<a href ="sent.jsp" id="sent"> Sent </a> | 
+					<a href ="drafts.jsp" id="draft"> Drafts </a> |
+					<a href ="compose.jsp" id="compose"> Compose </a> | 
+					<a href ="" id="delete"> Delete </a>
+				</h6>
 			</div>
 			
 			<div id="tableArea">
-							<div class="userAdmin">
-				<table class="sortable" id="userTable">
-					<thead class="head">
-						<tr class="headerRow">
-						    <th> <input type="checkbox"></input></th>
-							<th>To</th>
-							<th>Subject</th>
-							<th>Date</th>
-				    </tr>
-					</thead>
-					<tfoot class="foot">
-						<tr class="headerRow">
-						    <th> <input type="checkbox"></input></th>
-							<th>To</th>
-							<th>Subject</th>
-							<th>Date</th>
-						</tr>
-					</tfoot>
-					<tbody>
-						<tr>
-							<th> <input type="checkbox"></input> </th>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<th> <input type="checkbox"></input> </th>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</tbody>
+				<div class="userAdmin">
+					<table class="sortable" id="userTable">
+						<thead class="head">
+							<tr class="headerRow">
+							    <th> <input type="checkbox"></input></th>
+								<th>To</th>
+								<th>Subject</th>
+								<th>Date</th>
+					    	</tr>
+						</thead>
+						<tfoot class="foot">
+							<tr class="headerRow">
+							    <th> <input type="checkbox"></input></th>
+								<th>To</th>
+								<th>Subject</th>
+								<th>Date</th>
+							</tr>
+						</tfoot>
+						<tbody>
+							<tr>
+								<th> <input type="checkbox"></input> </th>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<th> <input type="checkbox"></input> </th>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</tbody>
 				</table>
 			</div>
 		</div> <!-- End Table Area -->
 	</div>
  </div>
-
-
 <div id="footer"></div>
-</body>
 
+</body>
 </html>
