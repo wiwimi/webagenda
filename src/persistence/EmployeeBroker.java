@@ -264,7 +264,13 @@ public class EmployeeBroker extends Broker<Employee>
 					"Can not search with null employee template.");
 		if(caller == null)
 			throw new DBException("Cannot parse PermissionLevel when invoking Employee is null");
-		PermissionLevel pl = checkPermissions(searchTemplate,caller); /// will throw exceptions if permission 'levels' are invalid (doesn't detect individual ones)
+		PermissionLevel pl = null;
+		try {
+			pl = checkPermissions(searchTemplate,caller); /// will throw exceptions if permission 'levels' are invalid (doesn't detect individual ones)
+		}
+		catch(InvalidPermissionException ipE) {
+			ipE.printStackTrace();
+		}
 		
 		// Create sql select statement from employee object.
 		String select = "SELECT * FROM `WebAgenda`.`EMPLOYEE` emp WHERE ";

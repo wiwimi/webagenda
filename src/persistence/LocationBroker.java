@@ -113,7 +113,6 @@ public class LocationBroker extends Broker<Location>
 				"DELETE FROM `WebAgenda`.`LOCATION` WHERE locName = '%s' AND locDescription %s;",
 				deleteLocation.getName(),
 				(deleteLocation.getDesc() == null ? "IS NULL" : "= '"+deleteLocation.getDesc()+"'"));
-		
 		try
 			{
 			DBConnection conn = this.getConnection();
