@@ -54,7 +54,8 @@ public class UpdateSkill extends HttpServlet {
 						oldSkill = new Skill(results[0].getName(), results[0].getDesc());
 					
 						if(results!=null)
-						success = broker.update(oldSkill, newSkill);
+						//FIXME pass in the logged in employee object (from session) instead of null.
+						success = broker.update(oldSkill, newSkill, null);
 						
 					if (success)
 					{

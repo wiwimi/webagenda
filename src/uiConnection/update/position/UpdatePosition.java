@@ -51,7 +51,8 @@ public class UpdatePosition extends HttpServlet {
 						newPos = new Position(posName, posDesc, skills);
 						oldPos = (Position) session.getAttribute("oldPos");
 						
-						Position[] results = broker.get(oldPos);
+						//FIXME pass in the logged in employee object (from session) instead of null.
+						Position[] results = broker.get(oldPos, null);
 						
 						out.println(newPos.getName());
 						out.println(newPos.getDescription());
@@ -59,7 +60,8 @@ public class UpdatePosition extends HttpServlet {
 						out.println(oldPos.getDescription());
 						
 						if(results!=null)
-						success = broker.update(oldPos, newPos);
+						//FIXME pass in the logged in employee object (from session) instead of null.
+						success = broker.update(oldPos, newPos, null);
 						
 						out.println(success);
 						

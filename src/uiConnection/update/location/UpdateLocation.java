@@ -47,11 +47,13 @@ public class UpdateLocation extends HttpServlet {
 						
 						newLoc = new Location(locName, locDesc);
 						oldLoc = (Location) session.getAttribute("oldLoc");
-						Location[] results = broker.get(oldLoc);
+						//FIXME pass in the logged in employee object (from session) instead of null.
+						Location[] results = broker.get(oldLoc, null);
 						oldLoc = new Location(results[0].getName(), results[0].getDesc());
 						
 						if(results!=null)
-						success = broker.update(oldLoc, newLoc);
+						//FIXME pass in the logged in employee object (from session) instead of null.
+						success = broker.update(oldLoc, newLoc, null);
 						
 					if (success)
 					{
