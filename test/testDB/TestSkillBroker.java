@@ -112,7 +112,7 @@ public class TestSkillBroker {
 		Skill newSkill = new Skill("Cooking", "Cook");
 		   
 		try {
-			boolean success = broker.update(oldSkill,newSkill);
+			boolean success = broker.update(oldSkill,newSkill, user);
 			if(success)
 			{
 				System.out.println(newSkill.toString());
@@ -128,7 +128,7 @@ public class TestSkillBroker {
 		
 		//Reverse the changes of the update.
 		try {
-			boolean success = broker.update(newSkill,oldSkill);
+			boolean success = broker.update(newSkill,oldSkill, user);
 			if(success)
 			{
 				System.out.println(oldSkill.toString());

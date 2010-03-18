@@ -12,6 +12,8 @@ import org.junit.Before;
 import org.junit.Test;
 import exception.DBDownException;
 import exception.DBException;
+import exception.InvalidPermissionException;
+import exception.PermissionViolationException;
 import business.Employee;
 import business.schedule.Location;
 import persistence.LocationBroker;
@@ -64,26 +66,52 @@ public class TestLocationBroker
 			{
 				System.out.println(loc.toString());
 			}
-			
-		} catch (DBException e) {
-			e.printStackTrace();
-			fail();
-		} catch (DBDownException e) {
-			e.printStackTrace();
-			fail();
 		}
+		catch (DBException e) 
+			{
+			e.printStackTrace();
+			fail();
+			} 
+		catch (DBDownException e) 
+			{
+			e.printStackTrace();
+			fail();
+			}
+		catch (InvalidPermissionException e) 
+			{
+			e.printStackTrace();
+			fail();
+			}
+		catch (PermissionViolationException e) 
+			{
+			e.printStackTrace();
+			fail();
+			}
 		
 		//Attempt to delete the test location.
 		try {
 		broker.delete(loc, user);
 		
-		} catch (DBException e) {
+		} catch (DBException e) 
+			{
 			e.printStackTrace();
 			fail();
-		} catch (DBDownException e) {
+			} 
+		catch (DBDownException e) 
+			{
 			e.printStackTrace();
 			fail();
-		}
+			}
+		catch (InvalidPermissionException e) 
+			{
+			e.printStackTrace();
+			fail();
+			}
+		catch (PermissionViolationException e) 
+			{
+			e.printStackTrace();
+			fail();
+			}
 		
 		assertTrue(true);
 		}
@@ -100,13 +128,26 @@ public class TestLocationBroker
 				System.out.println(loc.toString());
 			}
 			
-		} catch (DBException e) {
+		} catch (DBException e) 
+			{
 			e.printStackTrace();
 			fail();
-		} catch (DBDownException e) {
+			}
+		catch (DBDownException e) 
+			{
 			e.printStackTrace();
 			fail();
-		}
+			}
+		catch (InvalidPermissionException e) 
+			{
+			e.printStackTrace();
+			fail();
+			}
+		catch (PermissionViolationException e) 
+			{
+			e.printStackTrace();
+			fail();
+			}
 		assertTrue(true);
 		}
 	/**
@@ -138,7 +179,11 @@ public class TestLocationBroker
 			e.printStackTrace();
 			fail();
 			}
-		
+		catch (InvalidPermissionException e) 
+			{
+			e.printStackTrace();
+			fail();
+			}
 		assertTrue(true);
 		}
 	
@@ -167,7 +212,11 @@ public class TestLocationBroker
 			e.printStackTrace();
 			fail();
 			}
-		
+		catch (InvalidPermissionException e) 
+			{
+			e.printStackTrace();
+			fail();
+			}
 		assertTrue(true);
 		}
 	@Test
@@ -195,7 +244,11 @@ public class TestLocationBroker
 			e.printStackTrace();
 			fail();
 			}
-		
+		catch (InvalidPermissionException e) 
+			{
+			e.printStackTrace();
+			fail();
+			}
 		assertTrue(true);
 		}
 	
@@ -229,7 +282,11 @@ public class TestLocationBroker
 			e.printStackTrace();
 			fail();
 			}
-		
+		catch (InvalidPermissionException e) 
+			{
+			e.printStackTrace();
+			fail();
+			}
 		assertTrue(true);
 		}
 	
@@ -243,35 +300,62 @@ public class TestLocationBroker
 		Location newLoc = new Location("Mohave Grill", "Restaurant");
 		   
 		try {
-			boolean success = broker.update(oldLoc,newLoc);
+			boolean success = broker.update(oldLoc,newLoc, user);
 			if(success)
 			{
 				System.out.println(newLoc.toString());
 			}
 			
-		} catch (DBException e) {
+		} 
+		catch (DBException e) 
+			{
 			e.printStackTrace();
 			fail();
-		} catch (DBDownException e) {
+			} 
+		catch (DBDownException e) 
+			{
 			e.printStackTrace();
 			fail();
-		}
+			}
+		catch (InvalidPermissionException e) 
+			{
+			e.printStackTrace();
+			fail();
+			}
+		catch (PermissionViolationException e) 
+			{
+			e.printStackTrace();
+			fail();
+			}
 		
 		//Reverse the changes of the update.
 		try {
-			boolean success = broker.update(newLoc,oldLoc);
+			boolean success = broker.update(newLoc,oldLoc, user);
 			if(success)
 			{
 				System.out.println(oldLoc.toString());
 			}
-		
-		} catch (DBException e) {
+		} 
+		catch (DBException e) 
+			{
 			e.printStackTrace();
 			fail();
-		} catch (DBDownException e) {
+			} 
+		catch (DBDownException e) 
+			{
 			e.printStackTrace();
 			fail();
-		}
+			}
+		catch (InvalidPermissionException e) 
+			{
+			e.printStackTrace();
+			fail();
+			}
+		catch (PermissionViolationException e) 
+			{
+			e.printStackTrace();
+			fail();
+			}
 		
 		assertTrue(true);
 	}

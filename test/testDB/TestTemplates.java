@@ -23,7 +23,7 @@ public class TestTemplates {
 		
 		PositionBroker pbrok = PositionBroker.getBroker();
 		try {
-			Date d;
+			Date d = null;
 			Employee user = new Employee(12314, "Chaney", "Henson",  d, "user1", "password",  "2a" );
 			Position[] posarray = pbrok.get(new Position("Cook",null), user);
 			for(Position p : posarray)
@@ -32,7 +32,7 @@ public class TestTemplates {
 			pbrok.create(new Position("Fryer",null), user);
 			
 			posarray = pbrok.get(new Position("Fryer",null), user);
-			pbrok.update(null,new Position("Fryer","someone who fries food",null));
+			pbrok.update(null,new Position("Fryer","someone who fries food",null), user);
 			posarray = pbrok.get(new Position("Cook",null), user);
 			for(Position p : posarray)
 				System.out.println(p);

@@ -374,6 +374,10 @@ public class TestEmployeeBroker
 			{
 			e.printStackTrace();
 			}
+		catch (PermissionViolationException e)
+			{
+			e.printStackTrace();
+			}
 		
 		//Modify new employee and send in as update.
 		newEmp.setLastLogin(new Timestamp(System.currentTimeMillis()));
@@ -381,7 +385,7 @@ public class TestEmployeeBroker
 		newEmp.setEmail("fakeemail@fake.com");
 		try
 			{
-			boolean successful = empBroker.update(null,newEmp);
+			boolean successful = empBroker.update(null,newEmp, user);
 			assertTrue(successful);
 			System.out.println("Employee updated: "+successful);
 			System.out.println(newEmp);
@@ -395,7 +399,15 @@ public class TestEmployeeBroker
 			{
 			e.printStackTrace();
 			}
-		
+		catch (InvalidPermissionException e) 
+			{
+			e.printStackTrace();
+			}
+		catch (PermissionViolationException e) 
+			{
+			e.printStackTrace();
+			}
+	
 		//Search for employee employee.
 		try
 			{
@@ -437,6 +449,10 @@ public class TestEmployeeBroker
 			e.printStackTrace();
 			}
 		catch (InvalidPermissionException e)
+			{
+			e.printStackTrace();
+			}
+		catch (PermissionViolationException e)
 			{
 			e.printStackTrace();
 			}

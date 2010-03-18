@@ -143,7 +143,7 @@ public class TestPositionBroker {
 			
 			if(results!=null)
 			{
-				success = broker.update(oldPos, updatePos);
+				success = broker.update(oldPos, updatePos, user);
 				System.out.println(success);
 			}
 			else
