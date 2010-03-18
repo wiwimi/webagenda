@@ -46,78 +46,72 @@
 	</div>
 	
 	<% 
-					if(request.getParameter("message") != null)
+		if(request.getParameter("message") != null)
+		{
+			if(request.getParameter("message").equals("true"))
+			{
+	%>
+				<script type="text/javascript">
+					$(function()
 					{
-						if(request.getParameter("message").equals("true"))
+						$.flashMessenger("The location has been successfully created", 
+						{ 	
+							modal:true, 
+							autoClose: false 
+						});	
+					});
+				</script>
+	<% 			   
+			}
+			else if(request.getParameter("message").equals("false"))
+			{
+	%>
+				<script type="text/javascript">
+					$(function()
+					{
+						$.flashMessenger("An error occured while deleting the Position. Please contact your admin",
 						{
-			 %>
-							<script type="text/javascript">
-											$(function()
-										    {
-												
-												    $.flashMessenger("The location has been successfully created", 
-													{ 	
-														modal:true, 
-														autoClose: false 
-													});	
-											});
-							</script>
-			   <% 			   
-						 }
-						else if(request.getParameter("message").equals("false"))
-						{
-				%>
-							<script type="text/javascript">
-								$(function()
-								    {
-										$.flashMessenger("An error occured while deleting the Position. Please contact your admin",
-								        {
-											   modal:true,
-							    		       clsName:"err", 
-								    		   autoClose:false
-								    	 }); 
-								   }); 
-							</script>
-				<%
-						}
-					}
-				%>
-	
-		<div id="locationWidget" class="fullWidget">
-			<div class="widgetUpperRectangle" id="locationsUpperRectangle">
-				<div class="widgetTitle" id="locationsWidgetTitle">Locations</div>
-			</div>
-			
+							modal:true,
+							clsName:"err", 
+							autoClose:false
+						}); 
+					}); 
+				</script>
+	<%
+			}
+		}
+	%>
+	<div id="locationWidget" class="fullWidget">
+		<div class="widgetUpperRectangle" id="locationsUpperRectangle">
+			<div class="widgetTitle" id="locationsWidgetTitle">Locations</div>
+		</div>
 		<div class="widgetLowerRectangle" id="locationsLowerRectangle">
 
 		<div id ="creationForm">
 			<form class="addLocationForm" action="../AddLocation" id="form" name="form" method="POST">
-			<div id="location">
-			
-			 <div id="formButtons">
-					        <input type="submit" name="submit"  class="button" value="Add" > 
-							<input type="button" name="submit" class="button"  onClick="location.href='searchResults.jsp?locName=' + form.locName.value" value="Search" > 
-					       	<input type="reset" name="clear" class="button" value="Clear Screen"> 
-			     </div>
-			     <fieldset>
-					<legend > Location Details </legend>
-					
+				<div id="location">
+					<div id="formButtons">
+						<input type="submit" name="submit"  class="button" value="Add" > 
+						<input type="button" name="submit" class="button"  onClick="location.href='searchResults.jsp?locName=' + form.locName.value" value="Search" > 
+						<input type="reset" name="clear" class="button" value="Clear Screen"> 
+				    </div>
+				    <fieldset>
+						<legend > Location Details </legend>
 							<p>	<label class="label"> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="locName" class="required" size ="30"> </p>
-							
 							<p>	<label class="label"> Description: </label></p>
 							<textarea  name="desc" cols="23" rows="6" tabindex="101"></textarea>
-				</fieldset>
-				<div id="formButtons">
-						        <input type="submit" name="submit"  class="button" value="Add" > 
-								<input type="button" name="submit" class="button"  onClick="location.href='searchResults.jsp?locName=' + form.locName.value" value="Search" > 
-								<input type="reset" name="clear" class="button" value="Clear Screen"> 
-				</div>
-			  </div>
-		      </form>
-		</div>
-	</div>
-
-</div>
+				    </fieldset>
+				    <div id="formButtons">
+						<input type="submit" name="submit"  class="button" value="Add" > 
+						<input type="button" name="submit" class="button"  onClick="location.href='locSearchResults.jsp?locName=' + form.locName.value" value="Search" > 
+						<input type="reset" name="clear" class="button" value="Clear Screen"> 
+				   </div>
+			   </div>
+		   </form>
+	    </div>
+	    </div>
+    </div>
+    
 <div id="footer"></div>
 
 </body>

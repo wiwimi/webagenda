@@ -36,89 +36,82 @@
 
 </head>
 <body>
-<div id="instructions">
-	   Fields marked with <em class="asterisk" > *</em> are required.
-</div>
-
+	<div id="instructions">
+		   Fields marked with <em class="asterisk" > *</em> are required.
+	</div>
 	<%
-					if(request.getParameter("update") != null)
+		if(request.getParameter("update") != null)
+		{
+			if(request.getParameter("update").equals("true"))
+			{
+				//out.println("Location was updated");
+	%>
+				<script type="text/javascript">
+					$(function()
+				    {
+						$.flashMessenger("The location has been successfully updated", 
+						{ 	
+							modal:true, 
+							autoClose: false 
+						});	
+					});
+				</script>
+	<% 			   
+			}
+			else if(request.getParameter("update").equals("false"))
+			{
+	%>
+				<script type="text/javascript">
+					$(function()
 					{
-						if(request.getParameter("update").equals("true"))
-						{
-							//out.println("Location was updated");
-	            %>
-						<script type="text/javascript">
-									$(function()
-								    {
-											$.flashMessenger("The location has been successfully updated", 
-											{ 	
-												modal:true, 
-												autoClose: false 
-											});	
-									});
-						</script>
-				<% 			   
-						}
-						else if(request.getParameter("update").equals("false"))
-						{
-				%>
-							
-							<script type="text/javascript">
-								$(function()
-								    {
-										
-								       $.flashMessenger("The attempt to update failed.",
-								        {
-											   modal:true,
-							    		       clsName:"err", 
-								    		   autoClose:false
-								    	 }); 
-								   }); 
-							</script>
-				<%
-						}
-					}
-				%>
- <div id="locationWidget" class="fullWidget">
-	<div class="widgetUpperRectangle" id="locationsUpperRectangle">
+						 $.flashMessenger("The attempt to update failed.",
+					     {
+						  	modal:true,
+				    		clsName:"err", 
+					    	autoClose:false
+					   	  }); 
+					}); 
+				</script>
+	<%
+			}
+		}
+	%>
+		 <div id="locationWidget" class="fullWidget">
+			<div class="widgetUpperRectangle" id="locationsUpperRectangle">
 				<div class="widgetTitle" id="locationsWidgetTitle">Locations</div>
 			</div>
-			
+		
 		<div class="widgetLowerRectangle" id="locationsLowerRectangle">
-
-		<div id ="creationForm">
-			<form class="addLocationForm" action="../UpdateLocation" id="form" name="form" method="POST">
-			<div id="location">
-			
-			 <div id="formButtons">
-					        <input type="submit" name="submit"  class="button" value="Update" > 
+			<div id ="creationForm">
+				<form class="addLocationForm" action="../UpdateLocation" id="form" name="form" method="POST">
+					<div id="location">
+						<div id="formButtons">
+							<input type="submit" name="submit"  class="button" value="Update" > 
 							<input type="button" name="submit" class="button"  onClick="location.href='searchResults.jsp?locName=' + form.locName.value" value="Search" > 
-					       	<input type="reset" name="clear" class="button" value="Clear Screen"> 
-			     </div>
-			     <fieldset>
-					<legend > Location Details </legend>
-					
-					<%
+							<input type="reset" name="clear" class="button" value="Clear Screen"> 
+						</div>
+				     <fieldset>
+					 <legend > Location Details </legend>
+					 <%
 						String locName = request.getParameter("locName");
 						String locDesc= request.getParameter("locDesc");
 						Location oldLoc = new Location(locName, locDesc);
 						session.setAttribute("oldLoc",oldLoc);
-				    %>
-							<p>	<label class="label"> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="locName" value ="<%=locName%>" class="required" size ="30"> </p>
-							
-							<p>	<label class="label"> Description: </label></p>
-							<textarea  name="locDesc" cols="23" rows="6" tabindex="101"> <%=locDesc%> </textarea>
-				</fieldset>
-				<div id="formButtons">
-						        <input type="submit" name="submit"  class="button" value="Update" > 
-								<input type="button" name="submit" class="button"  onClick="location.href='searchResults.jsp?locName=' + form.locName.value" value="Search" > 
-								<input type="reset" name="clear" class="button" value="Clear Screen"> 
-			     </div>
-			  </div>
-		    </form>
-		</div>
-	</div>
-</div>
-<div id="footer"></div>
+					 %>
+						<p>	<label class="label"> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="locName" value ="<%=locName%>" class="required" size ="30"> </p>
+						<p>	<label class="label"> Description: </label></p>
+						<textarea  name="locDesc" cols="23" rows="6" tabindex="101"> <%=locDesc%> </textarea>
+					</fieldset>
+						<div id="formButtons">
+					        <input type="submit" name="submit"  class="button" value="Update" > 
+							<input type="button" name="submit" class="button"  onClick="location.href='searchResults.jsp?locName=' + form.locName.value" value="Search" > 
+							<input type="reset" name="clear" class="button" value="Clear Screen"> 
+					     </div>
+				     </div>
+			    </form>
+			</div>
+		 </div>
+	  </div>
+	  <div id="footer"></div>
 </body>
 </html>
