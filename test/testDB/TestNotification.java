@@ -26,9 +26,9 @@ public class TestNotification {
 	public static void main(String[] args) {
 		
 		NotificationBroker nbrok = NotificationBroker.getBroker();
-		Date d= null;
+		
 		try {
-			Employee user = new Employee(12314, "Chaney", "Henson",  d, "user1", "password",  "2a" );
+			Employee user = new Employee(12314, "Chaney", "Henson", "user1", "password",  "2a" );
 			Notification[] nots = nbrok.get(null, user); // get all
 			for(int i = 0; i < nots.length; i++)
 			{

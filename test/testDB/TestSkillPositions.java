@@ -21,7 +21,6 @@ import persistence.SkillBroker;
 public class TestSkillPositions {
 
 	private PositionBroker pbrok = null;
-	private Date d;
 	private Employee user;
 	private Skill[] skills = new Skill[]{new Skill("The Force"),
 			new Skill("Dark Side"),
@@ -33,7 +32,7 @@ public class TestSkillPositions {
 	@Before
 	public void setUp() throws Exception {
 		pbrok = PositionBroker.getBroker();
-		user = new Employee(12314, "Chaney", "Henson",  d, "user1", "password",  "2a" );
+		user = new Employee(12314, "Chaney", "Henson", "user1", "password",  "2a" );
 		
 	}
 

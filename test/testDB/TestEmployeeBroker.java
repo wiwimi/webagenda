@@ -25,7 +25,6 @@ import business.Employee;
 public class TestEmployeeBroker
 	{
 	private EmployeeBroker empBroker;
-	private Date d;
 	private Employee user;
 	
 	
@@ -37,7 +36,7 @@ public class TestEmployeeBroker
 		{
 		empBroker = EmployeeBroker.getBroker();
 		empBroker.initConnectionThread();
-		user = new Employee(12314, "Chaney", "Henson",  d, "user1", "password",  "2a" );
+		user = new Employee(12314, "Chaney", "Henson","user1", "password",  "2a" );
 		
 		}
 	
@@ -64,7 +63,7 @@ public class TestEmployeeBroker
 		
 		Employee newEmp = null;
 		try {
-			newEmp = new Employee(80000,"Bilbo","Baggins",null,"bilb01","password",1,'a');
+			newEmp = new Employee(80000,"Bilbo","Baggins","bilb01","password",1,'a');
 			newEmp.setActive(true);
 		} catch (DBException e1) {
 			// TODO Auto-generated catch block
@@ -166,7 +165,7 @@ public class TestEmployeeBroker
 		
 		Employee newEmp = null;
 		try {
-			newEmp = new Employee(80002,"Bilbo","Baggins",null,"bilb01","password",
+			newEmp = new Employee(80002,"Bilbo","Baggins","bilb01","password",
 					"1a");
 		} catch (DBException e1) {
 			// TODO Auto-generated catch block

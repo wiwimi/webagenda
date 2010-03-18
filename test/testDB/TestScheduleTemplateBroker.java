@@ -29,7 +29,6 @@ import utilities.DoubleLinkedList;
 public class TestScheduleTemplateBroker
 	{
 	ScheduleTemplateBroker stb = null;
-	private Date d;
 	private Employee user;
 	
 	/**
@@ -39,7 +38,7 @@ public class TestScheduleTemplateBroker
 	public void setUp() throws Exception
 		{
 		stb = ScheduleTemplateBroker.getBroker();
-		user = new Employee(12314, "Chaney", "Henson",  d, "user1", "password",  "2a" );
+		user = new Employee(12314, "Chaney", "Henson","user1", "password",  "2a" );
 		}
 	
 	/**

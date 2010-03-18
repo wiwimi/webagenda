@@ -23,8 +23,7 @@ public class TestTemplates {
 		
 		PositionBroker pbrok = PositionBroker.getBroker();
 		try {
-			Date d = null;
-			Employee user = new Employee(12314, "Chaney", "Henson",  d, "user1", "password",  "2a" );
+			Employee user = new Employee(12314, "Chaney", "Henson","user1", "password",  "2a" );
 			Position[] posarray = pbrok.get(new Position("Cook",null), user);
 			for(Position p : posarray)
 				System.out.println(p);

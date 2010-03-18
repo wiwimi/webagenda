@@ -24,7 +24,7 @@ public class TestPositionBroker {
 	public void setUp() throws Exception {
 		broker = PositionBroker.getBroker();
 		broker.initConnectionThread();
-		user = new Employee(12314, "Chaney", "Henson",  d, "user1", "password",  "2a" );
+		user = new Employee(12314, "Chaney", "Henson","user1", "password",  "2a" );
 	}
 
 	@After

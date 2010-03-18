@@ -26,7 +26,6 @@ import persistence.LocationBroker;
 public class TestLocationBroker
 	{
 	private LocationBroker broker;
-	private Date d;
 	private Employee user;
 	
 	
@@ -38,7 +37,7 @@ public class TestLocationBroker
 		{
 		broker = LocationBroker.getBroker();
 		broker.initConnectionThread();
-		user = new Employee(12314, "Chaney", "Henson",  d, "user1", "password",  "2a" );
+		user = new Employee(12314, "Chaney", "Henson", "user1", "password",  "2a" );
 		}
 	
 	/**
