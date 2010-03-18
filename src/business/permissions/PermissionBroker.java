@@ -309,7 +309,7 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 	}
 
 	/**
-	 * Method that finds all permission levels where the level equals or is below the searchTemplate's level.
+	 * Method that finds all permission levels where the level is below the searchTemplate's level.
 	 * 
 	 * @param int level 
 	 * @return PermissionLevel[] Levels below parameter
@@ -317,9 +317,9 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 	 */
 	public PermissionLevel[] getAllBelow(int level) throws DBException, DBDownException {
 		
-		if(level < 0) throw new DBException("Unable to search for Permission Levels with a negative value");
+		if(level <= 0) throw new DBException("Unable to search for Permission Levels with a negative value");
 		// Create sql select statement from permission level object.
-		String select = "SELECT * FROM `WebAgenda`.`PERMISSIONSET` ORDER BY plevel;";
+		String select = "SELECT * FROM `WebAgenda`.`PERMISSIONSET` WHERE plevel='" + (level - 1 + ' ') + "' ORDER BY plevel;";
 		
 		PermissionLevel[] foundPermissions = null;
 		try {

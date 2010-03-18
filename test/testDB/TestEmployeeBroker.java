@@ -69,7 +69,6 @@ public class TestEmployeeBroker
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		System.out.println(newEmp);
 		//Add employee
 		boolean successful;
 		try
@@ -102,7 +101,6 @@ public class TestEmployeeBroker
 			{
 			Employee empSearch = new Employee();
 			empSearch.setEmpID(80000);
-			
 			Employee[] results = empBroker.get(empSearch, user);
 			if (results == null)
 				fail("Employee search failed, employee not returned.");

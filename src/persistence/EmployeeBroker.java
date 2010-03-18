@@ -65,7 +65,20 @@ public class EmployeeBroker extends Broker<Employee>
 	private PermissionLevel checkPermissions(Employee target, Employee caller) 
 		throws InvalidPermissionException, DBException, DBDownException
 	{	
-		PermissionLevel pl = persistence.PermissionBroker.getBroker().get(target.getLevel(), target.getVersion(), caller)[0];
+		
+		System.out.println("PLEVEL CHECK " + target);
+		// If item being sent in is a search Employee, this will trigger that it's not exactly valid
+		// so it can be dealt with by the program
+		try {
+			target.getLevel();
+			target.getVersion();
+			
+		}
+		catch(Exception E) {
+			throw new InvalidPermissionException("PermissionLevel not found in target Employee");
+		}
+		
+		PermissionLevel[] pl = persistence.PermissionBroker.getBroker().get(target.getLevel(), target.getVersion(), caller);
 		if(caller.getLevel() < target.getLevel()) {
 			// Do not allow creation access
 			throw new InvalidPermissionException("User cannot create Employees.");
@@ -73,7 +86,7 @@ public class EmployeeBroker extends Broker<Employee>
 		else if(caller.getLevel() == target.getLevel()) {
 			if(pl == null)
 				throw new InvalidPermissionException("No matches for caller's Permission Level found");
-			if(pl.getLevel_permissions().getTrusted() <= caller.getLevel()) {
+			if(pl[0].getLevel_permissions().getTrusted() <= caller.getLevel()) {
 				throw new InvalidPermissionException("User is not trusted to the level required to perform this action");
 				
 			}
@@ -82,7 +95,9 @@ public class EmployeeBroker extends Broker<Employee>
 				// TODO: Log this method's results, allow user to continue
 			}
 		}
-		return pl;
+		if(pl == null) return null; /* If search object cannot bring back a
+		 	permission level, the array cannot point to any index without throwing a npE */
+		return pl[0];
 	}
 	
 	
@@ -100,8 +115,10 @@ public class EmployeeBroker extends Broker<Employee>
 			throw new DBException("Cannot parse PermissionLevel when invoking Employee is null");
 		
 		PermissionLevel pl = checkPermissions(createEmp,caller); // will throw exceptions if permission 'levels' are invalid (doesn't detect individual ones)
+		System.out.println(pl + " permission level");
 		System.out.println("canManageEmployees: "  + pl.getLevel_permissions().isCanManageEmployees() + " "  + caller.getGivenName());
 		if(!pl.getLevel_permissions().isCanManageEmployees()) {
+			
 			throw new PermissionViolationException("User is not authorized to Create an Employee");
 		}
 		
@@ -271,8 +288,7 @@ public class EmployeeBroker extends Broker<Employee>
 					"Can not search with null employee template.");
 		if(caller == null)
 			throw new DBException("Cannot parse PermissionLevel when invoking Employee is null");
-		
-		checkPermissions(searchTemplate,caller); /// will throw exceptions if permission 'levels' are invalid (doesn't detect individual ones)
+		PermissionLevel pl = checkPermissions(searchTemplate,caller); /// will throw exceptions if permission 'levels' are invalid (doesn't detect individual ones)
 		
 		// Create sql select statement from employee object.
 		String select = "SELECT emp.*,sup.empID AS 'supID' FROM `WebAgenda`.`EMPLOYEE` emp LEFT JOIN `WebAgenda`.`EMPLOYEE` sup ON emp.supRecordID = sup.empRecordID WHERE ";
