@@ -5,8 +5,6 @@ package testDB;
 
 import static org.junit.Assert.*;
 
-import java.sql.Date;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -115,40 +113,7 @@ public class TestLocationBroker
 		assertTrue(true);
 		}
 	
-	@Test
-	public void testDeleteLocation()
-		{
-		Location loc = new Location("Mac Grill", "Restaurant");
-		    
-		try {
-			boolean success = broker.delete(loc, user);
-			if(success)
-			{
-				System.out.println(loc.toString());
-			}
-			
-		} catch (DBException e) 
-			{
-			e.printStackTrace();
-			fail();
-			}
-		catch (DBDownException e) 
-			{
-			e.printStackTrace();
-			fail();
-			}
-		catch (InvalidPermissionException e) 
-			{
-			e.printStackTrace();
-			fail();
-			}
-		catch (PermissionViolationException e) 
-			{
-			e.printStackTrace();
-			fail();
-			}
-		assertTrue(true);
-		}
+	
 	/**
 	 * Test method for {@link persistence.LocationBroker#get(business.schedule.Location)}.
 	 */
