@@ -5,6 +5,7 @@ package persistence;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import exception.DBChangeException;
 import exception.DBDownException;
 import exception.DBException;
 import exception.InvalidPermissionException;
@@ -47,8 +48,7 @@ public abstract class Broker<E extends BusinessObject>
 	
 	/**
 	 * Accepts a newly made object, and creates its equivalent record within the
-	 * database. TODO An exception will be thrown if there is already a record in
-	 * the database with the same primary key.
+	 * database.
 	 * 
 	 * @param createObj The object to add to the database.
 	 * @return true if the create was successful, otherwise false.
@@ -68,13 +68,12 @@ public abstract class Broker<E extends BusinessObject>
 	/**
 	 * Applies all changes to the updated object to its equivalent record within
 	 * the database. The updated object must have originally been retrieved from
-	 * the database. TODO An exception will be thrown if the record to be updated
-	 * does not exist in the database.
+	 * the database.
 	 * 
 	 * @param updateObj The previously retrieved object that has been updated.
 	 * @return true if the update was successful, otherwise false.
 	 */
-	public abstract boolean update(E oldObj, E newObj, Employee caller) throws DBException, DBDownException, InvalidPermissionException, PermissionViolationException;
+	public abstract boolean update(E oldObj, E newObj, Employee caller) throws DBChangeException, DBException, DBDownException, InvalidPermissionException, PermissionViolationException;
 	
 	/**
 	 * Removes the record from the database that is equivalent to the given
@@ -84,7 +83,7 @@ public abstract class Broker<E extends BusinessObject>
 	 * @param deleteObj
 	 * @return true if the delete was successful, otherwise false.
 	 */
-	public abstract boolean delete(E deleteObj, Employee caller) throws DBException, DBDownException, InvalidPermissionException, PermissionViolationException;
+	public abstract boolean delete(E deleteObj, Employee caller) throws DBChangeException, DBException, DBDownException, InvalidPermissionException, PermissionViolationException;
 	
 	/**
 	 * Parses a ResultSet returned by a select query back into cachable objects.
