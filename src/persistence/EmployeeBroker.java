@@ -64,14 +64,13 @@ public class EmployeeBroker extends Broker<Employee>
 	 */
 	private PermissionLevel checkPermissions(Employee target, Employee caller) 
 		throws InvalidPermissionException, DBException, DBDownException
-	{
-		PermissionLevel pl = null;
+	{	
+		PermissionLevel pl = persistence.PermissionBroker.getBroker().get(target.getLevel(), target.getVersion(), caller)[0];
 		if(caller.getLevel() < target.getLevel()) {
 			// Do not allow creation access
 			throw new InvalidPermissionException("User cannot create Employees.");
 		}
 		else if(caller.getLevel() == target.getLevel()) {
-			pl = persistence.PermissionBroker.getBroker(caller).get(target.getLevel(), target.getVersion(), caller)[0];
 			if(pl == null)
 				throw new InvalidPermissionException("No matches for caller's Permission Level found");
 			if(pl.getLevel_permissions().getTrusted() <= caller.getLevel()) {
@@ -100,11 +99,11 @@ public class EmployeeBroker extends Broker<Employee>
 		if(caller == null)
 			throw new DBException("Cannot parse PermissionLevel when invoking Employee is null");
 		
-		PermissionLevel pl = checkPermissions(createEmp,caller); /// will throw exceptions if permission 'levels' are invalid (doesn't detect individual ones)
+		PermissionLevel pl = checkPermissions(createEmp,caller); // will throw exceptions if permission 'levels' are invalid (doesn't detect individual ones)
+		System.out.println("canManageEmployees: "  + pl.getLevel_permissions().isCanManageEmployees() + " "  + caller.getGivenName());
 		if(!pl.getLevel_permissions().isCanManageEmployees()) {
 			throw new PermissionViolationException("User is not authorized to Create an Employee");
 		}
-		
 		
 		/*
 		 * Make sure all "not null" DB fields are filled. Expand this to throw a
@@ -179,7 +178,7 @@ public class EmployeeBroker extends Broker<Employee>
 			
 			//Get result boolean from procedure.
 			result = cs.getBoolean("result");
-			
+			System.out.println("EBROKER: Result: " + result);
 			cs.close();
 			conn.setAvailable(true);
 			}

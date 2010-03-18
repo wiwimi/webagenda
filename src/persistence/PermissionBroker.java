@@ -30,9 +30,6 @@ import exception.PermissionViolationException;
  */
 public class PermissionBroker extends Broker<PermissionLevel>{
 	
-	/** Employee object that is utilizing the PermissionBroker. All validation from this class relies on
-	 * that object. If it is null, exceptions will be thrown. */
-	private Employee employee = null;
 	
 	private static volatile PermissionBroker pbrok = null; 
 	
@@ -42,10 +39,8 @@ public class PermissionBroker extends Broker<PermissionLevel>{
 	 * 
 	 * @param emp Employee calling PermisionBroker in permissions package.
 	 */
-	public PermissionBroker(Employee emp) throws DBException
+	public PermissionBroker() throws DBException
 	{
-		if(this.employee == null) throw new DBException("A null value was detected instead of an Employee.");
-		this.employee = emp;
 	}
 	
 	@Override
@@ -69,9 +64,9 @@ public class PermissionBroker extends Broker<PermissionLevel>{
 		return business.permissions.PermissionBroker.getBroker().get(level, version, emp);
 	}
 	
-	public static PermissionBroker getBroker(Employee e) throws DBException
+	public static PermissionBroker getBroker() throws DBException
 	{
-		if(pbrok == null) pbrok = new PermissionBroker(e);
+		if(pbrok == null) pbrok = new PermissionBroker();
 		return pbrok;
 	}
 
@@ -87,7 +82,7 @@ public class PermissionBroker extends Broker<PermissionLevel>{
 
 	@Override
 	public boolean update(PermissionLevel oldPL, PermissionLevel updateObj, Employee caller) throws DBException, InvalidPermissionException, DBDownException, PermissionViolationException {
-		return PermissionAccess.getAccess().updatePermissionLevel(oldPL, updateObj, employee);
+		return PermissionAccess.getAccess().updatePermissionLevel(oldPL, updateObj, caller);
 
 	}
 	
