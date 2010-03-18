@@ -136,21 +136,34 @@ public class Employee extends BusinessObject
 		this.birthDate = date;
 		this.username = username;
 		this.password = password;
-		if(plevel.length() != 3) throw new DBException("Invalid permission level format");
-		if(Character.isLetter(plevel.charAt(plevel.length() - 1)) || plevel.charAt(plevel.length() - 1) == ' ')
-		{
-			this.version = plevel.charAt(plevel.length() - 1);
-			try {
-				int i = Integer.parseInt(plevel.substring(0,plevel.length() - 1));
-				if(i < 0) throw new DBException("Cannot create an employee with a negative permission level");
-				if(i > 99) throw new DBException("Level is too high to create. 0-99 are acceptable levels");
-				this.level = i;
+		if(plevel.length() > 3 || plevel.length() == 0) throw new DBException("Invalid permission level format");
+		try {
+			if(Character.isLetter(plevel.charAt(plevel.length() - 1)) || plevel.charAt(plevel.length() - 1) == ' ')
+			{
+				this.version = plevel.charAt(plevel.length() - 1);
+				try {
+					int i = Integer.parseInt(plevel.substring(0,plevel.length() - 1));
+					if(i < 0) throw new DBException("Cannot create an employee with a negative permission level");
+					if(i > 99) throw new DBException("Level is too high to create. 0-99 are acceptable levels");
+					this.level = i;
+				}
+				catch(NumberFormatException nfE) {
+					throw new DBException("Permission Level " + plevel + " is in an invalid format");
+				}
 			}
-			catch(NumberFormatException nfE) {
-				throw new DBException("Permission Level " + plevel + " is in an invalid format");
+			else {
+				try {
+					int i = Integer.parseInt(plevel);
+					if(i < 0) throw new DBException("Cannot create an employee with a negative permission level");
+					this.level = i;
+					this.version = ' ';
+				}
+				catch(NumberFormatException nfE) {
+					throw new DBException("Permission Level " + plevel + " is in an invalid format.");
+				}
 			}
 		}
-		else {
+		catch(ArrayIndexOutOfBoundsException aioobE) {
 			try {
 				int i = Integer.parseInt(plevel);
 				if(i < 0) throw new DBException("Cannot create an employee with a negative permission level");
@@ -398,7 +411,7 @@ public class Employee extends BusinessObject
 		return empID + ";" + supervisorID + ";" + givenName + ";" + familyName +
 				";" + birthDate + ";" + email + ";" + username + ";" + password +
 				";" + prefLocation + ";" + prefPosition + ";" + level + version + ";" +
-				lastLogin + ";" + active;
+				lastLogin + ";" + (active == null ? "false" : "true");
 		}
 
 	/**
