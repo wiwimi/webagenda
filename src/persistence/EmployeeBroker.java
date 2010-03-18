@@ -561,7 +561,6 @@ public class EmployeeBroker extends Broker<Employee>
 						rs.getInt("empID"),
 						rs.getString("givenName"),
 						rs.getString("familyName"),
-						rs.getDate("birthDate"),
 						rs.getString("email"),
 						rs.getString("username"),
 						rs.getString("plevel")
@@ -571,6 +570,7 @@ public class EmployeeBroker extends Broker<Employee>
 					throw new SQLException("Attempting to create an Employee with an Invalid Permission Level");
 				}
 				
+				emp.setBirthDate(rs.getDate("birthDate"));
 				emp.setActive(rs.getBoolean("active"));
 				emp.setLastLogin(rs.getTimestamp("lastLogin"));
 				emp.setPrefPosition(rs.getString("prefPosition"));
