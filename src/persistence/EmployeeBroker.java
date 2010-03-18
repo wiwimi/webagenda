@@ -66,27 +66,30 @@ public class EmployeeBroker extends Broker<Employee>
 		throws InvalidPermissionException, DBException, DBDownException
 	{	
 		
-		System.out.println("PLEVEL CHECK " + target);
 		// If item being sent in is a search Employee, this will trigger that it's not exactly valid
 		// so it can be dealt with by the program
 		try {
 			target.getLevel();
-			target.getVersion();
-			
+			target.getVersion();	
 		}
 		catch(Exception E) {
 			throw new InvalidPermissionException("PermissionLevel not found in target Employee");
 		}
 		
-		PermissionLevel[] pl = persistence.PermissionBroker.getBroker().get(target.getLevel(), target.getVersion(), caller);
-		if(caller.getLevel() < target.getLevel()) {
+		PermissionLevel[] pla = persistence.PermissionBroker.getBroker().get(caller.getLevel(), caller.getVersion(), caller);
+		if(pla == null) {
+			throw new InvalidPermissionException("(Warning) PermissionLevels not found for caller Employee");
+		}
+		PermissionLevel pl = pla[0];
+		pla = null;
+		if(pl == null)
+			throw new InvalidPermissionException("No matches for caller's Permission Level found, cannot process");
+		if(pl.getLevel() < target.getLevel()) {
 			// Do not allow creation access
 			throw new InvalidPermissionException("User cannot create Employees.");
 		}
 		else if(caller.getLevel() == target.getLevel()) {
-			if(pl == null)
-				throw new InvalidPermissionException("No matches for caller's Permission Level found");
-			if(pl[0].getLevel_permissions().getTrusted() <= caller.getLevel()) {
+			if(pl.getLevel_permissions().getTrusted() <= caller.getLevel()) {
 				throw new InvalidPermissionException("User is not trusted to the level required to perform this action");
 				
 			}
@@ -95,9 +98,7 @@ public class EmployeeBroker extends Broker<Employee>
 				// TODO: Log this method's results, allow user to continue
 			}
 		}
-		if(pl == null) return null; /* If search object cannot bring back a
-		 	permission level, the array cannot point to any index without throwing a npE */
-		return pl[0];
+		return pl;
 	}
 	
 	
@@ -195,7 +196,6 @@ public class EmployeeBroker extends Broker<Employee>
 			
 			//Get result boolean from procedure.
 			result = cs.getBoolean("result");
-			System.out.println("EBROKER: Result: " + result);
 			cs.close();
 			conn.setAvailable(true);
 			}
@@ -503,7 +503,7 @@ public class EmployeeBroker extends Broker<Employee>
 		loginEmp.setUsername(username);
 		loginEmp.setPassword(password);
 		loginEmp.setActive(true);
-		// get() method does not check for permisison levels, so loginEmp can be used.
+		// get() method does not check for permisison levels, so loginEmp can call it
 		Employee[] results = get(loginEmp,loginEmp);
 		
 		if (results == null)

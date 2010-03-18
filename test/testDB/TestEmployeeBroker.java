@@ -74,9 +74,7 @@ public class TestEmployeeBroker
 		try
 			{
 			successful = empBroker.create(newEmp, user);
-			System.out.println(successful);
 			assertTrue(successful);
-			System.out.println("Employee added: "+successful);
 			}
 		catch (DBException e)
 			{
@@ -104,7 +102,6 @@ public class TestEmployeeBroker
 			Employee[] results = empBroker.get(empSearch, user);
 			if (results == null)
 				fail("Employee search failed, employee not returned.");
-			System.out.println("Employee retrieved: "+results[0]);
 			}
 		catch (DBException e)
 			{
@@ -173,7 +170,7 @@ public class TestEmployeeBroker
 		newEmp.setActive(true);
 		newEmp.setEmail("email@YAHOO.CA");
 		newEmp.setPrefLocation("Mohave Grill");
-		newEmp.setPrefPosition("admin");
+		//newEmp.setPrefPosition("admin");
 	
 		//Add employee
 		boolean successful;
@@ -341,15 +338,22 @@ public class TestEmployeeBroker
 		{
 		System.out.println("******************** UPDATE TEST ********************");
 		
-		Employee newEmp = new Employee();
-		
-		newEmp.setEmpID(80000);
-		newEmp.setGivenName("Bilbo");
-		newEmp.setFamilyName("Baggins");
-		newEmp.setUsername("bilb01");
-		newEmp.setPassword("password");
-		//newEmp.setPLevel("2a", user);
-		newEmp.setActive(true);
+		Employee newEmp = null;
+		try {
+			newEmp = new Employee(80000,"Bilbo","Baggins","bilb01","password",1,'a');
+			newEmp.setActive(true);
+		} catch (DBException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		if(newEmp == null) fail("Employee not initialized for this test");
+//		newEmp.setEmpID(80000);
+//		newEmp.setGivenName("Bilbo");
+//		newEmp.setFamilyName("Baggins");
+//		newEmp.setUsername("bilb01");
+//		newEmp.setPassword("password");
+//		//newEmp.setPLevel("2a", user);
+//		newEmp.setActive(true);
 		
 		//Add employee
 		try

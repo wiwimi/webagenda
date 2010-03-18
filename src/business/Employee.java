@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 import exception.DBException;
 
 /**
- * @author peon-dev, Daniel Wehr
+ * @author Daniel Kettle, Daniel Wehr
  * @version 0.3.0
  */
 public class Employee extends BusinessObject
@@ -135,7 +135,11 @@ public class Employee extends BusinessObject
 		this.familyName = lname;
 		this.username = username;
 		this.password = password;
-		if(plevel.length() > 3 || plevel.length() == 0) throw new DBException("Invalid permission level format");
+		if(plevel == null) {
+			this.level = 0;
+			this.version = ' ';
+		}
+		else if(plevel.length() > 3 || plevel.length() == 0) throw new DBException("Invalid permission level format");
 		try {
 			if(Character.isLetter(plevel.charAt(plevel.length() - 1)) || plevel.charAt(plevel.length() - 1) == ' ')
 			{
@@ -193,6 +197,8 @@ public class Employee extends BusinessObject
 	/** Produces a blank template of an employee */
 	public Employee()
 		{
+		this.level = 0;
+		this.version = ' ';
 		}
 	
 	/**
