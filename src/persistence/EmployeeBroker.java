@@ -561,8 +561,8 @@ public class EmployeeBroker extends Broker<Employee>
 						rs.getInt("empID"),
 						rs.getString("givenName"),
 						rs.getString("familyName"),
-						rs.getString("email"),
 						rs.getString("username"),
+						null,
 						rs.getString("plevel")
 					);
 				} catch (DBException e) {
@@ -571,6 +571,7 @@ public class EmployeeBroker extends Broker<Employee>
 				}
 				
 				emp.setBirthDate(rs.getDate("birthDate"));
+				emp.setEmail(rs.getString("email"));
 				emp.setActive(rs.getBoolean("active"));
 				emp.setLastLogin(rs.getTimestamp("lastLogin"));
 				emp.setPrefPosition(rs.getString("prefPosition"));
