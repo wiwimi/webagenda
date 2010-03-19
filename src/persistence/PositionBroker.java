@@ -136,14 +136,14 @@ public class PositionBroker extends Broker<Position> {
 			conn.getConnection().setAutoCommit(false); // Temporarily while skills are checked for integrity
 			Statement stmt = null;
 			int result = 0;
-			
-			
+
 			if(deleteObj.getPos_skills() != null) {
 				for(int i = 0; i < deleteObj.getPos_skills().length; i++) {
 					try {
 						delete = String.format(
 								"DELETE FROM `WebAgenda`.`POSSKILL` WHERE positionName = '%s' AND skillName = '%s';",
 								deleteObj.getName(), deleteObj.getPos_skills()[i]);
+						System.out.println(delete);
 						stmt = conn.getConnection().createStatement();
 						result = stmt.executeUpdate(delete);
 					} catch(SQLException e) {
@@ -158,9 +158,10 @@ public class PositionBroker extends Broker<Position> {
 			delete = String.format(
 					"DELETE FROM `WebAgenda`.`POSITION` WHERE positionName = '%s';",
 					deleteObj.getName());
-			
+			System.out.println(delete);
 			stmt = conn.getConnection().createStatement();
 			result = stmt.executeUpdate(delete);
+			System.out.println("Executed");
 			if (result != 1)
 				throw new DBException("Failed to delete position, result count incorrect: " +	result);
 			else
@@ -181,7 +182,10 @@ public class PositionBroker extends Broker<Position> {
 			DBDownException {
 		String select;
 		
-		if (searchTemplate == null)
+		if(searchTemplate == null)
+			throw new NullPointerException("Cannot get an empty Position");
+		
+		if (searchTemplate.getName() == "")
 			{
 			select = "SELECT * FROM `WebAgenda`.`POSITION`;";
 			}
@@ -208,7 +212,6 @@ public class PositionBroker extends Broker<Position> {
 			ResultSet searchResults = stmt.executeQuery(select);
 			
 			foundPositions = parseResults(searchResults);
-			System.out.println("Position[] has " + foundPositions.length + " length");
 			// This for loop will only go through once, as primary key stops duplicate entries
 			for(Position p : foundPositions)
 			{
@@ -306,7 +309,7 @@ public class PositionBroker extends Broker<Position> {
 	 * @throws DBException 
 	 */
 	private Skill[] ensureSkillsExist(Skill[] input,Employee caller) throws DBException, DBDownException {
-		
+		if(input == null) return null;
 		for(Skill s : input) {
 			if(s != null)
 				SkillBroker.getBroker().get(s, caller);

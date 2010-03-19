@@ -44,14 +44,12 @@ public class TestPositionBroker {
 		 System.out.println("POSITION CREATION");
 		try {
 			
-			Position pos = new Position("Admin", "",null);
+			Position pos = new Position("Admin", null,null);
 			boolean success = broker.create(pos, user);
 			
-			System.out.println(success); // Is not printed out
 			if(success)
 			{
 				System.out.println("Added the position !!!");
-				System.out.println(pos.toString());
 			}
 			else if(!success)
 			{
@@ -75,6 +73,7 @@ public class TestPositionBroker {
 		try {
 			Position pos = new Position("Admin",null);
 			broker.delete(pos, user);
+			System.out.println("DELETED");
 			
 		} catch (DBException e) {
 			// TODO Auto-generated catch block
@@ -99,14 +98,21 @@ public class TestPositionBroker {
 			try
 				{
 				Position[] results = broker.get(get, user);
+				
 				for (Position printLoc : results)
 					{
 					System.out.println(printLoc);
-					System.out.println("SKILLS REQUIRED");
+					System.out.println("\tSKILLS REQUIRED");
 					Skill[] skills = printLoc.getPos_skills();
 					
-					for(int i=0; i<skills.length; i++)
-						System.out.println(skills[i]);
+					if(skills != null)
+					{
+						for(int i=0; i<skills.length; i++)
+							System.out.println("\t" + skills[i]);
+						
+					}
+					else System.out.println("none");
+				
 					}
 				}
 			catch (DBException e)
@@ -128,27 +134,37 @@ public class TestPositionBroker {
 	public void testUpdatePosition() {
 		System.out.println("POSITION Update");
 		
-		Skill[] skills = new Skill[1];
-		Skill skill = new Skill ("Cooking");
-		skills[0] = skill;
-		Position oldPos = new Position("Cook", null, skills);
+		Position oldPos = null;
+		try {
+			oldPos = broker.get(new Position("Cook"),user)[0];
+			System.out.println(oldPos);
+		} catch (DBException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (DBDownException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		boolean success = false;
-		
 		//Get all Positions and print them to console.
 		try
 			{
 			Position[] results = broker.get(oldPos, user);
-			Position updatePos = new Position("WaiterUpdated");
+			Position updatePos = new Position("Cook","This is a description",null);
 			
 			if(results!=null)
 			{
 				success = broker.update(oldPos, updatePos, user);
 				System.out.println(success);
+				
+				
+				success = broker.update(updatePos,oldPos,user);
 			}
 			else
 			{
 				System.out.println(success);
 			}
+			
 			}
 		catch (DBException e)
 			{
