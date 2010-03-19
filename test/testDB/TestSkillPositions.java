@@ -51,7 +51,6 @@ public class TestSkillPositions {
 	public void testCreatePosition() {		
 		try {
 			
-			
 			Boolean b = pbrok.create(newpos, user);
 			
 			assertEquals(new Boolean(true),b);

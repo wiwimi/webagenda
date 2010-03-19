@@ -48,6 +48,9 @@ public class PositionBroker extends Broker<Position> {
 			DBDownException {
 		if (createObj == null)
 			throw new NullPointerException("Can not create null Position.");
+		if(caller == null) {
+			throw new NullPointerException("Caller cannot be null");
+		}
 		
 		if (createObj.getName() == null)
 			throw new DBException("Missing Required Fields: Name");
@@ -85,12 +88,13 @@ public class PositionBroker extends Broker<Position> {
 								" VALUES (" + 
 								"'" + createObj.getName() + "'," +
 								"'" + createObj.getPos_skills()[i] + "')";
+						System.out.println(insert);
 						stmt = conn.getConnection().createStatement();
 						result = stmt.executeUpdate(insert);
 					}
 					catch(SQLException e) {
 						System.out.println("--  " + createObj.getPos_skills()[i] + 
-						"not created. May already exist under this Position.");
+						" not created. May already exist under this Position.");
 						conn.getConnection().rollback();
 					}
 				}
@@ -125,8 +129,23 @@ public class PositionBroker extends Broker<Position> {
 		if (deleteObj== null)
 			throw new NullPointerException("Can not delete null position.");
 		
+		if (caller == null)
+			throw new NullPointerException("Calling Employee cannot be null");
+		
 		if (deleteObj.getName() == null)
 			throw new DBException("Missing Required Field: Name");
+		
+		/* Should probably do a check here -- Grab the desired position
+		   from the id found in deleteObj.
+		   From that retrieved object, grab te skill array associated 
+		   with it. For every skill in array, check the POSSKILL table
+		   for an entry with that skill. Once even one skill is found
+		   to match one in the array, move on to the next skill.
+		   If any skill is found that does not have an entry in the
+		   POSSKILL table, ergo it is not being used, it should be
+		   deleted. This check will negate any need to monitor 
+		   skills for orphans, but will require more processing
+		   power for every delete called.*/
 		
 		String delete = null;
 		boolean success;
@@ -327,10 +346,22 @@ public class PositionBroker extends Broker<Position> {
 			DBDownException {
 		if (updateObj == null)
 			throw new NullPointerException("Can not update null position.");
-		
+		if(caller == null) throw new NullPointerException("Calling Employee cannot be null");
 		if (updateObj.getName() == null)
 			throw new NullPointerException(
 					"Can not update position without a name.");
+
+		/* Call SELECT * FROM POSITION table to grab old position object.
+		 * If not returned, race condition has failed (deleted before 
+		 * able to use) otherwise if returned, row should be locked?
+		 * Throw DBChangeException.
+		 * I would grab entries from the POSSKILL table here and add
+		 * them into a 2D String array. If length of 1D array is !=
+		 * old position object's skill array, throw DBChangeException.
+		 * Go through 2D array and check skills (second column) with
+		 * the skill array in object.
+		 * ... continue non-race condition direction
+		 * But would broker checks on skills be better? */
 		
 		// Create sql update statement from employee object.
 		String update = String.format(
@@ -344,8 +375,6 @@ public class PositionBroker extends Broker<Position> {
 			
 			Statement stmt = conn.getConnection().createStatement();
 			int updateRowCount = stmt.executeUpdate(update);
-			
-			ensureSkillsExist(updateObj.getPos_skills(),caller);
 		
 			conn.setAvailable(true);
 			
