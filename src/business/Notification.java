@@ -49,6 +49,16 @@ public class Notification extends BusinessObject {
 		this.sentTime = time;
 	}
 	
+	/**
+	 * Constructor that is meant for easy deletions of notifications.
+	 * 
+	 * @param notificationID
+	 */
+	public Notification(int notificationID)
+	{
+		this.notificationID = notificationID;
+	}
+	
 	
 	/**
 	 * @return the notificationID
@@ -93,6 +103,15 @@ public class Notification extends BusinessObject {
 		return type;
 	}
 	
-	
+	/*
+	 * Actual message will not be shown to protect privacy
+	 * (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString()
+	{
+		return notificationID + ";" + senderID + ";" + recipientID + ";" + sentTime + ";" + viewed + ";" + type;
+	}
 	
 }

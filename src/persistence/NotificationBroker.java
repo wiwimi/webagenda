@@ -181,12 +181,17 @@ public class NotificationBroker extends Broker<Notification> {
 			throw new NullPointerException("Can not update null notification.");
 		
 		// Create sql update statement from notification object.
+		
+		//FIXED: (Daniel Kettle) Removed sentTime from update notification as a) time is restamped upon being written to db, and b) 
+		// attempting to set a timeStamp will cause an update to fail because the notification being updated doesn't have one.
 		String update = String.format(
-				"UPDATE `WebAgenda`.`NOTIFICATION` SET senderID = '%s',recipientID = '%s', sentTime = '%s',  viewed = '%s', " +
+				"UPDATE `WebAgenda`.`NOTIFICATION` SET senderID = '%s',recipientID = '%s', viewed = '%s', " +
 				"message = '%s', type = '%s' " +
 				"WHERE notificationID = %s;",
-				updateObj.getSenderID(), updateObj.getRecipientID(), updateObj.getSentTime(), updateObj.isViewed(), updateObj.getMessage(),
+				updateObj.getSenderID(), updateObj.getRecipientID(), (updateObj.isViewed() == true ? 1 : 0), updateObj.getMessage(),
 				updateObj.getType(), updateObj.getNotificationID());
+		
+		
 		
 		// Get DB connection, send update, and reopen connection for other users.
 		try
