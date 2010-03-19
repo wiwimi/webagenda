@@ -265,12 +265,11 @@ public class EmployeeBroker extends Broker<Employee>
 		if(caller == null)
 			throw new DBException("Cannot parse PermissionLevel when invoking Employee is null");
 		PermissionLevel pl = null;
-		try {
-			pl = checkPermissions(searchTemplate,caller); /// will throw exceptions if permission 'levels' are invalid (doesn't detect individual ones)
-		}
-		catch(InvalidPermissionException ipE) {
-			ipE.printStackTrace();
-		}
+		try
+			{
+			pl = checkPermissions(searchTemplate, caller); /// will throw exceptions if permission 'levels' are invalid (doesn't detect individual ones)
+			}
+		catch (InvalidPermissionException ipe)	{}
 		
 		// Create sql select statement from employee object.
 		String select = "SELECT * FROM `WebAgenda`.`EMPLOYEE` emp WHERE ";
@@ -499,7 +498,7 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @throws NullPointerException
 	 */
 	public Employee tryLogin(String username, String password)
-			throws InvalidLoginException, DBException, DBDownException, InvalidPermissionException
+			throws InvalidLoginException, DBException, DBDownException
 		{
 		if (username == null || password == null)
 			throw new InvalidLoginException(
@@ -510,7 +509,15 @@ public class EmployeeBroker extends Broker<Employee>
 		loginEmp.setPassword(password);
 		loginEmp.setActive(true);
 		// get() method does not check for permisison levels, so loginEmp can call it
-		Employee[] results = get(loginEmp,loginEmp);
+		Employee[] results = null;
+		try
+			{
+			results = get(loginEmp,loginEmp);
+			}
+		catch (InvalidPermissionException ipe) {
+		ipe.printStackTrace();
+		}
+		
 		
 		if (results == null)
 			throw new InvalidLoginException("Username or password invalid.");
@@ -522,7 +529,10 @@ public class EmployeeBroker extends Broker<Employee>
 		loggedIn.setLastLogin(time);
 		updateLastLoginTime(loggedIn.getEmpID(), time);
 		
-		// TODO Pull full permissions object into this employee as well.
+		/*
+		 * TODO Pull a full permissions object out of the DB and add it to
+		 * the "loggedIn" employee object.
+		 */
 		
 		return loggedIn;
 		}

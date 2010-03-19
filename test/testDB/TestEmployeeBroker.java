@@ -492,7 +492,7 @@ public class TestEmployeeBroker
 		catch (InvalidLoginException e)
 			{
 			e.printStackTrace();
-			fail();
+			fail(e.getMessage());
 			}
 		catch (DBException e)
 			{
@@ -500,10 +500,6 @@ public class TestEmployeeBroker
 			fail();
 			}
 		catch (DBDownException e)
-			{
-			e.printStackTrace();
-			}
-		catch (InvalidPermissionException e)
 			{
 			e.printStackTrace();
 			}
@@ -536,10 +532,6 @@ public class TestEmployeeBroker
 			fail();
 			}
 		catch (DBDownException e)
-			{
-			e.printStackTrace();
-			}
-		catch (InvalidPermissionException e)
 			{
 			e.printStackTrace();
 			}

@@ -105,10 +105,6 @@ public class Login extends HttpServlet
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 		} 
-        catch (InvalidPermissionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
         finally
 	     {
 	         out.close();
