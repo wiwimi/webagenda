@@ -25,7 +25,6 @@ if(session.getAttribute("username") == null)
 <!-- Javascript Files -->
 <script type="text/javascript" src="../lib/js/dashboard.js"></script>
 
-
 <title>Insert title here</title>
 </head>
 <body>
