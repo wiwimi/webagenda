@@ -112,7 +112,7 @@
 							Skill skill = new Skill("");
 							Skill[] skillArray = broker.get(skill, user);
 							
-							for(int index = 0; index <skillArray.length; index++)
+							for(int index = 0; index<skillArray.length; index++)
 							{
 						%>
 							<tr>

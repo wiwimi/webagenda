@@ -161,7 +161,8 @@
 							else
 							{
 								Employee[] empArray = broker.get(emp, user2);
-								for(int index = 0; index < count; index++)
+								
+								for(int index = 0; index<empArray.length; index++)
 								{
 						%>
 									<tr>
