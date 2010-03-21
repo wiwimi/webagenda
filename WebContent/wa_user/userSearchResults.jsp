@@ -126,18 +126,21 @@
 							}
 							else
 							{
-								int empInteger = Integer.parseInt(request.getParameter("empId"));
-								if(!request.getParameter("empId").equals(null))
-									emp.setEmpID(empInteger);
 								
-								if(!request.getParameter("familyName").equals(null))
+								if(!request.getParameter("empId").equals(""))
+								{
+									int empInteger = Integer.parseInt(request.getParameter("empId"));
+									emp.setEmpID(empInteger);
+								}
+								
+								if(!request.getParameter("familyName").equals(""))
 									emp.setFamilyName(request.getParameter("familyName"));
 								
-								if(!request.getParameter("givenName").equals(null))
-									emp.setFamilyName(request.getParameter("givenName"));
+								if(!request.getParameter("givenName").equals(""))
+									emp.setGivenName(request.getParameter("givenName"));
 								
-								if(!request.getParameter("username").equals(null))
-									emp.setFamilyName(request.getParameter("username"));
+								if(!request.getParameter("user").equals(""))
+									emp.setUsername(request.getParameter("user"));
 								
 							}
 						    Employee user = (Employee) session.getAttribute("currentEmployee");
