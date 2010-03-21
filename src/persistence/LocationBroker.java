@@ -118,7 +118,7 @@ public class LocationBroker extends Broker<Location>
 			DBConnection conn = this.getConnection();
 			Statement stmt = conn.getConnection().createStatement();
 			int result = stmt.executeUpdate(delete);
-			
+			conn.setAvailable(true);
 			if (result != 1)
 				throw new DBChangeException("Location not found, may have been changed or deleted by another user.");
 			}

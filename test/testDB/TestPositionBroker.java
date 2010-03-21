@@ -156,7 +156,8 @@ public class TestPositionBroker {
 			{
 				success = broker.update(oldPos, updatePos, user);
 				System.out.println(success);
-				
+				updatePos = new Position("Cook","This is a description",null);
+				success = broker.update(updatePos, new Position("Cook",null,null), user);
 				
 				success = broker.update(updatePos,oldPos,user);
 			}
