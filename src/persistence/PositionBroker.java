@@ -471,7 +471,7 @@ public class PositionBroker extends Broker<Position> {
 			}
 			// Race condition Over
 			boolean posChanged = false, skillsChanged = false;
-			if(!oldPos.getDescription().equals(updateObj.getDescription())) {
+			if(oldPos.getDescription() != updateObj.getDescription()) {
 				posChanged = true;
 			}
 			// We are removing skills associated with a Position.
