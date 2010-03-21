@@ -91,81 +91,90 @@
 						<input type="submit" name="search"  class="button" value="Search" onClick="location.href='newLocation.jsp?locName=' + form.locName.value"> 
 				</form>
 				</div>
-				<div id="tableArea">
-					<div class="userAdmin">
-						<table class="sortable" id="userTable">
-							<thead class="head">
-								<tr class="headerRow">
-									<th>Name</th>
-									<th>Description</th>
-								</tr>
-							</thead>
-							<tfoot class="foot">
-								<tr class="headerRow">
-									<th>Name</th>
-									<th>Description</th>
-								</tr>
-							</tfoot>
-							<tbody>
-								<% 
-								  try{
-									Employee user = (Employee) session.getAttribute("currentEmployee");
-									LocationBroker broker = LocationBroker.getBroker();
-									Location loc= null;
-									String locName ="";
-									
-									
-									if(request.getParameter("locName").equals(null) || request.getParameter("locName").equals(""))
+				
+						<% 
+						  try{
+							Employee user = (Employee) session.getAttribute("currentEmployee");
+							LocationBroker broker = LocationBroker.getBroker();
+							Location loc= null;
+							String locName ="";
+							
+							
+							if(request.getParameter("locName").equals("") && request.getParameter("locDesc").equals(""))
+							{
+								loc = new Location("");
+							}
+							else
+							{
+								loc =new Location("");
+								if(!request.getParameter("locName").equals(""))
+									loc.setName(request.getParameter("locName"));
+								if(!request.getParameter("locDesc").equals(""))
+									loc.setDesc(request.getParameter("locName"));
+							}
+							Location[] locArray = broker.get(loc, user);
+							
+							if (locArray==null)
+							{
+						%>
+						      	<div id="instructions">
+						      		Your search didn't match any locations. <br>
+						      		For better results try more general fields and make sure all words are spelled correctly.
+							    </div>
+						<%
+							}
+							else
+							{
+								    locArray = broker.get(loc, user);
+						%>
+								<div id="tableArea">
+									<div class="userAdmin">
+										<table class="sortable" id="userTable">
+											<thead class="head">
+												<tr class="headerRow">
+													<th>Name</th>
+													<th>Description</th>
+												</tr>
+											</thead>
+											<tfoot class="foot">
+												<tr class="headerRow">
+													<th>Name</th>
+													<th>Description</th>
+												</tr>
+											</tfoot>
+											<tbody>
+						
+						<%
+									for(int index = 0; index < locArray.length; index++)
 									{
-										loc = new Location("");
-									}
-									else
-									{
-										loc =new Location(request.getParameter("locName"));
-									}
-									Location[] locArray = broker.get(loc, user);
-									
-									if (locArray.length==0 || locArray==null)
-									{
-								%>
-								      	<tr>
-											<td>There are no results to display</td>
-									    </tr>
-								<%
-									}
-									else
-									{
-										    locArray = broker.get(loc, user);
-											for(int index = 0; index < locArray.length; index++)
-											{
-												
-								%>
-												<tr>
-												<td>
-													<a href="updateLocation.jsp?location=<%=locArray[index].getName()%>"><div id="locationImage"> <b> <%=locArray[index].getName()%> </b></div></a>
-													<div class="row-actions"><span class='edit'>
-													<a href="updateLocation.jsp?locName=<%=locArray[index].getName()%>&locDesc=<%=locArray[index].getDesc()%> "> Edit </a>   | </span>  <span class='delete'>
-													<a href="javascript:;" onClick="removeLocation('<%=locArray[index].getName()%>', '<%=locArray[index].getDesc()%>');">
-														Delete
-													</a></span></div>
-												</td>
-												<td>
-													<a href="updateLocation.jsp?=<%=locArray[index].getName()%>"> <%=locArray[index].getDesc()%> </a>
-												</td>
-								<% 
-											} 
-									  }
-								  }
-									catch (DBException e)
-									{
-										e.printStackTrace();
 										
-									}
-									catch (DBDownException e)
-									{
-										e.printStackTrace();
-									}
-								%>			
+						%>	
+									<tr>
+										<td>
+											<a href="updateLocation.jsp?location=<%=locArray[index].getName()%>"><div id="locationImage"> <b> <%=locArray[index].getName()%> </b></div></a>
+											<div class="row-actions"><span class='edit'>
+											<a href="updateLocation.jsp?locName=<%=locArray[index].getName()%>&locDesc=<%=locArray[index].getDesc()%> "> Edit </a>   | </span>  <span class='delete'>
+											<a href="javascript:;" onClick="removeLocation('<%=locArray[index].getName()%>', '<%=locArray[index].getDesc()%>');">
+												Delete
+											</a></span></div>
+										</td>
+										<td>
+											<a href="updateLocation.jsp?=<%=locArray[index].getName()%>"> <%=locArray[index].getDesc()%> </a>
+										</td>
+						<% 
+									} 
+							  }
+						  }
+							catch (DBException e)
+							{
+								e.printStackTrace();
+								
+							}
+							catch (DBDownException e)
+							{
+								e.printStackTrace();
+							}
+						%>			
 								</tbody>
 							</table>
 						</div>

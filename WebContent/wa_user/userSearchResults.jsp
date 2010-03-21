@@ -128,16 +128,15 @@
 							{
 						%>
 								<div id="instructions">
-									Your search didn't match any users.
+									Your search didn't match any users.<br>
+						      		For better results try more general fields and make sure all words are spelled correctly.
 								</div>
 						<%
 							}
 							else
 							{
-								for(int index = 0; index<empArray.length; index++)
-								{
 						%>
-							<table class="sortable" id="userTable">
+								<table class="sortable" id="userTable">
 								<thead class="head">
 									<tr class="headerRow">
 										<th>Username</th>
@@ -161,6 +160,11 @@
 									</tr>
 								</tfoot>
 								<tbody>
+						
+						<%
+								for(int index = 0; index<empArray.length; index++)
+								{
+						%>
 									<tr>
 										<td>
 											<a href="newUser.jsp?=<%=empArray[index].getUsername()%>"> <div id="profileImage"> <b><%=empArray[index].getUsername()%> </b></div></a>

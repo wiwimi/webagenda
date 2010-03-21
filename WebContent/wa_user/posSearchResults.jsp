@@ -88,72 +88,82 @@
 				<input type="submit" name="search"  class="button" value="Search" onClick="location.href='newPosition.jsp?posName=' + form.posName.value"> 
 			</form>
 			</div>
-			<div id="tableArea">
-							<div class="userAdmin">
-				<table class="sortable" id="userTable">
-					<thead class="head">
-						<tr class="headerRow">
-							<th>Name</th>
-							<th>Description</th>
-				
-						</tr>
-					</thead>
-					
-					<tfoot class="foot">
-						<tr class="headerRow">
-							<th>Name</th>
-							<th>Description</th>
-						</tr>
-					</tfoot>
-					<tbody>
-						<% 
-							Employee user = (Employee)session.getAttribute("currentEmployee");	
-						
-							PositionBroker broker = PositionBroker.getBroker();
-							Position pos = new Position("",null);
-							Position[] posArray = broker.get(pos, user);
+			
+							<% 
+								Employee user = (Employee)session.getAttribute("currentEmployee");	
 							
-							for(int index = 0; index <posArray.length; index++)
-							{
-						%>
-							<tr>
-							   <td>
-									<a href="newPostion.jsp?=<%=posArray[index].getName()%>"> <b> <%=posArray[index].getName()%> </b></div></a>
-									<div class="row-actions"><span class='edit'>
-									<a href="updatePosition.jsp?posName=<%=posArray[index].getName()%>&posDesc=<%=posArray[index].getDescription()%>" > Edit </a>   | </span>  <span class='delete'>
-									<a href="javascript:;" onClick="removePosition('<%=posArray[index].getName()%>');">
-										Delete</a></span></div>
-								</td>
-								<td>
-								     <%
-								     	if(posArray[index].getDescription()!=null && posArray[index].getDescription().equals(""))
-								     	{
-								     %>
-								     		<a href="newPosition.jsp?=<%= posArray[index].getName() %>"> <%=posArray[index].getDescription()%> </a>
-								     <%	}
-								     	else
-								     	{
-								     %>
-								     		<a href="newPosition.jsp?=<%= posArray[index].getName() %>"> None </a>
-								     <%
-								     	} 
-								     %>
-						
-										
-								</td>
-							</tr>
+								PositionBroker broker = PositionBroker.getBroker();
+								Position pos = new Position("",null);
+								Position[] posArray = broker.get(pos, user);
+								
+								if(posArray==null)
+								{
+							%>
+									<div id="instructions">
+										Your search didn't match any positions.<br>
+							      		For better results try more general fields and make sure all words are spelled correctly.
+									</div>
+							<%		
+								}
+								else
+								{
+							%>
+									<div id="tableArea">
+									<div class="userAdmin">
+										<table class="sortable" id="userTable">
+											<thead class="head">
+												<tr class="headerRow">
+													<th>Name</th>
+													<th>Description</th>
+												</tr>
+											</thead>
+											
+											<tfoot class="foot">
+												<tr class="headerRow">
+													<th>Name</th>
+													<th>Description</th>
+												</tr>
+											</tfoot>
+											<tbody>
+							<%
+									for(int index = 0; index <posArray.length; index++)
+									{
+							%>
+										<tr>
+										   <td>
+												<a href="newPostion.jsp?=<%=posArray[index].getName()%>"> <b> <%=posArray[index].getName()%> </b></a>
+												<div class="row-actions"><span class='edit'>
+												<a href="updatePosition.jsp?posName=<%=posArray[index].getName()%>&posDesc=<%=posArray[index].getDescription()%>" > Edit </a>   | </span>  <span class='delete'>
+												<a href="javascript:;" onClick="removePosition('<%=posArray[index].getName()%>');">
+													Delete</a></span></div>
+											</td>
+											<td>
+											     <%
+											     	if(posArray[index].getDescription()!=null && posArray[index].getDescription().equals(""))
+											     	{
+											     %>
+											     		<a href="newPosition.jsp?=<%= posArray[index].getName() %>"> <%=posArray[index].getDescription()%> </a>
+											     <%	}
+											     	else
+											     	{
+											     %>
+											     		<a href="newPosition.jsp?=<%= posArray[index].getName() %>"> None </a>
+											     <%
+											     	} 
+											     %>
+									
+													
+											</td>
+										</tr>
 						<% 
+									}
 							}
 						%>			
-								
 					</tbody>
 				</table>
-				
 			</div>
-			
-			</div> <!-- End Table Area -->
-			
-		</div>
+		</div> 
+	</div>
 </div>
 <div id="footer"></div>
 </body>
