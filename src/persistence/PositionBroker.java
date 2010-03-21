@@ -7,12 +7,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import exception.DBChangeException;
 import exception.DBDownException;
 import exception.DBException;
 import application.DBConnection;
 import business.Employee;
 import business.Skill;
 import business.schedule.Position;
+import business.schedule.Rule;
 
 /**
  * @author dann
@@ -38,8 +40,6 @@ public class PositionBroker extends Broker<Position> {
 	}
 	
 	/*
-	 * Do we want it so that this method checks for existing Skill[]s and throw an exception if not found,
-	 * or create on demand? 
 	 * (non-Javadoc)
 	 * @see persistence.Broker#create(business.BusinessObject)
 	 */
@@ -96,9 +96,12 @@ public class PositionBroker extends Broker<Position> {
 						System.out.println("--  " + createObj.getPos_skills()[i] + 
 						" not created. May already exist under this Position.");
 						conn.getConnection().rollback();
+						e.printStackTrace();
 					}
 				}
+				
 			}
+			conn.getConnection().commit();
 			conn.getConnection().setAutoCommit(true);
 			conn.setAvailable(true);
 			
@@ -118,8 +121,12 @@ public class PositionBroker extends Broker<Position> {
 	}
 
 	/*
-	 * FIXME: !!! Check every delete to ensure that there are no orphaned Skill objects.
-	 * A delete is only successful if the previous skills associated to it are deleted.
+	 * ( Important! All Deletions should use internal method object deletePos, not
+	 * parameter deleteObj. deleteObj is used to specify the desired Position NAME
+	 * whereas deletePos will be the returned results of this broker object for
+	 * that position name. A user may not know skills beforehand, and then
+	 * we would have to do a skill array check. )
+	 * 
 	 * (non-Javadoc)
 	 * @see persistence.Broker#delete(business.BusinessObject)
 	 */
@@ -135,52 +142,116 @@ public class PositionBroker extends Broker<Position> {
 		if (deleteObj.getName() == null)
 			throw new DBException("Missing Required Field: Name");
 		
-		/* Should probably do a check here -- Grab the desired position
-		   from the id found in deleteObj.
-		   From that retrieved object, grab te skill array associated 
-		   with it. For every skill in array, check the POSSKILL table
-		   for an entry with that skill. Once even one skill is found
-		   to match one in the array, move on to the next skill.
-		   If any skill is found that does not have an entry in the
-		   POSSKILL table, ergo it is not being used, it should be
-		   deleted. This check will negate any need to monitor 
-		   skills for orphans, but will require more processing
-		   power for every delete called.*/
+		/* Delete goes through three steps:
+		 * 1) Grab Position from get(), as we do not know if deleteObj is a true representation
+		 * of the Position to delete.
+		 * - There can only be one Position deleted at a time
+		 * - Skillset that comes with Position may be set to null when delete is requested.
+		 * - If no skills exist, we delete Position right away and commit. 
+		 * 2) We must grab Skills from SkillBroker to ensure they exist. Skills are found in the
+		 * POSSKILL table and compared against those in the parameter.
+		 * - If not enough skills are found that are specified, there is something wrong with
+		 * Position object and it can be deleted. (or we handle it otherwise)
+		 * - If the number of skills required is found, delete and commit.
+		 * 
+		 * 3) Perform an orphan skill check. Grab all unique skill entries in POSSKILL and
+		 * compare against count in SKILL table. If !=, check each SKILL entry for an entry 
+		 * in POSSKILL. If one does not exist, delete that SKILL entry. Do for all entries.
+		 * 
+		 */
 		
 		String delete = null;
 		boolean success;
 		try
 			{
+			Position[] deletePos = PositionBroker.getBroker().get(new Position(deleteObj.getName()),caller);
+			if(deletePos.length != 1) {
+				throw new DBException("Can only delete one Position object per call.");
+			}
+			if(!deletePos[0].getName().equals(deleteObj.getName())) {
+				throw new DBException("Must specify the exact Position to delete.");
+			}
+			
 			DBConnection conn = this.getConnection();
 			conn.getConnection().setAutoCommit(false); // Temporarily while skills are checked for integrity
 			Statement stmt = null;
 			int result = 0;
-
-			if(deleteObj.getPos_skills() != null) {
-				for(int i = 0; i < deleteObj.getPos_skills().length; i++) {
-					try {
-						delete = String.format(
-								"DELETE FROM `WebAgenda`.`POSSKILL` WHERE positionName = '%s' AND skillName = '%s';",
-								deleteObj.getName(), deleteObj.getPos_skills()[i]);
-						System.out.println(delete);
-						stmt = conn.getConnection().createStatement();
-						result = stmt.executeUpdate(delete);
-					} catch(SQLException e) {
-						System.out.println("--  " + deleteObj.getPos_skills()[i] + 
-								"not deleted. May not exist under this Position.");
-						conn.getConnection().rollback();
-						throw new DBException(deleteObj.getPos_skills()[i] + " did not exist or was unable to be deleted.");
-								 
-					}
-				}
+			// STEP 1
+			// Delete if condition skills are null is met
+			if(deletePos[0].getPos_skills() == null) {
+				// We can delete this right away
+				
+				delete = String.format("DELETE FROM `WebAgenda`.`POSITION` WHERE positionName = '%s';",
+						deletePos[0].getName());
+				System.out.println(delete);
+				
+				stmt = conn.getConnection().createStatement();
+				
+				System.out.println("Statement Created");
+				//FIXME: Error gets caught here
+				result = stmt.executeUpdate(delete);
+				System.out.println(result);
+				System.out.println("Executed");
+				conn.getConnection().commit();
+				conn.getConnection().setAutoCommit(true);
+				System.out.println("Done delete");
 			}
-			delete = String.format(
-					"DELETE FROM `WebAgenda`.`POSITION` WHERE positionName = '%s';",
-					deleteObj.getName());
-			System.out.println(delete);
-			stmt = conn.getConnection().createStatement();
-			result = stmt.executeUpdate(delete);
-			System.out.println("Executed");
+			else {
+				// Skills are not null, so we must grab them and utilize them. Step 2.
+				Skill[] posSkills = new Skill[deletePos[0].getPos_skills().length];
+				int i = 0;
+				for(Skill s : deletePos[0].getPos_skills())
+				{
+					try {
+						Skill[] temp = SkillBroker.getBroker().get(s, caller);
+						if(temp.length != 1) throw new DBException("Skill does not exist or too many instances retrieved");
+						posSkills[i] = temp[0];
+						temp = null;
+					}
+					catch(DBException dbE) {
+						conn.getConnection().rollback();
+						conn.getConnection().setAutoCommit(true);
+						throw new DBException("The Position object pointed to a Skill that does not exist and therefore is invalid.");
+						//FIXME: have it skip this skill, maybe init a variable array with skill that don't exist
+					}
+					catch(Exception E) {
+						conn.getConnection().rollback();
+						conn.getConnection().setAutoCommit(true);
+						conn.setAvailable(true);
+						throw new DBException("An Exception occured that will not be dealt with "+ E);
+					}
+					finally {
+						i++;
+						// TODO: Determine if following statement is necessary
+						deletePos[0].setPos_skills(posSkills); // This sets the Position to utilize the only available skills that
+						// exist at this time, enabling the Position to be deleted even if imaginary skills somehow exist. (how they
+						// would is beyond me at this time, unless db was modified by outside sources.)
+					}
+					// At this point, if a variable was to be set that lets method know that a skill doesn't exist that should, we
+					// can handle it here.
+					
+					// ...
+				}
+				// Skills are valid, delete Position.				
+			
+				delete = String.format("DELETE FROM `WebAgenda`.`POSITION` WHERE positionName = '%s';",
+						deletePos[0].getName());
+				stmt = conn.getConnection().createStatement();
+				result = stmt.executeUpdate(delete);
+				System.out.println(result);
+				if(result != 1)
+				{
+					// roll back and throw exception
+					conn.getConnection().rollback();
+					conn.getConnection().setAutoCommit(true);
+					throw new DBException("Failed to delete position, result count incorrect: " +	result);
+				}
+				
+				conn.getConnection().commit();
+				conn.getConnection().setAutoCommit(true);
+			
+			}
+
 			if (result != 1)
 				throw new DBException("Failed to delete position, result count incorrect: " +	result);
 			else
@@ -204,6 +275,7 @@ public class PositionBroker extends Broker<Position> {
 		if(searchTemplate == null)
 			throw new NullPointerException("Cannot get an empty Position");
 		
+		// If position name is blank, not null, search for all otherwise search based on position name
 		if (searchTemplate.getName() == "")
 			{
 			select = "SELECT * FROM `WebAgenda`.`POSITION`;";
@@ -219,9 +291,6 @@ public class PositionBroker extends Broker<Position> {
 			System.out.println(select);
 			}
 		
-		// Get DB connection, send query, and reopen connection for other users.
-		// Parse returned ResultSet into array of positions.
-		
 		Position[] foundPositions;
 		DBConnection conn = null;
 		try
@@ -231,7 +300,8 @@ public class PositionBroker extends Broker<Position> {
 			ResultSet searchResults = stmt.executeQuery(select);
 			
 			foundPositions = parseResults(searchResults);
-			// This for loop will only go through once, as primary key stops duplicate entries
+			// Grab all skills associated with all position objects found
+			Skill[] skill_check = null; // Initialize for loop
 			for(Position p : foundPositions)
 			{
 				select = String.format(
@@ -239,19 +309,17 @@ public class PositionBroker extends Broker<Position> {
 				stmt = conn.getConnection().createStatement();
 				searchResults = stmt.executeQuery(select);
 				
-				
-				
-				// Check number of results from select statement, that's how many skills per position exist.
-				// Get skills as an array of resultset skillName's, look them up and if not existing, throw excp.
-				
-				
-				// This statement parses Skills from Position results, then ensures they exist in Skill table, then
-				// sets it to the position in the loop (no exceptions means worked properly) which is returned. TA DA
-				Skill[] skill_check = parseSkills(searchResults);
+				// This statement parses Skills from the Position results then ensures they exist in Skill table.
+				// Skills are set to the position in the loop (no exceptions means worked properly) which is returned.
+				// in foundPositions object. TA DA
+				skill_check = parseSkills(searchResults);
 				if(skill_check != null)
 					p.setPos_skills(ensureSkillsExist(skill_check,caller));
+				searchResults.close();
+				stmt.close();
 			}
 			
+		
 			conn.setAvailable(true);
 			}
 		catch (SQLException e)
@@ -351,37 +419,161 @@ public class PositionBroker extends Broker<Position> {
 			throw new NullPointerException(
 					"Can not update position without a name.");
 
-		/* Call SELECT * FROM POSITION table to grab old position object.
-		 * If not returned, race condition has failed (deleted before 
-		 * able to use) otherwise if returned, row should be locked?
-		 * Throw DBChangeException.
-		 * I would grab entries from the POSSKILL table here and add
-		 * them into a 2D String array. If length of 1D array is !=
-		 * old position object's skill array, throw DBChangeException.
-		 * Go through 2D array and check skills (second column) with
-		 * the skill array in object.
-		 * ... continue non-race condition direction
-		 * But would broker checks on skills be better? */
-		
+		Position[] temp = get(oldPos,caller);
+		if(temp.length != 1) throw new DBChangeException("Too many or too few rows for Position to be updated.");
 		// Create sql update statement from employee object.
-		String update = String.format(
-				"UPDATE `WebAgenda`.`POSITION` SET positionDescription = '%s' WHERE positionName = '%s';",
-				updateObj.getDescription(),updateObj.getName());
-		
+		String update = "SELECT COUNT(*) FROM `WebAgenda`.`POSSKILL` WHERE positionName = '" + temp[0].getName() + "';";
+		System.out.println(update);
+		// Declare lengths of skills in positions so we don't always have to check for null values.
+		int oldPosL = -1, newPosL = -1;
+		if(oldPos.getPos_skills() != null) oldPosL = oldPos.getPos_skills().length;
+		if(updateObj.getPos_skills() != null) newPosL = updateObj.getPos_skills().length;
 		// Get DB connection, send update, and reopen connection for other users.
 		try
 			{
 			DBConnection conn = this.getConnection();
 			
 			Statement stmt = conn.getConnection().createStatement();
-			int updateRowCount = stmt.executeUpdate(update);
-		
-			conn.setAvailable(true);
-			
+			ResultSet rs = stmt.executeQuery(update);
 			// Ensure
-			if (updateRowCount != 1)
-				throw new DBException(
-						"Failed to update position: rowcount incorrect.");
+			if (!rs.last())
+				throw new DBException("Position no longer exists, update failed.");
+			rs.first();
+			int count_value = rs.getInt(1);
+			if(temp[0].getPos_skills() != null)
+			{
+				if(count_value != temp[0].getPos_skills().length) 
+				{
+					throw new DBChangeException("This Position has been modified and cannot be changed. Please update new Position object");
+				}
+			}
+			stmt = conn.getConnection().createStatement();
+			update = "SELECT * FROM `WebAgenda`.`POSSKILL` WHERE positionName = '" + oldPos.getName() + "';";
+			System.out.println(update);
+			String[] skills = new String[count_value];
+			rs = stmt.executeQuery(update);
+			conn.getConnection().setAutoCommit(false);
+			
+			// Check all skills -- in exact order -- from old position and position from db that should BE old
+			rs.first();
+			int i = 0;
+			while(rs.next())
+			{
+				skills[i] = rs.getString("skillName");
+				i++;
+			}
+			i = 0;
+			for(; i < oldPosL; i++) 
+			{
+				if(!oldPos.getPos_skills()[i].getName().equals(skills[i])) {
+					throw new DBChangeException("Skills do not match up with old position for update. Position may have been modified.");
+				}
+				i++;
+			}
+			// Race condition Over
+			boolean posChanged = false, skillsChanged = false;
+			if(!oldPos.getDescription().equals(updateObj.getDescription())) {
+				posChanged = true;
+			}
+			// We are removing skills associated with a Position.
+			
+			if(oldPosL != newPosL) {
+				skillsChanged = true;
+			}
+			else {
+				for(String s : skills)
+				{
+					// Get all Skill names that old Position has
+					for(i = 0; i < updateObj.getPos_skills().length; i++)
+					{
+						if(!s.equals(updateObj.getPos_skills()[i].getName())) {
+							skillsChanged = true;
+						}
+					}
+				}
+			}
+			if(!posChanged && !skillsChanged)
+			{
+				conn.getConnection().rollback();
+				conn.getConnection().setAutoCommit(true);
+				conn.setAvailable(true);
+				
+				return true;
+			}
+			if(posChanged)
+			{
+				update = String.format(
+						"UPDATE `WebAgenda`.`POSITION` SET positionName = '%s', positionDescription = %s WHERE positionName = '%s' AND positionDescription %s;",
+						updateObj.getName(),
+						(updateObj.getDescription() == null ? "NULL" : "'"+updateObj.getDescription()+"'"),
+						oldPos.getName(),
+						(oldPos.getDescription() == null ? "IS NULL" : "= '"+oldPos.getDescription()+"'"));
+				System.out.println(update);
+				stmt = conn.getConnection().createStatement();
+				i = stmt.executeUpdate(update);
+			}
+			if(skillsChanged)
+			{
+				// Delete position from POSSKILL table
+				update = String.format(
+						"DELETE FROM `WebAgenda`.`POSSKILL` WHERE positionName = '%s';",
+						updateObj.getName());
+				System.out.println(update);
+				stmt = conn.getConnection().createStatement();
+				i = stmt.executeUpdate(update);
+				if(i != 1) {
+					conn.getConnection().rollback();
+					conn.getConnection().setAutoCommit(true);
+					conn.setAvailable(true);
+					throw new DBChangeException("Position not found, may have been changed or deleted by another user.");
+				}
+				
+				update = String.format(
+						"DELETE FROM `WebAgenda`.`POSITION` WHERE positionName = '%s';",
+						updateObj.getName());
+				System.out.println(update);
+				stmt = conn.getConnection().createStatement();
+				i = stmt.executeUpdate(update);
+				if(i != 1) {
+					conn.getConnection().rollback();
+					conn.getConnection().setAutoCommit(true);
+					conn.setAvailable(true);
+					throw new DBChangeException("Position not found, may have been changed or deleted by another user.");
+				}
+				
+				update = String.format(
+						"INSERT INTO `WebAgenda`.`POSITION` (`positionName`,`positionDescription`) VALUES ('%s','%s');",
+						updateObj.getName(),updateObj.getDescription());
+				System.out.println(update);
+				stmt = conn.getConnection().createStatement();
+				i = stmt.executeUpdate(update);
+				if(i != 1) {
+					conn.getConnection().rollback();
+					conn.getConnection().setAutoCommit(true);
+					conn.setAvailable(true);
+					throw new DBChangeException("Position not found, may have been changed or deleted by another user.");
+				}
+				if(newPosL > 0) {
+				for(i = 0; i < updateObj.getPos_skills().length; i++)
+					{
+						update = String.format(
+								"INSERT INTO `WebAgenda`.`POSSKILL` (`positionName`,`skillName`) VALUES ('%s','%s');",
+								updateObj.getPos_skills()[i].getName());
+						System.out.println(update);
+						stmt = conn.getConnection().createStatement();
+						if(stmt.executeUpdate(update) != 1) {
+							conn.getConnection().rollback();
+							conn.getConnection().setAutoCommit(true);
+							conn.setAvailable(true);
+							throw new DBChangeException("Could not insert Position/Skill entry as it may already exist.");
+						}
+						
+					}
+				}
+			}
+			conn.getConnection().commit();
+			conn.getConnection().setAutoCommit(true);
+			conn.setAvailable(true);
 			}
 		catch (SQLException e)
 			{

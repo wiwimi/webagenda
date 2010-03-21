@@ -272,7 +272,7 @@ public class EmployeeBroker extends Broker<Employee>
 		catch (InvalidPermissionException ipe)	{}
 		
 		// Create sql select statement from employee object.
-		String select = "SELECT * FROM `WebAgenda`.`EMPLOYEE` emp WHERE ";
+		String select = "SELECT * FROM `WebAgenda`.`EMPLOYEE` WHERE ";
 		String comp = "";
 		
 		if (searchTemplate.getEmpID() != null)
