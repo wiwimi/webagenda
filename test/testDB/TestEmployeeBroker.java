@@ -170,7 +170,7 @@ public class TestEmployeeBroker
 		newEmp.setActive(true);
 		newEmp.setEmail("email@YAHOO.CA");
 		newEmp.setPrefLocation("Mohave Grill");
-		//newEmp.setPrefPosition("admin");
+		newEmp.setPrefPosition("admin");
 	
 		//Add employee
 		boolean successful;
@@ -279,6 +279,7 @@ public class TestEmployeeBroker
 		
 		Employee searchEmp3 = new Employee();
 		searchEmp3.setSupervisorID(28472);
+
 		
 		//Run searches
 		Employee[] byID = null, byActive = null, bySupervisor = null;

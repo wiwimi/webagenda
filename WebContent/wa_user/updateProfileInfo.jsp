@@ -57,7 +57,10 @@
 			Employee user = (Employee) session.getAttribute("currentEmployee");
 			
 			Employee emp = new Employee();
+			
 			emp.setEmpID(Integer.parseInt(request.getParameter("id")));
+			
+			
 			Employee[] empArray = broker.get(emp, user);
 		%>
 

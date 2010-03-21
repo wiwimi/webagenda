@@ -55,7 +55,7 @@
 								$(function()
 								    {
 										
-										    $.flashMessenger("The position has been successfully created", 
+										    $.flashMessenger("The position has been successfully updated", 
 											{ 	
 												modal:true, 
 												autoClose: false 
@@ -106,10 +106,9 @@
 						String posName = request.getParameter("posName");
 					    String posDesc = request.getParameter("posDesc");
 					    
-					    Skill[] skills = null;
-						
-						Position oldPos = new Position(posName);
-					    session.setAttribute("oldPos",oldPos);
+					   	Position oldPos = new Position(posName);
+					   	
+					   	session.setAttribute("oldPos",oldPos);
 					 %>
 					
 						<p>	<label class="label"> Name: <em class="asterisk"> * </em> </label> <input type="text" value="<%=posName %>" name ="posName" class="required" size ="30"> </p>
@@ -158,23 +157,30 @@
 								<tbody>
 									<%  
 										Employee user = (Employee) session.getAttribute("currentEmployee");
-									
+									    
+									    Skill[] pos_skills = oldPos.getPos_skills();
 										SkillBroker broker = SkillBroker.getBroker();
 										Skill skill = new Skill("");
 										Skill[] skillArray = broker.get(skill, user);
+								
 										
 										for(int index = 0; index<skillArray.length; index++)
 										{
+											//for(int x=0; x<pos_skills.length; x++)
+											//{
 									%>
 										<tr>
 										   <td>
 												<a href="newSkill.jsp?=<%=skillArray[index].getName()%>"> <b> <%=skillArray[index].getName()%> </b></a>
 											</td>
 											<td>
-													<input type="checkbox" name="skill" > 
+													
+															<input type="checkbox" name="skill" checked="checked"> 
+													
 											</td>
 										</tr>
 									<% 
+											//}
 										}
 									%>			
 								</tbody>

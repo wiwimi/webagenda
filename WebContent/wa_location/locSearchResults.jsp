@@ -38,45 +38,45 @@
 <body>
 <br></br>  
 		<% 
-					if(request.getParameter("delete") != null)
-					{
-						if(request.getParameter("delete").equals("true"))
-						{
-							//out.println("Location was deleted");
+			if(request.getParameter("delete") != null)
+			{
+				if(request.getParameter("delete").equals("true"))
+				{
+					//out.println("Location was deleted");
 	    %>
-								<script type="text/javascript">
-									$(function()
-								    {
-											$.flashMessenger("The location has been successfully deleted", 
-											{ 	
-												modal:true, 
-												autoClose: false 
-											});	
-									});
-								</script>
-				<% 			   
-						}
-						else if(request.getParameter("delete").equals("false"))
-						{
-				%>
+					<script type="text/javascript">
+						$(function()
+					    {
+								$.flashMessenger("The location has been successfully deleted", 
+								{ 	
+									modal:true, 
+									autoClose: false 
+								});	
+						});
+					</script>
+		<% 			   
+				}
+				else if(request.getParameter("delete").equals("false"))
+				{
+		%>
 							
-							<script type="text/javascript">
-								$(function()
-								    {
-										
-								       $.flashMessenger("The location has not been deleted.",
-								        {
-											   modal:true,
-							    		       clsName:"err", 
-								    		   autoClose:false
-								    	 }); 
-								   }); 
-							</script>
-				<%
-						}
-					}
-				%>
-				
+				<script type="text/javascript">
+					$(function()
+					    {
+							
+					       $.flashMessenger("The location has not been deleted.",
+					        {
+								   modal:true,
+				    		       clsName:"err", 
+					    		   autoClose:false
+					    	 }); 
+					   }); 
+				</script>
+		<%
+				}
+			}
+		%>
+		
 	   <div id="locationWidget" class="fullWidget">
 			<div class="widgetUpperRectangle" id="locationsUpperRectangle">
 				<div class="widgetTitle" id="locationsWidgetTitle">Locations</div>

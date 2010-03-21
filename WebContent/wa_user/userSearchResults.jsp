@@ -114,24 +114,53 @@
 					<tbody>
 						<% 
 						    Employee emp = new Employee();
+							Employee user2 = new Employee(12314, "Chaney", "Henson","user1", "password",  "2a" );
 						    
-						    if(request.getParameter("empId").equals(null) ||request.getParameter("empId").equals(""))
+						    if((request.getParameter("empId").equals("")) 
+						    		&& (request.getParameter("familyName").equals(""))
+						    		&& (request.getParameter("givenName").equals(""))
+						    		&& (request.getParameter("user").equals(""))
+						    		&& (request.getParameter("email").equals("")))
 							{
 								emp.setActive(true);
 							}
 							else
 							{
 								int empInteger = Integer.parseInt(request.getParameter("empId"));
-								emp.setEmpID(empInteger);
+								if(!request.getParameter("empId").equals(null))
+									emp.setEmpID(empInteger);
+								
+								if(!request.getParameter("familyName").equals(null))
+									emp.setFamilyName(request.getParameter("familyName"));
+								
+								if(!request.getParameter("givenName").equals(null))
+									emp.setFamilyName(request.getParameter("givenName"));
+								
+								if(!request.getParameter("username").equals(null))
+									emp.setFamilyName(request.getParameter("username"));
+								
 							}
 						    Employee user = (Employee) session.getAttribute("currentEmployee");
 							EmployeeBroker broker = EmployeeBroker.getBroker();
 							int count = broker.getEmpCount();
-							Employee[] empArray = broker.get(emp, user);
-								
+							
+							
+							if(count==0)
+							{
+						%>
+								<tr>
+									<td>
+										Your search didn't match any users.
+									</td>
+								</tr>
+						<%
+							}
+							else
+							{
+								Employee[] empArray = broker.get(emp, user2);
 								for(int index = 0; index < count; index++)
 								{
-							%>
+						%>
 									<tr>
 										<td>
 											<a href="newUser.jsp?=<%=empArray[index].getUsername()%>"> <div id="profileImage"> <b><%=empArray[index].getUsername()%> </b></div></a>
@@ -148,6 +177,7 @@
 								   </tr>
 							<% 
 								}
+							}
 							%>			
 									
 					</tbody>

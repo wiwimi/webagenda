@@ -28,6 +28,7 @@
 
 <!-- Plug-ins -->
 <script src="../lib/js/jquery.validate.js" type="text/javascript"></script>
+<script src ="../lib/js/jquery.flashmessenger.js"   type ="text/javascript"> </script>
 
 <!-- Javascript Files -->
 <script src="../lib/js/cmxforms.js" type="text/javascript"></script>
@@ -45,6 +46,7 @@
 <style type="text/css">@import "../CSS/jquery.datepick.css";</style> 
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/val.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/screen.css" />
+<link rel="stylesheet" href="../CSS/Flash/flashmessenger.css" type="text/css" media="screen"/>
 
 </head>
 <body>
@@ -53,7 +55,7 @@
 					{
 						if(request.getParameter("message").equals("true"))
 						{
-							//out.println("Position was added");
+							
 			 %>
 				              <script type="text/javascript">
 		
@@ -102,18 +104,18 @@
 				 <div id="personal">
 					 	<div id="formButtons">
 					 	    <input type="submit" name="submit" class="button" value="Add"> 
-							<input type="button" name="submit" class="button" value="Search" onClick="location.href='updateUser.jsp?empId='+ form.empId.value">
+							<input type="button" name="submit" class="button" value="Search" onClick="location.href='userSearchResults.jsp?familyName='+ form.familyName.value + '&empId=' + form.empId.value + '&givenName=' + form.givenName.value + '&user=' + form.user.value + '&email=' + form.email.value">
 							<input type="reset" name="clear" class="button" value="Clear Screen">
 				</div>
 				<fieldset>
 					<legend > Personal </legend>
-						<p>	<label class ="label"> Given Name:  <em class="asterisk"> * </em> </label> <input type="text"  name ="givenName" class ="required" size ="30"> </p>
-						<p>	<label class ="label"> Family Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="familyName"  class ="required"  size ="30"> </p>
-						<p>	<label class ="label"> Date of Birth: </label> <input type="text" name ="dob" id="dob" size ="10"></p>
-						<p>	<label class ="label"> Username: </label> <input type="text" name ="user" id="user"   size ="30"></p>
+						<p>	<label class ="label"> Given Name:  <em class="asterisk"> * </em> </label> <input type="text" name="givenName" class="required" size="30" maxLength="30" value=""/> </p>
+						<p>	<label class ="label"> Family Name: <em class="asterisk"> * </em> </label> <input type="text" name="familyName" class="required" size="30" maxLength="30" value=""/> </p>
+						<p>	<label class ="label"> Date of Birth: </label> <input type="text" name ="dob" id="dob" size ="10" value=""/></p>
+						<p>	<label class ="label"> Username: </label> <input type="text" name ="user" id="user"   size ="30" value=""/></p>
 	                    <p>
 					         <label for="cemail" class="label"> E-Mail</label>
-				             <input type="text" id="cemail" name="email" size="30"/>
+				             <input type="text" id="cemail" name="email" size="30" value=""/>
 				        </p>
 					</fieldset>
 				</div>
@@ -178,7 +180,7 @@
 					</div>
 					<div id="formButtons">
 							<input type="submit" name="submit" class="button" value="Add"> 
-							<input type="button" name="submit" class="button" value="Search" onClick="location.href='updateUser.jsp';">
+							<input type="button" name="submit" class="button" value="Search" onClick="location.href='userSearchResults.jsp?empId='+ form.empId.value + '& familyName=' + form.familyName.value ">
 							<input type="reset" name="clear" class="button" value="Clear Screen"> 
 					</div>
 					
@@ -315,14 +317,13 @@
 							<% 
 								EmployeeBroker empBroker = EmployeeBroker.getBroker();
 							
-								int count = empBroker.getEmpCount();
-								
 								Employee emp = new Employee();
 								emp.setActive(true);
-								Employee[] empArray = empBroker.get(emp, user);
-								
-								for(int index = 0; index < count; index++)
-								{
+								Employee user2 = new Employee(12314, "Chaney", "Henson","user1", "password",  "2a" );
+								Employee[] empArray = empBroker.get(emp, user2);
+								int count = empBroker.getEmpCount();
+								for (int index =0; index<count; index++)
+							{
 							%>
 										<tr>
 											<td><a href="updateUserProfile.jsp"><div id="profileImage"> <b> <%= empArray[index].getEmpID() %> </b></div></a></td>
