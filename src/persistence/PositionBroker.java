@@ -14,7 +14,6 @@ import application.DBConnection;
 import business.Employee;
 import business.Skill;
 import business.schedule.Position;
-import business.schedule.Rule;
 
 /**
  * @author dann
@@ -270,26 +269,26 @@ public class PositionBroker extends Broker<Position> {
 	@Override
 	public Position[] get(Position searchTemplate, Employee caller) throws DBException,
 			DBDownException {
-		String select;
+		if (searchTemplate == null)
+			throw new NullPointerException("Can not search with null template.");
 		
-		if(searchTemplate == null)
-			throw new NullPointerException("Cannot get an empty Position");
+		String select = "SELECT * FROM `WebAgenda`.`POSITION` WHERE ";
+		String comp = "";
 		
-		// If position name is blank, not null, search for all otherwise search based on position name
-		if (searchTemplate.getName() == "")
+		if (searchTemplate.getName() != null)
+			comp = "positionName LIKE '%"+searchTemplate.getName()+"%'";
+		if (searchTemplate.getDescription() != null)
+			comp = comp + (searchTemplate.getDescription() != null ? (comp.equals("") ? "" : " AND ") +
+				"positionDescription LIKE '%" + searchTemplate.getDescription() + "%'" : "");
+		
+		if (comp.equals(""))
 			{
-			select = "SELECT * FROM `WebAgenda`.`POSITION`;";
+			//Nothing being searched for, return null.
+			return null;
 			}
-		else
-			{
-			if (searchTemplate.getName() == null)
-				throw new DBException("Can not search with null name.");
-			
-			select = String.format(
-					"SELECT * FROM `WebAgenda`.`POSITION` WHERE positionName LIKE '%s%%'",
-					searchTemplate.getName());
-			System.out.println(select);
-			}
+		
+		// Add comparisons and close select statement.
+		select = select + comp + ";";
 		
 		Position[] foundPositions;
 		DBConnection conn = null;

@@ -114,21 +114,26 @@ public class SkillBroker extends Broker<Skill> {
 	@Override
 	public Skill[] get(Skill searchTemplate,Employee caller)
 			throws DBException, DBDownException {
-		String select;
-		
 		if (searchTemplate == null)
+			throw new NullPointerException("Can not search with null template.");
+		
+		String select = "SELECT * FROM `WebAgenda`.`SKILL` WHERE ";
+		String comp = "";
+		
+		if (searchTemplate.getName() != null)
+			comp = "skillName LIKE '%"+searchTemplate.getName()+"%'";
+		if (searchTemplate.getDesc() != null)
+			comp = comp + (searchTemplate.getDesc() != null ? (comp.equals("") ? "" : " AND ") +
+				"skillDescription LIKE '%" + searchTemplate.getDesc() + "%'" : "");
+		
+		if (comp.equals(""))
 			{
-			select = "SELECT * FROM `WebAgenda`.`SKILL`;";
+			//Nothing being searched for, return null.
+			return null;
 			}
-		else
-			{
-			if (searchTemplate.getName() == null)
-				throw new DBException("Can not search with null name.");
-			
-			select = String.format(
-					"SELECT * FROM `WebAgenda`.`SKILL` WHERE skillName LIKE '%s%%'",
-					searchTemplate.getName());
-			}
+		
+		// Add comparisons and close select statement.
+		select = select + comp + ";";
 		
 		// Get DB connection, send query, and reopen connection for other users.
 		// Parse returned ResultSet into array of skills.
