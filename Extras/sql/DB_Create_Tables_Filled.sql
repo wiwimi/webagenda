@@ -390,6 +390,7 @@ DELIMITER ;
 DROP USER 'WABroker'@'localhost';
 CREATE USER 'WABroker'@'localhost' IDENTIFIED BY 'password';
 
+
 grant SELECT ON `mysql`.`proc` to 'WABroker'@'localhost';
 grant DELETE on TABLE `WebAgenda`.`EMPLOYEE` to 'WABroker'@'localhost';
 grant INSERT on TABLE `WebAgenda`.`EMPLOYEE` to 'WABroker'@'localhost';
@@ -456,6 +457,8 @@ grant DELETE on TABLE `WebAgenda`.`RULE` to 'WABroker'@'localhost';
 grant INSERT on TABLE `WebAgenda`.`RULE` to 'WABroker'@'localhost';
 grant SELECT on TABLE `WebAgenda`.`RULE` to 'WABroker'@'localhost';
 grant UPDATE on TABLE `WebAgenda`.`RULE` to 'WABroker'@'localhost';
+
+FLUSH PRIVILEGES;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
