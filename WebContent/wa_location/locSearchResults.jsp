@@ -87,8 +87,8 @@
 				</div>
 				<div id="searchArea">
 				<form id="form">
-						<input type="text" size=30/ name="locName">
-						<input type="submit" name="search"  class="button" value="Search" onClick="location.href='newLocation.jsp?locName=' + form.locName.value"> 
+						<input type="text" size=30 name="randomSearch" value=""/>
+						<input type="submit" name="search"  class="button" value="Search" onClick="location.href='locSearchResults.jsp?randomSearch=' + form.randomSearch.value"> 
 				</form>
 				</div>
 				
@@ -97,21 +97,37 @@
 							Employee user = (Employee) session.getAttribute("currentEmployee");
 							LocationBroker broker = LocationBroker.getBroker();
 							Location loc= null;
-							String locName ="";
 							
-							
-							if(request.getParameter("locName").equals("") && request.getParameter("locDesc").equals(""))
+							if(request.getParameter("locName")!=null || request.getParameter("locDesc")!=null )
 							{
-								loc = new Location("");
-							}
-							else
-							{
-								loc =new Location("");
+								loc = new Location();
 								if(!request.getParameter("locName").equals(""))
+								{
 									loc.setName(request.getParameter("locName"));
-								if(!request.getParameter("locDesc").equals(""))
-									loc.setDesc(request.getParameter("locName"));
+								}
+								if (!request.getParameter("locDesc").equals(""))
+								{
+									loc.setDesc(request.getParameter("locDesc"));
+								}
+								
+								else if (request.getParameter("locName").equals("") && (request.getParameter("locDesc").equals("")))
+								{
+									loc = new Location("");
+								}
+						 	 }
+							
+							else if(request.getParameter("randomSearch")!=null)
+							{
+								loc= new Location("");
+								
+								if((!request.getParameter("randomSearch").equals("")))
+								{
+									loc = new Location(request.getParameter("randomSearch"));
+									
+								}
 							}
+							
+							
 							Location[] locArray = broker.get(loc, user);
 							
 							if (locArray==null)
@@ -125,9 +141,8 @@
 							}
 							else
 							{
-								    locArray = broker.get(loc, user);
-						%>
-								<div id="tableArea">
+								    
+						%>     <div id="tableArea">
 									<div class="userAdmin">
 										<table class="sortable" id="userTable">
 											<thead class="head">

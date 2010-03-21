@@ -90,61 +90,107 @@
 				<input type="submit" name="search"  class="button" value="Search" onClick="location.href='newSkill.jsp?skillName=' + form.skillName.value"> 
 			</form>
 			</div>
-			<div id="tableArea">
-							<div class="userAdmin">
-				<table class="sortable" id="userTable">
-					<thead class="head">
-						<tr class="headerRow">
-							<th>Name</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tfoot class="foot">
-						<tr class="headerRow">
-							<th>Name</th>
-							<th>Description</th>
-						</tr>
-					</tfoot>
-					<tbody>
+			
 						<% 
 							Employee user = (Employee) session.getAttribute("currentEmployee");
 							SkillBroker broker = SkillBroker.getBroker();
-							Skill skill = new Skill("");
+							
+							Skill skill =null; 
+							
+							if(request.getParameter("skillName")!=null || request.getParameter("skillDesc")!=null )
+							{
+								skill = new Skill();
+								if(!request.getParameter("skillName").equals(""))
+								{
+									skill.setName(request.getParameter("skillName"));
+								}
+								if (!request.getParameter("skillDesc").equals(""))
+								{
+									skill.setDesc(request.getParameter("skillDesc"));
+								}
+								
+								else if (request.getParameter("skillName").equals("") && (request.getParameter("skillDesc").equals("")))
+								{
+									skill = new Skill("");
+								}
+						 	 }
+							
+							else if(request.getParameter("randomSearch")!=null)
+							{
+								skill= new Skill("");
+								
+								if((!request.getParameter("randomSearch").equals("")))
+								{
+									skill = new Skill(request.getParameter("randomSearch"));
+									
+								}
+							}
 							Skill[] skillArray = broker.get(skill, user);
 							
-							for(int index = 0; index<skillArray.length; index++)
+							if(skillArray==null)
 							{
+							%>
+								<div id="instructions">
+					      		Your search didn't match any skills. <br>
+					      		For better results try more general fields and make sure all words are spelled correctly.
+						    	</div>
+						   <% 
+							}
+							else
+							{
+							%>
+								<div id="tableArea">
+									<div class="userAdmin">
+										<table class="sortable" id="userTable">
+											<thead class="head">
+												<tr class="headerRow">
+													<th>Name</th>
+													<th>Description</th>
+												</tr>
+											</thead>
+											<tfoot class="foot">
+												<tr class="headerRow">
+													<th>Name</th>
+													<th>Description</th>
+												</tr>
+											</tfoot>
+											<tbody>
+						<%
+									for(int index = 0; index<skillArray.length; index++)
+									{
 						%>
-							<tr>
-							   <td>
-									<a href="update.jsp?=<%=skillArray[index].getName()%>"> <b> <%=skillArray[index].getName()%> </b></div></a>
-									<div class="row-actions"><span class='edit'>
-									<a href="updateSkill.jsp?skillName=<%=skillArray[index].getName()%>&skillDesc=<%= skillArray[index].getDesc()%> "> Edit </a>   | </span>   <span class='delete'>
-									<a href="javascript:;" onClick="removeSkill('<%=skillArray[index].getName()%>', '<%=skillArray[index].getDesc()%>' );">
-										Delete</a></span></div>
-								</td>
-								<td>
-								     <%
-								     	if(skillArray[index].getDesc()!=null && !skillArray[index].getDesc().equals(""))
-								     	{
-								     %>
-								     		<a href="newSkill.jsp?=<%= skillArray[index].getName() %>"> <%=skillArray[index].getDesc()%> </a>
-								     <%	}
-								     	else
-								     	{
-								     %>
-								     		<a href="newSkill.jsp?=<%= skillArray[index].getName() %>"> None </a>
-								     <%
-								     	} 
-							 }
-								     %>
-						  </td>	
-					</tbody>
-				</table>
-			</div>
-		</div> <!-- End Table Area -->
+										<tr>
+										   <td>
+												<a href="update.jsp?=<%=skillArray[index].getName()%>"> <b> <%=skillArray[index].getName()%> </b></a>
+												<div class="row-actions"><span class='edit'>
+												<a href="updateSkill.jsp?skillName=<%=skillArray[index].getName()%>&skillDesc=<%= skillArray[index].getDesc()%> "> Edit </a>   | </span>   <span class='delete'>
+												<a href="javascript:;" onClick="removeSkill('<%=skillArray[index].getName()%>', '<%=skillArray[index].getDesc()%>' );">
+													Delete</a></span></div>
+											</td>
+											<td>
+						<%
+											     	if(skillArray[index].getDesc()!=null && !skillArray[index].getDesc().equals(""))
+											     	{
+						%>
+											     		<a href="newSkill.jsp?=<%= skillArray[index].getName() %>"> <%=skillArray[index].getDesc()%> </a>
+						<%			         }
+											     	else
+											     	{
+						%>
+											     		<a href="newSkill.jsp?=<%= skillArray[index].getName() %>"> None </a>
+						<%
+											     	} 
+										  }
+									}
+						%>
+								  			</td>
+								  		</tr>	
+								</tbody>
+							</table>
+					</div>
+			</div> <!-- End Table Area -->
+		</div>
 	</div>
-</div>
 <div id="footer"></div>
 </body>
 </html>

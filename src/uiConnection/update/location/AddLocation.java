@@ -36,7 +36,7 @@ public class AddLocation extends HttpServlet {
 		        HttpSession session = request.getSession();
 		        PrintWriter out = response.getWriter();
 		        String locName = request.getParameter("locName");
-				String desc = request.getParameter("desc");	
+				String desc = request.getParameter("locDesc");	
 				boolean success;
 				LocationBroker broker = null;
 				

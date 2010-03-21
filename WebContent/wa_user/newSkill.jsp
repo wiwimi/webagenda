@@ -92,7 +92,7 @@
 			
 			<div id="formButtons">
 						<input type="submit" name="submit" class="button" value="Add"> 
-						<input type="button" name="submit" class="button" value="Search" onClick="location.href='skillSearchResults.jsp';"> 
+						<input type="button" name="submit" class="button" value="Search" onClick="location.href='skillSearchResults.jsp?skillName=' + form.skillName.value + '&skillDesc=' + form.skillDesc.value;"> 
 						<input type="reset" name="clear" class="button" value="Clear Screen"> 
 						<br></br>
 			</div>
@@ -101,13 +101,13 @@
 					
 							<p>	<label class="label"> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="skillName" class="required" size ="30"> </p>
 							<p>	<label class="label"> Description: </label></p>
-							<textarea  name="desc" cols="23" rows="6" tabindex="101"></textarea>
+							<textarea  name="skillDesc" cols="23" rows="6" tabindex="101"></textarea>
 				</fieldset>
 			
 				</div>
 				<div id="searchArea">
 						<input type="submit" name="submit" class="button" value="Add"> 
-						<input type="button" name="submit" class="button" value="Search" onClick="location.href='skillSearchResults.jsp';">
+						<input type="button" name="submit" class="button" value="Search" onClick="location.href='skillSearchResults.jsp?skillName=' + form.skillName.value + '&skillDesc=' + form.skillDesc.value;">
 						<input type="reset" name="clear" class="button" value="Clear Screen"> 
 						<br></br>
 				</div>

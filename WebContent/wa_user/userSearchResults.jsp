@@ -82,8 +82,8 @@
 			
 			<div id="searchArea">
 			<form id="form">
-					<input type="text" size=30/ name="empName">
-					<input type="submit" name="search"  class="button" value="Search" onClick="location.href='newUser.jsp?empName=' + form.empName.value"> 
+					<input type="text" size=30/ name="randomSearch">
+					<input type="submit" name="search"  class="button" value="Search" onClick="location.href='userSearchResults.jsp?randomSearch=' + form.randomSearch.value">
 			</form>
 			</div>
 			<div id="tableArea">
@@ -102,21 +102,36 @@
 							}
 							else
 							{
-								
-								if(!request.getParameter("empId").equals(""))
+								if(request.getParameter("empId")!=null || request.getParameter("familyName")!=null 
+										|| request.getParameter("givenName")!=null || request.getParameter("user")!=null)
 								{
-									int empInteger = Integer.parseInt(request.getParameter("empId"));
-									emp.setEmpID(empInteger);
+								
+									if(!request.getParameter("empId").equals(""))
+									{
+										int empInteger = Integer.parseInt(request.getParameter("empId"));
+										emp.setEmpID(empInteger);
+									}
+									
+									if(!request.getParameter("familyName").equals(""))
+										emp.setFamilyName(request.getParameter("familyName"));
+									
+									if(!request.getParameter("givenName").equals(""))
+										emp.setGivenName(request.getParameter("givenName"));
+									
+									if(!request.getParameter("user").equals(""))
+										emp.setUsername(request.getParameter("user"));
 								}
 								
-								if(!request.getParameter("familyName").equals(""))
-									emp.setFamilyName(request.getParameter("familyName"));
-								
-								if(!request.getParameter("givenName").equals(""))
-									emp.setGivenName(request.getParameter("givenName"));
-								
-								if(!request.getParameter("user").equals(""))
-									emp.setUsername(request.getParameter("user"));
+								else if(request.getParameter("randomSearch")!=null)
+								{
+									emp= new Employee();
+									
+									if((!request.getParameter("randomSearch").equals("")))
+											{
+												// Random Search is not supported in the back end yet.
+												
+											}
+								}
 								
 							}
 						    Employee user = (Employee) session.getAttribute("currentEmployee");

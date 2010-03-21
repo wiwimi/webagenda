@@ -36,7 +36,7 @@ public class AddSkill extends HttpServlet {
 		        
 		        PrintWriter out = response.getWriter();
 		        String skillName = request.getParameter("skillName");
-				String desc = request.getParameter("desc");	
+				String desc = request.getParameter("skillDesc");	
 				
 				boolean success;
 				SkillBroker broker=null;
