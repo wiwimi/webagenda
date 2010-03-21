@@ -88,30 +88,6 @@
 			</div>
 			<div id="tableArea">
 							<div class="userAdmin">
-				<table class="sortable" id="userTable">
-					<thead class="head">
-						<tr class="headerRow">
-							<th>Username</th>
-							<th>Employee ID</th>
-							<th>Family Name</th>
-							<th>Given Name</th>
-							<th>Position</th>
-							<th>Supervisor</th>
-				
-						</tr>
-					</thead>
-					
-					<tfoot class="foot">
-						<tr class="headerRow">
-							<th>Username</th>
-							<th>Employee ID</th>
-							<th>Family Name</th>
-							<th>Given Name</th>
-							<th>Position</th>
-							<th>Supervisor</th>
-						</tr>
-					</tfoot>
-					<tbody>
 						<% 
 						    Employee emp = new Employee();
 							Employee user2 = new Employee(12314, "Chaney", "Henson","user1", "password",  "2a" );
@@ -146,25 +122,45 @@
 						    Employee user = (Employee) session.getAttribute("currentEmployee");
 							EmployeeBroker broker = EmployeeBroker.getBroker();
 							int count = broker.getEmpCount();
+							Employee[] empArray = broker.get(emp, user2);
 							
-							
-							if(count==0)
+							if(empArray==null)
 							{
 						%>
-								<tr>
-									<td>
-										Your search didn't match any users.
-									</td>
-								</tr>
+								<div id="instructions">
+									Your search didn't match any users.
+								</div>
 						<%
 							}
 							else
 							{
-								Employee[] empArray = broker.get(emp, user2);
-								
 								for(int index = 0; index<empArray.length; index++)
 								{
 						%>
+							<table class="sortable" id="userTable">
+								<thead class="head">
+									<tr class="headerRow">
+										<th>Username</th>
+										<th>Employee ID</th>
+										<th>Family Name</th>
+										<th>Given Name</th>
+										<th>Position</th>
+										<th>Supervisor</th>
+							
+									</tr>
+								</thead>
+								
+								<tfoot class="foot">
+									<tr class="headerRow">
+										<th>Username</th>
+										<th>Employee ID</th>
+										<th>Family Name</th>
+										<th>Given Name</th>
+										<th>Position</th>
+										<th>Supervisor</th>
+									</tr>
+								</tfoot>
+								<tbody>
 									<tr>
 										<td>
 											<a href="newUser.jsp?=<%=empArray[index].getUsername()%>"> <div id="profileImage"> <b><%=empArray[index].getUsername()%> </b></div></a>
