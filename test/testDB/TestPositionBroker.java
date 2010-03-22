@@ -3,6 +3,7 @@ package testDB;
 import static org.junit.Assert.*;
 
 import java.sql.Date;
+import java.sql.SQLException;
 
 import org.junit.After;
 import org.junit.Before;
@@ -13,6 +14,7 @@ import business.Skill;
 import business.schedule.Position;
 import exception.DBDownException;
 import exception.DBException;
+import exception.DBNoChangeException;
 import persistence.PositionBroker;
 
 public class TestPositionBroker {
@@ -199,16 +201,15 @@ public class TestPositionBroker {
 		try
 			{
 			Position[] results = broker.get(oldPos, user);
-			Position updatePos = new Position("Cook","This is a description",null);
+			Position updatePos = new Position("Cook","with description",new Skill[]{new Skill("Cooking")});
 			
 			if(results!=null)
 			{
+				
 				success = broker.update(oldPos, updatePos, user);
 				System.out.println(success);
-				updatePos = new Position("Cook","This is a description",null);
-				success = broker.update(updatePos, new Position("Cook",null,null), user);
-				
-				success = broker.update(updatePos,oldPos,user);
+				updatePos = new Position("Cook",null,null);
+				success = broker.update(updatePos, new Position("Cook",null,new Skill[]{new Skill("Cooking")}), user);
 			}
 			else
 			{
@@ -216,11 +217,16 @@ public class TestPositionBroker {
 			}
 			
 			}
+		catch (DBNoChangeException dbncE)
+		{
+			System.out.println("Position already exists as updated");
+		}
 		catch (DBException e)
 			{
 			e.printStackTrace();
 			fail();
 			}
+		
 		catch (DBDownException e)
 			{
 			e.printStackTrace();

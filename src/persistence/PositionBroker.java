@@ -10,6 +10,7 @@ import java.sql.Statement;
 import exception.DBChangeException;
 import exception.DBDownException;
 import exception.DBException;
+import exception.DBNoChangeException;
 import application.DBConnection;
 import business.Employee;
 import business.Skill;
@@ -141,6 +142,7 @@ public class PositionBroker extends Broker<Position> {
 		if (deleteObj.getName() == null)
 			throw new DBException("Missing Required Field: Name");
 		
+		
 		/* Delete goes through three steps:
 		 * 1) Grab Position from get(), as we do not know if deleteObj is a true representation
 		 * of the Position to delete.
@@ -163,6 +165,7 @@ public class PositionBroker extends Broker<Position> {
 		boolean success;
 		try
 			{
+			raceCondition(deleteObj,caller);
 			Position[] deletePos = PositionBroker.getBroker().get(new Position(deleteObj.getName()),caller);
 			if(deletePos.length != 1) {
 				throw new DBException("Can only delete one Position object per call.");
@@ -403,6 +406,78 @@ public class PositionBroker extends Broker<Position> {
 		return input;
 	}
 
+	
+	/**
+	 * Checks whether the desired objects exist as expected before modifying them.
+	 * The new Position object can be null when specifying a delete(), otherwise
+	 * is considered an update(). A null old position will throw an error.
+	 * 
+	 * @param oldP
+	 * @param newP
+	 * @param caller
+	 * @throws DBDownException 
+	 * @throws DBException 
+	 * @throws SQLException 
+	 */
+	public void raceCondition(Position oldP, Employee caller) throws DBException, DBDownException, SQLException
+	{
+		if(oldP == null) throw new DBException("Unable to check race condition on unavailable Position");
+		// We grab the original object (oldP) and put it into a temporary variable.
+		Position[] temp = PositionBroker.getBroker().get(oldP,caller);
+		// No object found, race condition failed.
+		if(temp.length > 1) throw new DBChangeException("Too many rows for Position to be updated");
+		else if(temp.length < 1) throw new DBChangeException("Position to check for race condition not found.");
+		// Configure SQL statement to get the number of Skills associated with a Position
+		String update = "SELECT COUNT(*) FROM `WebAgenda`.`POSSKILL` WHERE positionName = '" + temp[0].getName() + "';";
+		
+		// Declare lengths of skills in positions so we don't always have to check for null values.
+		int oldPosL = -1;
+		if(oldP.getPos_skills() != null) oldPosL = oldP.getPos_skills().length;
+			
+		// Grab a connection to retrieve old object as seen in the database.
+		DBConnection conn = this.getConnection();
+		Statement stmt = conn.getConnection().createStatement();
+		ResultSet rs = stmt.executeQuery(update); // It's now stored in result set
+
+		rs.beforeFirst();
+		
+		// Test this method by printing out each item found.
+		// Ensure
+		if (rs.isLast())
+			throw new DBException("Position no longer exists, update failed.");
+		rs.first();
+		int count_value = rs.getInt(1);
+		if(temp[0].getPos_skills() != null)
+		{
+			if(count_value != temp[0].getPos_skills().length) 
+			{
+				throw new DBChangeException("This Position has been modified and cannot be changed. Please update new Position object");
+			}
+		}
+		stmt = conn.getConnection().createStatement();
+		update = "SELECT * FROM `WebAgenda`.`POSSKILL` WHERE positionName = '" + oldP.getName() + "';";
+		String[] skills = new String[count_value];
+		rs = stmt.executeQuery(update);
+		
+		// Check all skills -- in exact order -- from old position and position from db that should BE old
+		int i = 0;
+		rs.beforeFirst();
+		while(rs.next())
+		{
+			skills[i] = rs.getString("skillName");
+			i++;
+		}
+		i = 0;
+		for(; i < oldPosL; i++) 
+		{
+			if(!oldP.getPos_skills()[i].getName().equals(skills[i])) {
+				System.out.println(oldP.getPos_skills()[i].getName() + " and " + skills[i]);
+				throw new DBChangeException("Skills do not match up with old position for update. Position may have been modified.");
+			}
+			i++;
+		}
+	}
+	
 	/*
 	 * Update does not affect position skill relations, only descriptions.
 	 * (non-Javadoc)
@@ -417,97 +492,56 @@ public class PositionBroker extends Broker<Position> {
 		if (updateObj.getName() == null)
 			throw new NullPointerException(
 					"Can not update position without a name.");
-
-		Position[] temp = get(oldPos,caller);
-		if(temp.length != 1) throw new DBChangeException("Too many or too few rows for Position to be updated.");
-		// Create sql update statement from employee object.
-		String update = "SELECT COUNT(*) FROM `WebAgenda`.`POSSKILL` WHERE positionName = '" + temp[0].getName() + "';";
-		System.out.println(update);
-		// Declare lengths of skills in positions so we don't always have to check for null values.
-		int oldPosL = -1, newPosL = -1;
-		if(oldPos.getPos_skills() != null) oldPosL = oldPos.getPos_skills().length;
-		if(updateObj.getPos_skills() != null) newPosL = updateObj.getPos_skills().length;
-		// Get DB connection, send update, and reopen connection for other users.
+		DBConnection conn = null;
 		try
-			{
-			DBConnection conn = this.getConnection();
+		{
+			raceCondition(oldPos,caller); // will throw exception if old object is changed
+		
+			// Get DB connection, send update, and reopen connection for other users.
+		
+			// Declare lengths of skills in positions so we don't always have to check for null values.
 			
-			Statement stmt = conn.getConnection().createStatement();
-			ResultSet rs = stmt.executeQuery(update);
-			// Ensure
-			if (!rs.last())
-				throw new DBException("Position no longer exists, update failed.");
-			rs.first();
-			int count_value = rs.getInt(1);
-			if(temp[0].getPos_skills() != null)
-			{
-				if(count_value != temp[0].getPos_skills().length) 
-				{
-					throw new DBChangeException("This Position has been modified and cannot be changed. Please update new Position object");
-				}
-			}
-			stmt = conn.getConnection().createStatement();
-			update = "SELECT * FROM `WebAgenda`.`POSSKILL` WHERE positionName = '" + oldPos.getName() + "';";
-			System.out.println("Old position name : " + oldPos.getName() + " update : " + update);
-			String[] skills = new String[count_value];
-			rs = stmt.executeQuery(update);
-			conn.getConnection().setAutoCommit(false);
-			// Check all skills -- in exact order -- from old position and position from db that should BE old
+			// INIT VARIABLES //
 			
-			int i = 0;
-			System.out.println("Looping to get skills from Result set");
-			rs.beforeFirst();
-			while(rs.next())
-			{
-				
-				skills[i] = rs.getString("skillName");
-				System.out.println("Skill name " + i + " " + skills[i]);
-				i++;
-			}
-			i = 0;
-			System.out.println("Old Position Length of array");
-			System.out.println(oldPosL);
-			for(; i < oldPosL; i++) 
-			{
-				System.out.println(oldPos.getPos_skills()[i].getName() +" " +  skills[i]);
-				if(!oldPos.getPos_skills()[i].getName().equals(skills[i])) {
-					System.out.println(oldPos.getPos_skills()[i].getName() + " and " + skills[i]);
-					throw new DBChangeException("Skills do not match up with old position for update. Position may have been modified.");
-				}
-				i++;
-			}
-			// Race condition Over
+			int oldPosL = -1, newPosL = -1;
+			if(oldPos.getPos_skills() != null) oldPosL = oldPos.getPos_skills().length;
+			if(updateObj.getPos_skills() != null) newPosL = updateObj.getPos_skills().length;
+			String update = null;
 			boolean posChanged = false, skillsChanged = false;
 			if(oldPos.getDescription() !=updateObj.getDescription()) {
 				posChanged = true;
 			}
-			// We are removing skills associated with a Position.
-			
-			if(oldPosL != newPosL) {
+			if(oldPosL > newPosL) { 
+				// We are removing skills
+				skillsChanged = true;
+			}
+			else if(oldPosL < newPosL) {
+				// We are adding skills
 				skillsChanged = true;
 			}
 			else {
-				for(String s : skills)
+				// Skills are the same, we must check old versus new skills
+				if(oldPosL < 0) oldPosL = 0;
+				for(int i = 0; i < oldPosL; i++)
 				{
-					// Get all Skill names that old Position has
-					for(i = 0; i < updateObj.getPos_skills().length; i++)
+					if(!oldPos.getPos_skills()[i].getName().equals(updateObj.getPos_skills()[i].getName())) 
 					{
-						if(!s.equals(updateObj.getPos_skills()[i].getName())) {
-							skillsChanged = true;
-						}
+						// Name is different
+						skillsChanged = true;
 					}
 				}
 			}
-			if(!posChanged && !skillsChanged)
-			{
-				conn.getConnection().rollback();
-				conn.getConnection().setAutoCommit(true);
-				conn.setAvailable(true);
-				
-				return true;
+
+			if(!posChanged && !skillsChanged) {
+				// Nothing has been changed and we can drop this.
+				throw new DBNoChangeException("Position is currently updated to desired state");
 			}
-			if(posChanged)
-			{
+			
+			conn = this.getConnection();
+			Statement stmt = conn.getConnection().createStatement();
+			conn.getConnection().setAutoCommit(false); // commit after removal
+			int i = 0;
+			if(posChanged) {
 				update = String.format(
 						"UPDATE `WebAgenda`.`POSITION` SET positionName = '%s', positionDescription = %s WHERE positionName = '%s' AND positionDescription %s;",
 						updateObj.getName(),
@@ -517,10 +551,17 @@ public class PositionBroker extends Broker<Position> {
 				System.out.println(update);
 				stmt = conn.getConnection().createStatement();
 				i = stmt.executeUpdate(update);
+				// Determine if update succeeded
+				if(i != 1) {
+					conn.getConnection().rollback();
+					conn.getConnection().setAutoCommit(true);
+					conn.setAvailable(true);
+					throw new DBChangeException("Position requried a description update that failed. Check original Position data.");
+				}
 			}
-			if(skillsChanged)
-			{
-				// Delete position from POSSKILL table
+			
+			if(skillsChanged) {
+				// Delete all skills because we need to reset them.
 				update = String.format(
 						"DELETE FROM `WebAgenda`.`POSSKILL` WHERE positionName = '%s';",
 						updateObj.getName());
@@ -533,7 +574,7 @@ public class PositionBroker extends Broker<Position> {
 					conn.setAvailable(true);
 					throw new DBChangeException("Position not found, may have been changed or deleted by another user.");
 				}
-				
+				// Delete the position after the skills associated
 				update = String.format(
 						"DELETE FROM `WebAgenda`.`POSITION` WHERE positionName = '%s';",
 						updateObj.getName());
@@ -545,11 +586,13 @@ public class PositionBroker extends Broker<Position> {
 					conn.getConnection().setAutoCommit(true);
 					conn.setAvailable(true);
 					throw new DBChangeException("Position not found, may have been changed or deleted by another user.");
+					
 				}
-				
+				// Insert new data into the table
 				update = String.format(
 						"INSERT INTO `WebAgenda`.`POSITION` (`positionName`,`positionDescription`) VALUES ('%s','%s');",
-						updateObj.getName(),updateObj.getDescription());
+						updateObj.getName(),
+						(updateObj.getDescription() == null ? "NULL" : "'" + updateObj.getDescription() + "'"));
 				System.out.println(update);
 				stmt = conn.getConnection().createStatement();
 				i = stmt.executeUpdate(update);
@@ -559,33 +602,34 @@ public class PositionBroker extends Broker<Position> {
 					conn.setAvailable(true);
 					throw new DBChangeException("Position not found, may have been changed or deleted by another user.");
 				}
+				// Last insert took care of position object. This one takes care of POSSKILL, so we must do insert for each skill associated.
+				// Therefore it must be > 0 in order to insert.
 				if(newPosL > 0) {
-				for(i = 0; i < updateObj.getPos_skills().length; i++)
-					{
-						update = String.format(
-								"INSERT INTO `WebAgenda`.`POSSKILL` (`positionName`,`skillName`) VALUES ('%s','%s');",
-								updateObj.getPos_skills()[i].getName());
-						System.out.println(update);
-						stmt = conn.getConnection().createStatement();
-						if(stmt.executeUpdate(update) != 1) {
-							conn.getConnection().rollback();
-							conn.getConnection().setAutoCommit(true);
-							conn.setAvailable(true);
-							throw new DBChangeException("Could not insert Position/Skill entry as it may already exist.");
+					for(i = 0; i < updateObj.getPos_skills().length; i++)
+						{
+							update = String.format(
+									"INSERT INTO `WebAgenda`.`POSSKILL` (`positionName`,`skillName`) VALUES ('%s','%s');",
+									updateObj.getName(),
+									updateObj.getPos_skills()[i].getName());
+							System.out.println(update);
+							stmt = conn.getConnection().createStatement();
+							if(stmt.executeUpdate(update) != 1) {
+								conn.getConnection().rollback();
+								conn.getConnection().setAutoCommit(true);
+								conn.setAvailable(true);
+								throw new DBChangeException("Could not insert Position/Skill entry as it may already exist.");
+							}
+							
 						}
-						
 					}
 				}
-			}
 			conn.getConnection().commit();
 			conn.getConnection().setAutoCommit(true);
 			conn.setAvailable(true);
 			}
-		catch (SQLException e)
-			{
-			throw new DBException("Failed to update position.", e);
-			}
-		
+		catch(SQLException sqlE) {
+			throw new DBException(sqlE.getMessage());
+		}
 		return true;
 	}
 
