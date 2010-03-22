@@ -44,7 +44,7 @@ public class AddUser extends HttpServlet {
 		       //Create or get the session object from the HTTPSession object
 		        HttpSession session = request.getSession();
 		   
-		        //Employee user = (Employee)session.getAttribute("currentEmployee");
+		        Employee user = (Employee)session.getAttribute("currentEmployee");
 		        
 		        PrintWriter out = response.getWriter();
 		        
@@ -69,7 +69,7 @@ public class AddUser extends HttpServlet {
 				{
 					Employee emp = new Employee(empIdInt,givenName,familyName,"bilb01","password",
 					"1a");
-					Employee user = new Employee(12314, "Chaney", "Henson","user1", "password",  "2a" );
+					
 					success = empBroker.create(emp, user);
 					
 					if (success)

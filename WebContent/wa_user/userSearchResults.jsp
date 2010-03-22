@@ -83,14 +83,19 @@
 			<div id="searchArea">
 			<form id="form">
 					<input type="text" size=30/ name="randomSearch">
-					<input type="submit" name="search"  class="button" value="Search" onClick="location.href='userSearchResults.jsp?randomSearch=' + form.randomSearch.value">
+					<input type="button" name="submit"  class="button" value="Search" onClick="location.href='userSearchResults.jsp?randomSearch=' + form.randomSearch.value">
 			</form>
 			</div>
 			<div id="tableArea">
 							<div class="userAdmin">
 						<% 
 						    Employee emp = new Employee();
-							Employee user2 = new Employee(12314, "Chaney", "Henson","user1", "password",  "2a" );
+							Employee user = (Employee) session.getAttribute("currentEmployee");
+							///Employee user2 = new Employee(12314, "Chaney", "Henson","user1", "password",  "2a" );
+							EmployeeBroker broker = EmployeeBroker.getBroker();
+							int count = broker.getEmpCount();
+							Employee[] empArray = null;
+							
 						    
 						    if((request.getParameter("empId").equals("")) 
 						    		&& (request.getParameter("familyName").equals(""))
@@ -99,6 +104,7 @@
 						    		&& (request.getParameter("email").equals("")))
 							{
 								emp.setActive(true);
+								empArray = broker.get(emp, user);
 							}
 							else
 							{
@@ -120,31 +126,66 @@
 									
 									if(!request.getParameter("user").equals(""))
 										emp.setUsername(request.getParameter("user"));
+									
+										empArray = broker.get(emp, user);
 								}
 								
-								else if(request.getParameter("randomSearch")!=null)
+								if(request.getParameter("randomSearch")!=null)
 								{
 									emp= new Employee();
 									
 									if((!request.getParameter("randomSearch").equals("")))
-											{
-												// Random Search is not supported in the back end yet.
+									{
+												String randomSearch = request.getParameter("randomSearch");
 												
-											}
+												for (int i = 0; i < randomSearch.length(); i++) 
+												{
+											           if(!Character.isDigit(randomSearch.charAt(i)))
+											           {
+											        	   // Search by ID
+											        	   int empInteger = Integer.parseInt(request.getParameter("randomSearch"));
+														   emp.setEmpID(empInteger);
+														   empArray = broker.get(emp, user);
+														   
+											           }
+											           else
+													   {
+															emp.setFamilyName("randomSearch");
+															Employee [] familyNameArray = broker.get(emp, user);
+															
+															emp.setGivenName("randomSearch");
+															Employee [] givenNameArray = broker.get(emp, user);
+															
+															emp.setUsername("randomSearch");
+															Employee [] usernameArray = broker.get(emp, user);
+															
+															emp.setEmail("randomSearch");
+															Employee [] emailArray = broker.get(emp, user);
+															
+															
+															int strlength = familyNameArray.length + givenNameArray.length + usernameArray.length + emailArray.length;
+															
+															empArray = new Employee[strlength];
+															System.arraycopy(familyNameArray, 0, emp, 0, familyNameArray.length);
+															System.arraycopy(givenNameArray, 0, emp, familyNameArray.length, givenNameArray.length);
+															empArray = broker.get(emp, user);
+														}
+											     }
+										}
+									else if ((request.getParameter("randomSearch").equals("")))
+									{
+										emp.setActive(true);
+										empArray = broker.get(emp, user);
+									}
 								}
-								
 							}
-						    Employee user = (Employee) session.getAttribute("currentEmployee");
-							EmployeeBroker broker = EmployeeBroker.getBroker();
-							int count = broker.getEmpCount();
-							Employee[] empArray = broker.get(emp, user2);
-							
 							if(empArray==null)
 							{
 						%>
 								<div id="instructions">
 									Your search didn't match any users.<br>
 						      		For better results try more general fields and make sure all words are spelled correctly.
+						      		
 								</div>
 						<%
 							}

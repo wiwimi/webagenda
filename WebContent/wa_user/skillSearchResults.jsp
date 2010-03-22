@@ -86,15 +86,15 @@
 			</div>
 			<div id="searchArea">
 			<form id="form">
-				<input type="text" size=30/ name="skillName">
-				<input type="submit" name="search"  class="button" value="Search" onClick="location.href='newSkill.jsp?skillName=' + form.skillName.value"> 
+				<input type="text" size=30/ name="randomSearch">
+				<input type="button" name="submit"  class="button" value="Search" onClick="location.href='skillSearchResults.jsp?randomSearch=' + form.randomSearch.value"> 
 			</form>
 			</div>
 			
 						<% 
 							Employee user = (Employee) session.getAttribute("currentEmployee");
 							SkillBroker broker = SkillBroker.getBroker();
-							
+							Skill[] skillArray = null;
 							Skill skill =null; 
 							
 							if(request.getParameter("skillName")!=null || request.getParameter("skillDesc")!=null )
@@ -113,20 +113,62 @@
 								{
 									skill = new Skill("");
 								}
-						 	 }
-							
+								skillArray = broker.get(skill, user);
+						 	}
 							else if(request.getParameter("randomSearch")!=null)
 							{
-								skill= new Skill("");
-								
 								if((!request.getParameter("randomSearch").equals("")))
 								{
-									skill = new Skill(request.getParameter("randomSearch"));
+									// If it was a name
+									Skill byName = new Skill(request.getParameter("randomSearch"));
+									Skill[] skillArrayByName =  broker.get(byName, user);
 									
+									// If it was a desc
+									Skill byDesc = new Skill();
+									byDesc.setDesc(request.getParameter("randomSearch"));
+									Skill[] skillArrayByDesc =  broker.get(byDesc, user);
+									
+									//If both are not empty Concat them
+									if(skillArrayByDesc!=null && skillArrayByName!=null)
+									{
+										for (int i=0; i<skillArrayByName.length; i++)
+										{
+											for (int x=0; x<skillArrayByDesc.length; x++)
+											{
+												// If it is not refferring to the same object
+												if(skillArrayByDesc[x].getName()!=skillArrayByName[i].getName())
+												{
+													int strlength = skillArrayByDesc.length + skillArrayByName.length;
+													
+													skillArray = new Skill[strlength];
+													System.arraycopy(skillArrayByDesc, 0, skillArray, 0, skillArrayByDesc.length);
+												    System.arraycopy(skillArrayByName, 0, skillArray, skillArrayByDesc.length, skillArrayByName.length);
+													
+												}
+												else if (skillArrayByDesc[x].getName()==skillArrayByName[i].getName())
+												{
+													skillArray = skillArrayByName;
+												}
+											}
+										}
+									}
+									else if(skillArrayByDesc!=null)
+									{
+										skillArray = skillArrayByDesc;
+									}
+									else if(skillArrayByName!=null)
+									{
+										skillArray = skillArrayByName;
+										
+									}
 								}
+								else if((request.getParameter("randomSearch").equals("")))
+								{
+									skill = new Skill("");
+									skillArray = broker.get(skill, user);
+								}
+									
 							}
-							Skill[] skillArray = broker.get(skill, user);
-							
 							if(skillArray==null)
 							{
 							%>

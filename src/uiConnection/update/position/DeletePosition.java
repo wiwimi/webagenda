@@ -49,25 +49,25 @@ public class DeletePosition extends HttpServlet {
 					if (success)
 					{
 						//Confirm that the user was deleted
-						response.sendRedirect("wa_user/posSearchResults.jsp?delete=true");
+						response.sendRedirect("wa_user/posSearchResults.jsp?delete=true&posName=&posDesc=");
 					}
 				}
 				catch (DBException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					// Failed to delete the location
-					response.sendRedirect("wa_user/posSearchResults.jsp?delete=false");
+					response.sendRedirect("wa_user/posSearchResults.jsp?delete=false&posName=&posDesc=");
 					
 				} catch (DBDownException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					// Failed to add the location
-					response.sendRedirect("wa_user/posSearchResults.jsp?delete=false");
+					response.sendRedirect("wa_user/posSearchResults.jsp?delete=false&posName=&posDesc=");
 				}
 				catch(Exception e)
 				{
 					// Failed to add the location
-					response.sendRedirect("wa_user/updatePosition.jsp?message=false");
+					response.sendRedirect("wa_user/posSearchResults.jsp?delete=false&posName=&posDesc=");
 				}
 				finally
 				{

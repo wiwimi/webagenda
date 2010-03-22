@@ -254,6 +254,46 @@ public class TestLocationBroker
 		assertTrue(true);
 		}
 	
+
+	@Test
+	public void testGetLocationByDesc()
+		{
+		//Search for end part of location name.
+		Location get = new Location();
+		get.setDesc("test");
+		
+		//Get all locations and print them to console.
+		try
+			{
+			Location[] results = broker.get(get, user);
+		
+			if(results==null || results.length==0)
+				System.out.println("There are no results");
+		
+			
+			for (Location printLoc : results)
+				{
+				System.out.println("Description: "+printLoc.getDesc());
+				}
+			}
+		catch (DBException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		catch (DBDownException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		catch (InvalidPermissionException e) 
+			{
+			e.printStackTrace();
+			fail();
+			}
+		assertTrue(true);
+		}
+	
 	/**
 	 * Test method for {@link persistence.LocationBroker#update(business.schedule.Location)}.
 	 */

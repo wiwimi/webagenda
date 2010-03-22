@@ -53,7 +53,7 @@ public class DeleteLocation extends HttpServlet {
 					if (success)
 					{
 						//Confirm that the location was deleted
-						response.sendRedirect("wa_location/locSearchResults.jsp?delete=true&locName= ");
+						response.sendRedirect("wa_location/locSearchResults.jsp?delete=true&locName=&locDesc=");
 					}
 				}
 				catch (DBException e) {
@@ -62,7 +62,7 @@ public class DeleteLocation extends HttpServlet {
 					e.printStackTrace();
 					
 					// Failed to delete the location
-					response.sendRedirect("wa_location/locSearchResults.jsp?delete=false&locName= ");
+					response.sendRedirect("wa_location/locSearchResults.jsp?delete=false&locName=&locDesc=");
 					
 				} catch (DBDownException e) {
 					// TODO Auto-generated catch block
@@ -70,12 +70,12 @@ public class DeleteLocation extends HttpServlet {
 					e.printStackTrace();
 					
 					// Failed to delete the location
-					response.sendRedirect("wa_location/locSearchResults.jsp?delete=false&locName= ");
+					response.sendRedirect("wa_location/locSearchResults.jsp?delete=false&locName=&locDesc=");
 				}
 				catch(Exception e)
 				{
 					// Failed to add the location
-					response.sendRedirect("wa_location/locSearchResults.jsp?delete=false&locName= ");
+					response.sendRedirect("wa_location/locSearchResults.jsp?delete=false&locName=&locDesc=");
 				}
 				finally
 				{

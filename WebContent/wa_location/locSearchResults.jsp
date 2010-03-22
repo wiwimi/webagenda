@@ -83,12 +83,12 @@
 			</div>
 			<div class="widgetLowerRectangle" id="locationsLowerRectangle">
 				<div id="locationsIcon">
-						<h3>Locations</h3>
+						<h3>Locations </h3>
 				</div>
 				<div id="searchArea">
 				<form id="form">
 						<input type="text" size=30 name="randomSearch" value=""/>
-						<input type="submit" name="search"  class="button" value="Search" onClick="location.href='locSearchResults.jsp?randomSearch=' + form.randomSearch.value"> 
+						<input type="button" name="submit"  class="button" value="Search" onClick="location.href='locSearchResults.jsp?randomSearch=' + form.randomSearch.value"> 
 				</form>
 				</div>
 				
@@ -97,6 +97,7 @@
 							Employee user = (Employee) session.getAttribute("currentEmployee");
 							LocationBroker broker = LocationBroker.getBroker();
 							Location loc= null;
+							Location[] locArray=null;
 							
 							if(request.getParameter("locName")!=null || request.getParameter("locDesc")!=null )
 							{
@@ -113,26 +114,71 @@
 								else if (request.getParameter("locName").equals("") && (request.getParameter("locDesc").equals("")))
 								{
 									loc = new Location("");
+									
 								}
+								locArray = broker.get(loc, user);
 						 	 }
 							
 							else if(request.getParameter("randomSearch")!=null)
 							{
-								loc= new Location("");
 								
 								if((!request.getParameter("randomSearch").equals("")))
 								{
-									loc = new Location(request.getParameter("randomSearch"));
+									// If it was a name
+									Location byName = new Location(request.getParameter("randomSearch"));
+									Location[] locArrayByName =  broker.get(byName, user);
 									
+									// If it was a desc
+									Location byDesc = new Location();
+									byDesc.setDesc(request.getParameter("randomSearch"));
+									Location[] locArrayByDesc =  broker.get(byDesc, user);
+									
+									//If both are not empty Concat them
+									if(locArrayByDesc!=null && locArrayByName!=null)
+									{
+										for (int i=0; i<locArrayByName.length; i++)
+										{
+											for (int x=0; x<locArrayByDesc.length; x++)
+											{
+												// If it is not refferring to the same object
+												if(locArrayByDesc[x].getName()!=locArrayByName[i].getName())
+												{
+													int strlength = locArrayByDesc.length + locArrayByName.length;
+													
+													locArray = new Location[strlength];
+													System.arraycopy(locArrayByDesc, 0, locArray, 0, locArrayByDesc.length);
+												    System.arraycopy(locArrayByName, 0, locArray, locArrayByDesc.length, locArrayByName.length);
+													
+												}
+												else if (locArrayByDesc[x].getName()==locArrayByName[i].getName())
+												{
+													locArray = locArrayByName;
+												}
+											}
+										}
+										
+									}
+									else if(locArrayByDesc!=null)
+									{
+										locArray = locArrayByDesc;
+									}
+									else if(locArrayByName!=null)
+									{
+										locArray = locArrayByName;
+									}
 								}
+									
+								else if((request.getParameter("randomSearch").equals("")))
+								{
+									loc = new Location("");
+									locArray = broker.get(loc, user);
+								}
+								
 							}
-							
-							
-							Location[] locArray = broker.get(loc, user);
-							
 							if (locArray==null)
 							{
 						%>
+						
 						      	<div id="instructions">
 						      		Your search didn't match any locations. <br>
 						      		For better results try more general fields and make sure all words are spelled correctly.
@@ -141,14 +187,17 @@
 							}
 							else
 							{
+								
 								    
-						%>     <div id="tableArea">
+						%>    
+						 
+						 <div id="tableArea">
 									<div class="userAdmin">
 										<table class="sortable" id="userTable">
 											<thead class="head">
 												<tr class="headerRow">
 													<th>Name</th>
-													<th>Description</th>
+													<th>Description </th>
 												</tr>
 											</thead>
 											<tfoot class="foot">
@@ -169,7 +218,7 @@
 											<a href="updateLocation.jsp?location=<%=locArray[index].getName()%>"><div id="locationImage"> <b> <%=locArray[index].getName()%> </b></div></a>
 											<div class="row-actions"><span class='edit'>
 											<a href="updateLocation.jsp?locName=<%=locArray[index].getName()%>&locDesc=<%=locArray[index].getDesc()%> "> Edit </a>   | </span>  <span class='delete'>
-											<a href="javascript:;" onClick="removeLocation('<%=locArray[index].getName()%>', '<%=locArray[index].getDesc()%>');">
+											<a href="javascript:;" onClick="removeLocation('<%=locArray[index].getName()%>&locDesc=<%=locArray[index].getDesc()%>');">
 												Delete
 											</a></span></div>
 										</td>
