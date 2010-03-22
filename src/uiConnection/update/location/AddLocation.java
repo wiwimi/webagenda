@@ -53,25 +53,25 @@ public class AddLocation extends HttpServlet {
 					if (success)
 					{
 						//Confirm that the location was added
-						response.sendRedirect("wa_location/newLocation.jsp?message=true");
+						response.sendRedirect("wa_location/newLocation.jsp?message=true&locName=&locDesc=");
 					}
 				}
 				catch (DBException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					// Failed to add the location
-					response.sendRedirect("wa_location/newLocation.jsp?message=false");
+					response.sendRedirect("wa_location/newLocation.jsp?message=false&locName=&locDesc=");
 					
 				} catch (DBDownException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					// Failed to add the location
-					response.sendRedirect("wa_location/newLocation.jsp?message=false");
+					response.sendRedirect("wa_location/newLocation.jsp?message=false&locName=&locDesc=");
 				}
 				catch(Exception e)
 				{
 					// Failed to add the location
-					response.sendRedirect("wa_location/newLocation.jsp?message=false");
+					response.sendRedirect("wa_location/newLocation.jsp?message=false&locName=&locDesc=");
 				}
 				finally
 				{

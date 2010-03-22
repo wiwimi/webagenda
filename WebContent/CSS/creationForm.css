@@ -2,7 +2,7 @@
 
 /*Author:Noorin*/
 
-#creationForm input[type=text], select, textarea
+#creationForm input[type=text], input[type=password], select, textarea
 
 {
 	background-color: #FFFFFF;

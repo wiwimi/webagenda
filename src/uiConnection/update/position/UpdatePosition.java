@@ -57,18 +57,13 @@ public class UpdatePosition extends HttpServlet {
 						//FIXME pass in the logged in employee object (from session) instead of null.
 						Position[] results = broker.get(oldPos, user);
 						
-						//out.println(newPos.getName());
-						//out.println(newPos.getDescription());
-						//out.println(oldPos.getName());
-						//out.println(oldPos.getDescription());
-						
 						if(results!=null)
 						//FIXME pass in the logged in employee object (from session) instead of null.
 							success = broker.update(oldPos, newPos, user);
 					if (success)
 					{
 						//Confirm that the location was updated
-						response.sendRedirect("wa_user/updatePosition.jsp?update=true");
+						response.sendRedirect("wa_user/updatePosition.jsp?update=true&posName=" + posName+ "&posDesc=" + posDesc);
 					}
 				}
 				catch (DBException e) {
@@ -77,7 +72,7 @@ public class UpdatePosition extends HttpServlet {
 					e.printStackTrace();
 					
 					// Failed to update the location
-					//response.sendRedirect("wa_user/updatePosition.jsp?update=false");
+					response.sendRedirect("wa_user/updatePosition.jsp?update=false&posName=&posDesc=");
 					
 				} catch (DBDownException e) {
 					
@@ -85,14 +80,14 @@ public class UpdatePosition extends HttpServlet {
 					e.printStackTrace();
 					
 					// Failed to update the location
-					//response.sendRedirect("wa_user/updatePosition.jsp?update=false");
+					response.sendRedirect("wa_user/updatePosition.jsp?update=false&posName=&posDesc=");
 				}
 				catch(Exception e)
 				{
 					e.printStackTrace();
 					
 					// Failed to update the location
-					//response.sendRedirect("wa_user/updatePosition.jsp?update=false");
+					response.sendRedirect("wa_user/updatePosition.jsp?update=false&posName=&posDesc=");
 				}
 				finally
 				{

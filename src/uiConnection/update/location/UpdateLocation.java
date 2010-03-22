@@ -58,7 +58,7 @@ public class UpdateLocation extends HttpServlet {
 					if (success)
 					{
 						//Confirm that the location was updated
-						response.sendRedirect("wa_location/updateLocation.jsp?update=true");
+						response.sendRedirect("wa_location/updateLocation.jsp?update=true&locName=" + locName +"&locDesc=" + locDesc );
 					}
 				}
 				catch (DBException e) {
@@ -67,7 +67,7 @@ public class UpdateLocation extends HttpServlet {
 					e.printStackTrace();
 					
 					// Failed to update the location
-					response.sendRedirect("wa_location/updateLocation.jsp?update=false");
+					response.sendRedirect("wa_location/updateLocation.jsp?update=false&locName=&locDesc=");
 					
 					
 					
@@ -77,7 +77,7 @@ public class UpdateLocation extends HttpServlet {
 					e.printStackTrace();
 					
 					// Failed to update the location
-					response.sendRedirect("wa_location/updateLocation.jsp?update=false");
+					response.sendRedirect("wa_location/updateLocation.jsp?update=false&locName=&locDesc=");
 					
 					
 				}
@@ -86,7 +86,7 @@ public class UpdateLocation extends HttpServlet {
 					e.printStackTrace();
 					
 					// Failed to update the location
-					response.sendRedirect("wa_location/updateLocation.jsp?update=false");
+					response.sendRedirect("wa_location/updateLocation.jsp?update=false&locName=&locDesc=");
 				}
 				finally
 				{

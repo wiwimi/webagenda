@@ -95,7 +95,7 @@
 			<div id="position">
 				<div id="formButtons">
 						<input type="submit" name="submit" class="button" value="Update"> 
-						<input type="button" name="submit" class="button" value="Search" onClick="location.href='posSearchResults.jsp';"> 
+						<input type="button" name="submit" class="button" value="Search" onClick="location.href='posSearchResults.jsp?posName=' + form.posName.value + '&posDesc=' + form.posDesc.value"> 
 						<input type="reset" name="clear" class="button" value="Clear Screen"> 
 						<br></br>
 			</div>
@@ -121,13 +121,12 @@
 										<input type="button" name="submit" class="button" value="edit"/>
 								</p>
 								</div>	
-							
-							<p>	<label class="label"> Description: </label></p>
-							<textarea  name="posDesc" cols="23" rows="6" tabindex="101"><%=posDesc%></textarea>
+						<p>	<label class="label"> Description: </label></p>
+						<textarea  name="posDesc" cols="23" rows="6" tabindex="101"><%=posDesc%></textarea>
 				</fieldset>
 						<div id="formButtons">
 						<input type="submit" name="submit" class="button" value="Update"> 
-						<input type="button" name="submit" class="button" value="Search" onClick="location.href='posSearchResults.jsp';"> 
+						<input type="button" name="submit" class="button" value="Search" onClick="location.href='posSearchResults.jsp?posName=' + form.posName.value + '&posDesc=' + form.posDesc.value">
 						<input type="reset" name="clear" class="button" value="Clear Screen"> 
 						<br></br>
 			          </div>
@@ -163,7 +162,6 @@
 										Skill skill = new Skill("");
 										Skill[] skillArray = broker.get(skill, user);
 								
-										
 										for(int index = 0; index<skillArray.length; index++)
 										{
 											//for(int x=0; x<pos_skills.length; x++)
@@ -174,9 +172,7 @@
 												<a href="newSkill.jsp?=<%=skillArray[index].getName()%>"> <b> <%=skillArray[index].getName()%> </b></a>
 											</td>
 											<td>
-													
-															<input type="checkbox" name="skill" checked="checked"> 
-													
+													<input type="checkbox" name="skill" checked="checked"> 
 											</td>
 										</tr>
 									<% 

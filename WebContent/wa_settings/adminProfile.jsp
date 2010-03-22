@@ -20,57 +20,61 @@
 <script type="text/javascript" src="../lib/js/calendar.js"></script>
 
 <!--  CSS files -->
-<link rel="stylesheet" href="CSS/userAddStyle.css" type="text/css"></link>
+<link rel="stylesheet" href="../CSS/creationForm.css" type="text/css"></link>
+<link rel="stylesheet" href="CSS/table.css" type="text/css"></link>
+<link rel="stylesheet" href="../CSS/Popup/popup.css" type="text/css"></link>
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
+<style type="text/css">@import "../CSS/jquery.datepick.css";</style> 
+<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/val.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/screen.css" />
+<link rel="stylesheet" href="../CSS/Flash/flashmessenger.css" type="text/css" media="screen"/>
 
 </head>
 <body>
-Fields marked with <em class="asterisk" > *</em> are required.
-<br></br>
-Randomly generated passwords are going to be sent to the employee's e-mail. If that field was missing it will be sent to your e-mail.
-<br></br>
-<br></br>
+<div id="instructions">
+	Fields marked with <em class="asterisk" > *</em> are required.
+	Randomly generated passwords are going to be sent to the employee's e-mail. If that field was missing it will be sent to your e-mail.
+</div>
 
 		<div id="usersWidget" class="fullWidget">
 			<div class="widgetUpperRectangle" id="usersUpperRectangle">
-				<div class="widgetTitle" id="usersTitle">Admin's Profile</div>
+				<div class="widgetTitle" id="usersWidgetTitle">Admin's Profile</div>
 			</div>
-			
-		<div class="widgetLowerRectangle" id="quickLinksLowerRectangle">
-
-		<div id ="updateProfileForm">
-			<form class="updateProfileForm" method="post">
-			 <div id="personal">
-			
-				 <fieldset>
-					<legend > Personal 
-					
-							<p>	<label> Given Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="givenName" size ="30"> </p>
-							<p>	<label> Family Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="familyName" size ="30"> </p>
-							<p>	<label> Date of Birth: <em class="asterisk"> * </em> </label> <input type="text" name ="dob" id="dob" size ="10"></p>
-							<p>	<label> Personal E-mail: </label> <input type="text"  name ="email" size ="30"> </p>
-					
-					</legend>
-				</fieldset>
-			</div>
-			
-			<fieldset>
-					<legend > Account Settings </legend>
-			
-							<p> <label> User Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="userName" size ="30"> </p>
-							<p> <label> Old Password: <em class="asterisk"> * </em> </label> <input type="password"  name ="userName" size ="30"> </p>
-							
-							<p> <label> New Password: <em class="asterisk"> * </em> </label> <input type="password"  name ="userName" size ="30"> </p>
-							<p> <label> New Password: <em class="asterisk"> * </em> </label> <input type="password"  name ="userName" size ="30"> </p>
-			</fieldset>
-						<input type="submit" name="submit" class="button" value="Save"> 
-						<input type="submit" name="clear" class="button" value="Clear Screen"> 
-						<br></br>
-				</form>
-			</div>
+		<div class="widgetLowerRectangle" id="usersLowerRectangle">
+			<div id ="creationForm">
+				<form class="validatedForm" action="" id="form" method="post">
+					 <div id="personal">
+					 		<div id="formButtons">
+								 	    <input type="submit" name="submit" class="button" value="Update"> 
+										<input type="reset" name="clear" class="button" value="Clear Screen">
+							</div>
+							<fieldset>
+								<legend > Personal </legend>
+									<p>	<label class ="label"> Given Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="givenName" size ="30"> </p>
+									<p>	<label class ="label"> Family Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="familyName" size ="30"> </p>
+									<p>	<label class ="label"> Date of Birth: <em class="asterisk"> * </em> </label> <input type="text" name ="dob" id="dob" size ="10"></p>
+									<p>	<label class ="label"> Personal E-mail: </label> <input type="text"  name ="email" size ="30"> </p>
+							</fieldset>
+						</div>
+						<div id="work">
+						<fieldset>
+							<legend > Account Settings </legend>
+									<p> <label class ="label"> User Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="userName" size ="30"> </p>
+									<p> <label class ="label"> Old Password: <em class="asterisk"> * </em> </label> <input type="password"  name ="userName" size ="30"> </p>
+									
+									<p> <label class ="label"> New Password: <em class="asterisk"> * </em> </label> <input type="password"  name ="userName" size ="30"> </p>
+									<p> <label class ="label"> New Password: <em class="asterisk"> * </em> </label> <input type="password"  name ="userName" size ="30"> </p>
+						</fieldset>
+						</div>
+							<div id="formButtons">
+								<input type="submit" name="submit" class="button" value="Update"> 
+								<input type="reset" name="clear" class="button" value="Clear Screen"> 
+							</div>
+								 
+						</form>
 			</div>
 		</div>
-
+	</div>
 <div id="footer"></div>
 
 </body>

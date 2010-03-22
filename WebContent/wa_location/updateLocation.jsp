@@ -87,7 +87,7 @@
 					<div id="location">
 						<div id="formButtons">
 							<input type="submit" name="submit"  class="button" value="Update" > 
-							<input type="button" name="submit" class="button"  onClick="location.href='locSearchResults.jsp?locName=' + form.locName.value" value="Search" > 
+							<input type="button" name="submit" class="button"  onClick="location.href='locSearchResults.jsp?locName=' + form.locName.value + '&locDesc=' + form.locDesc.value" value="Search" /> 
 							<input type="reset" name="clear" class="button" value="Clear Screen"> 
 						</div>
 				     <fieldset>
@@ -104,7 +104,7 @@
 					</fieldset>
 						<div id="formButtons">
 					        <input type="submit" name="submit"  class="button" value="Update" > 
-							<input type="button" name="submit" class="button"  onClick="location.href='locSearchResults.jsp?locName=' + form.locName.value" value="Search" > 
+							<input type="button" name="submit" class="button"  onClick="location.href='locSearchResults.jsp?locName=' + form.locName.value + '&locDesc=' + form.locDesc.value" value="Search" /> 
 							<input type="reset" name="clear" class="button" value="Clear Screen"> 
 					     </div>
 				     </div>

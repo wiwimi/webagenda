@@ -106,7 +106,7 @@
 					 	    <input type="submit" name="submit" class="button" value="Add"> 
 							<input type="button" name="submit" class="button" value="Search" onClick="location.href='userSearchResults.jsp?familyName='+ form.familyName.value + '&empId=' + form.empId.value + '&givenName=' + form.givenName.value + '&user=' + form.user.value + '&email=' + form.email.value">
 							<input type="reset" name="clear" class="button" value="Clear Screen">
-				</div>
+						</div>
 				<fieldset>
 					<legend > Personal </legend>
 						<p>	<label class ="label"> Given Name:  <em class="asterisk"> * </em> </label> <input type="text" name="givenName" class="required" size="30" maxLength="30" value=""/> </p>
