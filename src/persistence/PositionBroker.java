@@ -448,30 +448,37 @@ public class PositionBroker extends Broker<Position> {
 			}
 			stmt = conn.getConnection().createStatement();
 			update = "SELECT * FROM `WebAgenda`.`POSSKILL` WHERE positionName = '" + oldPos.getName() + "';";
-			System.out.println(update);
+			System.out.println("Old position name : " + oldPos.getName() + " update : " + update);
 			String[] skills = new String[count_value];
 			rs = stmt.executeQuery(update);
 			conn.getConnection().setAutoCommit(false);
-			
 			// Check all skills -- in exact order -- from old position and position from db that should BE old
-			rs.first();
+			
 			int i = 0;
+			System.out.println("Looping to get skills from Result set");
+			rs.beforeFirst();
 			while(rs.next())
 			{
+				
 				skills[i] = rs.getString("skillName");
+				System.out.println("Skill name " + i + " " + skills[i]);
 				i++;
 			}
 			i = 0;
+			System.out.println("Old Position Length of array");
+			System.out.println(oldPosL);
 			for(; i < oldPosL; i++) 
 			{
+				System.out.println(oldPos.getPos_skills()[i].getName() +" " +  skills[i]);
 				if(!oldPos.getPos_skills()[i].getName().equals(skills[i])) {
+					System.out.println(oldPos.getPos_skills()[i].getName() + " and " + skills[i]);
 					throw new DBChangeException("Skills do not match up with old position for update. Position may have been modified.");
 				}
 				i++;
 			}
 			// Race condition Over
 			boolean posChanged = false, skillsChanged = false;
-			if(oldPos.getDescription() != updateObj.getDescription()) {
+			if(oldPos.getDescription() !=updateObj.getDescription()) {
 				posChanged = true;
 			}
 			// We are removing skills associated with a Position.
