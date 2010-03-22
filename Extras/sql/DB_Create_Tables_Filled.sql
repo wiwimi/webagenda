@@ -190,7 +190,7 @@ CREATE  TABLE IF NOT EXISTS `WebAgenda`.`POSSKILL` (
   CONSTRAINT `fk_POSSKILL_SKILL`
     FOREIGN KEY (`skillName` )
     REFERENCES `WebAgenda`.`SKILL` (`skillName` )
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
@@ -289,6 +289,7 @@ DROP TABLE IF EXISTS `WebAgenda`.`SHIFT` ;
 CREATE  TABLE IF NOT EXISTS `WebAgenda`.`SHIFT` (
   `shiftID` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `scheduleID` INT UNSIGNED NOT NULL ,
+  `day` INT UNSIGNED NOT NULL ,
   `startTime` TIME NOT NULL ,
   `endTime` TIME NOT NULL ,
   PRIMARY KEY (`shiftID`, `scheduleID`) ,
@@ -390,7 +391,6 @@ DELIMITER ;
 DROP USER 'WABroker'@'localhost';
 CREATE USER 'WABroker'@'localhost' IDENTIFIED BY 'password';
 
-
 grant SELECT ON `mysql`.`proc` to 'WABroker'@'localhost';
 grant DELETE on TABLE `WebAgenda`.`EMPLOYEE` to 'WABroker'@'localhost';
 grant INSERT on TABLE `WebAgenda`.`EMPLOYEE` to 'WABroker'@'localhost';
@@ -468,8 +468,8 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- Data for table `WebAgenda`.`PERMISSIONSET`
 -- -----------------------------------------------------
 SET AUTOCOMMIT=0;
-insert into `WebAgenda`.`PERMISSIONSET` (`plevel`, `canEditSched`, `canReadSched`, `canReadOldSched`, `canManageEmployee`, `canViewResources`, `canChangePermissions`, `canReadLogs`, `canAccessReports`, `canRequestDaysOff`, `maxDaysOff`, `canTakeVacations`, `maxVacationDays`, `canTakeEmergencyDays`, `canViewInactiveEmps`, `canSendNotifications`, `trusted`) values ('1a', false, true, false, false, false, false, false, false, false, 0, false, 0, true, false, false, '1');
-insert into `WebAgenda`.`PERMISSIONSET` (`plevel`, `canEditSched`, `canReadSched`, `canReadOldSched`, `canManageEmployee`, `canViewResources`, `canChangePermissions`, `canReadLogs`, `canAccessReports`, `canRequestDaysOff`, `maxDaysOff`, `canTakeVacations`, `maxVacationDays`, `canTakeEmergencyDays`, `canViewInactiveEmps`, `canSendNotifications`, `trusted`) values ('2a', true, true, true, true, true, true, true, true, true, 5, true, 20, true, true, true, '2');
+insert into `WebAgenda`.`PERMISSIONSET` (`plevel`, `canEditSched`, `canReadSched`, `canReadOldSched`, `canManageEmployee`, `canViewResources`, `canChangePermissions`, `canReadLogs`, `canAccessReports`, `canRequestDaysOff`, `maxDaysOff`, `canTakeVacations`, `maxVacationDays`, `canTakeEmergencyDays`, `canViewInactiveEmps`, `canSendNotifications`, `trusted`) values ('1a', false, true, false, false, false, false, false, false, false, 0, false, 0, true, false, false, '1a');
+insert into `WebAgenda`.`PERMISSIONSET` (`plevel`, `canEditSched`, `canReadSched`, `canReadOldSched`, `canManageEmployee`, `canViewResources`, `canChangePermissions`, `canReadLogs`, `canAccessReports`, `canRequestDaysOff`, `maxDaysOff`, `canTakeVacations`, `maxVacationDays`, `canTakeEmergencyDays`, `canViewInactiveEmps`, `canSendNotifications`, `trusted`) values ('2a', true, true, true, true, true, true, true, true, true, 5, true, 20, true, true, true, '2a');
 
 COMMIT;
 
@@ -576,5 +576,62 @@ insert into `WebAgenda`.`SHIFTPOS` (`shiftTempID`, `positionName`, `posCount`) v
 insert into `WebAgenda`.`SHIFTPOS` (`shiftTempID`, `positionName`, `posCount`) values (4, 'Waiter', 3);
 insert into `WebAgenda`.`SHIFTPOS` (`shiftTempID`, `positionName`, `posCount`) values (5, 'Cook', 3);
 insert into `WebAgenda`.`SHIFTPOS` (`shiftTempID`, `positionName`, `posCount`) values (5, 'Waiter', 3);
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `WebAgenda`.`SCHEDULE`
+-- -----------------------------------------------------
+SET AUTOCOMMIT=0;
+insert into `WebAgenda`.`SCHEDULE` (`scheduleID`, `startDate`, `endDate`, `creatorID`) values (1, '2010-04-18', '2010-04-24', 12314);
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `WebAgenda`.`SHIFT`
+-- -----------------------------------------------------
+SET AUTOCOMMIT=0;
+insert into `WebAgenda`.`SHIFT` (`shiftID`, `scheduleID`, `day`, `startTime`, `endTime`) values (1, 1, 2, '08:00:00', '17:00:00');
+insert into `WebAgenda`.`SHIFT` (`shiftID`, `scheduleID`, `day`, `startTime`, `endTime`) values (2, 1, 3, '08:00:00', '17:00:00');
+insert into `WebAgenda`.`SHIFT` (`shiftID`, `scheduleID`, `day`, `startTime`, `endTime`) values (3, 1, 4, '08:00:00', '17:00:00');
+insert into `WebAgenda`.`SHIFT` (`shiftID`, `scheduleID`, `day`, `startTime`, `endTime`) values (4, 1, 5, '08:00:00', '17:00:00');
+insert into `WebAgenda`.`SHIFT` (`shiftID`, `scheduleID`, `day`, `startTime`, `endTime`) values (5, 1, 6, '08:00:00', '17:00:00');
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `WebAgenda`.`SHIFTEMP`
+-- -----------------------------------------------------
+SET AUTOCOMMIT=0;
+insert into `WebAgenda`.`SHIFTEMP` (`shiftID`, `empID`) values (1, 38382);
+insert into `WebAgenda`.`SHIFTEMP` (`shiftID`, `empID`) values (1, 38202);
+insert into `WebAgenda`.`SHIFTEMP` (`shiftID`, `empID`) values (1, 39280);
+insert into `WebAgenda`.`SHIFTEMP` (`shiftID`, `empID`) values (1, 39202);
+insert into `WebAgenda`.`SHIFTEMP` (`shiftID`, `empID`) values (1, 39203);
+insert into `WebAgenda`.`SHIFTEMP` (`shiftID`, `empID`) values (1, 30293);
+insert into `WebAgenda`.`SHIFTEMP` (`shiftID`, `empID`) values (2, 38382);
+insert into `WebAgenda`.`SHIFTEMP` (`shiftID`, `empID`) values (2, 38202);
+insert into `WebAgenda`.`SHIFTEMP` (`shiftID`, `empID`) values (2, 39280);
+insert into `WebAgenda`.`SHIFTEMP` (`shiftID`, `empID`) values (2, 39202);
+insert into `WebAgenda`.`SHIFTEMP` (`shiftID`, `empID`) values (2, 39203);
+insert into `WebAgenda`.`SHIFTEMP` (`shiftID`, `empID`) values (2, 30293);
+insert into `WebAgenda`.`SHIFTEMP` (`shiftID`, `empID`) values (3, 38382);
+insert into `WebAgenda`.`SHIFTEMP` (`shiftID`, `empID`) values (3, 38202);
+insert into `WebAgenda`.`SHIFTEMP` (`shiftID`, `empID`) values (3, 39280);
+insert into `WebAgenda`.`SHIFTEMP` (`shiftID`, `empID`) values (3, 39202);
+insert into `WebAgenda`.`SHIFTEMP` (`shiftID`, `empID`) values (3, 39203);
+insert into `WebAgenda`.`SHIFTEMP` (`shiftID`, `empID`) values (3, 30293);
+insert into `WebAgenda`.`SHIFTEMP` (`shiftID`, `empID`) values (4, 38382);
+insert into `WebAgenda`.`SHIFTEMP` (`shiftID`, `empID`) values (4, 38202);
+insert into `WebAgenda`.`SHIFTEMP` (`shiftID`, `empID`) values (4, 39280);
+insert into `WebAgenda`.`SHIFTEMP` (`shiftID`, `empID`) values (4, 39202);
+insert into `WebAgenda`.`SHIFTEMP` (`shiftID`, `empID`) values (4, 39203);
+insert into `WebAgenda`.`SHIFTEMP` (`shiftID`, `empID`) values (4, 30293);
+insert into `WebAgenda`.`SHIFTEMP` (`shiftID`, `empID`) values (5, 38382);
+insert into `WebAgenda`.`SHIFTEMP` (`shiftID`, `empID`) values (5, 38202);
+insert into `WebAgenda`.`SHIFTEMP` (`shiftID`, `empID`) values (5, 39280);
+insert into `WebAgenda`.`SHIFTEMP` (`shiftID`, `empID`) values (5, 39202);
+insert into `WebAgenda`.`SHIFTEMP` (`shiftID`, `empID`) values (5, 39203);
+insert into `WebAgenda`.`SHIFTEMP` (`shiftID`, `empID`) values (5, 30293);
 
 COMMIT;
