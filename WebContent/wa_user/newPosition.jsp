@@ -106,13 +106,13 @@
 				<div id="position">
 					<div id="formButtons">
 						<input type="submit" name="submit" class="button" value="Add"> 
-						<input type="button" name="submit" class="button" value="Search" onClick="location.href='posSearchResults.jsp';"> 
+						<input type="button" name="submit" class="button" value="Search" onClick="location.href='posSearchResults.jsp?posName=' + form.posName.value + '&posDesc=' + form.posDesc.value"> 
 						<input type="reset" name="clear" class="button" value="Clear Screen"> 
 						<br></br>
 					</div>
 					<fieldset>
 						<legend > Position Details </legend>
-							<p>	<label class="label"> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="posName" class="required" size ="30"> </p>
+							<p>	<label class="label"> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="posName" class="required" size ="30" value=""/> </p>
 								
 								<!--This should be populated from MaintainSkills use case -->
 							 	
@@ -124,11 +124,11 @@
 									</p>
 								</div>	
 							<p>	<label class="label"> Description: </label></p>
-							<textarea  name="posDesc" cols="23" rows="6" tabindex="101"></textarea>
+							<textarea  name="posDesc" cols="23" rows="6" tabindex="101" > </textarea>
 					</fieldset>
 					<div id="formButtons">
 							<input type="submit" name="submit" class="button" value="Add"> 
-							<input type="button" name="submit" class="button" value="Search" onClick="location.href='posSearchResults.jsp';"> 
+							<input type="button" name="submit" class="button" value="Search" onClick="location.href='posSearchResults.jsp?posName=' + form.posName.value + '&posDesc=' + form.posDesc.value"> 
 							<input type="reset" name="clear" class="button" value="Clear Screen"> 
 				      </div>
 				 </div>

@@ -71,7 +71,7 @@ public class TestPositionBroker {
 	public void testDeletePosition() {
 		System.out.println("POSITION DELETION");
 		try {
-			Position pos = new Position("Admin",null);
+			Position pos = new Position("Admin");
 			broker.delete(pos, user);
 			System.out.println("DELETED");
 			
@@ -98,6 +98,55 @@ public class TestPositionBroker {
 			try
 				{
 				Position[] results = broker.get(get, user);
+				
+				for (Position printLoc : results)
+					{
+					System.out.println(printLoc);
+					System.out.println("\tSKILLS REQUIRED");
+					Skill[] skills = printLoc.getPos_skills();
+					
+					if(skills != null)
+					{
+						for(int i=0; i<skills.length; i++)
+							System.out.println("\t" + skills[i]);
+						
+					}
+					else System.out.println("none");
+				
+					}
+				}
+			catch (DBException e)
+				{
+				e.printStackTrace();
+				fail();
+				}
+			catch (DBDownException e)
+				{
+				e.printStackTrace();
+				fail();
+				}
+			
+			assertTrue(true);
+			}
+	}
+	
+	@Test
+	public void testGetPositionByName() {
+		{
+			System.out.println("POSITION GET");
+			
+			//Use an empty string for the positions name so that all names are matched.
+			Position get = new Position();
+			get.setName("Waiter");
+			
+			
+			//Get all Positions and print them to console.
+			try
+				{
+				Position[] results = broker.get(get, user);
+				
+				if(results==null)
+					System.out.println("No matches found");
 				
 				for (Position printLoc : results)
 					{

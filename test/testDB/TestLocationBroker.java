@@ -267,8 +267,8 @@ public class TestLocationBroker
 			{
 			Location[] results = broker.get(get, user);
 		
-			if(results==null || results.length==0)
-				System.out.println("There are no results");
+			if(results==null)
+				System.out.println("No matches found");
 		
 			
 			for (Location printLoc : results)

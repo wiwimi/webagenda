@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import persistence.PositionBroker;
 import business.Employee;
+import business.schedule.Location;
 import business.schedule.Position;
 import exception.DBDownException;
 import exception.DBException;
@@ -36,6 +37,7 @@ public class DeletePosition extends HttpServlet {
 		        PrintWriter out = response.getWriter();
 		        String posName = request.getParameter("posName");
 		        boolean success;
+		        Position delPos = null;
 				
 				try {
 					    PositionBroker broker = PositionBroker.getBroker();
@@ -43,8 +45,9 @@ public class DeletePosition extends HttpServlet {
 						
 						Employee user = (Employee)session.getAttribute("currentEmployee");
 						
-						Position pos = new Position(posName);
-						success = broker.delete(pos, user);
+						delPos = new Position(posName);
+						Position[] results = broker.get(delPos, user);
+						success = broker.delete(results[0], user);
 						
 					if (success)
 					{

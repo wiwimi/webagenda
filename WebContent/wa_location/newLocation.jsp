@@ -97,9 +97,9 @@
 				    </div>
 				    <fieldset>
 						<legend > Location Details </legend>
-							<p>	<label class="label"> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="locName" class="required" size ="30"> </p>
+							<p>	<label class="label"> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="locName" class="required" size ="30" value=""/> </p>
 							<p>	<label class="label"> Description: </label></p>
-							<textarea  name="locDesc" cols="23" rows="6" tabindex="101"></textarea>
+							<textarea  name="locDesc" cols="23" rows="6" tabindex="101"> </textarea>
 				    </fieldset>
 				    <div id="formButtons">
 						<input type="submit" name="submit"  class="button" value="Add" > 

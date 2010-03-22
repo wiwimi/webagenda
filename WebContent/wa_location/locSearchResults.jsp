@@ -96,6 +96,7 @@
 						  try{
 							Employee user = (Employee) session.getAttribute("currentEmployee");
 							LocationBroker broker = LocationBroker.getBroker();
+							broker.initConnectionThread();
 							Location loc= null;
 							Location[] locArray=null;
 							
@@ -213,7 +214,7 @@
 									{
 										
 						%>	
-									<tr>
+									  <tr>
 										<td>
 											<a href="updateLocation.jsp?location=<%=locArray[index].getName()%>"><div id="locationImage"> <b> <%=locArray[index].getName()%> </b></div></a>
 											<div class="row-actions"><span class='edit'>
@@ -222,9 +223,22 @@
 												Delete
 											</a></span></div>
 										</td>
-										<td>
-											<a href="updateLocation.jsp?=<%=locArray[index].getName()%>"> <%=locArray[index].getDesc()%> </a>
-										</td>
+											<td>
+											     <%
+											     	if(locArray[index].getDesc()!=null && locArray[index].getDesc().equals(""))
+											     	{
+											     %>
+											     		<a href="updateLocation.jsp?=<%= locArray[index].getName() %>"> <%=locArray[index].getDesc()%> </a>
+											     <%	}
+											     	else
+											     	{
+											     %>
+											     		<a href="updateLocation.jsp?=<%= locArray[index].getName() %>"> None </a>
+											     <%
+											     	} 
+											     %>
+											</td>
+									</tr>
 						<% 
 									} 
 							  }
