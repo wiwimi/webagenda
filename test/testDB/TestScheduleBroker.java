@@ -8,13 +8,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import persistence.ScheduleBroker;
-import persistence.ScheduleTemplateBroker;
 import business.Employee;
 import business.schedule.Schedule;
-import business.schedule.ScheduleTemplate;
 import business.schedule.Shift;
-import business.schedule.ShiftPosition;
-import business.schedule.ShiftTemplate;
 import exception.DBDownException;
 import exception.DBException;
 

@@ -156,7 +156,7 @@ public class ScheduleBroker extends Broker<Schedule>
 				// Get shift employees for matching shift.
 				shiftEmpStmt.setInt(1, shift.getShiftID());
 				ResultSet shiftEmpRS = shiftEmpStmt.executeQuery();
-				Employee[] shiftEmps = parseShiftEmps(shiftEmpRS);
+				Employee[] shiftEmps = EmployeeBroker.getBroker().parseResults(shiftEmpRS);
 				
 				// Add employees to shift.
 				for (Employee emp : shiftEmps)
@@ -209,61 +209,4 @@ public class ScheduleBroker extends Broker<Schedule>
 		return stList;
 		}
 	
-	/**
-	 * Parses a result set into an array of shift positions.
-	 * 
-	 * @param rs The result set to parse.
-	 * @return the array of shift positions, or null if the result set was empty.
-	 * @throws SQLException if there was an error during parsing.
-	 */
-	private Employee[] parseShiftEmps(ResultSet rs) throws SQLException
-		{
-		// List will be returned as null if no results are found.
-		Employee[] empList = null;
-		
-		if (rs.last())
-			{
-			// Results exist, get total number of rows to create array of same
-			// size.
-			int resultCount = rs.getRow();
-			empList = new Employee[resultCount];
-			
-			// Return ResultSet to beginning to start retrieving employees.
-			rs.beforeFirst();
-			for (int i = 0; i < resultCount && rs.next(); i++)
-				{
-				Employee emp;
-				
-				try {
-					emp = new Employee(
-						rs.getInt("empID"),
-						rs.getString("givenName"),
-						rs.getString("familyName"),
-						rs.getString("username"),
-						null,
-						rs.getString("plevel")
-					);
-				} catch (DBException e) {
-					// TODO Auto-generated catch block
-					throw new SQLException("Attempting to create an Employee with an Invalid Permission Level");
-				}
-				
-				emp.setSupervisorID(rs.getInt("supID"));
-				emp.setBirthDate(rs.getDate("birthDate"));
-				emp.setEmail(rs.getString("email"));
-				emp.setActive(rs.getBoolean("active"));
-				emp.setLastLogin(rs.getTimestamp("lastLogin"));
-				emp.setPrefPosition(rs.getString("prefPosition"));
-				emp.setPrefLocation(rs.getString("prefLocation"));
-				
-				if (emp.getSupervisorID() == 0)
-					emp.setSupervisorID(null);
-				
-				empList[i] = emp;
-				}
-			
-			}
-		
-		return empList;
-		}
 	}
