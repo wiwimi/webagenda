@@ -35,22 +35,19 @@ public class AddPosition extends HttpServlet {
 		        
 		        String posName = request.getParameter("posName");
 				String posDesc = request.getParameter("posDesc");
-				String[] pos_skills = request.getParameterValues("skill");
+				String[] posSkills = request.getParameterValues("skillCheck");
 				
 				Skill[] skills = null;
-				   if (pos_skills != null) 
+				   if (posSkills != null) 
 				   {
-					   skills= new Skill[pos_skills.length];
-				      for (int i = 0; i < pos_skills.length; i++) 
+					   skills= new Skill[posSkills.length];
+				      for (int i = 0; i < posSkills.length; i++) 
 				      {
-				         Skill tempSkill = new Skill(pos_skills[i]);
+				         Skill tempSkill = new Skill(posSkills[i]);
 				         skills[i] = (tempSkill);
-				         
-				      }
+				       }
 				   } 
-				       
-				  
-				boolean success;
+				boolean success=false;
 				PositionBroker broker = null;
 				
 				try {
@@ -59,6 +56,7 @@ public class AddPosition extends HttpServlet {
 						broker.initConnectionThread();
 						Employee user = (Employee)session.getAttribute("currentEmployee");
 						Position pos = new Position(posName, posDesc, skills);
+						
 						success = broker.create(pos, user);
 						
 					if (success)

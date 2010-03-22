@@ -118,8 +118,8 @@
 							 	
 							 	<div id="skillsButton">
 									<p>
-										<label id="theSelect" class="label"> Required Skills: <em class="asterisk"> * </em> </label>	
-										<input id="prefSkillsBox" type="text" class ="required" size="30" maxlength="30" disabled="disabled" value="skills go here" name="prefSkillsBox" />
+										<label id="theSelect" class="label"> Required Skills: </label>	
+										<input id="prefSkillsBox" type="text" size="30" maxlength="30" disabled="disabled" value="skills go here" name="prefSkillsBox" />
 										<input type="button" name="submit" class="button" value="edit"/>
 									</p>
 								</div>	
@@ -170,7 +170,7 @@
 														<a href="newSkill.jsp?=<%=skillArray[index].getName()%>"> <b> <%=skillArray[index].getName()%> </b></a>
 													</td>
 													<td>
-														<input type="checkbox" name="skill" value="<%=skillArray[index].getName()%>"> 
+														<input type="checkbox" name="skillCheck" value="<%=skillArray[index].getName()%>"> 
 													</td>
 												</tr>
 										<% 

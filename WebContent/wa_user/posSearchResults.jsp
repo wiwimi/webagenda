@@ -91,142 +91,164 @@
 			</form>
 			</div>
 			
-						<% 
-						 try
-						 {
-							Employee user = (Employee) session.getAttribute("currentEmployee");
-							PositionBroker broker = PositionBroker.getBroker();
-							broker.initConnectionThread();
-							Position pos= null;
-							Position[] posArray=null;
-							
-							if(request.getParameter("posName")!=null || request.getParameter("posDesc")!=null )
-							{
-								pos = new Position();
-								if(!request.getParameter("posName").equals(""))
-								{
-									pos.setName(request.getParameter("posName"));
-								}
-								if (!request.getParameter("posDesc").equals(""))
-								{
-									pos.setDescription(request.getParameter("posDesc"));
-								}
+							<% 
+							 try
+							 {
+								Employee user = (Employee) session.getAttribute("currentEmployee");
+								PositionBroker broker = PositionBroker.getBroker();
+								Position pos= null;
+								Position[] posArray=null;
 								
-								else if (request.getParameter("posName").equals("") && (request.getParameter("posDesc").equals("")))
+								if(request.getParameter("posName")!=null || request.getParameter("posDesc")!=null )
 								{
-									pos = new Position("");
+									pos = new Position();
+									if(!request.getParameter("posName").equals(""))
+									{
+										pos.setName(request.getParameter("posName"));
+									}
+									if (!request.getParameter("posDesc").equals(""))
+									{
+										pos.setDescription(request.getParameter("posDesc"));
+									}
 									
-								}
-								posArray = broker.get(pos, user);
-						 	 }
-							
-							else if(request.getParameter("randomSearch")!=null)
-							{
-								
-								if((!request.getParameter("randomSearch").equals("")))
-								{
-									// If it was a name
-									Position byName = new Position(request.getParameter("randomSearch"));
-									Position[] posArrayByName =  broker.get(byName, user);
-									
-									// If it was a desc
-									//Position byDesc = new Position();
-									//byDesc.setDescription(request.getParameter("randomSearch"));
-									//Position[] posArrayByDesc =  broker.get(byDesc, user);
-									
-									
-									//if(posArrayByDesc!=null)
-									//{
-										//posArray = posArrayByDesc;
+									else if (request.getParameter("posName").equals("") && (request.getParameter("posDesc").equals("")))
+									{
+										pos = new Position("");
 										
-									//}
-									//else if(posArrayByName==null)
-									//{
-										//posArray = posArrayByName;
-										posArray = broker.get(byName, user);
-										
-									//}
-								}
-									
-								else if((request.getParameter("randomSearch").equals("")))
-								{
-									pos = new Position("", null);
+									}
 									posArray = broker.get(pos, user);
-								}
+							 	 }
 								
-					    }
-								
-						if(posArray==null)
-						{
-							%>
-								<div id="instructions">
-									Your search didn't match any positions.<br>
-						      		For better results try more general fields and make sure all words are spelled correctly.
-								</div>
-							<%		
-						}
-						else
-						{
-						%>
-								<div id="tableArea">
-								<div class="userAdmin">
-									<table class="sortable" id="userTable">
-										<thead class="head">
-											<tr class="headerRow">
-												<th>Name</th>
-												<th>Description</th>
-											</tr>
-										</thead>
-										
-										<tfoot class="foot">
-											<tr class="headerRow">
-												<th>Name</th>
-												<th>Description</th>
-											</tr>
-										</tfoot>
-										<tbody>
-						<%
-								for(int index = 0; index <posArray.length; index++)
+								else if(request.getParameter("randomSearch")!=null)
 								{
-						%>
-									<tr>
-									   <td>
-											<a href="newPostion.jsp?=<%=posArray[index].getName()%>"> <b> <%=posArray[index].getName()%> </b></a>
-											<div class="row-actions"><span class='edit'>
-											<a href="updatePosition.jsp?posName=<%=posArray[index].getName()%>&posDesc=<%=posArray[index].getDescription()%>" > Edit </a>   | </span>  <span class='delete'>
-											<a href="javascript:;" onClick="removePosition('<%=posArray[index].getName()%>');">
-												Delete</a></span></div>
-										</td>
-										<td>
-										     <%
-										     	if(posArray[index].getDescription()!=null && posArray[index].getDescription().equals(""))
-										     	{
-										     %>
-										     		<a href="updatePosition.jsp?=<%= posArray[index].getName() %>"> <%=posArray[index].getDescription()%> </a>
-										     <%	}
-										     	else
-										     	{
-										     %>
-										     		<a href="updatePosition.jsp?=<%= posArray[index].getName() %>"> None </a>
-										     <%
-										     	} 
-										     %>
-										</td>
-									</tr>
-					<% 
-								}
+									
+									if((!request.getParameter("randomSearch").equals("")))
+									{
+										// If it was a name
+										Position byName = new Position(request.getParameter("randomSearch"));
+										Position[] posArrayByName =  broker.get(byName, user);
+										
+										// If it was a desc
+										Position byDesc = new Position();
+										byDesc.setDescription(request.getParameter("randomSearch"));
+										Position[] posArrayByDesc =  broker.get(byDesc, user);
+										
+										//If both are not empty Concat them
+										if(posArrayByDesc!=null && posArrayByName!=null)
+										{
+											for (int i=0; i<posArrayByName.length; i++)
+											{
+												for (int x=0; x<posArrayByDesc.length; x++)
+												{
+													// If it is not refferring to the same object
+													if(posArrayByDesc[x].getName()==posArrayByName[i].getName())
+													{
+														int strlength = posArrayByDesc.length + posArrayByName.length;
+														
+														posArray = new Position[strlength];
+														System.arraycopy(posArrayByDesc, 0, posArray, 0, posArrayByDesc.length);
+													    System.arraycopy(posArrayByName, 0, posArray, posArrayByDesc.length, posArrayByName.length);
+														
+													}
+													else if (posArrayByDesc[x].getName()!=posArrayByName[i].getName())
+													{
+														posArray = posArrayByName;
+													}
+												}
+											}
+											
+										}
+										
+										
+										if(posArrayByDesc!=null)
+										{
+											posArray = posArrayByDesc;
+										}
+										else if(posArrayByName!=null)
+										{
+											posArray = posArrayByName;
+										}
+									}
+										
+									else if((request.getParameter("randomSearch").equals("")))
+									{
+										pos = new Position("");
+										posArray = broker.get(pos, user);
+									}
+									
+						    }
+									
+							if(posArray==null)
+							{
+								%>
+									<div id="instructions">
+										Your search didn't match any positions.<br>
+							      		For better results try more general fields and make sure all words are spelled correctly.
+									</div>
+								<%		
+							}
+							else
+							{
+							%>
+									<div id="tableArea">
+									<div class="userAdmin">
+										<table class="sortable" id="userTable">
+											<thead class="head">
+												<tr class="headerRow">
+													<th>Name</th>
+													<th>Description</th>
+												</tr>
+											</thead>
+											
+											<tfoot class="foot">
+												<tr class="headerRow">
+													<th>Name</th>
+													<th>Description</th>
+												</tr>
+											</tfoot>
+											<tbody>
+							<%
+									for(int index = 0; index <posArray.length; index++)
+									{
+							%>
+										<tr>
+										   <td>
+												<a href="newPostion.jsp?=<%=posArray[index].getName()%>"> <b> <%=posArray[index].getName()%> </b></a>
+												<div class="row-actions"><span class='edit'>
+												<a href="updatePosition.jsp?posName=<%=posArray[index].getName()%>&posDesc=<%=posArray[index].getDescription()%>" > Edit </a>   | </span>  <span class='delete'>
+												<a href="javascript:;" onClick="removePosition('<%=posArray[index].getName()%>');">
+													Delete</a></span></div>
+											</td>
+											<td>
+											     <%
+											     	if(posArray[index].getDescription()!=null && !posArray[index].getDescription().equals(""))
+											     	{
+											     %>
+											     		<a href="updatePosition.jsp?=<%= posArray[index].getName() %>"> <%=posArray[index].getDescription()%> </a>
+											     <%	}
+											     	else
+											     	{
+											     %>
+											     		<a href="updatePosition.jsp?=<%= posArray[index].getName() %>"> None </a>
+											     <%
+											     	} 
+											     %>
+											</td>
+										</tr>
+						<% 
+									}
+							}
 						}
-					}
-					catch (DBException e)
-					{
-						e.printStackTrace();
-						
-					}
-					catch (DBDownException e)
-					{
-						e.printStackTrace();
-					}
-					%>			
+						catch (DBException e)
+						{
+							e.printStackTrace();
+							
+						}
+						catch (DBDownException e)
+						{
+							e.printStackTrace();
+						}
+						%>			
 					</tbody>
 				</table>
 			</div>

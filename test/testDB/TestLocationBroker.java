@@ -378,8 +378,6 @@ public class TestLocationBroker
 			Location byDesc = new Location();
 			byDesc.setDesc("Mohave");
 			
-			
-			
 			//Get all Positions and print them to console.
 			try
 				{
