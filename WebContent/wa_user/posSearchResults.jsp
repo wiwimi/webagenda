@@ -130,19 +130,22 @@
 									Position[] posArrayByName =  broker.get(byName, user);
 									
 									// If it was a desc
-									Position byDesc = new Position();
-									byDesc.setDescription(request.getParameter("randomSearch"));
-									Position[] posArrayByDesc =  broker.get(byDesc, user);
+									//Position byDesc = new Position();
+									//byDesc.setDescription(request.getParameter("randomSearch"));
+									//Position[] posArrayByDesc =  broker.get(byDesc, user);
 									
 									
-									if(posArrayByDesc!=null)
-									{
-										posArray = posArrayByDesc;
-									}
-									else if(posArrayByName!=null)
-									{
-										posArray = posArrayByName;
-									}
+									//if(posArrayByDesc!=null)
+									//{
+										//posArray = posArrayByDesc;
+										
+									//}
+									//else if(posArrayByName==null)
+									//{
+										//posArray = posArrayByName;
+										posArray = broker.get(byName, user);
+										
+									//}
 								}
 									
 								else if((request.getParameter("randomSearch").equals("")))

@@ -180,6 +180,82 @@ public class TestPositionBroker {
 			assertTrue(true);
 			}
 	}
+	
+	@Test
+	public void testGetPositionByRandomSearch() {
+		{
+			System.out.println("POSITION GET");
+			
+			//Use an empty string for the positions name so that all names are matched.
+			Position byName = new Position();
+			byName.setName("Waiter");
+			
+			Position byDesc = new Position();
+			byDesc.setDescription("Waiter");
+			
+			
+			
+			//Get all Positions and print them to console.
+			try
+				{
+				Position[] resultsByName = broker.get(byName,user) ;
+				Position[] resultsByDesc = broker.get(byDesc,user) ;
+				
+				if(resultsByName==null && resultsByDesc==null)
+					System.out.println("No matches found");
+				
+				if(resultsByName!=null)
+				{
+					for (Position printLoc : resultsByName)
+						{
+						System.out.println(printLoc);
+						System.out.println("\tSKILLS REQUIRED");
+						Skill[] skills = printLoc.getPos_skills();
+						
+						if(skills != null)
+						{
+							for(int i=0; i<skills.length; i++)
+								System.out.println("\t" + skills[i]);
+							
+						}
+						else System.out.println("none");
+					
+						}
+				}
+				else if (resultsByDesc!=null)
+				{
+					for (Position printLoc : resultsByDesc)
+					{
+					System.out.println(printLoc);
+					System.out.println("\tSKILLS REQUIRED");
+					Skill[] skills = printLoc.getPos_skills();
+					
+					if(skills != null)
+					{
+						for(int i=0; i<skills.length; i++)
+							System.out.println("\t" + skills[i]);
+						
+					}
+					else System.out.println("none");
+				
+					}
+					
+				}
+			}
+			catch (DBException e)
+				{
+				e.printStackTrace();
+				fail();
+				}
+			catch (DBDownException e)
+				{
+				e.printStackTrace();
+				fail();
+				}
+			
+			assertTrue(true);
+			}
+	}
 
 	@Test
 	public void testUpdatePosition() {

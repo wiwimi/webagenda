@@ -13,7 +13,9 @@ import exception.DBException;
 import exception.InvalidPermissionException;
 import exception.PermissionViolationException;
 import business.Employee;
+import business.Skill;
 import business.schedule.Location;
+import business.schedule.Position;
 import persistence.LocationBroker;
 
 /**
@@ -363,5 +365,64 @@ public class TestLocationBroker
 		
 		assertTrue(true);
 	}
+	
+	@Test
+	public void testGetLocationByRandomSearch() {
+		{
+			System.out.println("LOCATION GET");
+			
+			//Use an empty string for the positions name so that all names are matched.
+			Location byName = new Location();
+			byName.setName("Mohave");
+			
+			Location byDesc = new Location();
+			byDesc.setDesc("Mohave");
+			
+			
+			
+			//Get all Positions and print them to console.
+			try
+				{
+				Location[] resultsByName = broker.get(byName,user) ;
+				Location[] resultsByDesc = broker.get(byDesc,user) ;
+				
+				if(resultsByName==null && resultsByDesc==null)
+					System.out.println("No matches found");
+				
+				if(resultsByName!=null)
+				{
+					for (Location printLoc : resultsByName)
+						{
+						System.out.println(printLoc);
+						
+						}
+				}
+				else if (resultsByDesc!=null)
+				{
+					for (Location printLoc : resultsByDesc)
+					{
+					System.out.println(printLoc);
+					
+					}
+				}
+			}
+			catch (DBException e)
+				{
+				e.printStackTrace();
+				fail();
+				}
+			catch (DBDownException e)
+				{
+				e.printStackTrace();
+				fail();
+				} catch (InvalidPermissionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			assertTrue(true);
+			}
+	}
+
 }
 
