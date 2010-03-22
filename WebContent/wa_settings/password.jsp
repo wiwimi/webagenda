@@ -12,7 +12,7 @@ if(session.getAttribute("username") == null)
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>Web Agenda- User's Profile</title>
+<title>Web Agenda- Change Password</title>
 
 <!--  Includes -->
 <jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
@@ -25,24 +25,20 @@ if(session.getAttribute("username") == null)
 <script src="../lib/js/cmxforms.js" type="text/javascript"></script>
 <script src= "../lib/js/val.js" type="text/javascript"> </script>
 
-<!-- CSS -->
-<link rel="stylesheet" href="CSS/userAddStyle.css" type="text/css"></link>
-<link rel="stylesheet" href="CSS/settings.css" type="text/css"></link>
-
-
+<!--  CSS files -->
+<link rel="stylesheet" href="../CSS/creationForm.css" type="text/css"></link>
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
+<style type="text/css">@import "../CSS/jquery.datepick.css";</style> 
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/val.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/screen.css" />
-
-
+<link rel="stylesheet" href="../CSS/Flash/flashmessenger.css" type="text/css" media="screen"/>
 	
 </head>
 <body>
 	<div id="instructions">
 		Fields marked with <em class="asterisk" > * </em> are required.
-		You must retype your password. This helps protect your information.
-		<br></br>
-		<br></br>
+		You must retype your password. This helps protect your information. <br>
+		Please use 6-8 alphanumeric characters.
 	</div>
 	<div id="usersWidget" class="fullWidget">
 				<div class="widgetUpperRectangle" id="passwordsUpperRectangle">
@@ -50,35 +46,33 @@ if(session.getAttribute("username") == null)
 				</div>
 				
 			<div class="widgetLowerRectangle" id="passwordLowerRectangle">
-	
-				<div id ="updateProfileForm">
-					<form class="validatedForm" id="form" method="post" enctype="multipart/form-data">
-					
-					<fieldset>
+				<div id ="creationForm">
+					<form class="validatedForm" action="" id="form" method="post">
+						<div id="security">
+					 		<div id="formButtons">
+							 	    <input type="submit" name="submit" class="button" value="Update"> 
+									<input type="reset" name="clear" class="button" value="Clear Screen">
+							</div>
+							<fieldset>
 								<legend > Account Settings </legend>
-								<div>
-									<label for="old_pwd" class = "label"> Old Password: <em class="asterisk"> * </em> </label> 
-									<input type="password"  name ="old_pwd" id="old_pwd" size ="6" maxlength="8"/> 
-								</div>
-								
-								<div>	 	
-									
-									<label for="password" class = "label" > New Password: <em class="asterisk"> * </em> </label> 
-									<input type="password"  name ="password" id="password" size ="6" maxlength="8"//> 
-								</div>	
-								<div>
-									<label for="confirm_password" class = "label" >Confirm password  <em class="asterisk"> * </em>  </label>
-									<input id="confirm_password" name="confirm_password" type="password" size ="6" maxlength="8"/>
-								</div>	 
-						</fieldset>
-						<br> 
-						<input type="submit" name="submit" class="button" value="Save"> 
-						<input type="reset" name="clear" class="button" value="Clear Screen"> 
-						<br></br>
-					</form>
+									<p>
+										<label for="old_pwd" class = "label"> Old Password: <em class="asterisk"> * </em> </label> 
+										<input type="password"  name ="old_pwd" id="old_pwd" size ="7" maxlength="8"/> 
+									</p>
+									<p>	 	
+										<label for="password" class = "label" > New Password: <em class="asterisk"> * </em> </label> 
+										<input type="password"  name ="password" id="password" size ="7" maxlength="8"//> 
+									</p>	
+									<p>
+										<label for="confirm_password" class = "label" >Confirm password  <em class="asterisk"> * </em>  </label>
+										<input id="confirm_password" name="confirm_password" type="password" size ="7" maxlength="8"/>
+									</p>	 
+						   </fieldset>
+					   </div>
+				 </form>
 				</div>                  <!-- End updateProfileForm -->
-	       </div>                       <!-- End widgetLowerRectangle -->
-	</div>                              <!-- End usersWidget -->
+	         </div>                       <!-- End widgetLowerRectangle -->
+	    </div>                              <!-- End usersWidget -->
 <div id="footer"></div>
 
 
