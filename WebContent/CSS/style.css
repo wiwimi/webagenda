@@ -412,11 +412,11 @@
 		font-size:1.2em;
 	}
 	
-	#settingsTitle:before
+	#settingsWidgetTitle:before
 	{
 		position:relative;
 		top:5px;
-		content:url(../lib/images/icons/BlckWhite/001_45.png);
+		content:url(../lib/images/icons/Color/001_43.png);
 	}
 	
 	#usersTitle

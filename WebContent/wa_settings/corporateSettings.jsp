@@ -13,52 +13,58 @@
 
 
 <!--  CSS files -->
+<link rel="stylesheet" href="../CSS/creationForm.css" type="text/css"></link>
+<link rel="stylesheet" href="CSS/table.css" type="text/css"></link>
+<link rel="stylesheet" href="../CSS/Popup/popup.css" type="text/css"></link>
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="CSS/settings.css" type="text/css" media="screen" />
+<style type="text/css">@import "../CSS/jquery.datepick.css";</style> 
+<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/val.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/screen.css" />
+<link rel="stylesheet" href="../CSS/Flash/flashmessenger.css" type="text/css" media="screen"/>
 
 
-<title>Insert title here</title>
+<title>Corporate's Profile</title>
 </head>
 <body>
 
 <div id="settingsWidget" class="fullWidget">
-			<div class="widgetUpperRectangle" id="settingsUpperRectangle">
-				<div class="widgetTitle" id="settingsTitle">Corporate's Profile</div>
-			</div>
+		<div class="widgetUpperRectangle" id="settingsUpperRectangle">
+				<div class="widgetTitle" id="settingsWidgetTitle">Corporate's Profile</div>
+		</div>
 			
 		<div class="widgetLowerRectangle" id="settingsLowerRectangle">
-
-
-<div id="corporateProfile">
-<form class="updateAdminForm" method="post">
-	<fieldset>
-      <legend>Your Company</legend>
-		<br>
-					<p><label> Name:  </label> <input type="text"  name ="name"> </p>
-	</fieldset>
-	
-	<fieldset>
-		<legend>Schedule</legend>
+			<div id ="creationForm">
+				<form class="validatedForm" action="" id="form" method="post">
+					 <div id="corporate">
+				 		<div id="formButtons">
+							 	    <input type="submit" name="submit" class="button" value="Update"> 
+									<input type="reset" name="clear" class="button" value="Clear Screen">
+						</div>
+						<fieldset>
+				      		<legend>Your Company</legend>
+								<p><label> Name:  </label> <input type="text"  name ="name"> </p>
+						</fieldset>
+						<fieldset>
+							<legend>Schedule</legend>
 									<p><label> Number of working days:</label> <select name="workdingDays">
-										<option value="one">1</option>
-										<option value="two">2</option>
-										<option value="three">3</option>
-										<option value="one">4</option>
-										<option value="two">5</option>
-										<option value="three">6</option>
-										<option value="three">7</option>
-										</select></p>
-	</fieldset>
-	
-	<input type="submit" name="submit" class="button" value="Save"> 
-						<input type="submit" name="clear" class="button" value="Clear Screen"> 
-						<br></br>
+									<option value="one">1</option>
+									<option value="two">2</option>
+									<option value="three">3</option>
+									<option value="one">4</option>
+									<option value="two">5</option>
+									<option value="three">6</option>
+									<option value="three">7</option>
+									</select></p>
+						</fieldset>
+						<div id="formButtons">
+							 	    <input type="submit" name="submit" class="button" value="Update"> 
+									<input type="reset" name="clear" class="button" value="Clear Screen">
+						</div>
+					 </div>
 				</form>
-	
-
-</div>
-</div>
-</div>
+			</div>
+		</div>
+	</div>
 
 <div id="footer"></div>
 
