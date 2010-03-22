@@ -142,7 +142,7 @@ public class RuleBroker extends Broker<Rule> {
 	}
 
 	@Override
-	public Rule[] parseResults(ResultSet rs) throws SQLException {
+	protected Rule[] parseResults(ResultSet rs) throws SQLException {
 		// List will be returned as null if no results are found.
 		Rule[] ruleList = null;
 		

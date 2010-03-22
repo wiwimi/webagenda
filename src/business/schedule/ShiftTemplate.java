@@ -3,6 +3,7 @@
  */
 package business.schedule;
 
+import java.sql.Time;
 import utilities.DoubleLinkedList;
 import business.BusinessObject;
 
@@ -40,12 +41,12 @@ public class ShiftTemplate extends BusinessObject
 	/**
 	 * The time at which the shift begins.
 	 */
-	private String startTime = null;
+	private Time startTime = null;
 	
 	/**
 	 * The time at which the shift ends.
 	 */
-	private String endTime = null;
+	private Time endTime = null;
 	
 	/**
 	 * A list of the positions which are needed during the shift.
@@ -65,7 +66,7 @@ public class ShiftTemplate extends BusinessObject
 	 * @param startTime
 	 * @param endTime
 	 */
-	public ShiftTemplate(Integer shiftTempID, Integer schedTempID, Integer day, String startTime, String endTime)
+	public ShiftTemplate(Integer shiftTempID, Integer schedTempID, Integer day, Time startTime, Time endTime)
 		{
 		this.shiftTempID = shiftTempID;
 		this.schedTempID = schedTempID;
@@ -125,7 +126,7 @@ public class ShiftTemplate extends BusinessObject
 	/**
 	 * @return the startTime
 	 */
-	public String getStartTime()
+	public Time getStartTime()
 		{
 		return startTime;
 		}
@@ -133,7 +134,7 @@ public class ShiftTemplate extends BusinessObject
 	/**
 	 * @param startTime the startTime to set
 	 */
-	public void setStartTime(String startTime)
+	public void setStartTime(Time startTime)
 		{
 		this.startTime = startTime;
 		}
@@ -141,7 +142,7 @@ public class ShiftTemplate extends BusinessObject
 	/**
 	 * @return the endTime
 	 */
-	public String getEndTime()
+	public Time getEndTime()
 		{
 		return endTime;
 		}
@@ -149,7 +150,7 @@ public class ShiftTemplate extends BusinessObject
 	/**
 	 * @param endTime the endTime to set
 	 */
-	public void setEndTime(String endTime)
+	public void setEndTime(Time endTime)
 		{
 		this.endTime = endTime;
 		}

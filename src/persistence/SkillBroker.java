@@ -197,7 +197,7 @@ public class SkillBroker extends Broker<Skill> {
 	}
 
 	@Override
-	public Skill[] parseResults(ResultSet rs) throws SQLException {
+	protected Skill[] parseResults(ResultSet rs) throws SQLException {
 		// List will be returned as null if no results are found.
 		Skill[] skillList = null;
 		

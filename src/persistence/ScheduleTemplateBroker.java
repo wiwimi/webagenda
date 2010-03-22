@@ -16,11 +16,8 @@ import business.schedule.ShiftTemplate;
 import business.Employee;
 
 /**
- * 
- * 
  * @author Daniel Wehr
  * @version 0.1.0
- *
  */
 public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 	{
@@ -39,8 +36,8 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 	/**
 	 * Returns an object-based Schedule Template Broker object.
 	 * 
-	 * @return ScheduleTemplateBroker result from the Broker request as its respective
-	 *         Broker object.
+	 * @return ScheduleTemplateBroker result from the Broker request as its
+	 *         respective Broker object.
 	 */
 	public static ScheduleTemplateBroker getBroker()
 		{
@@ -50,40 +47,42 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 			}
 		return stb;
 		}
-
+	
 	@Override
-	public boolean create(ScheduleTemplate createObj,Employee caller) throws DBException,
-			DBDownException
+	public boolean create(ScheduleTemplate createObj, Employee caller)
+			throws DBException, DBDownException
 		{
 		// TODO Auto-generated method stub
 		return false;
 		}
-
+	
 	@Override
-	public boolean delete(ScheduleTemplate deleteObj,Employee caller) throws DBException,
-			DBDownException
+	public boolean delete(ScheduleTemplate deleteObj, Employee caller)
+			throws DBException, DBDownException
 		{
 		// TODO Auto-generated method stub
 		return false;
 		}
-
-	/* (non-Javadoc)
+	
+	/*
+	 * (non-Javadoc)
 	 * @see persistence.Broker#get(business.BusinessObject)
 	 */
 	@Override
-	public ScheduleTemplate[] get(ScheduleTemplate searchTemplate,Employee caller)
-			throws DBException, DBDownException
+	public ScheduleTemplate[] get(ScheduleTemplate searchTemplate,
+			Employee caller) throws DBException, DBDownException
 		{
 		// Get all schedule templates for the given creator.
 		if (searchTemplate == null)
 			throw new NullPointerException("Cannot search with null template.");
 		
 		if (searchTemplate.getCreatorID() == null)
-			throw new NullPointerException("Creator ID required for schedule templates.");
+			throw new NullPointerException(
+					"Creator ID required for schedule templates.");
 		
 		String select = String.format(
-				"SELECT s.*,e.empID AS 'empID' FROM `WebAgenda`.`SCHEDULETEMPLATE` s JOIN `WebAgenda`.`EMPLOYEE` e ON s.creatorID = e.empRecordID WHERE e.empID = %s;",
-				searchTemplate.getCreatorID());
+						"SELECT * FROM `WebAgenda`.`SCHEDULETEMPLATE` WHERE creatorID = %s;",
+						searchTemplate.getCreatorID());
 		
 		ScheduleTemplate[] found;
 		try
@@ -99,23 +98,23 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 			}
 		catch (SQLException e)
 			{
-			throw new DBException("Failed to get schedule templates.",e);
+			throw new DBException("Failed to get schedule templates.", e);
 			}
 		
 		// Return schedule templates that matched search.
 		return found;
 		}
-
+	
 	@Override
-	public boolean update(ScheduleTemplate oldObj, ScheduleTemplate updateObj,Employee caller) throws DBException,
-			DBDownException
+	public boolean update(ScheduleTemplate oldObj, ScheduleTemplate updateObj,
+			Employee caller) throws DBException, DBDownException
 		{
 		// TODO Auto-generated method stub
 		return false;
 		}
-
+	
 	@Override
-	public ScheduleTemplate[] parseResults(ResultSet rs) throws SQLException
+	protected ScheduleTemplate[] parseResults(ResultSet rs) throws SQLException
 		{
 		// List will be returned as null if no results are found.
 		ScheduleTemplate[] stList = null;
@@ -127,12 +126,14 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 			int resultCount = rs.getRow();
 			stList = new ScheduleTemplate[resultCount];
 			
-			// Return ResultSet to beginning to start retrieving schedule templates.
+			// Return ResultSet to beginning to start retrieving schedule
+			// templates.
 			rs.beforeFirst();
 			for (int i = 0; i < resultCount && rs.next(); i++)
 				{
-				ScheduleTemplate st = new ScheduleTemplate(rs.getInt("schedTempID"),
-						rs.getInt("empID"),rs.getString("name"));
+				ScheduleTemplate st = new ScheduleTemplate(
+						rs.getInt("schedTempID"), rs.getInt("creatorID"), rs
+								.getString("name"));
 				
 				stList[i] = st;
 				}
@@ -149,29 +150,30 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 	 * @param templates
 	 * @param conn
 	 */
-	private void fillSchedTemp(ScheduleTemplate[] templates, DBConnection conn) throws SQLException
+	private void fillSchedTemp(ScheduleTemplate[] templates, DBConnection conn)
+			throws SQLException
 		{
-		//Prepare the select statements to pull additional data.
+		// Prepare the select statements to pull additional data.
 		PreparedStatement shiftTempStmt = conn.getConnection().prepareStatement(
-				"SELECT * FROM `WebAgenda`.`SHIFTTEMPLATE` WHERE schedTempID = ?");
+				"SELECT * FROM `WebAgenda`.`SHIFTTEMPLATE` WHERE schedTempID = ?;");
 		PreparedStatement shiftPosStmt = conn.getConnection().prepareStatement(
-				"SELECT * FROM `WebAgenda`.`SHIFTPOS` WHERE shiftTempID = ?");
+				"SELECT * FROM `WebAgenda`.`SHIFTPOS` WHERE shiftTempID = ?;");
 		
 		for (ScheduleTemplate schedTemp : templates)
 			{
-			//Get shift templates for matching schedule template.
+			// Get shift templates for matching schedule template.
 			shiftTempStmt.setInt(1, schedTemp.getSchedTempID());
 			ResultSet shiftRS = shiftTempStmt.executeQuery();
 			ShiftTemplate[] shifts = parseShiftTemps(shiftRS);
 			
 			for (ShiftTemplate shift : shifts)
 				{
-				//Get shift positions for matching shift template.
+				// Get shift positions for matching shift template.
 				shiftPosStmt.setInt(1, shift.getShiftTempID());
 				ResultSet shiftPosRS = shiftPosStmt.executeQuery();
 				ShiftPosition[] positions = parseShiftPos(shiftPosRS);
 				
-				//Add shift positions to shift template.
+				// Add shift positions to shift template.
 				for (ShiftPosition pos : positions)
 					{
 					shift.getShiftPositions().add(pos);
@@ -182,11 +184,19 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 				}
 			}
 		
-		//Release resources used by prepared statements.
+		// Release resources used by prepared statements.
 		shiftTempStmt.close();
 		shiftPosStmt.close();
 		}
 	
+	/**
+	 * Attempts to create shift templates out of a given result set.
+	 * 
+	 * @param rs the result set returned by a database search.
+	 * @return an array of shift templates retrieved from the result set, or null
+	 *         if the result set was empty.
+	 * @throws SQLException
+	 */
 	private ShiftTemplate[] parseShiftTemps(ResultSet rs) throws SQLException
 		{
 		// List will be returned as null if no results are found.
@@ -203,11 +213,9 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 			rs.beforeFirst();
 			for (int i = 0; i < resultCount && rs.next(); i++)
 				{
-				ShiftTemplate st = new ShiftTemplate(rs.getInt("shiftTempID"),
-						rs.getInt("schedTempID"),
-						rs.getInt("day"),
-						rs.getString("startTime"),
-						rs.getString("endTime"));
+				ShiftTemplate st = new ShiftTemplate(rs.getInt("shiftTempID"), rs
+						.getInt("schedTempID"), rs.getInt("day"), rs
+						.getTime("startTime"), rs.getTime("endTime"));
 				
 				stList[i] = st;
 				}
@@ -220,7 +228,7 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 	/**
 	 * Parses a result set into an array of shift positions.
 	 * 
-	 * @param rs The resultset to parse.
+	 * @param rs The result set to parse.
 	 * @return the array of shift positions, or null if the result set was empty.
 	 * @throws SQLException if there was an error during parsing.
 	 */
@@ -240,9 +248,8 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 			rs.beforeFirst();
 			for (int i = 0; i < resultCount && rs.next(); i++)
 				{
-				ShiftPosition sp = new ShiftPosition(rs.getInt("shiftTempID"),
-						rs.getString("positionName"),
-						rs.getInt("posCount"));
+				ShiftPosition sp = new ShiftPosition(rs.getInt("shiftTempID"), rs
+						.getString("positionName"), rs.getInt("posCount"));
 				
 				spList[i] = sp;
 				}

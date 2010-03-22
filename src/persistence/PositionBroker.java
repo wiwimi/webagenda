@@ -334,7 +334,7 @@ public class PositionBroker extends Broker<Position> {
 	}
 
 	@Override
-	public Position[] parseResults(ResultSet rs) throws SQLException {
+	protected Position[] parseResults(ResultSet rs) throws SQLException {
 		// List will be returned as null if no results are found.
 		Position[] posList = null;
 		

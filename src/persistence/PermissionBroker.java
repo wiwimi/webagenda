@@ -75,7 +75,7 @@ public class PermissionBroker extends Broker<PermissionLevel>{
 	 */
 	@Override
 	@Deprecated
-	public PermissionLevel[] parseResults(ResultSet rs) throws SQLException {
+	protected PermissionLevel[] parseResults(ResultSet rs) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}

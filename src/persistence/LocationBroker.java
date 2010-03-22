@@ -226,7 +226,7 @@ public class LocationBroker extends Broker<Location>
 	 * @see persistence.Broker#parseResults(java.sql.ResultSet)
 	 */
 	@Override
-	public Location[] parseResults(ResultSet rs) throws SQLException
+	protected Location[] parseResults(ResultSet rs) throws SQLException
 		{
 		// List will be returned as null if no results are found.
 		Location[] locList = null;

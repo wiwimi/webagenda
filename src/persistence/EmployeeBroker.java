@@ -542,7 +542,7 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @see persistence.Broker#parseResults(java.sql.ResultSet)
 	 */
 	@Override
-	public Employee[] parseResults(ResultSet rs) throws SQLException
+	protected Employee[] parseResults(ResultSet rs) throws SQLException
 		{
 		// List will be returned as null if no results are found.
 		Employee[] empList = null;

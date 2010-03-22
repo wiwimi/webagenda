@@ -148,7 +148,7 @@ public class NotificationBroker extends Broker<Notification> {
 	}
 
 	@Override
-	public Notification[] parseResults(ResultSet rs) throws SQLException {
+	protected Notification[] parseResults(ResultSet rs) throws SQLException {
 		// List will be returned as null if no results are found.
 		Notification[] noteList = null;
 		

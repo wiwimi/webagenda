@@ -92,7 +92,7 @@ public abstract class Broker<E extends BusinessObject>
 	 * 
 	 * @return An array of cachable objects.
 	 */
-	public abstract E[] parseResults(ResultSet rs) throws SQLException;
+	protected abstract E[] parseResults(ResultSet rs) throws SQLException;
 	
 	
 	

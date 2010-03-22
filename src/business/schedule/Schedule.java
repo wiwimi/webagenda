@@ -45,6 +45,22 @@ public class Schedule extends BusinessObject
 	public Schedule() {}
 
 	/**
+	 * Constructor to create a full schedule as retrieved by the database.
+	 * 
+	 * @param schedID
+	 * @param startDate
+	 * @param endDate
+	 * @param creatorID
+	 */
+	public Schedule(Integer schedID, Date startDate, Date endDate, Integer creatorID)
+		{
+		this.schedID = schedID;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.creatorID = creatorID;
+		}
+	
+	/**
 	 * @return the schedID
 	 */
 	public Integer getSchedID()

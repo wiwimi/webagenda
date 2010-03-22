@@ -4,6 +4,7 @@
 package business.schedule;
 
 import java.sql.Time;
+import business.Employee;
 import utilities.DoubleLinkedList;
 
 /**
@@ -25,6 +26,11 @@ public class Shift
 	private Integer schedID = null;
 	
 	/**
+	 * The day of the week that the shift is on.
+	 */
+	private Integer day = null;
+	
+	/**
 	 * The time at which the shift begins.
 	 */
 	private Time startTime = null;
@@ -37,12 +43,30 @@ public class Shift
 	/**
 	 * The employees that will be working during this shift.
 	 */
-	private DoubleLinkedList<String> employees = new DoubleLinkedList<String>();
+	private DoubleLinkedList<Employee> employees = new DoubleLinkedList<Employee>();
 	
 	/**
 	 * Default/Empty constructor.
 	 */
 	public Shift() {}
+	
+	/**
+	 * Constructor to create a full shift, as retrieved by the database.
+	 * 
+	 * @param shiftID
+	 * @param schedID
+	 * @param day
+	 * @param startTime
+	 * @param endTime
+	 */
+	public Shift(Integer shiftID, Integer schedID, Integer day, Time startTime, Time endTime)
+		{
+		this.shiftID = shiftID;
+		this.schedID = schedID;
+		this.day = day;
+		this.startTime = startTime;
+		this.endTime = endTime;
+		}
 
 	/**
 	 * @return the shiftID
@@ -74,6 +98,22 @@ public class Shift
 	public void setSchedID(Integer schedID)
 		{
 		this.schedID = schedID;
+		}
+
+	/**
+	 * @return the day
+	 */
+	public Integer getDay()
+		{
+			return day;
+		}
+
+	/**
+	 * @param day the day to set
+	 */
+	public void setDay(Integer day)
+		{
+			this.day = day;
 		}
 
 	/**
@@ -111,7 +151,7 @@ public class Shift
 	/**
 	 * @return the employees
 	 */
-	public DoubleLinkedList<String> getEmployees()
+	public DoubleLinkedList<Employee> getEmployees()
 		{
 		return employees;
 		}

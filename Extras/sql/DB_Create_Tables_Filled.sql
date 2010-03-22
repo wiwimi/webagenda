@@ -267,11 +267,11 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `WebAgenda`.`SCHEDULE` ;
 
 CREATE  TABLE IF NOT EXISTS `WebAgenda`.`SCHEDULE` (
-  `scheduleID` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
+  `schedID` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `startDate` DATE NOT NULL ,
   `endDate` DATE NOT NULL ,
   `creatorID` INT UNSIGNED NOT NULL ,
-  PRIMARY KEY (`scheduleID`) ,
+  PRIMARY KEY (`schedID`) ,
   INDEX `fk_SCHEDULE_EMPLOYEE` (`creatorID` ASC) ,
   CONSTRAINT `fk_SCHEDULE_EMPLOYEE`
     FOREIGN KEY (`creatorID` )
@@ -288,15 +288,15 @@ DROP TABLE IF EXISTS `WebAgenda`.`SHIFT` ;
 
 CREATE  TABLE IF NOT EXISTS `WebAgenda`.`SHIFT` (
   `shiftID` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
-  `scheduleID` INT UNSIGNED NOT NULL ,
+  `schedID` INT UNSIGNED NOT NULL ,
   `day` INT UNSIGNED NOT NULL ,
   `startTime` TIME NOT NULL ,
   `endTime` TIME NOT NULL ,
-  PRIMARY KEY (`shiftID`, `scheduleID`) ,
-  INDEX `fk_SHIFT_SCHEDULE` (`scheduleID` ASC) ,
+  PRIMARY KEY (`shiftID`, `schedID`) ,
+  INDEX `fk_SHIFT_SCHEDULE` (`schedID` ASC) ,
   CONSTRAINT `fk_SHIFT_SCHEDULE`
-    FOREIGN KEY (`scheduleID` )
-    REFERENCES `WebAgenda`.`SCHEDULE` (`scheduleID` )
+    FOREIGN KEY (`schedID` )
+    REFERENCES `WebAgenda`.`SCHEDULE` (`schedID` )
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -583,7 +583,7 @@ COMMIT;
 -- Data for table `WebAgenda`.`SCHEDULE`
 -- -----------------------------------------------------
 SET AUTOCOMMIT=0;
-insert into `WebAgenda`.`SCHEDULE` (`scheduleID`, `startDate`, `endDate`, `creatorID`) values (1, '2010-04-18', '2010-04-24', 12314);
+insert into `WebAgenda`.`SCHEDULE` (`schedID`, `startDate`, `endDate`, `creatorID`) values (1, '2010-04-18', '2010-04-24', 12314);
 
 COMMIT;
 
@@ -591,11 +591,11 @@ COMMIT;
 -- Data for table `WebAgenda`.`SHIFT`
 -- -----------------------------------------------------
 SET AUTOCOMMIT=0;
-insert into `WebAgenda`.`SHIFT` (`shiftID`, `scheduleID`, `day`, `startTime`, `endTime`) values (1, 1, 2, '08:00:00', '17:00:00');
-insert into `WebAgenda`.`SHIFT` (`shiftID`, `scheduleID`, `day`, `startTime`, `endTime`) values (2, 1, 3, '08:00:00', '17:00:00');
-insert into `WebAgenda`.`SHIFT` (`shiftID`, `scheduleID`, `day`, `startTime`, `endTime`) values (3, 1, 4, '08:00:00', '17:00:00');
-insert into `WebAgenda`.`SHIFT` (`shiftID`, `scheduleID`, `day`, `startTime`, `endTime`) values (4, 1, 5, '08:00:00', '17:00:00');
-insert into `WebAgenda`.`SHIFT` (`shiftID`, `scheduleID`, `day`, `startTime`, `endTime`) values (5, 1, 6, '08:00:00', '17:00:00');
+insert into `WebAgenda`.`SHIFT` (`shiftID`, `schedID`, `day`, `startTime`, `endTime`) values (1, 1, 2, '08:00:00', '17:00:00');
+insert into `WebAgenda`.`SHIFT` (`shiftID`, `schedID`, `day`, `startTime`, `endTime`) values (2, 1, 3, '08:00:00', '17:00:00');
+insert into `WebAgenda`.`SHIFT` (`shiftID`, `schedID`, `day`, `startTime`, `endTime`) values (3, 1, 4, '08:00:00', '17:00:00');
+insert into `WebAgenda`.`SHIFT` (`shiftID`, `schedID`, `day`, `startTime`, `endTime`) values (4, 1, 5, '08:00:00', '17:00:00');
+insert into `WebAgenda`.`SHIFT` (`shiftID`, `schedID`, `day`, `startTime`, `endTime`) values (5, 1, 6, '08:00:00', '17:00:00');
 
 COMMIT;
 
