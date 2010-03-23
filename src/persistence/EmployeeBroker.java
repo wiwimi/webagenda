@@ -269,7 +269,10 @@ public class EmployeeBroker extends Broker<Employee>
 			{
 			pl = checkPermissions(searchTemplate, caller); /// will throw exceptions if permission 'levels' are invalid (doesn't detect individual ones)
 			}
-		catch (InvalidPermissionException ipe)	{}
+		catch (InvalidPermissionException ipe)	{ ipe.printStackTrace(); }
+		
+		if(!searchTemplate.getActive() && !pl.getLevel_permissions().isCanViewInactiveEmployees())
+			throw new InvalidPermissionException("User cannot view Inactive Employee data");
 		
 		// Create sql select statement from employee object.
 		String select = "SELECT * FROM `WebAgenda`.`EMPLOYEE` WHERE ";
@@ -306,7 +309,7 @@ public class EmployeeBroker extends Broker<Employee>
 			// Active State.
 			comp = comp + (searchTemplate.getActive() != null ? (comp.equals("") ? "" : " AND ") +
 					"active = " + searchTemplate.getActive() : "");
-			}
+			}	
 		
 		if (comp.equals(""))
 			{
