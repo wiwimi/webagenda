@@ -1,0 +1,15 @@
+@CHARSET "ISO-8859-1";
+
+@page 
+	{
+	    @bottom 
+	    {
+			content: "Page " counter(page) " of " counter(page
+		  	margin: 3cm;
+		}
+	
+    }
+#sidebar, #header, #footer
+{
+	display:none
+}
