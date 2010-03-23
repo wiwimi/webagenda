@@ -55,11 +55,11 @@
 								$(function()
 								    {
 										
-										    $.flashMessenger("The position has been successfully updated", 
-											{ 	
-												modal:true, 
-												autoClose: false 
-											});	
+									    $.flashMessenger("The position has been successfully updated", 
+										{ 	
+											modal:true, 
+											autoClose: false 
+										});	
 									});
 								</script>
 			<% 			   
@@ -164,21 +164,36 @@
 								
 										for(int index = 0; index<skillArray.length; index++)
 										{
-											//for(int x=0; x<pos_skills.length; x++)
-											//{
-									%>
-										<tr>
-										   <td>
-												<a href="newSkill.jsp?=<%=skillArray[index].getName()%>"> <b> <%=skillArray[index].getName()%> </b></a>
-											</td>
-											<td>
-													<input type="checkbox" name="skill" checked="checked"> 
-											</td>
-										</tr>
-									<% 
+											%>
+												<tr>
+													<td>
+														<a href="newSkill.jsp?=<%=skillArray[index].getName()%>"> <b> <%=skillArray[index].getName()%> </b></a>
+													</td>
+											<%
+												//for(int x=0; x<pos_skills.length; x++)
+												//{
+												//	if(pos_skills[x].getName().equals(skillArray[index]))
+												//	{
+											%>
+														<td>
+															<input type="checkbox" name="skill" checked="checked"> 
+														</td>
+												
+											<% 
+												//	}
+												//	else
+												//	{
+											%>
+											<!--  
+														<td>
+															<input type="checkbox" name="skill"> 
+														</td>
+												   </tr> -->
+											<%
+												//	}
 											//}
-										}
-									%>			
+											}
+										%>			
 								</tbody>
 							</table>
 						  </div>
