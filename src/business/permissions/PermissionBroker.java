@@ -226,9 +226,7 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 			throw new NullPointerException();
 		if(caller == null) 
 			throw new DBException("Cannot parse PermissionLevel when invoking Employee is null");
-		
-		//TODO: only return items that are at < caller level unless a permission exists
-		
+		// get() requires user to get their own level for other methods.
 		// Create sql select statement from permission level object.
 		String select = "SELECT * FROM `WebAgenda`.`PERMISSIONSET` ";
 		String comparisons = "";

@@ -9,9 +9,11 @@ import java.sql.Statement;
 
 import exception.DBDownException;
 import exception.DBException;
+import exception.InvalidPermissionException;
 import application.DBConnection;
 import business.Employee;
 import business.Notification;
+import business.permissions.PermissionLevel;
 
 
 /**
@@ -36,12 +38,51 @@ public class NotificationBroker extends Broker<Notification> {
 		return nbrok;
 	}
 	
+	/**
+	 * Method that contains all throwable conditions when attempting to access broker methods of EmployeeBroker.
+	 * TODO: Do all proper permission checks for broker methods
+	 * 
+	 * @param target Employee of desired create, update or delete.
+	 * @param caller Employee that invokes the method
+	 * 
+	 * @throws InvalidPermissionException
+	 * @throws DBException
+	 * @throws DBDownException 
+	 */
+	private PermissionLevel checkPermissions(Employee target) 
+		throws InvalidPermissionException, DBException, DBDownException
+	{	
+		
+		// If item being sent in is a search Employee, this will trigger that it's not exactly valid
+		// so it can be dealt with by the program
+		try {
+			target.getLevel();
+			target.getVersion();	
+		}
+		catch(Exception E) {
+			throw new InvalidPermissionException("PermissionLevel not found in target Employee");
+		}
+		
+		PermissionLevel[] pla = persistence.PermissionBroker.getBroker().get(target.getLevel(), target.getVersion(), target);
+		if(pla == null) {
+			throw new InvalidPermissionException("(Warning) PermissionLevels not found for caller Employee; Ensure Employee exists");
+		}
+		PermissionLevel pl = pla[0];
+		pla = null;
+		if(pl == null)
+			throw new InvalidPermissionException("No matches for caller's Permission Level found, cannot process");
+		if(!pl.getLevel_permissions().isCanSendNotifications()) {
+			throw new InvalidPermissionException("User cannot create/delete/update Notifications");
+		}
+		return pl;
+	}
+	
 	@Override
 	public boolean create(Notification createObj, Employee caller) throws DBException,
-			DBDownException {
+			DBDownException, InvalidPermissionException {
 		if (createObj == null)
 			throw new NullPointerException("Can not create null notification.");
-		
+		checkPermissions(caller);
 		/*
 		 * Create insert string.
 		 */
@@ -82,10 +123,10 @@ public class NotificationBroker extends Broker<Notification> {
 
 	@Override
 	public boolean delete(Notification deleteObj, Employee caller) throws DBException,
-			DBDownException {
+			DBDownException, InvalidPermissionException {
 		if (deleteObj == null)
 			throw new NullPointerException("Can not delete null notification.");
-		
+		checkPermissions(caller);
 		String delete = String.format(
 				"DELETE FROM `WebAgenda`.`NOTIFICATION` WHERE notificationID = '%s';",
 				deleteObj.getNotificationID());
@@ -176,10 +217,10 @@ public class NotificationBroker extends Broker<Notification> {
 
 	@Override
 	public boolean update(Notification oldNotification, Notification updateObj, Employee caller) throws DBException,
-			DBDownException {
+			DBDownException, InvalidPermissionException {
 		if (updateObj == null)
 			throw new NullPointerException("Can not update null notification.");
-		
+		checkPermissions(caller);
 		// Create sql update statement from notification object.
 		
 		//FIXED: (Daniel Kettle) Removed sentTime from update notification as a) time is restamped upon being written to db, and b) 

@@ -5,6 +5,7 @@ package testDB;
 
 import exception.DBDownException;
 import exception.DBException;
+import exception.InvalidPermissionException;
 
 import business.Employee;
 import business.Notification;
@@ -65,6 +66,9 @@ public class TestNotification {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (DBDownException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvalidPermissionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
