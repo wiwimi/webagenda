@@ -63,7 +63,7 @@ if(session.getAttribute("username") == null)
 				%>
 				
 				<div id="reportHeader">
-					<div id="locName">
+					<div id="titleHeader">
 						<h2 id="name"> <%= reported[0].getName()%> </h2>
 						<h2 id="date"><%= new java.util.Date()%></h2>
 					</div>
