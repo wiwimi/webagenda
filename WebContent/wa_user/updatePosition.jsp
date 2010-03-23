@@ -158,42 +158,30 @@
 										Employee user = (Employee) session.getAttribute("currentEmployee");
 									    
 									    Skill[] pos_skills = oldPos.getPos_skills();
+									    String posN = oldPos.getName();
 										SkillBroker broker = SkillBroker.getBroker();
 										Skill skill = new Skill("");
 										Skill[] skillArray = broker.get(skill, user);
-								
-										for(int index = 0; index<skillArray.length; index++)
+										
+										if(pos_skills==null)
 										{
-											%>
-												<tr>
-													<td>
-														<a href="newSkill.jsp?=<%=skillArray[index].getName()%>"> <b> <%=skillArray[index].getName()%> </b></a>
-													</td>
-											<%
-												//for(int x=0; x<pos_skills.length; x++)
-												//{
-												//	if(pos_skills[x].getName().equals(skillArray[index]))
-												//	{
-											%>
-														<td>
-															<input type="checkbox" name="skill" checked="checked"> 
-														</td>
-												
-											<% 
-												//	}
-												//	else
-												//	{
-											%>
-											<!--  
-														<td>
-															<input type="checkbox" name="skill"> 
-														</td>
-												   </tr> -->
-											<%
-												//	}
-											//}
+											out.println("null");
+											out.println(posN);
+										}
+										
+										else 
+										{
+											for (int i =0; i<pos_skills.length; i++)
+											{
+												out.println("the skills are " + pos_skills[i]);
 											}
-										%>			
+										}
+										
+										
+											//for(int index = 0; index<skillArray.length; index++)
+											//{
+								%>
+													
 								</tbody>
 							</table>
 						  </div>

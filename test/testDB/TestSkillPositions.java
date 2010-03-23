@@ -64,6 +64,17 @@ public class TestSkillPositions {
 			e.printStackTrace();
 		}
 	}
+	
+	@Test
+	public void testGetSkills() {		
+	
+			Skill[] posSkills = newpos.getPos_skills();
+			
+			for (int i=0; i<posSkills.length; i++)
+				System.out.println(posSkills[i]);
+		
+	}
+
 
 	@Test
 	public void testDeletePosition() {
