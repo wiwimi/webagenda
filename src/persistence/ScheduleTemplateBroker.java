@@ -163,7 +163,7 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 		if (deleteObj.getSchedTempID() == null)
 			throw new NullPointerException("Can not delete, no schedule template ID in given object.");
 		
-		// TODO Implement race check method.
+		raceCheck(deleteObj,caller);
 		
 		try
 			{
@@ -187,8 +187,24 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 		return true;
 		}
 	
-	/*
-	 * (non-Javadoc)
+	/**
+	 * Gets all schedule templates in the database that match the given schedule
+	 * template. Only one attribute from the given schedule template will be used
+	 * for the search, in the following order:<br>
+	 * <br>
+	 * A) Schedule Template ID (schedTempID)<br>
+	 * B) Creator ID (creatorID)<br>
+	 * C) Name (name)<br>
+	 * <br>
+	 * Searches by name will be a fuzzy search, returning all schedules that
+	 * include the contents of the search object, rather than an exact search.
+	 * 
+	 * @param searchTemplate the schedule template holding the attribute to be
+	 *           used for the search.
+	 * @param caller The employee currently logged into the system, used for
+	 *           permissions checks.
+	 * @throws DBException
+	 * @throws DBDownException
 	 * @see persistence.Broker#get(business.BusinessObject)
 	 */
 	@Override
@@ -199,25 +215,43 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 		if (searchTemplate == null)
 			throw new NullPointerException("Cannot search with null template.");
 		
-		if (searchTemplate.getCreatorID() == null)
-			throw new NullPointerException(
-					"Creator ID required for schedule templates.");
-		
-		String select = String.format(
-						"SELECT * FROM `WebAgenda`.`SCHEDULETEMPLATE` WHERE creatorID = %s;",
-						searchTemplate.getCreatorID());
-		
-		ScheduleTemplate[] found;
+		ScheduleTemplate[] found = null;
 		try
 			{
 			DBConnection conn = this.getConnection();
-			Statement stmt = conn.getConnection().createStatement();
-			ResultSet schTmpResult = stmt.executeQuery(select);
+			
+			PreparedStatement select = null;
+			if (searchTemplate.getSchedTempID() != null)
+				{
+				select = conn.getConnection().prepareStatement(
+					"SELECT * FROM `WebAgenda`.`SCHEDULETEMPLATE` WHERE schedTempID = ?");
+				select.setInt(1, searchTemplate.getSchedTempID());
+				}
+			else if (searchTemplate.getCreatorID() != null)
+				{
+				select = conn.getConnection().prepareStatement(
+					"SELECT * FROM `WebAgenda`.`SCHEDULETEMPLATE` WHERE creatorID = ?");
+				select.setInt(1, searchTemplate.getCreatorID());
+				}
+			else if (searchTemplate.getName() != null)
+				{
+				select = conn.getConnection().prepareStatement(
+					"SELECT * FROM `WebAgenda`.`SCHEDULETEMPLATE` WHERE name LIKE ?");
+				select.setString(1, "%"+searchTemplate.getName()+"%");
+				}
+			
+			//If nothing is being searched for, return null.
+			if (select == null)
+				{
+				conn.setAvailable(true);
+				return null;
+				}
+			
+			ResultSet schTmpResult = select.executeQuery();
 			found = parseResults(schTmpResult);
 			fillSchedTemp(found, conn);
 			
 			conn.setAvailable(true);
-			
 			}
 		catch (SQLException e)
 			{
@@ -273,7 +307,7 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 	 * @param templates
 	 * @param conn
 	 */
-	private void fillSchedTemp(ScheduleTemplate[] templates, DBConnection conn)
+	protected void fillSchedTemp(ScheduleTemplate[] templates, DBConnection conn)
 			throws SQLException
 		{
 		// Prepare the select statements to pull additional data.
@@ -320,7 +354,7 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 	 *         if the result set was empty.
 	 * @throws SQLException
 	 */
-	private ShiftTemplate[] parseShiftTemps(ResultSet rs) throws SQLException
+	protected ShiftTemplate[] parseShiftTemps(ResultSet rs) throws SQLException
 		{
 		// List will be returned as null if no results are found.
 		ShiftTemplate[] stList = null;
@@ -355,7 +389,7 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 	 * @return the array of shift positions, or null if the result set was empty.
 	 * @throws SQLException if there was an error during parsing.
 	 */
-	private ShiftPosition[] parseShiftPos(ResultSet rs) throws SQLException
+	protected ShiftPosition[] parseShiftPos(ResultSet rs) throws SQLException
 		{
 		// List will be returned as null if no results are found.
 		ShiftPosition[] spList = null;
@@ -380,6 +414,74 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 			}
 		
 		return spList;
+		}
+	
+	/**
+	 * Compares a given schedule template against the database, ensuring that it
+	 * has not been changed by another user.  This is used check for race conditions
+	 * when updating or deleting schedule templates in the database.
+	 * 
+	 * @param oldSchedTemp The schedule template that was previously retrieved
+	 * 			from the database.
+	 * @param caller The employee that is logged into the system.
+	 * @return
+	 * @throws DBChangeException
+	 * @throws DBDownException 
+	 */
+	private boolean raceCheck(ScheduleTemplate old, Employee caller) throws DBChangeException, DBException, DBDownException
+		{
+		if (old == null || old.getSchedTempID() == null)
+			throw new DBException("Unable to validate old schedule template, is null or has no schedTempID.");
+		
+		//Get schedule template from DB with matching scheduleTemplateID.
+		ScheduleTemplate[] fromDB = this.get(old, caller);
+		
+		//If no schedule template returned, throw exception.
+		if (fromDB == null)
+			throw new DBChangeException("No matching record found, schedule template may have been deleted.");
+		
+		ScheduleTemplate fetched = fromDB[0];
+		
+		//Compare name of old/fetched. SchedTempID and CreatorID do not need to be checked.
+		if (!old.getName().equals(fetched.getName()))
+			throw new DBChangeException("Schedule Template name has been modified.");
+		
+		//Compare number of shift templates.
+		if (old.getShiftTemplates().size() != fetched.getShiftTemplates().size())
+			throw new DBChangeException("Schedule Template num of shifts modified.");
+		
+		//Compare shift templates individually between old/fetched.
+		for (int i = 0; i < old.getShiftTemplates().size(); i++)
+			{
+			ShiftTemplate st1 = old.getShiftTemplates().get(i);
+			ShiftTemplate st2 = fetched.getShiftTemplates().get(i);
+			
+			//Compare shift template attributes.
+			if (st1.getShiftTempID() != st2.getShiftTempID() ||
+					st1.getDay() != st2.getDay() ||
+					!st1.getStartTime().equals(st2.getStartTime()) ||
+					!st1.getEndTime().equals(st2.getEndTime()))
+				throw new DBChangeException("Shift Template changed.");
+			
+			//Compare number of shift positions.
+			if (st1.getShiftPositions().size() != st2.getShiftPositions().size())
+				throw new DBChangeException("Shift Positions changed.");
+			
+			//Compare shift positions individually between old/fetched.
+			for (int j = 0; j < st1.getShiftPositions().size(); j++)
+				{
+				ShiftPosition sp1 = st1.getShiftPositions().get(j);
+				ShiftPosition sp2 = st2.getShiftPositions().get(j);
+				
+				//Compare shift position attributes.
+				if (sp1.getShiftTempID() != sp2.getShiftTempID() ||
+						!sp1.getPosName().equals(sp2.getPosName()) ||
+						sp1.getPosCount() != sp2.getPosCount())
+					throw new DBChangeException("Shift Positions changed.");
+				}
+			}
+		
+		return true;
 		}
 	
 	}
