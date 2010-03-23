@@ -119,7 +119,10 @@ public class TestEmployeeBroker
 		catch (InvalidPermissionException e)
 			{
 			e.printStackTrace();
-			}
+			} catch (PermissionViolationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		//Delete the test user.
 		try
@@ -224,6 +227,9 @@ public class TestEmployeeBroker
 		catch (InvalidPermissionException e)
 		{
 		e.printStackTrace();
+		} catch (PermissionViolationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 		//Delete the test user.
@@ -303,7 +309,10 @@ public class TestEmployeeBroker
 			{
 			e.printStackTrace();
 			fail();
-			}
+			} catch (PermissionViolationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		assertNotNull("No ID results.",byID);
 		assertNotNull("No active results.",byActive);
@@ -430,7 +439,10 @@ public class TestEmployeeBroker
 		catch (InvalidPermissionException e)
 			{
 			e.printStackTrace();
-			}
+			} catch (PermissionViolationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		//Delete the test user.
 		try
@@ -503,7 +515,10 @@ public class TestEmployeeBroker
 		catch (DBDownException e)
 			{
 			e.printStackTrace();
-			}
+			} catch (PermissionViolationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		System.out.println("\nAttempting login with 'fakeUser'/'pass'");
 		try
@@ -535,7 +550,10 @@ public class TestEmployeeBroker
 		catch (DBDownException e)
 			{
 			e.printStackTrace();
-			}
+			} catch (PermissionViolationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		}
 	
 	}

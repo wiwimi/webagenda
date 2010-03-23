@@ -82,7 +82,11 @@ if(session.getAttribute("username") != null)
 				</div>
 			
 				<div class="widgetLowerRectangle" id="notificationsLowerRectangle">
-					some widget data here
+					<% 
+						// TODO: grab all notifications for user
+					
+					%>
+					some notification data here
 				</div>
 			</div>
 		</div>

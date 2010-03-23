@@ -2,9 +2,7 @@ package ui;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +12,8 @@ import javax.servlet.http.HttpSession;
 import exception.DBDownException;
 import exception.DBException;
 import exception.InvalidLoginException;
-import exception.InvalidPermissionException;
+import exception.PermissionViolationException;
+
 import business.Employee;
 import persistence.EmployeeBroker;
 
@@ -104,6 +103,9 @@ public class Login extends HttpServlet
 		{
 		// TODO Auto-generated catch block
 		e.printStackTrace();
+		} catch (PermissionViolationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} 
         finally
 	     {

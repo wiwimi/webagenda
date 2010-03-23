@@ -257,7 +257,7 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @see persistence.Broker#get(business.BusinessObject)
 	 */
 	@Override
-	public Employee[] get(Employee searchTemplate,Employee caller) throws DBException, DBDownException, InvalidPermissionException
+	public Employee[] get(Employee searchTemplate,Employee caller) throws DBException, DBDownException, InvalidPermissionException, PermissionViolationException
 		{
 		if (searchTemplate == null)
 			throw new NullPointerException(
@@ -272,7 +272,7 @@ public class EmployeeBroker extends Broker<Employee>
 		catch (InvalidPermissionException ipe)	{ ipe.printStackTrace(); }
 		
 		if(!searchTemplate.getActive() && !pl.getLevel_permissions().isCanViewInactiveEmployees())
-			throw new InvalidPermissionException("User cannot view Inactive Employee data");
+			throw new PermissionViolationException("User cannot view Inactive Employee data");
 		
 		// Create sql select statement from employee object.
 		String select = "SELECT * FROM `WebAgenda`.`EMPLOYEE` WHERE ";
@@ -495,13 +495,14 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @return The employee object for the employee that has logged in.
 	 * @throws InvalidLoginException when the username or password does not match
 	 *            a record in the database.
+	 * @throws PermissionViolationException 
 	 * @throws InvalidPermissionException 
 	 * @throws SQLException if there was an issue with the database connection or
 	 *            search query.
 	 * @throws NullPointerException
 	 */
 	public Employee tryLogin(String username, String password)
-			throws InvalidLoginException, DBException, DBDownException
+			throws InvalidLoginException, DBException, DBDownException, PermissionViolationException
 		{
 		if (username == null || password == null)
 			throw new InvalidLoginException(

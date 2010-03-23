@@ -151,9 +151,17 @@ public class NotificationBroker extends Broker<Notification> {
 		return success;
 	}
 
+	/*
+	 * Use negative numbers in a searchTemplate object to search all items in that category
+	 * 
+	 * (non-Javadoc)
+	 * @see persistence.Broker#get(business.BusinessObject, business.Employee)
+	 */
 	@Override
 	public Notification[] get(Notification searchTemplate, Employee caller) throws DBException,
 			DBDownException {
+		if(caller == null) throw new DBException("Cannot get Notifications if user is null");
+		
 		String select;
 		
 		if (searchTemplate == null)
@@ -163,8 +171,12 @@ public class NotificationBroker extends Broker<Notification> {
 		else
 			{
 			select = String.format(
-					"SELECT * FROM `WebAgenda`.`NOTIFICATION` WHERE notificationID LIKE '%s%%'",
-					searchTemplate.getNotificationID());
+					"SELECT * FROM `WebAgenda`.`NOTIFICATION` WHERE notificationID LIKE '%s%%' AND " +
+					"senderID LIKE '%s%%' AND recipientID LIKE '%s%%' AND type LIKE '%s%%';",
+					(searchTemplate.getNotificationID() >= 0 ? searchTemplate.getNotificationID() : '%'),
+					(searchTemplate.getSenderID() >= 0 ? searchTemplate.getSenderID() : '%' ),
+					(searchTemplate.getRecipientID() >= 0 ? searchTemplate.getRecipientID() : '%'),
+					(searchTemplate.getType() != null ? searchTemplate.getType() : '%'));
 			}
 		
 		// Get DB connection, send query, and reopen connection for other users.
