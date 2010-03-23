@@ -1,5 +1,7 @@
 @CHARSET "ISO-8859-1";
 
+/*Author: Noorin*/
+
 @page 
 	{
 	    @bottom 
@@ -13,3 +15,15 @@
 {
 	display:none
 }
+body 
+{
+	background: white;
+	font-size: 12pt;
+}
+#report 
+{
+	margin-left: 10%;
+	padding-top: 1em;
+	border-top: 1px solid #930;
+}
+

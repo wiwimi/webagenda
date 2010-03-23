@@ -54,3 +54,17 @@
 	text-align:center;
 }
 
+#printerIcon
+{
+	font-size:1.2em;
+	float:left;
+	margin-left:20px;
+}
+
+#printerIcon h3:before
+{
+	position:relative;
+	top:5px;
+	content: url(../../lib/images/icons/Color/printer.png)	
+}
+

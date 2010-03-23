@@ -46,8 +46,12 @@ if(session.getAttribute("username") == null)
 				<div class="widgetUpperRectangle" id="locationsUpperRectangle">
 					<div class="widgetTitle" id="locationTitle">Report Location</div>
 				</div>
-				
+				<div id="printerIcon">
+					<h3></h3>
+				</div>
 			<div class="widgetLowerRectangle" id="passwordLowerRectangle">
+			
+			
 				
 				<%
 					Location loc = new Location("Mohave Grill");
@@ -80,10 +84,9 @@ if(session.getAttribute("username") == null)
 			    <div id="instructions" class="center">
 			   		End of Report
 			   		<div class="page-break"></div>
-			   
-  
 			</div>  
-		</div>        
+		</div>  
+		</div>      
                  
 <div id="footer"></div>
 </body>

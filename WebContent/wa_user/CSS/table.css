@@ -1,6 +1,6 @@
 @CHARSET "ISO-8859-1";
 
-/*Author: Noorin*/
+/*Mark*/
 #usersIcon
 {
 	font-size:1.2em;
@@ -14,6 +14,7 @@
 	top:5px;
 	content: url(../../lib/images/icons/Color/001_54.png)	
 }
+/*Author: Noorin*/
 
 #tableArea
 {
