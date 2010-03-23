@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import exception.DBChangeException;
 import exception.DBDownException;
 import exception.DBException;
 import application.DBConnection;
@@ -52,16 +53,143 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 	public boolean create(ScheduleTemplate createObj, Employee caller)
 			throws DBException, DBDownException
 		{
-		// TODO Auto-generated method stub
-		return false;
+		if (createObj == null)
+			throw new NullPointerException("Can not delete, given schedule template is null.");
+		
+		DBConnection conn = null;
+		try
+			{
+			//Get connection, disable autocommit.
+			conn = this.getConnection();
+			conn.getConnection().setAutoCommit(false);
+			
+			//Create prepared statements for inserts.
+			PreparedStatement insSchedTemp = conn.getConnection().prepareStatement(
+					"INSERT INTO `WebAgenda`.`SCHEDULETEMPLATE` " +
+					"(`creatorID`,`name`) " +
+					"VALUES " +
+					"(?,?)",Statement.RETURN_GENERATED_KEYS);
+			
+			PreparedStatement insShiftTemp = conn.getConnection().prepareStatement(
+					"INSERT INTO `WebAgenda`.`SHIFTTEMPLATE` " +
+					"(`schedTempID`,`day`,`startTime`,`endTime`) " +
+					"VALUES " +
+					"(?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
+			
+			PreparedStatement insShiftPos = conn.getConnection().prepareStatement(
+					"INSERT INTO `WebAgenda`.`SHIFTPOS` " +
+					"(`shiftTempID`,`positionName`,`posCount`) " +
+					"VALUES " +
+					"(?,?,?)");
+			
+			//Attempt to insert schedule template.
+			insSchedTemp.setInt(1, createObj.getCreatorID());
+			insSchedTemp.setString(2, createObj.getName());
+			if (insSchedTemp.executeUpdate() != 1)
+				throw new DBException("Failed to insert schedule template.");
+			
+			//Save the auto-generated schedule template ID.
+			ResultSet temp = insSchedTemp.getGeneratedKeys();
+			int schedTempID = -1;
+			if (temp.next())
+				schedTempID = temp.getInt(1);
+			createObj.setSchedTempID(schedTempID);
+			
+			//Insert each shift template.
+			for (ShiftTemplate shiftTemp : createObj.getShiftTemplates().toArray())
+				{
+				//Add schedule template ID before insert.
+				shiftTemp.setSchedTempID(schedTempID);
+				
+				//Attempt to insert shift template.
+				insShiftTemp.setInt(1, shiftTemp.getSchedTempID());
+				insShiftTemp.setInt(2, shiftTemp.getDay());
+				insShiftTemp.setTime(3, shiftTemp.getStartTime());
+				insShiftTemp.setTime(4, shiftTemp.getEndTime());
+				insShiftTemp.executeUpdate();
+				if (insShiftTemp.getUpdateCount() != 1)
+					throw new DBException("Failed to insert shift template");
+				
+				//Save the auto-generated shift template ID.
+				temp = insShiftTemp.getGeneratedKeys();
+				int shiftTempID = -1;
+				if (temp.next())
+					shiftTempID = temp.getInt(1);
+				
+				//Insert each shift position.
+				for (ShiftPosition shiftPos : shiftTemp.getShiftPositions().toArray())
+					{
+					//Add shift template ID before insert.
+					shiftPos.setShiftTempID(shiftTempID);
+					
+					//Attempt to insert shift position.
+					insShiftPos.setInt(1, shiftPos.getShiftTempID());
+					insShiftPos.setString(2, shiftPos.getPosName());
+					insShiftPos.setInt(3, shiftPos.getPosCount());
+					insShiftPos.executeUpdate();
+					if (insShiftPos.getUpdateCount() != 1)
+						throw new DBException("Failed to insert shift position");
+					}
+				}
+			
+			//Create succeeded! Commit all inserts and reset connection.
+			conn.getConnection().commit();
+			conn.getConnection().setAutoCommit(true);
+			insSchedTemp.close();
+			insShiftTemp.close();
+			insShiftPos.close();
+			conn.setAvailable(true);
+			}
+		catch (SQLException e)
+			{
+			try
+				{
+				conn.getConnection().rollback();
+				conn.getConnection().setAutoCommit(true);
+				}
+			catch (SQLException e1)
+				{
+				throw new DBException("Failed to rollback connection.",e1);
+				}
+			conn.setAvailable(true);
+			throw new DBException("Failed to get schedule templates.", e);
+			}
+		
+		return true;
 		}
 	
 	@Override
 	public boolean delete(ScheduleTemplate deleteObj, Employee caller)
-			throws DBException, DBDownException
+			throws DBException, DBChangeException, DBDownException
 		{
-		// TODO Auto-generated method stub
-		return false;
+		if (deleteObj == null)
+			throw new NullPointerException("Can not delete, given schedule template is null.");
+
+		if (deleteObj.getSchedTempID() == null)
+			throw new NullPointerException("Can not delete, no schedule template ID in given object.");
+		
+		// TODO Implement race check method.
+		
+		try
+			{
+			DBConnection conn = this.getConnection();
+			
+			PreparedStatement deleteStmt = conn.getConnection().prepareStatement(
+					"DELETE FROM `WebAgenda`.`ScheduleTemplate` WHERE schedTempID = ?");
+			
+			deleteStmt.setInt(1, deleteObj.getSchedTempID());
+			
+			if (deleteStmt.executeUpdate() != 1)
+				throw new DBException("Failed to delete schedule template.");
+			
+			conn.setAvailable(true);
+			}
+		catch (SQLException e)
+			{
+			throw new DBException("Failed to delete schedule template.", e);
+			}
+		
+		return true;
 		}
 	
 	/*
@@ -107,7 +235,7 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 	
 	@Override
 	public boolean update(ScheduleTemplate oldObj, ScheduleTemplate updateObj,
-			Employee caller) throws DBException, DBDownException
+			Employee caller) throws DBException, DBChangeException, DBDownException
 		{
 		// TODO Auto-generated method stub
 		return false;
@@ -132,8 +260,8 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 			for (int i = 0; i < resultCount && rs.next(); i++)
 				{
 				ScheduleTemplate st = new ScheduleTemplate(
-						rs.getInt("schedTempID"), rs.getInt("creatorID"), rs
-								.getString("name"));
+						rs.getInt("schedTempID"), rs.getInt("creatorID"),
+						rs.getString("name"));
 				
 				stList[i] = st;
 				}

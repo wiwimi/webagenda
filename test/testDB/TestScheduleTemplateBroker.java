@@ -5,8 +5,7 @@ package testDB;
 
 import static org.junit.Assert.*;
 
-import java.sql.Date;
-
+import java.sql.Time;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,7 +16,6 @@ import business.schedule.ScheduleTemplate;
 import business.schedule.ShiftPosition;
 import business.schedule.ShiftTemplate;
 import persistence.ScheduleTemplateBroker;
-import utilities.DoubleLinkedList;
 
 /**
  * 
@@ -28,7 +26,7 @@ import utilities.DoubleLinkedList;
  */
 public class TestScheduleTemplateBroker
 	{
-	ScheduleTemplateBroker stb = null;
+	private ScheduleTemplateBroker stb = null;
 	private Employee user;
 	
 	/**
@@ -52,11 +50,60 @@ public class TestScheduleTemplateBroker
 		}
 	
 	/**
-	 * Test method for {@link persistence.ScheduleTemplateBroker#get(business.schedule.ScheduleTemplate)}.
+	 * Test method for {@link persistence.ScheduleTemplateBroker#create(ScheduleTemplate, Employee)}
+	 * and {@link persistence.ScheduleTemplateBroker#delete(ScheduleTemplate, Employee)}.
+	 */
+	@Test
+	public void testCreateDeleteScheduleTemplate()
+		{
+		System.out.println("---------- START TEST CREATE DELETE ----------");
+		//Create a test schedule template to be deleted.
+		ShiftPosition shiftPos = new ShiftPosition();
+		shiftPos.setPosName("Cook");
+		shiftPos.setPosCount(2);
+		
+		ShiftTemplate shiftTemp = new ShiftTemplate();
+		shiftTemp.setDay(2);
+		shiftTemp.setStartTime(new Time(8l * 1000 * 60 * 60));
+		shiftTemp.setEndTime(new Time (17l * 1000 * 60 * 60));
+		shiftTemp.getShiftPositions().add(shiftPos);
+		
+		ScheduleTemplate schedTemp = new ScheduleTemplate();
+		schedTemp.setCreatorID(12314);
+		schedTemp.setName("Created by TestScheduleTemplateBroker");
+		schedTemp.getShiftTemplates().add(shiftTemp);
+		
+		try
+			{
+			//Attempt to add schedule template to database.
+			assertTrue(stb.create(schedTemp, user));
+			
+			//Repeat testGet to show sched template was added.
+			testGetScheduleTemplate();
+			
+			//Delete the added schedule.
+			assertTrue(stb.delete(schedTemp, user));
+			}
+		catch (DBException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		catch (DBDownException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		System.out.println("---------- END TEST CREATE DELETE ----------");
+		}
+	
+	/**
+	 * Test method for {@link persistence.ScheduleTemplateBroker#get(ScheduleTemplate, Employee)}.
 	 */
 	@Test
 	public void testGetScheduleTemplate()
 		{
+		System.out.println("---------- START TEST GET ----------");
 		//Grab the test schedule template and print its contents.
 		ScheduleTemplate search = new ScheduleTemplate();
 		search.setCreatorID(12314);
@@ -95,8 +142,7 @@ public class TestScheduleTemplateBroker
 					}
 				}
 			}
-		
-		assertTrue(true);
+		System.out.println("---------- END TEST GET ----------");
 		}
 
 	

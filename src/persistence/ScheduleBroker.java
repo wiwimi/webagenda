@@ -9,6 +9,7 @@ import java.sql.Statement;
 import application.DBConnection;
 import business.Employee;
 import java.sql.SQLException;
+import exception.DBChangeException;
 import exception.DBDownException;
 import exception.DBException;
 import business.schedule.Schedule;
@@ -42,7 +43,7 @@ public class ScheduleBroker extends Broker<Schedule>
 	
 	@Override
 	public boolean create(Schedule createObj, Employee caller)
-			throws DBException
+			throws DBException, DBDownException
 		{
 		// TODO Auto-generated method stub
 		return false;
@@ -50,7 +51,7 @@ public class ScheduleBroker extends Broker<Schedule>
 	
 	@Override
 	public boolean delete(Schedule deleteObj, Employee caller)
-			throws DBException
+			throws DBException, DBDownException
 		{
 		// TODO Auto-generated method stub
 		return false;
@@ -61,7 +62,7 @@ public class ScheduleBroker extends Broker<Schedule>
 	 */
 	@Override
 	public Schedule[] get(Schedule searchTemplate, Employee caller)
-			throws DBException, DBDownException
+			throws DBException, DBChangeException, DBDownException
 		{
 		// Get all schedules for the given creator.
 		if (searchTemplate == null)
@@ -94,7 +95,7 @@ public class ScheduleBroker extends Broker<Schedule>
 	
 	@Override
 	public boolean update(Schedule oldSched, Schedule updateObj, Employee caller)
-			throws DBException
+			throws DBException, DBChangeException, DBDownException
 		{
 		// TODO Auto-generated method stub
 		return false;
