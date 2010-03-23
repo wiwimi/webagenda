@@ -4,6 +4,8 @@
 package testDB;
 
 import static org.junit.Assert.*;
+import java.sql.Date;
+import java.sql.Time;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -47,30 +49,61 @@ public class TestScheduleBroker
 		}
 	
 	/**
-	 * Test method for {@link persistence.ScheduleBroker#create(business.schedule.Schedule, business.Employee)}.
+	 * Test method for {@link persistence.ScheduleBroker#create(business.schedule.Schedule, business.Employee)}
+	 * and {@link persistence.ScheduleBroker#delete(business.schedule.Schedule, business.Employee)}.
 	 */
 	@Test
-	public void testCreateScheduleEmployee()
+	public void testCreateDeleteSchedule()
 		{
-		fail("Not yet implemented"); // TODO
-		}
-	
-	/**
-	 * Test method for {@link persistence.ScheduleBroker#delete(business.schedule.Schedule, business.Employee)}.
-	 */
-	@Test
-	public void testDeleteScheduleEmployee()
-		{
-		fail("Not yet implemented"); // TODO
+		System.out.println("---------- START TEST CREATE DELETE ----------");
+		//Create a test schedule to be created and deleted.
+		Employee emp = new Employee();
+		emp.setEmpID(38382);
+		
+		Shift shift = new Shift();
+		shift.setDay(2);
+		shift.setStartTime(new Time(8l * 1000 * 60 * 60));
+		shift.setEndTime(new Time (17l * 1000 * 60 * 60));
+		shift.getEmployees().add(emp);
+		
+		Schedule sched = new Schedule();
+		sched.setCreatorID(12314);
+		sched.setStartDate(Date.valueOf("2010-04-21"));
+		sched.setEndDate(Date.valueOf("2010-04-27"));
+		sched.getShifts().add(shift);
+		
+		try
+			{
+			//Attempt to add schedule to database.
+			assertTrue(sb.create(sched, user));
+			
+			//Repeat testGet to show schedule was added.
+			testGetSchedule();
+			
+			//Delete the added schedule.
+			assertTrue(sb.delete(sched, user));
+			}
+		catch (DBException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		catch (DBDownException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		System.out.println("---------- END TEST CREATE DELETE ----------");
 		}
 	
 	/**
 	 * Test method for {@link persistence.ScheduleBroker#get(business.schedule.Schedule, business.Employee)}.
 	 */
 	@Test
-	public void testGetScheduleEmployee()
+	public void testGetSchedule()
 		{
-		//Grab the test schedule template and print its contents.
+		System.out.println("---------- START TEST GET ----------");
+		//Grab the test schedules and print contents.
 		Schedule search = new Schedule();
 		search.setCreatorID(12314);
 		
@@ -92,13 +125,13 @@ public class TestScheduleBroker
 		
 		for (Schedule st : results)
 			{
-			System.out.println("Schedule Template ID: "+st.getSchedID());
+			System.out.println("Schedule ID: "+st.getSchedID());
 			
 			Shift[] shiftList = st.getShifts().toArray();
 			
 			for (Shift shift : shiftList)
 				{
-				System.out.println("\tShift Template - Day: "+shift.getDay()+" - Time: "+shift.getStartTime() + " to " + shift.getEndTime());
+				System.out.println("\tShift - Day: "+shift.getDay()+" - Time: "+shift.getStartTime() + " to " + shift.getEndTime());
 				
 				Employee[] emps = shift.getEmployees().toArray();
 				
@@ -110,13 +143,14 @@ public class TestScheduleBroker
 			}
 		
 		assertTrue(true);
+		System.out.println("---------- END TEST GET ----------");
 		}
 	
 	/**
 	 * Test method for {@link persistence.ScheduleBroker#update(business.schedule.Schedule, business.schedule.Schedule, business.Employee)}.
 	 */
 	@Test
-	public void testUpdateScheduleScheduleEmployee()
+	public void testUpdateSchedule()
 		{
 		fail("Not yet implemented"); // TODO
 		}

@@ -45,16 +45,135 @@ public class ScheduleBroker extends Broker<Schedule>
 	public boolean create(Schedule createObj, Employee caller)
 			throws DBException, DBDownException
 		{
-		// TODO Auto-generated method stub
-		return false;
+		if (createObj == null)
+			throw new NullPointerException("Can not create, given schedule is null.");
+		
+		DBConnection conn = null;
+		try
+			{
+			//Get connection, disable autocommit.
+			conn = this.getConnection();
+			conn.getConnection().setAutoCommit(false);
+			
+			//Create prepared statements for inserts.
+			PreparedStatement insSched = conn.getConnection().prepareStatement(
+					"INSERT INTO `WebAgenda`.`SCHEDULE` " +
+					"(`startDate`,`endDate`,`creatorID`) " +
+					"VALUES " +
+					"(?,?,?)",Statement.RETURN_GENERATED_KEYS);
+			
+			PreparedStatement insShift = conn.getConnection().prepareStatement(
+					"INSERT INTO `WebAgenda`.`SHIFT` " +
+					"(`schedID`,`day`,`startTime`,`endTime`) " +
+					"VALUES " +
+					"(?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
+			
+			PreparedStatement insShiftEmp = conn.getConnection().prepareStatement(
+					"INSERT INTO `WebAgenda`.`SHIFTEMP` " +
+					"(`shiftID`,`empID`) " +
+					"VALUES " +
+					"(?,?)");
+			
+			//Attempt to insert schedule template.
+			insSched.setDate(1, createObj.getStartDate());
+			insSched.setDate(2, createObj.getEndDate());
+			insSched.setInt(3, createObj.getCreatorID());
+			if (insSched.executeUpdate() != 1)
+				throw new DBException("Failed to insert schedule template.");
+			
+			//Save the auto-generated schedule ID.
+			ResultSet temp = insSched.getGeneratedKeys();
+			if (temp.next())
+				createObj.setSchedID(temp.getInt(1));
+			
+			//Insert each shift template.
+			for (Shift shift : createObj.getShifts().toArray())
+				{
+				//Add schedule template ID before insert.
+				shift.setSchedID(createObj.getSchedID());
+				
+				//Attempt to insert shift template.
+				insShift.setInt(1, shift.getSchedID());
+				insShift.setInt(2, shift.getDay());
+				insShift.setTime(3, shift.getStartTime());
+				insShift.setTime(4, shift.getEndTime());
+				if (insShift.executeUpdate() != 1)
+					throw new DBException("Failed to insert shift");
+				
+				//Save the auto-generated shift template ID.
+				temp = insShift.getGeneratedKeys();
+				if (temp.next())
+					shift.setShiftID(temp.getInt(1));
+				
+				//Insert each employee into SHIFTEMP.
+				for (Employee emp : shift.getEmployees().toArray())
+					{
+					//Attempt to insert ShiftEmp record.
+					insShiftEmp.setInt(1, shift.getShiftID());
+					insShiftEmp.setInt(2, emp.getEmpID());
+					if (insShiftEmp.executeUpdate() != 1)
+						throw new DBException("Failed to insert ShiftEmp.");
+					}
+				}
+			
+			//Create succeeded! Commit all inserts and reset connection.
+			conn.getConnection().commit();
+			conn.getConnection().setAutoCommit(true);
+			insSched.close();
+			insShift.close();
+			insShiftEmp.close();
+			conn.setAvailable(true);
+			}
+		catch (SQLException e)
+			{
+			try
+				{
+				conn.getConnection().rollback();
+				conn.getConnection().setAutoCommit(true);
+				}
+			catch (SQLException e1)
+				{
+				throw new DBException("Failed to rollback connection.",e1);
+				}
+			conn.setAvailable(true);
+			throw new DBException("Failed to get schedules.", e);
+			}
+		
+		return true;
 		}
 	
 	@Override
 	public boolean delete(Schedule deleteObj, Employee caller)
 			throws DBException, DBDownException
 		{
-		// TODO Auto-generated method stub
-		return false;
+		if (deleteObj == null)
+			throw new NullPointerException("Can not delete, given schedule is null.");
+
+		if (deleteObj.getSchedID() == null)
+			throw new NullPointerException("Can not delete, no schedule ID in given object.");
+		
+		// TODO Implement race check method.
+		
+		try
+			{
+			DBConnection conn = this.getConnection();
+			
+			PreparedStatement deleteStmt = conn.getConnection().prepareStatement(
+					"DELETE FROM `WebAgenda`.`SCHEDULE` WHERE schedID = ?");
+			
+			deleteStmt.setInt(1, deleteObj.getSchedID());
+			
+			if (deleteStmt.executeUpdate() != 1)
+				throw new DBException("Failed to delete schedule.");
+			
+			conn.setAvailable(true);
+			}
+		catch (SQLException e)
+			{
+			throw new DBException("Failed to delete schedule.", e);
+			}
+		
+		return true;
 		}
 	
 	/* (non-Javadoc)

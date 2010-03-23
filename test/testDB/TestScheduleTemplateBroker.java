@@ -57,10 +57,10 @@ public class TestScheduleTemplateBroker
 	public void testCreateDeleteScheduleTemplate()
 		{
 		System.out.println("---------- START TEST CREATE DELETE ----------");
-		//Create a test schedule template to be deleted.
+		//Create a test schedule template to be created and deleted.
 		ShiftPosition shiftPos = new ShiftPosition();
 		shiftPos.setPosName("Cook");
-		shiftPos.setPosCount(2);
+		shiftPos.setPosCount(1);
 		
 		ShiftTemplate shiftTemp = new ShiftTemplate();
 		shiftTemp.setDay(2);
@@ -78,10 +78,10 @@ public class TestScheduleTemplateBroker
 			//Attempt to add schedule template to database.
 			assertTrue(stb.create(schedTemp, user));
 			
-			//Repeat testGet to show sched template was added.
+			//Repeat testGet to show schedule template was added.
 			testGetScheduleTemplate();
 			
-			//Delete the added schedule.
+			//Delete the added schedule template..
 			assertTrue(stb.delete(schedTemp, user));
 			}
 		catch (DBException e)
@@ -104,7 +104,7 @@ public class TestScheduleTemplateBroker
 	public void testGetScheduleTemplate()
 		{
 		System.out.println("---------- START TEST GET ----------");
-		//Grab the test schedule template and print its contents.
+		//Grab the test schedule templates and print contents.
 		ScheduleTemplate search = new ScheduleTemplate();
 		search.setCreatorID(12314);
 		
