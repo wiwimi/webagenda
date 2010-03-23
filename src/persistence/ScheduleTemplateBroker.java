@@ -54,7 +54,7 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 			throws DBException, DBDownException
 		{
 		if (createObj == null)
-			throw new NullPointerException("Can not delete, given schedule template is null.");
+			throw new NullPointerException("Can not create, given schedule template is null.");
 		
 		DBConnection conn = null;
 		try
@@ -90,44 +90,39 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 			
 			//Save the auto-generated schedule template ID.
 			ResultSet temp = insSchedTemp.getGeneratedKeys();
-			int schedTempID = -1;
 			if (temp.next())
-				schedTempID = temp.getInt(1);
-			createObj.setSchedTempID(schedTempID);
+				createObj.setSchedTempID(temp.getInt(1));
 			
 			//Insert each shift template.
 			for (ShiftTemplate shiftTemp : createObj.getShiftTemplates().toArray())
 				{
 				//Add schedule template ID before insert.
-				shiftTemp.setSchedTempID(schedTempID);
+				shiftTemp.setSchedTempID(createObj.getSchedTempID());
 				
 				//Attempt to insert shift template.
 				insShiftTemp.setInt(1, shiftTemp.getSchedTempID());
 				insShiftTemp.setInt(2, shiftTemp.getDay());
 				insShiftTemp.setTime(3, shiftTemp.getStartTime());
 				insShiftTemp.setTime(4, shiftTemp.getEndTime());
-				insShiftTemp.executeUpdate();
-				if (insShiftTemp.getUpdateCount() != 1)
+				if (insShiftTemp.executeUpdate() != 1)
 					throw new DBException("Failed to insert shift template");
 				
 				//Save the auto-generated shift template ID.
 				temp = insShiftTemp.getGeneratedKeys();
-				int shiftTempID = -1;
 				if (temp.next())
-					shiftTempID = temp.getInt(1);
+					shiftTemp.setShiftTempID(temp.getInt(1));
 				
 				//Insert each shift position.
 				for (ShiftPosition shiftPos : shiftTemp.getShiftPositions().toArray())
 					{
 					//Add shift template ID before insert.
-					shiftPos.setShiftTempID(shiftTempID);
+					shiftPos.setShiftTempID(shiftTemp.getShiftTempID());
 					
 					//Attempt to insert shift position.
 					insShiftPos.setInt(1, shiftPos.getShiftTempID());
 					insShiftPos.setString(2, shiftPos.getPosName());
 					insShiftPos.setInt(3, shiftPos.getPosCount());
-					insShiftPos.executeUpdate();
-					if (insShiftPos.getUpdateCount() != 1)
+					if (insShiftPos.executeUpdate() != 1)
 						throw new DBException("Failed to insert shift position");
 					}
 				}
@@ -175,7 +170,7 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 			DBConnection conn = this.getConnection();
 			
 			PreparedStatement deleteStmt = conn.getConnection().prepareStatement(
-					"DELETE FROM `WebAgenda`.`ScheduleTemplate` WHERE schedTempID = ?");
+					"DELETE FROM `WebAgenda`.`SCHEDULETEMPLATE` WHERE schedTempID = ?");
 			
 			deleteStmt.setInt(1, deleteObj.getSchedTempID());
 			
