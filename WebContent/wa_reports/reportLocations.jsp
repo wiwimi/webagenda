@@ -50,9 +50,6 @@ if(session.getAttribute("username") == null)
 					<h3></h3>
 				</div>
 			<div class="widgetLowerRectangle" id="passwordLowerRectangle">
-			
-			
-				
 				<%
 					Location loc = new Location("Mohave Grill");
 					Employee user = (Employee) session.getAttribute("currentEmployee");
@@ -70,7 +67,7 @@ if(session.getAttribute("username") == null)
 				</div>
 				
 				<div id="report">
-				<hr></hr>
+				<hr class="d" />
 					<h3> Name: </h3>
 					<div id="loc">
 						<%= reported[0].getName()%>

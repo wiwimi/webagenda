@@ -81,5 +81,16 @@ li
     padding: 0 0 0 30px;
     background: url("logodot.gif") no-repeat 0px .4em;
 }
+hr
+{	
+	border: none 0; 
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #efefef;
+	width: 97%;
+	height: 2px;
+	margin: 10px auto 0 0;
+	text-align: left;
+}
+
 
 
