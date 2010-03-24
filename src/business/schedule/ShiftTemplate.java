@@ -13,7 +13,7 @@ import business.BusinessObject;
  * @author Daniel Wehr
  * @version 0.1.0
  */
-public class ShiftTemplate extends BusinessObject
+public class ShiftTemplate extends BusinessObject implements Comparable<ShiftTemplate>
 	{
 	/**
 	 * The internal DB ID of the shift template.  This is for broker use only.
@@ -28,12 +28,12 @@ public class ShiftTemplate extends BusinessObject
 	
 	/**
 	 * The day of the week that the shift is on.<br>
-	 * 1 = Sunday.<br />
-	 * 2 = Monday.<br />
-	 * 3 = Tuesday.<br />
-	 * 4 = Wednesday.<br />
-	 * 5 = Thursday.<br />
-	 * 6 = Friday.<br />
+	 * 1 = Sunday.<br>
+	 * 2 = Monday.<br>
+	 * 3 = Tuesday.<br>
+	 * 4 = Wednesday.<br>
+	 * 5 = Thursday.<br>
+	 * 6 = Friday.<br>
 	 * 7 = Saturday.
 	 */
 	private Integer day = null;
@@ -161,6 +161,20 @@ public class ShiftTemplate extends BusinessObject
 	public DoubleLinkedList<ShiftPosition> getShiftPositions()
 		{
 		return shiftPositions;
+		}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Comparable#compareTo(java.lang.Object)
+	 */
+	@Override
+	public int compareTo(ShiftTemplate o)
+		{
+		if (this.getShiftTempID() < o.getShiftTempID())
+			return -1;
+		else if (this.getShiftTempID() > o.getShiftTempID())
+			return 1;
+		
+		return 0;
 		}
 	
 	

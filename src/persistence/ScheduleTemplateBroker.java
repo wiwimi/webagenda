@@ -49,6 +49,9 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 		return stb;
 		}
 	
+	/* (non-Javadoc)
+	 * @see persistence.Broker#create(business.BusinessObject, business.Employee)
+	 */
 	@Override
 	public boolean create(ScheduleTemplate createObj, Employee caller)
 			throws DBException, DBDownException
@@ -153,6 +156,9 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 		return true;
 		}
 	
+	/* (non-Javadoc)
+	 * @see persistence.Broker#delete(business.BusinessObject, business.Employee)
+	 */
 	@Override
 	public boolean delete(ScheduleTemplate deleteObj, Employee caller)
 			throws DBException, DBChangeException, DBDownException
@@ -255,13 +261,16 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 			}
 		catch (SQLException e)
 			{
-			throw new DBException("Failed to get schedule templates.", e);
+			throw new DBException("Failed to get schedule template(s).", e);
 			}
 		
 		// Return schedule templates that matched search.
 		return found;
 		}
 	
+	/* (non-Javadoc)
+	 * @see persistence.Broker#update(business.BusinessObject, business.BusinessObject, business.Employee)
+	 */
 	@Override
 	public boolean update(ScheduleTemplate oldObj, ScheduleTemplate updateObj,
 			Employee caller) throws DBException, DBChangeException, DBDownException
@@ -270,6 +279,9 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 		return false;
 		}
 	
+	/* (non-Javadoc)
+	 * @see persistence.Broker#parseResults(java.sql.ResultSet)
+	 */
 	@Override
 	protected ScheduleTemplate[] parseResults(ResultSet rs) throws SQLException
 		{
@@ -298,52 +310,6 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 			}
 		
 		return stList;
-		}
-	
-	/**
-	 * Fetches all shift templates and shift position objects from the database
-	 * for each shiftTemplate.
-	 * 
-	 * @param templates
-	 * @param conn
-	 */
-	protected void fillSchedTemp(ScheduleTemplate[] templates, DBConnection conn)
-			throws SQLException
-		{
-		// Prepare the select statements to pull additional data.
-		PreparedStatement shiftTempStmt = conn.getConnection().prepareStatement(
-				"SELECT * FROM `WebAgenda`.`SHIFTTEMPLATE` WHERE schedTempID = ?;");
-		PreparedStatement shiftPosStmt = conn.getConnection().prepareStatement(
-				"SELECT * FROM `WebAgenda`.`SHIFTPOS` WHERE shiftTempID = ?;");
-		
-		for (ScheduleTemplate schedTemp : templates)
-			{
-			// Get shift templates for matching schedule template.
-			shiftTempStmt.setInt(1, schedTemp.getSchedTempID());
-			ResultSet shiftRS = shiftTempStmt.executeQuery();
-			ShiftTemplate[] shifts = parseShiftTemps(shiftRS);
-			
-			for (ShiftTemplate shift : shifts)
-				{
-				// Get shift positions for matching shift template.
-				shiftPosStmt.setInt(1, shift.getShiftTempID());
-				ResultSet shiftPosRS = shiftPosStmt.executeQuery();
-				ShiftPosition[] positions = parseShiftPos(shiftPosRS);
-				
-				// Add shift positions to shift template.
-				for (ShiftPosition pos : positions)
-					{
-					shift.getShiftPositions().add(pos);
-					}
-				
-				// Add shifts templates to schedule template.
-				schedTemp.getShiftTemplates().add(shift);
-				}
-			}
-		
-		// Release resources used by prepared statements.
-		shiftTempStmt.close();
-		shiftPosStmt.close();
 		}
 	
 	/**
@@ -417,15 +383,62 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 		}
 	
 	/**
+	 * Fetches all shift templates and shift position objects from the database
+	 * for each shiftTemplate.
+	 * 
+	 * @param templates
+	 * @param conn
+	 */
+	private void fillSchedTemp(ScheduleTemplate[] templates, DBConnection conn)
+			throws SQLException
+		{
+		// Prepare the select statements to pull additional data.
+		PreparedStatement shiftTempStmt = conn.getConnection().prepareStatement(
+				"SELECT * FROM `WebAgenda`.`SHIFTTEMPLATE` WHERE schedTempID = ?;");
+		PreparedStatement shiftPosStmt = conn.getConnection().prepareStatement(
+				"SELECT * FROM `WebAgenda`.`SHIFTPOS` WHERE shiftTempID = ?;");
+		
+		for (ScheduleTemplate schedTemp : templates)
+			{
+			// Get shift templates for matching schedule template.
+			shiftTempStmt.setInt(1, schedTemp.getSchedTempID());
+			ResultSet shiftRS = shiftTempStmt.executeQuery();
+			ShiftTemplate[] shifts = parseShiftTemps(shiftRS);
+			
+			for (ShiftTemplate shift : shifts)
+				{
+				// Get shift positions for matching shift template.
+				shiftPosStmt.setInt(1, shift.getShiftTempID());
+				ResultSet shiftPosRS = shiftPosStmt.executeQuery();
+				ShiftPosition[] positions = parseShiftPos(shiftPosRS);
+				
+				// Add shift positions to shift template.
+				for (ShiftPosition pos : positions)
+					{
+					shift.getShiftPositions().add(pos);
+					}
+				
+				// Add shifts templates to schedule template.
+				schedTemp.getShiftTemplates().add(shift);
+				}
+			}
+		
+		// Release resources used by prepared statements.
+		shiftTempStmt.close();
+		shiftPosStmt.close();
+		}
+
+	/**
 	 * Compares a given schedule template against the database, ensuring that it
 	 * has not been changed by another user.  This is used check for race conditions
 	 * when updating or deleting schedule templates in the database.
 	 * 
-	 * @param oldSchedTemp The schedule template that was previously retrieved
+	 * @param old The schedule template that was previously retrieved
 	 * 			from the database.
 	 * @param caller The employee that is logged into the system.
 	 * @return
 	 * @throws DBChangeException
+	 * @throws DBException
 	 * @throws DBDownException 
 	 */
 	private boolean raceCheck(ScheduleTemplate old, Employee caller) throws DBChangeException, DBException, DBDownException

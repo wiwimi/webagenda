@@ -4,6 +4,7 @@
 package business.schedule;
 
 import java.sql.Time;
+import business.BusinessObject;
 import business.Employee;
 import utilities.DoubleLinkedList;
 
@@ -11,7 +12,7 @@ import utilities.DoubleLinkedList;
  * @author Daniel Kettle, Daniel Wehr
  * @version 0.2.0
  */
-public class Shift
+public class Shift extends BusinessObject implements Comparable<Shift>
 	{
 	
 	/**
@@ -154,6 +155,20 @@ public class Shift
 	public DoubleLinkedList<Employee> getEmployees()
 		{
 		return employees;
+		}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Comparable#compareTo(java.lang.Object)
+	 */
+	@Override
+	public int compareTo(Shift o)
+		{
+		if (this.getShiftID() < o.getShiftID())
+			return -1;
+		else if (this.getShiftID() > o.getShiftID())
+			return 1;
+		
+		return 0;
 		}
 	
 	

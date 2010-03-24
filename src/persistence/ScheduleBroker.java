@@ -9,6 +9,8 @@ import java.sql.Statement;
 import application.DBConnection;
 import business.Employee;
 import java.sql.SQLException;
+import java.util.Arrays;
+import utilities.DoubleLinkedList;
 import exception.DBChangeException;
 import exception.DBDownException;
 import exception.DBException;
@@ -152,7 +154,7 @@ public class ScheduleBroker extends Broker<Schedule>
 		if (deleteObj.getSchedID() == null)
 			throw new NullPointerException("Can not delete, no schedule ID in given object.");
 		
-		// TODO Implement race check method.
+		raceCheck(deleteObj, caller);
 		
 		try
 			{
@@ -176,8 +178,25 @@ public class ScheduleBroker extends Broker<Schedule>
 		return true;
 		}
 	
-	/* (non-Javadoc)
-	 * @see persistence.Broker#get(business.BusinessObject, business.Employee)
+	/**
+	 * Gets all schedules in the database that match the given schedule. Only one
+	 * attribute from the given schedule will be used for the search, in the
+	 * following order:<br>
+	 * <br>
+	 * A) Schedule ID (schedTempID)<br>
+	 * B) Creator ID (creatorID)<br>
+	 * C) Start Date & End Date (startDate, endDate)<br>
+	 * <br>
+	 * Searches by start and end date will return all schedules that start or end
+	 * within the given dates.
+	 * 
+	 * @param searchTemplate the schedule template holding the attribute to be
+	 *           used for the search.
+	 * @param caller The employee currently logged into the system, used for
+	 *           permissions checks.
+	 * @throws DBException
+	 * @throws DBDownException
+	 * @see persistence.Broker#get(business.BusinessObject)
 	 */
 	@Override
 	public Schedule[] get(Schedule searchTemplate, Employee caller)
@@ -187,25 +206,50 @@ public class ScheduleBroker extends Broker<Schedule>
 		if (searchTemplate == null)
 			throw new NullPointerException("Cannot search with null template.");
 		
-		String select = String.format(
-						"SELECT * FROM `WebAgenda`.`SCHEDULE` WHERE creatorID = %s;",
-						searchTemplate.getCreatorID());
-		
 		Schedule[] found;
 		try
 			{
 			DBConnection conn = this.getConnection();
-			Statement stmt = conn.getConnection().createStatement();
-			ResultSet schResult = stmt.executeQuery(select);
-			found = parseResults(schResult);
+			
+			PreparedStatement select = null;
+			if (searchTemplate.getSchedID() != null)
+				{
+				select = conn.getConnection().prepareStatement(
+					"SELECT * FROM `WebAgenda`.`SCHEDULE` WHERE schedID = ?");
+				select.setInt(1, searchTemplate.getSchedID());
+				}
+			else if (searchTemplate.getCreatorID() != null)
+				{
+				select = conn.getConnection().prepareStatement(
+					"SELECT * FROM `WebAgenda`.`SCHEDULE` WHERE creatorID = ?");
+				select.setInt(1, searchTemplate.getCreatorID());
+				}
+			else if (searchTemplate.getStartDate() != null && searchTemplate.getEndDate() != null)
+				{
+				select = conn.getConnection().prepareStatement(
+					"SELECT * FROM `WebAgenda`.`SCHEDULE` WHERE (`startDate` BETWEEN ? AND ?) OR (`endDate` BETWEEN ? AND ?)");
+				select.setDate(1, searchTemplate.getStartDate());
+				select.setDate(2, searchTemplate.getEndDate());
+				select.setDate(3, searchTemplate.getStartDate());
+				select.setDate(4, searchTemplate.getEndDate());
+				}
+			
+			//If nothing is being searched for, return null.
+			if (select == null)
+				{
+				conn.setAvailable(true);
+				return null;
+				}
+			
+			ResultSet schResults = select.executeQuery();
+			found = parseResults(schResults);
 			fillSched(found, conn);
 			
 			conn.setAvailable(true);
-			
 			}
 		catch (SQLException e)
 			{
-			throw new DBException("Failed to get schedule templates.", e);
+			throw new DBException("Failed to get schedule(s).", e);
 			}
 		
 		// Return schedule templates that matched search.
@@ -220,6 +264,44 @@ public class ScheduleBroker extends Broker<Schedule>
 		return false;
 		}
 	
+	/**
+	 * Steps through a schedule and sorts all shifts, as well as all employees
+	 * within them, to match the order that would be returned by the database.
+	 * 
+	 * @param toSort the schedule to sort.
+	 * @return true when the sort is complete.
+	 */
+	public boolean sortSchedule(Schedule toSort)
+		{
+		//Get the list of shifts.
+		DoubleLinkedList<Shift> shifts = toSort.getShifts();
+		
+		//Sort employees within shifts first.
+		for (int i = 0; i < shifts.size(); i++)
+			{
+			//Get employees and sort.
+			DoubleLinkedList<Employee> emps = shifts.get(i).getEmployees(); 
+			Employee[] sortedEmps = emps.toArray();
+			Arrays.sort(sortedEmps);
+			
+			//Add sorted employees back to list.
+			emps.clear();
+			for (int j = 0; j < sortedEmps.length; j++)
+				emps.add(sortedEmps[j]);
+			}
+		
+		//Employees sorted, now sort shifts.
+		Shift[] sortedShifts = shifts.toArray();
+		Arrays.sort(sortedShifts);
+		
+		//Add sorted shifts back to list.
+		shifts.clear();
+		for (int k = 0; k < sortedShifts.length; k++)
+			shifts.add(sortedShifts[k]);
+		
+		return true;
+		}
+
 	@Override
 	protected Schedule[] parseResults(ResultSet rs) throws SQLException
 		{
@@ -238,7 +320,7 @@ public class ScheduleBroker extends Broker<Schedule>
 			for (int i = 0; i < resultCount && rs.next(); i++)
 				{
 				Schedule st = new Schedule(rs.getInt("schedID"),
-						rs.getDate("startDate"), rs.getDate("endDate"), rs.getInt("creatorID"));
+						rs.getInt("creatorID"), rs.getDate("startDate"), rs.getDate("endDate"));
 				
 				schedList[i] = st;
 				}
@@ -246,6 +328,41 @@ public class ScheduleBroker extends Broker<Schedule>
 			}
 		
 		return schedList;
+		}
+	
+	/**
+	 * Attempts to create shift templates out of a given result set.
+	 * 
+	 * @param rs the result set returned by a database search.
+	 * @return an array of shift templates retrieved from the result set, or null
+	 *         if the result set was empty.
+	 * @throws SQLException
+	 */
+	protected Shift[] parseShifts(ResultSet rs) throws SQLException
+		{
+		// List will be returned as null if no results are found.
+		Shift[] stList = null;
+		
+		if (rs.last())
+			{
+			// Results exist, get total number of rows to create array of same
+			// size.
+			int resultCount = rs.getRow();
+			stList = new Shift[resultCount];
+			
+			// Return ResultSet to beginning to start retrieving shift templates.
+			rs.beforeFirst();
+			for (int i = 0; i < resultCount && rs.next(); i++)
+				{
+				Shift st = new Shift(rs.getInt("shiftID"), rs.getInt("schedID"),
+						rs.getInt("day"), rs.getTime("startTime"), rs.getTime("endTime"));
+				
+				stList[i] = st;
+				}
+			
+			}
+		
+		return stList;
 		}
 	
 	/**
@@ -293,40 +410,75 @@ public class ScheduleBroker extends Broker<Schedule>
 		shiftStmt.close();
 		shiftEmpStmt.close();
 		}
-	
+
 	/**
-	 * Attempts to create shift templates out of a given result set.
+	 * Compares a given schedule template against the database, ensuring that it
+	 * has not been changed by another user.  This is used check for race conditions
+	 * when updating or deleting schedule templates in the database.
 	 * 
-	 * @param rs the result set returned by a database search.
-	 * @return an array of shift templates retrieved from the result set, or null
-	 *         if the result set was empty.
-	 * @throws SQLException
+	 * @param old The schedule template that was previously retrieved
+	 * 			from the database.
+	 * @param caller The employee that is logged into the system.
+	 * @return
+	 * @throws DBChangeException
+	 * @throws DBException
+	 * @throws DBDownException 
 	 */
-	private Shift[] parseShifts(ResultSet rs) throws SQLException
+	private boolean raceCheck(Schedule old, Employee caller) throws DBChangeException, DBException, DBDownException
 		{
-		// List will be returned as null if no results are found.
-		Shift[] stList = null;
+		if (old == null || old.getSchedID() == null)
+			throw new DBException("Unable to validate old schedule template, is null or has no schedTempID.");
 		
-		if (rs.last())
+		//Get schedule from DB with matching scheduleID.
+		Schedule[] fromDB = this.get(old, caller);
+		
+		//If no schedule template returned, throw exception.
+		if (fromDB == null)
+			throw new DBChangeException("No matching record found, schedule may have been deleted.");
+		
+		Schedule fetched = fromDB[0];
+		
+		//Sort schedule before starting compares.
+		sortSchedule(old);
+		
+		//Compare dates of old/fetched. SchedID and CreatorID do not need to be checked.
+		if (!old.getStartDate().equals(fetched.getStartDate()) ||
+				!old.getEndDate().equals(fetched.getEndDate()))
+			throw new DBChangeException("Schedule dates have been modified.");
+		
+		//Compare number of shifts.
+		if (old.getShifts().size() != fetched.getShifts().size())
+			throw new DBChangeException("Schedule num of shifts modified.");
+		
+		//Compare shift templates individually between old/fetched.
+		for (int i = 0; i < old.getShifts().size(); i++)
 			{
-			// Results exist, get total number of rows to create array of same
-			// size.
-			int resultCount = rs.getRow();
-			stList = new Shift[resultCount];
+			Shift sh1 = old.getShifts().get(i);
+			Shift sh2 = fetched.getShifts().get(i);
 			
-			// Return ResultSet to beginning to start retrieving shift templates.
-			rs.beforeFirst();
-			for (int i = 0; i < resultCount && rs.next(); i++)
+			//Compare shift template attributes.
+			if (sh1.getShiftID() != sh2.getShiftID() ||
+					sh1.getDay() != sh2.getDay() ||
+					!sh1.getStartTime().equals(sh2.getStartTime()) ||
+					!sh1.getEndTime().equals(sh2.getEndTime()))
+				throw new DBChangeException("Shift changed.");
+			
+			//Compare number of shift employees.
+			if (sh1.getEmployees().size() != sh2.getEmployees().size())
+				throw new DBChangeException("Shift employees changed.");
+			
+			//Compare shift employees individually between old/fetched.
+			for (int j = 0; j < sh1.getEmployees().size(); j++)
 				{
-				Shift st = new Shift(rs.getInt("shiftID"), rs.getInt("schedID"),
-						rs.getInt("day"), rs.getTime("startTime"), rs.getTime("endTime"));
+				Employee emp1 = sh1.getEmployees().get(j);
+				Employee emp2 = sh2.getEmployees().get(j);
 				
-				stList[i] = st;
+				//Only ID numbers need to be compared.
+				if (!emp1.getEmpID().equals(emp2.getEmpID()))
+					throw new DBChangeException("Shift employees changed: "+emp1.getEmpID()+" vs "+emp2.getEmpID());
 				}
-			
 			}
 		
-		return stList;
+		return true;
 		}
-	
 	}

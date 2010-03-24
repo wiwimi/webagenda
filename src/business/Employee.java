@@ -12,7 +12,7 @@ import exception.DBException;
  * @author Daniel Kettle, Daniel Wehr
  * @version 0.3.0
  */
-public class Employee extends BusinessObject
+public class Employee extends BusinessObject implements Comparable<Employee>
 	{
 	private static final long	serialVersionUID	= -1671744709578725501L;
 	
@@ -431,5 +431,19 @@ public class Employee extends BusinessObject
 	public int getLevel() {
 		return level;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Comparable#compareTo(java.lang.Object)
+	 */
+	@Override
+	public int compareTo(Employee o)
+		{
+		if (this.getEmpID() < o.getEmpID())
+			return -1;
+		else if (this.getEmpID() > o.getEmpID())
+			return 1;
+		
+		return 0;
+		}
 	
 	}

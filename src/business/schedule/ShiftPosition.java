@@ -11,7 +11,7 @@ import business.BusinessObject;
  * @author Daniel Wehr
  * @version 0.1.0
  */
-public class ShiftPosition extends BusinessObject
+public class ShiftPosition extends BusinessObject implements Comparable<ShiftPosition>
 	{
 	/**
 	 * The internal DB ID of the shift template that the shift position belongs
@@ -87,6 +87,17 @@ public class ShiftPosition extends BusinessObject
 	public void setPosCount(Integer posCount)
 		{
 		this.posCount = posCount;
+		}
+
+	@Override
+	public int compareTo(ShiftPosition o)
+		{
+		if (this.getShiftTempID() < o.getShiftTempID())
+			return -1;
+		else if (this.getShiftTempID() > o.getShiftTempID())
+			return 1;
+		
+		return this.getPosName().compareToIgnoreCase(o.getPosName());
 		}
 	
 	

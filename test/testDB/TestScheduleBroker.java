@@ -57,14 +57,17 @@ public class TestScheduleBroker
 		{
 		System.out.println("---------- START TEST CREATE DELETE ----------");
 		//Create a test schedule to be created and deleted.
-		Employee emp = new Employee();
-		emp.setEmpID(38382);
+		Employee emp1 = new Employee();
+		emp1.setEmpID(38382);
+		Employee emp2 = new Employee();
+		emp2.setEmpID(38202);
 		
 		Shift shift = new Shift();
 		shift.setDay(2);
 		shift.setStartTime(new Time(8l * 1000 * 60 * 60));
 		shift.setEndTime(new Time (17l * 1000 * 60 * 60));
-		shift.getEmployees().add(emp);
+		shift.getEmployees().add(emp1);
+		shift.getEmployees().add(emp2);
 		
 		Schedule sched = new Schedule();
 		sched.setCreatorID(12314);
