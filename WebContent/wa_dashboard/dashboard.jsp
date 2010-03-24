@@ -35,6 +35,7 @@ if(session.getAttribute("username") != null)
 	Employee e = (Employee) request.getSession().getAttribute("currentEmployee");
 	Notification n = null;
 	try {
+		System.out.println(e);
 		n = UserNotifications.getMostRecentUnread(e);
 	}
 	catch(DBException dbE) {
@@ -43,13 +44,16 @@ if(session.getAttribute("username") != null)
 %>
 	<% if(n != null) 
 	{
-		out.println("<div id=\"notification\">"
+		Employee sender = new Employee();
+			sender.setEmpID(n.getSenderID());
+		sender = EmployeeBroker.getBroker().get(sender,e)[0];
+		if(sender != null) out.println(
+					"<div id=\"notification\">"
 				+ 		"<div id=\"notificationText\">"
-				+			n.getMessage()
+				+ 			n.getMessage() + " - from " + sender.getUsername()  
 				+ 		"</div>"
 				+		"<div id=\"notificationCloseButton\">Close</div>"
 				+ 	"</div>");
-		
 	}
 	%>
 	

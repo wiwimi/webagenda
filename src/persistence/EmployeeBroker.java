@@ -271,8 +271,16 @@ public class EmployeeBroker extends Broker<Employee>
 			}
 		catch (InvalidPermissionException ipe)	{ ipe.printStackTrace(); }
 		
-		if(!searchTemplate.getActive() && !pl.getLevel_permissions().isCanViewInactiveEmployees())
-			throw new PermissionViolationException("User cannot view Inactive Employee data");
+		try {
+			if(!searchTemplate.getActive() && !pl.getLevel_permissions().isCanViewInactiveEmployees())
+				throw new PermissionViolationException("User cannot view Inactive Employee data");
+		}
+		catch(NullPointerException npE) {
+			// Employee is a search template and does not have a permission set.
+			if(!pl.getLevel_permissions().isCanViewInactiveEmployees()) {
+				throw new PermissionViolationException("User cannot view Inactive Employee data");
+			}
+		}
 		
 		// Create sql select statement from employee object.
 		String select = "SELECT * FROM `WebAgenda`.`EMPLOYEE` WHERE ";
