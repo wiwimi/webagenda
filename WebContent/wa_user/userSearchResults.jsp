@@ -89,6 +89,7 @@
 			<div id="tableArea">
 							<div class="userAdmin">
 						<% 
+						
 						    Employee emp = new Employee();
 							Employee user = (Employee) session.getAttribute("currentEmployee");
 							///Employee user2 = new Employee(12314, "Chaney", "Henson","user1", "password",  "2a" );
@@ -96,45 +97,64 @@
 							int count = broker.getEmpCount();
 							Employee[] empArray = null;
 							
+						    //TODO: Debug statements here
 						    
-						    if((request.getParameter("empId").equals("")) 
-						    		&& (request.getParameter("familyName").equals(""))
-						    		&& (request.getParameter("givenName").equals(""))
-						    		&& (request.getParameter("user").equals(""))
-						    		&& (request.getParameter("email").equals("")))
+						    System.out.println(request.getParameter("empId") + " empId");
+						    System.out.println(request.getParameter("familyName") + " family Name");
+						    System.out.println(request.getParameter("givenName") + " given name");
+						    System.out.println(request.getParameter("user") + " user");
+						    System.out.println(request.getParameter("email") + " email");
+						    
+						    // If employee is blank, search for all active employees
+						    if((request.getParameter("empId") != null) 
+						    		&& (request.getParameter("familyName")==(null))
+						    		&& (request.getParameter("givenName")==(null))
+						    		&& (request.getParameter("user")==(null))
+						    		&& (request.getParameter("email")==(null)))
 							{
-								emp.setActive(true);
-								empArray = broker.get(emp, user);
+						    	int empInteger = Integer.parseInt(request.getParameter("empId"));
+								   emp.setEmpID(empInteger);
+								   empArray = broker.get(emp, user);
 							}
+						    else if((request.getParameter("empId") == null) 
+					    		&& (request.getParameter("familyName")==(null))
+					    		&& (request.getParameter("givenName")==(null))
+					    		&& (request.getParameter("user")==(null))
+					    		&& (request.getParameter("email")==(null)))
+						    {
+						    	emp.setActive(true);
+								empArray = broker.get(emp, user);
+						    }
 							else
 							{
+								System.out.println("not all null");
+								// Search based on parameters that are not blank or null
 								if(request.getParameter("empId")!=null || request.getParameter("familyName")!=null 
 										|| request.getParameter("givenName")!=null || request.getParameter("user")!=null)
 								{
 								
-									if(!request.getParameter("empId").equals(""))
+									if(!request.getParameter("empId").equals(null))
 									{
 										int empInteger = Integer.parseInt(request.getParameter("empId"));
 										emp.setEmpID(empInteger);
 									}
 									
-									if(!request.getParameter("familyName").equals(""))
+									if(!request.getParameter("familyName").equals(null))
 										emp.setFamilyName(request.getParameter("familyName"));
 									
-									if(!request.getParameter("givenName").equals(""))
+									if(!request.getParameter("givenName").equals(null))
 										emp.setGivenName(request.getParameter("givenName"));
 									
-									if(!request.getParameter("user").equals(""))
+									if(!request.getParameter("user").equals(null))
 										emp.setUsername(request.getParameter("user"));
 									
 										empArray = broker.get(emp, user);
 								}
-								
+								System.out.println(request.getParameter("randomSearch"));
 								if(request.getParameter("randomSearch")!=null)
 								{
 									emp= new Employee();
-									
-									if((!request.getParameter("randomSearch").equals("")))
+									if((!request.getParameter("randomSearch").equals(null)))
 									{
 												String randomSearch = request.getParameter("randomSearch");
 												
@@ -172,7 +192,7 @@
 														}
 											     }
 										}
-									else if ((request.getParameter("randomSearch").equals("")))
+									else if ((request.getParameter("randomSearch").equals(null)) || (request.getParameter("randomSearch").equals("")))
 									{
 										emp.setActive(true);
 										empArray = broker.get(emp, user);
@@ -233,7 +253,9 @@
 										<td><a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getFamilyName() %></a></td>
 										<td> <a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getGivenName() %></a> </td>
 										<td> <a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getPrefPosition() %></a> </td>
-										<td> <a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getSupervisorID() %></a> </td>
+										<% String supervID = "" + empArray[index].getSupervisorID();
+										if(supervID == null || supervID.equals("") || supervID.equals("null")) supervID = "N/A"; %>
+										<td> <a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= supervID %></a> </td>
 								   </tr>
 							<% 
 								}
