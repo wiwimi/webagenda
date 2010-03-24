@@ -1,4 +1,6 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"
+		import="persistence.NotificationBroker, business.Notification,
+				business.Employee, exception.*" %>
 
 <% 
 if(session.getAttribute("username") != null)
@@ -6,7 +8,9 @@ if(session.getAttribute("username") != null)
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 
-<html>
+
+<%@page import="uiConnection.users.UserNotifications"%>
+<%@page import="persistence.EmployeeBroker"%><html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -27,10 +31,27 @@ if(session.getAttribute("username") != null)
 <jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
 </head>
 <body>
-	<div id="notification">
-		<div id="notificationText">This is a test notification</div>
-		<div id="notificationCloseButton">Close</div>
-	</div>
+<% 
+	Employee e = (Employee) request.getSession().getAttribute("currentEmployee");
+	Notification n = null;
+	try {
+		n = UserNotifications.getMostRecentUnread(e);
+	}
+	catch(DBException dbE) {
+		out.println(dbE.getMessage());
+	}
+%>
+	<% if(n != null) 
+	{
+		out.println("<div id=\"notification\">"
+				+ 		"<div id=\"notificationText\">"
+				+			n.getMessage()
+				+ 		"</div>"
+				+		"<div id=\"notificationCloseButton\">Close</div>"
+				+ 	"</div>");
+		
+	}
+	%>
 	
 	<!-- Start middle Content div -->
 	<div id="middleContent">
@@ -83,10 +104,25 @@ if(session.getAttribute("username") != null)
 			
 				<div class="widgetLowerRectangle" id="notificationsLowerRectangle">
 					<% 
-						// TODO: grab all notifications for user
+						
+					if(e != null) {
 					
+						Notification[] notes = UserNotifications.getAllUnread(e);
+						if(notes == null) {
+							out.println("No New Notifications");
+						}
+						else {
+							for(int i = 0; i < notes.length; i++)
+							{
+								out.println(notes[i].getMessage());
+							}
+						}
+					}
+					else {
+						out.println("No New Notifications");
+					}
 					%>
-					some notification data here
+					
 				</div>
 			</div>
 		</div>
