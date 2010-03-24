@@ -1,0 +1,65 @@
+@CHARSET "ISO-8859-1";
+/*Author: Noorin*/
+tr
+{
+	border-color: inherit;
+	display: table-row;
+	vertical-align: inherit;
+}
+td
+{
+	width: 97%;
+}
+thead
+{
+	border-color: inherit;
+	display: table-header-group;
+	vertical-align: left;
+	background-image:url(../../lib/images/content/HeaderGradient.png);
+	background-repeat:x-repeat;
+	color:black;
+}
+tfoot
+{
+	border-color: inherit;
+	display: table-footer-group;
+	vertical-align: left;
+	background-image:url(../../lib/images/content/HeaderGradient.png);
+	background-repeat:x-repeat;
+	color:black;
+}
+
+tbody
+{
+	border-color: inherit;
+	display: table-row-group;
+	vertical-align: middle;
+	color:black;
+	
+}
+
+#usertable tr, .usertable.th
+{
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	font-size: 10px;
+	vertical-align: text-top;
+}
+
+#userTable th
+{
+	line-height: 1.3em;
+	padding: 7px 7px 8px;
+	text-align: left;
+}
+h1
+{
+	color: gray;
+}
+table
+{
+	width:97%;
+	border-bottom: 2px solid #efefef;
+}
+
+

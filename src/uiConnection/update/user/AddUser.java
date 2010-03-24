@@ -50,6 +50,7 @@ public class AddUser extends HttpServlet {
 		        
 		        String familyName = request.getParameter("familyName");
 		        String givenName = request.getParameter("givenName");
+		        String password = request.getParameter("password");
 				//String[] pos_skills = request.getParameterValues("skill");
 				//String status =  request.getParameter("status");
 				//String pos = request.getParameter("pos");
@@ -67,7 +68,8 @@ public class AddUser extends HttpServlet {
 				
 				try 
 				{
-					Employee emp = new Employee(empIdInt,givenName,familyName,"bilb01","password",
+					out.println(password);
+					Employee emp = new Employee(empIdInt,givenName,familyName,"bilb01",password,
 					"1a");
 					
 					success = empBroker.create(emp, user);
@@ -85,25 +87,25 @@ public class AddUser extends HttpServlet {
 					out.println(givenName);
 					out.println(familyName);
 					out.println(empIdInt);
-					//response.sendRedirect("wa_user/newUser.jsp?message=false");
+					response.sendRedirect("wa_user/newUser.jsp?message=false");
 				}
 				catch (DBDownException e) 
 				{
 					e.printStackTrace();
 					out.println("DB Down Exception");
-					//response.sendRedirect("wa_user/newUser.jsp?message=false");
+					response.sendRedirect("wa_user/newUser.jsp?message=false");
 				}
 				catch (InvalidPermissionException  e)
 				{
 					e.printStackTrace();
 					out.println("Invalid Permisi");
-					//response.sendRedirect("wa_user/newUser.jsp?message=false");
+					response.sendRedirect("wa_user/newUser.jsp?message=false");
 				}
 				catch (PermissionViolationException e) 
 				{
 					e.printStackTrace();
 					out.println("Perm Viol");
-					//response.sendRedirect("wa_user/newUser.jsp?message=false");
+					response.sendRedirect("wa_user/newUser.jsp?message=false");
 				}
 				finally
 				{

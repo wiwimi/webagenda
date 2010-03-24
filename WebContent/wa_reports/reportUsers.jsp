@@ -4,10 +4,8 @@ if(session.getAttribute("username") == null)
 	response.sendRedirect("../wa_login/login.jsp");
 }
 %>
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page import="persistence.LocationBroker" %>
-<%@ page import="business.schedule.Location" %>
+<%@ page import="persistence.EmployeeBroker" %>
 <%@ page import="business.Employee" %>
 <%@ page import="java.util.*" %>
 
@@ -17,7 +15,7 @@ if(session.getAttribute("username") == null)
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>Web Agenda- Report Location</title>
+<title>Web Agenda- Report Employees</title>
 
 <!--  Includes -->
 <jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
@@ -39,55 +37,107 @@ if(session.getAttribute("username") == null)
 <link rel="stylesheet" href="../CSS/Flash/flashmessenger.css" type="text/css" media="screen"/>
 <link rel="stylesheet" href="CSS/report.css" type="text/css"/>
 <link rel="stylesheet" href="CSS/print.css" type="text/css" media="print"/>
+<link rel="stylesheet" href="CSS/table.css" type="text/css"></link>
 
 </head>
+
+<div id="instructions">
+Only employees who are active in the system are displayed in this report.
+</div>
 <body>
 	<div id="usersWidget" class="fullWidget">
-				<div class="widgetUpperRectangle" id="locationsUpperRectangle">
-					<div class="widgetTitle" id="locationTitle">Report Location</div>
+				<div class="widgetUpperRectangle" id="usersUpperRectangle">
+					<div class="widgetTitle" id="userTitle">Report Users</div>
 				</div>
 				<div id="printerIcon">
 					<h3></h3>
 				</div>
-			<div class="widgetLowerRectangle" id="passwordLowerRectangle">
-			
-			
-				
+			<div class="widgetLowerRectangle" id="userLowerRectangle">
 				<%
-					Location loc = new Location("Mohave Grill");
+					Employee emp = new Employee();
+					emp.setActive(true);
 					Employee user = (Employee) session.getAttribute("currentEmployee");
-					LocationBroker broker = LocationBroker.getBroker();
-					Location[] reported = broker.get(loc, user);
+					EmployeeBroker broker = EmployeeBroker.getBroker();
 					broker.initConnectionThread();
-					
+					Employee[] reportedArray = broker.get(emp, user);
 				%>
 				
 				<div id="reportHeader">
-					<div id="locName">
-						<h2 id="name"> <%= reported[0].getName()%> </h2>
+					<div id="titleHeader">
+						<h2 id="name">All Users </h2>
 						<h2 id="date"><%= new java.util.Date()%></h2>
 					</div>
 				</div>
 				
 				<div id="report">
-				<hr></hr>
-					<h3> Name: </h3>
-					<div id="loc">
-						<%= reported[0].getName()%>
+					<hr/>
+					<div id="tableArea">
+					<div class="userAdmin">
+						<table class="sortable" id="userTable">
+							<thead class="head">
+								<tr class="headerRow">
+									<th>Given Name</th>
+									<th>Family Name </th>
+									<th>Employee ID</th>
+									<th>Position </th>
+									<th>DOB </th>
+									<th>Email</th>
+									<th>Supervisor ID</th>
+								</tr>
+							</thead>
+							<tfoot class="foot">
+								<tr class="headerRow">
+									<th>Given Name</th>
+									<th>Family Name </th>
+									<th>Employee ID</th>
+									<th>Position </th>
+									<th>DOB </th>
+									<th>Email</th>
+									<th>Supervisor ID</th>
+								</tr>
+							</tfoot>
+							<tbody>
+								<% 
+									for(int index = 0; index < reportedArray.length; index++)
+									{
+								%>
+										<tr>
+											<td>
+												<%=reportedArray[index].getGivenName()%> 
+											</td>
+											<td>
+												<%=reportedArray[index].getFamilyName()%> 
+											</td>
+											<td>
+												<%=reportedArray[index].getEmpID()%> 
+											</td>
+											<td>
+												<%=reportedArray[index].getPrefPosition()%> 
+											</td>
+											<td>
+												<%=reportedArray[index].getBirthDate()%> 
+											</td>
+											<td>
+												<%=reportedArray[index].getEmail()%> 
+											</td>
+											<td>
+												<%=reportedArray[index].getSupervisorID()%> 
+											</td>
+										</tr>
+								<% 
+									}
+								%>
+								</tbody>
+						</table>
 					</div>
-					<h3> Description:</h3>
-					<div id="desc">
-						<%= reported[0].getDesc()%>
-					</div>
-			   </div>
-			   
-			    <div id="instructions" class="center">
-			   		End of Report
-			   		<div class="page-break"></div>
-			</div>  
+			</div> <!-- End Div Report-->
+		</div>
+		<div id="instructions" class="center">
+		   		End of Report
+		   		<div class="page-break"></div>
 		</div>  
-		</div>      
-                 
+	</div>  
+</div>      
 <div id="footer"></div>
 </body>
 </html>

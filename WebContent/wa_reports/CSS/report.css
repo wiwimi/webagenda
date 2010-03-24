@@ -67,7 +67,7 @@
 	top:5px;
 	content: url(../../lib/images/icons/Color/printer.png)	
 }
- ul
+ul
 {
     margin-top: 0em;
     margin-left: -2.0em;
@@ -91,6 +91,50 @@ hr
 	margin: 10px auto 0 0;
 	text-align: left;
 }
+
+
+#usersIcon h3:before
+{
+	position:relative;
+	top:5px;
+	content: url(../../lib/images/icons/Color/001_54.png)	
+}
+#locationsIcon h3:before
+{
+	position:relative;
+	top:5px;
+	content: url(../../lib/images/icons/Color/001_40.png)	
+}
+#positionsIcon h3:before
+{
+	position:relative;
+	top:5px;
+	content: url(../../lib/images/icons/Color/001_57.png)	
+}
+#schedulesIcon h3:before
+{
+	position:relative;
+	top:5px;
+	content: url(../../lib/images/icons/Color/001_44.png)	
+}
+li a
+{
+	text-decoration:none;
+	color:black;
+	font-family: cochin, Arial,  Verdana, Helvetica, sans-serif; 
+	font-size:100%;
+	
+}
+
+li a:hover
+{
+	background-color:#C8C8C8 ;
+}
+
+
+
+
+
 
 
 

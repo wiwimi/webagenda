@@ -3,14 +3,12 @@
 /*Author: Noorin*/
 
 @page 
-	{
-	    @bottom 
-	    {
-			content: "Page " counter(page) " of " counter(page
-		  	margin: 3cm;
-		}
-	
-    }
+{ 
+	@bottom
+	{ 
+		content: "Page " counter(page) " of " counter(pages); 
+	} 
+}
 #sidebar, #header, #footer
 {
 	display:none
@@ -19,6 +17,7 @@ body
 {
 	background: white;
 	font-size: 12pt;
+	line-height:1.2;
 }
 #report 
 {
@@ -26,4 +25,10 @@ body
 	padding-top: 1em;
 	border-top: 1px solid #930;
 }
+
+
+.page-break 
+{
+	display:none;
+}	
 

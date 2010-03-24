@@ -37,6 +37,8 @@
 <script type="text/javascript" src="../lib/js/calendar.js"></script>
 <script type="text/javascript" src="../lib/js/popup.js"></script>
 <script type="text/javascript" src="../lib/js/deleteUser.js"></script>
+<script type="text/javascript" src="../lib/js/passwordGenerator.js"></script>
+<script type="text/javascript" src="../lib/js/generatePwd.js"></script>
 
 <!--  CSS files -->
 <link rel="stylesheet" href="../CSS/creationForm.css" type="text/css"></link>
@@ -114,9 +116,16 @@
 						<p>	<label class ="label"> Date of Birth: </label> <input type="text" name ="dob" id="dob" size ="10" value=""/></p>
 						<p>	<label class ="label"> Username: </label> <input type="text" name ="user" id="user"   size ="30" value=""/></p>
 	                    <p>
-					         <label for="cemail" class="label"> E-Mail</label>
+					         <label for="cemail" class="label"> E-Mail:</label>
 				             <input type="text" id="cemail" name="email" size="30" value=""/>
 				        </p>
+				        
+				        <p>
+				        	<label class="label" >Generated Password: <em class="asterisk"> * </em> </label>
+				        	<input type="text" class="required" id ="pwd" size="20"/>
+				        	
+				        	
+					   </p>
 					</fieldset>
 				</div>
 				<div id="work">
@@ -316,11 +325,9 @@
 						<tbody>
 							<% 
 								EmployeeBroker empBroker = EmployeeBroker.getBroker();
-							
-								Employee emp = new Employee();
+							    Employee emp = new Employee();
 								emp.setActive(true);
-								Employee user2 = new Employee(12314, "Chaney", "Henson","user1", "password",  "2a" );
-								Employee[] empArray = empBroker.get(emp, user2);
+								Employee[] empArray = empBroker.get(emp, user);
 								int count = empBroker.getEmpCount();
 								for (int index =0; index<count; index++)
 							{
@@ -384,21 +391,16 @@
 									<% 
 										}
 									%>			
-											
 								</tbody>
 							</table>
 					</div> <!-- End User Admin div -->
 				</div> <!-- End Table Area -->
 			</div> <!-- End positionsPopup div -->
 <div id="backgroundPopup"></div>
-
-					
-				</form>
-			</div>
-			</div>
-            </div>
-			
-			
+			</form>
+		</div>
+	</div>
+</div>
 <div id="footer"></div>
 </body>
 </html>

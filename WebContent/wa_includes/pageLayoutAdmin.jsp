@@ -52,7 +52,7 @@ if(session.getAttribute("username") == null)
 		
 		<div id = "dashboardLowerRectangle" class = "lowerRectangle">
 			<b> <a href ="../wa_dashboard/dashboard.jsp" > Dashboard  </a> </b> <br>
-			<b> <a href ="" > Reports </a> </b> <br>
+			<b> <a href ="../wa_reports/reports.jsp" > Reports </a> </b> <br>
 		</div>
 		
 		<br>
@@ -149,6 +149,7 @@ if(session.getAttribute("username") == null)
 			<b> <a href ="../wa_settings/corporateSettings.jsp" > Corporate's Profile </a> </b> <br>
 		</div>
 	</div>
+	
 	<!-- End sidebar div -->
 	<!-- End of Header file -->
 </body>

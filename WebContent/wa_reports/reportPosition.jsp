@@ -4,10 +4,10 @@ if(session.getAttribute("username") == null)
 	response.sendRedirect("../wa_login/login.jsp");
 }
 %>
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page import="persistence.LocationBroker" %>
-<%@ page import="business.schedule.Location" %>
+<%@ page import="persistence.PositionBroker" %>
+<%@ page import="business.schedule.Position" %>
+<%@ page import="business.Skill" %>
 <%@ page import="business.Employee" %>
 <%@ page import="java.util.*" %>
 
@@ -17,7 +17,7 @@ if(session.getAttribute("username") == null)
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>Web Agenda- Report Locations</title>
+<title>Web Agenda- Report Position</title>
 
 <!--  Includes -->
 <jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
@@ -39,96 +39,92 @@ if(session.getAttribute("username") == null)
 <link rel="stylesheet" href="../CSS/Flash/flashmessenger.css" type="text/css" media="screen"/>
 <link rel="stylesheet" href="CSS/report.css" type="text/css"/>
 <link rel="stylesheet" href="CSS/print.css" type="text/css" media="print"/>
-<link rel="stylesheet" href="CSS/table.css" type="text/css"></link>
 
 </head>
-
-<div id="instructions">
-Only the first 110 characters are displayed for the description column. For further information about a particular location,
-please generate a report for that particular location.
-</div>
 <body>
 	<div id="usersWidget" class="fullWidget">
 				<div class="widgetUpperRectangle" id="locationsUpperRectangle">
-					<div class="widgetTitle" id="locationTitle">Report Locations</div>
+					<div class="widgetTitle" id="locationTitle">Report Position</div>
 				</div>
 				<div id="printerIcon">
 					<h3></h3>
 				</div>
 			<div class="widgetLowerRectangle" id="passwordLowerRectangle">
+			
 				<%
-					Location loc = new Location("");
+					Position pos = new Position("Waiter");
 					Employee user = (Employee) session.getAttribute("currentEmployee");
-					LocationBroker broker = LocationBroker.getBroker();
+					PositionBroker broker = PositionBroker.getBroker();
+					Position[] reported = broker.get(pos, user);
 					broker.initConnectionThread();
-					Location[] reportedArray = broker.get(loc, user);
 				%>
 				
 				<div id="reportHeader">
 					<div id="titleHeader">
-						<h2 id="name">All Locations </h2>
+						<h2 id="name"> <%= reported[0].getName()%> </h2>
 						<h2 id="date"><%= new java.util.Date()%></h2>
 					</div>
 				</div>
 				
 				<div id="report">
-					<hr/>
-					<div id="tableArea">
-					<div class="userAdmin">
-						<table class="sortable" id="userTable">
-							<thead class="head">
-								<tr class="headerRow">
-									<th>Name</th>
-									<th> Description</th>
-								</tr>
-							</thead>
-							<tfoot class="foot">
-								<tr class="headerRow">
-									<th>Name</th>
-									<th> Description</th>
-								</tr>
-							</tfoot>
-							<tbody>
-								<% 
-									for(int index = 0; index < reportedArray.length; index++)
-									{
-										
-								%>
-										<tr>
-											<td>
-												<%=reportedArray[index].getName()%> 
-											</td>
-											<td>
-								<%
-											if (reportedArray[index].getDesc().length()>=110)
-											{
-								%>	
-												<%=reportedArray[index].getDesc().substring(0, 110)%>
-								<%
-											}
-											else
-											{
-								%>
-												<%=reportedArray[index].getDesc()%>
-								<%
-											}
-								%>	
-											</td>
-										</tr>
-								<% 
-									}
-								%>
-								</tbody>
-						</table>
+				<hr></hr>
+					<h3> Name: </h3>
+					<div id="pos">
+						<%= reported[0].getName()%>
 					</div>
-			</div> <!-- End Div Report -->	
-	   	</div>
-		<div id="instructions" class="center">
-		   		End of Report
-		   		<div class="page-break"></div>
+					<h3> Description:</h3>
+					<div id="desc">
+						<%
+							if(!reported[0].getDescription().equals(null))
+							{
+						%>
+								<%= reported[0].getDescription()%>
+						<%
+							}
+							else
+							{
+						%>
+								None.
+						<%
+							}
+						
+						%>
+						
+					</div>
+					
+					<h3> Skills:</h3>
+					<div id="skills">
+						<%
+							Skill[] skills = reported[0].getPos_skills();
+							if (skills!=null)
+							{
+								for (int i=0; i<skills.length; i++)
+								{
+							%>
+									<li>
+										<ul>
+											<%=skills[i].getName()%>
+										</ul>
+									</li>
+							<%
+								}
+							}
+							else if(skills==null)
+							{
+							%>
+								No skills assigned.
+							<%
+							}
+							%>
+					</div>
+			   </div>
+			   <div id="instructions" class="center">
+			   		End of Report
+			   		<div class="page-break"></div>
+			</div>  
 		</div>  
-	</div>  
-</div>      
+		</div>      
+                 
 <div id="footer"></div>
 </body>
 </html>
