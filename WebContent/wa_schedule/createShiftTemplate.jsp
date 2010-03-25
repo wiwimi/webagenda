@@ -14,6 +14,43 @@
 <!-- Includes -->
 <jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
 
+<script type="text/javascript">
+function addPosition()
+{
+	  var ni = document.getElementById('position');
+	  var numi = document.getElementById('positionValue');
+	  var num = (document.getElementById('positionValue').value -1)+ 2;
+	  numi.value = num;
+	  var newdiv = document.createElement('div');
+	  var divIdName = 'shift'+num;
+	  newdiv.setAttribute('id',num);
+
+	  newdiv.innerHTML = "<label for=\"Position1\">Position 1:</label><input type=\"text\" size=\"15\" name=\"name\" /><label for=\"name\">Name:</label><input type=\"text\" size=\"15\" name=\"name\" />";
+	  ni.appendChild(newdiv);
+}
+
+function addShift()
+{
+	  var ni = document.getElementById('shift');
+	  var numi = document.getElementById('theValue');
+	  var num = (document.getElementById('theValue').value -1)+ 2;
+	  numi.value = num;
+	  var newdiv = document.createElement('div');
+	  var divIdName = 'shift'+num;
+	  newdiv.setAttribute('id',num);
+
+	  newdiv.innerHTML = "<div id=\"shift\">" + 					
+		"<h3>Shift "+(num + 1)+"</h3>" + 
+		"<label for=\"startTimeShift\">Start Time:</label><input type=\"text\"  size=\"30\" name=\"startTimeShift\"/>" + 
+		"<label for=\"endTimeShift\">End Time:</label><input type=\"text\"  size=\"30\" name=\"endTimeShift\"/>" + 
+		"<label for=\"day\">Day of the Week: </label><input type=\"text\" size=\"10\" name=\"day\" /><br />" + 
+		"<button onclick=\"addPosition()\" value=\"addPosition\">Add Position</button><br />" + 
+		"<label for=\"Position1\">Position 1:</label><input type=\"text\" size=\"15\" name=\"name\" /><label for=\"name\">Name:</label><input type=\"text\" size=\"15\" name=\"name\" />" + 
+		"<div id=\"position\"></div>" +
+	"</div>";
+	  ni.appendChild(newdiv);
+}
+</script>
 
 </head>
 <body>
@@ -26,37 +63,25 @@
 			<div class="widgetLowerRectangle" id="scheduleWidgetLowerRectangle">
 				<a href="createShiftTemplate.jsp">Create Template</a> | <a href="addSchedule.jsp">Create Schedule</a><br /><br />
 				
-				Days 
-				<select>
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-					<option>4</option>
-					<option>5</option>
-					<option>6</option>
-					<option>7</option>
-				</select><br /><br />
+				<% 
+					int counter = 0;
+				%>
 				
-				From 
-				<select>
-					<option>Mon</option>
-					<option>Tue</option>
-					<option>Wed</option>
-					<option>Thur</option>
-					<option>Fri</option>
-					<option>Sat</option>
-					<option>Sun</option>
-				</select> To 
-				
-				<select>
-					<option>Mon</option>
-					<option>Tue</option>
-					<option>Wed</option>
-					<option>Thur</option>
-					<option>Fri</option>
-					<option>Sat</option>
-					<option selected="selected">Sun</option>
-				</select>	
+					<label for="templateName">Template Name:</label><input type="text" size="30" name="templateName"/><br />
+					<button onclick="addShift()">Add Shift</button>
+									
+						<h3>Shift 1</h3>
+						<label for="startTimeShift">Start Time:</label><input type="text"  size="30" name="startTimeShift"/>
+						<label for="endTimeShift">End Time:</label><input type="text"  size="30" name="endTimeShift"/>
+						<label for="day">Day of the Week: </label><input type="text" size="10" name="day" /><br />
+						
+						<button onclick="addPosition()" value="addPosition">Add Position</button><br />
+						<label for="Position1">Position 1:</label><input type="text" size="15" name="name" /><label for="name">Name:</label><input type="text" size="15" name="name" />
+						<input type="hidden" value="0" id="positionValue" />
+						<div id="position"></div>
+						
+					<input type="hidden" value="0" id="theValue" />
+					<div id="shift"></div>
 				
 			</div>
 </div>
