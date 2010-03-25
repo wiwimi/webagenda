@@ -121,7 +121,7 @@
 				        </p>
 				        
 				        <p>
-				        	<label class="label" >Generated Password: <em class="asterisk"> * </em> </label>
+				        	<label class="label" >Generate Password: <em class="asterisk"> * </em> </label>
 				        	<input type="text" class="required" id ="pwd" size="20"/>
 				        	
 				        	
