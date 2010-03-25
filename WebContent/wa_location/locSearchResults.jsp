@@ -228,7 +228,7 @@
 											     	if(locArray[index].getDesc()!=null && !locArray[index].getDesc().equals(""))
 											     	{
 											     %>
-											     		<a href="updateLocation.jsp?=<%= locArray[index].getName() %>"> <%=locArray[index].getDesc()%> </a>
+											     		<a href="updateLocation.jsp?=<%= locArray[index].getName() %>"> <%=locArray[index].getDesc().trim()%> </a>
 											     <%	}
 											     	else
 											     	{

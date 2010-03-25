@@ -85,6 +85,18 @@
 			<div id ="creationForm">
 				<form class="addLocationForm" action="../UpdateLocation" id="form" name="form" method="POST">
 					<div id="location">
+					<%
+						String locName = request.getParameter("locName");
+						String locDesc= request.getParameter("locDesc");
+						if(locDesc != null)
+						{
+							if(locDesc.length() > 1) {
+								locDesc = locDesc.trim();
+							}
+						}
+						Location oldLoc = new Location(locName, locDesc);
+						session.setAttribute("oldLoc",oldLoc);
+					 %>
 						<div id="formButtons">
 							<input type="submit" name="submit"  class="button" value="Update" > 
 							<input type="button" name="submit" class="button"  onClick="location.href='locSearchResults.jsp?locName=' + form.locName.value + '&locDesc=' + form.locDesc.value" value="Search" /> 
@@ -92,13 +104,7 @@
 						</div>
 				     <fieldset>
 					 <legend > Location Details </legend>
-					 <%
-						String locName = request.getParameter("locName");
-						String locDesc= request.getParameter("locDesc");
-						System.out.println(locDesc);
-						Location oldLoc = new Location(locName, locDesc);
-						session.setAttribute("oldLoc",oldLoc);
-					 %>
+					 
 						<p>	<label class="label"> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="locName" value ="<%=locName%>" class="required" size ="30"> </p>
 						<p>	<label class="label"> Description: </label></p>
 						<textarea  name="locDesc" cols="23" rows="6" tabindex="101"> <%=locDesc%> </textarea>
