@@ -58,20 +58,30 @@ public class TestScheduleTemplateBroker
 		{
 		System.out.println("---------- START TEST CREATE DELETE ----------");
 		//Create a test schedule template to be created and deleted.
-		ShiftPosition shiftPos = new ShiftPosition();
-		shiftPos.setPosName("Cook");
-		shiftPos.setPosCount(1);
+		ShiftPosition shiftPos1 = new ShiftPosition();
+		shiftPos1.setPosName("Cook");
+		shiftPos1.setPosCount(2);
+		ShiftPosition shiftPos2 = new ShiftPosition();
+		shiftPos2.setPosName("Cook");
+		shiftPos2.setPosCount(2);
 		
-		ShiftTemplate shiftTemp = new ShiftTemplate();
-		shiftTemp.setDay(2);
-		shiftTemp.setStartTime(new Time(8l * 1000 * 60 * 60));
-		shiftTemp.setEndTime(new Time (17l * 1000 * 60 * 60));
-		shiftTemp.getShiftPositions().add(shiftPos);
+		ShiftTemplate shiftTemp1 = new ShiftTemplate();
+		shiftTemp1.setDay(2);
+		shiftTemp1.setStartTime(Time.valueOf("08:00:00"));
+		shiftTemp1.setEndTime(Time.valueOf("17:00:00"));
+		shiftTemp1.getShiftPositions().add(shiftPos1);
+		
+		ShiftTemplate shiftTemp2 = new ShiftTemplate();
+		shiftTemp2.setDay(3);
+		shiftTemp2.setStartTime(Time.valueOf("08:00:00"));
+		shiftTemp2.setEndTime(Time.valueOf("17:00:00"));
+		shiftTemp2.getShiftPositions().add(shiftPos2);
 		
 		ScheduleTemplate schedTemp = new ScheduleTemplate();
 		schedTemp.setCreatorID(12314);
 		schedTemp.setName("Created by TestScheduleTemplateBroker");
-		schedTemp.getShiftTemplates().add(shiftTemp);
+		schedTemp.getShiftTemplates().add(shiftTemp2);
+		schedTemp.getShiftTemplates().add(shiftTemp1);
 		
 		try
 			{
@@ -132,13 +142,13 @@ public class TestScheduleTemplateBroker
 			
 			for (ShiftTemplate shift : shiftList)
 				{
-				System.out.println("\tShift Template - Day: "+shift.getDay()+" - Time: "+shift.getStartTime() + " to " + shift.getEndTime());
+				System.out.println("\tShift Template - Day: "+shift.getDay()+" - Time: "+shift.getStartTime() + " to " + shift.getEndTime() + " - "+shift);
 				
 				ShiftPosition[] positions = shift.getShiftPositions().toArray();
 				
 				for (ShiftPosition pos : positions)
 					{
-					System.out.println("\t\tRequires "+pos.getPosCount()+" "+pos.getPosName());
+					System.out.println("\t\tRequires "+pos.getPosCount()+" "+pos.getPosName()+" - "+pos);
 					}
 				}
 			}

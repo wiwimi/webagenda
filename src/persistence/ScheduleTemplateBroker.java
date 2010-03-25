@@ -7,6 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Arrays;
+import utilities.DoubleLinkedList;
 import exception.DBChangeException;
 import exception.DBDownException;
 import exception.DBException;
@@ -18,7 +20,7 @@ import business.Employee;
 
 /**
  * @author Daniel Wehr
- * @version 0.1.0
+ * @version 0.2.0
  */
 public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 	{
@@ -230,19 +232,19 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 			if (searchTemplate.getSchedTempID() != null)
 				{
 				select = conn.getConnection().prepareStatement(
-					"SELECT * FROM `WebAgenda`.`SCHEDULETEMPLATE` WHERE schedTempID = ?");
+					"SELECT * FROM `WebAgenda`.`SCHEDULETEMPLATE` WHERE schedTempID = ? ORDER BY schedTempID");
 				select.setInt(1, searchTemplate.getSchedTempID());
 				}
 			else if (searchTemplate.getCreatorID() != null)
 				{
 				select = conn.getConnection().prepareStatement(
-					"SELECT * FROM `WebAgenda`.`SCHEDULETEMPLATE` WHERE creatorID = ?");
+					"SELECT * FROM `WebAgenda`.`SCHEDULETEMPLATE` WHERE creatorID = ? ORDER BY schedTempID");
 				select.setInt(1, searchTemplate.getCreatorID());
 				}
 			else if (searchTemplate.getName() != null)
 				{
 				select = conn.getConnection().prepareStatement(
-					"SELECT * FROM `WebAgenda`.`SCHEDULETEMPLATE` WHERE name LIKE ?");
+					"SELECT * FROM `WebAgenda`.`SCHEDULETEMPLATE` WHERE name LIKE ? ORDER BY schedTempID");
 				select.setString(1, "%"+searchTemplate.getName()+"%");
 				}
 			
@@ -277,6 +279,45 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 		{
 		// TODO Auto-generated method stub
 		return false;
+		}
+	
+	/**
+	 * Steps through a schedule templates and sorts all shift templates, as well
+	 * as all shift positions within them, to match the order that would be
+	 * returned by the database.
+	 * 
+	 * @param toSort the schedule template to sort.
+	 * @return true when the sort is complete.
+	 */
+	public static boolean sortScheduleTemplate(ScheduleTemplate toSort)
+		{
+		//Get the list of shift templates.
+		DoubleLinkedList<ShiftTemplate> shiftTemps = toSort.getShiftTemplates();
+		
+		//Sort shift positions within shifts templates.
+		for (int i = 0; i < shiftTemps.size(); i++)
+			{
+			//Get shift positions and sort.
+			DoubleLinkedList<ShiftPosition> shiftPositions = shiftTemps.get(i).getShiftPositions(); 
+			ShiftPosition[] sortedShiftPos = shiftPositions.toArray();
+			Arrays.sort(sortedShiftPos);
+			
+			//Add sorted shift positions back to list.
+			shiftPositions.clear();
+			for (int j = 0; j < sortedShiftPos.length; j++)
+				shiftPositions.add(sortedShiftPos[j]);
+			}
+		
+		//Employees sorted, now sort shifts.
+		ShiftTemplate[] sortedShiftTemps = shiftTemps.toArray();
+		Arrays.sort(sortedShiftTemps);
+		
+		//Add sorted shifts back to list.
+		shiftTemps.clear();
+		for (int k = 0; k < sortedShiftTemps.length; k++)
+			shiftTemps.add(sortedShiftTemps[k]);
+		
+		return true;
 		}
 	
 	/* (non-Javadoc)
@@ -394,9 +435,9 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 		{
 		// Prepare the select statements to pull additional data.
 		PreparedStatement shiftTempStmt = conn.getConnection().prepareStatement(
-				"SELECT * FROM `WebAgenda`.`SHIFTTEMPLATE` WHERE schedTempID = ?;");
+				"SELECT * FROM `WebAgenda`.`SHIFTTEMPLATE` WHERE schedTempID = ? ORDER BY shiftTempID;");
 		PreparedStatement shiftPosStmt = conn.getConnection().prepareStatement(
-				"SELECT * FROM `WebAgenda`.`SHIFTPOS` WHERE shiftTempID = ?;");
+				"SELECT * FROM `WebAgenda`.`SHIFTPOS` WHERE shiftTempID = ? ORDER BY shiftTempID;");
 		
 		for (ScheduleTemplate schedTemp : templates)
 			{
@@ -455,6 +496,9 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 		
 		ScheduleTemplate fetched = fromDB[0];
 		
+		//Sort schedule template before starting compares.
+		sortScheduleTemplate(old);
+		
 		//Compare name of old/fetched. SchedTempID and CreatorID do not need to be checked.
 		if (!old.getName().equals(fetched.getName()))
 			throw new DBChangeException("Schedule Template name has been modified.");
@@ -474,7 +518,7 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 					st1.getDay() != st2.getDay() ||
 					!st1.getStartTime().equals(st2.getStartTime()) ||
 					!st1.getEndTime().equals(st2.getEndTime()))
-				throw new DBChangeException("Shift Template changed.");
+				throw new DBChangeException("Shift Template changed."+st1+" vs "+st2);
 			
 			//Compare number of shift positions.
 			if (st1.getShiftPositions().size() != st2.getShiftPositions().size())
@@ -490,7 +534,7 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 				if (sp1.getShiftTempID() != sp2.getShiftTempID() ||
 						!sp1.getPosName().equals(sp2.getPosName()) ||
 						sp1.getPosCount() != sp2.getPosCount())
-					throw new DBChangeException("Shift Positions changed.");
+					throw new DBChangeException("Shift Positions changed. "+sp1+" vs "+sp2);
 				}
 			}
 		

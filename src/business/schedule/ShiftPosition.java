@@ -92,14 +92,26 @@ public class ShiftPosition extends BusinessObject implements Comparable<ShiftPos
 	@Override
 	public int compareTo(ShiftPosition o)
 		{
-		if (this.getShiftTempID() < o.getShiftTempID())
+		if (shiftTempID < o.getShiftTempID())
 			return -1;
-		else if (this.getShiftTempID() > o.getShiftTempID())
+		else if (shiftTempID > o.getShiftTempID())
 			return 1;
 		
-		return this.getPosName().compareToIgnoreCase(o.getPosName());
+		if (posName.compareToIgnoreCase(o.getPosName()) != 0)
+			return posName.compareToIgnoreCase(o.getPosName());
+		
+		if (posCount < o.getPosCount())
+			return -1;
+		else if (posCount > o.getPosCount())
+			return 1;
+		
+		return 0;
 		}
 	
-	
+	@Override
+	public String toString()
+		{
+		return shiftTempID+";"+posName+";"+posCount; 
+		}
 	
 	}

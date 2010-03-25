@@ -177,5 +177,9 @@ public class ShiftTemplate extends BusinessObject implements Comparable<ShiftTem
 		return 0;
 		}
 	
-	
+	@Override
+	public String toString()
+		{
+		return shiftTempID+";"+schedTempID+";"+day+";"+startTime+";"+endTime;
+		}
 	}

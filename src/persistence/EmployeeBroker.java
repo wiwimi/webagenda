@@ -412,8 +412,6 @@ public class EmployeeBroker extends Broker<Employee>
 			nullMsg = nullMsg + " FamilyName";
 		if (updateEmployee.getUsername() == null)
 			nullMsg = nullMsg + " Username";
-		if (updateEmployee.getPassword() == null)
-			nullMsg = nullMsg + " Password";
 		if (updateEmployee.getLevel() < 0)
 			nullMsg = nullMsg + " PermissionLevel [ < 0 ]";
 		if (!nullMsg.equals("Missing Required Fields:"))
@@ -421,7 +419,7 @@ public class EmployeeBroker extends Broker<Employee>
 		
 		// Create sql update statement from employee object.
 		String update = String.format(
-				"UPDATE `WebAgenda`.`EMPLOYEE` SET empID = %s, supID = %s, givenName = '%s', familyName = '%s', email = %s, username = '%s', password = '%s', lastLogin = %s, prefPosition = %s, prefLocation = %s, active = %s WHERE empID = %s;",
+				"UPDATE `WebAgenda`.`EMPLOYEE` SET empID = %s, supID = %s, givenName = '%s', familyName = '%s', email = %s, username = '%s', lastLogin = %s, prefPosition = %s, prefLocation = %s, active = %s WHERE empID = %s;",
 				updateEmployee.getEmpID(),
 				(updateEmployee.getSupervisorID() != null ? updateEmployee.getSupervisorID() + "" : "NULL"),
 				updateEmployee.getGivenName(),

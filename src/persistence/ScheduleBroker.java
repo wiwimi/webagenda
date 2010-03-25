@@ -19,8 +19,8 @@ import business.schedule.Shift;
 import messagelog.Logging;
 
 /**
- * @author Daniel Kettle, Daniel Wehr
- * @version 0.2.0
+ * @author Daniel Wehr
+ * @version 0.3.0
  */
 public class ScheduleBroker extends Broker<Schedule>
 	{
@@ -138,8 +138,11 @@ public class ScheduleBroker extends Broker<Schedule>
 				throw new DBException("Failed to rollback connection.",e1);
 				}
 			conn.setAvailable(true);
+			createObj.setSchedID(null);
 			throw new DBException("Failed to get schedules.", e);
 			}
+		
+		notifyScheduleEmps(createObj, "A new schedule has been added for you.");
 		
 		return true;
 		}
@@ -215,19 +218,19 @@ public class ScheduleBroker extends Broker<Schedule>
 			if (searchTemplate.getSchedID() != null)
 				{
 				select = conn.getConnection().prepareStatement(
-					"SELECT * FROM `WebAgenda`.`SCHEDULE` WHERE schedID = ?");
+					"SELECT * FROM `WebAgenda`.`SCHEDULE` WHERE schedID = ? ORDER BY schedID");
 				select.setInt(1, searchTemplate.getSchedID());
 				}
 			else if (searchTemplate.getCreatorID() != null)
 				{
 				select = conn.getConnection().prepareStatement(
-					"SELECT * FROM `WebAgenda`.`SCHEDULE` WHERE creatorID = ?");
+					"SELECT * FROM `WebAgenda`.`SCHEDULE` WHERE creatorID = ? ORDER BY schedID");
 				select.setInt(1, searchTemplate.getCreatorID());
 				}
 			else if (searchTemplate.getStartDate() != null && searchTemplate.getEndDate() != null)
 				{
 				select = conn.getConnection().prepareStatement(
-					"SELECT * FROM `WebAgenda`.`SCHEDULE` WHERE (`startDate` BETWEEN ? AND ?) OR (`endDate` BETWEEN ? AND ?)");
+					"SELECT * FROM `WebAgenda`.`SCHEDULE` WHERE (`startDate` BETWEEN ? AND ?) OR (`endDate` BETWEEN ? AND ?) ORDER BY schedID");
 				select.setDate(1, searchTemplate.getStartDate());
 				select.setDate(2, searchTemplate.getEndDate());
 				select.setDate(3, searchTemplate.getStartDate());
@@ -300,6 +303,13 @@ public class ScheduleBroker extends Broker<Schedule>
 			shifts.add(sortedShifts[k]);
 		
 		return true;
+		}
+	
+	public boolean notifyScheduleEmps(Schedule sched, String customMessage)
+		{
+		//TODO send notification to all employees in the system.
+		
+		return false;
 		}
 
 	@Override
@@ -377,7 +387,7 @@ public class ScheduleBroker extends Broker<Schedule>
 		{
 		// Prepare the select statements to pull additional data.
 		PreparedStatement shiftStmt = conn.getConnection().prepareStatement(
-				"SELECT * FROM `WebAgenda`.`SHIFT` WHERE schedID = ?;");
+				"SELECT * FROM `WebAgenda`.`SHIFT` WHERE schedID = ? ORDER BY shiftID;");
 		PreparedStatement shiftEmpStmt = conn.getConnection().prepareStatement(
 				"SELECT e.* FROM `WebAgenda`.`EMPLOYEE` e JOIN `WebAgenda`.`SHIFTEMP` se ON e.empID = se.empID WHERE se.shiftID = ?;");
 		

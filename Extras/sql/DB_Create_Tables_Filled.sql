@@ -75,6 +75,7 @@ CREATE  TABLE IF NOT EXISTS `WebAgenda`.`EMPLOYEE` (
   `prefLocation` VARCHAR(45) NULL ,
   `plevel` VARCHAR(10) NOT NULL ,
   `active` TINYINT(1)  NOT NULL DEFAULT 1 ,
+  `passChanged` TINYINT(1)  NOT NULL DEFAULT 0 ,
   PRIMARY KEY (`empID`) ,
   INDEX `fk_EMPLOYEE_PERMISSIONSET` (`plevel` ASC) ,
   INDEX `fk_EMPLOYEE_LOCATION` (`prefLocation` ASC) ,
@@ -205,8 +206,8 @@ CREATE  TABLE IF NOT EXISTS `WebAgenda`.`SCHEDULETEMPLATE` (
   `creatorID` INT UNSIGNED NOT NULL ,
   `name` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`schedTempID`) ,
-  UNIQUE INDEX `name_UNIQUE` (`name` ASC) ,
   INDEX `fk_SCHEDULETEMPLATE_EMPLOYEE` (`creatorID` ASC) ,
+  UNIQUE INDEX `SCHEDULETEMPLATE_UNIQUE` (`creatorID` ASC, `name` ASC) ,
   CONSTRAINT `fk_SCHEDULETEMPLATE_EMPLOYEE`
     FOREIGN KEY (`creatorID` )
     REFERENCES `WebAgenda`.`EMPLOYEE` (`empID` )
@@ -226,8 +227,9 @@ CREATE  TABLE IF NOT EXISTS `WebAgenda`.`SHIFTTEMPLATE` (
   `day` INT UNSIGNED NOT NULL ,
   `startTime` TIME NOT NULL ,
   `endTime` TIME NOT NULL ,
-  PRIMARY KEY (`shiftTempID`, `schedTempID`) ,
+  PRIMARY KEY (`shiftTempID`) ,
   INDEX `fk_SHIFT_SHIFTPOS` (`schedTempID` ASC) ,
+  UNIQUE INDEX `SHIFTTEMPLATE_UNIQUE` (`schedTempID` ASC, `day` ASC, `startTime` ASC, `endTime` ASC) ,
   CONSTRAINT `fk_SHIFT_SHIFTPOS`
     FOREIGN KEY (`schedTempID` )
     REFERENCES `WebAgenda`.`SCHEDULETEMPLATE` (`schedTempID` )
@@ -268,9 +270,9 @@ DROP TABLE IF EXISTS `WebAgenda`.`SCHEDULE` ;
 
 CREATE  TABLE IF NOT EXISTS `WebAgenda`.`SCHEDULE` (
   `schedID` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
+  `creatorID` INT UNSIGNED NOT NULL ,
   `startDate` DATE NOT NULL ,
   `endDate` DATE NOT NULL ,
-  `creatorID` INT UNSIGNED NOT NULL ,
   PRIMARY KEY (`schedID`) ,
   INDEX `fk_SCHEDULE_EMPLOYEE` (`creatorID` ASC) ,
   CONSTRAINT `fk_SCHEDULE_EMPLOYEE`
@@ -292,8 +294,9 @@ CREATE  TABLE IF NOT EXISTS `WebAgenda`.`SHIFT` (
   `day` INT UNSIGNED NOT NULL ,
   `startTime` TIME NOT NULL ,
   `endTime` TIME NOT NULL ,
-  PRIMARY KEY (`shiftID`, `schedID`) ,
+  PRIMARY KEY (`shiftID`) ,
   INDEX `fk_SHIFT_SCHEDULE` (`schedID` ASC) ,
+  UNIQUE INDEX `SCHEDULE_UNIQUE` (`schedID` ASC, `day` ASC, `startTime` ASC, `endTime` ASC) ,
   CONSTRAINT `fk_SHIFT_SCHEDULE`
     FOREIGN KEY (`schedID` )
     REFERENCES `WebAgenda`.`SCHEDULE` (`schedID` )
@@ -497,15 +500,15 @@ COMMIT;
 -- Data for table `WebAgenda`.`EMPLOYEE`
 -- -----------------------------------------------------
 SET AUTOCOMMIT=0;
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (12314, NULL, 'Chaney', 'Henson', NULL, NULL, 'user1', 'password', NULL, 'General Manager', 'Mohave Grill', '2a', true);
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (28472, 12314, 'Ray', 'Oliver', NULL, NULL, 'user2', 'password', NULL, 'Executive Chef', 'Mohave Grill', '1a', true);
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (29379, 12314, 'Audra', 'Gordon', NULL, NULL, 'user3', 'password', NULL, 'Front of House Mgr.', 'Mohave Grill', '1a', true);
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (38382, 28472, 'Rina', 'Pruitt', NULL, NULL, 'user4', 'password', NULL, 'Cook', 'Mohave Grill', '1a', true);
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (38202, 28472, 'Quinn', 'Hart', NULL, NULL, 'user5', 'password', NULL, 'Cook', 'Mohave Grill', '1a', true);
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (39280, 28472, 'Sierra', 'Dean', NULL, NULL, 'user6', 'password', NULL, 'Cook', 'Mohave Grill', '1a', true);
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (39202, 29379, 'Sylvia', 'Dyer', NULL, NULL, 'user7', 'password', NULL, 'Waiter', 'Mohave Grill', '1a', true);
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (39203, 29379, 'Kay', 'Bates', NULL, NULL, 'user8', 'password', NULL, 'Waiter', 'Mohave Grill', '1a', true);
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`) values (30293, 29379, 'Luke', 'Garrison', NULL, NULL, 'user9', 'password', NULL, 'Waiter', 'Mohave Grill', '1a', true);
+insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`, `passChanged`) values (12314, NULL, 'Chaney', 'Henson', NULL, NULL, 'user1', 'password', NULL, 'General Manager', 'Mohave Grill', '2a', true, 1);
+insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`, `passChanged`) values (28472, 12314, 'Ray', 'Oliver', NULL, NULL, 'user2', 'password', NULL, 'Executive Chef', 'Mohave Grill', '1a', true, 0);
+insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`, `passChanged`) values (29379, 12314, 'Audra', 'Gordon', NULL, NULL, 'user3', 'password', NULL, 'Front of House Mgr.', 'Mohave Grill', '1a', true, 0);
+insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`, `passChanged`) values (38382, 28472, 'Rina', 'Pruitt', NULL, NULL, 'user4', 'password', NULL, 'Cook', 'Mohave Grill', '1a', true, 0);
+insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`, `passChanged`) values (38202, 28472, 'Quinn', 'Hart', NULL, NULL, 'user5', 'password', NULL, 'Cook', 'Mohave Grill', '1a', true, 0);
+insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`, `passChanged`) values (39280, 28472, 'Sierra', 'Dean', NULL, NULL, 'user6', 'password', NULL, 'Cook', 'Mohave Grill', '1a', true, 0);
+insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`, `passChanged`) values (39202, 29379, 'Sylvia', 'Dyer', NULL, NULL, 'user7', 'password', NULL, 'Waiter', 'Mohave Grill', '1a', true, 0);
+insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`, `passChanged`) values (39203, 29379, 'Kay', 'Bates', NULL, NULL, 'user8', 'password', NULL, 'Waiter', 'Mohave Grill', '1a', true, 0);
+insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`, `passChanged`) values (30293, 29379, 'Luke', 'Garrison', NULL, NULL, 'user9', 'password', NULL, 'Waiter', 'Mohave Grill', '1a', true, 0);
 
 COMMIT;
 
@@ -583,7 +586,7 @@ COMMIT;
 -- Data for table `WebAgenda`.`SCHEDULE`
 -- -----------------------------------------------------
 SET AUTOCOMMIT=0;
-insert into `WebAgenda`.`SCHEDULE` (`schedID`, `startDate`, `endDate`, `creatorID`) values (1, '2010-04-18', '2010-04-24', 12314);
+insert into `WebAgenda`.`SCHEDULE` (`schedID`, `creatorID`, `startDate`, `endDate`) values (1, 12314, '2010-04-18', '2010-04-24');
 
 COMMIT;
 
