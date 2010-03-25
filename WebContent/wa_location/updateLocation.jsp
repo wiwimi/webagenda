@@ -95,6 +95,7 @@
 					 <%
 						String locName = request.getParameter("locName");
 						String locDesc= request.getParameter("locDesc");
+						System.out.println(locDesc);
 						Location oldLoc = new Location(locName, locDesc);
 						session.setAttribute("oldLoc",oldLoc);
 					 %>

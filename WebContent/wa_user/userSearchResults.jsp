@@ -254,7 +254,7 @@
 										<td> <a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getGivenName() %></a> </td>
 										<td> <a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getPrefPosition() %></a> </td>
 										<% String supervID = "" + empArray[index].getSupervisorID();
-										if(supervID == null || supervID.equals("") || supervID.equals("null")) supervID = "N/A"; %>
+										if(supervID.equals("null")) supervID = "N/A"; %>
 										<td> <a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= supervID %></a> </td>
 								   </tr>
 							<% 

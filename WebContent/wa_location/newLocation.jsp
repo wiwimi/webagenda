@@ -68,7 +68,7 @@
 				<script type="text/javascript">
 					$(function()
 					{
-						$.flashMessenger("An error occured while deleting the Position. Please contact your admin",
+						$.flashMessenger("An error occured while creating the location. Please contact your admin",
 						{
 							modal:true,
 							clsName:"err", 

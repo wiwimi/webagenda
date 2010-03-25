@@ -216,7 +216,7 @@
 						%>	
 									  <tr>
 										<td>
-											<a href="updateLocation.jsp?location=<%=locArray[index].getName()%>"><div id="locationImage"> <b> <%=locArray[index].getName()%> </b></div></a>
+											<a href="updateLocation.jsp?locName=<%=locArray[index].getName()%>&locDesc=<%=locArray[index].getDesc() %>"><div id="locationImage"> <b> <%=locArray[index].getName()%> </b></div></a>
 											<div class="row-actions"><span class='edit'>
 											<a href="updateLocation.jsp?locName=<%=locArray[index].getName()%>&locDesc=<%=locArray[index].getDesc()%> "> Edit </a>   | </span>  <span class='delete'>
 											<a href="javascript:;" onClick="removeLocation('<%=locArray[index].getName()%>&locDesc=<%=locArray[index].getDesc()%>');">
