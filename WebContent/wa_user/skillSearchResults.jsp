@@ -203,7 +203,7 @@
 						%>
 										<tr>
 										   <td>
-												<a href="update.jsp?=<%=skillArray[index].getName()%>"> <b> <%=skillArray[index].getName()%> </b></a>
+												<a href="updateSkill.jsp?skillName=<%=skillArray[index].getName()%>&skillDesc=<%= skillArray[index].getDesc() %>"> <b> <%=skillArray[index].getName()%> </b></a>
 												<div class="row-actions"><span class='edit'>
 												<a href="updateSkill.jsp?skillName=<%=skillArray[index].getName()%>&skillDesc=<%= skillArray[index].getDesc()%> "> Edit </a>   | </span>   <span class='delete'>
 												<a href="javascript:;" onClick="removeSkill('<%=skillArray[index].getName()%>', '<%=skillArray[index].getDesc()%>' );">
@@ -214,12 +214,12 @@
 											     	if(skillArray[index].getDesc()!=null && !skillArray[index].getDesc().equals(""))
 											     	{
 						%>
-											     		<a href="newSkill.jsp?=<%= skillArray[index].getName() %>"> <%=skillArray[index].getDesc()%> </a>
+											     		<a href="newSkill.jsp?skillName=<%= skillArray[index].getName() %>&skillDesc="> <%=skillArray[index].getDesc().trim() %> </a>
 						<%			         }
 											     	else
 											     	{
 						%>
-											     		<a href="newSkill.jsp?=<%= skillArray[index].getName() %>"> None </a>
+											     		<a href="newSkill.jsp?skillName=<%= skillArray[index].getName() %>&skillDesc="> None </a>
 						<%
 											     	} 
 										  }

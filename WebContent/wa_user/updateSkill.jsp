@@ -38,6 +38,7 @@
 			Fields marked with <em class="asterisk" > *</em> are required.
 		</div>
 			<% 
+					System.out.println(request.getParameter("update"));
 					if(request.getParameter("update") != null)
 					{
 						if(request.getParameter("update").equals("true"))
@@ -101,6 +102,8 @@
 					<%
 						String skillName = request.getParameter("skillName");
 					    String skillDesc = request.getParameter("skillDesc");
+					    
+					    System.out.println(skillName + "   " + skillDesc);
 					    
 					    Skill oldSkill = new Skill(skillName, skillDesc);
 						session.setAttribute("oldSkill",oldSkill);
