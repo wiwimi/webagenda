@@ -92,13 +92,12 @@
 						
 						    Employee emp = new Employee();
 							Employee user = (Employee) session.getAttribute("currentEmployee");
-							///Employee user2 = new Employee(12314, "Chaney", "Henson","user1", "password",  "2a" );
+							//Employee user2 = new Employee(12314, "Chaney", "Henson","user1", "password",  "2a" );
 							EmployeeBroker broker = EmployeeBroker.getBroker();
 							int count = broker.getEmpCount();
 							Employee[] empArray = null;
 							
-						    //TODO: Debug statements here
-						    
+						    //TODO: Debug statements here						    
 						    System.out.println(request.getParameter("empId") + " empId");
 						    System.out.println(request.getParameter("familyName") + " family Name");
 						    System.out.println(request.getParameter("givenName") + " given name");
@@ -127,7 +126,7 @@
 						    }
 							else
 							{
-								System.out.println("not all null");
+								//System.out.println("not all null");
 								// Search based on parameters that are not blank or null
 								if(request.getParameter("empId")!=null || request.getParameter("familyName")!=null 
 										|| request.getParameter("givenName")!=null || request.getParameter("user")!=null)
@@ -150,7 +149,7 @@
 									
 										empArray = broker.get(emp, user);
 								}
-								System.out.println(request.getParameter("randomSearch"));
+								//System.out.println(request.getParameter("randomSearch"));
 								if(request.getParameter("randomSearch")!=null)
 								{
 									emp= new Employee();

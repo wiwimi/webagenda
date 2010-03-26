@@ -83,17 +83,17 @@
 		
 		<div class="widgetLowerRectangle" id="locationsLowerRectangle">
 			<div id ="creationForm">
-				<form class="addLocationForm" action="../UpdateLocation" id="form" name="form" method="POST">
+				<form class="updateLocationForm" action="../UpdateLocation" id="form" name="form" method="POST">
 					<div id="location">
 					<%
 						String locName = request.getParameter("locName");
 						String locDesc= request.getParameter("locDesc");
-						if(locDesc != null)
-						{
-							if(locDesc.length() > 1) {
-								locDesc = locDesc.trim();
-							}
-						}
+						//if(locDesc != null)
+						//{
+							//if(locDesc.length() > 1) {
+								//locDesc = locDesc.trim();
+							//}
+						//}
 						Location oldLoc = new Location(locName, locDesc);
 						session.setAttribute("oldLoc",oldLoc);
 					 %>

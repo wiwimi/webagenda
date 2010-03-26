@@ -68,7 +68,11 @@
 				<script type="text/javascript">
 					$(function()
 					{
+<<<<<<< .mine
+						$.flashMessenger("An error occurred while creatin the location. Make sure the name is unique.",
+=======
 						$.flashMessenger("An error occured while creating the location. Please contact your admin",
+>>>>>>> .r502
 						{
 							modal:true,
 							clsName:"err", 

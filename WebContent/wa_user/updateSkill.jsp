@@ -67,7 +67,7 @@
 								$(function()
 								    {
 										
-								       $.flashMessenger("The name you provided has already been used.",
+								       $.flashMessenger("An error occurred while updating the skill.",
 								        {
 											   modal:true,
 							    		       clsName:"err", 
@@ -105,7 +105,7 @@
 					    
 					    System.out.println(skillName + "   " + skillDesc);
 					    
-					    Skill oldSkill = new Skill(skillName, skillDesc);
+					    Skill oldSkill = new Skill(skillName);
 						session.setAttribute("oldSkill",oldSkill);
                    %>
 					
