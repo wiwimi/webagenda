@@ -487,6 +487,7 @@
 		position:relative;
 		top:5px;
 		content:url(../lib/images/icons/Color/001_57.png);
+		
 	}
 	
 	#positionsTitle
@@ -501,6 +502,10 @@
 		position:relative;
 		top:5px;
 		content:url(../lib/images/icons/Color/001_57.png);
+	}
+	#helpIcon:before
+	{
+		content:url(../lib/images/icons/Color/help.png);
 	}
 	
 	

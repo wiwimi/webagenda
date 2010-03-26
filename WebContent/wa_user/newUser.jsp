@@ -98,7 +98,7 @@
 
         <div id="usersWidget" class="fullWidget">
 			<div class="widgetUpperRectangle" id="usersUpperRectangle">
-				<div class="widgetTitle" id="usersWidgetTitle">Users</div>
+				<div class="widgetTitle" id="usersWidgetTitle">Users <div id="helpIcon"></div></div>
 			</div>
 		<div class="widgetLowerRectangle" id="usersLowerRectangle">
 		<div id ="creationForm">

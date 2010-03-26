@@ -19,12 +19,17 @@
 <script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
 <script src="../lib/js/jquery.validate.js" type="text/javascript"></script>
 
+<!-- Plug-ins -->
+<script type="text/javascript" src="../lib/js/jquery-impromptu.3.0.min.js"></script>
+
 <!-- Java-script Files -->
 <script src="../lib/js/cmxforms.js" type="text/javascript"></script>
 <script src= "../lib/js/val.js" type="text/javascript"> </script>
 <script type="text/javascript" src="../lib/js/popup.js"></script>
 <script src ="../lib/js/jquery.flashmessenger.js"   type ="text/javascript"> </script>
 <script type="text/javascript" src="../lib/js/deletePosition.js"></script>
+<script type="text/javascript" src="../lib/js/helpPosition.js"></script>
+
 
 <!--  CSS files -->
 <link rel="stylesheet" href="../CSS/creationForm.css" type="text/css"></link>
@@ -34,6 +39,7 @@
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/screen.css" />
 <link rel="stylesheet" href="../CSS/Popup/popup.css" type="text/css"></link>
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Flash/flashmessenger.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Confirmation/confirm.css" />
 
 
 </head>
@@ -98,7 +104,7 @@
 	%>
 	<div id="positionWidget" class="fullWidget">
 		<div class="widgetUpperRectangle" id="positionUpperRectangle">
-			<div class="widgetTitle" id="positionsWidgetTitle">Positions </div>
+			<div class="widgetTitle" id="positionsWidgetTitle">Positions  <div id="helpIcon"></div></div>
 		</div>
 		<div class="widgetLowerRectangle" id="positionsLowerRectangle">
 		<div id ="creationForm">

@@ -68,11 +68,9 @@
 				<script type="text/javascript">
 					$(function()
 					{
-<<<<<<< .mine
+
 						$.flashMessenger("An error occurred while creatin the location. Make sure the name is unique.",
-=======
-						$.flashMessenger("An error occured while creating the location. Please contact your admin",
->>>>>>> .r502
+
 						{
 							modal:true,
 							clsName:"err", 
@@ -86,7 +84,7 @@
 	%>
 	<div id="locationWidget" class="fullWidget">
 		<div class="widgetUpperRectangle" id="locationsUpperRectangle">
-			<div class="widgetTitle" id="locationsWidgetTitle">Locations</div>
+			<div class="widgetTitle" id="locationsWidgetTitle">Locations <div id="helpIcon"></div> </div>
 		</div>
 		<div class="widgetLowerRectangle" id="locationsLowerRectangle">
 

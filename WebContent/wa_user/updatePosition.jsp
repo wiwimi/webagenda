@@ -87,7 +87,7 @@
 	
 		<div id="positionWidget" class="fullWidget">
 			<div class="widgetUpperRectangle" id="positionUpperRectangle">
-				<div class="widgetTitle" id="positionWidgetTitle">Positions </div>
+				<div class="widgetTitle" id="positionWidgetTitle">Positions <div id="helpIcon"></div> </div>
 			</div>
 		<div class="widgetLowerRectangle" id="positionLowerRectangle">
 		<div id ="creationForm">

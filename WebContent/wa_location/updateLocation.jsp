@@ -88,13 +88,13 @@
 					<%
 						String locName = request.getParameter("locName");
 						String locDesc= request.getParameter("locDesc");
-						//if(locDesc != null)
-						//{
-							//if(locDesc.length() > 1) {
-								//locDesc = locDesc.trim();
-							//}
-						//}
-						Location oldLoc = new Location(locName, locDesc);
+						if(locDesc != null)
+						{
+							if(locDesc.length() > 1) {
+								locDesc = locDesc.trim();
+							}
+						}
+						Location oldLoc = new Location(locName);
 						session.setAttribute("oldLoc",oldLoc);
 					 %>
 						<div id="formButtons">

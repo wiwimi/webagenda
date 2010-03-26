@@ -81,7 +81,7 @@
 				%>
 		<div id="skillWidget" class="fullWidget">
 			<div class="widgetUpperRectangle" id="skillUpperRectangle">
-				<div class="widgetTitle" id="skillWidgetTitle">Skills </div>
+				<div class="widgetTitle" id="skillWidgetTitle">Skills <div id="helpIcon"></div> </div>
 			</div>
 			
 		<div class="widgetLowerRectangle" id="skillLowerRectangle">
