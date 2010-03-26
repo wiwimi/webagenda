@@ -14,26 +14,26 @@
 <jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
 
 <!-- Libraries -->
-<script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
+<script type ="text/javascript" src ="../lib/js/jquery-1.3.2.min.js"> </script>
 
 <!-- Plug-ins -->
-<script src="../lib/js/jquery.validate.js" type="text/javascript"></script>
-<script src ="../lib/js/jquery.flashmessenger.js"   type ="text/javascript"> </script>
-<script type="text/javascript" src="../lib/js/jquery-impromptu.3.0.min.js"></script>
+<script type ="text/javascript" src="../lib/js/jquery.validate.js" type="text/javascript"></script>
+<script type ="text/javascript" src ="../lib/js/jquery.flashmessenger.js"> </script>
+<script type="text/javascript"  src="../lib/js/jquery-impromptu.3.0.min.js"></script>
 
 <!-- Javascript Files -->
-<script src="../lib/js/cmxforms.js" type="text/javascript"></script>
-<script src= "../lib/js/val.js" type="text/javascript"> </script>
+<script type="text/javascript" src="../lib/js/cmxforms.js" ></script>
+<script type="text/javascript" src= "../lib/js/val.js"> </script>
 <script type="text/javascript" src="../lib/js/deleteSkill.js"></script>
 <script type="text/javascript" src="../lib/js/helpSkill.js"></script>
 
 <!--  CSS files -->
-<link rel="stylesheet" href="../CSS/creationForm.css" type="text/css"></link>
-<link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="../CSS/Validation/val.css" type="text/css" media="screen"/>
-<link rel="stylesheet" href="../CSS/Validation/screen.css" type="text/css" media="screen"/>
-<link rel="stylesheet" href="../CSS/Flash/flashmessenger.css" type="text/css" media="screen"/>
-<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Confirmation/confirm.css" />
+<link rel="stylesheet" type="text/css"  href="../CSS/creationForm.css"></link>
+<link rel="stylesheet" type="text/css"  href="../wa_dashboard/CSS/style.css" media="screen" />
+<link rel="stylesheet" type="text/css"  href="../CSS/Validation/val.css" media="screen"/>
+<link rel="stylesheet" type="text/css"  href="../CSS/Validation/screen.css" media="screen"/>
+<link rel="stylesheet" type="text/css"  href="../CSS/Flash/flashmessenger.css" media="screen"/>
+<link rel="stylesheet" type="text/css"  href="../CSS/Confirmation/confirm.css" media="screen"  />
 
 </head>
 <body>

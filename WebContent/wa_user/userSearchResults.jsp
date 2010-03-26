@@ -27,6 +27,7 @@
 <script type="text/javascript" src="../lib/js/dashboard.js"></script>
 <script type="text/javascript" src="../lib/js/jquery-impromptu.3.0.min.js"></script>
 <script type="text/javascript" src="../lib/js/deleteUser.js"></script>
+<script type="text/javascript" src="../lib/js/helpUserSearchResults.js"></script>
 
 </head>
 <body>
@@ -71,7 +72,7 @@
 		
 		<div id="usersWidget" class="fullWidget">
 			<div class="widgetUpperRectangle" id="usersWidgetUpperRectangle">
-				<div class="widgetTitle" id="usersTitle">Users</div>
+				<div class="widgetTitle" id="usersTitle">Users <div id="helpIcon"></div> </div>
 		</div>
 			
 		<div class="widgetLowerRectangle" id="usersWidgetLowerRectangle">

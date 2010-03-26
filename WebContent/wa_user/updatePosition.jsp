@@ -27,21 +27,22 @@
 <script type="text/javascript" src="../lib/js/jquery-impromptu.3.0.min.js"></script>
 
 <!--Javascript files -->
-<script src= "../lib/js/val.js" type="text/javascript"> </script>
+<script type ="text/javascript" src= "../lib/js/val.js"> </script>
 <script type="text/javascript" src="../lib/js/popup.js"></script>
-<script src ="../lib/js/jquery.flashmessenger.js"   type ="text/javascript"> </script>
+<script type ="text/javascript" src ="../lib/js/jquery.flashmessenger.js"> </script>
 <script type="text/javascript" src="../lib/js/deletePosition.js"></script>
 <script type="text/javascript" src="../lib/js/helpUpdatePosition.js"></script>
 
+
 <!--  CSS files -->
-<link rel="stylesheet" href="../CSS/creationForm.css" type="text/css"></link>
-<link rel="stylesheet" href="CSS/table.css" type="text/css"></link>
-<link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
-<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/val.css" />
-<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/screen.css" />
-<link rel="stylesheet" href="../CSS/Popup/popup.css" type="text/css"></link>
-<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Flash/flashmessenger.css" />
-<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Confirmation/confirm.css" />
+<link rel="stylesheet" type="text/css" href="../CSS/creationForm.css" ></link>
+<link rel="stylesheet" type="text/css" href="CSS/table.css" ></link>
+<link rel="stylesheet" type="text/css" href="../wa_dashboard/CSS/style.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="../CSS/Validation/val.css" />
+<link rel="stylesheet" type="text/css" href="../CSS/Validation/screen.css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="../CSS/Popup/popup.css" media="screen"></link>
+<link rel="stylesheet" type="text/css" href="../CSS/Flash/flashmessenger.css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="../CSS/Confirmation/confirm.css" media="screen"/>
 
 </head>
 <body>

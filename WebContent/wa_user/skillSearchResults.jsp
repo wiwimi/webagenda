@@ -19,21 +19,22 @@
 <script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
 
 <!-- Plug-ins -->
-<script src ="../lib/js/jquery.flashmessenger.js"   type ="text/javascript"> </script>
+<script type ="text/javascript" src ="../lib/js/jquery.flashmessenger.js"> </script>
 <script type="text/javascript" src="../lib/js/jquery-impromptu.3.0.min.js"></script>
 
 <!--  CSS files -->
-<link rel="stylesheet" href="CSS/table.css" type="text/css"></link>
-<link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
-<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Confirmation/confirm.css" />
-<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Flash/flashmessenger.css" />
+<link rel="stylesheet" type="text/css" href="CSS/table.css"></link>
+<link rel="stylesheet" type="text/css" href="../wa_dashboard/CSS/style.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="../CSS/Confirmation/confirm.css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="../CSS/Flash/flashmessenger.css" media="screen"/>
 
 <!-- Sorttable is under the X11 licence, it is an open source project.-->
 <!-- Javascript Files -->
 
-<script src="../lib/js/sorttable.js" type ="text/javascript"></script>
+<script type ="text/javascript" src="../lib/js/sorttable.js"></script>
 <script type="text/javascript" src="../lib/js/dashboard.js"></script>
 <script type="text/javascript" src="../lib/js/deleteSkill.js"></script>
+<script type="text/javascript" src="../lib/js/helpSkillSearchResults.js"></script>
 
 </head>
 <body>
@@ -78,7 +79,7 @@
 
 	<div id="skillsWidget" class="fullWidget">
 			<div class="widgetUpperRectangle" id="skillsWidgetUpperRectangle">
-				<div class="widgetTitle" id="skillsTitle">Skills</div>
+				<div class="widgetTitle" id="skillsTitle">Skills <div id="helpIcon"></div> </div>
 		</div>
 		<div class="widgetLowerRectangle" id="skillsWidgetLowerRectangle">
 		<div id="skillsIcon">
