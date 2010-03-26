@@ -20,6 +20,7 @@
 
 <!-- Plug-ins -->
 <script src ="../lib/js/jquery.flashmessenger.js"   type ="text/javascript"> </script>
+<script type="text/javascript" src="../lib/js/jquery-impromptu.3.0.min.js"></script>
 
 <!--  CSS files -->
 <link rel="stylesheet" href="CSS/table.css" type="text/css"></link>
@@ -31,7 +32,6 @@
 <!-- Javascript Files -->
 
 <script src="../lib/js/sorttable.js" type ="text/javascript"></script>
-<script type="text/javascript" src="../lib/js/jquery-impromptu.3.0.min.js"></script>
 <script type="text/javascript" src="../lib/js/dashboard.js"></script>
 <script type="text/javascript" src="../lib/js/deleteSkill.js"></script>
 

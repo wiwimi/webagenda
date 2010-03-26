@@ -20,11 +20,13 @@
 <!-- Plug-ins -->
 <script src="../lib/js/jquery.validate.js" type="text/javascript"></script>
 <script src ="../lib/js/jquery.flashmessenger.js"   type ="text/javascript"> </script>
+<script type="text/javascript" src="../lib/js/jquery-impromptu.3.0.min.js"></script>
 
 <!-- Javascript Files -->
 <script src="../lib/js/cmxforms.js" type="text/javascript"></script>
 <script src= "../lib/js/val.js" type="text/javascript"> </script>
 <script type="text/javascript" src="../lib/js/deleteSkill.js"></script>
+<script type="text/javascript" src="../lib/js/helpUpdateSkill.js"></script>
 
 <!--  CSS files -->
 <link rel="stylesheet" href="../CSS/creationForm.css" type="text/css"></link>
@@ -32,6 +34,8 @@
 <link rel="stylesheet" href="../CSS/Validation/val.css" type="text/css" media="screen"/>
 <link rel="stylesheet" href="../CSS/Validation/screen.css" type="text/css" media="screen"/>
 <link rel="stylesheet" href="../CSS/Flash/flashmessenger.css" type="text/css" media="screen"/>
+<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Confirmation/confirm.css" />
+
 </head>
 <body>
 		<div id="instructions">

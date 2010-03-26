@@ -5,6 +5,7 @@ $(document).ready(function() {
 $('#helpIcon').click(function() {
 	$.prompt("* This window is used for searching and creating new skills. <br /> " +
 			"* When creating skill, the names must be unique.<br /> " +
+			"* Click on the Add button to save the changes.<br /> " +
 			"* For more information, please refer to the Online Help.");
 	});
 });

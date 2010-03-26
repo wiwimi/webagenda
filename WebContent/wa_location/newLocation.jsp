@@ -21,13 +21,14 @@
 <!-- Plug-ins -->
 <script src="../lib/js/jquery.validate.js" type="text/javascript"></script>
 <script src ="../lib/js/jquery.flashmessenger.js"   type ="text/javascript"> </script>
+<script type="text/javascript" src="../lib/js/jquery-impromptu.3.0.min.js"></script>
 
 <!-- Javascript Files -->
 <script src="../lib/js/cmxforms.js" type="text/javascript"></script>
 <script src= "../lib/js/val.js" type="text/javascript"> </script>
 <script type="text/javascript" src="../lib/js/popup.js"></script>
-
-<script type="text/javascript" src="../lib/js/deletePosition.js"></script>
+<script type="text/javascript" src="../lib/js/deleteLocation.js"></script>
+<script type="text/javascript" src="../lib/js/helpLocation.js"></script>
 
 <!--  CSS files -->
 <link rel="stylesheet" href="../CSS/creationForm.css" type="text/css"></link>
@@ -37,6 +38,7 @@
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/screen.css" />
 <link rel="stylesheet" href="../CSS/Popup/popup.css" type="text/css"></link>
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Flash/flashmessenger.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Confirmation/confirm.css" />
 
 </head>
 <body>
