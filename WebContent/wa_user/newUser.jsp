@@ -292,49 +292,48 @@
 						<div id="instructions">
 						Closing the screen saves the selected item.
 					</div>
-				<div id="tableArea">
-					<div class="userAdmin">
-					   <table class="sortable" id="userTable">
-						 <thead class="head">
-							 <tr class="headerRow">
-								<th>Employee ID</th>
-								<th>Family Name</th>
-								<th>Given Name</th>
-								<th></th>
-							 </tr>
-						  </thead>
-						
-						<tfoot class="foot">
-							<tr class="headerRow">
-								<th>Employee ID</th>
-								<th>Family Name</th>
-								<th>Given Name</th>
-								<th></th>
-							</tr>
-						</tfoot>
-						<tbody>
-							<% 
-								EmployeeBroker empBroker = EmployeeBroker.getBroker();
-							    Employee emp = new Employee();
-								emp.setActive(true);
-								Employee[] empArray = empBroker.get(emp, user);
-								int count = empBroker.getEmpCount();
-								for (int index =0; index<count; index++)
-							{
-							%>
-										<tr>
-											<td><div id="profileImage"> <b> <%= empArray[index].getEmpID() %> </b></div></td>
-											<td><%= empArray[index].getFamilyName() %></td>
-											<td><%= empArray[index].getGivenName() %></td>
-											<td> <input type="radio" name="supId" value="<%= empArray[index].getEmpID() %>"> </td>
-										</tr>
-							<% 
-								}
-							%>			
-						
-						</tbody>
-					</table>
-				</div>
+				<div id="tableArea" >
+						<div class="userAdmin">
+						<table class="sortable" id="userTable" >
+							 <thead class="head">
+								 <tr class="headerRow">
+									<th>Employee ID</th>
+									<th>Family Name</th>
+									<th>Given Name</th>
+									<th></th>
+								 </tr>
+							  </thead>
+							<tfoot class="foot">
+								<tr class="headerRow">
+									<th>Employee ID</th>
+									<th>Family Name</th>
+									<th>Given Name</th>
+									<th></th>
+								</tr>
+							</tfoot>
+							<tbody>
+								<% 
+									EmployeeBroker empBroker = EmployeeBroker.getBroker();
+								    Employee emp = new Employee();
+									emp.setActive(true);
+									Employee[] empArray = empBroker.get(emp, user);
+									int count = empBroker.getEmpCount();
+									for (int index =0; index<count; index++)
+								{
+								%>
+											<tr>
+												<td><div id="profileImage"> <b> <%= empArray[index].getEmpID() %> </b></div></td>
+												<td><%= empArray[index].getFamilyName() %></td>
+												<td><%= empArray[index].getGivenName() %></td>
+												<td> <input type="radio" name="supId" value="<%= empArray[index].getEmpID() %>"> </td>
+											</tr>
+								<% 
+									}
+								%>			
+							
+								</tbody>
+						</table>
+					</div>
 				</div> <!-- End Table Area -->
 			</div> <!-- End empPopup div -->
 			

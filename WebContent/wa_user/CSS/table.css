@@ -20,7 +20,9 @@
 {
 	position:relative;
 	left:2.5%;
-	width:95%;
+	width:100%;
+	height: 700px; /*When converted to % the x icon disappears*/
+	overflow:scroll;
 }
 
 #userTable
@@ -35,6 +37,7 @@
 	clear: both;
 	margin: 0px;
 	width: 100%;
+	height:50%;
 }
 
 tr
@@ -53,6 +56,7 @@ td
 {
 	display: table-cell;
 	vertical-align: inherit;
+	overflow:scroll;
 }
 
 td a
