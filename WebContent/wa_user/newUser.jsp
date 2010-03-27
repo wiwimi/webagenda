@@ -10,9 +10,7 @@
 <%@ page import="business.permissions.PermissionBroker" %>
 <%@ page import="business.permissions.PermissionLevel" %>
 <%@ page import="business.permissions.PermissionAccess" %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
 
 <!-- Author: Noorin -->
 <html>
@@ -52,7 +50,7 @@
 <link rel="stylesheet" type="text/css" href="../CSS/Validation/screen.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="../CSS/Flash/flashmessenger.css" media="screen"/>
 <link rel="stylesheet" type="text/css" href="../CSS/Confirmation/confirm.css" media="screen" />
-
+		
 </head>
 <body>
 			<% 
@@ -92,6 +90,22 @@
 							</script>
 				<%
 						}
+						else if (request.getParameter("message").equals("perm"))
+						{
+				%>
+							<script type="text/javascript">
+							$(function()
+							    {
+									$.flashMessenger("You do not have the right permission to perform the operation.",
+							        {
+										   modal:true,
+						    		       clsName:"err", 
+							    		   autoClose:false
+							    	 }); 
+							   }); 
+						</script>
+				<%			
+						}
 					}
 				%>
 		<div id="instructions">
@@ -117,7 +131,7 @@
 						<p>	<label class ="label"> Given Name:  <em class="asterisk"> * </em> </label> <input type="text" name="givenName" class="required" size="30" maxLength="30" value=""/> </p>
 						<p>	<label class ="label"> Family Name: <em class="asterisk"> * </em> </label> <input type="text" name="familyName" class="required" size="30" maxLength="30" value=""/> </p>
 						<p>	<label class ="label"> Date of Birth: </label> <input type="text" name ="dob" id="dob" size ="10" value=""/></p>
-						<p>	<label class ="label"> Username: </label> <input type="text" name ="user" id="user"   size ="30" value=""/></p>
+						<p>	<label class ="label"> Username: <em class="asterisk"> * </em> </label> <input type="text" name ="user" id="user"  class="required"  size ="30" value=""/></p>
 	                    <p>
 					         <label for="cemail" class="label"> E-Mail:</label>
 				             <input type="text" id="cemail" name="email" size="30" value=""/>
@@ -125,7 +139,7 @@
 				        
 				        <p>
 				        	<label class="label" >Generate Password: <em class="asterisk"> * </em> </label>
-				        	<input type="text" class="required" id ="pwd" size="20"/>
+				        	<input type="text" class="required" name="password" id ="pwd" size="20"/>
 				        	
 				        	
 					   </p>
@@ -144,7 +158,7 @@
 						<!--This should be populated from the database -->
 					    <p>
 							<label id="theSelect" class="theSelect" for="empId">Employee Id: <em class="asterisk"> * </em> </label>
-							<input type="text" name="empId" class="required" size="30" maxLength="30" value=""/>
+							<input type="text" size="30" name="empId" class="required" maxLength="30" />
 						</p>
 						
 						<!--This should be populated from the database -->

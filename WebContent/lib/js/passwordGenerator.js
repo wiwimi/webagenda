@@ -32,6 +32,7 @@
  * @version		Release: $Id: jquery.generatePassword.js, v 1.0.0 2009-06-09 Lesnykh IV $
  * @contact		leonclan@yandex.ru
  * @author		Lesnykh IV
+ * @Updated     Noorin Hasan
  * @since		Script available since jQuery 1.3.2
  */
 (function($)
@@ -68,7 +69,9 @@
 									// Generator
 									var _generated_password = [];
 									var _generator = [ options.nums, options.lower_chars, options.upper_chars, options.special_chars ];
-									var _generated_password_length = ( Math.floor( Math.random() * 25 ) + 8 );
+									
+									// Changed the length of the password, to match the business requirements.
+									var _generated_password_length = 7;
 									for ( var l = 0; l < _generated_password_length + 1; l++ )
 									{
 										var __generator = _generator[ Math.floor( Math.random() * 4 ) ];
@@ -76,7 +79,7 @@
 									}
 									_generated_password = _generated_password.join( '' );
 									// generated password + it's length
-									// alert( _generated_password.length + ': ' + _generated_password.join( '' ) );
+									//alert( _generated_password.length + ': ' + _generated_password.join( '' ) );
 
 									$this.val( _generated_password );
 

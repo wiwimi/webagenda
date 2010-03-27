@@ -16,11 +16,17 @@
 	#header 
 	{
 		background-color: #282828;
-		width: 100%;
+	    width: 100%;
 		height: 100px;
 	}
+	#diceImage
+	{
+		background-color: red;
+		background-image:url(../lib/images/icons/Color/casino.png);
+		background-repeat:x-repeat;
+	}
 	
-	#headerTitle 
+	#headerTitle
 	{
 		float:left;
 		position: relative;

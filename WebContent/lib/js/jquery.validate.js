@@ -1,5 +1,6 @@
 /*
  * jQuery validation plug-in 1.6
+
  *
  * http://bassistance.de/jquery-plugins/jquery-plugin-validation/
  * http://docs.jquery.com/Plugins/Validation
@@ -11,6 +12,9 @@
  * Dual licensed under the MIT and GPL licenses:
  *   http://www.opensource.org/licenses/mit-license.php
  *   http://www.gnu.org/licenses/gpl.html
+ *   
+ *   Updated by: Noorin Hasan
+ *   Update on: March 26, 2010
  */
 
 (function($) {
@@ -1049,7 +1053,6 @@ $.extend($.validator, {
 
 			return (nCheck % 10) == 0;
 		},
-		
 		// http://docs.jquery.com/Plugins/Validation/Methods/accept
 		accept: function(value, element, param) {
 			param = typeof param == "string" ? param.replace(/,/g, '|') : "png|jpe?g|gif";
@@ -1124,6 +1127,7 @@ $.format = $.validator.format;
 			}
 		};
 	});
+	
 	$.extend($.fn, {
 		delegate: function(type, delegate, handler) {
 			return this.bind(type, function(event) {

@@ -2,14 +2,13 @@ package uiConnection.update.user;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-
+import java.sql.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import persistence.EmployeeBroker;
 import persistence.PositionBroker;
 import persistence.SkillBroker;
@@ -17,7 +16,6 @@ import exception.DBDownException;
 import exception.DBException;
 import exception.InvalidPermissionException;
 import exception.PermissionViolationException;
-
 import business.Employee;
 import business.Skill;
 import business.schedule.Position;
@@ -36,8 +34,9 @@ public class AddUser extends HttpServlet {
 		    throws ServletException, IOException 
 		    {
 		        response.setContentType("text/html;charset=UTF-8");
-		        EmployeeBroker empBroker= null;
+		        EmployeeBroker empBroker;
 		        boolean success = false;
+		        java.sql.Date  sqlBirthDate;
 		        empBroker = EmployeeBroker.getBroker();
 				empBroker.initConnectionThread();
 		        
@@ -51,11 +50,14 @@ public class AddUser extends HttpServlet {
 		        String familyName = request.getParameter("familyName");
 		        String givenName = request.getParameter("givenName");
 		        String password = request.getParameter("password");
+		       
 				//String[] pos_skills = request.getParameterValues("skill");
 				//String status =  request.getParameter("status");
 				//String pos = request.getParameter("pos");
 				//String email=request.getParameter("email");
-				//String username = request.getParameter("user");
+				String username = request.getParameter("user");
+				String dob = request.getParameter("dob");
+				
 				//String permLevel = request.getParameter("permLevel");
 				//String location= request.getParameter("location");
 				String empId = request.getParameter("empId");
@@ -64,14 +66,20 @@ public class AddUser extends HttpServlet {
 				int empIdInt = Integer.parseInt(empId);
 				//int supIdInt = Integer.parseInt(supId);
 				
-				
-				
 				try 
 				{
-					out.println(password);
-					Employee emp = new Employee(empIdInt,givenName,familyName,"bilb01",password,
-					"1a");
+					Employee emp = new Employee(empIdInt,givenName,familyName,username, password, "1a");
 					
+					// Convert the date of birth from string to util.Date
+					// Then convert the util.Date to sql.Date
+					
+					if (!dob.equals(null) && !dob.equals(""))
+					{
+						String revDob = dob.substring(6, dob.length()) + '-' + dob.substring(0, 2)
+						+'-' + dob.substring(3, 5);		// Reversing the date so that it matches the argument required for sql.Date
+						sqlBirthDate = java.sql.Date.valueOf(revDob);
+						emp.setBirthDate(sqlBirthDate);
+				    }
 					success = empBroker.create(emp, user);
 					
 					if (success)
@@ -84,28 +92,35 @@ public class AddUser extends HttpServlet {
 				{
 					e.printStackTrace();
 					out.println("DB Exception");
-					out.println(givenName);
-					out.println(familyName);
-					out.println(empIdInt);
+					out.println(givenName + " ");
+					out.println(familyName + " ");
+					out.println(empIdInt + " ");
+					out.println(password + " ");
+					out.println(username + "xDOB ");
+					//out.println(sqlBirthDate + " ");
+					
 					response.sendRedirect("wa_user/newUser.jsp?message=false");
 				}
 				catch (DBDownException e) 
 				{
 					e.printStackTrace();
 					out.println("DB Down Exception");
+					out.println(givenName);
+					out.println(familyName);
+					out.println(empIdInt);
 					response.sendRedirect("wa_user/newUser.jsp?message=false");
 				}
 				catch (InvalidPermissionException  e)
 				{
 					e.printStackTrace();
 					out.println("Invalid Permisi");
-					response.sendRedirect("wa_user/newUser.jsp?message=false");
+					response.sendRedirect("wa_user/newUser.jsp?message=perm");
 				}
 				catch (PermissionViolationException e) 
 				{
 					e.printStackTrace();
 					out.println("Perm Viol");
-					response.sendRedirect("wa_user/newUser.jsp?message=false");
+					response.sendRedirect("wa_user/newUser.jsp?message=perm");
 				}
 				finally
 				{

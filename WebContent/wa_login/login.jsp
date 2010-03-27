@@ -17,7 +17,7 @@
 
 <div id="middle">
 	<div id="loginBox">
-		<div id="loginBoxTitle">Web Agenda Login</div>
+		<div id="loginBoxTitle">Web Agenda - Login</div>
 		<div id="loginLine"></div>
 		
 		<% 

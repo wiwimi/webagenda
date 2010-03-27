@@ -1,6 +1,7 @@
 /**
  * Updated by Noorin
  * Some code was changed to prevent interference with the flash plugin.
+ * Rules were added to add more validition features to the screen.
  */
 $().ready(function() {
 	// validate the comment form when it is submitted
@@ -14,6 +15,13 @@ $().ready(function() {
 			username: {
 				required: true,
 				minlength: 2
+			},
+			
+			// Validate that the user's Id is required and should contain digits only
+			empId:{
+				required: true,
+				digits: true
+			
 			},
 			password: {
 				required: true,
@@ -45,6 +53,12 @@ $().ready(function() {
 				required: "Please enter a username",
 				minlength: "Your username must consist of at least 2 characters"
 			},
+			empId: {
+				
+				required: "This field is required",
+				digits: "You may only enter digits for the user's Id"
+			},
+		
 			password: {
 				required: "Please provide a password",
 				minlength: "Your password must be at least 6 characters long"

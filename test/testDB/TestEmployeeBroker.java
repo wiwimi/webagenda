@@ -65,6 +65,11 @@ public class TestEmployeeBroker
 		try {
 			newEmp = new Employee(80000,"Bilbo","Baggins","bilb01","password",1,'a');
 			newEmp.setActive(true);
+			String dob = "02/03/2018";
+			dob = dob.replace('/','-');
+			java.sql.Date sqlBirthDate = java.sql.Date.valueOf(dob);
+            newEmp.setBirthDate(sqlBirthDate);
+			//newEmp.setBirthDate(date);
 		} catch (DBException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
