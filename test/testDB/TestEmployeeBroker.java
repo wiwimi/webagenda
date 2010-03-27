@@ -64,7 +64,7 @@ public class TestEmployeeBroker
 		System.out.println("******************** CREATE/DELETE TEST ********************");
 		
 		Employee newEmp = null;
-		Employee disabledEmp = null;
+		
 		try {
 			newEmp = new Employee(80000,"Bilbo","Baggins","bilb01","password",1,'a');
 			newEmp.setActive(true);

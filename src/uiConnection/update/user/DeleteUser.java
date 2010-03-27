@@ -35,13 +35,12 @@ public class DeleteUser extends HttpServlet {
 		        HttpSession session = request.getSession();
 		        
 		        String empId = request.getParameter("empId");
-		        boolean success;
+		        boolean success=false;
 				
 				try {
 					    EmployeeBroker broker = EmployeeBroker.getBroker();
 						broker.initConnectionThread();
 						
-						Employee emp = new Employee();
 						int empIdInt = Integer.parseInt(empId);
 						
 						Employee user = (Employee)session.getAttribute("currentEmployee");
@@ -56,8 +55,6 @@ public class DeleteUser extends HttpServlet {
 						success = broker.delete(results[0], user);
 						
 						
-						
-						success = broker.delete(emp, user);
 						
 					if (success)
 					{
