@@ -18,8 +18,10 @@
 #tableArea
 {
 	position:relative;
-	left:2.5%;
+	left:1.0%;
 	width:95%;
+	height: 300px; /*When converted to % the x icon disappears*/
+	overflow:scroll;
 }
 
 #userTable
@@ -34,6 +36,7 @@
 	clear: both;
 	margin: 0px;
 	width: 100%;
+	height:50%;
 }
 
 tr

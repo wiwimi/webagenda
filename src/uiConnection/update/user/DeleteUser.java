@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import persistence.EmployeeBroker;
 import business.Employee;
+import business.Skill;
 import exception.DBDownException;
 import exception.DBException;
 
@@ -28,6 +29,7 @@ public class DeleteUser extends HttpServlet {
     	  
 		        response.setContentType("text/html;charset=UTF-8");
 		        PrintWriter out = response.getWriter();
+		        Employee delUser = null;
 		        
 		        //Create or get the session object from the HTTPSession object
 		        HttpSession session = request.getSession();
@@ -44,31 +46,41 @@ public class DeleteUser extends HttpServlet {
 						
 						Employee user = (Employee)session.getAttribute("currentEmployee");
 						
-						emp.setEmpID(empIdInt);
+						
+						delUser = new Employee();
+						delUser.setEmpID(empIdInt);
+						
+						Employee[] results = broker.get(delUser, user);
+						
+						if(results!=null)
+						success = broker.delete(results[0], user);
+						
+						
+						
 						success = broker.delete(emp, user);
 						
 					if (success)
 					{
 						//Confirm that the user was deleted
-						response.sendRedirect("wa_user/updateUser.jsp?message=true");
+						response.sendRedirect("wa_user/userSearchResults.jsp?message=true&empId=" + empId);
 					}
 				}
 				catch (DBException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					// Failed to delete the user
-					response.sendRedirect("wa_user/updateUser.jsp?message=false");
+					response.sendRedirect("wa_user/userSearchResults.jsp?message=false&empId=" + empId);
 					
 				} catch (DBDownException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					// Failed to add the location
-					response.sendRedirect("wa_user/updateUser.jsp?message=false");
+					response.sendRedirect("wa_user/userSearchResults.jsp?message=false&empId=" + empId);
 				}
 				catch(Exception e)
 				{
 					// Failed to add the location
-					response.sendRedirect("wa_user/updateUser.jsp?message=false");
+					response.sendRedirect("wa_user/userSearchResults.jsp?message=false&empId=" + empId);
 				}
 				finally
 				{

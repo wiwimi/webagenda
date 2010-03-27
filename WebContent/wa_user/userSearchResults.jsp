@@ -88,7 +88,7 @@
 			</form>
 			</div>
 			<div id="tableArea">
-							<div class="userAdmin">
+				<div class="userAdmin">
 						<% 
 						
 						    Employee emp = new Employee();
@@ -99,30 +99,38 @@
 							Employee[] empArray = null;
 							
 						    //TODO: Debug statements here						    
-						    System.out.println(request.getParameter("empId") + " empId");
-						    System.out.println(request.getParameter("familyName") + " family Name");
-						    System.out.println(request.getParameter("givenName") + " given name");
-						    System.out.println(request.getParameter("user") + " user");
-						    System.out.println(request.getParameter("email") + " email");
+						    //System.out.println(request.getParameter("empId") + " empId");
+						    //System.out.println(request.getParameter("familyName") + " family Name");
+						    //System.out.println(request.getParameter("givenName") + " given name");
+						    //System.out.println(request.getParameter("user") + " user");
+						    //System.out.println(request.getParameter("email") + " email");
 						    
-						    // If employee is blank, search for all active employees
+						    // Search by Employee Id
 						    if((request.getParameter("empId") != null) 
 						    		&& (request.getParameter("familyName")==(null))
 						    		&& (request.getParameter("givenName")==(null))
 						    		&& (request.getParameter("user")==(null))
 						    		&& (request.getParameter("email")==(null)))
 							{
-						    	int empInteger = Integer.parseInt(request.getParameter("empId"));
+						    		int empInteger = Integer.parseInt(request.getParameter("empId"));
 								   emp.setEmpID(empInteger);
 								   empArray = broker.get(emp, user);
 							}
+						    // Search by Enabled Users 
 						    else if((request.getParameter("empId") == null) 
 					    		&& (request.getParameter("familyName")==(null))
 					    		&& (request.getParameter("givenName")==(null))
 					    		&& (request.getParameter("user")==(null))
-					    		&& (request.getParameter("email")==(null)))
+					    		&& (request.getParameter("email")==(null))
+					    		&& (request.getParameter("status").equalsIgnoreCase("enabled")))
 						    {
 						    	emp.setActive(true);
+								empArray = broker.get(emp, user);
+						    }
+						    // Search by disabled Users
+						    else if(request.getParameter("status").equalsIgnoreCase("disabled"))
+						    {
+						    	emp.setActive(false);
 								empArray = broker.get(emp, user);
 						    }
 							else
@@ -162,7 +170,7 @@
 												{
 											           if(!Character.isDigit(randomSearch.charAt(i)))
 											           {
-											        	   // Search by ID
+											        	   // Search by ID since it is a digits field
 											        	   int empInteger = Integer.parseInt(request.getParameter("randomSearch"));
 														   emp.setEmpID(empInteger);
 														   empArray = broker.get(emp, user);

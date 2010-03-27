@@ -64,6 +64,7 @@ public class TestEmployeeBroker
 		System.out.println("******************** CREATE/DELETE TEST ********************");
 		
 		Employee newEmp = null;
+		Employee disabledEmp = null;
 		try {
 			newEmp = new Employee(80000,"Bilbo","Baggins","bilb01","password",1,'a');
 			newEmp.setActive(true);
@@ -71,8 +72,7 @@ public class TestEmployeeBroker
 			dob = dob.replace('/','-');
 			java.sql.Date sqlBirthDate = java.sql.Date.valueOf(dob);
             newEmp.setBirthDate(sqlBirthDate);
-			//newEmp.setBirthDate(date);
-		} catch (DBException e1) {
+          } catch (DBException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
@@ -170,17 +170,16 @@ public class TestEmployeeBroker
 		
 		Employee newEmp = null;
 		try {
-			newEmp = new Employee(80002,"Bilbo","Baggins","bilb01","password",
+			newEmp = new Employee(80002,"Bilbo","Baggins","bilb03","password",
 					"1a");
 		} catch (DBException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
-		newEmp.setActive(true);
+		newEmp.setActive(false);
 		newEmp.setEmail("email@YAHOO.CA");
 		newEmp.setPrefLocation("Mohave Grill");
-		newEmp.setPrefPosition("admin");
 	
 		//Add employee
 		boolean successful;
@@ -212,7 +211,7 @@ public class TestEmployeeBroker
 		try
 			{
 			Employee empSearchDisabled = new Employee();
-			empSearchDisabled.setEmpID(80002);
+			empSearchDisabled.setActive(false);
 			Employee[] results = empBroker.get(empSearchDisabled, user);
 			if (results == null)
 				fail("Employee search failed, employee not returned.");
@@ -238,32 +237,7 @@ public class TestEmployeeBroker
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		//Delete the test user.
-		try
-			{
-			boolean deleted = empBroker.delete(newEmp, user);
-			assertTrue(deleted);
-			System.out.println("Employee deleted: "+ deleted);
-			}
-		catch (DBException e)
-			{
-			e.printStackTrace();
-			fail();
-			}
-		catch (DBDownException e)
-			{
-			e.printStackTrace();
-			}
-		catch (InvalidPermissionException e)
-			{
-			e.printStackTrace();
-			}
-		catch (PermissionViolationException e)
-			{
-			e.printStackTrace();
-			}
-			}
+	}
 	
 	
 	/**
@@ -282,10 +256,9 @@ public class TestEmployeeBroker
 	public void testGetEmployee()
 		{
 		System.out.println("******************** GET TEST ********************");
-		
 		//Create employees to search by an employee ID, and all active employees.
 		Employee searchEmp1 = new Employee();
-		searchEmp1.setEmpID(38202);
+		searchEmp1.setEmpID(80002);
 		
 		Employee searchEmp2 = new Employee();
 		searchEmp2.setActive(true);

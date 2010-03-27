@@ -19,9 +19,9 @@
 #tableArea
 {
 	position:relative;
-	left:2.5%;
-	width:100%;
-	height: 700px; /*When converted to % the x icon disappears*/
+	left:1.0%;
+	width:95%;
+	height: 300px; /*When converted to % the x icon disappears*/
 	overflow:scroll;
 }
 

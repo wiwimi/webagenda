@@ -69,10 +69,13 @@ public class AddUser extends HttpServlet {
 					
 					Employee emp = new Employee(empIdInt,givenName,familyName,username, password, "1a");
 					if (status.equalsIgnoreCase("enabled"))
+					
 						emp.setActive(true);
 					
 					else 
 						emp.setActive(false);
+					
+					
 					// Convert the date of birth from string to util.Date
 					// Then convert the util.Date to sql.Date
 					
@@ -110,42 +113,56 @@ public class AddUser extends HttpServlet {
 						//Confirm that the user was added
 						response.sendRedirect("wa_user/newUser.jsp?message=true&familyName=" + familyName +"&givenName=" + givenName
 								+ "&username=" + username +  "&email=" + email + "&password=" + password
-								+ "&dob=" + dob + "&empId=" + empId);
+								+ "&dob=" + dob + "&empId=" + empId + "&status=" + emp.getActive());
 					}
 				}
 				catch (DBException e) 
 				{
 					e.printStackTrace();
-					out.println("DB Exception");
-					out.println(givenName + " ");
-					out.println(familyName + " ");
-					out.println(empIdInt + " ");
-					out.println(password + " ");
-					out.println(username + "xDOB ");
+					//out.println("DB Exception");
+					//out.println(givenName + " ");
+					//out.println(familyName + " ");
+					//out.println(empIdInt + " ");
+					//out.println(password + " ");
+					//out.println(username + "xDOB ");
 					//out.println(sqlBirthDate + " ");
 					
-					response.sendRedirect("wa_user/newUser.jsp?message=false");
+					//Even if the user is not created, return the values to the form
+					response.sendRedirect("wa_user/newUser.jsp?message=false&familyName=" + familyName +"&givenName=" + givenName
+							+ "&username=" + username +  "&email=" + email + "&password=" + password
+							+ "&dob=" + dob + "&empId=" + empId);
 				}
 				catch (DBDownException e) 
 				{
 					e.printStackTrace();
-					out.println("DB Down Exception");
-					out.println(givenName);
-					out.println(familyName);
-					out.println(empIdInt);
-					response.sendRedirect("wa_user/newUser.jsp?message=false");
+					//out.println("DB Down Exception");
+					//out.println(givenName);
+					//out.println(familyName);
+					//out.println(empIdInt);
+					
+					//Even if the user is not created, return the values to the form
+					response.sendRedirect("wa_user/newUser.jsp?message=false&familyName=" + familyName +"&givenName=" + givenName
+							+ "&username=" + username +  "&email=" + email + "&password=" + password
+							+ "&dob=" + dob + "&empId=" + empId);
 				}
 				catch (InvalidPermissionException  e)
 				{
 					e.printStackTrace();
-					out.println("Invalid Permisi");
-					response.sendRedirect("wa_user/newUser.jsp?message=perm");
+					//out.println("Invalid Permisi");
+					
+					//Even if the user is not created, return the values to the form
+					response.sendRedirect("wa_user/newUser.jsp?message=perm&familyName=" + familyName +"&givenName=" + givenName
+							+ "&username=" + username +  "&email=" + email + "&password=" + password
+							+ "&dob=" + dob + "&empId=" + empId);
 				}
 				catch (PermissionViolationException e) 
 				{
 					e.printStackTrace();
-					out.println("Perm Viol");
-					response.sendRedirect("wa_user/newUser.jsp?message=perm");
+					//out.println("Perm Viol");
+					//Even if the user is not created, return the values to the form
+					response.sendRedirect("wa_user/newUser.jsp?message=perm&familyName=" + familyName +"&givenName=" + givenName
+							+ "&username=" + username +  "&email=" + email + "&password=" + password
+							+ "&dob=" + dob + "&empId=" + empId);
 				}
 				finally
 				{
