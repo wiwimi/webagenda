@@ -13,7 +13,11 @@
 <jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
 
 <!-- Libraries -->
-<script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>	
+<script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
+
+<!-- Plug-ins -->
+<script src ="../lib/js/jquery.flashmessenger.js"   type ="text/javascript"> </script>
+<script type="text/javascript" src="../lib/js/jquery-impromptu.3.0.min.js"></script>
 
 <!--  CSS files -->
 <link rel="stylesheet" href="CSS/table.css" type="text/css"></link>
@@ -25,7 +29,6 @@
 <!-- Javascript Files -->
 <script src="../lib/js/sorttable.js" type ="text/javascript"></script>
 <script type="text/javascript" src="../lib/js/dashboard.js"></script>
-<script type="text/javascript" src="../lib/js/jquery-impromptu.3.0.min.js"></script>
 <script type="text/javascript" src="../lib/js/deleteUser.js"></script>
 <script type="text/javascript" src="../lib/js/helpUserSearchResults.js"></script>
 
@@ -72,7 +75,7 @@
 		
 		<div id="usersWidget" class="fullWidget">
 			<div class="widgetUpperRectangle" id="usersWidgetUpperRectangle">
-				<div class="widgetTitle" id="usersTitle">Users <div id="helpIcon"></div> </div>
+				<div class="widgetTitle" id="usersWidgetTitle">Users <div id="helpIcon"></div> </div>
 		</div>
 			
 		<div class="widgetLowerRectangle" id="usersWidgetLowerRectangle">
@@ -83,7 +86,7 @@
 			
 			<div id="searchArea">
 			<form id="form">
-					<input type="text" size=30/ name="randomSearch">
+					<input type="text" size=30 name="randomSearch">
 					<input type="button" name="submit"  class="button" value="Search" onClick="location.href='userSearchResults.jsp?randomSearch=' + form.randomSearch.value">
 			</form>
 			</div>
@@ -93,7 +96,6 @@
 						
 						    Employee emp = new Employee();
 							Employee user = (Employee) session.getAttribute("currentEmployee");
-							//Employee user2 = new Employee(12314, "Chaney", "Henson","user1", "password",  "2a" );
 							EmployeeBroker broker = EmployeeBroker.getBroker();
 							int count = broker.getEmpCount();
 							Employee[] empArray = null;
@@ -106,115 +108,84 @@
 						    //System.out.println(request.getParameter("email") + " email");
 						    
 						    // Search by Employee Id
-						    if((request.getParameter("empId") != null) 
-						    		&& (request.getParameter("familyName")==(null))
-						    		&& (request.getParameter("givenName")==(null))
-						    		&& (request.getParameter("user")==(null))
-						    		&& (request.getParameter("email")==(null)))
+						      if((request.getParameter("empId")!=(null)) 
+							    		&& (request.getParameter("familyName")!=(null))
+							    		&& (request.getParameter("givenName")!=(null))
+							    		&& (request.getParameter("user")!=(null))
+							    		&& (request.getParameter("email")!=(null)))
 							{
-						    		int empInteger = Integer.parseInt(request.getParameter("empId"));
-								   emp.setEmpID(empInteger);
-								   empArray = broker.get(emp, user);
-							}
-						    // Search by Enabled Users 
-						    else if((request.getParameter("empId") == null) 
-					    		&& (request.getParameter("familyName")==(null))
-					    		&& (request.getParameter("givenName")==(null))
-					    		&& (request.getParameter("user")==(null))
-					    		&& (request.getParameter("email")==(null))
-					    		&& (request.getParameter("status").equalsIgnoreCase("enabled")))
-						    {
-						    	emp.setActive(true);
-								empArray = broker.get(emp, user);
-						    }
-						    // Search by disabled Users
-						    else if(request.getParameter("status").equalsIgnoreCase("disabled"))
-						    {
-						    	emp.setActive(false);
-								empArray = broker.get(emp, user);
-						    }
-							else
-							{
-								//System.out.println("not all null");
-								// Search based on parameters that are not blank or null
-								if(request.getParameter("empId")!=null || request.getParameter("familyName")!=null 
-										|| request.getParameter("givenName")!=null || request.getParameter("user")!=null)
+						    
+								    if((!request.getParameter("empId").equals("")) 
+								    		&& (request.getParameter("familyName").equals(""))
+								    		&& (request.getParameter("givenName").equals(""))
+								    		&& (request.getParameter("user").equals(""))
+								    		&& (request.getParameter("email").equals("")))
+									{
+								    		int empInteger = Integer.parseInt(request.getParameter("empId"));
+										   emp.setEmpID(empInteger);
+										   empArray = broker.get(emp, user);
+									}
+							    // Search by Enabled Users 
+							    else if((request.getParameter("empId").equals("")) 
+						    		&& (request.getParameter("familyName").equals("")) 
+						    		&& (request.getParameter("givenName").equals("")) 
+						    		&& (request.getParameter("user").equals("")) 
+						    		&& (request.getParameter("email").equals(""))
+						    		&& (request.getParameter("status").equalsIgnoreCase("enabled")))
+							    {
+							    	//out.println(request.getParameter("status"));
+							    	emp.setActive(true);
+									empArray = broker.get(emp, user);
+							    }
+							    // Search by disabled Users
+							      else if((request.getParameter("empId").equals("")) 
+						    		&& (request.getParameter("familyName").equals("")) 
+						    		&& (request.getParameter("givenName").equals("")) 
+						    		&& (request.getParameter("user").equals("")) 
+						    		&& (request.getParameter("email").equals(""))
+						    		&& (request.getParameter("status").equalsIgnoreCase("disabled")))
+							    {
+							    	emp.setActive(false);
+									empArray = broker.get(emp, user);
+							    }
+								else
 								{
-								
-									if(!request.getParameter("empId").equals(null))
+									//System.out.println("not all null");
+									// Search based on parameters that are not blank or null
+									
+									if(!request.getParameter("empId").equals(""))
 									{
 										int empInteger = Integer.parseInt(request.getParameter("empId"));
 										emp.setEmpID(empInteger);
 									}
 									
-									if(!request.getParameter("familyName").equals(null))
+									if(!request.getParameter("familyName").equals(""))
 										emp.setFamilyName(request.getParameter("familyName"));
 									
-									if(!request.getParameter("givenName").equals(null))
+									if(!request.getParameter("givenName").equals(""))
 										emp.setGivenName(request.getParameter("givenName"));
 									
-									if(!request.getParameter("user").equals(null))
+									if(!request.getParameter("user").equals(""))
 										emp.setUsername(request.getParameter("user"));
 									
 										empArray = broker.get(emp, user);
-								}
-								//System.out.println(request.getParameter("randomSearch"));
-								if(request.getParameter("randomSearch")!=null)
-								{
-									emp= new Employee();
-									if((!request.getParameter("randomSearch").equals(null)))
-									{
-												String randomSearch = request.getParameter("randomSearch");
-												
-												for (int i = 0; i < randomSearch.length(); i++) 
-												{
-											           if(!Character.isDigit(randomSearch.charAt(i)))
-											           {
-											        	   // Search by ID since it is a digits field
-											        	   int empInteger = Integer.parseInt(request.getParameter("randomSearch"));
-														   emp.setEmpID(empInteger);
-														   empArray = broker.get(emp, user);
-														   
-											           }
-											           else
-													   {
-															emp.setFamilyName("randomSearch");
-															Employee [] familyNameArray = broker.get(emp, user);
-															
-															emp.setGivenName("randomSearch");
-															Employee [] givenNameArray = broker.get(emp, user);
-															
-															emp.setUsername("randomSearch");
-															Employee [] usernameArray = broker.get(emp, user);
-															
-															emp.setEmail("randomSearch");
-															Employee [] emailArray = broker.get(emp, user);
-															
-															
-															int strlength = familyNameArray.length + givenNameArray.length + usernameArray.length + emailArray.length;
-															
-															empArray = new Employee[strlength];
-															System.arraycopy(familyNameArray, 0, emp, 0, familyNameArray.length);
-															System.arraycopy(givenNameArray, 0, emp, familyNameArray.length, givenNameArray.length);
-															empArray = broker.get(emp, user);
-														}
-											     }
-										}
-									else if ((request.getParameter("randomSearch").equals(null)) || (request.getParameter("randomSearch").equals("")))
-									{
-										emp.setActive(true);
-										empArray = broker.get(emp, user);
-									}
+									
 								}
 							}
+						    else
+						    {
+						    	emp.setActive(true);
+								empArray = broker.get(emp, user);
+						    	  
+						    }
 							if(empArray==null)
 							{
 						%>
 								<div id="instructions">
 									Your search didn't match any users.<br>
 						      		For better results try more general fields and make sure all words are spelled correctly.
-						      		
-								</div>
+						      	</div>
+						      	
 						<%
 							}
 							else
@@ -261,22 +232,16 @@
 										<td><a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getFamilyName() %></a></td>
 										<td> <a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getGivenName() %></a> </td>
 										<td> <a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getPrefPosition() %></a> </td>
-										<% String supervID = "" + empArray[index].getSupervisorID();
-										if(supervID.equals("null")) supervID = "N/A"; %>
-										<td> <a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= supervID %></a> </td>
+										<td> <a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getSupervisorID() %></a> </td>
 								   </tr>
 							<% 
 								}
 							}
 							%>			
-									
 					</tbody>
 				</table>
-				
-			</div>
-			
+			  </div>
 			</div> <!-- End Table Area -->
-			
 		</div>
 </div>
 <div id="footer"></div>
