@@ -64,80 +64,53 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 		DBConnection conn = null;
 		try
 			{
-			//Get connection, disable autocommit.
+			//Get connection, disable auto-commit.
 			conn = this.getConnection();
 			conn.getConnection().setAutoCommit(false);
 			
 			//Create prepared statements for inserts.
-			PreparedStatement insSchedTemp = conn.getConnection().prepareStatement(
+			PreparedStatement createSchedTemp = conn.getConnection().prepareStatement(
 					"INSERT INTO `WebAgenda`.`SCHEDULETEMPLATE` " +
 					"(`creatorID`,`name`) " +
 					"VALUES " +
 					"(?,?)",Statement.RETURN_GENERATED_KEYS);
 			
-			PreparedStatement insShiftTemp = conn.getConnection().prepareStatement(
+			PreparedStatement createShiftTemp = conn.getConnection().prepareStatement(
 					"INSERT INTO `WebAgenda`.`SHIFTTEMPLATE` " +
 					"(`schedTempID`,`day`,`startTime`,`endTime`) " +
 					"VALUES " +
 					"(?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
 			
-			PreparedStatement insShiftPos = conn.getConnection().prepareStatement(
+			PreparedStatement createShiftPos = conn.getConnection().prepareStatement(
 					"INSERT INTO `WebAgenda`.`SHIFTPOS` " +
 					"(`shiftTempID`,`positionName`,`posCount`) " +
 					"VALUES " +
 					"(?,?,?)");
 			
 			//Attempt to insert schedule template.
-			insSchedTemp.setInt(1, createObj.getCreatorID());
-			insSchedTemp.setString(2, createObj.getName());
-			if (insSchedTemp.executeUpdate() != 1)
+			createSchedTemp.setInt(1, createObj.getCreatorID());
+			createSchedTemp.setString(2, createObj.getName());
+			if (createSchedTemp.executeUpdate() != 1)
 				throw new DBException("Failed to insert schedule template.");
 			
 			//Save the auto-generated schedule template ID.
-			ResultSet temp = insSchedTemp.getGeneratedKeys();
+			ResultSet temp = createSchedTemp.getGeneratedKeys();
 			if (temp.next())
 				createObj.setSchedTempID(temp.getInt(1));
 			
 			//Insert each shift template.
 			for (ShiftTemplate shiftTemp : createObj.getShiftTemplates().toArray())
 				{
-				//Add schedule template ID before insert.
-				shiftTemp.setSchedTempID(createObj.getSchedTempID());
-				
-				//Attempt to insert shift template.
-				insShiftTemp.setInt(1, shiftTemp.getSchedTempID());
-				insShiftTemp.setInt(2, shiftTemp.getDay());
-				insShiftTemp.setTime(3, shiftTemp.getStartTime());
-				insShiftTemp.setTime(4, shiftTemp.getEndTime());
-				if (insShiftTemp.executeUpdate() != 1)
-					throw new DBException("Failed to insert shift template");
-				
-				//Save the auto-generated shift template ID.
-				temp = insShiftTemp.getGeneratedKeys();
-				if (temp.next())
-					shiftTemp.setShiftTempID(temp.getInt(1));
-				
-				//Insert each shift position.
-				for (ShiftPosition shiftPos : shiftTemp.getShiftPositions().toArray())
-					{
-					//Add shift template ID before insert.
-					shiftPos.setShiftTempID(shiftTemp.getShiftTempID());
-					
-					//Attempt to insert shift position.
-					insShiftPos.setInt(1, shiftPos.getShiftTempID());
-					insShiftPos.setString(2, shiftPos.getPosName());
-					insShiftPos.setInt(3, shiftPos.getPosCount());
-					if (insShiftPos.executeUpdate() != 1)
-						throw new DBException("Failed to insert shift position");
-					}
+				insertShiftTemplate(shiftTemp, createObj.getSchedTempID(),
+						createShiftTemp, createShiftPos);
 				}
 			
 			//Create succeeded! Commit all inserts and reset connection.
 			conn.getConnection().commit();
 			conn.getConnection().setAutoCommit(true);
-			insSchedTemp.close();
-			insShiftTemp.close();
-			insShiftPos.close();
+			createSchedTemp.close();
+			createShiftTemp.close();
+			createShiftPos.close();
 			conn.setAvailable(true);
 			}
 		catch (SQLException e)
@@ -165,11 +138,8 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 	public boolean delete(ScheduleTemplate deleteObj, Employee caller)
 			throws DBException, DBChangeException, DBDownException
 		{
-		if (deleteObj == null)
-			throw new NullPointerException("Can not delete, given schedule template is null.");
-
-		if (deleteObj.getSchedTempID() == null)
-			throw new NullPointerException("Can not delete, no schedule template ID in given object.");
+		if (deleteObj == null || deleteObj.getSchedTempID() == null)
+			throw new NullPointerException("Can not delete, schedule template with ID required.");
 		
 		raceCheck(deleteObj,caller);
 		
@@ -183,7 +153,7 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 			deleteStmt.setInt(1, deleteObj.getSchedTempID());
 			
 			if (deleteStmt.executeUpdate() != 1)
-				throw new DBException("Failed to delete schedule template.");
+				throw new DBChangeException("Failed to delete schedule template. May have been changed or removed by another user.");
 			
 			conn.setAvailable(true);
 			}
@@ -277,8 +247,216 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 	public boolean update(ScheduleTemplate oldObj, ScheduleTemplate updateObj,
 			Employee caller) throws DBException, DBChangeException, DBDownException
 		{
-		// TODO Auto-generated method stub
-		return false;
+		//Ensure Old/Update objects aren't null.
+		if (oldObj == null || oldObj.getSchedTempID() == null)
+			throw new NullPointerException("Old schedule template with ID required for updates.");
+		if (updateObj == null || updateObj.getSchedTempID() == null)
+			throw new NullPointerException("Update schedule template with ID required for updates.");
+		
+		//Ensure old/update objects refer to the same schedule template.
+		if (oldObj.getSchedTempID() != updateObj.getSchedTempID())
+			throw new DBException("Old and Update schedule templates do not have the same ID.");
+		
+		//Run raceCheck on old object. Pass DBChangeException out of method if applicable.
+		raceCheck(oldObj, caller);
+		
+		DBConnection conn = null;
+		try
+			{
+			//Get DB connection, disable auto-commit.
+			conn = this.getConnection();
+			conn.getConnection().setAutoCommit(false);
+			
+			//Prepare all statements used during update.
+			PreparedStatement updateSchedTemp = conn.getConnection().prepareStatement(
+					"UPDATE `WebAgenda`.`SCHEDULETEMPLATE` SET name = ? WHERE schedTempID = ? AND creatorID = ? AND name = ?");
+			
+			PreparedStatement createShiftTemp = conn.getConnection().prepareStatement(
+					"INSERT INTO `WebAgenda`.`SHIFTTEMPLATE` " +
+					"(`schedTempID`,`day`,`startTime`,`endTime`) " +
+					"VALUES " +
+					"(?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
+			
+			PreparedStatement updateShiftTemp = conn.getConnection().prepareStatement(
+					"UPDATE `WebAgenda`.`SHIFTTEMPLATE` " +
+					"SET day = ?, startTime = ?, endTime = ? " +
+					"WHERE shiftTempID = ? AND schedTempID = ? AND day = ? " +
+							"AND startTime = ? AND endTime = ?");
+			
+			PreparedStatement deleteShiftTemp = conn.getConnection().prepareStatement(
+					"DELETE FROM `WebAgenda`.`SHIFTTEMPLATE` WHERE shiftTempID = ?");
+			
+			PreparedStatement createShiftPos = conn.getConnection().prepareStatement(
+					"INSERT INTO `WebAgenda`.`SHIFTPOS` " +
+					"(`shiftTempID`,`positionName`,`posCount`) " +
+					"VALUES " +
+					"(?,?,?)");
+			
+			PreparedStatement deleteMultiShiftPos = conn.getConnection().prepareStatement(
+					"DELETE FROM `WebAgenda`.`SHIFTPOS` WHERE shiftTempID = ?");
+			
+			//Compare old/update schedule template attributes. If not equal, update DB.
+			if (!oldObj.getName().equals(updateObj.getName()))
+				{
+				updateSchedTemp.setString(1, updateObj.getName());
+				updateSchedTemp.setInt(2, oldObj.getSchedTempID());
+				updateSchedTemp.setInt(3, oldObj.getCreatorID());
+				updateSchedTemp.setString(4, oldObj.getName());
+				
+				//Attempt update.
+				if (updateSchedTemp.executeUpdate() != 1)
+					throw new DBChangeException("Failed to update schedule template name. May have been changed or deleted by another user.");
+				
+				updateSchedTemp.close();
+				}
+			
+			//Convert old/new shift templates to array.
+			ShiftTemplate[] oldShiftArr = oldObj.getShiftTemplates().toArray();
+			ShiftTemplate[] updShiftArr = updateObj.getShiftTemplates().toArray();
+			
+			//Check for old shift templates that are not used, and can be deleted.
+			for (int i = 0; i < oldShiftArr.length; i++)
+				{
+				boolean found = false;
+				for (int j = 0; j < updShiftArr.length && !found; j++)
+					{
+					//If old shift exists in new shift array, set found.
+					if (oldShiftArr[i].getShiftTempID() == updShiftArr[j].getShiftTempID())
+						found = true;
+					}
+				
+				//Old shift not in update, delete from database.
+				if (!found)
+					{
+					deleteShiftTemp.setInt(1, oldShiftArr[i].getShiftTempID());
+					if (deleteShiftTemp.executeUpdate() != 1)
+						throw new DBException("Failed to delete shift template during update.");
+					}
+				}
+			deleteShiftTemp.close();
+			
+			//Check updated shifts against old shifts, adding and updating as necessary.
+			for (int i = 0; i < updShiftArr.length; i++)
+				{
+				ShiftTemplate updShift = updShiftArr[i];
+				
+				//If update shift doesn't have an ID, it is new.
+				if (updShift.getShiftTempID() == null)
+					{
+					//Add new shift.
+					insertShiftTemplate(updShift, updateObj.getSchedTempID(),
+								createShiftTemp, createShiftPos);
+					}
+				else
+					{
+					/*
+					 * Confirm that shift template has schedule template ID.  If not,
+					 * shift ID was added in the front-end, which should not be done.
+					 */
+					if (updShift.getSchedTempID() == null)
+						throw new DBException("Shift ID was not assigned by backend.");
+					
+					//Shift template has an ID should match an old shift template.
+					int oldShiftIdx = -1;
+					for (int j = 0; j < oldShiftArr.length && oldShiftIdx == -1; j++)
+						{
+						if (oldShiftArr[j].getSchedTempID() == updShift.getSchedTempID() &&
+								oldShiftArr[j].getShiftTempID() == updShift.getShiftTempID())
+							{
+							//Matching shift template found.
+							oldShiftIdx = j;
+							}
+						}
+					
+					if (oldShiftIdx != -1)
+						{
+						ShiftTemplate oldShift = oldShiftArr[oldShiftIdx];
+						
+						//If shift attributes different, update DB.
+						if (oldShift.getDay() != updShift.getDay() ||
+								oldShift.getStartTime() != updShift.getStartTime() ||
+								oldShift.getEndTime() != updShift.getEndTime())
+							{
+							//Add new parameters.
+							updateShiftTemp.setInt(1, updShift.getDay());
+							updateShiftTemp.setTime(2, updShift.getStartTime());
+							updateShiftTemp.setTime(3, updShift.getEndTime());
+							
+							//Add old parameters.
+							updateShiftTemp.setInt(4, oldShift.getShiftTempID());
+							updateShiftTemp.setInt(5, oldShift.getSchedTempID());
+							updateShiftTemp.setInt(6, oldShift.getDay());
+							updateShiftTemp.setTime(7, oldShift.getStartTime());
+							updateShiftTemp.setTime(8, oldShift.getEndTime());
+							
+							if (updateShiftTemp.executeUpdate() != 1)
+								throw new DBChangeException("Failed to update shift template. May have been changed or deleted by another user.");
+							}
+						
+						//Check if shifts have same positions.
+						ShiftPosition[] oldShiftPosArr = oldShift.getShiftPositions().toArray();
+						ShiftPosition[] updShiftPosArr = updShift.getShiftPositions().toArray();
+						
+						boolean shiftPosChanged = false;
+						if (oldShiftPosArr.length == updShiftPosArr.length)
+							{
+							for (int j = 0; j < oldShiftPosArr.length && !shiftPosChanged; j++)
+								{
+								if (oldShiftPosArr[j].getShiftTempID() != updShiftPosArr[j].getShiftTempID() ||
+										!oldShiftPosArr[j].getPosName().equals(updShiftPosArr[j].getPosName()) ||
+										oldShiftPosArr[j].getPosCount() != updShiftPosArr[j].getPosCount())
+									shiftPosChanged = true;
+								}
+							}
+						else
+							shiftPosChanged = true;
+						
+						if (shiftPosChanged)
+							{
+							//Shift positions changed.  Delete old shift positions.
+							deleteMultiShiftPos.setInt(1, updShift.getShiftTempID());
+							if (deleteMultiShiftPos.executeUpdate() < 1)
+								throw new DBChangeException("Failed to delete old shift positions for: "+updShift);
+							
+							//Create new shift positions.
+							insertShiftPositions(updShiftPosArr, updShift.getShiftTempID(), createShiftPos);
+							}
+						}
+					else
+						{
+						//Shift was given incorrect IDs, no matches found.
+						throw new DBException("Shift template has non-matching ID's, can not update. "+updShift);
+						}
+					}
+				}
+			
+			//Update succeeded! Commit all changes and reset connection.
+			conn.getConnection().commit();
+			conn.getConnection().setAutoCommit(true);
+			updateSchedTemp.close();
+			createShiftTemp.close();
+			updateShiftTemp.close();
+			deleteShiftTemp.close();
+			createShiftPos.close();
+			deleteMultiShiftPos.close();
+			conn.setAvailable(true);
+			}
+		catch (SQLException e)
+			{
+			try
+				{
+				conn.getConnection().rollback();
+				conn.getConnection().setAutoCommit(true);
+				}
+			catch (SQLException e1)
+				{
+				throw new DBException("Failed to rollback connection.",e1);
+				}
+			conn.setAvailable(true);
+			throw new DBException("Failed to get schedule templates.", e);
+			}
+		
+		return true;
 		}
 	
 	/**
@@ -541,4 +719,62 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 		return true;
 		}
 	
+	/**
+	 * Inserts the given shift template, using the given connection, resultSet,
+	 * and schedule ID.
+	 * 
+	 * @param shiftTemp The shift template to insert into the database.
+	 * @param createShiftTemp The resultSet defining the insert for a shift template.
+	 * @param createShiftPos The resultSet defining the insert for a shift position.
+	 * @param schedTempID The ID number of the schedule the shift belongs to
+	 * @throws SQLException if there was an error with the insert statements.
+	 * @throws DBException if there was an error with executing the statements.
+	 */
+	private void insertShiftTemplate(ShiftTemplate shiftTemp, Integer schedTempID, 
+			PreparedStatement createShiftTemp, PreparedStatement createShiftPos) throws SQLException, DBException
+		{
+		//Add schedule template ID before insert.
+		shiftTemp.setSchedTempID(schedTempID);
+		
+		//Attempt to insert shift template.
+		createShiftTemp.setInt(1, shiftTemp.getSchedTempID());
+		createShiftTemp.setInt(2, shiftTemp.getDay());
+		createShiftTemp.setTime(3, shiftTemp.getStartTime());
+		createShiftTemp.setTime(4, shiftTemp.getEndTime());
+		if (createShiftTemp.executeUpdate() != 1)
+			throw new DBException("Failed to insert shift template");
+		
+		//Save the auto-generated shift template ID.
+		ResultSet temp = createShiftTemp.getGeneratedKeys();
+		if (temp.next())
+			shiftTemp.setShiftTempID(temp.getInt(1));
+		
+		//Insert each shift position.
+		insertShiftPositions(shiftTemp.getShiftPositions().toArray(), shiftTemp.getShiftTempID(), createShiftPos);
+		}
+	
+	/**
+	 * Attempts to insert an array of shift positions into the database.
+	 * 
+	 * @param shiftPosArr The array to insert.
+	 * @param shiftTempID The shift template ID to use for all shift positions.
+	 * @param createShiftPos The prepared statement used to execute the inserts.
+	 */
+	private void insertShiftPositions(ShiftPosition[] shiftPosArr, Integer shiftTempID,
+			PreparedStatement createShiftPos) throws DBException, SQLException
+		{
+		for (ShiftPosition shiftPos : shiftPosArr)
+			{
+			//Add shift template ID before insert.
+			shiftPos.setShiftTempID(shiftTempID);
+			
+			//Attempt to insert shift position.
+			createShiftPos.setInt(1, shiftPos.getShiftTempID());
+			createShiftPos.setString(2, shiftPos.getPosName());
+			createShiftPos.setInt(3, shiftPos.getPosCount());
+			if (createShiftPos.executeUpdate() != 1)
+				throw new DBException("Failed to insert shift position");
+			}
+		
+		}
 	}
