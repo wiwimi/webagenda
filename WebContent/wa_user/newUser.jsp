@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="persistence.LocationBroker" %>
 <%@ page import="business.schedule.Location" %>
-<%@ page import="persistence.SkillBroker" %>
-<%@ page import="business.Skill" %>
 <%@ page import="business.schedule.Position" %>
 <%@ page import="persistence.PositionBroker" %>
 <%@ page import="business.Employee" %>
@@ -80,7 +78,7 @@
 							<script type="text/javascript">
 								$(function()
 								    {
-										$.flashMessenger("A problem had occured while creating the user.",
+										$.flashMessenger("A problem had occured while creating the user. Make sure the ID is unique",
 								        {
 											   modal:true,
 							    		       clsName:"err", 
@@ -126,20 +124,52 @@
 							<input type="button" name="submit" class="button" value="Search" onClick="location.href='userSearchResults.jsp?familyName='+ form.familyName.value + '&empId=' + form.empId.value + '&givenName=' + form.givenName.value + '&user=' + form.user.value + '&email=' + form.email.value">
 							<input type="reset" name="clear" class="button" value="Clear Screen">
 						</div>
+				<%
+				 	String givenName = "", familyName ="", dob ="" , username ="", email="", password ="", empId="";
+					if(request.getParameter("givenName")!=null)
+					{
+						givenName = request.getParameter("givenName");
+					}
+					if(request.getParameter("familyName")!=null)
+					{
+						familyName = request.getParameter("familyName");
+					}
+					if(request.getParameter("email")!=null)
+					{
+					    email = request.getParameter("email");
+					}
+					if(request.getParameter("password")!=null)
+					{
+						password = request.getParameter("password");
+					}
+					if(request.getParameter("dob")!=null)
+					{
+						dob = request.getParameter("dob");
+					}
+					if(request.getParameter("empId")!=null)
+					{
+						empId = request.getParameter("empId");
+					}
+					if(request.getParameter("username")!=null)
+					{
+						username = request.getParameter("username");
+					}
+				
+				%>
 				<fieldset>
 					<legend > Personal </legend>
-						<p>	<label class ="label"> Given Name:  <em class="asterisk"> * </em> </label> <input type="text" name="givenName" class="required" size="30" maxLength="30" value=""/> </p>
-						<p>	<label class ="label"> Family Name: <em class="asterisk"> * </em> </label> <input type="text" name="familyName" class="required" size="30" maxLength="30" value=""/> </p>
-						<p>	<label class ="label"> Date of Birth: </label> <input type="text" name ="dob" id="dob" size ="10" value=""/></p>
-						<p>	<label class ="label"> Username: <em class="asterisk"> * </em> </label> <input type="text" name ="user" id="user"  class="required"  size ="30" value=""/></p>
+						<p>	<label class ="label"> Given Name:  <em class="asterisk"> * </em> </label> <input type="text" name="givenName" class="required" size="30" maxLength="30" value="<%=givenName%>"/> </p>
+						<p>	<label class ="label"> Family Name: <em class="asterisk"> * </em> </label> <input type="text" name="familyName" class="required" size="30" maxLength="30" value="<%=familyName%>"/> </p>
+						<p>	<label class ="label"> Date of Birth: </label> <input type="text" name ="dob" id="dob" size ="10" value="<%=dob%>"/></p>
+						<p>	<label class ="label"> Username: <em class="asterisk"> * </em> </label> <input type="text" name ="user" id="user"  class="required"  size ="30" value="<%=username%>"/></p>
 	                    <p>
 					         <label for="cemail" class="label"> E-Mail:</label>
-				             <input type="text" id="cemail" name="email" size="30" value=""/>
+				             <input type="text" id="cemail" name="email" size="30" value="<%=email%>"/>
 				        </p>
 				        
 				        <p>
 				        	<label class="label" >Generate Password: <em class="asterisk"> * </em> </label>
-				        	<input type="text" class="required" name="password" id ="pwd" size="20"/>
+				        	<input type="text" class="required" name="password" id ="pwd" size="20" value="<%=password%>"/>
 				        	
 				        	
 					   </p>
@@ -158,13 +188,13 @@
 						<!--This should be populated from the database -->
 					    <p>
 							<label id="theSelect" class="theSelect" for="empId">Employee Id: <em class="asterisk"> * </em> </label>
-							<input type="text" size="30" name="empId" class="required" maxLength="30" />
+							<input type="text" size="30" name="empId" class="required" maxLength="30" value="<%=empId%>"/>
 						</p>
 						
 						<!--This should be populated from the database -->
 					    <p>
 							<label id="theSelect" class="theSelect" for="supervisorId">Supervisor Id:</label>
-							<input type="text" size="30" disabled="disabled" value="Edit Supervisor Id" maxLength="30" value=""/>
+							<input type="text" size="30" disabled="disabled" value="Edit supervisor Id" maxLength="30" value=""/>
 							<input id="empIdButton" id="supIdButton" type="button" name="submit" class="button" value="Edit"/>
 						</p>
 					
@@ -187,21 +217,14 @@
 					    </p>
 					    </div>
 						
-						<!--This should be populated from MaintainSkills use case -->
-					 	<div id="skillsButton">
-						<p>
-							<label id="theSelect" class="theSelect"> Preferred Skills: </label>	
-							<input id="prefSkillsBox" type="text" size="30" maxlength="30" disabled="disabled" value="Edit skills" name="prefSkillsBox" />
-							<input type="button" name="submit" class="button" value="Edit"/>
-						</p>
-						</div>
-		
 						<!--This should be populated from MaintainPermission use case -->
+						<div id="permButton">
 						<p>
 							<label id="theSelect" class="theSelect"> Permission level: </label>  
-							<input id="permissionBox" type="text" size="30" maxlength="30" value="" name="permissionBox" />
-							   <input type="button" id="perButton" name="submit" class="button" value="edit"/>
+							<input id="permissionBox" type="text" size="30" maxlength="30" value="Edit permission level" disabled ="disabled" name="permissionBox" />
+							   <input type="button" name="submit" class="button" value="Edit"/>
 						</p>
+						</div>
 					</fieldset>
 					</div>
 					<div id="formButtons">
@@ -247,10 +270,10 @@
 								%>
 										<tr>
 											<td>
-												<a href="addLocation.jsp"><div id="locationImage"> <b> <%=locArray[index].getName()%> </b></div></a>
+												<div id="locationImage"> <b> <%=locArray[index].getName()%> </b></div>
 											</td>
 											<td>
-												<input type="radio" name="loc"> 
+												<input type="radio" name="loc" value="<%=locArray[index].getName()%>"> 
 											</td>
 										</tr>
 								<% 
@@ -262,56 +285,6 @@
 			</div> <!-- End Table Area -->
 			</div>
 			
-			<div id="skillsPopup">
-				<a id="popupContactClose2">x</a>
-				<h1>Skills</h1>
-				<div id="instructions">
-						Closing the screen saves the selected items.
-				</div>
-				<div id="tableArea">
-					<div class="userAdmin">
-						<table class="sortable" id="userTable">
-							<thead class="head">
-								<tr class="headerRow">
-									<th>Name</th>
-									<td> <input type="checkbox" name="option"> </td>
-								</tr>
-							</thead>
-					
-							<tfoot class="foot">
-								<tr class="headerRow">
-									<th>Name</th>
-									<td> <input type="checkbox" name="option"> </td>
-								</tr>
-							</tfoot>
-							<tbody>
-								<% 
-									SkillBroker skBroker = SkillBroker.getBroker();
-									Skill skill = new Skill("");
-									Skill[] skillArray = skBroker.get(skill, user);
-									
-									for(int index = 0; index <skillArray.length; index++)
-									{
-								%>
-									<tr>
-									   <td>
-													
-											<a href="newSkill.jsp?=<%=skillArray[index].getName()%>"> <b> <%=skillArray[index].getName()%> </b></a>
-										
-										</td>
-										<td>
-												<input type="checkbox" name="skill"> 
-										</td>
-									</tr>
-								<% 
-									}
-								%>			
-										
-							</tbody>
-						</table>
-				   </div>
-			</div> <!-- End Table Area -->
-			</div>
 			
 			<div id="idPopup">
 			<a id="idPopupClose">x</a>
@@ -350,10 +323,10 @@
 							{
 							%>
 										<tr>
-											<td><a href="updateUserProfile.jsp"><div id="profileImage"> <b> <%= empArray[index].getEmpID() %> </b></div></a></td>
-											<td><a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getFamilyName() %></a></td>
-											<td><a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getGivenName() %></a></td>
-											<td> <input type="radio" name="supId"> </td>
+											<td><div id="profileImage"> <b> <%= empArray[index].getEmpID() %> </b></div></td>
+											<td><%= empArray[index].getFamilyName() %></td>
+											<td><%= empArray[index].getGivenName() %></td>
+											<td> <input type="radio" name="supId" value="<%= empArray[index].getEmpID() %>"> </td>
 										</tr>
 							<% 
 								}
@@ -396,14 +369,8 @@
 										{
 									%>
 										<tr>
-										   <td>
-														
-												<a href="newPosition.jsp?=<%=posArray[index].getName()%>"> <b> <%=posArray[index].getName()%> </b></a>
-											
-											</td>
-											<td>
-													<input type="radio" name="pos" value=""> 
-											</td>
+										   <td> <b> <%=posArray[index].getName()%> </b> </td>
+											<td><input type="radio" name="pos" value="<%=posArray[index].getName()%>"> </td>
 										</tr>
 									<% 
 										}
@@ -413,9 +380,75 @@
 					</div> <!-- End User Admin div -->
 				</div> <!-- End Table Area -->
 			</div> <!-- End positionsPopup div -->
+			
+			<div id="permPopup">
+					<a id="permPopupClose">x</a>
+					<h1>Permissions</h1>
+					<div id="instructions">
+							Closing the screen saves the selected items.
+					</div>
+					<div id="tableArea">
+						<div class="userAdmin">
+							<table class="sortable" id="userTable">
+								<thead class="head">
+									<tr class="headerRow">
+										<th>Name</th>
+										<td> <input type="checkbox" name="option"> </td>
+									</tr>
+								</thead>
+						
+								<tfoot class="foot">
+									<tr class="headerRow">
+										<th>Name</th>
+										<td> <input type="checkbox" name="option"> </td>
+									</tr>
+								</tfoot>
+								<tbody>
+									<% 
+										PermissionBroker permBroker = PermissionBroker.getBroker();
+										int level = user.getLevel();
+										PermissionLevel[] permArray = permBroker.getAllBelow(level);
+									%>
+										<tr>
+										   	<% if (permArray!=null)
+										   	{
+										   		for(int index = 0; index <permArray.length; index++)
+												{
+										   	%>
+										   			<td>
+														<b> <%=permArray[index].getLevel()%> </b>
+													</td>
+													<td>
+														<input type="checkbox" name="perm" value="<%=permArray[index].getLevel()%>"> 
+													</td>
+										   		
+											<%
+												}
+										   	}
+										   	else
+										   	{
+										   	%>
+										   		<td>
+													No permissions accessible.
+												</td>
+											<%
+										   	}
+											%>
+										</tr>
+									<% 
+										//}
+									%>			
+											
+								</tbody>
+							</table>
+					   </div>
+				</div> <!-- End Table Area -->
+			</div>
+			
+		
 <div id="backgroundPopup"></div>
 			</form>
-		</div>
+		</div> <!-- End Creation Form -->
 	</div>
 </div>
 <div id="footer"></div>

@@ -97,6 +97,10 @@
 								locDesc = locDesc.trim();
 							}
 						}
+						else if (locDesc == null)
+						{
+							locDesc ="";
+						}
 						Location oldLoc = new Location(locName);
 						session.setAttribute("oldLoc",oldLoc);
 					 %>

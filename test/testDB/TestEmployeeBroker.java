@@ -16,6 +16,8 @@ import exception.InvalidPermissionException;
 import exception.PermissionViolationException;
 import persistence.EmployeeBroker;
 import business.Employee;
+import business.permissions.PermissionBroker;
+import business.permissions.PermissionLevel;
 
 /**
  * @author Daniel Wehr, Daniel Kettle
@@ -472,6 +474,36 @@ public class TestEmployeeBroker
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		}
+	
+	/**
+	 * Test method for {@link persistence.EmployeeBroker#update(business.Employee)}.
+	 */
+	@Test
+	public void testPermEmployee()
+		{
+		System.out.println("******************** Permission Level ********************");
+		
+		PermissionBroker permBroker = PermissionBroker.getBroker();
+		int level = user.getLevel();
+		System.out.println(level);
+		PermissionLevel[] permArray;
+		try {
+			permArray = permBroker.getAllBelow(level);
+			
+			for(int index = 0; index <permArray.length; index++)
+			{
+				System.out.println(permArray[index].getLevel());
+			}
+		} catch (DBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (DBDownException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+			
 		}
 	
 	/**

@@ -53,18 +53,17 @@ public class AddUser extends HttpServlet {
 		       
 				//String[] pos_skills = request.getParameterValues("skill");
 				//String status =  request.getParameter("status");
-				//String pos = request.getParameter("pos");
-				//String email=request.getParameter("email");
+				String pos = request.getParameter("pos");
+				String email=request.getParameter("email");
 				String username = request.getParameter("user");
 				String dob = request.getParameter("dob");
 				
 				//String permLevel = request.getParameter("permLevel");
-				//String location= request.getParameter("location");
+				String loc= request.getParameter("loc");
 				String empId = request.getParameter("empId");
-				//String supId = request.getParameter("supId");
+				String supId = request.getParameter("supId");
 				
 				int empIdInt = Integer.parseInt(empId);
-				//int supIdInt = Integer.parseInt(supId);
 				
 				try 
 				{
@@ -80,12 +79,34 @@ public class AddUser extends HttpServlet {
 						sqlBirthDate = java.sql.Date.valueOf(revDob);
 						emp.setBirthDate(sqlBirthDate);
 				    }
+					if(!email.equals(null) && !email.equals(""))
+					{
+						emp.setEmail(email);
+					}
+					
+					if(supId!=null)
+					{
+						int supIdInt = Integer.parseInt(supId);
+						emp.setSupervisorID(supIdInt);
+						
+					}
+					if(pos!=null)
+					{
+						emp.setPrefPosition(pos);
+					}
+					if(loc!=null)
+					{
+						emp.setPrefLocation(loc);
+					}
+					
 					success = empBroker.create(emp, user);
 					
 					if (success)
 					{
 						//Confirm that the user was added
-						response.sendRedirect("wa_user/newUser.jsp?message=true");
+						response.sendRedirect("wa_user/newUser.jsp?message=true&familyName=" + familyName +"&givenName=" + givenName
+								+ "&username=" + username +  "&email=" + email + "&password=" + password
+								+ "&dob=" + dob + "&empId=" + empId);
 					}
 				}
 				catch (DBException e) 

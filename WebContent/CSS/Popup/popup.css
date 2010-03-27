@@ -13,7 +13,7 @@
 	z-index:1;
 }
 
-#locationsPopup, #skillsPopup,  #positionsPopup, #idPopup{
+#locationsPopup, #skillsPopup,  #positionsPopup, #idPopup, #permPopup{
 	display:none;
 	position:relative;
 	_position:absolute; /* hack for internet explorer 6*/
@@ -23,7 +23,7 @@
 	z-index:2;
 	padding:12px;
 }
-#locationsPopup h1, #skillsPopup h1,  #positionsPopup h1{
+#locationsPopup h1, #skillsPopup h1,  #positionsPopup h1, #permPopup h1{
 	text-align:left;
 	color:	#505050 ;
 	font-size:200%;
@@ -32,7 +32,7 @@
 	padding-bottom:2px;
 	margin-bottom:20px;
 }
-#locationsPopup input.button, #skillsPopup input.button, #positionsPopup input.button, #idPopup input.button{
+#locationsPopup input.button, #skillsPopup input.button, #positionsPopup input.button, #idPopup input.button, #permPopup input.button{
      font-family: cochin, Verdana, georgia, Times, helvetica,sans-serif;
 	  font-size:100%;
 	  color:black;
@@ -47,14 +47,14 @@
 	  float:right;
 	  
 }
-	#popupContactClose, #popupContactClose2, #posPopupClose, #idPopupClose
-	{
-		font-size:100%;
-		line-height:14px;
-		right:6px;
-		top:4px;
-		position:absolute;
-		color:#6fa5fd;
-		font-weight:700;
-		display:block;
-	}
+#popupContactClose, #popupContactClose2, #posPopupClose, #idPopupClose, #permPopupClose
+{
+	font-size:100%;
+	line-height:14px;
+	right:6px;
+	top:4px;
+	position:absolute;
+	color:#6fa5fd;
+	font-weight:700;
+	display:block;
+}
