@@ -12,7 +12,7 @@ import business.BusinessObject;
  * @author Daniel Wehr
  * @version 0.1.0
  */
-public class ScheduleTemplate extends BusinessObject
+public class ScheduleTemplate extends BusinessObject implements Cloneable
 	{
 	/**
 	 * The internal DB ID of the schedule template.  This is for broker use only.
@@ -102,6 +102,30 @@ public class ScheduleTemplate extends BusinessObject
 		return shiftTemplates;
 		}
 	
-	
-	
+	/**
+	 * @param shiftTemplates the shiftTemplates to set
+	 */
+	public void setShiftTemplates(DoubleLinkedList<ShiftTemplate> shiftTemplates)
+		{
+		this.shiftTemplates = shiftTemplates;
+		}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#clone()
+	 */
+	@Override
+	public ScheduleTemplate clone()
+		{
+		ScheduleTemplate clone = (ScheduleTemplate)super.clone();
+		try
+			{
+			clone.shiftTemplates = (DoubleLinkedList<ShiftTemplate>)shiftTemplates.clone();
+			}
+		catch (CloneNotSupportedException e)
+			{
+			//This should never happen.
+			throw new InternalError(e.toString());
+			}
+		return clone;
+		}
 	}

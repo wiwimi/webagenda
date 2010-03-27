@@ -13,7 +13,7 @@ import business.BusinessObject;
  * @author Daniel Wehr
  * @version 0.1.0
  */
-public class ShiftTemplate extends BusinessObject implements Comparable<ShiftTemplate>
+public class ShiftTemplate extends BusinessObject implements Comparable<ShiftTemplate>, Cloneable
 	{
 	/**
 	 * The internal DB ID of the shift template.  This is for broker use only.
@@ -162,6 +162,14 @@ public class ShiftTemplate extends BusinessObject implements Comparable<ShiftTem
 		{
 		return shiftPositions;
 		}
+	
+	/**
+	 * @param shiftPositions the shiftPositions to set
+	 */
+	public void setShiftPositions(DoubleLinkedList<ShiftPosition> shiftPositions)
+		{
+		this.shiftPositions = shiftPositions;
+		}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Comparable#compareTo(java.lang.Object)
@@ -177,6 +185,25 @@ public class ShiftTemplate extends BusinessObject implements Comparable<ShiftTem
 		return 0;
 		}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#clone()
+	 */
+	@Override
+	public ShiftTemplate clone()
+		{
+		ShiftTemplate clone = (ShiftTemplate)super.clone();
+		try
+			{
+			clone.setShiftPositions((DoubleLinkedList<ShiftPosition>)shiftPositions.clone());
+			}
+		catch (CloneNotSupportedException e)
+			{
+			//This should never happen.
+			throw new InternalError(e.toString());
+			}
+		return clone;
+		}
+
 	@Override
 	public String toString()
 		{

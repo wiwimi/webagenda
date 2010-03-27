@@ -6,6 +6,7 @@ package testDB;
 import static org.junit.Assert.*;
 
 import java.sql.Time;
+import javax.persistence.Persistence;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -50,13 +51,12 @@ public class TestScheduleTemplateBroker
 		}
 	
 	/**
-	 * Test method for {@link persistence.ScheduleTemplateBroker#create(ScheduleTemplate, Employee)}
-	 * and {@link persistence.ScheduleTemplateBroker#delete(ScheduleTemplate, Employee)}.
+	 * Test method for {@link persistence.ScheduleTemplateBroker#create(ScheduleTemplate, Employee)}.
 	 */
 	@Test
 	public void testCreateDeleteScheduleTemplate()
 		{
-		System.out.println("---------- START TEST CREATE DELETE ----------");
+		System.out.println("---------- START TEST CREATE ----------");
 		//Create a test schedule template to be created and deleted.
 		ShiftPosition shiftPos1 = new ShiftPosition();
 		shiftPos1.setPosName("Cook");
@@ -105,6 +105,26 @@ public class TestScheduleTemplateBroker
 			fail();
 			}
 		System.out.println("---------- END TEST CREATE DELETE ----------");
+		}
+	
+	/**
+	 * Test method for {@link persistence.ScheduleTemplateBroker#update(ScheduleTemplate, ScheduleTemplate, Employee)}.
+	 * This will fail if the create was not successful.
+	 */
+	public void testUpdateScheduleTemplate()
+		{
+		System.out.println("---------- START TEST UPDATE ----------");
+		System.out.println("---------- END TEST UPDATE ----------");
+		}
+	
+	/**
+	 * Test method for {@link persistence.ScheduleTemplateBroker#delete(ScheduleTemplate, Employee)}.
+	 * This will fail if the create was not successful.
+	 */
+	public void testDeleteScheduleTemplate()
+		{
+		System.out.println("---------- START TEST UPDATE ----------");
+		System.out.println("---------- END TEST UPDATE ----------");
 		}
 	
 	/**

@@ -11,7 +11,7 @@ import business.BusinessObject;
  * @author Daniel Wehr
  * @version 0.1.0
  */
-public class ShiftPosition extends BusinessObject implements Comparable<ShiftPosition>
+public class ShiftPosition extends BusinessObject implements Comparable<ShiftPosition>, Cloneable
 	{
 	/**
 	 * The internal DB ID of the shift template that the shift position belongs
@@ -108,6 +108,15 @@ public class ShiftPosition extends BusinessObject implements Comparable<ShiftPos
 		return 0;
 		}
 	
+	/* (non-Javadoc)
+	 * @see business.BusinessObject#clone()
+	 */
+	@Override
+	public ShiftPosition clone()
+		{
+		return (ShiftPosition)super.clone();
+		}
+
 	@Override
 	public String toString()
 		{

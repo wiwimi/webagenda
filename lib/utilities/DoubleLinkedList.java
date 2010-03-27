@@ -14,7 +14,7 @@ import java.util.NoSuchElementException;
  * @author peon-dev
  *
  */
-public class DoubleLinkedList<E> implements List<E> {
+public class DoubleLinkedList<E> implements List<E>, Cloneable {
 
 	/**
 	 * 
@@ -356,6 +356,24 @@ public class DoubleLinkedList<E> implements List<E> {
 		return array;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#clone()
+	 */
+	@Override
+	public DoubleLinkedList<E> clone() throws CloneNotSupportedException
+		{
+		E[] elements = this.toArray();
+		
+		DoubleLinkedList<E> clone = (DoubleLinkedList<E>)super.clone();
+		clone.clear();
+		
+		for (E element : elements)
+			clone.add(element);
+		
+		// TODO Auto-generated method stub
+		return clone;
+		}
+
 	public class DLLIterator implements Iterator<E> {
 
 		DLLNode dll_current = head;
