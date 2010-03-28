@@ -97,7 +97,7 @@
 			<div id="formButtons">
 						<input type="submit" name="submit" class="button" value="Update"> 
 						<input type="button" name="submit" class="button" value="Search" onClick="location.href='skillSearchResults.jsp?skillName=' + form.skillName.value + '&skillDesc=' + form.skillDesc.value;"> 
-						<input type="reset" name="clear" class="button" value="Clear Screen"> 
+						<input type="reset" name="clear" class="button" value="Clear Screen" onClick="location.href='updateSkill.jsp?skillName=&skillDesc='">  
 						<br></br>
 			</div>
 				 <fieldset>
@@ -113,17 +113,16 @@
 						session.setAttribute("oldSkill",oldSkill);
                    %>
 					
-							<p>	<label class="label"> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="skillName" class="required" value="<%=skillName%>" size ="30"/> </p>
-							<p>	<label class="label"> Description: </label></p>
-							<textarea  name="skillDesc" cols="23" rows="6" tabindex="101"> <%=skillDesc%> </textarea>
+						<p>	<label class="label"> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="skillName" class="required" value="<%=skillName%>" size ="30"/> </p>
+						<p>	<label class="label"> Description: </label></p>
+						<textarea  name="skillDesc" cols="23" rows="6" tabindex="101"> <%=skillDesc%> </textarea>
 				</fieldset>
 			
 				</div>
 					<div id="searchArea">
 							<input type="submit" name="submit" class="button" value="Update"> 
 							<input type="button" name="submit" class="button" value="Search" onClick="location.href='skillSearchResults.jsp?skillName=' + form.skillName.value + '&skillDesc=' + form.skillDesc.value;">
-							<input type="reset" name="clear" class="button" value="Clear Screen"> 
-							<br></br>
+							<input type="reset" name="clear" class="button" value="Clear Screen" onClick="location.href='updateSkill.jsp?skillName=&skillDesc='">  
 					</div>
 			</form>
 		</div>

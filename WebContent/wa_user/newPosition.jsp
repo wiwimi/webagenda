@@ -115,12 +115,23 @@
 					<div id="formButtons">
 						<input type="submit" name="submit" class="button" value="Add"> 
 						<input type="button" name="submit" class="button" value="Search" onClick="location.href='posSearchResults.jsp?posName=' + form.posName.value + '&posDesc=' + form.posDesc.value"> 
-						<input type="reset" name="clear" class="button" value="Clear Screen"> 
-						<br></br>
+						<input type="reset" name="clear" class="button" value="Clear Screen" onClick="location.href='newPostion.jsp?posName=&posDesc='"> 
 					</div>
+					
+					<%
+						String posName = "", posDesc ="";
+					
+					if (request.getParameter("posDesc")!=null)
+						posDesc = request.getParameter("posDesc");
+					
+					if (request.getParameter("posName")!=null)
+						posName = request.getParameter("posName");
+					
+					
+					%>
 					<fieldset>
 						<legend > Position Details </legend>
-							<p>	<label class="label"> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="posName" class="required" size ="30"/> </p>
+							<p>	<label class="label"> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="posName" class="required" size ="30"/ value="<%=posName %>"> </p>
 								
 								<!--This should be populated from MaintainSkills use case -->
 							 	
@@ -132,12 +143,12 @@
 									</p>
 								</div>	
 							<p>	<label class="label"> Description: </label></p>
-							<textarea  name="posDesc" cols="23" rows="6" tabindex="101" ></textarea>
+							<textarea  name="posDesc" cols="23" rows="6" tabindex="101" > <%=posDesc %> </textarea>
 					</fieldset>
 					<div id="formButtons">
 							<input type="submit" name="submit" class="button" value="Add"> 
 							<input type="button" name="submit" class="button" value="Search" onClick="location.href='posSearchResults.jsp?posName=' + form.posName.value + '&posDesc=' + form.posDesc.value"> 
-							<input type="reset" name="clear" class="button" value="Clear Screen"> 
+		 					<input type="reset" name="clear" class="button" value="Clear Screen" onClick="location.href='newPostion.jsp?posName=&posDesc='"> 
 				      </div>
 				 </div>
 				 

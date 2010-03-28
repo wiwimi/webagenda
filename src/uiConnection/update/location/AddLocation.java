@@ -36,7 +36,7 @@ public class AddLocation extends HttpServlet {
 		        HttpSession session = request.getSession();
 		        PrintWriter out = response.getWriter();
 		        String locName = request.getParameter("locName");
-				String desc = request.getParameter("locDesc");	
+				String locDesc = request.getParameter("locDesc");	
 				boolean success;
 				LocationBroker broker = null;
 				
@@ -45,7 +45,7 @@ public class AddLocation extends HttpServlet {
 						broker = LocationBroker.getBroker();
 						broker.initConnectionThread();
 						
-						Location loc = new Location(locName, desc);
+						Location loc = new Location(locName, locDesc);
 						Employee user = (Employee)session.getAttribute("currentEmployee");
 						
 						success = broker.create(loc, user);
@@ -53,25 +53,25 @@ public class AddLocation extends HttpServlet {
 					if (success)
 					{
 						//Confirm that the location was added
-						response.sendRedirect("wa_location/newLocation.jsp?message=true&locName=&locDesc=");
+						response.sendRedirect("wa_location/newLocation.jsp?message=true&locName=" + locName+ "&locDesc=" + locDesc);
 					}
 				}
 				catch (DBException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					// Failed to add the location
-					response.sendRedirect("wa_location/newLocation.jsp?message=false&locName=&locDesc=");
+					response.sendRedirect("wa_location/newLocation.jsp?message=false&locName=" + locName+ "&locDesc=" + locDesc);
 					
 				} catch (DBDownException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					// Failed to add the location
-					response.sendRedirect("wa_location/newLocation.jsp?message=false&locName=&locDesc=");
+					response.sendRedirect("wa_location/newLocation.jsp?message=false&locName=locName=" + locName+ "&locDesc=" + locDesc);
 				}
 				catch(Exception e)
 				{
 					// Failed to add the location
-					response.sendRedirect("wa_location/newLocation.jsp?message=false&locName=&locDesc=");
+					response.sendRedirect("wa_location/newLocation.jsp?message=false&locName=locName=" + locName+ "&locDesc=" + locDesc);
 				}
 				finally
 				{

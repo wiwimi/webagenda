@@ -122,7 +122,7 @@
 					 	<div id="formButtons">
 					 	    <input type="submit" name="submit" class="button" value="Add"> 
 							<input type="button" name="submit" class="button" value="Search" onClick="location.href='userSearchResults.jsp?familyName='+ form.familyName.value + '&empId=' + form.empId.value + '&givenName=' + form.givenName.value + '&user=' + form.user.value + '&status=' + form.status.value + '&email=' + form.email.value">
-							<input type="reset" name="clear" class="button" value="Clear Screen">
+							<input type="reset" name="clear" class="button" value="Clear Screen" onClick="location.href='newUser.jsp?empId=& familyName=&status=&username=&dob=">
 						</div>
 				<%
 				 	String givenName = "", familyName ="", dob ="" , username ="", email="", password ="", empId="";
@@ -230,7 +230,7 @@
 					<div id="formButtons">
 							<input type="submit" name="submit" class="button" value="Add">
 							<input type="button" name="submit" class="button" value="Search" onClick="location.href='userSearchResults.jsp?empId='+ form.empId.value + '& familyName=' + form.familyName.value + '&status='+ form.status.value + '&username=' + form.user.value + '&dob='+ form.dob.value">
-							<input type="reset" name="clear" class="button" value="Clear Screen"> 
+							<input type="reset" name="clear" class="button" value="Clear Screen" onClick="location.href='newUser.jsp?empId=& familyName=&status=&username=&dob="> 
 					</div>
 					
 					

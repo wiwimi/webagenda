@@ -86,7 +86,7 @@
 			
 			<div id="searchArea">
 			<form id="form">
-					<input type="text" size=30 name="randomSearch">
+					<input type="text" size=30 name="randomSearch" value=""/>
 					<input type="button" name="submit"  class="button" value="Search" onClick="location.href='userSearchResults.jsp?randomSearch=' + form.randomSearch.value">
 			</form>
 			</div>
@@ -172,7 +172,70 @@
 									
 								}
 							}
-						    else
+						     //System.out.println(request.getParameter("randomSearch"));
+							if(request.getParameter("randomSearch")!=null)
+							{
+								emp= new Employee();
+								if((!request.getParameter("randomSearch").equals("")))
+								{
+											String randomSearch = request.getParameter("randomSearch");
+											
+											for (int i = 0; i < randomSearch.length(); i++) 
+											{
+										           if(Character.isDigit(randomSearch.charAt(i)))
+										           {
+										        	   // Search by ID since it is a digits field
+										        	   int empInteger = Integer.parseInt(request.getParameter("randomSearch"));
+													   emp.setEmpID(empInteger);
+													   empArray = broker.get(emp, user);
+													   
+										           }
+										           else
+												   {
+														emp.setFamilyName("randomSearch");
+														Employee [] familyNameArray = broker.get(emp, user);
+														
+														emp.setGivenName("randomSearch");
+														Employee [] givenNameArray = broker.get(emp, user);
+														
+														emp.setUsername("randomSearch");
+														Employee [] usernameArray = broker.get(emp, user);
+														
+														emp.setEmail("randomSearch");
+														Employee [] emailArray = broker.get(emp, user);
+														
+														
+														if(familyNameArray!=null && givenNameArray!=null)
+														{
+															int strlength = familyNameArray.length + givenNameArray.length;
+															
+															empArray = new Employee[strlength];
+															System.arraycopy(familyNameArray, 0, empArray, 0, familyNameArray.length);
+															System.arraycopy(givenNameArray, 0, empArray, familyNameArray.length, givenNameArray.length);
+															
+														}
+														if (familyNameArray!=null)
+														{
+															empArray = familyNameArray;
+														}
+														if (givenNameArray!=null)
+														{
+															empArray = givenNameArray;
+														}
+														if (usernameArray!=null)
+														{
+															empArray = usernameArray;
+														}
+													}
+										     }
+									}
+									else if ((request.getParameter("randomSearch").equals("")))
+									{
+										emp.setActive(true);
+										empArray = broker.get(emp, user);
+									}
+								}
+							 else
 						    {
 						    	emp.setActive(true);
 								empArray = broker.get(emp, user);
@@ -199,8 +262,7 @@
 										<th>Family Name</th>
 										<th>Given Name</th>
 										<th>Position</th>
-										<th>Supervisor</th>
-										<th>Location</th>
+										<th>E-mail</th>
 							
 									</tr>
 								</thead>
@@ -212,8 +274,7 @@
 										<th>Family Name</th>
 										<th>Given Name</th>
 										<th>Position</th>
-										<th>Supervisor</th>
-										<th>Location</th>
+										<th>E-mail</th>
 									</tr>
 								</tfoot>
 								<tbody>
@@ -234,8 +295,7 @@
 										<td><a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= empArray[index].getFamilyName() %></a></td>
 										<td> <a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= empArray[index].getGivenName() %></a> </td>
 										<td> <a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= empArray[index].getPrefPosition() %></a> </td>
-										<td> <a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= empArray[index].getSupervisorID() %></a> </td>
-										<td> <a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= empArray[index].getPrefLocation() %></a> </td>
+										<td> <a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= empArray[index].getEmail() %></a> </td>
 								   </tr>
 							<% 
 								}

@@ -91,7 +91,7 @@ public class UpdateLocation extends HttpServlet {
 							+ "*"+ user.getUsername());
 					
 					// Failed to update the location
-					//response.sendRedirect("wa_location/updateLocation.jsp?update=false&locName=" + locName +"&locDesc=" + locDesc );
+					response.sendRedirect("wa_location/updateLocation.jsp?update=false&locName=" + locName +"&locDesc=" + locDesc );
 				}
 				finally
 				{

@@ -68,7 +68,7 @@ public class UpdateSkill extends HttpServlet {
 					e.printStackTrace();
 					
 					// Failed to update the location
-					response.sendRedirect("wa_user/updateSkill.jsp?update=false&skillName=&skillDesc=");
+					response.sendRedirect("wa_user/updateSkill.jsp?update=false&skillName=" + skillName + "&skillDesc=" + skillDesc);
 					
 				} catch (DBDownException e) {
 					
@@ -76,14 +76,14 @@ public class UpdateSkill extends HttpServlet {
 					e.printStackTrace();
 					
 					// Failed to update the location
-					response.sendRedirect("wa_user/updateSkill.jsp?update=false&skillName=&skillDesc=");
+					response.sendRedirect("wa_user/updateSkill.jsp?update=false&skillName=" + skillName + "&skillDesc=" + skillDesc);
 				}
 				catch(Exception e)
 				{
 					e.printStackTrace();
 					
 					// Failed to update the location
-					response.sendRedirect("wa_user/updateSkill.jsp?update=false&skillName=&skillDesc=");
+					response.sendRedirect("wa_user/updateSkill.jsp?update=false&skillName=" + skillName + "&skillDesc=" + skillDesc);
 				}
 				finally
 				{

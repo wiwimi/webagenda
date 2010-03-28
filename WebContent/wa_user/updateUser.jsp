@@ -122,7 +122,7 @@
 					 	<div id="formButtons">
 					 	    <input type="submit" name="submit" class="button" value="Update"> 
 							<input type="button" name="submit" class="button" value="Search" onClick="location.href='userSearchResults.jsp?familyName='+ form.familyName.value + '&empId=' + form.empId.value + '&givenName=' + form.givenName.value + '&user=' + form.user.value + '&status=' + form.status.value + '&email=' + form.email.value">
-							<input type="reset" name="clear" class="button" value="Clear Screen">
+							<input type="reset" name="clear" class="button" value="Clear Screen" onClick="location.href='updateUser.jsp?empId=&familyName=&status=&username=&dob='">
 						</div>
 				<%
 				 	String givenName = "", familyName ="", dob ="" , username ="", email="", password ="", empId="";
@@ -134,43 +134,46 @@
 					
 					if(request.getParameter("empId")!=null)
 					{
-						empId = request.getParameter("empId");
-						Employee searchEmp = new Employee();
-						int empIdInt = Integer.parseInt(empId);
-						searchEmp.setEmpID(empIdInt);
-						 
-						Employee[] results = empBroker.get(searchEmp, user);
-						
-						// Retrived the not null fields
-						givenName = results[0].getGivenName();
-						familyName = results[0].getFamilyName();
-						username = results[0].getUsername();
-						
-						//If these fields are not empty, store them
-						if (results[0].getBirthDate()!=null)
-							dob = results[0].getBirthDate().toString();
-						
-						if(results[0].getPrefPosition()!=null)
-							position = results[0].getPrefPosition();
-						
-						if (results[0].getEmail()!=null)
-							email = results[0].getEmail();
-						
-						if(results[0].getSupervisorID()!=-1)
+						if(!request.getParameter("empId").equals(""))
 						{
-							supIdInt = results[0].getSupervisorID();
-							//out.println(supIdInt);
+							empId = request.getParameter("empId");
+							Employee searchEmp = new Employee();
+							int empIdInt = Integer.parseInt(empId);
+							searchEmp.setEmpID(empIdInt);
+							 
+							Employee[] results = empBroker.get(searchEmp, user);
+							
+							// Retrived the not null fields
+							givenName = results[0].getGivenName();
+							familyName = results[0].getFamilyName();
+							username = results[0].getUsername();
+							
+							//If these fields are not empty, store them
+							if (results[0].getBirthDate()!=null)
+								dob = results[0].getBirthDate().toString();
+							
+							if(results[0].getPrefPosition()!=null)
+								position = results[0].getPrefPosition();
+							
+							if (results[0].getEmail()!=null)
+								email = results[0].getEmail();
+							
+							if(results[0].getSupervisorID()!=-1)
+							{
+								supIdInt = results[0].getSupervisorID();
+								//out.println(supIdInt);
+							}
+							
+							if(results[0].getPrefLocation()!=null)
+							{
+								location = results[0].getPrefLocation();
+							}
+							
+							Employee oldEmp = new Employee();
+							oldEmp.setEmpID(empIdInt);
+							
+							session.setAttribute("oldEmp", user);
 						}
-						
-						if(results[0].getPrefLocation()!=null)
-						{
-							location = results[0].getPrefLocation();
-						}
-						
-						Employee oldEmp = new Employee();
-						oldEmp.setEmpID(empIdInt);
-						
-						session.setAttribute("oldEmp", user);
 					}
 					
 				
@@ -185,11 +188,6 @@
 					         <label for="cemail" class="label"> E-Mail:</label>
 				             <input type="text" id="cemail" name="email" size="30" value="<%=email%>"/>
 				        </p>
-				        
-				        <p>
-				        	<label class="label" >Generate Password: <em class="asterisk"> * </em> </label>
-				        	<input type="text" class="required" name="password" id ="pwd" size="20" value="<%=password%>"/>
-				         </p>
 					</fieldset>
 				</div>
 				<div id="work">
@@ -247,7 +245,7 @@
 					<div id="formButtons">
 							<input type="submit" name="submit" class="button" value="Update">
 							<input type="button" name="submit" class="button" value="Search" onClick="location.href='userSearchResults.jsp?empId='+ form.empId.value + '& familyName=' + form.familyName.value + '&status='+ form.status.value + '&username=' + form.user.value + '&dob='+ form.dob.value">
-							<input type="reset" name="clear" class="button" value="Clear Screen"> 
+							<input type="reset" name="clear" class="button" value="Clear Screen" onClick="location.href='updateUser.jsp?empId=&familyName=&status=&username=&dob='">	
 					</div>
 					
 					<!-- The Pop up Screens -->

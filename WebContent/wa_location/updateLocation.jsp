@@ -107,7 +107,7 @@
 						<div id="formButtons">
 							<input type="submit" name="submit"  class="button" value="Update" > 
 							<input type="button" name="submit" class="button"  onClick="location.href='locSearchResults.jsp?locName=' + form.locName.value + '&locDesc=' + form.locDesc.value" value="Search" /> 
-							<input type="reset" name="clear" class="button" value="Clear Screen"> 
+							<input type="reset" name="clear" class="button" value="Clear Screen" onClick="location.href='updateLocation.jsp?locName=&locDesc='"> 
 						</div>
 				     <fieldset>
 					 <legend > Location Details </legend>
@@ -119,7 +119,7 @@
 						<div id="formButtons">
 					        <input type="submit" name="submit"  class="button" value="Update" > 
 							<input type="button" name="submit" class="button"  onClick="location.href='locSearchResults.jsp?locName=' + form.locName.value + '&locDesc=' + form.locDesc.value" value="Search" /> 
-							<input type="reset" name="clear" class="button" value="Clear Screen"> 
+							<input type="reset" name="clear" class="button" value="Clear Screen" onClick="location.href='newLocation.jsp?locName=&locDesc='"> 
 					     </div>
 				     </div>
 			    </form>

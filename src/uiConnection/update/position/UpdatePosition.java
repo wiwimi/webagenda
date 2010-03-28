@@ -72,7 +72,7 @@ public class UpdatePosition extends HttpServlet {
 					e.printStackTrace();
 					
 					// Failed to update the location
-					response.sendRedirect("wa_user/updatePosition.jsp?update=false&posName=&posDesc=");
+					response.sendRedirect("wa_user/updatePosition.jsp?update=false&posName=" + posName + "&posDesc" + posDesc);
 					
 				} catch (DBDownException e) {
 					
@@ -80,7 +80,7 @@ public class UpdatePosition extends HttpServlet {
 					e.printStackTrace();
 					
 					// Failed to update the location
-					response.sendRedirect("wa_user/updatePosition.jsp?update=false&posName=&posDesc=");
+					response.sendRedirect("wa_user/updatePosition.jsp?update=false&posName=" + posName + "&posDesc" + posDesc);
 				}
 				catch(Exception e)
 				{

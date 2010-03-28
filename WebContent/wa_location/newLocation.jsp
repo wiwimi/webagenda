@@ -89,25 +89,35 @@
 			<div class="widgetTitle" id="locationsWidgetTitle">Locations <div id="helpIcon"></div> </div>
 		</div>
 		<div class="widgetLowerRectangle" id="locationsLowerRectangle">
-
+		
+		<%
+			String locDesc="", locName="";
+			
+			if (request.getParameter("locDesc")!=null)
+				locDesc = request.getParameter("locDesc");
+			
+			if (request.getParameter("locName")!=null)
+				locName = request.getParameter("locName");
+		
+		%>
 		<div id ="creationForm">
 			<form class="addLocationForm" action="../AddLocation" id="form" name="form" method="POST">
 				<div id="location">
 					<div id="formButtons">
 						<input type="submit" name="submit"  class="button" value="Add" > 
 						<input type="button" name="submit" class="button"  onClick="location.href='locSearchResults.jsp?locName=' + form.locName.value + '&locDesc=' + form.locDesc.value" value="Search" > 
-						<input type="reset" name="clear" class="button" value="Clear Screen"> 
+						<input type="reset" name="clear" class="button" value="Clear Screen" onClick="location.href='newLocation.jsp?locName=&locDesc='"> 
 				    </div>
 				    <fieldset>
 						<legend > Location Details </legend>
-							<p>	<label class="label"> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="locName" class="required" size ="30" value=""/> </p>
+							<p>	<label class="label"> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="locName" class="required" size ="30" value="<%=locName%>"/> </p>
 							<p>	<label class="label"> Description: </label></p>
-							<textarea  name="locDesc" cols="23" rows="6" tabindex="101"> </textarea>
+							<textarea  name="locDesc" cols="23" rows="6" tabindex="101"> <%=locDesc%> </textarea>
 				    </fieldset>
 				    <div id="formButtons">
 						<input type="submit" name="submit"  class="button" value="Add" > 
 						<input type="button" name="submit" class="button"  onClick="location.href='locSearchResults.jsp?locName=' + form.locName.value + '&locDesc=' + form.locDesc.value" value="Search" > 
-						<input type="reset" name="clear" class="button" value="Clear Screen"> 
+						<input type="reset" name="clear" class="button" value="Clear Screen" onClick="location.href='newLocation.jsp?locName=&locDesc='"> 
 				   </div>
 			   </div>
 		   </form>

@@ -94,6 +94,18 @@
 			<form class="addSkillForm" action="../AddSkill" id="form" method="post">
 			<div id="skill">
 			
+				<%
+						String skillName = "", skillDesc ="";
+					
+					if (request.getParameter("skillDesc")!=null)
+						skillDesc = request.getParameter("skillDesc");
+					
+					if (request.getParameter("skillName")!=null)
+						skillName = request.getParameter("skillName");
+					
+					
+					%>
+			
 			<div id="formButtons">
 						<input type="submit" name="submit" class="button" value="Add"> 
 						<input type="button" name="submit" class="button" value="Search" onClick="location.href='skillSearchResults.jsp?skillName=' + form.skillName.value + '&skillDesc=' + form.skillDesc.value;"> 
@@ -103,9 +115,9 @@
 				 <fieldset>
 					<legend > Skill Details </legend>
 					
-							<p>	<label class="label"> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="skillName" class="required" size ="30"> </p>
+							<p>	<label class="label"> Name: <em class="asterisk"> * </em> </label> <input type="text"  name ="skillName" class="required" size ="30" value="<%=skillName %>"> </p>
 							<p>	<label class="label"> Description: </label></p>
-							<textarea  name="skillDesc" cols="23" rows="6" tabindex="101"></textarea>
+							<textarea  name="skillDesc" cols="23" rows="6" tabindex="101"> <%=skillDesc %></textarea>
 				</fieldset>
 			
 				</div>

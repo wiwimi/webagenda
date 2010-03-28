@@ -112,7 +112,7 @@ public class UpdateUser extends HttpServlet {
 					if (success)
 					{
 						//Confirm that the user was updated
-						response.sendRedirect("wa_user/newUser.jsp?message=true&familyName=" + familyName +"&givenName=" + givenName
+						response.sendRedirect("wa_user/updateUser.jsp?message=true&familyName=" + familyName +"&givenName=" + givenName
 								+ "&username=" + username +  "&email=" + email + "&password=" + password
 								+ "&dob=" + dob + "&empId=" + empId + "&status=" + newEmp.getActive());
 					}
@@ -129,7 +129,7 @@ public class UpdateUser extends HttpServlet {
 					//out.println(sqlBirthDate + " ");
 					
 					//Even if the user is not created, return the values to the form
-					response.sendRedirect("wa_user/newUser.jsp?message=false&familyName=" + familyName +"&givenName=" + givenName
+					response.sendRedirect("wa_user/updateUser.jsp?message=false&familyName=" + familyName +"&givenName=" + givenName
 							+ "&username=" + username +  "&email=" + email + "&password=" + password
 							+ "&dob=" + dob + "&empId=" + empId);
 				}
@@ -142,17 +142,17 @@ public class UpdateUser extends HttpServlet {
 					//out.println(empIdInt);
 					
 					//Even if the user is not created, return the values to the form
-					response.sendRedirect("wa_user/newUser.jsp?message=false&familyName=" + familyName +"&givenName=" + givenName
+					response.sendRedirect("wa_user/updateUser.jsp?message=false&familyName=" + familyName +"&givenName=" + givenName
 							+ "&username=" + username +  "&email=" + email + "&password=" + password
 							+ "&dob=" + dob + "&empId=" + empId);
 				}
 				catch (InvalidPermissionException  e)
 				{
 					e.printStackTrace();
-					//out.println("Invalid Permisi");
+					//out.println("Invalid Permission");
 					
 					//Even if the user is not created, return the values to the form
-					response.sendRedirect("wa_user/newUser.jsp?message=perm&familyName=" + familyName +"&givenName=" + givenName
+					response.sendRedirect("wa_user/updateUser.jsp?message=perm&familyName=" + familyName +"&givenName=" + givenName
 							+ "&username=" + username +  "&email=" + email + "&password=" + password
 							+ "&dob=" + dob + "&empId=" + empId);
 				}
@@ -161,7 +161,7 @@ public class UpdateUser extends HttpServlet {
 					e.printStackTrace();
 					//out.println("Perm Violation");
 					//Even if the user is not created, return the values to the form
-					response.sendRedirect("wa_user/newUser.jsp?message=perm&familyName=" + familyName +"&givenName=" + givenName
+					response.sendRedirect("wa_user/updateUser.jsp?message=perm&familyName=" + familyName +"&givenName=" + givenName
 							+ "&username=" + username +  "&email=" + email + "&password=" + password
 							+ "&dob=" + dob + "&empId=" + empId);
 				}

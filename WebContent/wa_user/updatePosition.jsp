@@ -103,7 +103,7 @@
 				<div id="formButtons">
 						<input type="submit" name="submit" class="button" value="Update"> 
 						<input type="button" name="submit" class="button" value="Search" onClick="location.href='posSearchResults.jsp?posName=' + form.posName.value + '&posDesc=' + form.posDesc.value"> 
-						<input type="reset" name="clear" class="button" value="Clear Screen"> 
+						<input type="reset" name="clear" class="button" value="Clear Screen" onClick="location.href='updatePostion.jsp?posName=&posDesc='"> 
 						<br></br>
 			</div>
 				<fieldset>
@@ -139,8 +139,7 @@
 						<div id="formButtons">
 						<input type="submit" name="submit" class="button" value="Update"> 
 						<input type="button" name="submit" class="button" value="Search" onClick="location.href='posSearchResults.jsp?posName=' + form.posName.value + '&posDesc=' + form.posDesc.value">
-						<input type="reset" name="clear" class="button" value="Clear Screen"> 
-						<br></br>
+						<input type="reset" name="clear" class="button" value="Clear Screen" onClick="location.href='updatePostion.jsp?posName=&posDesc='">  
 			          </div>
 				  </div>
 			<!--  Popup Section -->	 

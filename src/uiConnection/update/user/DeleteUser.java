@@ -59,25 +59,25 @@ public class DeleteUser extends HttpServlet {
 					if (success)
 					{
 						//Confirm that the user was deleted
-						response.sendRedirect("wa_user/userSearchResults.jsp?message=true&empId=" + empId);
+						response.sendRedirect("wa_user/userSearchResults.jsp?message=true&empId=");
 					}
 				}
 				catch (DBException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					// Failed to delete the user
-					response.sendRedirect("wa_user/userSearchResults.jsp?message=false&empId=" + empId);
+					response.sendRedirect("wa_user/userSearchResults.jsp?message=false&empId=");
 					
 				} catch (DBDownException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					// Failed to add the location
-					response.sendRedirect("wa_user/userSearchResults.jsp?message=false&empId=" + empId);
+					response.sendRedirect("wa_user/userSearchResults.jsp?message=false&empId=");
 				}
 				catch(Exception e)
 				{
 					// Failed to add the location
-					response.sendRedirect("wa_user/userSearchResults.jsp?message=false&empId=" + empId);
+					response.sendRedirect("wa_user/userSearchResults.jsp?message=false&empId=");
 				}
 				finally
 				{

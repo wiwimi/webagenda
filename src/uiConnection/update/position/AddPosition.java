@@ -62,7 +62,7 @@ public class AddPosition extends HttpServlet {
 					if (success)
 					{
 						//Confirm that the user was added
-						response.sendRedirect("wa_user/newPosition.jsp?message=true");
+						response.sendRedirect("wa_user/newPosition.jsp?message=true&posName=" + posName + "&posDesc" + posDesc);
 						
 					}
 				}
@@ -70,18 +70,18 @@ public class AddPosition extends HttpServlet {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					// Failed to add the position
-					response.sendRedirect("wa_user/newPosition.jsp?message=false");
+					response.sendRedirect("wa_user/newPosition.jsp?message=false&posName=" + posName + "&posDesc" + posDesc);
 					
 				} catch (DBDownException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					// Failed to add the position
-					response.sendRedirect("wa_user/newPosition.jsp?message=false");
+					response.sendRedirect("wa_user/newPosition.jsp?message=false&posName=" + posName + "&posDesc" + posDesc);
 				}
 				catch(Exception e)
 				{
 					// Failed to add the position
-					response.sendRedirect("wa_user/newPosition.jsp?message=false");
+					response.sendRedirect("wa_user/newPosition.jsp?message=false&posName=" + posName + "&posDesc" + posDesc);
 				}
 				finally
 				{

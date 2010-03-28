@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="persistence.LocationBroker" %>
 <%@ page import="business.Employee" %>
+<%@ page import="java.util.*" %>
 <%@ page import="business.schedule.Location" %>
 <%@ page import = "exception.DBDownException" %>
 <%@ page import = "exception.DBException" %>
@@ -138,36 +139,42 @@
 									//If both are not empty Concat them
 									if(locArrayByDesc!=null && locArrayByName!=null)
 									{
+										int totallength = locArrayByDesc.length + locArrayByName.length;
+										
+										//TODO The logic is still broken, if an object has the same name as description
+										// it appears twice ...
+										
+										// Concat the 2 arrays
 										for (int i=0; i<locArrayByName.length; i++)
 										{
-											for (int x=0; x<locArrayByDesc.length; x++)
+											for (int x=0; x <locArrayByDesc.length; x++)
 											{
-												// If it is not refferring to the same object
-												if(locArrayByDesc[x].getName()!=locArrayByName[i].getName())
+												// If they are NOT referring to the same object
+												if((!locArrayByName[i].getName().equals(locArrayByDesc[x].getName())))
 												{
-													int strlength = locArrayByDesc.length + locArrayByName.length;
-													
-													locArray = new Location[strlength];
+													//out.println(locArrayByName[i].getName() + " " );
+													locArray = new Location[totallength];
 													System.arraycopy(locArrayByDesc, 0, locArray, 0, locArrayByDesc.length);
 												    System.arraycopy(locArrayByName, 0, locArray, locArrayByDesc.length, locArrayByName.length);
-													
 												}
-												else if (locArrayByDesc[x].getName()==locArrayByName[i].getName())
+												
+												else
 												{
+													//out.println(locArrayByName[i].getName() + " " );
 													locArray = locArrayByName;
 												}
-											}
+												
+											} 
 										}
-										
 									}
-									else if(locArrayByDesc!=null)
+									else if(locArrayByDesc!=null && locArrayByName ==null)
 									{
 										locArray = locArrayByDesc;
-									}
-									else if(locArrayByName!=null)
+									}	else if(locArrayByName!=null && locArrayByDesc == null)
 									{
 										locArray = locArrayByName;
 									}
+								
 								}
 									
 								else if((request.getParameter("randomSearch").equals("")))

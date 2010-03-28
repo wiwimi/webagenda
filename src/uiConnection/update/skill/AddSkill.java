@@ -36,7 +36,7 @@ public class AddSkill extends HttpServlet {
 		        
 		        PrintWriter out = response.getWriter();
 		        String skillName = request.getParameter("skillName");
-				String desc = request.getParameter("skillDesc");	
+				String skillDesc = request.getParameter("skillDesc");	
 				
 				boolean success;
 				SkillBroker broker=null;
@@ -47,13 +47,13 @@ public class AddSkill extends HttpServlet {
 						
 						Employee user = (Employee)session.getAttribute("currentEmployee");
 						
-						Skill skill = new Skill(skillName, desc);
+						Skill skill = new Skill(skillName, skillDesc);
 						success = broker.create(skill, user);
 						
 					if (success)
 					{
 						//Confirm that the user was added
-						response.sendRedirect("wa_user/newSkill.jsp?message=true");
+						response.sendRedirect("wa_user/newSkill.jsp?message=true&skillName=" + skillName + "&skillDesc=" + skillDesc);
 					}
 				}
 				catch (DBException e) {
@@ -61,18 +61,18 @@ public class AddSkill extends HttpServlet {
 					e.printStackTrace();
 					// Failed to add the location
 					
-					response.sendRedirect("wa_user/newSkill.jsp?message=false");
+					response.sendRedirect("wa_user/newSkill.jsp?message=false&skillName=" + skillName + "&skillDesc=" + skillDesc);
 					
 				} catch (DBDownException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					// Failed to add the location
-					response.sendRedirect("wa_user/newSkill.jsp?message=false");
+					response.sendRedirect("wa_user/newSkill.jsp?message=false&skillName=" + skillName + "&skillDesc=" + skillDesc);
 				}
 				catch(Exception e)
 				{
 					// Failed to add the location
-					response.sendRedirect("wa_user/newSkill.jsp?message=false");
+					response.sendRedirect("wa_user/newSkill.jsp?message=false&skillName=" + skillName + "&skillDesc=" + skillDesc);
 				}
 				finally
 				{
