@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="persistence.SkillBroker" %>
+<%@ page import="persistence.PositionBroker" %>
 <%@ page import="business.Skill" %>
 <%@ page import="business.schedule.Position" %>
 <%@ page import="business.Skill" %>
@@ -113,7 +114,12 @@
 					    String posDesc = request.getParameter("posDesc");
 					    
 					   	Position oldPos = new Position(posName);
-					   	
+					   	PositionBroker posBroker = PositionBroker.getBroker();
+						posBroker.initConnectionThread();
+						
+						Employee user = (Employee) session.getAttribute("currentEmployee");
+						
+					    Position[] results = posBroker.get(oldPos, user);
 					   	session.setAttribute("oldPos",oldPos);
 					 %>
 					
@@ -161,32 +167,58 @@
 								</tfoot>
 								<tbody>
 									<%  
-										Employee user = (Employee) session.getAttribute("currentEmployee");
-									    
-									    Skill[] pos_skills = oldPos.getPos_skills();
-									    String posN = oldPos.getName();
+									    Skill[] pos_skills = results[0].getPos_skills();
+									  	
 										SkillBroker broker = SkillBroker.getBroker();
 										Skill skill = new Skill("");
 										Skill[] skillArray = broker.get(skill, user);
 										
-										if(pos_skills==null)
+										for(int index = 0; index < skillArray.length; index++)
 										{
-											out.println("null");
-											out.println(posN);
-										}
-										
-										else 
-										{
-											for (int i =0; i<pos_skills.length; i++)
+											for (int x=0; x<pos_skills.length; x++)
 											{
-												out.println("the skills are " + pos_skills[i]);
+									%>
+												<tr>
+													<td>
+														<div id="skillImage"> <b> <%=skillArray[index].getName()%> </b></div>
+													</td>
+											<%
+												// Checking the assigned skills
+												if (pos_skills!=null)
+												{
+													if (pos_skills[x].getName().equals(skillArray[index].getName()))
+													{
+											%>
+														<td>
+															<input type="checkbox" name="skillGroup" checked value="<%=skillArray[index].getName()%>"> 
+														</td>
+														
+											<% 				
+													}
+													else 
+													{
+											%>			
+														<td>
+															<input type="checkbox" name="skillGroup" value="<%=skillArray[index].getName()%>" > 
+														</td>
+											<%
+													}
+												}
+												else
+												{
+											 %>
+										 			<td>
+														<input type="checkbox" name="skillGroup" value="<%=skillArray[index].getName()%>" > 
+													</td>
+											 <%
+													
+												}
+											 %>
+										</tr>
+									<%
 											}
 										}
-										
-										
-											//for(int index = 0; index<skillArray.length; index++)
-											//{
-								%>
+									%>
 													
 								</tbody>
 							</table>

@@ -158,9 +158,8 @@
 						
 						if(results[0].getSupervisorID()!=-1)
 						{
-							supId = results[0].getSupervisorID()+"";
-							supIdInt = Integer.parseInt(supId);
-							out.println(supIdInt);
+							supIdInt = results[0].getSupervisorID();
+							//out.println(supIdInt);
 						}
 						
 						if(results[0].getPrefLocation()!=null)
@@ -363,7 +362,7 @@
 										// Checking the radio button that belongs to the Employees Supervisor Id
 										if (supId!=null)
 										{
-											if (supIdInt == (empArray[index].getEmpID()))
+											if (supIdInt == (empArray[index].getSupervisorID()))
 											{
 								%>
 											   <td> <input type="radio" name="employeeGroup" checked value="<%= empArray[index].getEmpID() %>"> </td>
