@@ -20,7 +20,7 @@ import business.Employee;
 
 /**
  * @author Daniel Wehr
- * @version 0.2.0
+ * @version 0.3.0
  */
 public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 	{
@@ -202,19 +202,19 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 			if (searchTemplate.getSchedTempID() != -1)
 				{
 				select = conn.getConnection().prepareStatement(
-					"SELECT * FROM `WebAgenda`.`SCHEDULETEMPLATE` WHERE schedTempID = ? ORDER BY schedTempID");
+					"SELECT * FROM `WebAgenda`.`SCHEDULETEMPLATE` WHERE schedTempID = ? ORDER BY schedTempID, creatorID");
 				select.setInt(1, searchTemplate.getSchedTempID());
 				}
 			else if (searchTemplate.getCreatorID() != -1)
 				{
 				select = conn.getConnection().prepareStatement(
-					"SELECT * FROM `WebAgenda`.`SCHEDULETEMPLATE` WHERE creatorID = ? ORDER BY schedTempID");
+					"SELECT * FROM `WebAgenda`.`SCHEDULETEMPLATE` WHERE creatorID = ? ORDER BY schedTempID, creatorID");
 				select.setInt(1, searchTemplate.getCreatorID());
 				}
 			else if (searchTemplate.getName() != null)
 				{
 				select = conn.getConnection().prepareStatement(
-					"SELECT * FROM `WebAgenda`.`SCHEDULETEMPLATE` WHERE name LIKE ? ORDER BY schedTempID");
+					"SELECT * FROM `WebAgenda`.`SCHEDULETEMPLATE` WHERE name LIKE ? ORDER BY schedTempID, creatorID");
 				select.setString(1, "%"+searchTemplate.getName()+"%");
 				}
 			
@@ -466,7 +466,7 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 	 * @param toSort the schedule template to sort.
 	 * @return true when the sort is complete.
 	 */
-	public static boolean sortScheduleTemplate(ScheduleTemplate toSort)
+	public static void sortScheduleTemplate(ScheduleTemplate toSort)
 		{
 		//Get the list of shift templates.
 		DoubleLinkedList<ShiftTemplate> shiftTemps = toSort.getShiftTemplates();
@@ -493,8 +493,6 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 		shiftTemps.clear();
 		for (int k = 0; k < sortedShiftTemps.length; k++)
 			shiftTemps.add(sortedShiftTemps[k]);
-		
-		return true;
 		}
 	
 	/* (non-Javadoc)
@@ -612,9 +610,9 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 		{
 		// Prepare the select statements to pull additional data.
 		PreparedStatement shiftTempStmt = conn.getConnection().prepareStatement(
-				"SELECT * FROM `WebAgenda`.`SHIFTTEMPLATE` WHERE schedTempID = ? ORDER BY shiftTempID;");
+				"SELECT * FROM `WebAgenda`.`SHIFTTEMPLATE` WHERE schedTempID = ? ORDER BY day, startTime, endTime");
 		PreparedStatement shiftPosStmt = conn.getConnection().prepareStatement(
-				"SELECT * FROM `WebAgenda`.`SHIFTPOS` WHERE shiftTempID = ? ORDER BY shiftTempID;");
+				"SELECT * FROM `WebAgenda`.`SHIFTPOS` WHERE shiftTempID = ? ORDER BY shiftTempID, positionName");
 		
 		for (ScheduleTemplate schedTemp : templates)
 			{

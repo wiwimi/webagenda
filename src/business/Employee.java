@@ -444,8 +444,10 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 	public Employee clone()
 		{
 		Employee clone = (Employee)super.clone();
-		clone.birthDate = (Date)this.birthDate.clone();
-		clone.lastLogin = (Timestamp)this.lastLogin.clone();
+		if (this.birthDate != null)
+			clone.birthDate = (Date)this.birthDate.clone();
+		if (this.lastLogin != null)
+			clone.lastLogin = (Timestamp)this.lastLogin.clone();
 		
 		return clone;
 		}

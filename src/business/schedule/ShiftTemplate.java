@@ -177,12 +177,15 @@ public class ShiftTemplate extends BusinessObject implements Comparable<ShiftTem
 	@Override
 	public int compareTo(ShiftTemplate o)
 		{
-		if (this.getShiftTempID() < o.getShiftTempID())
+		if (this.day < o.day)
 			return -1;
-		else if (this.getShiftTempID() > o.getShiftTempID())
+		else if (this.day > o.day)
 			return 1;
 		
-		return 0;
+		if (this.startTime.compareTo(o.startTime) != 0)
+			return this.startTime.compareTo(o.startTime);
+		
+		return this.endTime.compareTo(o.endTime);
 		}
 	
 	/* (non-Javadoc)

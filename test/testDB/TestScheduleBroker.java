@@ -53,9 +53,10 @@ public class TestScheduleBroker
 	 * and {@link persistence.ScheduleBroker#delete(business.schedule.Schedule, business.Employee)}.
 	 */
 	@Test
-	public void testCreateDeleteSchedule()
+	public void testCreateUpdateDeleteSchedule()
 		{
-		System.out.println("---------- START TEST CREATE DELETE ----------");
+		int sID = -1;
+		System.out.println("---------- START TEST CREATE ----------");
 		//Create a test schedule to be created and deleted.
 		Employee emp1 = new Employee();
 		emp1.setEmpID(38202);
@@ -64,17 +65,13 @@ public class TestScheduleBroker
 		
 		Shift shift1 = new Shift();
 		shift1.setDay(2);
-		shift1.setStartTime(new Time(8l * 1000 * 60 * 60));
-		shift1.setEndTime(new Time (17l * 1000 * 60 * 60));
+		shift1.setStartTime(Time.valueOf("08:00:00"));
+		shift1.setEndTime(Time.valueOf("17:00:00"));
 		shift1.getEmployees().add(emp2);
 		shift1.getEmployees().add(emp1);
 		
-		Shift shift2 = new Shift();
+		Shift shift2 = shift1.clone();
 		shift2.setDay(3);
-		shift2.setStartTime(new Time(8l * 1000 * 60 * 60));
-		shift2.setEndTime(new Time (17l * 1000 * 60 * 60));
-		shift2.getEmployees().add(emp2);
-		shift2.getEmployees().add(emp1);
 		
 		Schedule sched = new Schedule();
 		sched.setCreatorID(12314);
@@ -88,11 +85,19 @@ public class TestScheduleBroker
 			//Attempt to add schedule to database.
 			assertTrue(sb.create(sched, user));
 			
-			//Repeat testGet to show schedule was added.
-			testGetSchedule();
+			//Create should have filled in ID values on schedule template.
+			if (sched.getSchedID() != -1)
+				{
+				System.out.println("Test schedule created with ID: "+sched.getSchedID());
+				sID = sched.getSchedID();
+				}
+			else
+				{
+				fail("Schedule ID not given to original object on create.");
+				}
 			
-			//Delete the added schedule.
-			assertTrue(sb.delete(sched, user));
+			//Repeat testGet to show schedule template was added.
+			testGetSchedule();
 			}
 		catch (DBException e)
 			{
@@ -104,7 +109,69 @@ public class TestScheduleBroker
 			e.printStackTrace();
 			fail();
 			}
-		System.out.println("---------- END TEST CREATE DELETE ----------");
+		System.out.println("---------- END TEST CREATE ----------");
+		System.out.println("---------- START TEST UPDATE ----------");
+		
+		Schedule get = new Schedule();
+		get.setSchedID(sID);
+		
+		try
+			{
+			//Get the original schedule template from the DB to be updated.
+			Schedule old = sb.get(get, user)[0];
+			
+			//Clone the schedule template to use for update, and use the original as old.
+			Schedule update = old.clone();
+			
+			//Set shifts to start at 7am instead of 8am.
+			for (Shift shift : update.getShifts().toArray())
+				{
+				shift.setStartTime(Time.valueOf("07:00:00"));
+				}
+			
+			//Attempt to update schedule template in database.
+			assertTrue(sb.update(old, update, user));
+			
+			//Repeat testGet to show schedule template was updated.
+			testGetSchedule();
+			}
+		catch (DBException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		catch (DBDownException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		
+		System.out.println("---------- END TEST UPDATE ----------");
+		System.out.println("---------- START TEST DELETE ----------");
+		
+		try
+			{
+			//Get the test schedule from the DB to delete.
+			Schedule delete = sb.get(get, user)[0];
+			
+			//Attempt to delete schedule template from database.
+			assertTrue(sb.delete(delete, user));
+			
+			//Repeat testGet to show schedule template was deleted.
+			testGetSchedule();
+			}
+		catch (DBException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		catch (DBDownException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		
+		System.out.println("---------- END TEST DELETE ----------");
 		}
 	
 	/**
@@ -113,7 +180,7 @@ public class TestScheduleBroker
 	@Test
 	public void testGetSchedule()
 		{
-		System.out.println("---------- START TEST GET ----------");
+		System.out.println("----- START TEST GET -----");
 		//Grab the test schedules and print contents.
 		Schedule search = new Schedule();
 		search.setCreatorID(12314);
@@ -134,36 +201,24 @@ public class TestScheduleBroker
 			fail();
 			}
 		
-		for (Schedule st : results)
+		Schedule st = results[results.length-1];
+		
+		System.out.println("Schedule ID: "+st.getSchedID());
+		
+		Shift[] shiftList = st.getShifts().toArray();
+		
+		for (Shift shift : shiftList)
 			{
-			System.out.println("Schedule ID: "+st.getSchedID());
+			System.out.println("\tShift - Day: "+shift.getDay()+" - Time: "+shift.getStartTime() + " to " + shift.getEndTime());
 			
-			Shift[] shiftList = st.getShifts().toArray();
+			Employee[] emps = shift.getEmployees().toArray();
 			
-			for (Shift shift : shiftList)
+			for (Employee emp : emps)
 				{
-				System.out.println("\tShift - Day: "+shift.getDay()+" - Time: "+shift.getStartTime() + " to " + shift.getEndTime());
-				
-				Employee[] emps = shift.getEmployees().toArray();
-				
-				for (Employee emp : emps)
-					{
-					System.out.println("\t\tApplies to: "+emp);
-					}
+				System.out.println("\t\tApplies to: "+emp);
 				}
 			}
 		
-		assertTrue(true);
-		System.out.println("---------- END TEST GET ----------");
+		System.out.println("----- END TEST GET -----");
 		}
-	
-	/**
-	 * Test method for {@link persistence.ScheduleBroker#update(business.schedule.Schedule, business.schedule.Schedule, business.Employee)}.
-	 */
-	@Test
-	public void testUpdateSchedule()
-		{
-		fail("Not yet implemented"); // TODO
-		}
-	
 	}

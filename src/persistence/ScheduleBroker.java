@@ -195,19 +195,19 @@ public class ScheduleBroker extends Broker<Schedule>
 			if (searchTemplate.getSchedID() != -1)
 				{
 				select = conn.getConnection().prepareStatement(
-					"SELECT * FROM `WebAgenda`.`SCHEDULE` WHERE schedID = ? ORDER BY schedID");
+					"SELECT * FROM `WebAgenda`.`SCHEDULE` WHERE schedID = ? ORDER BY creatorID, startDate, endDate");
 				select.setInt(1, searchTemplate.getSchedID());
 				}
 			else if (searchTemplate.getCreatorID() != -1)
 				{
 				select = conn.getConnection().prepareStatement(
-					"SELECT * FROM `WebAgenda`.`SCHEDULE` WHERE creatorID = ? ORDER BY schedID");
+					"SELECT * FROM `WebAgenda`.`SCHEDULE` WHERE creatorID = ? ORDER BY creatorID, startDate, endDate");
 				select.setInt(1, searchTemplate.getCreatorID());
 				}
 			else if (searchTemplate.getStartDate() != null && searchTemplate.getEndDate() != null)
 				{
 				select = conn.getConnection().prepareStatement(
-					"SELECT * FROM `WebAgenda`.`SCHEDULE` WHERE (`startDate` BETWEEN ? AND ?) OR (`endDate` BETWEEN ? AND ?) ORDER BY schedID");
+					"SELECT * FROM `WebAgenda`.`SCHEDULE` WHERE (`startDate` BETWEEN ? AND ?) OR (`endDate` BETWEEN ? AND ?) ORDER BY creatorID, startDate, endDate");
 				select.setDate(1, searchTemplate.getStartDate());
 				select.setDate(2, searchTemplate.getEndDate());
 				select.setDate(3, searchTemplate.getStartDate());
@@ -463,7 +463,7 @@ public class ScheduleBroker extends Broker<Schedule>
 	 * @param toSort the schedule to sort.
 	 * @return true when the sort is complete.
 	 */
-	public boolean sortSchedule(Schedule toSort)
+	public static void sortSchedule(Schedule toSort)
 		{
 		//Get the list of shifts.
 		DoubleLinkedList<Shift> shifts = toSort.getShifts();
@@ -490,8 +490,6 @@ public class ScheduleBroker extends Broker<Schedule>
 		shifts.clear();
 		for (int k = 0; k < sortedShifts.length; k++)
 			shifts.add(sortedShifts[k]);
-		
-		return true;
 		}
 	
 	public boolean notifyScheduleEmps(Schedule sched, String customMessage)
@@ -576,9 +574,9 @@ public class ScheduleBroker extends Broker<Schedule>
 		{
 		// Prepare the select statements to pull additional data.
 		PreparedStatement shiftStmt = conn.getConnection().prepareStatement(
-				"SELECT * FROM `WebAgenda`.`SHIFT` WHERE schedID = ? ORDER BY shiftID;");
+				"SELECT * FROM `WebAgenda`.`SHIFT` WHERE schedID = ? ORDER BY day, startTime, endTime");
 		PreparedStatement shiftEmpStmt = conn.getConnection().prepareStatement(
-				"SELECT e.* FROM `WebAgenda`.`EMPLOYEE` e JOIN `WebAgenda`.`SHIFTEMP` se ON e.empID = se.empID WHERE se.shiftID = ?;");
+				"SELECT e.* FROM `WebAgenda`.`EMPLOYEE` e JOIN `WebAgenda`.`SHIFTEMP` se ON e.empID = se.empID WHERE se.shiftID = ? ORDER BY se.shiftID, se.empID");
 		
 		for (Schedule sched : schedules)
 			{
