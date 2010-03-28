@@ -60,7 +60,7 @@
 							<script type="text/javascript">
 								$(function()
 								    {
-										$.flashMessenger("An error occured while deleting the User. Please contact your admin",
+										$.flashMessenger("An error occured while deleting the User. Please contact your admin to make sure you have the right set of permissions",
 								        {
 											   modal:true,
 							    		       clsName:"err", 
@@ -200,6 +200,7 @@
 										<th>Given Name</th>
 										<th>Position</th>
 										<th>Supervisor</th>
+										<th>Location</th>
 							
 									</tr>
 								</thead>
@@ -212,6 +213,7 @@
 										<th>Given Name</th>
 										<th>Position</th>
 										<th>Supervisor</th>
+										<th>Location</th>
 									</tr>
 								</tfoot>
 								<tbody>
@@ -222,17 +224,18 @@
 						%>
 									<tr>
 										<td>
-											<a href="newUser.jsp?=<%=empArray[index].getUsername()%>"> <div id="profileImage"> <b><%=empArray[index].getUsername()%> </b></div></a>
+											<a href="updateUser.jsp?empId=<%=empArray[index].getEmpID()%>"> <div id="profileImage"> <b><%=empArray[index].getUsername()%> </b></div></a>
 											<div class="row-actions"><span class='edit'>
-											<a href="#"> Edit </a>   | </span>  <span class='delete'>
+											<a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"> Edit </a>   | </span>  <span class='delete'>
 											<a href="javascript:;" onClick="removeUser('<%=empArray[index].getEmpID()%>');">
 											Delete</a></span></div>
 										</td>
-										<td><a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getEmpID() %></a></td>
-										<td><a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getFamilyName() %></a></td>
-										<td> <a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getGivenName() %></a> </td>
-										<td> <a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getPrefPosition() %></a> </td>
-										<td> <a href="updateUserProfile.jsp?id<%= empArray[index].getEmpID() %>"><%= empArray[index].getSupervisorID() %></a> </td>
+										<td><a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= empArray[index].getEmpID() %></a></td>
+										<td><a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= empArray[index].getFamilyName() %></a></td>
+										<td> <a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= empArray[index].getGivenName() %></a> </td>
+										<td> <a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= empArray[index].getPrefPosition() %></a> </td>
+										<td> <a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= empArray[index].getSupervisorID() %></a> </td>
+										<td> <a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= empArray[index].getPrefLocation() %></a> </td>
 								   </tr>
 							<% 
 								}

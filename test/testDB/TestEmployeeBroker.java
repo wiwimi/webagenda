@@ -258,14 +258,13 @@ public class TestEmployeeBroker
 		System.out.println("******************** GET TEST ********************");
 		//Create employees to search by an employee ID, and all active employees.
 		Employee searchEmp1 = new Employee();
-		searchEmp1.setEmpID(80002);
+		searchEmp1.setEmpID(39203);
 		
 		Employee searchEmp2 = new Employee();
 		searchEmp2.setActive(true);
 		
 		Employee searchEmp3 = new Employee();
 		searchEmp3.setSupervisorID(28472);
-
 		
 		//Run searches
 		Employee[] byID = null, byActive = null, bySupervisor = null;
@@ -274,6 +273,9 @@ public class TestEmployeeBroker
 			byID = empBroker.get(searchEmp1, user);
 			byActive = empBroker.get(searchEmp2, user);
 			bySupervisor = empBroker.get(searchEmp3, user);
+			
+			//Testing getting a particular field 
+			System.out.println("LOCATION" + bySupervisor[0].getPrefLocation());
 			}
 		catch (DBException e)
 			{
