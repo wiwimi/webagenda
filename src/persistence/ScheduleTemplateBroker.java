@@ -138,7 +138,7 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 	public boolean delete(ScheduleTemplate deleteObj, Employee caller)
 			throws DBException, DBChangeException, DBDownException
 		{
-		if (deleteObj == null || deleteObj.getSchedTempID() == null)
+		if (deleteObj == null || deleteObj.getSchedTempID() == -1)
 			throw new NullPointerException("Can not delete, schedule template with ID required.");
 		
 		raceCheck(deleteObj,caller);
@@ -199,13 +199,13 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 			DBConnection conn = this.getConnection();
 			
 			PreparedStatement select = null;
-			if (searchTemplate.getSchedTempID() != null)
+			if (searchTemplate.getSchedTempID() != -1)
 				{
 				select = conn.getConnection().prepareStatement(
 					"SELECT * FROM `WebAgenda`.`SCHEDULETEMPLATE` WHERE schedTempID = ? ORDER BY schedTempID");
 				select.setInt(1, searchTemplate.getSchedTempID());
 				}
-			else if (searchTemplate.getCreatorID() != null)
+			else if (searchTemplate.getCreatorID() != -1)
 				{
 				select = conn.getConnection().prepareStatement(
 					"SELECT * FROM `WebAgenda`.`SCHEDULETEMPLATE` WHERE creatorID = ? ORDER BY schedTempID");
@@ -248,9 +248,9 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 			Employee caller) throws DBException, DBChangeException, DBDownException
 		{
 		//Ensure Old/Update objects aren't null.
-		if (oldObj == null || oldObj.getSchedTempID() == null)
+		if (oldObj == null || oldObj.getSchedTempID() == -1)
 			throw new NullPointerException("Old schedule template with ID required for updates.");
-		if (updateObj == null || updateObj.getSchedTempID() == null)
+		if (updateObj == null || updateObj.getSchedTempID() == -1)
 			throw new NullPointerException("Update schedule template with ID required for updates.");
 		
 		//Ensure old/update objects refer to the same schedule template.
@@ -341,7 +341,7 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 				ShiftTemplate updShift = updShiftArr[i];
 				
 				//If update shift doesn't have an ID, it is new.
-				if (updShift.getShiftTempID() == null)
+				if (updShift.getShiftTempID() == -1)
 					{
 					//Add new shift.
 					insertShiftTemplate(updShift, updateObj.getSchedTempID(),
@@ -353,7 +353,7 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 					 * Confirm that shift template has schedule template ID.  If not,
 					 * shift ID was added in the front-end, which should not be done.
 					 */
-					if (updShift.getSchedTempID() == null)
+					if (updShift.getSchedTempID() == -1)
 						throw new DBException("Shift ID was not assigned by backend.");
 					
 					//Shift template has an ID should match an old shift template.
@@ -662,7 +662,7 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 	 */
 	private boolean raceCheck(ScheduleTemplate old, Employee caller) throws DBChangeException, DBException, DBDownException
 		{
-		if (old == null || old.getSchedTempID() == null)
+		if (old == null || old.getSchedTempID() == -1)
 			throw new DBException("Unable to validate old schedule template, is null or has no schedTempID.");
 		
 		//Get schedule template from DB with matching scheduleTemplateID.

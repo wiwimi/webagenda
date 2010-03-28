@@ -17,7 +17,7 @@ public class ShiftPosition extends BusinessObject implements Comparable<ShiftPos
 	 * The internal DB ID of the shift template that the shift position belongs
 	 * to.
 	 */
-	private Integer shiftTempID = null;
+	private int shiftTempID = -1;
 	
 	/**
 	 * The name of the position that is required on the shift.
@@ -27,14 +27,14 @@ public class ShiftPosition extends BusinessObject implements Comparable<ShiftPos
 	/**
 	 * The number of people required to be working the position on the shift.
 	 */
-	private Integer posCount = null;
+	private int posCount = -1;
 	
 	/**
 	 * Default/Empty constructor.
 	 */
 	public ShiftPosition() {}
 
-	public ShiftPosition(Integer shiftTempID, String posName, Integer posCount)
+	public ShiftPosition(int shiftTempID, String posName, int posCount)
 		{
 		this.shiftTempID = shiftTempID;
 		this.posName = posName;
@@ -44,7 +44,7 @@ public class ShiftPosition extends BusinessObject implements Comparable<ShiftPos
 	/**
 	 * @return the shiftTempID
 	 */
-	public Integer getShiftTempID()
+	public int getShiftTempID()
 		{
 		return shiftTempID;
 		}
@@ -52,7 +52,7 @@ public class ShiftPosition extends BusinessObject implements Comparable<ShiftPos
 	/**
 	 * @param shiftTempID the shiftTempID to set
 	 */
-	public void setShiftTempID(Integer shiftTempID)
+	public void setShiftTempID(int shiftTempID)
 		{
 		this.shiftTempID = shiftTempID;
 		}
@@ -76,7 +76,7 @@ public class ShiftPosition extends BusinessObject implements Comparable<ShiftPos
 	/**
 	 * @return the posCount
 	 */
-	public Integer getPosCount()
+	public int getPosCount()
 		{
 		return posCount;
 		}
@@ -84,7 +84,7 @@ public class ShiftPosition extends BusinessObject implements Comparable<ShiftPos
 	/**
 	 * @param posCount the posCount to set
 	 */
-	public void setPosCount(Integer posCount)
+	public void setPosCount(int posCount)
 		{
 		this.posCount = posCount;
 		}
@@ -114,7 +114,9 @@ public class ShiftPosition extends BusinessObject implements Comparable<ShiftPos
 	@Override
 	public ShiftPosition clone()
 		{
-		return (ShiftPosition)super.clone();
+		ShiftPosition clone = (ShiftPosition)super.clone();
+		
+		return clone;
 		}
 
 	@Override

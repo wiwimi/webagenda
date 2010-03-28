@@ -17,12 +17,12 @@ public class ScheduleTemplate extends BusinessObject implements Cloneable
 	/**
 	 * The internal DB ID of the schedule template.  This is for broker use only.
 	 */
-	private Integer schedTempID = null;
+	private int schedTempID = -1;
 	
 	/**
 	 * The ID of the employee who created this schedule.
 	 */
-	private Integer creatorID = null;
+	private int creatorID = -1;
 	
 	/**
 	 * The name given to the template.
@@ -39,7 +39,7 @@ public class ScheduleTemplate extends BusinessObject implements Cloneable
 	 */
 	public ScheduleTemplate() {}
 	
-	public ScheduleTemplate(Integer schedTempID, Integer creatorID, String name)
+	public ScheduleTemplate(int schedTempID, int creatorID, String name)
 		{
 		this.schedTempID = schedTempID;
 		this.creatorID = creatorID;
@@ -49,7 +49,7 @@ public class ScheduleTemplate extends BusinessObject implements Cloneable
 	/**
 	 * @return the schedTempID
 	 */
-	public Integer getSchedTempID()
+	public int getSchedTempID()
 		{
 		return schedTempID;
 		}
@@ -57,7 +57,7 @@ public class ScheduleTemplate extends BusinessObject implements Cloneable
 	/**
 	 * @param schedTempID the schedTempID to set
 	 */
-	public void setSchedTempID(Integer schedTempID)
+	public void setSchedTempID(int schedTempID)
 		{
 		this.schedTempID = schedTempID;
 		}
@@ -65,7 +65,7 @@ public class ScheduleTemplate extends BusinessObject implements Cloneable
 	/**
 	 * @return the creatorID
 	 */
-	public Integer getCreatorID()
+	public int getCreatorID()
 		{
 		return creatorID;
 		}
@@ -73,7 +73,7 @@ public class ScheduleTemplate extends BusinessObject implements Cloneable
 	/**
 	 * @param creatorID the creatorID to set
 	 */
-	public void setCreatorID(Integer creatorID)
+	public void setCreatorID(int creatorID)
 		{
 		this.creatorID = creatorID;
 		}
@@ -117,15 +117,15 @@ public class ScheduleTemplate extends BusinessObject implements Cloneable
 	public ScheduleTemplate clone()
 		{
 		ScheduleTemplate clone = (ScheduleTemplate)super.clone();
-		try
-			{
-			clone.shiftTemplates = (DoubleLinkedList<ShiftTemplate>)shiftTemplates.clone();
-			}
-		catch (CloneNotSupportedException e)
-			{
-			//This should never happen.
-			throw new InternalError(e.toString());
-			}
+		
+		DoubleLinkedList<ShiftTemplate> cloneShift = new DoubleLinkedList<ShiftTemplate>();
+		ShiftTemplate[] origShift = shiftTemplates.toArray();
+		
+		for (ShiftTemplate shift : origShift)
+			cloneShift.add(shift.clone());
+		
+		clone.setShiftTemplates(cloneShift);
+		
 		return clone;
 		}
 	}

@@ -18,13 +18,13 @@ public class ShiftTemplate extends BusinessObject implements Comparable<ShiftTem
 	/**
 	 * The internal DB ID of the shift template.  This is for broker use only.
 	 */
-	private Integer shiftTempID = null;
+	private int shiftTempID = -1;
 	
 	/**
 	 * The internal DB ID of the schedule template that the shift belongs to.
 	 * This is for broker use only.
 	 */
-	private Integer schedTempID = null;
+	private int schedTempID = -1;
 	
 	/**
 	 * The day of the week that the shift is on.<br>
@@ -36,7 +36,7 @@ public class ShiftTemplate extends BusinessObject implements Comparable<ShiftTem
 	 * 6 = Friday.<br>
 	 * 7 = Saturday.
 	 */
-	private Integer day = null;
+	private int day = -1;
 	
 	/**
 	 * The time at which the shift begins.
@@ -66,7 +66,7 @@ public class ShiftTemplate extends BusinessObject implements Comparable<ShiftTem
 	 * @param startTime
 	 * @param endTime
 	 */
-	public ShiftTemplate(Integer shiftTempID, Integer schedTempID, Integer day, Time startTime, Time endTime)
+	public ShiftTemplate(int shiftTempID, int schedTempID, int day, Time startTime, Time endTime)
 		{
 		this.shiftTempID = shiftTempID;
 		this.schedTempID = schedTempID;
@@ -78,7 +78,7 @@ public class ShiftTemplate extends BusinessObject implements Comparable<ShiftTem
 	/**
 	 * @return the shiftTempID
 	 */
-	public Integer getShiftTempID()
+	public int getShiftTempID()
 		{
 		return shiftTempID;
 		}
@@ -86,7 +86,7 @@ public class ShiftTemplate extends BusinessObject implements Comparable<ShiftTem
 	/**
 	 * @param shiftTempID the shiftTempID to set
 	 */
-	public void setShiftTempID(Integer shiftTempID)
+	public void setShiftTempID(int shiftTempID)
 		{
 		this.shiftTempID = shiftTempID;
 		}
@@ -94,7 +94,7 @@ public class ShiftTemplate extends BusinessObject implements Comparable<ShiftTem
 	/**
 	 * @return the schedTempID
 	 */
-	public Integer getSchedTempID()
+	public int getSchedTempID()
 		{
 		return schedTempID;
 		}
@@ -102,7 +102,7 @@ public class ShiftTemplate extends BusinessObject implements Comparable<ShiftTem
 	/**
 	 * @param schedTempID the schedTempID to set
 	 */
-	public void setSchedTempID(Integer schedTempID)
+	public void setSchedTempID(int schedTempID)
 		{
 		this.schedTempID = schedTempID;
 		}
@@ -110,7 +110,7 @@ public class ShiftTemplate extends BusinessObject implements Comparable<ShiftTem
 	/**
 	 * @return the day
 	 */
-	public Integer getDay()
+	public int getDay()
 		{
 			return day;
 		}
@@ -118,7 +118,7 @@ public class ShiftTemplate extends BusinessObject implements Comparable<ShiftTem
 	/**
 	 * @param day the day to set
 	 */
-	public void setDay(Integer day)
+	public void setDay(int day)
 		{
 			this.day = day;
 		}
@@ -192,15 +192,19 @@ public class ShiftTemplate extends BusinessObject implements Comparable<ShiftTem
 	public ShiftTemplate clone()
 		{
 		ShiftTemplate clone = (ShiftTemplate)super.clone();
-		try
+		clone.startTime = (Time)this.startTime.clone();
+		clone.endTime = (Time)this.endTime.clone();
+		
+		DoubleLinkedList<ShiftPosition> clonePos = new DoubleLinkedList<ShiftPosition>();
+		ShiftPosition[] origPos = shiftPositions.toArray();
+		
+		for (ShiftPosition pos : origPos)
 			{
-			clone.setShiftPositions((DoubleLinkedList<ShiftPosition>)shiftPositions.clone());
+			clonePos.add(pos.clone());
 			}
-		catch (CloneNotSupportedException e)
-			{
-			//This should never happen.
-			throw new InternalError(e.toString());
-			}
+		
+		clone.setShiftPositions(clonePos);
+		
 		return clone;
 		}
 
