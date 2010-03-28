@@ -156,9 +156,9 @@
 						if (results[0].getEmail()!=null)
 							email = results[0].getEmail();
 						
-						if(results[0].getSupervisorID()!=null)
+						if(results[0].getSupervisorID()!=-1)
 						{
-							supId = results[0].getSupervisorID().toString();
+							supId = results[0].getSupervisorID()+"";
 							supIdInt = Integer.parseInt(supId);
 							out.println(supIdInt);
 						}
