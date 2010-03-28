@@ -198,4 +198,13 @@ public class Shift extends BusinessObject implements Comparable<Shift>
 		
 		return clone;
 		}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString()
+		{
+		return shiftID+";"+schedID+";"+day+";"+startTime+";"+endTime;
+		}
 	}

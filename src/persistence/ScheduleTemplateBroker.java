@@ -269,7 +269,9 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 			
 			//Prepare all statements used during update.
 			PreparedStatement updateSchedTemp = conn.getConnection().prepareStatement(
-					"UPDATE `WebAgenda`.`SCHEDULETEMPLATE` SET name = ? WHERE schedTempID = ? AND creatorID = ? AND name = ?");
+					"UPDATE `WebAgenda`.`SCHEDULETEMPLATE` " +
+					"SET name = ? " +
+					"WHERE schedTempID = ? AND creatorID = ? AND name = ?");
 			
 			PreparedStatement createShiftTemp = conn.getConnection().prepareStatement(
 					"INSERT INTO `WebAgenda`.`SHIFTTEMPLATE` " +
@@ -306,8 +308,6 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 				//Attempt update.
 				if (updateSchedTemp.executeUpdate() != 1)
 					throw new DBChangeException("Failed to update schedule template name. May have been changed or deleted by another user.");
-				
-				updateSchedTemp.close();
 				}
 			
 			//Convert old/new shift templates to array.
@@ -333,7 +333,6 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 						throw new DBException("Failed to delete shift template during update.");
 					}
 				}
-			deleteShiftTemp.close();
 			
 			//Check updated shifts against old shifts, adding and updating as necessary.
 			for (int i = 0; i < updShiftArr.length; i++)
@@ -730,7 +729,7 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 	 * @throws SQLException if there was an error with the insert statements.
 	 * @throws DBException if there was an error with executing the statements.
 	 */
-	private void insertShiftTemplate(ShiftTemplate shiftTemp, Integer schedTempID, 
+	private void insertShiftTemplate(ShiftTemplate shiftTemp, int schedTempID, 
 			PreparedStatement createShiftTemp, PreparedStatement createShiftPos) throws SQLException, DBException
 		{
 		//Add schedule template ID before insert.
@@ -742,7 +741,7 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 		createShiftTemp.setTime(3, shiftTemp.getStartTime());
 		createShiftTemp.setTime(4, shiftTemp.getEndTime());
 		if (createShiftTemp.executeUpdate() != 1)
-			throw new DBException("Failed to insert shift template");
+			throw new DBException("Failed to insert shift template.");
 		
 		//Save the auto-generated shift template ID.
 		ResultSet temp = createShiftTemp.getGeneratedKeys();
@@ -760,7 +759,7 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 	 * @param shiftTempID The shift template ID to use for all shift positions.
 	 * @param createShiftPos The prepared statement used to execute the inserts.
 	 */
-	private void insertShiftPositions(ShiftPosition[] shiftPosArr, Integer shiftTempID,
+	private void insertShiftPositions(ShiftPosition[] shiftPosArr, int shiftTempID,
 			PreparedStatement createShiftPos) throws DBException, SQLException
 		{
 		for (ShiftPosition shiftPos : shiftPosArr)

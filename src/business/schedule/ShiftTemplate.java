@@ -205,6 +205,9 @@ public class ShiftTemplate extends BusinessObject implements Comparable<ShiftTem
 		return clone;
 		}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString()
 		{
