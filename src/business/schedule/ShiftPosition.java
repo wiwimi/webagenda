@@ -114,9 +114,7 @@ public class ShiftPosition extends BusinessObject implements Comparable<ShiftPos
 	@Override
 	public ShiftPosition clone()
 		{
-		ShiftPosition clone = (ShiftPosition)super.clone();
-		
-		return clone;
+		return (ShiftPosition)super.clone();
 		}
 
 	@Override

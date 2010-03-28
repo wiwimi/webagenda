@@ -17,12 +17,12 @@ public class Schedule extends BusinessObject
 	/**
 	 * The internal DB ID of the schedule.  This is for broker use only.
 	 */
-	private Integer schedID = null;
+	private int schedID = -1;
 	
 	/**
 	 * The ID of the employee who created this schedule.
 	 */
-	private Integer creatorID = null;
+	private int creatorID = -1;
 	
 	/**
 	 * The first day at which the schedule will be in effect.
@@ -52,7 +52,7 @@ public class Schedule extends BusinessObject
 	 * @param startDate
 	 * @param endDate
 	 */
-	public Schedule(Integer schedID, Integer creatorID, Date startDate, Date endDate)
+	public Schedule(int schedID, int creatorID, Date startDate, Date endDate)
 		{
 		this.schedID = schedID;
 		this.creatorID = creatorID;
@@ -63,7 +63,7 @@ public class Schedule extends BusinessObject
 	/**
 	 * @return the schedID
 	 */
-	public Integer getSchedID()
+	public int getSchedID()
 		{
 		return schedID;
 		}
@@ -71,7 +71,7 @@ public class Schedule extends BusinessObject
 	/**
 	 * @param schedID the schedID to set
 	 */
-	public void setSchedID(Integer schedID)
+	public void setSchedID(int schedID)
 		{
 		this.schedID = schedID;
 		}
@@ -79,7 +79,7 @@ public class Schedule extends BusinessObject
 	/**
 	 * @return the creatorID
 	 */
-	public Integer getCreatorID()
+	public int getCreatorID()
 		{
 		return creatorID;
 		}
@@ -87,7 +87,7 @@ public class Schedule extends BusinessObject
 	/**
 	 * @param creatorID the creatorID to set
 	 */
-	public void setCreatorID(Integer creatorID)
+	public void setCreatorID(int creatorID)
 		{
 		this.creatorID = creatorID;
 		}
@@ -132,8 +132,31 @@ public class Schedule extends BusinessObject
 		return shifts;
 		}
 	
-	
-	
-	
-	
+	/**
+	 * @param shifts the shifts to set
+	 */
+	public void setShifts(DoubleLinkedList<Shift> shifts)
+		{
+		this.shifts = shifts;
+		}
+
+	/* (non-Javadoc)
+	 * @see business.BusinessObject#clone()
+	 */
+	@Override
+	public Schedule clone()
+		{
+		Schedule clone = (Schedule)super.clone();
+		clone.startDate = (Date)this.startDate.clone();
+		clone.endDate = (Date)this.endDate.clone();
+		
+		DoubleLinkedList<Shift> cloneShift = new DoubleLinkedList<Shift>();
+		
+		for (Shift shift : this.shifts.toArray())
+			cloneShift.add(shift.clone());
+		
+		clone.setShifts(cloneShift);
+		
+		return clone;
+		}
 	}

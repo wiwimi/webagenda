@@ -18,18 +18,18 @@ public class Shift extends BusinessObject implements Comparable<Shift>
 	/**
 	 * The internal DB ID of the shift. This is for broker use only.
 	 */
-	private Integer shiftID = null;
+	private int shiftID = -1;
 	
 	/**
 	 * The internal DB ID of the schedule the shift belongs to. This is for
 	 * broker use only.
 	 */
-	private Integer schedID = null;
+	private int schedID = -1;
 	
 	/**
 	 * The day of the week that the shift is on.
 	 */
-	private Integer day = null;
+	private int day = -1;
 	
 	/**
 	 * The time at which the shift begins.
@@ -60,7 +60,7 @@ public class Shift extends BusinessObject implements Comparable<Shift>
 	 * @param startTime
 	 * @param endTime
 	 */
-	public Shift(Integer shiftID, Integer schedID, Integer day, Time startTime, Time endTime)
+	public Shift(int shiftID, int schedID, int day, Time startTime, Time endTime)
 		{
 		this.shiftID = shiftID;
 		this.schedID = schedID;
@@ -72,7 +72,7 @@ public class Shift extends BusinessObject implements Comparable<Shift>
 	/**
 	 * @return the shiftID
 	 */
-	public Integer getShiftID()
+	public int getShiftID()
 		{
 		return shiftID;
 		}
@@ -80,7 +80,7 @@ public class Shift extends BusinessObject implements Comparable<Shift>
 	/**
 	 * @param shiftID the shiftID to set
 	 */
-	public void setShiftID(Integer shiftID)
+	public void setShiftID(int shiftID)
 		{
 		this.shiftID = shiftID;
 		}
@@ -88,7 +88,7 @@ public class Shift extends BusinessObject implements Comparable<Shift>
 	/**
 	 * @return the schedID
 	 */
-	public Integer getSchedID()
+	public int getSchedID()
 		{
 		return schedID;
 		}
@@ -96,7 +96,7 @@ public class Shift extends BusinessObject implements Comparable<Shift>
 	/**
 	 * @param schedID the schedID to set
 	 */
-	public void setSchedID(Integer schedID)
+	public void setSchedID(int schedID)
 		{
 		this.schedID = schedID;
 		}
@@ -104,7 +104,7 @@ public class Shift extends BusinessObject implements Comparable<Shift>
 	/**
 	 * @return the day
 	 */
-	public Integer getDay()
+	public int getDay()
 		{
 			return day;
 		}
@@ -112,7 +112,7 @@ public class Shift extends BusinessObject implements Comparable<Shift>
 	/**
 	 * @param day the day to set
 	 */
-	public void setDay(Integer day)
+	public void setDay(int day)
 		{
 			this.day = day;
 		}
@@ -156,6 +156,14 @@ public class Shift extends BusinessObject implements Comparable<Shift>
 		{
 		return employees;
 		}
+	
+	/**
+	 * @param employees the employees to set
+	 */
+	public void setEmployees(DoubleLinkedList<Employee> employees)
+		{
+		this.employees = employees;
+		}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Comparable#compareTo(java.lang.Object)
@@ -170,9 +178,24 @@ public class Shift extends BusinessObject implements Comparable<Shift>
 		
 		return 0;
 		}
-	
-	
-	
-	
-	
+
+	/* (non-Javadoc)
+	 * @see business.BusinessObject#clone()
+	 */
+	@Override
+	public Shift clone()
+		{
+		Shift clone = (Shift)super.clone();
+		clone.startTime = (Time)this.startTime.clone();
+		clone.endTime = (Time)this.endTime.clone();
+		
+		DoubleLinkedList<Employee> cloneEmp = new DoubleLinkedList<Employee>();
+		
+		for (Employee emp : this.employees.toArray())
+			cloneEmp.add(emp.clone());
+		
+		clone.setEmployees(cloneEmp);
+		
+		return clone;
+		}
 	}

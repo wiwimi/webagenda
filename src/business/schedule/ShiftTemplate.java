@@ -196,12 +196,9 @@ public class ShiftTemplate extends BusinessObject implements Comparable<ShiftTem
 		clone.endTime = (Time)this.endTime.clone();
 		
 		DoubleLinkedList<ShiftPosition> clonePos = new DoubleLinkedList<ShiftPosition>();
-		ShiftPosition[] origPos = shiftPositions.toArray();
 		
-		for (ShiftPosition pos : origPos)
-			{
+		for (ShiftPosition pos : shiftPositions.toArray())
 			clonePos.add(pos.clone());
-			}
 		
 		clone.setShiftPositions(clonePos);
 		

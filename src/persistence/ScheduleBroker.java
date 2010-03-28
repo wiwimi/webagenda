@@ -138,7 +138,7 @@ public class ScheduleBroker extends Broker<Schedule>
 				throw new DBException("Failed to rollback connection.",e1);
 				}
 			conn.setAvailable(true);
-			createObj.setSchedID(null);
+			createObj.setSchedID(-1);
 			throw new DBException("Failed to get schedules.", e);
 			}
 		
@@ -154,7 +154,7 @@ public class ScheduleBroker extends Broker<Schedule>
 		if (deleteObj == null)
 			throw new NullPointerException("Can not delete, given schedule is null.");
 
-		if (deleteObj.getSchedID() == null)
+		if (deleteObj.getSchedID() == -1)
 			throw new NullPointerException("Can not delete, no schedule ID in given object.");
 		
 		raceCheck(deleteObj, caller);
@@ -215,13 +215,13 @@ public class ScheduleBroker extends Broker<Schedule>
 			DBConnection conn = this.getConnection();
 			
 			PreparedStatement select = null;
-			if (searchTemplate.getSchedID() != null)
+			if (searchTemplate.getSchedID() != -1)
 				{
 				select = conn.getConnection().prepareStatement(
 					"SELECT * FROM `WebAgenda`.`SCHEDULE` WHERE schedID = ? ORDER BY schedID");
 				select.setInt(1, searchTemplate.getSchedID());
 				}
-			else if (searchTemplate.getCreatorID() != null)
+			else if (searchTemplate.getCreatorID() != -1)
 				{
 				select = conn.getConnection().prepareStatement(
 					"SELECT * FROM `WebAgenda`.`SCHEDULE` WHERE creatorID = ? ORDER BY schedID");
@@ -436,7 +436,7 @@ public class ScheduleBroker extends Broker<Schedule>
 	 */
 	private boolean raceCheck(Schedule old, Employee caller) throws DBChangeException, DBException, DBDownException
 		{
-		if (old == null || old.getSchedID() == null)
+		if (old == null || old.getSchedID() == -1)
 			throw new DBException("Unable to validate old schedule template, is null or has no schedTempID.");
 		
 		//Get schedule from DB with matching scheduleID.
@@ -484,7 +484,7 @@ public class ScheduleBroker extends Broker<Schedule>
 				Employee emp2 = sh2.getEmployees().get(j);
 				
 				//Only ID numbers need to be compared.
-				if (!emp1.getEmpID().equals(emp2.getEmpID()))
+				if (!(emp1.getEmpID() == emp2.getEmpID()))
 					throw new DBChangeException("Shift employees changed: "+emp1.getEmpID()+" vs "+emp2.getEmpID());
 				}
 			}

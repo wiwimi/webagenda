@@ -18,16 +18,16 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 	
 	/**
 	 * Identifier for the user. The name employee does not reflect their
-	 * position. Cannot be negative.
+	 * position. Cannot be negative in the database.
 	 */
-	private Integer				empID					= null;
+	private int				empID					= -1;
 	
 	/**
 	 * Like employee_id, supervisor doesn't entail the position; it's the
 	 * authoritative figure for the employee. Cannot be negative, if this user
 	 * has no supervisor, this value should point to the employee_id.
 	 */
-	private Integer				supervisorID		= null;
+	private int				supervisorID		= -1;
 	
 	/**
 	 * User's first name, or preferred name. Name values cannot be changed by
@@ -98,7 +98,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 	 * wants to browse inactive user, or generate reports on active/inactive
 	 * users.
 	 */
-	private Boolean				active				= null;
+	private boolean				active				= true;
 	
 	/**
 	 * An object that contains the personal visual settings of a user; loaded
@@ -204,7 +204,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 	/**
 	 * @return the employee_id
 	 */
-	public Integer getEmpID()
+	public int getEmpID()
 		{
 		return empID;
 		}
@@ -212,7 +212,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 	/**
 	 * @param employeeId the employeeId to set
 	 */
-	public void setEmpID(Integer employeeId)
+	public void setEmpID(int employeeId)
 		{
 		empID = employeeId;
 		}
@@ -220,7 +220,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 	/**
 	 * @return the supervisor
 	 */
-	public Integer getSupervisorID()
+	public int getSupervisorID()
 		{
 		return supervisorID;
 		}
@@ -228,7 +228,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 	/**
 	 * @param supervisorId the supervisorId to set
 	 */
-	public void setSupervisorID(Integer supervisorId)
+	public void setSupervisorID(int supervisorId)
 		{
 		this.supervisorID = supervisorId;
 		}
@@ -348,7 +348,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 	/**
 	 * @return the active
 	 */
-	public Boolean getActive()
+	public boolean getActive()
 		{
 		return active;
 		}
@@ -356,7 +356,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 	/**
 	 * @param active the active to set
 	 */
-	public void setActive(Boolean active)
+	public void setActive(boolean active)
 		{
 		this.active = active;
 		}
@@ -409,15 +409,6 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 		this.userSettings = userSettings;
 		}
 	
-	@Override
-	public String toString()
-		{
-		return empID + ";" + supervisorID + ";" + givenName + ";" + familyName +
-				";" + birthDate + ";" + email + ";" + username + ";" + password +
-				";" + prefLocation + ";" + prefPosition + ";" + level + version + ";" +
-				lastLogin + ";" + (active == null ? "false" : "true");
-		}
-
 	/**
 	 * @return the version
 	 */
@@ -444,6 +435,28 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 			return 1;
 		
 		return 0;
+		}
+
+	/* (non-Javadoc)
+	 * @see business.BusinessObject#clone()
+	 */
+	@Override
+	public Employee clone()
+		{
+		Employee clone = (Employee)super.clone();
+		clone.birthDate = (Date)this.birthDate.clone();
+		clone.lastLogin = (Timestamp)this.lastLogin.clone();
+		
+		return clone;
+		}
+
+	@Override
+	public String toString()
+		{
+		return empID + ";" + supervisorID + ";" + givenName + ";" + familyName +
+				";" + birthDate + ";" + email + ";" + username + ";" + password +
+				";" + prefLocation + ";" + prefPosition + ";" + level + version + ";" +
+				lastLogin + ";" + active;
 		}
 	
 	}

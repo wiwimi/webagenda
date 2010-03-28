@@ -129,7 +129,7 @@ public class EmployeeBroker extends Broker<Employee>
 		 * are missing.
 		 */
 		String nullMsg = "Missing Required Fields:";
-		if (createEmp.getEmpID() == null)
+		if (createEmp.getEmpID() == -1)
 			nullMsg = nullMsg + " EmpID";
 		if (createEmp.getGivenName() == null)
 			nullMsg = nullMsg + " GivenName";
@@ -158,7 +158,7 @@ public class EmployeeBroker extends Broker<Employee>
 			cs.registerOutParameter(12, java.sql.Types.BOOLEAN);
 			cs.setInt(1, createEmp.getEmpID());
 			
-			if (createEmp.getSupervisorID() == null)
+			if (createEmp.getSupervisorID() == -1)
 				cs.setNull(2, java.sql.Types.INTEGER);
 			else
 				cs.setInt(2, createEmp.getSupervisorID());
@@ -219,7 +219,7 @@ public class EmployeeBroker extends Broker<Employee>
 		if (deleteEmp == null)
 			throw new NullPointerException("Can not delete null employee.");
 		
-		if (deleteEmp.getEmpID() == null)
+		if (deleteEmp.getEmpID() == -1)
 			throw new DBException("Missing Required Field: EmpID");
 		
 		PermissionLevel pl = checkPermissions(deleteEmp,caller); /// will throw exceptions if permission 'levels' are invalid (doesn't detect individual ones)
@@ -286,7 +286,7 @@ public class EmployeeBroker extends Broker<Employee>
 		String select = "SELECT * FROM `WebAgenda`.`EMPLOYEE` WHERE ";
 		String comp = "";
 		
-		if (searchTemplate.getEmpID() != null)
+		if (searchTemplate.getEmpID() != -1)
 			{
 			// If an employee ID is given, use only that for search.
 			comp = "empID = " + searchTemplate.getEmpID();
@@ -295,7 +295,7 @@ public class EmployeeBroker extends Broker<Employee>
 			{
 			// Use all other non-null fields for search if no employee ID is given.
 			// Supervisor ID
-			comp = comp + (searchTemplate.getSupervisorID() != null ? "supID = " + searchTemplate.getSupervisorID() : "");
+			comp = comp + (searchTemplate.getSupervisorID() != -1 ? "supID = " + searchTemplate.getSupervisorID() : "");
 			// Given Name
 			comp = comp + (searchTemplate.getGivenName() != null ? (comp.equals("") ? "" : " AND ") +
 					"givenName LIKE '%" + searchTemplate.getGivenName() + "%'" : "");
@@ -315,15 +315,10 @@ public class EmployeeBroker extends Broker<Employee>
 			comp = comp + (searchTemplate.getPrefLocation() != null ? (comp.equals("") ? "" : " AND ") +
 					"prefLocation LIKE '%" + searchTemplate.getPrefLocation() + "%'" : "");
 			// Active State.
-			comp = comp + (searchTemplate.getActive() != null ? (comp.equals("") ? "" : " AND ") +
-					"active = " + searchTemplate.getActive() : "");
+			comp = comp + (comp.equals("") ? "" : " AND ") +
+					"active = " + searchTemplate.getActive();
 			}	
 		
-		if (comp.equals(""))
-			{
-			//Nothing being searched for, return null.
-			return null;
-			}
 		
 		// Add comparisons and close select statement.
 		select = select + comp + ";";
@@ -404,7 +399,7 @@ public class EmployeeBroker extends Broker<Employee>
 		 * are missing.
 		 */
 		String nullMsg = "Missing Required Fields:";
-		if (updateEmployee.getEmpID() == null)
+		if (updateEmployee.getEmpID() == -1)
 			nullMsg = nullMsg + " EmpID";
 		if (updateEmployee.getGivenName() == null)
 			nullMsg = nullMsg + " GivenName";
@@ -421,7 +416,7 @@ public class EmployeeBroker extends Broker<Employee>
 		String update = String.format(
 				"UPDATE `WebAgenda`.`EMPLOYEE` SET empID = %s, supID = %s, givenName = '%s', familyName = '%s', email = %s, username = '%s', lastLogin = %s, prefPosition = %s, prefLocation = %s, active = %s WHERE empID = %s;",
 				updateEmployee.getEmpID(),
-				(updateEmployee.getSupervisorID() != null ? updateEmployee.getSupervisorID() + "" : "NULL"),
+				(updateEmployee.getSupervisorID() != -1 ? updateEmployee.getSupervisorID() + "" : "NULL"),
 				updateEmployee.getGivenName(),
 				updateEmployee.getFamilyName(),
 				(updateEmployee.getEmail() != null ? "'"+updateEmployee.getEmail()+"'" : "NULL"),
@@ -593,7 +588,7 @@ public class EmployeeBroker extends Broker<Employee>
 				emp.setPrefLocation(rs.getString("prefLocation"));
 				
 				if (emp.getSupervisorID() == 0)
-					emp.setSupervisorID(null);
+					emp.setSupervisorID(-1);
 				
 				empList[i] = emp;
 				}
