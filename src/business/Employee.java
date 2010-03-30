@@ -101,6 +101,12 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 	private boolean				active				= true;
 	
 	/**
+	 * Users that have a default system assigned password will be notified to change
+	 * it.
+	 */
+	private boolean				passChanged			= false;
+	
+	/**
 	 * An object that contains the personal visual settings of a user; loaded
 	 * upon login to set up their dashboard, retrieved by broker. Value can be
 	 * null, in which case it will be set to the default built-in view. May not
@@ -361,6 +367,22 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 		this.active = active;
 		}
 	
+	/**
+	 * @return the passChanged
+	 */
+	public boolean getPassChanged()
+		{
+		return passChanged;
+		}
+
+	/**
+	 * @param passChanged the passChanged to set
+	 */
+	public void setPassChanged(boolean passChanged)
+		{
+		this.passChanged = passChanged;
+		}
+
 	/**
 	 * @return the birth_date
 	 */

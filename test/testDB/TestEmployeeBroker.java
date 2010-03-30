@@ -65,50 +65,32 @@ public class TestEmployeeBroker
 		
 		Employee newEmp = null;
 		
-		try {
-			newEmp = new Employee(80000,"Bilbo","Baggins","bilb01","password",1,'a');
-			newEmp.setActive(true);
-			String dob = "02/03/2018";
-			dob = dob.replace('/','-');
-			java.sql.Date sqlBirthDate = java.sql.Date.valueOf(dob);
-            newEmp.setBirthDate(sqlBirthDate);
-          } catch (DBException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		//Add employee
-		boolean successful;
 		try
 			{
-			successful = empBroker.create(newEmp, user);
-			assertTrue(successful);
+			newEmp = new Employee(80000,"Bilbo","Baggins","bilb01","password",1,'a');
 			}
-		catch (DBException e)
+		catch (DBException e1)
 			{
-			e.printStackTrace();
-			fail();
-			}
-		catch (DBDownException e)
-			{
-			e.printStackTrace();
-			}
-		catch (InvalidPermissionException  e)
-			{
-			e.printStackTrace();
-			}
-		catch (PermissionViolationException e) 
-			{
-				e.printStackTrace();
+			e1.printStackTrace();
+			fail("Employee constructor failed.");
 			}
 		
-		//Search for employee.
+      newEmp.setBirthDate(Date.valueOf("2018-03-02"));
+            
 		try
 			{
+			//Add employee
+			assertTrue(empBroker.create(newEmp, user));
+			
+			//Search for employee.
 			Employee empSearch = new Employee();
 			empSearch.setEmpID(80000);
 			Employee[] results = empBroker.get(empSearch, user);
 			if (results == null)
 				fail("Employee search failed, employee not returned.");
+			
+			//Delete the test user.
+			assertTrue(empBroker.delete(results[0], user));
 			}
 		catch (DBException e)
 			{
@@ -118,42 +100,17 @@ public class TestEmployeeBroker
 		catch (DBDownException e)
 			{
 			e.printStackTrace();
+			fail();
 			}
-		catch (NullPointerException e)
-			{
-			e.printStackTrace();
-			}
-		catch (InvalidPermissionException e)
-			{
-			e.printStackTrace();
-			} catch (PermissionViolationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		//Delete the test user.
-		try
-			{
-			boolean deleted = empBroker.delete(newEmp, user);
-			assertTrue(deleted);
-			System.out.println("Employee deleted: "+ deleted);
-			}
-		catch (DBException e)
+		catch (InvalidPermissionException  e)
 			{
 			e.printStackTrace();
 			fail();
 			}
-		catch (DBDownException e)
+		catch (PermissionViolationException e) 
 			{
 			e.printStackTrace();
-			}
-		catch (InvalidPermissionException e)
-			{
-			e.printStackTrace();
-			}
-		catch (PermissionViolationException e)
-			{
-			e.printStackTrace();
+			fail();
 			}
 		}
 	
@@ -181,13 +138,36 @@ public class TestEmployeeBroker
 		newEmp.setEmail("email@YAHOO.CA");
 		newEmp.setPrefLocation("Mohave Grill");
 	
-		//Add employee
 		boolean successful;
 		try
 			{
+			//Add employee
 			successful = empBroker.create(newEmp, user);
 			assertTrue(successful);
 			System.out.println("Employee added: "+successful);
+			
+			//Get employee object from DB.
+			Employee search = new Employee();
+			search.setEmpID(80002);
+			Employee old = empBroker.get(search, user)[0];
+			
+			//Set employee inactive.
+			Employee update = old.clone();
+			update.setActive(false);
+			assertTrue(empBroker.update(old, update, user));
+			
+			//Search for disabled employee.
+			Employee empSearchDisabled = new Employee();
+			empSearchDisabled.setActive(false);
+			Employee[] results = empBroker.get(empSearchDisabled, user);
+			if (results == null)
+				fail("Employee search failed, employee not returned.");
+			System.out.println("Employee retrieved: "+results[0]);
+
+			//Delete the test employee.
+			Employee delete = new Employee();
+			delete.setEmpID(80002);
+			assertTrue(empBroker.delete(delete, user));
 			}
 		catch (DBException e)
 			{
@@ -207,47 +187,7 @@ public class TestEmployeeBroker
 				e.printStackTrace();
 			}
 		
-		//Search for disabled employee.
-		try
-			{
-			Employee empSearchDisabled = new Employee();
-			empSearchDisabled.setActive(false);
-			Employee[] results = empBroker.get(empSearchDisabled, user);
-			if (results == null)
-				fail("Employee search failed, employee not returned.");
-			System.out.println("Employee retrieved: "+results[0]);
-			}
-		catch (DBException e)
-			{
-			e.printStackTrace();
-			fail();
-			}
-		catch (DBDownException e)
-			{
-			e.printStackTrace();
-			}
-		catch (NullPointerException e)
-			{
-			e.printStackTrace();
-			}
-		catch (InvalidPermissionException e)
-		{
-		e.printStackTrace();
-		} catch (PermissionViolationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
-	
-	
-	/**
-	 * Test method for {@link persistence.EmployeeBroker#delete(business.Employee)}.
-	 */
-	@Test
-	public void testFullDeleteEmployee()
-		{
-		
-		}
 	
 	/**
 	 * Test method for {@link persistence.EmployeeBroker#get(business.Employee)}.

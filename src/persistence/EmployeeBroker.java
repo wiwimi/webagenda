@@ -4,6 +4,7 @@
 package persistence;
 
 import java.sql.CallableStatement;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -210,9 +211,6 @@ public class EmployeeBroker extends Broker<Employee>
 		return result;
 		}
 	
-	/* (non-Javadoc)
-	 * @see persistence.Broker#delete(business.BusinessObject)
-	 */
 	@Override
 	public boolean delete(Employee deleteEmp, Employee caller) throws DBException, DBDownException, InvalidPermissionException, PermissionViolationException
 		{
@@ -421,12 +419,13 @@ public class EmployeeBroker extends Broker<Employee>
 				updateEmployee.getFamilyName(),
 				(updateEmployee.getEmail() != null ? "'"+updateEmployee.getEmail()+"'" : "NULL"),
 				updateEmployee.getUsername(),
-				updateEmployee.getPassword(),
 				(updateEmployee.getLastLogin() != null ? "'"+updateEmployee.getLastLogin()+"'" : "NULL"),
 				(updateEmployee.getPrefPosition() != null ? "'"+updateEmployee.getPrefPosition()+"'" : "NULL"),
 				(updateEmployee.getPrefLocation() != null ? "'"+updateEmployee.getPrefLocation()+"'" : "NULL"),
 				updateEmployee.getActive(),
 				updateEmployee.getEmpID() + "");
+		
+		System.out.println(update);
 		
 		// Get DB connection, send update, and reopen connection for other users.
 		try
@@ -583,6 +582,7 @@ public class EmployeeBroker extends Broker<Employee>
 				emp.setBirthDate(rs.getDate("birthDate"));
 				emp.setEmail(rs.getString("email"));
 				emp.setActive(rs.getBoolean("active"));
+				emp.setPassChanged(rs.getBoolean("passChanged"));
 				emp.setLastLogin(rs.getTimestamp("lastLogin"));
 				emp.setPrefPosition(rs.getString("prefPosition"));
 				emp.setPrefLocation(rs.getString("prefLocation"));
