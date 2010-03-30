@@ -4,7 +4,6 @@
 package persistence;
 
 import java.sql.CallableStatement;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -267,7 +266,7 @@ public class EmployeeBroker extends Broker<Employee>
 			{
 			pl = checkPermissions(searchTemplate, caller); /// will throw exceptions if permission 'levels' are invalid (doesn't detect individual ones)
 			}
-		catch (InvalidPermissionException ipe)	{ ipe.printStackTrace(); }
+		catch (InvalidPermissionException ipe)	{}
 		
 		try {
 			if(!searchTemplate.getActive() && !pl.getLevel_permissions().isCanViewInactiveEmployees())
@@ -306,6 +305,9 @@ public class EmployeeBroker extends Broker<Employee>
 			// Username
 			comp = comp + (searchTemplate.getUsername() != null ? (comp.equals("") ? "" : " AND ") +
 					"username LIKE '%" + searchTemplate.getUsername() + "%'" : "");
+			// Password
+			comp = comp + (searchTemplate.getPassword() != null ? (comp.equals("") ? "" : " AND ") +
+					"password = '" + searchTemplate.getPassword() + "'" : "");
 			// Preferred Position
 			comp = comp + (searchTemplate.getPrefPosition() != null ? (comp.equals("") ? "" : " AND ") +
 					"prefPosition LIKE '%" + searchTemplate.getPrefPosition() + "%'" : "");
@@ -508,11 +510,7 @@ public class EmployeeBroker extends Broker<Employee>
 			throw new InvalidLoginException(
 					"Username and password must not be null.");
 		
-		Employee loginEmp = new Employee();
-		loginEmp.setUsername(username);
-		loginEmp.setPassword(password);
-		loginEmp.setActive(true);
-		// get() method does not check for permisison levels, so loginEmp can call it
+		Employee loginEmp = new Employee(-1,null,null,username,password,"2a");
 		Employee[] results = null;
 		try
 			{

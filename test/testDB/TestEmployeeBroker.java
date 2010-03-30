@@ -399,23 +399,21 @@ public class TestEmployeeBroker
 		{
 		System.out.println("******************** UPDATE TEST ********************");
 		
-		Employee newEmp = null, oldEmp;
-		
 		try {
-			oldEmp = new Employee();
-			oldEmp.setEmpID(12314);
-			Employee[] results = empBroker.get(oldEmp, user);
+			Employee searchEmp = new Employee();
+			searchEmp.setEmpID(12314);
 			
+			Employee oldEmp = empBroker.get(searchEmp, user)[0];
 			
-			newEmp = new Employee(12314,"Hosam","Baggins","Hosam01","password",1,'a');
+			Employee newEmp = oldEmp.clone();
+			newEmp.setGivenName("Hosam");
+			newEmp.setUsername("Hosam01");
 
-			if(results!=null)
-			{
-			boolean successful = empBroker.update(oldEmp, newEmp, user);
-			assertTrue(successful);
-			System.out.println("Employee updated: "+successful);
-			System.out.println(newEmp);
-			}
+			assertTrue(empBroker.update(oldEmp, newEmp, user));
+			System.out.println("Employee updated: "+newEmp);
+			
+			assertTrue(empBroker.update(newEmp, oldEmp, user));
+			System.out.println("Employee change reversed: "+oldEmp);
 			}
 		catch (DBException e)
 			{
