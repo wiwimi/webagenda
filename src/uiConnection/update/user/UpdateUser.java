@@ -18,6 +18,7 @@ import exception.InvalidPermissionException;
 import exception.PermissionViolationException;
 import business.Employee;
 import business.Skill;
+import business.schedule.Location;
 import business.schedule.Position;
 
 /**
@@ -34,12 +35,13 @@ public class UpdateUser extends HttpServlet {
 		    throws ServletException, IOException 
 		    {
 		        response.setContentType("text/html;charset=UTF-8");
-		        EmployeeBroker empBroker;
+		        EmployeeBroker broker;
 		        boolean success = false;
 		        java.sql.Date  sqlBirthDate;
-		        empBroker = EmployeeBroker.getBroker();
-				empBroker.initConnectionThread();
-		        
+		        broker = EmployeeBroker.getBroker();
+				broker.initConnectionThread();
+				Employee[] results =null;
+				Employee newEmp=null;
 		       //Create or get the session object from the HTTPSession object
 		        HttpSession session = request.getSession();
 		   
@@ -49,9 +51,8 @@ public class UpdateUser extends HttpServlet {
 		        
 		        String familyName = request.getParameter("familyName");
 		        String givenName = request.getParameter("givenName");
-		        String password = request.getParameter("password");
-		       
-				String status =  request.getParameter("status");
+		        
+		        String status =  request.getParameter("status");
 				String pos = request.getParameter("pos");
 				String email=request.getParameter("email");
 				String username = request.getParameter("user");
@@ -61,13 +62,17 @@ public class UpdateUser extends HttpServlet {
 				String loc= request.getParameter("loc");
 				String empId = request.getParameter("empId");
 				String supId = request.getParameter("supId");
-				
+				Employee oldEmp =null;
 				int empIdInt = Integer.parseInt(empId);
 				
 				try 
 				{
+					newEmp = new Employee();
+					newEmp.setEmpID(empIdInt);
+					newEmp.setFamilyName(familyName);
+					newEmp.setGivenName(givenName);
+					newEmp.setUsername(username);
 					
-					Employee newEmp = new Employee(empIdInt,givenName,familyName,username, password, "1a");
 					if (status.equalsIgnoreCase("enabled"))
 					
 						newEmp.setActive(true);
@@ -106,68 +111,71 @@ public class UpdateUser extends HttpServlet {
 						newEmp.setPrefLocation(loc);
 					}
 					
-					Employee oldEmp = (Employee)session.getAttribute("oldEmp");
-					success = empBroker.update(oldEmp, newEmp, user);
+					oldEmp = (Employee)session.getAttribute("oldEmp");
+					results = broker.get(oldEmp, user);
+					
+					if(results!=null)
+						success = broker.update(oldEmp, newEmp, user);
 					
 					if (success)
 					{
 						//Confirm that the user was updated
 						response.sendRedirect("wa_user/updateUser.jsp?message=true&familyName=" + familyName +"&givenName=" + givenName
-								+ "&username=" + username +  "&email=" + email + "&password=" + password
+								+ "&username=" + username +  "&email=" + email 
 								+ "&dob=" + dob + "&empId=" + empId + "&status=" + newEmp.getActive());
 					}
 				}
 				catch (DBException e) 
 				{
 					e.printStackTrace();
-					//out.println("DB Exception");
-					//out.println(givenName + " ");
-					//out.println(familyName + " ");
-					//out.println(empIdInt + " ");
-					//out.println(password + " ");
-					//out.println(username + "xDOB ");
-					//out.println(sqlBirthDate + " ");
 					
-					//Even if the user is not created, return the values to the form
-					response.sendRedirect("wa_user/updateUser.jsp?message=false&familyName=" + familyName +"&givenName=" + givenName
-							+ "&username=" + username +  "&email=" + email + "&password=" + password
-							+ "&dob=" + dob + "&empId=" + empId);
+					//DEBUGGING
+					out.println("DB Exception");
+					out.println(newEmp.getGivenName() + " ");
+					out.println(newEmp.getEmpID() + " ");
+					out.println(newEmp.getFamilyName() + " ");
+					
+					out.println("OLD");
+					out.println(oldEmp.getEmpID() + " ");
+					
+					
+					//Even if the user is not updated, return the values to the form
+					//response.sendRedirect("wa_user/updateUser.jsp?message=false&familyName=" + familyName +"&givenName=" + givenName+ "&username=" + username +  "&email=" + email 
+						//	+ "&dob=" + dob + "&empId=" + empId);
 				}
 				catch (DBDownException e) 
 				{
 					e.printStackTrace();
-					//out.println("DB Down Exception");
-					//out.println(givenName);
-					//out.println(familyName);
-					//out.println(empIdInt);
+					out.println("DB Down Exception");
+					out.println(givenName);
+					out.println(familyName);
+					out.println(empIdInt);
 					
 					//Even if the user is not created, return the values to the form
-					response.sendRedirect("wa_user/updateUser.jsp?message=false&familyName=" + familyName +"&givenName=" + givenName
-							+ "&username=" + username +  "&email=" + email + "&password=" + password
-							+ "&dob=" + dob + "&empId=" + empId);
+					//response.sendRedirect("wa_user/updateUser.jsp?message=false&familyName=" + familyName +"&givenName=" + givenName
+						//	+ "&username=" + username +  "&email=" + email + "&dob=" + dob + "&empId=" + empId);
 				}
 				catch (InvalidPermissionException  e)
 				{
 					e.printStackTrace();
-					//out.println("Invalid Permission");
+					out.println("Invalid Permission");
 					
 					//Even if the user is not created, return the values to the form
-					response.sendRedirect("wa_user/updateUser.jsp?message=perm&familyName=" + familyName +"&givenName=" + givenName
-							+ "&username=" + username +  "&email=" + email + "&password=" + password
-							+ "&dob=" + dob + "&empId=" + empId);
+					//response.sendRedirect("wa_user/updateUser.jsp?message=perm&familyName=" + familyName +"&givenName=" + givenName+ "&username=" + username +  "&email=" + email 
+						//	+ "&dob=" + dob + "&empId=" + empId);
 				}
 				catch (PermissionViolationException e) 
 				{
 					e.printStackTrace();
-					//out.println("Perm Violation");
+					out.println("Perm Violation");
 					//Even if the user is not created, return the values to the form
-					response.sendRedirect("wa_user/updateUser.jsp?message=perm&familyName=" + familyName +"&givenName=" + givenName
-							+ "&username=" + username +  "&email=" + email + "&password=" + password
-							+ "&dob=" + dob + "&empId=" + empId);
+					//response.sendRedirect("wa_user/updateUser.jsp?message=perm&familyName=" + familyName +"&givenName=" + givenName
+						//	+ "&username=" + username +  "&email=" + email
+						//	+ "&dob=" + dob + "&empId=" + empId);
 				}
 				finally
 				{
-					empBroker.stopConnectionThread();
+					broker.stopConnectionThread();
 				}
 			
 			 }

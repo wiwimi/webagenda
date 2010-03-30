@@ -143,14 +143,19 @@
 							 
 							Employee[] results = empBroker.get(searchEmp, user);
 							
-							// Retrived the not null fields
+							// Retrive the not null fields
 							givenName = results[0].getGivenName();
 							familyName = results[0].getFamilyName();
 							username = results[0].getUsername();
 							
 							//If these fields are not empty, store them
 							if (results[0].getBirthDate()!=null)
+							{
 								dob = results[0].getBirthDate().toString();
+								dob = dob.substring(5, 7) + '/' + dob.substring(8, dob.length())
+								+'/' + dob.substring(0, 4);		// Reversing the date so that it matches the style used in the calendar
+								
+							}
 							
 							if(results[0].getPrefPosition()!=null)
 								position = results[0].getPrefPosition();
@@ -172,7 +177,7 @@
 							Employee oldEmp = new Employee();
 							oldEmp.setEmpID(empIdInt);
 							
-							session.setAttribute("oldEmp", user);
+							session.setAttribute("oldEmp", oldEmp);
 						}
 					}
 					
@@ -244,7 +249,7 @@
 					</div>
 					<div id="formButtons">
 							<input type="submit" name="submit" class="button" value="Update">
-							<input type="button" name="submit" class="button" value="Search" onClick="location.href='userSearchResults.jsp?empId='+ form.empId.value + '& familyName=' + form.familyName.value + '&status='+ form.status.value + '&username=' + form.user.value + '&dob='+ form.dob.value">
+							<input type="button" name="submit" class="button" value="Search" onClick="location.href='userSearchResults.jsp?empId='+ form.empId.value + '&familyName=' + form.familyName.value + '&status='+ form.status.value + '&username=' + form.user.value + '&dob='+ form.dob.value">
 							<input type="reset" name="clear" class="button" value="Clear Screen" onClick="location.href='updateUser.jsp?empId=&familyName=&status=&username=&dob='">	
 					</div>
 					

@@ -122,7 +122,7 @@
 					 	<div id="formButtons">
 					 	    <input type="submit" name="submit" class="button" value="Add"> 
 							<input type="button" name="submit" class="button" value="Search" onClick="location.href='userSearchResults.jsp?familyName='+ form.familyName.value + '&empId=' + form.empId.value + '&givenName=' + form.givenName.value + '&user=' + form.user.value + '&status=' + form.status.value + '&email=' + form.email.value">
-							<input type="reset" name="clear" class="button" value="Clear Screen" onClick="location.href='newUser.jsp?empId=& familyName=&status=&username=&dob=">
+							<input type="reset" name="clear" class="button" value="Clear Screen" onClick="location.href='newUser.jsp?empId=&familyName=&status=&username=&dob='">
 						</div>
 				<%
 				 	String givenName = "", familyName ="", dob ="" , username ="", email="", password ="", empId="";
@@ -163,76 +163,78 @@
 						<p>	<label class ="label"> Date of Birth: </label> <input type="text" name ="dob" id="dob" size ="10" value="<%=dob%>"/></p>
 						<p>	<label class ="label"> Username: <em class="asterisk"> * </em> </label> <input type="text" name ="user" id="user"  class="required"  size ="30" value="<%=username%>"/></p>
 	                    <p>
-					         <label for="cemail" class="label"> E-Mail:</label>
-				             <input type="text" id="cemail" name="email" size="30" value="<%=email%>"/>
+					        <label for="cemail" class="label"> E-Mail:</label>
+				            <input type="text" id="cemail" name="email" size="30" value="<%=email%>"/>
 				        </p>
 				        
 				        <p>
 				        	<label class="label" >Generate Password: <em class="asterisk"> * </em> </label>
 				        	<input type="text" class="required" name="password" id ="pwd" size="20" value="<%=password%>"/>
-				        	
-				        	
-					   </p>
+				       </p>
 					</fieldset>
 				</div>
 				<div id="work">
 				<fieldset>
 					<legend> Working Preferences </legend>
-						<p>	<label id="theSelect" class="theSelect"> Status: <em class="asterisk"> * </em> </label> 
-								<select name="status">
-									<option value="enabled"> Enabled</option> 
-									<option value="disabled" >Disabled</option>  
-								</select> 
-						</p>
-										
-						<!--This should be populated from the database -->
-					    <p>
-							<label id="theSelect" class="theSelect" for="empId">Employee Id: <em class="asterisk"> * </em> </label>
-							<input type="text" size="30" name="empId" class="required" maxLength="30" value="<%=empId%>"/>
-						</p>
-						
-						<!--This should be populated from the database -->
-					    <p>
-							<label id="theSelect" class="theSelect" for="supervisorId">Supervisor Id:</label>
-							<input type="text" size="30" disabled="disabled" value="Edit supervisor Id" maxLength="30" value=""/>
-							<input id="empIdButton" id="supIdButton" type="button" name="submit" class="button" value="Edit"/>
-						</p>
-					
-						
-						<!--This should be populated from MaintainJobType use case -->
-					    <div id="posButton">
-						<p>
-							<label id="theSelect" class="theSelect"> Preferred Position: </label>  
-							<input id="prefPositionBox" type="text" size="30" maxlength="30" disabled="disabled" value="Edit positions" name="prefPositionBox" />
-							<input type="button" name="submit" class="button" value="Edit"/>
-						</p>
-						</div>
-						
-						<!--This should be populated from MaintainLocation use case -->
-						<div id="locationsButton">
-					    <p>		
-							<label id="theSelect" class="theSelect"> Preferred Location: </label>  
-							<input id="prefLocationBox" type="text" size="30" maxlength="30" disabled="disabled" value="Edit locations" name="prefLocationBox" />
-							<input type="button" name="submit" class="button" value="Edit"/>
-					    </p>
-					    </div>
-						
-						<!--This should be populated from MaintainPermission use case -->
-						<div id="permButton">
-						<p>
-							<label id="theSelect" class="theSelect"> Permission level: </label>  
-							<input id="permissionBox" type="text" size="30" maxlength="30" value="Edit permission level" disabled ="disabled" name="permissionBox" />
-							   <input type="button" name="submit" class="button" value="Edit"/>
-						</p>
-						</div>
-					</fieldset>
-					</div>
-					<div id="formButtons">
-							<input type="submit" name="submit" class="button" value="Add">
-							<input type="button" name="submit" class="button" value="Search" onClick="location.href='userSearchResults.jsp?empId='+ form.empId.value + '& familyName=' + form.familyName.value + '&status='+ form.status.value + '&username=' + form.user.value + '&dob='+ form.dob.value">
-							<input type="reset" name="clear" class="button" value="Clear Screen" onClick="location.href='newUser.jsp?empId=& familyName=&status=&username=&dob="> 
-					</div>
-					
+							<div>
+								<p>	<label id="theSelect" class="theSelect"> Status: <em class="asterisk"> * </em> </label> 
+										<select name="status">
+											<option value="enabled"> Enabled</option> 
+											<option value="disabled" >Disabled</option>  
+										</select> 
+								</p>
+							</div>				
+							<!--This should be populated from the database -->
+							<div>
+							    <p>
+									<label id="theSelect" class="theSelect" for="empId">Employee Id: <em class="asterisk"> * </em> </label>
+									<input type="text" size="30" name="empId" class="required" maxLength="30" value="<%=empId%>"/>
+								</p>
+							</div>
+							
+							<!--This should be populated from the database -->
+							<div>
+							    <p>
+									<label id="theSelect" class="theSelect" for="supervisorId">Supervisor Id:</label>
+									<input type="text" size="30" disabled="disabled" value="Edit supervisor Id" maxLength="30" value=""/>
+									<input id="empIdButton" id="supIdButton" type="button" name="submit" class="button" value="Edit"/>
+								</p>
+							</div>
+							
+							<!--This should be populated from MaintainJobType use case -->
+						    <div id="posButton">
+								<p>
+									<label id="theSelect" class="theSelect"> Preferred Position: </label>  
+									<input id="prefPositionBox" type="text" size="30" maxlength="30" disabled="disabled" value="Edit positions" name="prefPositionBox" />
+									<input type="button" name="submit" class="button" value="Edit"/>
+								</p>
+							</div>
+							
+							<!--This should be populated from MaintainLocation use case -->
+							<div id="locationsButton">
+							    <p>		
+									<label id="theSelect" class="theSelect"> Preferred Location: </label>  
+									<input id="prefLocationBox" type="text" size="30" maxlength="30" disabled="disabled" value="Edit locations" name="prefLocationBox" />
+									<input type="button" name="submit" class="button" value="Edit"/>
+							    </p>
+						    </div>
+							
+							<!--This should be populated from MaintainPermission use case -->
+							<div id="permButton">
+								<p>
+									<label id="theSelect" class="theSelect"> Permission level: </label>  
+									<input id="permissionBox" type="text" size="30" maxlength="30" value="Edit permission level" disabled ="disabled" name="permissionBox" />
+								 <input type="button" name="submit" class="button" value="Edit"/>
+								</p>
+						 </div>
+				</fieldset>
+			  </div>
+			  
+			  <div id="formButtons">
+		 	    <input type="submit" name="submit" class="button" value="Add"> 
+				<input type="button" name="submit" class="button" value="Search" onClick="location.href='userSearchResults.jsp?familyName='+ form.familyName.value + '&empId=' + form.empId.value + '&givenName=' + form.givenName.value + '&user=' + form.user.value + '&status=' + form.status.value + '&email=' + form.email.value">
+				<input type="reset" name="clear" class="button" value="Clear Screen" onClick="location.href='newUser.jsp?empId=&familyName=&status=&username=&dob='">
+			</div>
 					
 					<!-- The Pop up Screens -->
 					
