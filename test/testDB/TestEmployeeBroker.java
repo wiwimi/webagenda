@@ -273,81 +273,39 @@ public class TestEmployeeBroker
 		Employee newEmp = null;
 		try {
 			newEmp = new Employee(80000,"Bilbo","Baggins","bilb01","password",1,'a');
-			newEmp.setActive(true);
 		} catch (DBException e2) {
 			// TODO Auto-generated catch block
 			e2.printStackTrace();
 		}
 		if(newEmp == null) fail("Employee not initialized for this test");
-//		newEmp.setEmpID(80000);
-//		newEmp.setGivenName("Bilbo");
-//		newEmp.setFamilyName("Baggins");
-//		newEmp.setUsername("bilb01");
-//		newEmp.setPassword("password");
-//		//newEmp.setPLevel("2a", user);
-//		newEmp.setActive(true);
 		
-		//Add employee
 		try
 			{
-			boolean successful = empBroker.create(newEmp, user);
-			assertTrue(successful);
-			System.out.println("Employee added: "+successful);
+			//Add employee
+			assertTrue(empBroker.create(newEmp, user));
+			System.out.println("Employee added: "+newEmp);
 			System.out.println(newEmp);
-			}
-		catch (DBException e)
-			{
-			e.printStackTrace();
-			fail();
-			}
-		catch (DBDownException e)
-			{
-			e.printStackTrace();
-			}
-		catch (InvalidPermissionException e)
-			{
-			e.printStackTrace();
-			} catch (PermissionViolationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		//Modify new employee and send in as update.
-		newEmp.setLastLogin(new Timestamp(System.currentTimeMillis()));
-		newEmp.setBirthDate(new Date(System.currentTimeMillis() - (20l * 1000l * 60l * 60l * 24l * 365l)));
-		newEmp.setEmail("fakeemail@fake.com");
-		try
-			{
-			boolean successful = empBroker.update(null,newEmp,user);
-			assertTrue(successful);
-			System.out.println("Employee updated: "+successful);
+			
+			//Modify new employee and send in as update.
+			newEmp.setLastLogin(new Timestamp(System.currentTimeMillis()));
+			newEmp.setBirthDate(new Date(System.currentTimeMillis() - (20l * 1000l * 60l * 60l * 24l * 365l)));
+			newEmp.setEmail("fakeemail@fake.com");
+			
+			assertTrue(empBroker.update(null,newEmp,user));
+			System.out.println("Employee updated: "+newEmp);
 			System.out.println(newEmp);
-			}
-		catch (DBException e1)
-			{
-			e1.getCause().printStackTrace();
-			fail();
-			}
-		catch (DBDownException e)
-			{
-			e.printStackTrace();
-			} catch (InvalidPermissionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (PermissionViolationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	
-		//Search for employee employee.
-		try
-			{
+			
+			//Search for employee.
 			Employee[] results = empBroker.get(newEmp, user);
 			System.out.println("Employee retrieved: "+results[0]);
 			
 			//Check accuracy of SQL Date.
 			java.util.Date tempDate = new java.util.Date(results[0].getLastLogin().getTime());
 			System.out.println("Login as date: "+tempDate.toString());
+			
+			//Delete the test user.
+			assertTrue(empBroker.delete(newEmp, user));
+			System.out.println("Employee deleted: "+newEmp);
 			}
 		catch (DBException e)
 			{
@@ -364,31 +322,7 @@ public class TestEmployeeBroker
 			} catch (PermissionViolationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
-		//Delete the test user.
-		try
-			{
-			boolean deleted = empBroker.delete(newEmp, user);
-			assertTrue(deleted);
-			System.out.println("Employee deleted: "+ deleted);
 			}
-		catch (DBException e)
-			{
-			e.printStackTrace();
-			fail();
-			}
-		catch (DBDownException e)
-			{
-			e.printStackTrace();
-			}
-		catch (InvalidPermissionException e)
-			{
-			e.printStackTrace();
-			} catch (PermissionViolationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		}
 	
 	/**
@@ -401,7 +335,7 @@ public class TestEmployeeBroker
 		
 		try {
 			Employee searchEmp = new Employee();
-			searchEmp.setEmpID(12314);
+			searchEmp.setEmpID(28472);
 			
 			Employee oldEmp = empBroker.get(searchEmp, user)[0];
 			
@@ -423,16 +357,19 @@ public class TestEmployeeBroker
 		catch (DBDownException e)
 			{
 			e.printStackTrace();
+			fail();
 			}
 		catch (InvalidPermissionException e)
 			{
 			e.printStackTrace();
-			} catch (PermissionViolationException e) 
+			fail();
+			} 
+		catch (PermissionViolationException e) 
 			{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			fail();
 			}
-			}
+		}
 	
 	/**
 	 * Test method for {@link persistence.EmployeeBroker#update(business.Employee)}.
