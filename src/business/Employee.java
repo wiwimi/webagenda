@@ -460,6 +460,36 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 		}
 
 	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj)
+		{
+		if (!(obj instanceof Employee))
+			return false;
+		
+		Employee emp = (Employee)obj;
+		
+		//Compare each attribute. Passwords and login times are not included.
+		if (this.empID != emp.empID ||
+				this.supervisorID != emp.supervisorID ||
+				(this.givenName == null ? emp.givenName != null : !this.givenName.equals(emp.givenName)) ||
+				(this.familyName == null ? emp.familyName != null : !this.familyName.equals(emp.familyName)) ||
+				(this.birthDate == null ? emp.birthDate != null : !this.birthDate.equals(emp.birthDate)) ||
+				(this.email == null ? emp.email != null : !this.email.equals(emp.email)) ||
+				(this.username == null ? emp.username != null : !this.username.equals(emp.username)) ||
+				(this.prefLocation == null ? emp.prefLocation != null : !this.prefLocation.equals(emp.prefLocation)) ||
+				(this.prefPosition == null ? emp.prefPosition != null : !this.prefPosition.equals(emp.prefPosition)) ||
+				this.active != emp.active ||
+				this.passChanged != emp.passChanged ||
+				this.version != emp.version ||
+				this.level != emp.level)
+			return false;
+		
+		return true;
+		}
+
+	/* (non-Javadoc)
 	 * @see business.BusinessObject#clone()
 	 */
 	@Override

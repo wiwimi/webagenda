@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import exception.DBChangeException;
 import exception.DBDownException;
 import exception.DBException;
 import exception.InvalidLoginException;
@@ -211,7 +212,7 @@ public class EmployeeBroker extends Broker<Employee>
 		}
 	
 	@Override
-	public boolean delete(Employee deleteEmp, Employee caller) throws DBException, DBDownException, InvalidPermissionException, PermissionViolationException
+	public boolean delete(Employee deleteEmp, Employee caller) throws DBException, DBChangeException, DBDownException, InvalidPermissionException, PermissionViolationException
 		{
 		if (deleteEmp == null)
 			throw new NullPointerException("Can not delete null employee.");
@@ -224,6 +225,8 @@ public class EmployeeBroker extends Broker<Employee>
 			throw new PermissionViolationException("User is not authorized to Delete [Disable] an Emplyoee");
 		}
 		
+		if (!raceCheck(deleteEmp, caller))
+			throw new DBChangeException("Delete failed. Target employee may have been changed by another user.");
 		
 		String delete = String.format(
 				"DELETE FROM `WebAgenda`.`EMPLOYEE` WHERE empID = %s;",
@@ -381,17 +384,20 @@ public class EmployeeBroker extends Broker<Employee>
 	 * @see persistence.Broker#update(business.BusinessObject)
 	 */
 	@Override
-	public boolean update(Employee oldEmployee, Employee updateEmployee, Employee caller) throws DBException, DBDownException, InvalidPermissionException, PermissionViolationException
+	public boolean update(Employee oldEmp, Employee updateEmp, Employee caller) throws DBException, DBDownException, InvalidPermissionException, PermissionViolationException
 		{
-		if (updateEmployee == null)
+		if (updateEmp == null)
 			throw new NullPointerException("Can not update null employee.");
 		if(caller == null)
 			throw new DBException("Cannot parse PermissionLevel when invoking Employee is null");
 		
-		PermissionLevel pl = checkPermissions(updateEmployee,caller); /// will throw exceptions if permission 'levels' are invalid (doesn't detect individual ones)
+		PermissionLevel pl = checkPermissions(updateEmp,caller); /// will throw exceptions if permission 'levels' are invalid (doesn't detect individual ones)
 		if(!pl.getLevel_permissions().isCanManageEmployees()) {
 			throw new PermissionViolationException("User is not authorized to Update an Emplyoee");
 		}
+
+		if (!raceCheck(oldEmp, caller))
+			throw new DBChangeException("Delete failed. Target employee may have been changed by another user.");
 		
 		/*
 		 * Make sure all "not null" DB fields are filled. Expand this to throw a
@@ -399,33 +405,35 @@ public class EmployeeBroker extends Broker<Employee>
 		 * are missing.
 		 */
 		String nullMsg = "Missing Required Fields:";
-		if (updateEmployee.getEmpID() == -1)
+		if (updateEmp.getEmpID() == -1)
 			nullMsg = nullMsg + " EmpID";
-		if (updateEmployee.getGivenName() == null)
+		if (updateEmp.getGivenName() == null)
 			nullMsg = nullMsg + " GivenName";
-		if (updateEmployee.getFamilyName() == null)
+		if (updateEmp.getFamilyName() == null)
 			nullMsg = nullMsg + " FamilyName";
-		if (updateEmployee.getUsername() == null)
+		if (updateEmp.getUsername() == null)
 			nullMsg = nullMsg + " Username";
-		if (updateEmployee.getLevel() < 0)
+		if (updateEmp.getLevel() < 0)
 			nullMsg = nullMsg + " PermissionLevel [ < 0 ]";
 		if (!nullMsg.equals("Missing Required Fields:"))
 			throw new DBException(nullMsg);
 		
+		
+		
 		// Create sql update statement from employee object.
 		String update = String.format(
 				"UPDATE `WebAgenda`.`EMPLOYEE` SET empID = %s, supID = %s, givenName = '%s', familyName = '%s', email = %s, username = '%s', lastLogin = %s, prefPosition = %s, prefLocation = %s, active = %s WHERE empID = %s;",
-				updateEmployee.getEmpID(),
-				(updateEmployee.getSupervisorID() != -1 ? updateEmployee.getSupervisorID() + "" : "NULL"),
-				updateEmployee.getGivenName(),
-				updateEmployee.getFamilyName(),
-				(updateEmployee.getEmail() != null ? "'"+updateEmployee.getEmail()+"'" : "NULL"),
-				updateEmployee.getUsername(),
-				(updateEmployee.getLastLogin() != null ? "'"+updateEmployee.getLastLogin()+"'" : "NULL"),
-				(updateEmployee.getPrefPosition() != null ? "'"+updateEmployee.getPrefPosition()+"'" : "NULL"),
-				(updateEmployee.getPrefLocation() != null ? "'"+updateEmployee.getPrefLocation()+"'" : "NULL"),
-				updateEmployee.getActive(),
-				updateEmployee.getEmpID() + "");
+				updateEmp.getEmpID(),
+				(updateEmp.getSupervisorID() != -1 ? updateEmp.getSupervisorID() + "" : "NULL"),
+				updateEmp.getGivenName(),
+				updateEmp.getFamilyName(),
+				(updateEmp.getEmail() != null ? "'"+updateEmp.getEmail()+"'" : "NULL"),
+				updateEmp.getUsername(),
+				(updateEmp.getLastLogin() != null ? "'"+updateEmp.getLastLogin()+"'" : "NULL"),
+				(updateEmp.getPrefPosition() != null ? "'"+updateEmp.getPrefPosition()+"'" : "NULL"),
+				(updateEmp.getPrefLocation() != null ? "'"+updateEmp.getPrefLocation()+"'" : "NULL"),
+				updateEmp.getActive(),
+				updateEmp.getEmpID() + "");
 		
 		System.out.println(update);
 		
@@ -594,5 +602,36 @@ public class EmployeeBroker extends Broker<Employee>
 			}
 		
 		return empList;
+		}
+	
+	/**
+	 * Checks if an employee object is an exact match with an employee record
+	 * in the database.
+	 * 
+	 * @param oldEmp The employee object to compare to the database.
+	 * @param caller The Employee who is currently logged into the system.
+	 * @return true if the given employee object matches a database record, false otherwise.
+	 * @throws PermissionViolationException 
+	 * @throws InvalidPermissionException 
+	 * @throws DBDownException if the database is own and the race check can not be done. 
+	 * @throws DBException if an sql statement failed to execute in the database. 
+	 */
+	private boolean raceCheck(Employee oldEmp, Employee caller) throws DBException, DBDownException, InvalidPermissionException, PermissionViolationException
+		{
+		//Race check fails if null parameters are used.
+		if (oldEmp == null || caller == null)
+			return false;
+		
+		//Get matching record from DB.
+		Employee[] results = get(oldEmp, caller); 
+		
+		//No employee matching employee ID returned, race check fails.
+		if (results == null)
+			return false;
+		
+		//Extract employee.
+		Employee dbEmp = results[0];
+		
+		return dbEmp.equals(oldEmp);
 		}
 	}

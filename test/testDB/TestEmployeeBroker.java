@@ -165,9 +165,7 @@ public class TestEmployeeBroker
 			System.out.println("Employee retrieved: "+results[0]);
 
 			//Delete the test employee.
-			Employee delete = new Employee();
-			delete.setEmpID(80002);
-			assertTrue(empBroker.delete(delete, user));
+			assertTrue(empBroker.delete(update, user));
 			}
 		catch (DBException e)
 			{
@@ -286,12 +284,15 @@ public class TestEmployeeBroker
 			System.out.println("Employee added: "+newEmp);
 			System.out.println(newEmp);
 			
+			//Save new employee to old var.
+			Employee oldEmp = newEmp.clone();
+			
 			//Modify new employee and send in as update.
 			newEmp.setLastLogin(new Timestamp(System.currentTimeMillis()));
 			newEmp.setBirthDate(new Date(System.currentTimeMillis() - (20l * 1000l * 60l * 60l * 24l * 365l)));
 			newEmp.setEmail("fakeemail@fake.com");
 			
-			assertTrue(empBroker.update(null,newEmp,user));
+			assertTrue(empBroker.update(oldEmp,newEmp,user));
 			System.out.println("Employee updated: "+newEmp);
 			System.out.println(newEmp);
 			
@@ -304,7 +305,7 @@ public class TestEmployeeBroker
 			System.out.println("Login as date: "+tempDate.toString());
 			
 			//Delete the test user.
-			assertTrue(empBroker.delete(newEmp, user));
+			assertTrue(empBroker.delete(results[0], user));
 			System.out.println("Employee deleted: "+newEmp);
 			}
 		catch (DBException e)
