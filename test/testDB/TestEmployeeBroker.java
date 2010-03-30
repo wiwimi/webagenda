@@ -455,6 +455,51 @@ public class TestEmployeeBroker
 	 * Test method for {@link persistence.EmployeeBroker#update(business.Employee)}.
 	 */
 	@Test
+	public void testUpdateEmployee2()
+		{
+		System.out.println("******************** UPDATE TEST ********************");
+		
+		Employee newEmp = null, oldEmp;
+		
+		try {
+			oldEmp = new Employee();
+			oldEmp.setEmpID(12314);
+			Employee[] results = empBroker.get(oldEmp, user);
+			
+			
+			newEmp = new Employee(12314,"Hosam","Baggins","Hosam01","password",1,'a');
+
+			if(results!=null)
+			{
+			boolean successful = empBroker.update(oldEmp, newEmp, user);
+			assertTrue(successful);
+			System.out.println("Employee updated: "+successful);
+			System.out.println(newEmp);
+			}
+			}
+		catch (DBException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		catch (DBDownException e)
+			{
+			e.printStackTrace();
+			}
+		catch (InvalidPermissionException e)
+			{
+			e.printStackTrace();
+			} catch (PermissionViolationException e) 
+			{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			}
+			}
+	
+	/**
+	 * Test method for {@link persistence.EmployeeBroker#update(business.Employee)}.
+	 */
+	@Test
 	public void testPermEmployee()
 		{
 		System.out.println("******************** Permission Level ********************");

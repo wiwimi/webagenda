@@ -134,6 +134,8 @@ public class UpdateUser extends HttpServlet {
 					out.println(newEmp.getGivenName() + " ");
 					out.println(newEmp.getEmpID() + " ");
 					out.println(newEmp.getFamilyName() + " ");
+					out.println(newEmp.getBirthDate() + " ");
+					out.println(newEmp.getUsername() + " ");
 					
 					out.println("OLD");
 					out.println(oldEmp.getEmpID() + " ");
