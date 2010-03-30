@@ -387,10 +387,14 @@ public class TestEmployeeBroker
 		try {
 			permArray = permBroker.getAllBelow(level);
 			
-			for(int index = 0; index <permArray.length; index++)
-			{
-				System.out.println(permArray[index].getLevel());
+			if(permArray == null) {
+				
 			}
+			else
+				for(int index = 0; index <permArray.length; index++)
+				{
+					System.out.println(permArray[index].getLevel());
+				}
 		} catch (DBException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

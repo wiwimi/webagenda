@@ -17,6 +17,9 @@ import persistence.PermissionBroker;
  * @author dann
  * @version 0.01.00
  * @license GPL 2
+ * 
+ * This test class is depreciated
+ * 
  */
 public class TestPermissions {
 	
