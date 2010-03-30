@@ -16,7 +16,6 @@ $().ready(function() {
 				required: true,
 				minlength: 2
 			},
-			
 			// Validate that the user's Id is required and should contain digits only
 			empId:{
 				required: true,
@@ -33,7 +32,6 @@ $().ready(function() {
 				required: true,
 				minlength: 6,
 				maxlength:8,
-				
 				equalTo: "#password"
 			},
 			email: {
@@ -44,7 +42,11 @@ $().ready(function() {
 				required: "#newsletter:checked",
 				minlength: 2
 			},
+			dob:{
+				dateCalendar: true // Make sure the date is in the correct format. Or it won't work with the back end.
+			},
 			agree: "required"
+			
 		},
 		messages: {
 			firstname: "Please enter your firstname",
@@ -63,6 +65,10 @@ $().ready(function() {
 				required: "Please provide a password",
 				minlength: "Your password must be at least 6 characters long"
 			},
+			
+			dob:{
+				dateCalendar: "Please enter a date in the format dd/mm/yyyy (OPTIONAL)"
+			},
 			confirm_password: {
 				required: "Please provide a password",
 				minlength: "Your password must be at least 6 characters long",
@@ -70,6 +76,7 @@ $().ready(function() {
 			},
 			email: "Please enter a valid email address",
 			agree: "Please accept our policy"
+			
 		}
 	});
 	

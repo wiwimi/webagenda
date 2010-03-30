@@ -746,6 +746,7 @@ $.extend($.validator, {
 		date: {date: true},
 		dateISO: {dateISO: true},
 		dateDE: {dateDE: true},
+		dateCalendar: {dateCalendar: true},
 		number: {number: true},
 		numberDE: {numberDE: true},
 		digits: {digits: true},
@@ -1015,7 +1016,12 @@ $.extend($.validator, {
 		dateISO: function(value, element) {
 			return this.optional(element) || /^\d{4}[\/-]\d{1,2}[\/-]\d{1,2}$/.test(value);
 		},
-	
+		
+		//Added to match the format of our calendar
+		dateCalendar: function(value, element) {
+			return value.match(/^\d\d?\/\d\d?\/\d\d\d\d$/);
+		},
+		
 		// http://docs.jquery.com/Plugins/Validation/Methods/number
 		number: function(value, element) {
 			return this.optional(element) || /^-?(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d+)?$/.test(value);

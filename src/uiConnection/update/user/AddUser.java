@@ -2,7 +2,6 @@ package uiConnection.update.user;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,15 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import persistence.EmployeeBroker;
-import persistence.PositionBroker;
-import persistence.SkillBroker;
 import exception.DBDownException;
 import exception.DBException;
 import exception.InvalidPermissionException;
 import exception.PermissionViolationException;
 import business.Employee;
-import business.Skill;
-import business.schedule.Position;
+
+import java.io.*;
+import java.util.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import sun.net.smtp.SmtpClient;
+
 
 /**
  * Servlet implementation class addUser

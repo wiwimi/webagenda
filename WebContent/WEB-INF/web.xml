@@ -119,4 +119,24 @@
     <servlet-name>UpdateLocation</servlet-name>
     <url-pattern>/UpdateLocation</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SendMailBean</display-name>
+    <servlet-name>SendMailBean</servlet-name>
+    <servlet-class>SendMailBean</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SendMailBean</servlet-name>
+    <url-pattern>/SendMailBean</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EmailServlet</display-name>
+    <servlet-name>EmailServlet</servlet-name>
+    <servlet-class>uiConnection.update.user.EmailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmailServlet</servlet-name>
+    <url-pattern>/EmailServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
