@@ -130,50 +130,51 @@ public class UpdateUser extends HttpServlet {
 					e.printStackTrace();
 					
 					//DEBUGGING
-					out.println("DB Exception");
-					out.println(newEmp.getGivenName() + " ");
-					out.println(newEmp.getEmpID() + " ");
-					out.println(newEmp.getFamilyName() + " ");
-					out.println(newEmp.getBirthDate() + " ");
-					out.println(newEmp.getUsername() + " ");
-					
-					out.println("OLD");
-					out.println(oldEmp.getEmpID() + " ");
+					//out.println("DB Exception");
+					//out.println(newEmp.getGivenName() + " ");
+					//out.println(newEmp.getEmpID() + " ");
+					//out.println(newEmp.getFamilyName() + " ");
+					//out.println(newEmp.getBirthDate() + " ");
+					//out.println(newEmp.getUsername() + " ");
+					//out.println("OLD");
+					//out.println(oldEmp.getEmpID() + " ");
 					
 					
 					//Even if the user is not updated, return the values to the form
-					//response.sendRedirect("wa_user/updateUser.jsp?message=false&familyName=" + familyName +"&givenName=" + givenName+ "&username=" + username +  "&email=" + email 
-						//	+ "&dob=" + dob + "&empId=" + empId);
+					response.sendRedirect("wa_user/updateUser.jsp?message=false&familyName=" + familyName +"&givenName=" + givenName+ "&username=" + username +  "&email=" + email 
+							+ "&dob=" + dob + "&empId=" + empId);
 				}
 				catch (DBDownException e) 
 				{
 					e.printStackTrace();
-					out.println("DB Down Exception");
-					out.println(givenName);
-					out.println(familyName);
-					out.println(empIdInt);
+					//out.println("DB Down Exception");
+					//out.println(givenName);
+					//out.println(familyName);
+					//out.println(empIdInt);
 					
 					//Even if the user is not created, return the values to the form
-					//response.sendRedirect("wa_user/updateUser.jsp?message=false&familyName=" + familyName +"&givenName=" + givenName
-						//	+ "&username=" + username +  "&email=" + email + "&dob=" + dob + "&empId=" + empId);
+					response.sendRedirect("wa_user/updateUser.jsp?message=false&familyName=" + familyName +"&givenName=" + givenName
+							+ "&username=" + username +  "&email=" + email + "&dob=" + dob + "&empId=" + empId);
 				}
 				catch (InvalidPermissionException  e)
 				{
 					e.printStackTrace();
-					out.println("Invalid Permission");
+					
+					//DEBUGGING
+					//out.println("Invalid Permission");
 					
 					//Even if the user is not created, return the values to the form
-					//response.sendRedirect("wa_user/updateUser.jsp?message=perm&familyName=" + familyName +"&givenName=" + givenName+ "&username=" + username +  "&email=" + email 
-						//	+ "&dob=" + dob + "&empId=" + empId);
+					response.sendRedirect("wa_user/updateUser.jsp?message=perm&familyName=" + familyName +"&givenName=" + givenName+ "&username=" + username +  "&email=" + email 
+							+ "&dob=" + dob + "&empId=" + empId);
 				}
 				catch (PermissionViolationException e) 
 				{
 					e.printStackTrace();
 					out.println("Perm Violation");
 					//Even if the user is not created, return the values to the form
-					//response.sendRedirect("wa_user/updateUser.jsp?message=perm&familyName=" + familyName +"&givenName=" + givenName
-						//	+ "&username=" + username +  "&email=" + email
-						//	+ "&dob=" + dob + "&empId=" + empId);
+					response.sendRedirect("wa_user/updateUser.jsp?message=perm&familyName=" + familyName +"&givenName=" + givenName
+							+ "&username=" + username +  "&email=" + email
+							+ "&dob=" + dob + "&empId=" + empId);
 				}
 				finally
 				{
