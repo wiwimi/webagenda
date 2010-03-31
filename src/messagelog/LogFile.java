@@ -12,10 +12,18 @@ import java.io.*;
  */
 public class LogFile {
 
+	/** File that is written to  */
 	private File f_log								= null;
+	/** FileWriter that writes to File object */
 	private FileWriter fw_log						= null;
+	/** BufferedWriter that buffers writes to FileWriter */
 	private BufferedWriter bw_log					= null;
 	
+	/**
+	 * Constructor that initializes a file to a String parameter
+	 * @param file_location String
+	 * @throws IOException If file not found, no write permissions, etc
+	 */
 	LogFile(String file_location) throws IOException
 	{
 		f_log = new File(file_location);
@@ -44,21 +52,39 @@ public class LogFile {
 		return true;
 	}
 	
+	/**
+	 * Logs a message to this log file
+	 * @param log_message String
+	 * @throws IOException
+	 */
 	public void logToFile(String log_message) throws IOException
 	{
 		bw_log.write(log_message);
 	}
 	
+	/**
+	 * Closes this log file 
+	 * @throws IOException
+	 */
 	public void closeLogFile() throws IOException
 	{
 		bw_log.close();
 	}
 	
+	/**
+	 * A duplicate method of logToFile I guess
+	 * @param str String
+	 * @throws IOException
+	 */
 	public void logMessage(String str) throws IOException
 	{
 		bw_log.write(str);
 	}
 	
+	/**
+	 * Flushes the log file data
+	 * @throws IOException
+	 */
 	public void flushLog() throws IOException
 	{
 		bw_log.flush();

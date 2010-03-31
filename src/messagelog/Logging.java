@@ -18,6 +18,7 @@ import exception.InitializedLogFileException;
  */
 public class Logging {
 
+	/** A message that appears of the top of a log file depicting read instructions */
 	public static final String LOG_FILE_HEADER_TXT				= ""; //TODO
 	
 	/** Flag for enabling logging. Definitely recommended; if no logging is
@@ -36,6 +37,8 @@ public class Logging {
 		new String(LOG_LOCATION + "init.log"),
 		new String(LOG_LOCATION + "permission.log")
 	};
+	/** Variables that are used to determine what kind of message is 
+	 * being logged. */
 	public static final String ERR_ENTRY						= "(EE)",
 							   WARN_ENTRY						= "(WW)",
 							   NORM_ENTRY						= "(--)";
@@ -150,6 +153,11 @@ public class Logging {
 		}
 	}
 	
+	/**
+	 * Writes all pending data in a log file to disk, flushing the buffers of
+	 * log file BufferedWriter's
+	 * @throws IOException
+	 */
 	public static void flushAllLogs() throws IOException
 	{
 		Iterator<LogFile> it = logfiles.iterator();
