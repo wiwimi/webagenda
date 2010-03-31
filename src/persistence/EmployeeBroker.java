@@ -194,7 +194,6 @@ public class EmployeeBroker extends Broker<Employee>
 			
 			insert.setInt(11, createEmp.getLevel());
 			insert.setString(12, createEmp.getVersion()+"");
-			
 			//Run procedure and test result.
 			if (insert.executeUpdate() != 1)
 				throw new DBException("Failed to create employee.");
