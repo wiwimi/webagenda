@@ -54,11 +54,11 @@ public class Shift extends BusinessObject implements Comparable<Shift>
 	/**
 	 * Constructor to create a full shift, as retrieved by the database.
 	 * 
-	 * @param shiftID
-	 * @param schedID
-	 * @param day
-	 * @param startTime
-	 * @param endTime
+	 * @param shiftID int
+	 * @param schedID int
+	 * @param day int
+	 * @param startTime Time
+	 * @param endTime Time
 	 */
 	public Shift(int shiftID, int schedID, int day, Time startTime, Time endTime)
 		{
@@ -70,7 +70,8 @@ public class Shift extends BusinessObject implements Comparable<Shift>
 		}
 
 	/**
-	 * @return the shiftID
+	 * Gets shift id
+	 * @return int
 	 */
 	public int getShiftID()
 		{
@@ -78,7 +79,8 @@ public class Shift extends BusinessObject implements Comparable<Shift>
 		}
 
 	/**
-	 * @param shiftID the shiftID to set
+	 * Sets shift Id
+	 * @param int
 	 */
 	public void setShiftID(int shiftID)
 		{
@@ -86,7 +88,8 @@ public class Shift extends BusinessObject implements Comparable<Shift>
 		}
 
 	/**
-	 * @return the schedID
+	 * Gets schedule id
+	 * @return int
 	 */
 	public int getSchedID()
 		{
@@ -94,7 +97,8 @@ public class Shift extends BusinessObject implements Comparable<Shift>
 		}
 
 	/**
-	 * @param schedID the schedID to set
+	 * Sets the schedule id
+	 * @param int
 	 */
 	public void setSchedID(int schedID)
 		{
@@ -102,7 +106,8 @@ public class Shift extends BusinessObject implements Comparable<Shift>
 		}
 
 	/**
-	 * @return the day
+	 * Gets the day
+	 * @return int
 	 */
 	public int getDay()
 		{
@@ -110,7 +115,8 @@ public class Shift extends BusinessObject implements Comparable<Shift>
 		}
 
 	/**
-	 * @param day the day to set
+	 * Sets the day
+	 * @param int
 	 */
 	public void setDay(int day)
 		{
@@ -118,7 +124,8 @@ public class Shift extends BusinessObject implements Comparable<Shift>
 		}
 
 	/**
-	 * @return the startTime
+	 * Gets the start time
+	 * @return Time
 	 */
 	public Time getStartTime()
 		{
@@ -126,7 +133,8 @@ public class Shift extends BusinessObject implements Comparable<Shift>
 		}
 
 	/**
-	 * @param startTime the startTime to set
+	 * Sets the start time
+	 * @param Time
 	 */
 	public void setStartTime(Time startTime)
 		{
@@ -134,7 +142,8 @@ public class Shift extends BusinessObject implements Comparable<Shift>
 		}
 
 	/**
-	 * @return the endTime
+	 * Gets the end time
+	 * @return Time
 	 */
 	public Time getEndTime()
 		{
@@ -142,7 +151,8 @@ public class Shift extends BusinessObject implements Comparable<Shift>
 		}
 
 	/**
-	 * @param endTime the endTime to set
+	 * Sets the end time
+	 * @param Time
 	 */
 	public void setEndTime(Time endTime)
 		{
@@ -150,7 +160,8 @@ public class Shift extends BusinessObject implements Comparable<Shift>
 		}
 
 	/**
-	 * @return the employees
+	 * Gets the Employees on this shift
+	 * @return DoubleLinkedList<Employee>
 	 */
 	public DoubleLinkedList<Employee> getEmployees()
 		{
@@ -158,7 +169,8 @@ public class Shift extends BusinessObject implements Comparable<Shift>
 		}
 	
 	/**
-	 * @param employees the employees to set
+	 * Sets the Employees on this shift
+	 * @param DoubleLinkedList<Shift>
 	 */
 	public void setEmployees(DoubleLinkedList<Employee> employees)
 		{

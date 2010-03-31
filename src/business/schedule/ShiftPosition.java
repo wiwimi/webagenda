@@ -34,6 +34,12 @@ public class ShiftPosition extends BusinessObject implements Comparable<ShiftPos
 	 */
 	public ShiftPosition() {}
 
+	/**
+	 * Constructor to create a shift position
+	 * @param shiftTempID int
+	 * @param posName String 
+	 * @param posCount int
+	 */
 	public ShiftPosition(int shiftTempID, String posName, int posCount)
 		{
 		this.shiftTempID = shiftTempID;
@@ -42,7 +48,8 @@ public class ShiftPosition extends BusinessObject implements Comparable<ShiftPos
 		}
 	
 	/**
-	 * @return the shiftTempID
+	 * Gets the shift template id
+	 * @return int
 	 */
 	public int getShiftTempID()
 		{
@@ -50,7 +57,8 @@ public class ShiftPosition extends BusinessObject implements Comparable<ShiftPos
 		}
 
 	/**
-	 * @param shiftTempID the shiftTempID to set
+	 * Sets the shift template id
+	 * @param int
 	 */
 	public void setShiftTempID(int shiftTempID)
 		{
@@ -58,7 +66,8 @@ public class ShiftPosition extends BusinessObject implements Comparable<ShiftPos
 		}
 
 	/**
-	 * @return the posName
+	 * Gets the position name
+	 * @return String
 	 */
 	public String getPosName()
 		{
@@ -66,7 +75,8 @@ public class ShiftPosition extends BusinessObject implements Comparable<ShiftPos
 		}
 
 	/**
-	 * @param posName the posName to set
+	 * Sets the position name
+	 * @param String
 	 */
 	public void setPosName(String posName)
 		{
@@ -74,7 +84,8 @@ public class ShiftPosition extends BusinessObject implements Comparable<ShiftPos
 		}
 
 	/**
-	 * @return the posCount
+	 * Gets the position count
+	 * @return int
 	 */
 	public int getPosCount()
 		{
@@ -82,7 +93,8 @@ public class ShiftPosition extends BusinessObject implements Comparable<ShiftPos
 		}
 
 	/**
-	 * @param posCount the posCount to set
+	 * Sets the position count
+	 * @param int
 	 */
 	public void setPosCount(int posCount)
 		{

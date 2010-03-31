@@ -61,10 +61,11 @@ public class ShiftTemplate extends BusinessObject implements Comparable<ShiftTem
 	/**
 	 * Creates a new shiftTemplate holding a record from the database.
 	 * 
-	 * @param shiftTempID
-	 * @param schedTempID
-	 * @param startTime
-	 * @param endTime
+	 * @param shiftTempID int
+	 * @param schedTempID int
+	 * @param day int
+	 * @param startTime Time
+	 * @param endTime Time
 	 */
 	public ShiftTemplate(int shiftTempID, int schedTempID, int day, Time startTime, Time endTime)
 		{
@@ -76,7 +77,8 @@ public class ShiftTemplate extends BusinessObject implements Comparable<ShiftTem
 		}
 
 	/**
-	 * @return the shiftTempID
+	 * Gets the shift template id
+	 * @return int
 	 */
 	public int getShiftTempID()
 		{
@@ -84,7 +86,8 @@ public class ShiftTemplate extends BusinessObject implements Comparable<ShiftTem
 		}
 
 	/**
-	 * @param shiftTempID the shiftTempID to set
+	 * Sets the shift template id
+	 * @param int
 	 */
 	public void setShiftTempID(int shiftTempID)
 		{
@@ -92,7 +95,8 @@ public class ShiftTemplate extends BusinessObject implements Comparable<ShiftTem
 		}
 
 	/**
-	 * @return the schedTempID
+	 * Gets the schedule temp id
+	 * @return int
 	 */
 	public int getSchedTempID()
 		{
@@ -100,7 +104,8 @@ public class ShiftTemplate extends BusinessObject implements Comparable<ShiftTem
 		}
 
 	/**
-	 * @param schedTempID the schedTempID to set
+	 * Sets the schedule template id
+	 * @param int
 	 */
 	public void setSchedTempID(int schedTempID)
 		{
@@ -108,7 +113,8 @@ public class ShiftTemplate extends BusinessObject implements Comparable<ShiftTem
 		}
 
 	/**
-	 * @return the day
+	 * Gets the day
+	 * @return int
 	 */
 	public int getDay()
 		{
@@ -116,7 +122,8 @@ public class ShiftTemplate extends BusinessObject implements Comparable<ShiftTem
 		}
 
 	/**
-	 * @param day the day to set
+	 * Sets the day
+	 * @param int
 	 */
 	public void setDay(int day)
 		{
@@ -124,7 +131,8 @@ public class ShiftTemplate extends BusinessObject implements Comparable<ShiftTem
 		}
 
 	/**
-	 * @return the startTime
+	 * Gets the start time
+	 * @return Time
 	 */
 	public Time getStartTime()
 		{
@@ -132,7 +140,8 @@ public class ShiftTemplate extends BusinessObject implements Comparable<ShiftTem
 		}
 
 	/**
-	 * @param startTime the startTime to set
+	 * Sets the start time
+	 * @param Time
 	 */
 	public void setStartTime(Time startTime)
 		{
@@ -140,7 +149,8 @@ public class ShiftTemplate extends BusinessObject implements Comparable<ShiftTem
 		}
 
 	/**
-	 * @return the endTime
+	 * Gets the end time
+	 * @return Time
 	 */
 	public Time getEndTime()
 		{
@@ -148,7 +158,8 @@ public class ShiftTemplate extends BusinessObject implements Comparable<ShiftTem
 		}
 
 	/**
-	 * @param endTime the endTime to set
+	 * Sets the end time
+	 * @param Time
 	 */
 	public void setEndTime(Time endTime)
 		{
@@ -156,7 +167,8 @@ public class ShiftTemplate extends BusinessObject implements Comparable<ShiftTem
 		}
 
 	/**
-	 * @return the shiftPositions
+	 * Gets the Shift Positions in this template
+	 * @return DoubleLinkedList<ShiftPosition>
 	 */
 	public DoubleLinkedList<ShiftPosition> getShiftPositions()
 		{
@@ -164,7 +176,8 @@ public class ShiftTemplate extends BusinessObject implements Comparable<ShiftTem
 		}
 	
 	/**
-	 * @param shiftPositions the shiftPositions to set
+	 * Sets the Shift Positions in this template
+	 * @param DoubleLinkedList<ShiftPosition>
 	 */
 	public void setShiftPositions(DoubleLinkedList<ShiftPosition> shiftPositions)
 		{

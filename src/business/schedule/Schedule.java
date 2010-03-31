@@ -61,7 +61,8 @@ public class Schedule extends BusinessObject
 		}
 	
 	/**
-	 * @return the schedID
+	 * Gets the schedule id
+	 * @return int
 	 */
 	public int getSchedID()
 		{
@@ -69,7 +70,8 @@ public class Schedule extends BusinessObject
 		}
 
 	/**
-	 * @param schedID the schedID to set
+	 * Sets the schedule id
+	 * @param int
 	 */
 	public void setSchedID(int schedID)
 		{
@@ -77,7 +79,8 @@ public class Schedule extends BusinessObject
 		}
 
 	/**
-	 * @return the creatorID
+	 * Gets the creator id
+	 * @return int
 	 */
 	public int getCreatorID()
 		{
@@ -85,7 +88,8 @@ public class Schedule extends BusinessObject
 		}
 
 	/**
-	 * @param creatorID the creatorID to set
+	 * Sets the creator id
+	 * @param int
 	 */
 	public void setCreatorID(int creatorID)
 		{
@@ -93,7 +97,8 @@ public class Schedule extends BusinessObject
 		}
 
 	/**
-	 * @return the startDate
+	 * Gets the start date
+	 * @return java.sql.Date
 	 */
 	public Date getStartDate()
 		{
@@ -101,7 +106,8 @@ public class Schedule extends BusinessObject
 		}
 
 	/**
-	 * @param startDate the startDate to set
+	 * Sets the start date
+	 * @param java.sql.Date
 	 */
 	public void setStartDate(Date startDate)
 		{
@@ -109,7 +115,8 @@ public class Schedule extends BusinessObject
 		}
 
 	/**
-	 * @return the endDate
+	 * Gets the end date
+	 * @return java.sql.Date
 	 */
 	public Date getEndDate()
 		{
@@ -117,7 +124,8 @@ public class Schedule extends BusinessObject
 		}
 
 	/**
-	 * @param endDate the endDate to set
+	 * Sets the end date
+	 * @param java.sql.Date
 	 */
 	public void setEndDate(Date endDate)
 		{
@@ -125,7 +133,8 @@ public class Schedule extends BusinessObject
 		}
 
 	/**
-	 * @return the shifts
+	 * Gets the shifts associated with schedule
+	 * @return DoubleLinkedList<Shift>
 	 */
 	public DoubleLinkedList<Shift> getShifts()
 		{
@@ -133,7 +142,8 @@ public class Schedule extends BusinessObject
 		}
 	
 	/**
-	 * @param shifts the shifts to set
+	 * Sets the shifts
+	 * @param DoubleLinkedList<Shift>
 	 */
 	public void setShifts(DoubleLinkedList<Shift> shifts)
 		{

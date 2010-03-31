@@ -23,23 +23,44 @@ public class Position extends BusinessObject {
 	/** This attribute is a description of the name of the position. It is optional, but may aid in informed
 	 * decisions that new users may require when scheduling. */
 	private String description						= null;
+	/** An array of Skills that are associated with the position */
 	private Skill[] pos_skills						= null;
 	
+	/**
+	 * Empty constructor
+	 */
 	public Position() 
 	{
 	}
 	
+	/**
+	 * Constructor that takes a name for the position
+	 * @param pos_name String
+	 */
 	public Position(String pos_name)
 	{
 		this.name = pos_name;
 	}
 	
+	/**
+	 * Constructor that takes a name for the position as well as a list
+	 * of skills as a Skill array
+	 * @param pos_name String
+	 * @param skills Skill[]
+	 */
 	public Position(String pos_name, Skill[] skills)
 	{
 		this.name = pos_name;
 		this.pos_skills = skills;
 	}
 	
+	/**
+	 * Constructor that takes a Position name and description as well as
+	 * a list of skills for that position.
+	 * @param pos_name String
+	 * @param pos_desc String
+	 * @param skills Skill[]
+	 */
 	public Position(String pos_name, String pos_desc, Skill[] skills)
 	{
 		this(pos_name, skills);
@@ -47,42 +68,48 @@ public class Position extends BusinessObject {
 	}
 
 	/**
-	 * @return the name
+	 * Gets the position name
+	 * @return String
 	 */
 	public String getName() {
 		return name;
 	}
 
 	/**
-	 * @return the description
+	 * Gets the description
+	 * @return String
 	 */
 	public String getDescription() {
 		return description;
 	}
 
 	/**
-	 * @param name the name to set
+	 * Sets the name
+	 * @param String
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
-	 * @param description the description to set
+	 * Sets the description
+	 * @param String
 	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
 	/**
-	 * @return the pos_skills
+	 * Gets the skills associated with the position
+	 * @return Skill[]
 	 */
 	public Skill[] getPos_skills() {
 		return pos_skills;
 	}
 
 	/**
-	 * @param posSkills the pos_skills to set
+	 * Sets the skills associated with the position 
+	 * @param Skills[]
 	 */
 	public void setPos_skills(Skill[] posSkills) {
 		pos_skills = posSkills;

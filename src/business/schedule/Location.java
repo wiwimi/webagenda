@@ -34,11 +34,21 @@ public class Location extends BusinessObject
 		{
 		}
 	
+	/**
+	 * Constructor that sets the Location name
+	 * @param name String
+	 */
 	public Location(String name)
 	{
 	this.name = name;
 	}
 
+	/**
+	 * Constructor that sets the location name and description.
+	 * Description can be null.
+	 * @param name String
+	 * @param desc String
+	 */
 	public Location(String name, String desc)
 		{
 		this.name = name;
@@ -46,7 +56,8 @@ public class Location extends BusinessObject
 		}
 	
 	/**
-	 * @return the name
+	 * Gets the location name
+	 * @return String
 	 */
 	public String getName()
 		{
@@ -54,7 +65,8 @@ public class Location extends BusinessObject
 		}
 
 	/**
-	 * @param name the name to set
+	 * Sets the location name
+	 * @param String
 	 */
 	public void setName(String name)
 		{
@@ -62,7 +74,8 @@ public class Location extends BusinessObject
 		}
 
 	/**
-	 * @return the desc
+	 * Gets the description of the location
+	 * @return String
 	 */
 	public String getDesc()
 		{
@@ -70,6 +83,7 @@ public class Location extends BusinessObject
 		}
 
 	/**
+	 * Sets the description for the location
 	 * @param desc the desc to set
 	 */
 	public void setDesc(String desc)

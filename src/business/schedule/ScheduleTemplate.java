@@ -9,8 +9,8 @@ import business.BusinessObject;
 /**
  * 
  * 
- * @author Daniel Wehr
- * @version 0.1.0
+ * @author Daniel Wehr, Daniel Kettle
+ * @version 0.1.00
  */
 public class ScheduleTemplate extends BusinessObject implements Cloneable
 	{
@@ -39,6 +39,12 @@ public class ScheduleTemplate extends BusinessObject implements Cloneable
 	 */
 	public ScheduleTemplate() {}
 	
+	/**
+	 * Constructor for a ScheduleTemplate
+	 * @param schedTempID int
+	 * @param creatorID int
+	 * @param name String
+	 */
 	public ScheduleTemplate(int schedTempID, int creatorID, String name)
 		{
 		this.schedTempID = schedTempID;
@@ -47,7 +53,8 @@ public class ScheduleTemplate extends BusinessObject implements Cloneable
 		}
 
 	/**
-	 * @return the schedTempID
+	 * Gets the schedule template id
+	 * @return int
 	 */
 	public int getSchedTempID()
 		{
@@ -55,7 +62,8 @@ public class ScheduleTemplate extends BusinessObject implements Cloneable
 		}
 
 	/**
-	 * @param schedTempID the schedTempID to set
+	 * Sets the schedule template id
+	 * @param int
 	 */
 	public void setSchedTempID(int schedTempID)
 		{
@@ -63,7 +71,8 @@ public class ScheduleTemplate extends BusinessObject implements Cloneable
 		}
 
 	/**
-	 * @return the creatorID
+	 * Gets the creator id
+	 * @return int
 	 */
 	public int getCreatorID()
 		{
@@ -71,7 +80,8 @@ public class ScheduleTemplate extends BusinessObject implements Cloneable
 		}
 
 	/**
-	 * @param creatorID the creatorID to set
+	 * Sets the creator id
+	 * @param int
 	 */
 	public void setCreatorID(int creatorID)
 		{
@@ -79,7 +89,8 @@ public class ScheduleTemplate extends BusinessObject implements Cloneable
 		}
 
 	/**
-	 * @return the name
+	 * Gets the name of the schedule template
+	 * @return String
 	 */
 	public String getName()
 		{
@@ -87,7 +98,8 @@ public class ScheduleTemplate extends BusinessObject implements Cloneable
 		}
 
 	/**
-	 * @param name the name to set
+	 * Sets the name of the schedule template
+	 * @param String
 	 */
 	public void setName(String name)
 		{
@@ -95,7 +107,8 @@ public class ScheduleTemplate extends BusinessObject implements Cloneable
 		}
 
 	/**
-	 * @return the shiftTemplates
+	 * Gets the template shifts of the schedule template
+	 * @return DoubleLinkedList<Shift>
 	 */
 	public DoubleLinkedList<ShiftTemplate> getShiftTemplates()
 		{
@@ -103,7 +116,8 @@ public class ScheduleTemplate extends BusinessObject implements Cloneable
 		}
 	
 	/**
-	 * @param shiftTemplates the shiftTemplates to set
+	 * Sets the template shifts of the schedule template
+	 * @param shiftTemplates DoubleLinkedList<Shift>
 	 */
 	public void setShiftTemplates(DoubleLinkedList<ShiftTemplate> shiftTemplates)
 		{
