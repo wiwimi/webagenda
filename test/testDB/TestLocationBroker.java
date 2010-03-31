@@ -3,7 +3,7 @@
  */
 package testDB;
 
-import static org.junit.Assert.*;
+import junit.framework.TestCase;
 
 import org.junit.After;
 import org.junit.Before;
@@ -13,9 +13,7 @@ import exception.DBException;
 import exception.InvalidPermissionException;
 import exception.PermissionViolationException;
 import business.Employee;
-import business.Skill;
 import business.schedule.Location;
-import business.schedule.Position;
 import persistence.LocationBroker;
 
 /**
@@ -23,7 +21,7 @@ import persistence.LocationBroker;
  * @version 0.1.0
  *
  */
-public class TestLocationBroker
+public class TestLocationBroker extends TestCase
 	{
 	private LocationBroker broker;
 	private Employee user;
@@ -37,7 +35,7 @@ public class TestLocationBroker
 		{
 		broker = LocationBroker.getBroker();
 		broker.initConnectionThread();
-		user = new Employee(12314, "Chaney", "Henson", "user1", "password",  "2a" );
+		user = new Employee(12314, "Chaney", "Henson", "user1", "password", 99, 'a');
 		}
 	
 	/**
@@ -414,7 +412,6 @@ public class TestLocationBroker
 				e.printStackTrace();
 				fail();
 				} catch (InvalidPermissionException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			

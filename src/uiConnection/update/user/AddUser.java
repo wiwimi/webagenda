@@ -69,7 +69,7 @@ public class AddUser extends HttpServlet {
 				try 
 				{
 					
-					Employee emp = new Employee(empIdInt,givenName,familyName,username, password, "1a");
+					Employee emp = new Employee(empIdInt,givenName,familyName,username, password, 1,'a');
 					if (status.equalsIgnoreCase("enabled"))
 					
 						emp.setActive(true);

@@ -3,7 +3,7 @@
  */
 package persistence;
 
-import java.sql.CallableStatement;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -145,70 +145,70 @@ public class EmployeeBroker extends Broker<Employee>
 		if (!nullMsg.equals("Missing Required Fields:"))
 			throw new DBException(nullMsg);
 		
-		boolean result = false;
 		try
 			{
 			//Get connection.
 			DBConnection conn = this.getConnection();
 			
-			//Get callable statement.
-			String call = "CALL createEmployee(?,?,?,?,?,?,?,?,?,?,?,?);";
-			CallableStatement cs = conn.getConnection().prepareCall(call);
+			//Create insert statement.
+			PreparedStatement insert = conn.getConnection().prepareStatement(
+					"INSERT INTO `WebAgenda`.`EMPLOYEE`" +
+					"(`empID`,`supID`,`givenName`,`familyName`,`birthDate`,`email`," +
+					"`username`,`password`,`prefPosition`,`prefLocation`,`plevel`,`pversion`) " +
+					"VALUES " +
+					"(?,?,?,?,?,?,?,?,?,?,?,?)");
 			
 			//Assign variables of new user.
-			cs.registerOutParameter(12, java.sql.Types.BOOLEAN);
-			cs.setInt(1, createEmp.getEmpID());
+			insert.setInt(1, createEmp.getEmpID());
 			
 			if (createEmp.getSupervisorID() == -1)
-				cs.setNull(2, java.sql.Types.INTEGER);
+				insert.setNull(2, java.sql.Types.INTEGER);
 			else
-				cs.setInt(2, createEmp.getSupervisorID());
+				insert.setInt(2, createEmp.getSupervisorID());
 			
-			cs.setString(3, createEmp.getGivenName());
-			cs.setString(4, createEmp.getFamilyName());
+			insert.setString(3, createEmp.getGivenName());
+			insert.setString(4, createEmp.getFamilyName());
 			
 			if (createEmp.getBirthDate() == null)
-				cs.setNull(5, java.sql.Types.DATE);
+				insert.setNull(5, java.sql.Types.DATE);
 			else
-				cs.setDate(5, createEmp.getBirthDate());
+				insert.setDate(5, createEmp.getBirthDate());
 			
 			if (createEmp.getEmail() == null)
-				cs.setNull(6, java.sql.Types.VARCHAR);
+				insert.setNull(6, java.sql.Types.VARCHAR);
 			else
-				cs.setString(6, createEmp.getEmail());
+				insert.setString(6, createEmp.getEmail());
 			
-			cs.setString(7, createEmp.getUsername());
-			cs.setString(8, createEmp.getPassword());
+			insert.setString(7, createEmp.getUsername());
+			insert.setString(8, createEmp.getPassword());
 			
 			if (createEmp.getPrefPosition() == null)
-				cs.setNull(9, java.sql.Types.VARCHAR);
+				insert.setNull(9, java.sql.Types.VARCHAR);
 			else
-				cs.setString(9, createEmp.getPrefPosition());
+				insert.setString(9, createEmp.getPrefPosition());
 			
 			if (createEmp.getPrefLocation() == null)
-				cs.setNull(10, java.sql.Types.VARCHAR);
+				insert.setNull(10, java.sql.Types.VARCHAR);
 			else
-				cs.setString(10, createEmp.getPrefLocation());
+				insert.setString(10, createEmp.getPrefLocation());
 			
-			cs.setString(11, createEmp.getLevel() + "" + createEmp.getVersion());
+			insert.setInt(11, createEmp.getLevel());
+			insert.setString(12, createEmp.getVersion()+"");
 			
-			//Run procedure.
-			cs.execute();
+			//Run procedure and test result.
+			if (insert.executeUpdate() != 1)
+				throw new DBException("Failed to create employee.");
 			
 			//Get result boolean from procedure.
-			result = cs.getBoolean("result");
-			cs.close();
+			insert.close();
 			conn.setAvailable(true);
 			}
 		catch (SQLException e)
 			{
-			// TODO May need additional SQL exception processing here.
 			throw new DBException("Failed to create employee.", e);
 			}
 		
-		// TODO Inserts for employee skills as well, once that broker is up.
-		
-		return result;
+		return true;
 		}
 	
 	@Override
@@ -518,7 +518,7 @@ public class EmployeeBroker extends Broker<Employee>
 			throw new InvalidLoginException(
 					"Username and password must not be null.");
 		
-		Employee loginEmp = new Employee(-1,null,null,username,password,"2a");
+		Employee loginEmp = new Employee(-1,null,null,username,password, 2, 'a');
 		Employee[] results = null;
 		try
 			{
@@ -577,8 +577,8 @@ public class EmployeeBroker extends Broker<Employee>
 						rs.getString("familyName"),
 						rs.getString("username"),
 						null,
-						rs.getString("plevel")
-					);
+						rs.getInt("plevel"),
+						rs.getString("pversion").charAt(0));
 				} catch (DBException e) {
 					// TODO Auto-generated catch block
 					throw new SQLException("Attempting to create an Employee with an Invalid Permission Level");

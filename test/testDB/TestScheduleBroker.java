@@ -3,9 +3,9 @@
  */
 package testDB;
 
-import static org.junit.Assert.*;
 import java.sql.Date;
 import java.sql.Time;
+import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,7 +23,7 @@ import exception.DBException;
  * @version 0.1.0
  *
  */
-public class TestScheduleBroker
+public class TestScheduleBroker extends TestCase
 	{
 	private ScheduleBroker sb = null;
 	private Employee user;
@@ -35,7 +35,7 @@ public class TestScheduleBroker
 	public void setUp() throws Exception
 		{
 		sb = ScheduleBroker.getBroker();
-		user = new Employee(12314, "Chaney", "Henson","user1", "password",  "2a" );
+		user = new Employee(12314, "Chaney", "Henson","user1", "password", 99, 'a');
 		}
 	
 	/**

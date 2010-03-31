@@ -3,9 +3,8 @@
  */
 package testDB;
 
-import static org.junit.Assert.*;
-
 import java.sql.Time;
+import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +23,7 @@ import persistence.ScheduleTemplateBroker;
  * @version 0.1.0
  *
  */
-public class TestScheduleTemplateBroker
+public class TestScheduleTemplateBroker extends TestCase
 	{
 	private ScheduleTemplateBroker stb = null;
 	private Employee user;
@@ -36,7 +35,7 @@ public class TestScheduleTemplateBroker
 	public void setUp() throws Exception
 		{
 		stb = ScheduleTemplateBroker.getBroker();
-		user = new Employee(12314, "Chaney", "Henson","user1", "password",  "2a" );
+		user = new Employee(12314, "Chaney", "Henson","user1", "password", 99, 'a');
 		}
 	
 	/**

@@ -3,8 +3,6 @@
  */
 package testDB;
 
-import java.sql.Date;
-
 import exception.DBDownException;
 import exception.DBException;
 import business.Employee;
@@ -23,7 +21,7 @@ public class TestTemplates {
 		
 		PositionBroker pbrok = PositionBroker.getBroker();
 		try {
-			Employee user = new Employee(12314, "Chaney", "Henson","user1", "password",  "2a" );
+			Employee user = new Employee(12314, "Chaney", "Henson","user1", "password", 99, 'a');
 			Position[] posarray = pbrok.get(new Position("Cook",null), user);
 			for(Position p : posarray)
 				System.out.println(p);

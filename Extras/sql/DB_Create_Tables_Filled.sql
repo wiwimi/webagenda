@@ -6,33 +6,6 @@ DROP SCHEMA IF EXISTS `WebAgenda` ;
 CREATE SCHEMA IF NOT EXISTS `WebAgenda` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ;
 
 -- -----------------------------------------------------
--- Table `WebAgenda`.`PERMISSIONSET`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `WebAgenda`.`PERMISSIONSET` ;
-
-CREATE  TABLE IF NOT EXISTS `WebAgenda`.`PERMISSIONSET` (
-  `plevel` VARCHAR(10) NOT NULL ,
-  `canEditSched` TINYINT(1)  NOT NULL DEFAULT 0 ,
-  `canReadSched` TINYINT(1)  NOT NULL DEFAULT 1 ,
-  `canReadOldSched` TINYINT(1)  NOT NULL DEFAULT 0 ,
-  `canManageEmployee` TINYINT(1)  NOT NULL DEFAULT 0 ,
-  `canViewResources` TINYINT(1)  NOT NULL DEFAULT 0 ,
-  `canChangePermissions` TINYINT(1)  NOT NULL DEFAULT 0 ,
-  `canReadLogs` TINYINT(1)  NOT NULL DEFAULT 0 ,
-  `canAccessReports` TINYINT(1)  NOT NULL DEFAULT 0 ,
-  `canRequestDaysOff` TINYINT(1)  NOT NULL DEFAULT 0 ,
-  `maxDaysOff` INT NOT NULL ,
-  `canTakeVacations` TINYINT(1)  NOT NULL DEFAULT 0 ,
-  `maxVacationDays` INT NOT NULL ,
-  `canTakeEmergencyDays` TINYINT(1)  NOT NULL DEFAULT 0 ,
-  `canViewInactiveEmps` TINYINT(1)  NOT NULL DEFAULT 0 ,
-  `canSendNotifications` TINYINT(1)  NOT NULL DEFAULT 0 ,
-  `trusted` VARCHAR(10) NOT NULL DEFAULT 0 ,
-  PRIMARY KEY (`plevel`) )
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `WebAgenda`.`LOCATION`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `WebAgenda`.`LOCATION` ;
@@ -57,6 +30,34 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `WebAgenda`.`PERMISSIONSET`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `WebAgenda`.`PERMISSIONSET` ;
+
+CREATE  TABLE IF NOT EXISTS `WebAgenda`.`PERMISSIONSET` (
+  `plevel` INT NOT NULL ,
+  `pversion` CHAR(1) NOT NULL ,
+  `canEditSched` TINYINT(1)  NOT NULL DEFAULT 0 ,
+  `canReadSched` TINYINT(1)  NOT NULL DEFAULT 1 ,
+  `canReadOldSched` TINYINT(1)  NOT NULL DEFAULT 0 ,
+  `canManageEmployee` TINYINT(1)  NOT NULL DEFAULT 0 ,
+  `canViewResources` TINYINT(1)  NOT NULL DEFAULT 0 ,
+  `canChangePermissions` TINYINT(1)  NOT NULL DEFAULT 0 ,
+  `canReadLogs` TINYINT(1)  NOT NULL DEFAULT 0 ,
+  `canAccessReports` TINYINT(1)  NOT NULL DEFAULT 0 ,
+  `canRequestDaysOff` TINYINT(1)  NOT NULL DEFAULT 0 ,
+  `maxDaysOff` INT NOT NULL ,
+  `canTakeVacations` TINYINT(1)  NOT NULL DEFAULT 0 ,
+  `maxVacationDays` INT NOT NULL ,
+  `canTakeEmergencyDays` TINYINT(1)  NOT NULL DEFAULT 0 ,
+  `canViewInactiveEmps` TINYINT(1)  NOT NULL DEFAULT 0 ,
+  `canSendNotifications` TINYINT(1)  NOT NULL DEFAULT 0 ,
+  `trusted` INT NOT NULL DEFAULT 0 ,
+  PRIMARY KEY (`plevel`, `pversion`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `WebAgenda`.`EMPLOYEE`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `WebAgenda`.`EMPLOYEE` ;
@@ -73,22 +74,18 @@ CREATE  TABLE IF NOT EXISTS `WebAgenda`.`EMPLOYEE` (
   `lastLogin` TIMESTAMP NULL ,
   `prefPosition` VARCHAR(45) NULL ,
   `prefLocation` VARCHAR(45) NULL ,
-  `plevel` VARCHAR(10) NOT NULL ,
+  `plevel` INT NOT NULL DEFAULT 0 ,
+  `pversion` CHAR(1) NOT NULL DEFAULT ' ' ,
   `active` TINYINT(1)  NOT NULL DEFAULT 1 ,
   `passChanged` TINYINT(1)  NOT NULL DEFAULT 0 ,
   PRIMARY KEY (`empID`) ,
-  INDEX `fk_EMPLOYEE_PERMISSIONSET` (`plevel` ASC) ,
   INDEX `fk_EMPLOYEE_LOCATION` (`prefLocation` ASC) ,
   INDEX `fk_EMPLOYEE_POSITION` (`prefPosition` ASC) ,
   UNIQUE INDEX `username_UNIQUE` (`username` ASC) ,
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) ,
   INDEX `empID_IDX` (`empID` ASC) ,
   INDEX `fk_EMPLOYEE_SUPERVISOR` (`supID` ASC) ,
-  CONSTRAINT `fk_EMPLOYEE_PERMISSIONSET`
-    FOREIGN KEY (`plevel` )
-    REFERENCES `WebAgenda`.`PERMISSIONSET` (`plevel` )
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
+  INDEX `fk_EMPLOYEE_PERMISSIONSET1` (`plevel` ASC, `pversion` ASC) ,
   CONSTRAINT `fk_EMPLOYEE_LOCATION`
     FOREIGN KEY (`prefLocation` )
     REFERENCES `WebAgenda`.`LOCATION` (`locName` )
@@ -103,7 +100,12 @@ CREATE  TABLE IF NOT EXISTS `WebAgenda`.`EMPLOYEE` (
     FOREIGN KEY (`supID` )
     REFERENCES `WebAgenda`.`EMPLOYEE` (`empID` )
     ON DELETE NO ACTION
-    ON UPDATE CASCADE)
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_EMPLOYEE_PERMISSIONSET1`
+    FOREIGN KEY (`plevel` , `pversion` )
+    REFERENCES `WebAgenda`.`PERMISSIONSET` (`plevel` , `pversion` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -360,41 +362,9 @@ CREATE  TABLE IF NOT EXISTS `WebAgenda`.`RULE` (
 ENGINE = InnoDB;
 
 
--- -----------------------------------------------------
--- procedure CREATEEMPLOYEE
--- -----------------------------------------------------
-
-DELIMITER $$
-DROP procedure IF EXISTS `WebAgenda`.`CREATEEMPLOYEE` $$
-CREATE PROCEDURE `WebAgenda`.`CREATEEMPLOYEE`
-    (IN inEmpID INT, IN inSupID INT, IN inGivenName VARCHAR(70), IN inFamilyName VARCHAR(70),
-    IN inBirthDate DATE, IN inEmail VARCHAR(50), IN inUsername VARCHAR(20), IN inPassword VARCHAR(8),
-    IN inPosition VARCHAR(45), IN inLocation VARCHAR(45), IN inPLevel VARCHAR(10), OUT result BOOLEAN)
-BEGIN
-    DECLARE numRows INT;
-    
-    INSERT INTO `WebAgenda`.`EMPLOYEE`
-        (`empID`,`supID`,`givenName`,`familyName`,`birthDate`,`email`,
-        `username`,`password`,`prefPosition`,`prefLocation`,`plevel`)
-    VALUES
-        (inEmpID,inSupID,inGivenName,inFamilyName,inBirthDate,inEmail,
-        inUsername,inPassword,inPosition,inLocation,inPLevel);
-    
-    SET numRows = ROW_COUNT();
-    
-    IF numROWS > 0 THEN
-        SET result = TRUE;
-    ELSE
-        SET result = FALSE;
-    END IF;
-END $$
-
-DELIMITER ;
-
 DROP USER 'WABroker'@'localhost';
 CREATE USER 'WABroker'@'localhost' IDENTIFIED BY 'password';
 
-grant SELECT ON `mysql`.`proc` to 'WABroker'@'localhost';
 grant DELETE on TABLE `WebAgenda`.`EMPLOYEE` to 'WABroker'@'localhost';
 grant INSERT on TABLE `WebAgenda`.`EMPLOYEE` to 'WABroker'@'localhost';
 grant UPDATE on TABLE `WebAgenda`.`EMPLOYEE` to 'WABroker'@'localhost';
@@ -455,7 +425,6 @@ grant DELETE on TABLE `WebAgenda`.`SHIFT` to 'WABroker'@'localhost';
 grant INSERT on TABLE `WebAgenda`.`SHIFT` to 'WABroker'@'localhost';
 grant SELECT on TABLE `WebAgenda`.`SHIFT` to 'WABroker'@'localhost';
 grant UPDATE on TABLE `WebAgenda`.`SHIFT` to 'WABroker'@'localhost';
-grant EXECUTE on procedure `WebAgenda`.`CREATEEMPLOYEE` to 'WABroker'@'localhost';
 grant DELETE on TABLE `WebAgenda`.`RULE` to 'WABroker'@'localhost';
 grant INSERT on TABLE `WebAgenda`.`RULE` to 'WABroker'@'localhost';
 grant SELECT on TABLE `WebAgenda`.`RULE` to 'WABroker'@'localhost';
@@ -466,15 +435,6 @@ FLUSH PRIVILEGES;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
--- -----------------------------------------------------
--- Data for table `WebAgenda`.`PERMISSIONSET`
--- -----------------------------------------------------
-SET AUTOCOMMIT=0;
-insert into `WebAgenda`.`PERMISSIONSET` (`plevel`, `canEditSched`, `canReadSched`, `canReadOldSched`, `canManageEmployee`, `canViewResources`, `canChangePermissions`, `canReadLogs`, `canAccessReports`, `canRequestDaysOff`, `maxDaysOff`, `canTakeVacations`, `maxVacationDays`, `canTakeEmergencyDays`, `canViewInactiveEmps`, `canSendNotifications`, `trusted`) values ('1a', false, true, false, false, false, false, false, false, false, 0, false, 0, true, false, false, '1a');
-insert into `WebAgenda`.`PERMISSIONSET` (`plevel`, `canEditSched`, `canReadSched`, `canReadOldSched`, `canManageEmployee`, `canViewResources`, `canChangePermissions`, `canReadLogs`, `canAccessReports`, `canRequestDaysOff`, `maxDaysOff`, `canTakeVacations`, `maxVacationDays`, `canTakeEmergencyDays`, `canViewInactiveEmps`, `canSendNotifications`, `trusted`) values ('2a', true, true, true, true, true, true, true, true, true, 5, true, 20, true, true, true, '2a');
-
-COMMIT;
 
 -- -----------------------------------------------------
 -- Data for table `WebAgenda`.`LOCATION`
@@ -497,18 +457,28 @@ insert into `WebAgenda`.`POSITION` (`positionName`, `positionDescription`) value
 COMMIT;
 
 -- -----------------------------------------------------
+-- Data for table `WebAgenda`.`PERMISSIONSET`
+-- -----------------------------------------------------
+SET AUTOCOMMIT=0;
+insert into `WebAgenda`.`PERMISSIONSET` (`plevel`, `pversion`, `canEditSched`, `canReadSched`, `canReadOldSched`, `canManageEmployee`, `canViewResources`, `canChangePermissions`, `canReadLogs`, `canAccessReports`, `canRequestDaysOff`, `maxDaysOff`, `canTakeVacations`, `maxVacationDays`, `canTakeEmergencyDays`, `canViewInactiveEmps`, `canSendNotifications`, `trusted`) values (1, 'a', false, true, false, false, false, false, false, false, false, 0, false, 0, true, false, false, 1);
+insert into `WebAgenda`.`PERMISSIONSET` (`plevel`, `pversion`, `canEditSched`, `canReadSched`, `canReadOldSched`, `canManageEmployee`, `canViewResources`, `canChangePermissions`, `canReadLogs`, `canAccessReports`, `canRequestDaysOff`, `maxDaysOff`, `canTakeVacations`, `maxVacationDays`, `canTakeEmergencyDays`, `canViewInactiveEmps`, `canSendNotifications`, `trusted`) values (99, 'a', true, true, true, true, true, true, true, true, true, 5, true, 20, true, true, true, 99);
+
+COMMIT;
+
+-- -----------------------------------------------------
 -- Data for table `WebAgenda`.`EMPLOYEE`
 -- -----------------------------------------------------
 SET AUTOCOMMIT=0;
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`, `passChanged`) values (12314, NULL, 'Chaney', 'Henson', NULL, NULL, 'user1', 'password', NULL, 'General Manager', 'Mohave Grill', '2a', true, 1);
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`, `passChanged`) values (28472, 12314, 'Ray', 'Oliver', NULL, NULL, 'user2', 'password', NULL, 'Executive Chef', 'Mohave Grill', '1a', true, 0);
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`, `passChanged`) values (29379, 12314, 'Audra', 'Gordon', NULL, NULL, 'user3', 'password', NULL, 'Front of House Mgr.', 'Mohave Grill', '1a', true, 0);
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`, `passChanged`) values (38382, 28472, 'Rina', 'Pruitt', NULL, NULL, 'user4', 'password', NULL, 'Cook', 'Mohave Grill', '1a', true, 0);
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`, `passChanged`) values (38202, 28472, 'Quinn', 'Hart', NULL, NULL, 'user5', 'password', NULL, 'Cook', 'Mohave Grill', '1a', true, 0);
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`, `passChanged`) values (39280, 28472, 'Sierra', 'Dean', NULL, NULL, 'user6', 'password', NULL, 'Cook', 'Mohave Grill', '1a', true, 0);
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`, `passChanged`) values (39202, 29379, 'Sylvia', 'Dyer', NULL, NULL, 'user7', 'password', NULL, 'Waiter', 'Mohave Grill', '1a', true, 0);
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`, `passChanged`) values (39203, 29379, 'Kay', 'Bates', NULL, NULL, 'user8', 'password', NULL, 'Waiter', 'Mohave Grill', '1a', true, 0);
-insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `active`, `passChanged`) values (30293, 29379, 'Luke', 'Garrison', NULL, NULL, 'user9', 'password', NULL, 'Waiter', 'Mohave Grill', '1a', true, 0);
+insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `pversion`, `active`, `passChanged`) values (12314, NULL, 'Chaney', 'Henson', NULL, NULL, 'user1', 'password', NULL, 'General Manager', 'Mohave Grill', 99, 'a', true, 1);
+insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `pversion`, `active`, `passChanged`) values (28472, 12314, 'Ray', 'Oliver', NULL, NULL, 'user2', 'password', NULL, 'Executive Chef', 'Mohave Grill', 1, 'a', true, 1);
+insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `pversion`, `active`, `passChanged`) values (29379, 12314, 'Audra', 'Gordon', NULL, NULL, 'user3', 'password', NULL, 'Front of House Mgr.', 'Mohave Grill', 1, 'a', true, 1);
+insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `pversion`, `active`, `passChanged`) values (38382, 28472, 'Rina', 'Pruitt', NULL, NULL, 'user4', 'password', NULL, 'Cook', 'Mohave Grill', 1, 'a', true, 1);
+insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `pversion`, `active`, `passChanged`) values (38202, 28472, 'Quinn', 'Hart', NULL, NULL, 'user5', 'password', NULL, 'Cook', 'Mohave Grill', 1, 'a', true, 1);
+insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `pversion`, `active`, `passChanged`) values (39280, 28472, 'Sierra', 'Dean', NULL, NULL, 'user6', 'password', NULL, 'Cook', 'Mohave Grill', 1, 'a', true, 1);
+insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `pversion`, `active`, `passChanged`) values (39202, 29379, 'Sylvia', 'Dyer', NULL, NULL, 'user7', 'password', NULL, 'Waiter', 'Mohave Grill', 1, 'a', true, 1);
+insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `pversion`, `active`, `passChanged`) values (39203, 29379, 'Kay', 'Bates', NULL, NULL, 'user8', 'password', NULL, 'Waiter', 'Mohave Grill', 1, 'a', true, 1);
+insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `pversion`, `active`, `passChanged`) values (30293, 29379, 'Luke', 'Garrison', NULL, NULL, 'user9', 'password', NULL, 'Waiter', 'Mohave Grill', 1, 'a', true, 1);
+insert into `WebAgenda`.`EMPLOYEE` (`empID`, `supID`, `givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `pversion`, `active`, `passChanged`) values (12345, NULL, 'Noorin', 'Hasan', '1989-06-20', NULL, 'noorin671', 'password', NULL, NULL, NULL, 99, 'a', true, 1);
 
 COMMIT;
 

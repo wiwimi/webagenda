@@ -1,8 +1,6 @@
 package testDB;
 
-import static org.junit.Assert.*;
-
-import java.sql.Date;
+import junit.framework.TestCase;
 
 import org.junit.After;
 import org.junit.Before;
@@ -16,9 +14,8 @@ import business.Skill;
 import business.schedule.Position;
 
 import persistence.PositionBroker;
-import persistence.SkillBroker;
 
-public class TestSkillPositions {
+public class TestSkillPositions extends TestCase {
 
 	private PositionBroker pbrok = null;
 	private Employee user;
@@ -32,7 +29,7 @@ public class TestSkillPositions {
 	@Before
 	public void setUp() throws Exception {
 		pbrok = PositionBroker.getBroker();
-		user = new Employee(12314, "Chaney", "Henson", "user1", "password",  "2a" );
+		user = new Employee(12314, "Chaney", "Henson", "user1", "password", 99, 'a');
 		
 	}
 

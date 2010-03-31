@@ -3,9 +3,9 @@
  */
 package testDB;
 
-import static org.junit.Assert.*;
 import java.sql.Date;
 import java.sql.Timestamp;
+import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +24,7 @@ import business.permissions.PermissionLevel;
  * @version 0.1.0
  *
  */
-public class TestEmployeeBroker
+public class TestEmployeeBroker extends TestCase
 	{
 	private EmployeeBroker empBroker;
 	private Employee user;
@@ -38,7 +38,7 @@ public class TestEmployeeBroker
 		{
 		empBroker = EmployeeBroker.getBroker();
 		empBroker.initConnectionThread();
-		user = new Employee(12314, "Chaney", "Henson","user1", "password",  "2a" );
+		user = new Employee(12314, "Chaney", "Henson","user1", "password", 99, 'a');
 		
 		}
 	
@@ -128,9 +128,8 @@ public class TestEmployeeBroker
 		Employee newEmp = null;
 		try {
 			newEmp = new Employee(80002,"Bilbo","Baggins","bilb03","password",
-					"1a");
+					1,'a');
 		} catch (DBException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
@@ -230,7 +229,6 @@ public class TestEmployeeBroker
 			e.printStackTrace();
 			fail();
 			} catch (PermissionViolationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -272,7 +270,6 @@ public class TestEmployeeBroker
 		try {
 			newEmp = new Employee(80000,"Bilbo","Baggins","bilb01","password",1,'a');
 		} catch (DBException e2) {
-			// TODO Auto-generated catch block
 			e2.printStackTrace();
 		}
 		if(newEmp == null) fail("Employee not initialized for this test");
@@ -321,7 +318,6 @@ public class TestEmployeeBroker
 			{
 			e.printStackTrace();
 			} catch (PermissionViolationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			}
 		}
@@ -396,10 +392,8 @@ public class TestEmployeeBroker
 					System.out.println(permArray[index].getLevel());
 				}
 		} catch (DBException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (DBDownException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -453,7 +447,6 @@ public class TestEmployeeBroker
 			{
 			e.printStackTrace();
 			} catch (PermissionViolationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -488,7 +481,6 @@ public class TestEmployeeBroker
 			{
 			e.printStackTrace();
 			} catch (PermissionViolationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		}

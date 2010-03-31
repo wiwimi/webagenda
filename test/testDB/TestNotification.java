@@ -32,7 +32,7 @@ public class TestNotification {
 		
 		try {
 			
-			Employee user = new Employee(12314, "Chaney", "Henson", "user1", "password",  "2a" );
+			Employee user = new Employee(12314, "Chaney", "Henson", "user1", "password", 99, 'a');
 			nbrok.create(new Notification(1,28472,12314,false,"Can you read this?","Public"), user);
 			nbrok.create(new Notification(2,12314,28472,false,"I sure can","Public"), user);
 			
@@ -63,13 +63,10 @@ public class TestNotification {
 			
 			nbrok.delete(new Notification(3),user);
 		} catch (DBException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (DBDownException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (InvalidPermissionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

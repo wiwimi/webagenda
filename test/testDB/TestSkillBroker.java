@@ -1,8 +1,6 @@
 package testDB;
 
-import static org.junit.Assert.*;
-
-import java.sql.Date;
+import junit.framework.TestCase;
 
 import org.junit.After;
 import org.junit.Before;
@@ -10,19 +8,18 @@ import org.junit.Test;
 
 import business.Employee;
 import business.Skill;
-import business.schedule.Location;
 import exception.DBDownException;
 import exception.DBException;
 import persistence.SkillBroker;
 
-public class TestSkillBroker {
+public class TestSkillBroker extends TestCase {
 	private SkillBroker broker;
 	private Employee user;
 	@Before
 	public void setUp() throws Exception {
 		broker = SkillBroker.getBroker();
 		broker.initConnectionThread();
-		user = new Employee(12314, "Chaney", "Henson","user1", "password",  "2a" );
+		user = new Employee(12314, "Chaney", "Henson","user1", "password", 99, 'a');
 	}
 
 	@After
