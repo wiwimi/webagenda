@@ -1020,7 +1020,7 @@ $.extend($.validator, {
 		
 		//Added to match the format of our calendar
 		dateCalendar: function(value, element) {
-			return value.match(/^\d\d?\/\d\d?\/\d\d\d\d$/);
+			return this.optional(element) || /^\d\d?\/\d\d?\/\d\d\d\d$/.test(value);
 		},
 		
 		// Added to verify that start date is before end date in creating schedules
