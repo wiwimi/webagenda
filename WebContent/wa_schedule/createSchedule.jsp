@@ -4,10 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<!--  Daniel Kettle (implemented calendars onto start and end fields with Noorin's help) -->
+<!--  Libraries -->
+<script type ="text/javascript" src ="../lib/js/jquery-1.3.2.min.js"> </script>
 
 <!-- Plug-ins -->
 <script src="../lib/js/jquery.validate.js" type="text/javascript"></script>
 <script src ="../lib/js/jquery.flashmessenger.js"   type ="text/javascript"> </script>
+
 
 <!-- Javascript Files -->
 <script src="../lib/js/cmxforms.js" type="text/javascript"></script>
@@ -39,7 +43,7 @@ function addElement()
 {
 	if(i == 1)
 	{
-	
+	// FIXME	
 		//this is where we need to perform the add shift secion, once the shift area has been created, we will add it to the shift template
 		  var ni = document.getElementById('myDiv');
 		  var numi = document.getElementById('theValue');
@@ -91,8 +95,8 @@ function submit(divNum)
 			
 			<div class="widgetLowerRectangle" id="scheduleWidgetLowerRectangle">
 				<h2>Add Schedule</h2>
-				<p>	<label class ="label"> Start Date: </label> <input type="text" name ="dob" id="dob" size ="10" value=""/></p>
-				<p>	<label class ="label"> End Date:   </label> <input type="text" name ="dob" id="dob" size ="10" value=""/></p>  
+				<p>	<label class ="label"> Start Date: </label> <input type="text" name ="schedStart" id="schedStart" size ="10" value=""/></p>
+				<p>	<label class ="label"> End Date:   </label> <input type="text" name ="schedEnd" id="schedEnd" size ="10" value=""/></p>  
 				
 				<button onclick="addElement()">Add Shift</button>
 				<hr />
