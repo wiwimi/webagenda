@@ -139,10 +139,10 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 		 * Create insert string. 
 		 */
 		String insert = "INSERT INTO `WebAgenda`.`PERMISSIONSET` "
-								+ "(`plevel`, `canEditSched`, `canReadSched`, `canReadOldSched`, `canManageEmployee`, `canViewResources`, `canChangePermissions`, " +
+								+ "(`plevel`, `pversion`, `canEditSched`, `canReadSched`, `canReadOldSched`, `canManageEmployee`, `canViewResources`, `canChangePermissions`, " +
 										"`canReadLogs`, `canAccessReports`, `canRequestDaysOff`, `maxDaysOff`, `canTakeVacations`, `maxVacationDays`, " +
 										"`canTakeEmergencyDays`, `canViewInactiveEmps`,`canSendNotifications`,`trusted`)"
-								+ " VALUES ('" + createObj.getLevel() + createObj.getVersion()  + "', " + createObj.getLevel_permissions().isCanEditSchedule() + ", " +
+								+ " VALUES ('" + createObj.getLevel() + ", " +  createObj.getVersion()  + "', " + createObj.getLevel_permissions().isCanEditSchedule() + ", " +
 								createObj.getLevel_permissions().isCanReadSchedule() + ", " + createObj.getLevel_permissions().isCanReadOldSchedule() + ", " +
 								createObj.getLevel_permissions().isCanManageEmployees() + ", " + 
 								createObj.getLevel_permissions().isCanViewResources() + ", " + createObj.getLevel_permissions().isCanChangePermissions() + ", " + 
@@ -198,7 +198,7 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 			throw new PermissionViolationException("User is not authorized to Delete a PermissionLevel");
 		
 		boolean success = false;
-		String delete = "DELETE FROM `WebAgenda`.`PERMISSIONSET` WHERE plevel = " + deleteObj.getLevel() + deleteObj.getVersion() +";";
+		String delete = "DELETE FROM `WebAgenda`.`PERMISSIONSET` WHERE plevel = " + deleteObj.getLevel() + " AND pversion = '" +  deleteObj.getVersion() +"';";
 		try {
 			DBConnection conn = this.getConnection();
 			Statement stmt = conn.getConnection().createStatement();
@@ -234,7 +234,7 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 		if (searchTemplate.getLevel() >= 0)
 		{
 			// Only non-negative permission levels are valid
-			comparisons = comparisons +  "WHERE plevel = '" + searchTemplate.getLevel() + searchTemplate.getVersion() + "'";	
+			comparisons = comparisons +  "WHERE plevel = " + searchTemplate.getLevel() + " AND pversion = '" +  searchTemplate.getVersion() + "'";	
 		}
 		else {
 			
@@ -317,7 +317,7 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 		
 		if(level <= 0) throw new DBException("Unable to search for Permission Levels with a negative value");
 		// Create sql select statement from permission level object.
-		String select = "SELECT * FROM `WebAgenda`.`PERMISSIONSET` WHERE plevel='" + (level - 1) + "' ORDER BY plevel;";
+		String select = "SELECT * FROM `WebAgenda`.`PERMISSIONSET` WHERE plevel=" + (level - 1) + " ORDER BY plevel;";
 		
 		PermissionLevel[] foundPermissions = null;
 		try {
@@ -380,11 +380,12 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 		boolean success = false;
 		String update = "UPDATE `WebAgenda`.`PERMISSIONSET` ";
 		String set = "SET "; // This string is modified to contain fields being set and their changed values
-		String where = " WHERE plevel = " + updateObj.getLevel() + updateObj.getVersion();
+		String where = " WHERE plevel = " + updateObj.getLevel() + " AND pversion = '" +  updateObj.getVersion() + "';";
 		
 		Permissions p = updateObj.getLevel_permissions();
 		
-		set += "plevel = " + updateObj.getLevel() + updateObj.getVersion();
+		set += "plevel = " + updateObj.getLevel();
+		set += ", pversion = "+ updateObj.getVersion();
 		set += ", canEditSched = " + p.isCanEditSchedule();
 		set += ", canReadSched = " + p.isCanReadSchedule();
 		set += ", canReadOldSched = " + p.isCanReadOldSchedule();
@@ -456,26 +457,8 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 						rs.getBoolean("canRequestDaysOff"), rs.getInt("maxDaysOff"), rs.getBoolean("canTakeVacations"), rs.getInt("maxVacationDays"), 
 						rs.getBoolean("canTakeEmergencyDays"), rs.getBoolean("canViewInactiveEmps"), rs.getBoolean("canSendNotifications"), 
 						rs.getInt("trusted"));
-				String str = rs.getString("plevel").trim(); // Will remove whitespace (default versions)
-				int level = -1;
-				char version = ' ';
-				if(Character.isLetter(str.charAt(str.length() - 1))) {
-					// The last character in the string is a letter (version)
-					level = Integer.parseInt(str.substring(0,str.length() - 1));
-					version = str.charAt(str.length() -1);
-				}
-				else {
-					try {
-						level = Integer.parseInt(str);
-						// No versioning.
-						
-					}
-					catch(NumberFormatException nfE)
-					{
-						nfE.printStackTrace();
-					}
-				}
-				
+				int level = rs.getInt("plevel");
+				char version = rs.getString("pversion").charAt(0);
 				plevel = PermissionAccess.getAccess().getLevel(level, version);
 				PermissionLevel new_level = null;
 				try {
