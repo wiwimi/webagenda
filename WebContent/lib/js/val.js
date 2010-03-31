@@ -46,6 +46,11 @@ $().ready(function() {
 				dateCalendar: true, // Make sure the date is in the correct format. Or it won't work with the back end.
 				required: false
 			},
+			
+			schedEnd :
+			{
+				compareDates: true
+			},
 			agree: "required"
 			
 		},
@@ -70,13 +75,15 @@ $().ready(function() {
 			dob:{
 				dateCalendar: "Please enter a date in the format dd/mm/yyyy (OPTIONAL)"
 			},
+			
 			confirm_password: {
 				required: "Please provide a password",
 				minlength: "Your password must be at least 6 characters long",
 				equalTo: "Please enter the same password as above"
 			},
 			email: "Please enter a valid email address",
-			agree: "Please accept our policy"
+			agree: "Please accept our policy", 
+			schedEnd:"* End date must be after start date"
 			
 		}
 	});
@@ -105,13 +112,6 @@ $().ready(function() {
 	
 	// Verify that the start date is before the end date in the createSchedule.jsp
 	
-    $(document).ready(function() {
-        $.validator.addMethod("endDate", function(value, element) {
-            var startDate = $('.startDate').val();
-            return Date.parse(startDate) <= Date.parse(value);
-        }, "* End date must be after start date");
-        $('#form').validate();
-    });
 	
 	
 

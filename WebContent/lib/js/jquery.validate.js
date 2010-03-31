@@ -1023,6 +1023,13 @@ $.extend($.validator, {
 			return value.match(/^\d\d?\/\d\d?\/\d\d\d\d$/);
 		},
 		
+		// Added to verify that start date is before end date in creating schedules
+		
+		 compareDates: function(value, element) {
+	            var startDate = $('.startDate').val();
+	            return Date.parse(startDate) <= Date.parse(value);
+	    }, 
+		
 		// http://docs.jquery.com/Plugins/Validation/Methods/number
 		number: function(value, element) {
 			return this.optional(element) || /^-?(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d+)?$/.test(value);
