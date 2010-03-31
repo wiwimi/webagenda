@@ -17,11 +17,19 @@ public class InvalidPermissionException extends Exception {
 	 */
 	private static final long serialVersionUID = 3559826756270573552L;
 
+	/**
+	 * Empty Constructor with predefined message sent to parent
+	 */
 	public InvalidPermissionException()
 	{
 		this("User does not have permission to attempt this action");
 	}
 	
+	/**
+	 * Constructor with message that is displayed when thrown.
+	 * Message is also logged.
+	 * @param message
+	 */
 	public InvalidPermissionException(String message)
 	{
 		super(message);
