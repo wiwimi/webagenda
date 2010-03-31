@@ -203,13 +203,18 @@ public class TestEmployeeBroker extends TestCase
 		Employee searchEmp3 = new Employee();
 		searchEmp3.setSupervisorID(28472);
 		
+		Employee searchEmp4 = new Employee();
+		java.sql.Date dob = java.sql.Date.valueOf("1989-06-20");
+		searchEmp4.setBirthDate(dob);
+		
 		//Run searches
-		Employee[] byID = null, byActive = null, bySupervisor = null;
+		Employee[] byID = null, byActive = null, bySupervisor = null, byDate=null;
 		try
 			{
 			byID = empBroker.get(searchEmp1, user);
 			byActive = empBroker.get(searchEmp2, user);
 			bySupervisor = empBroker.get(searchEmp3, user);
+			byDate = empBroker.get(searchEmp4, user);
 			
 			//Testing getting a particular field 
 			System.out.println("LOCATION" + bySupervisor[0].getPrefLocation());
@@ -252,6 +257,12 @@ public class TestEmployeeBroker extends TestCase
 		
 		System.out.println("\n---------- Search Results by Supervisor 3 ----------");
 		for (Employee emp : bySupervisor)
+			{
+			System.out.println(emp);
+			}
+		
+		System.out.println("\n---------- Search Results by Date ----------");
+		for (Employee emp : byDate)
 			{
 			System.out.println(emp);
 			}

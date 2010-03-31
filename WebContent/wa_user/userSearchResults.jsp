@@ -119,9 +119,10 @@
 								    		&& (request.getParameter("familyName").equals(""))
 								    		&& (request.getParameter("givenName").equals(""))
 								    		&& (request.getParameter("user").equals(""))
+								    		&& (request.getParameter("dob").equals(""))
 								    		&& (request.getParameter("email").equals("")))
 									{
-								    		int empInteger = Integer.parseInt(request.getParameter("empId"));
+								    	  int empInteger = Integer.parseInt(request.getParameter("empId"));
 										   emp.setEmpID(empInteger);
 										   empArray = broker.get(emp, user);
 									}
@@ -131,7 +132,8 @@
 						    		&& (request.getParameter("givenName").equals("")) 
 						    		&& (request.getParameter("user").equals("")) 
 						    		&& (request.getParameter("email").equals(""))
-						    		&& (request.getParameter("status").equalsIgnoreCase("enabled")))
+						    		&& (request.getParameter("status").equalsIgnoreCase("enabled"))
+						    		&& (request.getParameter("dob").equals("")))
 							    {
 							    	//out.println(request.getParameter("status"));
 							    	emp.setActive(true);
@@ -143,6 +145,7 @@
 						    		&& (request.getParameter("givenName").equals("")) 
 						    		&& (request.getParameter("user").equals("")) 
 						    		&& (request.getParameter("email").equals(""))
+						    		&& (request.getParameter("dob").equals(""))
 						    		&& (request.getParameter("status").equalsIgnoreCase("disabled")))
 							    {
 							    	emp.setActive(false);
@@ -150,7 +153,6 @@
 							    }
 								else
 								{
-									//System.out.println("not all null");
 									// Search based on parameters that are not blank or null
 									
 									if(!request.getParameter("empId").equals(""))
@@ -165,15 +167,15 @@
 									if(!request.getParameter("givenName").equals(""))
 										emp.setGivenName(request.getParameter("givenName"));
 									
-									//if(!request.getParameter("dob").equals(""))
-									//{
+									if(!request.getParameter("dob").equals(""))
+									{
 										String dob = request.getParameter("dob");
 										
 										String revDob = dob.substring(6, dob.length()) + '-' + dob.substring(0, 2)
 										+'-' + dob.substring(3, 5); // Reverse the dob to match the backend.
 										java.sql.Date sqlBirthDate = java.sql.Date.valueOf(revDob);
 										emp.setBirthDate(sqlBirthDate);
-									//}
+									}
 									
 									if(!request.getParameter("user").equals(""))
 									{
@@ -183,7 +185,8 @@
 									if(!request.getParameter("email").equals(""))
 										emp.setEmail(request.getParameter("email"));
 									
-										empArray = broker.get(emp, user);
+									
+									empArray = broker.get(emp, user);
 									
 								}
 							}

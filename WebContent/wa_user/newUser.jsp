@@ -108,7 +108,7 @@
 				%>
 		<div id="instructions">
 			Fields marked with <em class="asterisk" > *</em> are required.
-			Randomly generated passwords are going to be sent to the employee's e-mail. If that field was missing it will be sent to your e-mail.
+			Randomly generated passwords are going to be sent to the employee's e-mail. If that field was missing it will be sent to your e-mail. 
 		</div>
 
         <div id="usersWidget" class="fullWidget">
