@@ -31,6 +31,10 @@ public class Notification extends BusinessObject {
 	// FIXME: I'm a little unsure of how notifications are supposed to be
 	// constructed. Modify if wrong.
 	
+	/**
+	 * Constructor that creates a Notification with all required parameters.
+	 * viewed boolean must be false to have it pop-up on a user's screen.
+	 */
 	public Notification(int notificationID,int senderID,int recipientID,
 			boolean viewed, String message, String type)
 	{
@@ -42,6 +46,20 @@ public class Notification extends BusinessObject {
 		this.type = type;
 	}
 	
+	/**
+	 * Constructor with required parameters as well as a Timestamp attribute that
+	 * determines when message was sent. If you want a notification to appear
+	 * in the future, this constructor should be used.
+	 * 
+	 * @param notificationID id of this notification. Should be auto-set by database
+	 * so any value can be used
+	 * @param senderID id of employee who is sending notification
+	 * @param recipientID id of employee who is receiving notification
+	 * @param time time that notification should be seen as sent.
+	 * @param viewed boolean if the notification has been viewed
+	 * @param message String message of the notification
+	 * @param type String type of notification
+	 */
 	public Notification(int notificationID,int senderID,int recipientID,
 			Timestamp time, boolean viewed, String message, String type)
 	{
@@ -61,42 +79,49 @@ public class Notification extends BusinessObject {
 	
 	
 	/**
+	 * Gets the notification identification number
 	 * @return the notificationID
 	 */
 	public int getNotificationID() {
 		return notificationID;
 	}
 	/**
+	 * Gets the sender Employee's id number
 	 * @return the senderID
 	 */
 	public int getSenderID() {
 		return senderID;
 	}
 	/**
+	 * Gets the recipients's id number
 	 * @return the recipientID
 	 */
 	public int getRecipientID() {
 		return recipientID;
 	}
 	/**
+	 * Gets the time notification was sent (as Timestamp)
 	 * @return the sentTime
 	 */
 	public Timestamp getSentTime() {
 		return sentTime;
 	}
 	/**
+	 * Gets whether notification was viewed.
 	 * @return the viewed
 	 */
 	public boolean isViewed() {
 		return viewed;
 	}
 	/**
+	 * Gets the mesage of the notification
 	 * @return the message
 	 */
 	public String getMessage() {
 		return message;
 	}
 	/**
+	 * Gets the type of notification
 	 * @return the type
 	 */
 	public String getType() {

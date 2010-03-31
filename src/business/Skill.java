@@ -33,11 +33,20 @@ public class Skill extends BusinessObject {
 		
 		}
 
+	/**
+	 * Constructor for a Skill with a set name
+	 * @param name String name of skill
+	 */
 	public Skill(String name)
 		{
 		this.name = name;
 		}
 	
+	/**
+	 * Constructor for a skill with a name and description
+	 * @param name String name of skill
+	 * @param desc String description of skill 
+	 */
 	public Skill(String name, String desc)
 		{
 		this.name = name;
@@ -45,6 +54,7 @@ public class Skill extends BusinessObject {
 		}
 	
 	/**
+	 * Gets the Skill name
 	 * @return the name
 	 */
 	public String getName()
@@ -53,6 +63,7 @@ public class Skill extends BusinessObject {
 		}
 
 	/**
+	 * Sets the skill name
 	 * @param name the name to set
 	 */
 	public void setName(String name)
@@ -61,6 +72,7 @@ public class Skill extends BusinessObject {
 		}
 
 	/**
+	 * Gets the skill description
 	 * @return the desc
 	 */
 	public String getDesc()
@@ -69,6 +81,7 @@ public class Skill extends BusinessObject {
 		}
 
 	/**
+	 * Sets the skill description
 	 * @param desc the desc to set
 	 */
 	public void setDesc(String desc)

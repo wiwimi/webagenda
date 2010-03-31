@@ -14,6 +14,10 @@ import exception.DBException;
  */
 public class Employee extends BusinessObject implements Comparable<Employee>
 	{
+	/** Serial UID so that class can be written and restored from a datafile.
+	 * Unused, but as this extends classes that use this value, it is included.
+	 * Randomly generated.
+	 */
 	private static final long	serialVersionUID	= -1671744709578725501L;
 	
 	/**
@@ -115,7 +119,15 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 	 */
 	private Settings				userSettings		= null;
 	
+	/** Version of a PermissionLevel that depicts having the same authority of the
+	 * equivalent permission level, but whose job has different permissions and
+	 * therefore a different goal. Defaults to a space character, or basic version.*/
 	private char version								= ' ';
+	
+	/** Permission level value that depicts the authority of this Employee over
+	 * other employees. When a higher level employee makes a decision, it cannot
+	 * be overruled by one with a lower permission. Basic heirachical permission
+	 * functionality. */
 	private int level									= 0;
 	
 	/**
@@ -154,6 +166,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 		}
 	
 	/**
+	 * Get the Employee's id number
 	 * @return the employee_id
 	 */
 	public int getEmpID()
@@ -162,6 +175,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 		}
 	
 	/**
+	 * Set the Employee's id number
 	 * @param employeeId the employeeId to set
 	 */
 	public void setEmpID(int employeeId)
@@ -170,6 +184,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 		}
 	
 	/**
+	 * Get the id of Employee's supervisor
 	 * @return the supervisor
 	 */
 	public int getSupervisorID()
@@ -178,6 +193,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 		}
 	
 	/**
+	 * Sets the id of Employee's supervisor
 	 * @param supervisorId the supervisorId to set
 	 */
 	public void setSupervisorID(int supervisorId)
@@ -186,6 +202,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 		}
 	
 	/**
+	 * Gets the given name of an Employee
 	 * @return the givenName
 	 */
 	public String getGivenName()
@@ -194,6 +211,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 		}
 	
 	/**
+	 * Sets the given name of an Employee
 	 * @param givenName the givenName to set
 	 */
 	public void setGivenName(String givenName)
@@ -202,6 +220,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 		}
 	
 	/**
+	 * Gets the family name of the Employee
 	 * @return the familyName
 	 */
 	public String getFamilyName()
@@ -210,6 +229,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 		}
 	
 	/**
+	 * Sets the family name of the employee
 	 * @param familyName the familyName to set
 	 */
 	public void setFamilyName(String familyName)
@@ -218,6 +238,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 		}
 	
 	/**
+	 * Gets the Employee's email
 	 * @return the email
 	 */
 	public String getEmail()
@@ -226,6 +247,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 		}
 	
 	/**
+	 * Sets the Employee's email.
 	 * @param email the email to set
 	 */
 	public void setEmail(String email)
@@ -234,6 +256,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 		}
 	
 	/**
+	 * Gets the Employee's username
 	 * @return the username
 	 */
 	public String getUsername()
@@ -242,6 +265,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 		}
 	
 	/**
+	 * Sets the Employee's username
 	 * @param username the username to set
 	 */
 	public void setUsername(String username)
@@ -250,6 +274,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 		}
 	
 	/**
+	 * Gets the Employee' password
 	 * @return the password
 	 */
 	public String getPassword()
@@ -258,6 +283,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 		}
 	
 	/**
+	 * Sets the Employee's password
 	 * @param password the password to set
 	 */
 	public void setPassword(String password)
@@ -266,6 +292,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 		}
 	
 	/**
+	 * Gets the Employee's Preferred Location
 	 * @return the preferred_location
 	 */
 	public String getPrefLocation()
@@ -274,6 +301,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 		}
 	
 	/**
+	 * Sets the Employee's Preferred Location
 	 * @param preferredLocation the preferred_location to set
 	 */
 	public void setPrefLocation(String preferredLocation)
@@ -282,6 +310,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 		}
 	
 	/**
+	 * Gets the Employee's Preferred Position 
 	 * @return the preferred_position
 	 */
 	public String getPrefPosition()
@@ -290,6 +319,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 		}
 	
 	/**
+	 * Sets the Employee's preferred Position
 	 * @param preferredPosition the preferred_position to set
 	 */
 	public void setPrefPosition(String preferredPosition)
@@ -298,6 +328,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 		}
 	
 	/**
+	 * Gets the active status of an Employee
 	 * @return the active
 	 */
 	public boolean getActive()
@@ -306,6 +337,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 		}
 	
 	/**
+	 * Sets the active status of an Employee
 	 * @param active the active to set
 	 */
 	public void setActive(boolean active)
@@ -314,6 +346,8 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 		}
 	
 	/**
+	 * Gets the attribute for a password changed (false means
+	 * that an Employee must change their password)
 	 * @return the passChanged
 	 */
 	public boolean getPassChanged()
@@ -322,6 +356,9 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 		}
 
 	/**
+	 * Sets the attribute for a password changed (false means
+	 * that an Employee must change their password)
+	 * 
 	 * @param passChanged the passChanged to set
 	 */
 	public void setPassChanged(boolean passChanged)
@@ -330,6 +367,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 		}
 
 	/**
+	 * Gets the birth date of an Employee
 	 * @return the birth_date
 	 */
 	public Date getBirthDate()
@@ -338,6 +376,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 		}
 	
 	/**
+	 * Sets the birth date of the Employee
 	 * @param birthDate the birth_date to set
 	 */
 	public void setBirthDate(Date birthDate)
@@ -346,6 +385,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 		}
 	
 	/**
+	 * Gets the last login time of an Employee
 	 * @return the lastLogin
 	 */
 	public Timestamp getLastLogin()
@@ -354,6 +394,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 		}
 	
 	/**
+	 * Sets the last login time of an Employee
 	 * @param lastLogin the lastLogin to set
 	 */
 	public void setLastLogin(Timestamp lastLogin)
@@ -362,6 +403,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 		}
 	
 	/**
+	 * Gets the Settings object of an Employee
 	 * @return the user_settings
 	 */
 	public Settings getUserSettings()
@@ -370,6 +412,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 		}
 	
 	/**
+	 * Sets the Settings object of an Employee
 	 * @param userSettings the user_settings to set
 	 */
 	public void setUserSettings(Settings userSettings)
@@ -378,6 +421,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 		}
 	
 	/**
+	 * Gets the version of the Employee's Permission Level
 	 * @return the version
 	 */
 	public char getVersion() {
@@ -385,6 +429,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 	}
 
 	/**
+	 * Gets the level of the Employee's Permission Level
 	 * @return the level
 	 */
 	public int getLevel() {
