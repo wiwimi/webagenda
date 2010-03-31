@@ -43,7 +43,8 @@ $().ready(function() {
 				minlength: 2
 			},
 			dob:{
-				dateCalendar: true // Make sure the date is in the correct format. Or it won't work with the back end.
+				dateCalendar: true, // Make sure the date is in the correct format. Or it won't work with the back end.
+				required: false
 			},
 			agree: "required"
 			
@@ -100,4 +101,18 @@ $().ready(function() {
 		topics[this.checked ? "removeClass" : "addClass"]("gray");
 		topicInputs.attr("disabled", !this.checked);
 	});
+	
+	
+	// Verify that the start date is before the end date in the createSchedule.jsp
+	
+    $(document).ready(function() {
+        $.validator.addMethod("endDate", function(value, element) {
+            var startDate = $('.startDate').val();
+            return Date.parse(startDate) <= Date.parse(value);
+        }, "* End date must be after start date");
+        $('#form').validate();
+    });
+	
+	
+
 });

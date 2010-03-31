@@ -121,7 +121,7 @@
 				 <div id="personal">
 					 	<div id="formButtons">
 					 	    <input type="submit" name="submit" class="button" value="Add"> 
-							<input type="button" name="submit" class="button" value="Search" onClick="location.href='userSearchResults.jsp?familyName='+ form.familyName.value + '&empId=' + form.empId.value + '&dob=' + 'form.dob.value' + '&givenName=' + form.givenName.value + '&user=' + form.user.value + '&status=' + form.status.value + '&email=' + form.email.value">
+							<input type="button" name="submit" class="button" value="Search" onClick="location.href='userSearchResults.jsp?familyName='+ form.familyName.value + '&empId=' + form.empId.value + '&dob=' + form.dob.value + '&givenName=' + form.givenName.value + '&user=' + form.user.value + '&status=' + form.status.value + '&email=' + form.email.value">
 							<input type="reset" name="clear" class="button" value="Clear Screen" onClick="location.href='newUser.jsp?empId=&familyName=&status=&username=&dob='">
 						</div>
 				<%
@@ -160,7 +160,7 @@
 					<legend > Personal </legend>
 						<p>	<label class ="label"> Given Name:  <em class="asterisk"> * </em> </label> <input type="text" name="givenName" class="required" size="30" maxLength="30" value="<%=givenName%>"/> </p>
 						<p>	<label class ="label"> Family Name: <em class="asterisk"> * </em> </label> <input type="text" name="familyName" class="required" size="30" maxLength="30" value="<%=familyName%>"/> </p>
-						<p>	<label class ="label"> Date of Birth: </label> <input type="text" name ="dob" id="dob" size ="10" value="<%=dob%>"/></p>
+						<p>	<label class ="label"> Date of Birth: </label> <input type="text" name ="dob"  id="dob" size ="10" value="<%=dob%>"/></p>
 						<p>	<label class ="label"> Username: <em class="asterisk"> * </em> </label> <input type="text" name ="user" id="user"  class="required"  size ="30" value="<%=username%>"/></p>
 	                    <p>
 					        <label for="cemail" class="label"> E-Mail:</label>
@@ -232,7 +232,7 @@
 			  
 			  <div id="formButtons">
 		 	    <input type="submit" name="submit" class="button" value="Add"> 
-				<input type="button" name="submit" class="button" value="Search" onClick="location.href='userSearchResults.jsp?familyName='+ form.familyName.value + '&empId=' + form.empId.value + '&dob=' + 'form.dob.value' + '&givenName=' + form.givenName.value + '&user=' + form.user.value + '&status=' + form.status.value + '&email=' + form.email.value">
+				<input type="button" name="submit" class="button" value="Search" onClick="location.href='userSearchResults.jsp?familyName='+ form.familyName.value + '&empId=' + form.empId.value + '&dob=' + form.dob.value + '&givenName=' + form.givenName.value + '&user=' + form.user.value + '&status=' + form.status.value + '&email=' + form.email.value">
 				<input type="reset" name="clear" class="button" value="Clear Screen" onClick="location.href='newUser.jsp?empId=&familyName=&status=&username=&dob='">
 			</div>
 					

@@ -95,8 +95,10 @@ function submit(divNum)
 			
 			<div class="widgetLowerRectangle" id="scheduleWidgetLowerRectangle">
 				<h2>Add Schedule</h2>
-				<p>	<label class ="label"> Start Date: </label> <input type="text" name ="schedStart" id="schedStart" size ="10" value=""/></p>
-				<p>	<label class ="label"> End Date:   </label> <input type="text" name ="schedEnd" id="schedEnd" size ="10" value=""/></p>  
+				
+			<form class="validatedForm" action="../AddUser" id="form" method="post">
+				<p>	<label class ="label"> Start Date: </label> <input type="text" name ="schedStart" id="schedStart" class="startDate" size ="10" value=""/></p>
+				<p>	<label class ="label"> End Date:   </label> <input type="text" name ="schedEnd" id="schedEnd" class="endDate" size ="10" value=""/></p>  
 				
 				<button onclick="addElement()">Add Shift</button>
 				<hr />
@@ -104,6 +106,7 @@ function submit(divNum)
 				<input type="hidden" value="0" id="theValue" />
 
 				<div id="myDiv"> </div>
+			</form>	
 			</div>
 </div>
 <div id="footer"></div>

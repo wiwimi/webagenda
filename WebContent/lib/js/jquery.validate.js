@@ -263,6 +263,7 @@ $.extend($.validator, {
 		email: "Please enter a valid email address.",
 		url: "Please enter a valid URL.",
 		date: "Please enter a valid date.",
+		dateCalendar: "Please enter a date in the format dd/mm/yyyy (OPTIONAL)",
 		dateISO: "Please enter a valid date (ISO).",
 		number: "Please enter a valid number.",
 		digits: "Please enter only digits.",

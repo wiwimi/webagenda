@@ -27,6 +27,7 @@ function addPosition()
 
 	  newdiv.innerHTML = "<label for=\"Position1\">Position "+(num + 1)+":</label><input type=\"text\" size=\"15\" name=\"name\" /><label for=\"name\">Name:</label><input type=\"text\" size=\"15\" name=\"name\" />";
 	  ni.appendChild(newdiv);
+
 	
 }
 

@@ -76,13 +76,16 @@ public class AddUser extends HttpServlet {
 					
 					if (!dob.equals(null) && !dob.equals(""))
 					{
+						
 						String revDob = dob.substring(6, dob.length()) + '-' + dob.substring(0, 2)
 						+'-' + dob.substring(3, 5);		// Reversing the date so that it matches the argument required for sql.Date
 						sqlBirthDate = java.sql.Date.valueOf(revDob);
+						
 						emp.setBirthDate(sqlBirthDate);
 				    }
 					if(!email.equals(null) && !email.equals(""))
 					{
+						
 						emp.setEmail(email);
 					}
 					

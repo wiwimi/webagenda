@@ -40,7 +40,7 @@ public class UpdateUser extends HttpServlet {
 		        java.sql.Date  sqlBirthDate;
 		        broker = EmployeeBroker.getBroker();
 				broker.initConnectionThread();
-				Employee[] results =null;
+				Employee result =null;
 				Employee newEmp=null;
 		       //Create or get the session object from the HTTPSession object
 		        HttpSession session = request.getSession();
@@ -68,13 +68,17 @@ public class UpdateUser extends HttpServlet {
 				try 
 				{
 					newEmp = new Employee();
+					oldEmp = (Employee)session.getAttribute("oldEmp");
+					result = broker.get(oldEmp, user)[0];
+					newEmp = oldEmp.clone();
+					
+					
 					newEmp.setEmpID(empIdInt);
 					newEmp.setFamilyName(familyName);
 					newEmp.setGivenName(givenName);
 					newEmp.setUsername(username);
 					
 					if (status.equalsIgnoreCase("enabled"))
-					
 						newEmp.setActive(true);
 					
 					else 
@@ -111,12 +115,7 @@ public class UpdateUser extends HttpServlet {
 						newEmp.setPrefLocation(loc);
 					}
 					
-					oldEmp = (Employee)session.getAttribute("oldEmp");
-					results = broker.get(oldEmp, user);
-					
-					if(results!=null)
-						success = broker.update(oldEmp, newEmp, user);
-					
+					success = broker.update(oldEmp, newEmp, user);
 					if (success)
 					{
 						//Confirm that the user was updated
@@ -130,42 +129,42 @@ public class UpdateUser extends HttpServlet {
 					e.printStackTrace();
 					
 					//DEBUGGING
-					//out.println("DB Exception");
-					//out.println(newEmp.getGivenName() + " ");
-					//out.println(newEmp.getEmpID() + " ");
-					//out.println(newEmp.getFamilyName() + " ");
-					//out.println(newEmp.getBirthDate() + " ");
-					//out.println(newEmp.getUsername() + " ");
-					//out.println("OLD");
-					//out.println(oldEmp.getEmpID() + " ");
+					out.println("DB Exception");
+					out.println(newEmp.getGivenName() + " ");
+					out.println(newEmp.getEmpID() + " ");
+					out.println(newEmp.getFamilyName() + " ");
+					out.println(newEmp.getBirthDate() + " ");
+					out.println(newEmp.getUsername() + " ");
+					out.println("OLD");
+					out.println(result.getEmpID() + " ");
 					
 					
 					//Even if the user is not updated, return the values to the form
-					response.sendRedirect("wa_user/updateUser.jsp?message=false&familyName=" + familyName +"&givenName=" + givenName+ "&username=" + username +  "&email=" + email 
-							+ "&dob=" + dob + "&empId=" + empId);
+					//response.sendRedirect("wa_user/updateUser.jsp?message=false&familyName=" + familyName +"&givenName=" + givenName+ "&username=" + username +  "&email=" + email 
+							//+ "&dob=" + dob + "&empId=" + empId);
 				}
 				catch (DBDownException e) 
 				{
 					e.printStackTrace();
-					//out.println("DB Down Exception");
+					out.println("DB Down Exception");
 					//out.println(givenName);
 					//out.println(familyName);
 					//out.println(empIdInt);
 					
 					//Even if the user is not created, return the values to the form
-					response.sendRedirect("wa_user/updateUser.jsp?message=false&familyName=" + familyName +"&givenName=" + givenName
-							+ "&username=" + username +  "&email=" + email + "&dob=" + dob + "&empId=" + empId);
+					//response.sendRedirect("wa_user/updateUser.jsp?message=false&familyName=" + familyName +"&givenName=" + givenName
+						//	+ "&username=" + username +  "&email=" + email + "&dob=" + dob + "&empId=" + empId);
 				}
 				catch (InvalidPermissionException  e)
 				{
 					e.printStackTrace();
 					
 					//DEBUGGING
-					//out.println("Invalid Permission");
+					out.println("Invalid Permission");
 					
 					//Even if the user is not created, return the values to the form
-					response.sendRedirect("wa_user/updateUser.jsp?message=perm&familyName=" + familyName +"&givenName=" + givenName+ "&username=" + username +  "&email=" + email 
-							+ "&dob=" + dob + "&empId=" + empId);
+					//response.sendRedirect("wa_user/updateUser.jsp?message=perm&familyName=" + familyName +"&givenName=" + givenName+ "&username=" + username +  "&email=" + email 
+						//	+ "&dob=" + dob + "&empId=" + empId);
 				}
 				catch (PermissionViolationException e) 
 				{
