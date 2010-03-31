@@ -15,13 +15,31 @@ import exception.DBDownException;
  */
 public class ConnectionManager
 	{
+	/** Database user that accesses WebAgenda data. Defaults to WABroker. */
 	private static String	db_user				= "WABroker";
+	/** Password that is used for database user. */
 	private static String	db_pass				= "password";
+	/** Database table that holds WebAgenda data. Methods will fail if this is inaccurate. */
 	private static String	db_name				= "WebAgenda";
+	/** Driver for accessing tables and data. Defaults to MySQL driver included.  */
 	private static String	db_driver			= "com.mysql.jdbc.Driver";
+	/** Driver instance, holds an instance of the driver so memory isn't wasted re-creating
+	 * the instance whenever a connection is required. */
 	private static Object	db_drv_instance	= null;
+	/** Driver information string that determines port and host and  table name used in the
+	 * connectin */
 	private static String	db_url				= "jdbc:mysql://localhost:3306/" + db_name;
 	
+	/**
+	 * Returns an initialized connection instance wrapped in WebAgenda's DBConnection object for
+	 * use with Broker objects for connecting to database and performing statements.
+	 * Instances are controlled by Brokers so memory usage doesn't spiral out of control when
+	 * the database is it with many connection requests.
+	 * 
+	 * @return DBConnection object -- holds a connection with availability settings
+	 * @throws DBDownException If the database information is incorrect or connection cannot be made
+	 * (Database daemon / process / service is not running
+	 */
 	public static DBConnection getConnection() throws DBDownException
 		{
 		Connection conn = null;
@@ -63,6 +81,7 @@ public class ConnectionManager
 		}
 
 	/**
+	 * Set the database user
 	 * @param dbUser the db_user to set
 	 */
 	protected static void setDb_user(String dbUser) {
@@ -70,6 +89,7 @@ public class ConnectionManager
 	}
 
 	/**
+	 * Set the database user password
 	 * @param dbPass the db_pass to set
 	 */
 	protected static void setDb_pass(String dbPass) {
@@ -77,6 +97,7 @@ public class ConnectionManager
 	}
 
 	/**
+	 * Set the database instance name
 	 * @param dbName the db_name to set
 	 */
 	protected static void setDb_name(String dbName) {
@@ -84,6 +105,7 @@ public class ConnectionManager
 	}
 
 	/**
+	 * Set the driver library name to use 
 	 * @param dbDriver the db_driver to set
 	 */
 	protected static void setDb_driver(String dbDriver) {
@@ -91,13 +113,8 @@ public class ConnectionManager
 	}
 
 	/**
-	 * @param dbDrvInstance the db_drv_instance to set
-	 */
-	protected static void setDb_drv_instance(Object dbDrvInstance) {
-		db_drv_instance = dbDrvInstance;
-	}
-
-	/**
+	 * Sets the database url (hostname, port, and database instance; should use the 
+	 * getDb_name() method for db instance name appended to url)
 	 * @param dbUrl the db_url to set
 	 */
 	protected static void setDb_url(String dbUrl) {
@@ -105,6 +122,7 @@ public class ConnectionManager
 	}
 
 	/**
+	 * Gets the Databaes user
 	 * @return the db_user
 	 */
 	protected static String getDb_user() {
@@ -112,6 +130,7 @@ public class ConnectionManager
 	}
 
 	/**
+	 * Gets the Database user's password 
 	 * @return the db_pass
 	 */
 	protected static String getDb_pass() {
@@ -119,6 +138,7 @@ public class ConnectionManager
 	}
 
 	/**
+	 * Gets the database instance name
 	 * @return the db_name
 	 */
 	protected static String getDb_name() {
@@ -126,6 +146,7 @@ public class ConnectionManager
 	}
 
 	/**
+	 * Gets the database connection driver name 
 	 * @return the db_driver
 	 */
 	protected static String getDb_driver() {
@@ -133,19 +154,18 @@ public class ConnectionManager
 	}
 
 	/**
-	 * @return the db_drv_instance
-	 */
-	protected static Object getDb_drv_instance() {
-		return db_drv_instance;
-	}
-
-	/**
+	 * Gets the url of the database (includes hostname, port, and db instance name)
 	 * @return the db_url
 	 */
 	protected static String getDb_url() {
 		return db_url;
 	}
 	
+	/**
+	 * Simple system.out test depicting whether Properties file meets the default
+	 * values set. A false printout will determine that the value has been changed (is custom)
+	 * so functionality may vary if a value is incorrect.
+	 */
 	protected static void printTest() 
 	{
 		System.out.println("User: " + (getDb_user().equals("WABroker")));

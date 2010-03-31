@@ -5,8 +5,34 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * 
+ * @author Daniel Kettle
+ * @version 0.01.10
+ * @license GPL 2
+ */
 public class ConnectionLauncher {
 
+	/**
+	 * Method that sets the database information when run;
+	 * Uses Properties file in following order to determine
+	 * what values are set:
+	 * Username
+	 * Password
+	 * Database Instance Name
+	 * Driver String (Name)
+	 * Driver URL (hostname, port; database instance name is appended in 
+	 * this method) 
+	 * 
+	 * TODO: implement main's args[] array to also set 
+	 * database information (order is important, unless
+	 * flags are used)
+	 * 
+	 * Prints out a basic test to System.out.
+	 * 
+	 * @param args String[] array of values.
+	 * @throws IOException
+	 */
 	public static void main(String[] args) throws IOException
 	{
 
