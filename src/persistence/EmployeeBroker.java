@@ -301,6 +301,9 @@ public class EmployeeBroker extends Broker<Employee>
 			// Family Name
 			comp = comp + (searchTemplate.getFamilyName() != null ? (comp.equals("") ? "" : " AND ") +
 					"familyName LIKE '%" + searchTemplate.getFamilyName() + "%'" : "");
+			// Birthdate
+			comp = comp + (searchTemplate.getBirthDate() != null ? (comp.equals("") ? "" : " AND ") +
+					"birthDate <= '" + searchTemplate.getBirthDate() + "'" : "");
 			// Email
 			comp = comp + (searchTemplate.getEmail() != null ? (comp.equals("") ? "" : " AND ") +
 					"email LIKE '%" + searchTemplate.getEmail() + "%'" : "");
@@ -421,7 +424,7 @@ public class EmployeeBroker extends Broker<Employee>
 		
 		// Create sql update statement from employee object.
 		String update = String.format(
-				"UPDATE `WebAgenda`.`EMPLOYEE` SET empID = %s, supID = %s, givenName = '%s', familyName = '%s', email = %s, username = '%s', lastLogin = %s, prefPosition = %s, prefLocation = %s, active = %s WHERE empID = %s;",
+				"UPDATE `WebAgenda`.`EMPLOYEE` SET empID = %s, supID = %s, givenName = '%s', familyName = '%s', email = %s, username = '%s', lastLogin = %s, prefPosition = %s, prefLocation = %s, active = %s, passChanged = %s WHERE empID = %s;",
 				updateEmp.getEmpID(),
 				(updateEmp.getSupervisorID() != -1 ? updateEmp.getSupervisorID() + "" : "NULL"),
 				updateEmp.getGivenName(),
@@ -432,6 +435,7 @@ public class EmployeeBroker extends Broker<Employee>
 				(updateEmp.getPrefPosition() != null ? "'"+updateEmp.getPrefPosition()+"'" : "NULL"),
 				(updateEmp.getPrefLocation() != null ? "'"+updateEmp.getPrefLocation()+"'" : "NULL"),
 				updateEmp.getActive(),
+				updateEmp.getPassChanged(),
 				updateEmp.getEmpID() + "");
 		
 		System.out.println(update);
@@ -601,6 +605,12 @@ public class EmployeeBroker extends Broker<Employee>
 			}
 		
 		return empList;
+		}
+	
+	public static Employee[] parseResultsStatic(ResultSet rs) throws SQLException
+		{
+		EmployeeBroker eb = EmployeeBroker.getBroker();
+		return eb.parseResults(rs);
 		}
 	
 	/**
