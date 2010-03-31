@@ -15,13 +15,6 @@ import exception.InvalidPermissionException;
 import exception.PermissionViolationException;
 import business.Employee;
 
-import java.io.*;
-import java.util.*;
-import javax.servlet.*;
-import javax.servlet.http.*;
-import sun.net.smtp.SmtpClient;
-
-
 /**
  * Servlet implementation class addUser
  */
@@ -196,5 +189,4 @@ public class AddUser extends HttpServlet {
 		
 		processRequest(request, response);
 	}
-
 }

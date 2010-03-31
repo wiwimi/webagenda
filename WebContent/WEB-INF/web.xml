@@ -139,4 +139,14 @@
     <servlet-name>EmailServlet</servlet-name>
     <url-pattern>/EmailServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GoogleTest</display-name>
+    <servlet-name>GoogleTest</servlet-name>
+    <servlet-class>uiConnection.update.user.GoogleTest</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GoogleTest</servlet-name>
+    <url-pattern>/GoogleTest</url-pattern>
+  </servlet-mapping>
 </web-app>

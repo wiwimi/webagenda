@@ -165,8 +165,14 @@
 									if(!request.getParameter("givenName").equals(""))
 										emp.setGivenName(request.getParameter("givenName"));
 									
+									if(!request.getParameter("dob").equals(""))
+										emp.setGivenName(request.getParameter("dob"));
+									
 									if(!request.getParameter("user").equals(""))
 										emp.setUsername(request.getParameter("user"));
+									
+									if(!request.getParameter("email").equals(""))
+										emp.setUsername(request.getParameter("email"));
 									
 										empArray = broker.get(emp, user);
 									
@@ -295,7 +301,7 @@
 										<td><a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= empArray[index].getFamilyName() %></a></td>
 										<td> <a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= empArray[index].getGivenName() %></a> </td>
 										<td> <a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= empArray[index].getPrefPosition() %></a> </td>
-										<td> <a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= empArray[index].getEmail() %></a> </td>
+										<td> <a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= empArray[index].getBirthDate() %></a> </td>
 								   </tr>
 							<% 
 								}
