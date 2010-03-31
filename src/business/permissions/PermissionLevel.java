@@ -9,7 +9,7 @@ import business.BusinessObject;
 
 /**
  * @author Daniel Kettle
- * @version 0.01.00
+ * @version 0.01.30
  * <br>
  * README: <p>
  * Because of the volatile and secure nature of permissions, and to reduce the change of accidental permission changing either by
@@ -92,34 +92,72 @@ public class PermissionLevel extends BusinessObject {
 		return new PermissionLevel(new Permissions(), 0, ' ');
 	}
 	
+	/**
+	 * Returns the Permissions object from the permission level
+	 * @return Permissions
+	 */
 	public Permissions getLevel_permissions() {
 		return level_permissions;
 	}
+	
+	/**
+	 * Returns the Permission level value
+	 * @return int
+	 */
 	public int getLevel() {
 		return level;
 	}
+	
+	/**
+	 * Returns the version of the permission level
+	 * @return char (isLetter = true, or space char)
+	 */
 	public char getVersion() {
 		return version;
 	}
+	
+	/**
+	 * Returns the description of the permission level
+	 * @return
+	 */
 	public String getDescription() {
 		return description;
 	}
 	
+	/**
+	 * Sets the level of the permission level
+	 * @param i int >= 0
+	 */
 	protected void setLevel(int i)
 	{
+		if(i < 0) i = 0;
 		this.level = i;
 	}
 	
+	/**
+	 * Sets the char that represents the version
+	 * @param c char space or letter
+	 */
 	protected void setVersion(char c)
 	{
 		this.version = c;
 	}
 	
+	/**
+	 * Sets the description of the permission level
+	 * @param s String
+	 */
 	protected void setDescription(String s)
 	{
 		this.description = s;
 	}
 	
+	/**
+	 * Invalidates the permission level Permissions object,
+	 * allowing it to be changed. Non-null Permissions cannot
+	 * be changed in a PermissionLevel, although individual
+	 * Permission values can be set.
+	 */
 	protected void invalidatePermission()
 	{
 		level_permissions = null;

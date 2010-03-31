@@ -18,12 +18,11 @@ import application.DBConnection;
 import persistence.Broker;
 import messagelog.Logging;
 
-//TODO: PermissionBroker needs to ensure that employee has a permission set capable of ensuring actions are
-// backed up by permission level. get() method may need to ignore the employee parameter, only checking if null to allow this.
+//TODO: Ensure all permissions that exist are used or checked.
 
 /**
- * @author peon-dev
- * @version 0.01.00
+ * @author Daniel Kettle
+ * @version 0.01.50
  *
  */
 public class PermissionBroker extends Broker<PermissionLevel> {
@@ -33,7 +32,7 @@ public class PermissionBroker extends Broker<PermissionLevel> {
 	private static volatile PermissionBroker broker_permissions	= null;
 	
 	/**
-	 * PermissionsBroker constructor 
+	 * Empty PermissionsBroker constructor 
 	 */
 	private PermissionBroker()
 	{

@@ -10,8 +10,8 @@ import business.BusinessObject;
  * 
  * Only returns copies of variables when using getters.
  * 
- * @author peon-dev
- * @version 0.01.00
+ * @author Daniel Kettle
+ * @version 0.01.15
  *
  */
 public class Permissions extends BusinessObject {
@@ -105,149 +105,253 @@ public class Permissions extends BusinessObject {
 	
 	// GETTERS //
 	
+	/**
+	 * Returns the canEditSchedule permission
+	 * @return boolean
+	 */
 	public boolean isCanEditSchedule() {
 		boolean b = canEditSchedule;
 		return b;
 	}
+	
+	/**
+	 * Returns the canReadSchedule permission
+	 * @return boolean
+	 */
 	public boolean isCanReadSchedule() {
 		boolean b = canReadSchedule;
 		return b;
 	}
+	
+	/**
+	 * Returns the canReadOldSchedule permission
+	 * @return boolean
+	 */
 	public boolean isCanReadOldSchedule() {
 		boolean b = canReadOldSchedule;
 		return b;
 	}
+	
+	/**
+	 * Returns the canViewResources permission
+	 * @return boolean
+	 */
 	public boolean isCanViewResources() {
 		return canViewResources;
 	}
+	
+	/**
+	 * Returns the canChangePermissions permission
+	 * @return boolean
+	 */
 	public boolean isCanChangePermissions() {
 		return canChangePermissions;
 	}
+	
+	/**
+	 * Returns the canReadLogs permission
+	 * @return boolean
+	 */
 	public boolean isCanReadLogs() {
 		return canReadLogs;
 	}
+	
+	/**
+	 * Returns the canAccessReports permission
+	 * @return boolean
+	 */
 	public boolean isCanAccessReports() {
 		return canAccessReports;
 	}
+	
+	/**
+	 * Returns the canRequestDaysOff permission
+	 * @return boolean
+	 */
 	public boolean isCanRequestDaysOff() {
 		return canRequestDaysOff;
 	}
+	
+	/**
+	 * Returns the maxDaysOff permission
+	 * @return int
+	 */
 	public int getMaxDaysOff() {
 		return maxDaysOff;
 	}
+	
+	/**
+	 * Returns the canTakeVacations permission
+	 * @return boolean
+	 */
 	public boolean isCanTakeVacations() {
 		return canTakeVacations;
 	}
+	
+	/**
+	 * Returns the maxVacationDays permission
+	 * @return int
+	 */
 	public int getMaxVacationDays() {
 		return maxVacationDays;
 	}
+	
+	/**
+	 * Returns the canTakeEmergencydays permission
+	 * @return boolean
+	 */
 	public boolean isCanTakeEmergencyDays() {
 		return canTakeEmergencyDays;
 	}
+	
+	/**
+	 * Returns the canViewInactiveEmployees permission
+	 * @return boolean
+	 */
 	public boolean isCanViewInactiveEmployees() {
 		return canViewInactiveEmployees;
 	}
+	
+	/**
+	 * Returns the canSendNotifications permission
+	 * @return
+	 */
 	public boolean isCanSendNotifications() {
 		return canSendNotifications;
 	}
+	
+	/**
+	 * Returns the trusted level of an employee. Trusted works
+	 * by having one employee of a higher permission level give
+	 * another employee a temporary permission level that is
+	 * one level below the bestower's level in order to perform
+	 * tasks that they could not originally perform. This is
+	 * so that managers can appoint employees to perform
+	 * work in the place of other higher level employees.
+	 * Actions on a trusted employee will be logged.
+	 * @return int
+	 */
 	public int getTrusted() {
 		return trusted;
 	}
 	/**
+	 * Sets the canEditSchedule permission
 	 * @param canEditSchedule the canEditSchedule to set
 	 */
 	protected void setCanEditSchedule(boolean canEditSchedule) {
 		this.canEditSchedule = canEditSchedule;
 	}
 	/**
+	 * Sets the canReadSchedule permission
 	 * @param canReadSchedule the canReadSchedule to set
 	 */
 	protected void setCanReadSchedule(boolean canReadSchedule) {
 		this.canReadSchedule = canReadSchedule;
 	}
 	/**
+	 * Sets the canReadOldSchedule permission
 	 * @param canReadOldSchedule the canReadOldSchedule to set
 	 */
 	protected void setCanReadOldSchedule(boolean canReadOldSchedule) {
 		this.canReadOldSchedule = canReadOldSchedule;
 	}
 	/**
+	 * Sets the canViewResources permission
 	 * @param canViewResources the canViewResources to set
 	 */
 	protected void setCanViewResources(boolean canViewResources) {
 		this.canViewResources = canViewResources;
 	}
 	/**
+	 * Sets the canChangePermissions permission
 	 * @param canChangePermissions the canChangePermissions to set
 	 */
 	protected void setCanChangePermissions(boolean canChangePermissions) {
 		this.canChangePermissions = canChangePermissions;
 	}
 	/**
+	 * Sets the canReadLogs permission
 	 * @param canReadLogs the canReadLogs to set
 	 */
 	protected void setCanReadLogs(boolean canReadLogs) {
 		this.canReadLogs = canReadLogs;
 	}
 	/**
+	 * Sets the canAccessReports permission
 	 * @param canAccessReports the canAccessReports to set
 	 */
 	protected void setCanAccessReports(boolean canAccessReports) {
 		this.canAccessReports = canAccessReports;
 	}
 	/**
+	 * Sets the canRequesetDaysOff permission
 	 * @param canRequestDaysOff the canRequestDaysOff to set
 	 */
 	protected void setCanRequestDaysOff(boolean canRequestDaysOff) {
 		this.canRequestDaysOff = canRequestDaysOff;
 	}
 	/**
+	 * Sets the maxDaysOff permission
 	 * @param maxDaysOff the maxDaysOff to set
 	 */
 	protected void setMaxDaysOff(int maxDaysOff) {
 		this.maxDaysOff = maxDaysOff;
 	}
 	/**
+	 * Sets the canTakeVacations permission
 	 * @param canTakeVacations the canTakeVacations to set
 	 */
 	protected void setCanTakeVacations(boolean canTakeVacations) {
 		this.canTakeVacations = canTakeVacations;
 	}
 	/**
+	 * Sets the maxVacationDays permission
 	 * @param maxVacationDays the maxVacationDays to set
 	 */
 	protected void setMaxVacationDays(int maxVacationDays) {
 		this.maxVacationDays = maxVacationDays;
 	}
 	/**
+	 * Sets the canTakeEmergencyDays permission
 	 * @param canTakeEmergencyDays the canTakeEmergencyDays to set
 	 */
 	protected void setCanTakeEmergencyDays(boolean canTakeEmergencyDays) {
 		this.canTakeEmergencyDays = canTakeEmergencyDays;
 	}
 	/**
+	 * Sets the canViewInactiveEmployees permission
 	 * @param canViewInactiveEmployees the canViewInactiveEmployees to set
 	 */
 	protected void setCanViewInactiveEmployees(boolean canViewInactiveEmployees) {
 		this.canViewInactiveEmployees = canViewInactiveEmployees;
 	}
 	/**
+	 * Sets the canSendNotifications permission
 	 * @param canSendNotifications the canSendNotifications to set
 	 */
 	protected void setCanSendNotifications(boolean canSendNotifications) {
 		this.canSendNotifications = canSendNotifications;
 	}
 	/**
-	 * @param trusted the trusted to set
+	 * Sets the trusted level permission value
+	 * @param int trusted the trusted to set
 	 */
 	protected void setTrusted(int trusted) {
 		this.trusted = trusted;
 	}
 
+	/**
+	 * Sets the canManageEmployees permission
+	 * @param canManageEmployees
+	 */
 	public void setCanManageEmployees(boolean canManageEmployees) {
 		this.canManageEmployees = canManageEmployees;
 	}
 
+	/**
+	 * Gets the canManageEmployees permission
+	 * @return boolean 
+	 */
 	public boolean isCanManageEmployees() {
 		return canManageEmployees;
 	}

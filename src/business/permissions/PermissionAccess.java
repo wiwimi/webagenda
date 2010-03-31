@@ -11,15 +11,19 @@ import exception.InvalidPermissionException;
 import exception.PermissionViolationException;
 
 /**
- * @author dann
- * @version 0.01.00
+ * @author Daniel Kettle
+ * @version 0.01.10
  * @license GPL 2
  */
 public class PermissionAccess {
 
+	/** Class attribute as static in the Singleton Pattern so only one instance is
+	 * loaded at one time. */
 	private static PermissionAccess p_access = null;
 	
-	
+	/**
+	 * Empty Constructor
+	 */
 	private PermissionAccess()
 	{
 		
@@ -41,9 +45,11 @@ public class PermissionAccess {
 	}
 	
 	/**
-	 * Permissions level default 0 is returned
+	 * Permissions level default 0 is returned. Similar to getDefault, but
+	 * that method returns a PermissionLevel object using this
+	 * Permissions object.
 	 * 
-	 * @return
+	 * @return Permission object of the most basic level
 	 */
 	protected Permissions getRootLevel()
 	{
@@ -52,7 +58,7 @@ public class PermissionAccess {
 	
 	/**
 	 * Returns the lowest-level default permission level to the user
-	 * @return PermissionLevel default
+	 * @return PermissionLevel default level
 	 */
 	protected PermissionLevel getDefault()
 	{	
@@ -171,7 +177,8 @@ public class PermissionAccess {
 	}
 	
 	/**
-	 * TODO: canModifyUser permission also checks
+	 * Deletes a permission level, redirects the request to the package PermissionBroker which
+	 * cannot be directly accessed. Security is the reason why it's not public in that class.
 	 * 
 	 * @param delete
 	 * @param requester
@@ -185,6 +192,19 @@ public class PermissionAccess {
 		return PermissionBroker.getBroker().delete(delete,requester);
 	}
 	
+	/**
+	 * Updates a PermissionLevel object, redirects the request to the package PermissionBroker.
+	 * Requires an old and new PermissionLevel object.
+	 * 
+	 * @param old 
+	 * @param update
+	 * @param requester
+	 * @return
+	 * @throws InvalidPermissionException
+	 * @throws DBException
+	 * @throws DBDownException
+	 * @throws PermissionViolationException
+	 */
 	public boolean updatePermissionLevel(PermissionLevel old, PermissionLevel update, Employee requester) throws InvalidPermissionException, DBException, DBDownException, PermissionViolationException
 	{
 		return PermissionBroker.getBroker().update(old, update,requester);
