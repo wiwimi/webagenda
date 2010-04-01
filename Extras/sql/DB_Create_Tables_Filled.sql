@@ -82,7 +82,6 @@ CREATE  TABLE IF NOT EXISTS `WebAgenda`.`EMPLOYEE` (
   INDEX `fk_EMPLOYEE_LOCATION` (`prefLocation` ASC) ,
   INDEX `fk_EMPLOYEE_POSITION` (`prefPosition` ASC) ,
   UNIQUE INDEX `username_UNIQUE` (`username` ASC) ,
-  UNIQUE INDEX `email_UNIQUE` (`email` ASC) ,
   INDEX `empID_IDX` (`empID` ASC) ,
   INDEX `fk_EMPLOYEE_SUPERVISOR` (`supID` ASC) ,
   INDEX `fk_EMPLOYEE_PERMISSIONSET1` (`plevel` ASC, `pversion` ASC) ,
