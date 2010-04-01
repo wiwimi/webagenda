@@ -84,7 +84,7 @@ if(session.getAttribute("username") == null)
 							else
 							{
 						%>
-								None.
+								NA
 						<%
 							}
 						

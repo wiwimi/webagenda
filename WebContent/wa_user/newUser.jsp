@@ -63,7 +63,26 @@
 								$(function()
 								    {
 										
-										    $.flashMessenger("The user has been successfully created", 
+										    $.flashMessenger("The user has been successfully created without sending an e-mail.", 
+											{ 	
+												modal:true, 
+												autoClose: false 
+											});	
+									});
+								</script>
+			<% 			   
+						}
+						
+						else if(request.getParameter("message").equals("sent"))
+						{
+							
+			 %>
+				              <script type="text/javascript">
+		
+								$(function()
+								    {
+										
+										    $.flashMessenger("The user has been successfully created. An e-mail has been sent with the account details.", 
 											{ 	
 												modal:true, 
 												autoClose: false 
@@ -108,7 +127,8 @@
 				%>
 		<div id="instructions">
 			Fields marked with <em class="asterisk" > *</em> are required.
-			Randomly generated passwords are going to be sent to the employee's e-mail. If that field was missing it will be sent to your e-mail. 
+			By default randomly generated passwords are going to be sent to the employee's e-mail. If that field was missing it will be sent to your e-mail. 
+			You can uncheck this option. 
 		</div>
 
         <div id="usersWidget" class="fullWidget">
@@ -174,6 +194,9 @@
 				        <p>
 				        	<label class="label" >Generate Password: <em class="asterisk"> * </em> </label>
 				        	<input type="text" class="required" name="password" id ="pwd" size="20" value="<%=password%>"/>
+				       </p>
+				       <p>
+				       		<label class="label"> Send Account Details: </label> <input type="checkbox" checked name="sendingOption" value="send">
 				       </p>
 					</fieldset>
 				</div>

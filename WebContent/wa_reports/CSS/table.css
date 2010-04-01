@@ -6,10 +6,7 @@ tr
 	display: table-row;
 	vertical-align: inherit;
 }
-td
-{
-	width: 97%;
-}
+
 thead
 {
 	border-color: inherit;

@@ -4,7 +4,6 @@ if(session.getAttribute("username") == null)
 	response.sendRedirect("../wa_login/login.jsp");
 }
 %>
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="persistence.LocationBroker" %>
 <%@ page import="business.schedule.Location" %>
@@ -48,12 +47,17 @@ Only the first 110 characters are displayed for the description column. For furt
 please generate a report for that particular location.
 </div>
 <body>
+
 	<div id="usersWidget" class="fullWidget">
 				<div class="widgetUpperRectangle" id="locationsUpperRectangle">
 					<div class="widgetTitle" id="locationTitle">Report Locations</div>
 				</div>
 				<div id="printerIcon">
-					<h3></h3>
+						<a href="#"> </a>
+				</div>
+				
+				<div id="excelIcon" >
+					<a href="locationsxls.jsp"> </a>
 				</div>
 			<div class="widgetLowerRectangle" id="passwordLowerRectangle">
 				<%
@@ -100,18 +104,28 @@ please generate a report for that particular location.
 											</td>
 											<td>
 								<%
-											if (reportedArray[index].getDesc().length()>=110)
+										if (reportedArray[index].getDesc()!=null)
+										{
+											if (reportedArray[index].getDesc().length()>2)
 											{
 								%>	
-												<%=reportedArray[index].getDesc().substring(0, 110)%>
+												<%=reportedArray[index].getDesc().substring(0, 1)%>
 								<%
 											}
+										
 											else
 											{
 								%>
 												<%=reportedArray[index].getDesc()%>
 								<%
 											}
+										}
+										else
+										{
+								%>	
+											NA
+								<%	
+										}
 								%>	
 											</td>
 										</tr>

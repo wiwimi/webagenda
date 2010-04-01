@@ -54,14 +54,19 @@
 	text-align:center;
 }
 
-#printerIcon
+#printerIcon, #excelIcon
 {
 	font-size:1.2em;
 	float:left;
 	margin-left:20px;
 }
-
-#printerIcon h3:before
+#excelIcon a:before
+{
+	position:relative;
+	top:5px;
+	content: url(../../lib/images/icons/Color/Excel-16.gif)
+}
+#printerIcon a:before
 {
 	position:relative;
 	top:5px;
@@ -91,8 +96,6 @@ hr
 	margin: 10px auto 0 0;
 	text-align: left;
 }
-
-
 #usersIcon h3:before
 {
 	position:relative;
@@ -125,7 +128,6 @@ li a
 	font-size:100%;
 	
 }
-
 li a:hover
 {
 	background-color:#C8C8C8 ;

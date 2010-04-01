@@ -62,6 +62,10 @@ public class AddUser extends HttpServlet {
 				
 				int empIdInt = Integer.parseInt(empId);
 				
+				// To determine whether an email should be sent or not
+				
+				String sendingOption = request.getParameter("sendingOption");
+				
 				try 
 				{
 					
@@ -115,25 +119,35 @@ public class AddUser extends HttpServlet {
 						
 						try 
 						{
-							smtpMailSender = new GoogleTest3();
-							smtpMailSender.postMail(emailSendToList, "Deerfoot Account Details", password);
-							System.out.println("Sucessfully Sent mail to All Users test");
-							
-							//Confirm that the user was added
-							response.sendRedirect("wa_user/newUser.jsp?message=true&familyName=" + familyName +"&givenName=" + givenName
-									+ "&username=" + username +  "&email=" + email + "&password=" + password
-									+ "&dob=" + dob + "&empId=" + empId + "&status=" + emp.getActive());
-							
+							// Send an email with the account's details and confirm the user with the results
+							if(sendingOption!=null) 
+							{
+								smtpMailSender = new GoogleTest3();
+								smtpMailSender.postMail(emailSendToList, "Deerfoot Account Details", password);
+								System.out.println("Sucessfully Sent mail to All Users test");
+								
+								//Confirm that the user was added
+								response.sendRedirect("wa_user/newUser.jsp?message=sent&familyName=" + familyName +"&givenName=" + givenName
+										+ "&username=" + username +  "&email=" + email + "&password=" + password
+										+ "&dob=" + dob + "&empId=" + empId + "&status=" + emp.getActive() + "&sendingOption=" + sendingOption);
+							}
+							//Confirm that the user has been added but an email has not been sent.
+							else
+							{
+								//Confirm that the user was added
+								response.sendRedirect("wa_user/newUser.jsp?message=true&familyName=" + familyName +"&givenName=" + givenName
+										+ "&username=" + username +  "&email=" + email + "&password=" + password
+										+ "&dob=" + dob + "&empId=" + empId + "&status=" + emp.getActive() + "&sendingOption=" + sendingOption);
+							}	
 						} 
 						catch (MessagingException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 							out.println("message exception " + smtpMailSender.getSMTP_AUTH_USER()
 									+ smtpMailSender.getEmailMsgTxt() +dob + " " + smtpMailSender.getEmailSendToList() + " " +
-									smtpMailSender.getSMTP_AUTH_PWD());
+									smtpMailSender.getSMTP_AUTH_PWD() + sendingOption);
 							
 						}
-						
 					}
 				}
 				catch (DBException e) 

@@ -29,15 +29,15 @@ if(session.getAttribute("username") == null)
 <script src= "../lib/js/val.js" type="text/javascript"> </script>
 
 <!--  CSS files -->
-<link rel="stylesheet" href="../CSS/creationForm.css" type="text/css"></link>
-<link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" type="text/css" href="../CSS/creationForm.css"></link>
+<link rel="stylesheet" type="text/css" href="../wa_dashboard/CSS/style.css" media="screen" />
 <style type="text/css">@import "../CSS/jquery.datepick.css";</style> 
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/val.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/screen.css" />
-<link rel="stylesheet" href="../CSS/Flash/flashmessenger.css" type="text/css" media="screen"/>
-<link rel="stylesheet" href="CSS/report.css" type="text/css"/>
-<link rel="stylesheet" href="CSS/print.css" type="text/css" media="print"/>
-<link rel="stylesheet" href="CSS/table.css" type="text/css"></link>
+<link rel="stylesheet" type="text/css" href="../CSS/Flash/flashmessenger.css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="CSS/report.css" />
+<link rel="stylesheet" type="text/css" href="CSS/print.css" media="print"/>
+<link rel="stylesheet" type="text/css" href="CSS/table.css" ></link>
 
 </head>
 
@@ -50,8 +50,13 @@ Only employees who are active in the system are displayed in this report.
 					<div class="widgetTitle" id="userTitle">Report Users</div>
 				</div>
 				<div id="printerIcon">
-					<h3></h3>
+						<a href="#"> </a>
 				</div>
+				
+				<div id="excelIcon" >
+					<a href="usersxls.jsp"> </a>
+				</div>
+				
 			<div class="widgetLowerRectangle" id="userLowerRectangle">
 				<%
 					Employee emp = new Employee();
@@ -111,22 +116,68 @@ Only employees who are active in the system are displayed in this report.
 											<td>
 												<%=reportedArray[index].getEmpID()%> 
 											</td>
-											<td>
-												<%=reportedArray[index].getPrefPosition()%> 
-											</td>
-											<td>
-												<%=reportedArray[index].getBirthDate()%> 
-											</td>
-											<td>
-												<%=reportedArray[index].getEmail()%> 
-											</td>
-											<td>
-												<%=reportedArray[index].getSupervisorID()%> 
-											</td>
-										</tr>
-								<% 
-									}
-								%>
+										 <%
+										 	if (reportedArray[index].getPrefPosition()!=null)
+										 	{
+										 %>
+												<td>
+													<%=reportedArray[index].getPrefPosition()%> 
+												</td>
+										<%
+										 	}
+										 	else
+										 	{
+										%>
+												<td> NA </td>
+										<%
+											}
+										 	if (reportedArray[index].getBirthDate()!=null)
+										 	{
+										%>
+												<td>
+													<%=reportedArray[index].getBirthDate()%> 
+												</td>
+										<%
+										 	}
+										 	else
+										 	{
+										 %>
+										 		<td> NA </td>
+										 <%
+										 	}
+										 	if (reportedArray[index].getEmail()!=null)
+										 	{
+										 %>
+												<td>
+													<%=reportedArray[index].getEmail()%> 
+												</td>
+										<%
+										 	}
+										 	else
+										 	{
+										%>
+												<td> NA </td>
+										<%  }
+										 	if(reportedArray[index].getSupervisorID()!=-1)
+										 	{
+										%>
+												<td>
+													<%=reportedArray[index].getSupervisorID()%> 
+												</td>
+										<% 
+										 	}
+										 	else
+										 	{
+										 %>
+										 	<td> NA </td>
+										<%  
+											}
+										%>
+											</tr>
+										<% 
+										
+										   }
+									    %>
 								</tbody>
 						</table>
 					</div>
