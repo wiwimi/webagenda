@@ -482,12 +482,16 @@ public class ScheduleBroker extends Broker<Schedule>
 			//Get employees and sort.
 			DoubleLinkedList<Employee> emps = shifts.get(i).getEmployees(); 
 			Employee[] sortedEmps = emps.toArray();
-			Arrays.sort(sortedEmps);
 			
-			//Add sorted employees back to list.
-			emps.clear();
-			for (int j = 0; j < sortedEmps.length; j++)
-				emps.add(sortedEmps[j]);
+			if (sortedEmps != null)
+				{
+				Arrays.sort(sortedEmps);
+				
+				//Add sorted employees back to list.
+				emps.clear();
+				for (int j = 0; j < sortedEmps.length; j++)
+					emps.add(sortedEmps[j]);
+				}
 			}
 		
 		//Employees sorted, now sort shifts.
@@ -601,9 +605,12 @@ public class ScheduleBroker extends Broker<Schedule>
 				Employee[] shiftEmps = EmployeeBroker.getBroker().parseResults(shiftEmpRS);
 				
 				// Add employees to shift.
-				for (Employee emp : shiftEmps)
+				if (shiftEmps != null)
 					{
-					shift.getEmployees().add(emp);
+					for (Employee emp : shiftEmps)
+						{
+						shift.getEmployees().add(emp);
+						}
 					}
 				
 				// Add shifts templates to schedule template.
@@ -732,14 +739,16 @@ public class ScheduleBroker extends Broker<Schedule>
 	private void insertShiftEmployees(Employee[] shiftEmpArr, int shiftID,
 			PreparedStatement createShiftEmp) throws DBException, SQLException
 		{
-		for (Employee emp : shiftEmpArr)
+		if (shiftEmpArr != null)
 			{
-			//Attempt to insert shift employee.
-			createShiftEmp.setInt(1, shiftID);
-			createShiftEmp.setInt(2, emp.getEmpID());
-			if (createShiftEmp.executeUpdate() != 1)
-				throw new DBException("Failed to insert shift employee");
+			for (Employee emp : shiftEmpArr)
+				{
+				//Attempt to insert shift employee.
+				createShiftEmp.setInt(1, shiftID);
+				createShiftEmp.setInt(2, emp.getEmpID());
+				if (createShiftEmp.executeUpdate() != 1)
+					throw new DBException("Failed to insert shift employee");
+				}
 			}
-		
 		}
 	}

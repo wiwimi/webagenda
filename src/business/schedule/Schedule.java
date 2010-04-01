@@ -169,4 +169,13 @@ public class Schedule extends BusinessObject
 		
 		return clone;
 		}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString()
+		{
+		return schedID + "," + creatorID + "," + startDate + "," + endDate;
+		}
 	}

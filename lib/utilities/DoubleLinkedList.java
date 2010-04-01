@@ -346,6 +346,9 @@ public class DoubleLinkedList<E> implements List<E> {
 
 	@Override
 	public E[] toArray() {
+		if (size == 0)
+			return null;
+		
 		E[] array = (E[])(Array.newInstance(head.getElement().getClass(), size));
 		DLLNode current = head;
 		for (int i = 0; i < size; i++)
