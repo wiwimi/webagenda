@@ -23,11 +23,20 @@ public class RuleBroker extends Broker<Rule> {
 
 	private static volatile RuleBroker rbrok = null;
 	
+	/**
+	 * Constructor for RuleBroker, initializes the Broker Connection
+	 * Monitor
+	 */
 	private RuleBroker()
 	{
-		
+		this.initConnectionThread();
 	}
 	
+	/**
+	 * Returns the RuleBroker object, initializing it if necessary, to perform
+	 * methods in this Broker.
+	 * @return
+	 */
 	public static RuleBroker getBroker()
 	{
 		if(rbrok == null) rbrok = new RuleBroker();

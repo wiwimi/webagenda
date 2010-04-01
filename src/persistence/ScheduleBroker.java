@@ -27,11 +27,19 @@ public class ScheduleBroker extends Broker<Schedule>
 	/** ScheduleBroker object for singleton pattern */
 	private static ScheduleBroker	broker_schedule	= null;
 	
+	/**
+	 * Constructor for ScheduleBroker, initializes the Broker Connection
+	 * Monitor
+	 */
 	private ScheduleBroker()
 		{
-		
+		this.initConnectionThread();
 		}
 	
+	/**
+	 * Returns a ScheduleBroker object, initialized if necessary.
+	 * @return
+	 */
 	public static ScheduleBroker getBroker()
 		{
 		if (broker_schedule == null)

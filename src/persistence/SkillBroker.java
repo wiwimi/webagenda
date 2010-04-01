@@ -21,13 +21,21 @@ import business.Employee;
  */
 public class SkillBroker extends Broker<Skill> {
 
+	/** SkillBroker static object that is initialized when broker is returned. */
 	private static volatile SkillBroker sbrok = null;
 	
+	/**
+	 * Constructor that creates a Broker Connection Manager
+	 */
 	private SkillBroker()
 	{
 		super.initConnectionThread();
 	}
 	
+	/**
+	 * Method to return an initialized instance of this broker class
+	 * @return SkillBroker
+	 */
 	public static SkillBroker getBroker()
 	{
 		if(sbrok == null) sbrok = new SkillBroker();

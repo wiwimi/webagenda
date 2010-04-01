@@ -25,13 +25,23 @@ public class PositionBroker extends Broker<Position> {
 	
 	// Working on retriving skills along with Positions
 
+	/** Static broker object that is initialized with a getBroker() method call. */
 	private static volatile PositionBroker pbrok = null;
 	
+	/**
+	 * Constructor that initializes a Broker Connection Monitor object
+	 * to monitor old connections.
+	 */
 	private PositionBroker()
 	{
 		super.initConnectionThread();
 	}
 	
+	/**
+	 * Returns the PositionBroker object, initializing it if necessary, to perform
+	 * methods in this Broker.
+	 * @return PositionBroker
+	 */
 	public static PositionBroker getBroker()
 	{
 		if(pbrok == null)

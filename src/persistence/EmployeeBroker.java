@@ -19,7 +19,7 @@ import business.Employee;
 import business.permissions.PermissionLevel;
 
 /**
- * @author peon-dev, Daniel Wehr
+ * @author Daniel Kettle, Daniel Wehr
  * @version 0.3.0
  */
 public class EmployeeBroker extends Broker<Employee>
@@ -28,7 +28,9 @@ public class EmployeeBroker extends Broker<Employee>
 	private static volatile EmployeeBroker	employeeBroker	= null;
 	
 	/**
-	 * Constructor for EmployeeBroker
+	 * Constructor for EmployeeBroker, initializes the Broker Connection
+	 * Monitor
+	 * 
 	 */
 	private EmployeeBroker()
 		{
@@ -37,7 +39,7 @@ public class EmployeeBroker extends Broker<Employee>
 		}
 	
 	/**
-	 * Returns an object-based Employee Broker object.
+	 * Returns an Employee Broker object.
 	 * 
 	 * @return EmployeeBroker result from the Broker request as its respective
 	 *         Broker object.
@@ -607,6 +609,14 @@ public class EmployeeBroker extends Broker<Employee>
 		return empList;
 		}
 	
+	/**
+	 * Returns an array of Employee objects by inputting a parameter ResultSet
+	 * that will use this Broker's built in parsing method to get the data.
+	 * 
+	 * @param rs ResultSet
+	 * @return Employee[] array
+	 * @throws SQLException
+	 */
 	public static Employee[] parseResultsStatic(ResultSet rs) throws SQLException
 		{
 		EmployeeBroker eb = EmployeeBroker.getBroker();

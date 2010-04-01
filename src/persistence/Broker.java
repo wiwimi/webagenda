@@ -97,15 +97,15 @@ public abstract class Broker<E extends BusinessObject>
 	
 	
 	/**
-	 * @return
+	 * Grabs a connection from the DBConnection wrapper class that also monitors how many connections
+	 * this Broker object has retrieved in total; One connection instance is available at a minimum
+	 * and this will add any and all created connection to a list where they can be managed.
+	 * @return DBConnection wrapper class with active connection
+	 * @throws DBDownException if the database is unreachable
 	 */
 	public DBConnection getConnection() throws DBDownException
 		{
 		DBConnection returnConnection = null;
-		/*
-		 * TODO - This method will return a current available database connection,
-		 * or create a new one if needed to support additional load.
-		 */
 		
 		if (connections.size() == 0)
 			{
@@ -138,6 +138,10 @@ public abstract class Broker<E extends BusinessObject>
 		return returnConnection;
 		}
 	
+		/**
+		 * Initiatizes the thread that manages old and unused connections in the DBConnection-based
+		 * list. Creates the Broker Connection Monitor object which runs in the background as a thread. 
+		 */
 		public void initConnectionThread()
 		{
 			runConnectionThread = true;
@@ -147,6 +151,9 @@ public abstract class Broker<E extends BusinessObject>
 			}
 		}
 		
+		/**
+		 * Prevents the Broker Connection Monitor from running. 
+		 */
 		public void stopConnectionThread()
 			{
 			runConnectionThread = false;
@@ -190,34 +197,6 @@ public abstract class Broker<E extends BusinessObject>
 		}
 		
 		/**
-		 * Method to return the Level only of a permission level string.
-		 * @param str
-		 * @return
-		 */
-		public int getLevel(String str)
-		{
-			try {
-				if(Character.isLetter(str.charAt(str.length() - 1)))
-				{
-					// substring is inclusive / exclusive
-					int i = Integer.parseInt(str.substring(0,str.length() - 1));
-					if(i >= 0) {
-						return i;
-					}
-				}
-				else {
-					int i = Integer.parseInt(str);
-					return i;
-				}
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				
-			}
-			return 0;
-		}
-		
-		/**
 		 * Class to monitor a list of db connections for each broker, closing
 		 * them when they are old and unused within a certain time period
 		 * (default is 5 minutes) to prevent overuse of memory.
@@ -228,9 +207,15 @@ public abstract class Broker<E extends BusinessObject>
 		 */
 	private class BrokerConMonitor extends Thread {
 		
+		/** Time that thread is put to sleep before re-awaking */
 		private long lng_delay 				= 5000; // 300 000 is 5 min.
+		/** The difference required between last access time and current time,
+		 * if met will remove the unused connection from the list. */
 		private long lng_time_to_close		= 5000;
 		
+		/**
+		 * Constructor that logs the time and message for initializing a Broker Connection
+		 */
 		public BrokerConMonitor()
 		{
 			Logging.writeToLog(Logging.INIT_LOG, Logging.NORM_ENTRY, "Broker Connection Monitor Initialized.");
