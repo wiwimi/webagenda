@@ -421,10 +421,12 @@
 												{
 										   	%>
 										   			<td>
-														<b> <%=permArray[index].getLevel()%> </b>
+														<b> <%=(permArray[index].getLevel() + "" + permArray[index].getVersion())%> </b>
 													</td>
 													<td>
-														<input type="checkbox" name="perm" value="<%=permArray[index].getLevel()%>"> 
+														<input type="checkbox" name="perm" value="<%= (permArray[index].getLevel() + "" + 
+																permArray[index].getVersion()) %>"> 
+																<% System.out.println(permArray[index].getLevel() + "" + permArray[index].getVersion()); %>
 													</td>
 										   		
 											<%

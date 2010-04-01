@@ -43,7 +43,7 @@ function addElement()
 {
 	if(i == 1)
 	{
-	// FIXME	
+	// FIXME - Need to output the number of required shifts to be set if using a template
 		//this is where we need to perform the add shift secion, once the shift area has been created, we will add it to the shift template
 		  var ni = document.getElementById('myDiv');
 		  var numi = document.getElementById('theValue');
