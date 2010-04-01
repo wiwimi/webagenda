@@ -5,28 +5,27 @@ import javax.mail.*;
 import javax.mail.internet.*;
 
 
-public class GoogleTest2
+public class GoogleTest3
 {
 	
-	private static final String SMTP_HOST_NAME = "smtp.gmail.com";
-	private static final String SMTP_AUTH_USER = "noorin671@gmail.com";
-	private static final String SMTP_AUTH_PWD = "alghazaly";
-	private static final String emailMsgTxt = "Please visit my project ";
-	private static final String emailSubjectTxt = "Ticket Tracker";
-	private static final String[] emailSendToList = { "noorin671@gmail.com" };
+	String SMTP_HOST_NAME = "smtp.gmail.com";
+	String SMTP_AUTH_USER = "noorin671@gmail.com";
+	String SMTP_AUTH_PWD = "alghazaly";
+	String emailMsgTxt = "Please visit my project ";
+	String emailSubjectTxt = "Ticket Tracker";
+	String[] emailSendToList = null;
 	
-	public GoogleTest2()
+	public GoogleTest3()
+	{
+		
+	}
+	
+	public GoogleTest3(String SMTP_HOST_NAME, String SMTP_AUTH_USER, String SMTP_AUTH_PWD)
 	{
 		
 	}
 		
-	public static void main(String args[]) throws Exception 
-	{
-			GoogleTest2 smtpMailSender = new GoogleTest2();
-			smtpMailSender.postMail(emailSendToList, emailSubjectTxt, emailMsgTxt);
-			System.out.println("Sucessfully Sent mail to All Users");
-	}
-		
+	
 	public void postMail(String recipients[], String subject, String message) throws MessagingException 
 	{
 		
@@ -60,6 +59,54 @@ public class GoogleTest2
 		Transport.send(msg);
 	}
 		
+	public String getSMTP_HOST_NAME() {
+		return SMTP_HOST_NAME;
+	}
+
+	public void setSMTP_HOST_NAME(String sMTPHOSTNAME) {
+		SMTP_HOST_NAME = sMTPHOSTNAME;
+	}
+
+	public String getSMTP_AUTH_USER() {
+		return SMTP_AUTH_USER;
+	}
+
+	public void setSMTP_AUTH_USER(String sMTPAUTHUSER) {
+		SMTP_AUTH_USER = sMTPAUTHUSER;
+	}
+
+	public String getSMTP_AUTH_PWD() {
+		return SMTP_AUTH_PWD;
+	}
+
+	public void setSMTP_AUTH_PWD(String sMTPAUTHPWD) {
+		SMTP_AUTH_PWD = sMTPAUTHPWD;
+	}
+
+	public String getEmailMsgTxt() {
+		return emailMsgTxt;
+	}
+
+	public void setEmailMsgTxt(String emailMsgTxt) {
+		this.emailMsgTxt = emailMsgTxt;
+	}
+
+	public String getEmailSubjectTxt() {
+		return emailSubjectTxt;
+	}
+
+	public void setEmailSubjectTxt(String emailSubjectTxt) {
+		this.emailSubjectTxt = emailSubjectTxt;
+	}
+
+	public String[] getEmailSendToList() {
+		return emailSendToList;
+	}
+
+	public void setEmailSendToList(String[] emailSendToList) {
+		this.emailSendToList = emailSendToList;
+	}
+
 	/**
 	SimpleAuthenticator is used to do simple authentication when the SMTP
 	server requires it.
@@ -74,7 +121,7 @@ public class GoogleTest2
 			return new PasswordAuthentication(username, password);
 		}
 	}
-	}
+}
 	
 	
 

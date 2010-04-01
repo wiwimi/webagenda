@@ -2,6 +2,8 @@ package uiConnection.update.user;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+
+import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -56,6 +58,7 @@ public class AddUser extends HttpServlet {
 				String loc= request.getParameter("loc");
 				String empId = request.getParameter("empId");
 				String supId = request.getParameter("supId");
+				String[] emailSendToList = { email };
 				
 				int empIdInt = Integer.parseInt(empId);
 				
@@ -108,10 +111,29 @@ public class AddUser extends HttpServlet {
 					
 					if (success)
 					{
-						//Confirm that the user was added
-						response.sendRedirect("wa_user/newUser.jsp?message=true&familyName=" + familyName +"&givenName=" + givenName
-								+ "&username=" + username +  "&email=" + email + "&password=" + password
-								+ "&dob=" + dob + "&empId=" + empId + "&status=" + emp.getActive());
+						GoogleTest3 smtpMailSender = null;
+						
+						try 
+						{
+							smtpMailSender = new GoogleTest3();
+							smtpMailSender.postMail(emailSendToList, "Deerfoot Account Details", password);
+							System.out.println("Sucessfully Sent mail to All Users test");
+							
+							//Confirm that the user was added
+							response.sendRedirect("wa_user/newUser.jsp?message=true&familyName=" + familyName +"&givenName=" + givenName
+									+ "&username=" + username +  "&email=" + email + "&password=" + password
+									+ "&dob=" + dob + "&empId=" + empId + "&status=" + emp.getActive());
+							
+						} 
+						catch (MessagingException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+							out.println("message exception " + smtpMailSender.getSMTP_AUTH_USER()
+									+ smtpMailSender.getEmailMsgTxt() +dob + " " + smtpMailSender.getEmailSendToList() + " " +
+									smtpMailSender.getSMTP_AUTH_PWD());
+							
+						}
+						
 					}
 				}
 				catch (DBException e) 

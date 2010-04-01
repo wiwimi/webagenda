@@ -154,6 +154,10 @@
 					{
 						username = request.getParameter("username");
 					}
+					if(request.getParameter("password")!=null)
+					{
+						password = request.getParameter("password");
+					}
 				
 				%>
 				<fieldset>
