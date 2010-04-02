@@ -9,7 +9,17 @@
 		content: "Page " counter(page) " of " counter(pages); 
 	} 
 }
-#sidebar, #header, #footer
+#titleHeader h2
+{
+	font-size: 100%;
+	font-family: Arial,  Verdana, Helvetica, sans-serif;
+	display: block;
+	display: inline-block;
+	line-height: 1.8;
+	vertical-align: top;
+	width:35%;
+}
+#sidebar, #header, #footer, #printerIcon, #excelIcon
 {
 	display:none
 }

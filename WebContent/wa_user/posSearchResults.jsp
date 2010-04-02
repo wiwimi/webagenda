@@ -37,6 +37,10 @@
 <link rel="stylesheet" type="text/css" href="../CSS/Flash/flashmessenger.css"  media="screen"/>
 </head>
 <body>
+
+<div id="instructions">
+			Click on column headers to sort data through.
+</div>
 			<% 
 					if(request.getParameter("delete") != null)
 					{

@@ -45,7 +45,8 @@ if(session.getAttribute("username") != null)
 				
 					<div id="usersIcon"><h3>Users</h3></div>
 						<ul>
-							<li> <a href="reportUsers.jsp"> All Users </a></li>
+							<li> <a href="reportUsers.jsp"> All Active Users </a></li>
+							<li> <a href="reportDisabledUsers.jsp"> All Disabled Users </a></li>
 							<li>  <a href="#">  A User </a></li>
 						</ul>
 					<div id="locationsIcon"><h3> Locations</h3> </div>

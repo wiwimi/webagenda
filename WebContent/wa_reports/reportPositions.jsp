@@ -54,7 +54,7 @@ please generate a report for that particular location.
 					<div class="widgetTitle" id="locationTitle">Report Locations</div>
 				</div>
 				<div id="printerIcon">
-					<a href="#"> </a>
+					<a href="javascript:window.print()"> </a>
 				</div>
 				
 				<div id="excelIcon" >

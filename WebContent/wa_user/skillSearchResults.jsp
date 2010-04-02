@@ -38,7 +38,9 @@
 
 </head>
 <body>
-<br></br>
+<div id="instructions">
+			Click on column headers to sort data through.
+</div>
 			 <% 
 					if(request.getParameter("delete") != null)
 					{

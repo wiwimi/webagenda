@@ -35,6 +35,10 @@
 </head>
 <body>
 
+<div id="instructions">
+			Click on column headers to sort data through.
+</div>
+
 		<% 
 					if(request.getParameter("message") != null)
 					{
@@ -300,6 +304,15 @@
 						<%
 								for(int index = 0; index<empArray.length; index++)
 								{
+									String email ="NA", position="NA";
+									if (empArray[index].getEmail()!=null)
+									{
+										email = empArray[index].getEmail();
+									}
+									if (empArray[index].getPrefPosition()!=null)
+									{
+										email = empArray[index].getPrefPosition();
+									}
 						%>
 									<tr>
 										<td>
@@ -312,8 +325,8 @@
 										<td><a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= empArray[index].getEmpID() %></a></td>
 										<td><a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= empArray[index].getFamilyName() %></a></td>
 										<td> <a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= empArray[index].getGivenName() %></a> </td>
-										<td> <a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= empArray[index].getPrefPosition() %></a> </td>
-										<td> <a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= empArray[index].getEmail() %></a> </td>
+										<td> <a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= position %></a> </td>
+										<td> <a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= email %></a> </td>
 								   </tr>
 							<% 
 								}

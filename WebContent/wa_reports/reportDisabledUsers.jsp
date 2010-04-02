@@ -37,13 +37,13 @@ if(session.getAttribute("username") == null)
 <link rel="stylesheet" type="text/css" href="../CSS/Flash/flashmessenger.css" media="screen"/>
 <link rel="stylesheet" type="text/css" href="CSS/report.css" />
 <link rel="stylesheet" type="text/css" href="CSS/print.css" media="print"/>
-<link rel="stylesheet" type="text/css" href="CSS/table.css" media="all"></link>
+<link rel="stylesheet" type="text/css" href="CSS/table.css" ></link>
 
 </head>
 <body>
 	<div id="usersWidget" class="fullWidget">
 				<div class="widgetUpperRectangle" id="usersUpperRectangle">
-					<div class="widgetTitle" id="userTitle">Report Users</div>
+					<div class="widgetTitle" id="userTitle">Report Disabled Users</div>
 				</div>
 				<div id="printerIcon">
 						<a href="javascript:window.print()"> </a>
@@ -65,7 +65,7 @@ if(session.getAttribute("username") == null)
 				
 				<div id="reportHeader">
 					<div id="titleHeader">
-						<h2 id="name">All Enabled Users </h2>
+						<h2 id="name">All Disabled Users </h2>
 						<h2 id="date"><%= new java.util.Date()%></h2>
 					</div>
 				</div>
