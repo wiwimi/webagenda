@@ -29,6 +29,7 @@
 
 <!--  CSS files -->
 <link rel="stylesheet" type="text/css"  href="../CSS/creationForm.css"></link>
+<link rel="stylesheet" type="text/css"  href="CSS/icons.css"></link>
 <link rel="stylesheet" type="text/css"  href="../wa_dashboard/CSS/style.css" media="screen" />
 <link rel="stylesheet" type="text/css"  href="../CSS/Validation/val.css" media="screen"/>
 <link rel="stylesheet" type="text/css"  href="../CSS/Validation/screen.css" media="screen"/>

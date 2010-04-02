@@ -24,10 +24,11 @@
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Confirmation/confirm.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Flash/flashmessenger.css" />
+<link rel="stylesheet" type="text/css"  href="CSS/icons.css"></link>
 
 <!-- Sorttable is under the X11 licence, it is an open source project.-->
 <!-- Javascript Files -->
-<script src="../lib/js/sorttable.js" type ="text/javascript"></script>
+<script type ="text/javascript" src="../lib/js/sorttable.js"></script>
 <script type="text/javascript" src="../lib/js/dashboard.js"></script>
 <script type="text/javascript" src="../lib/js/deleteUser.js"></script>
 <script type="text/javascript" src="../lib/js/helpUserSearchResults.js"></script>
@@ -77,9 +78,10 @@
 					}
 				%>
 		
-		<div id="usersWidget" class="fullWidget">
+		<div id="usersWidget" class="fullWidget"><div id="backIcon" > <a href="newUser.jsp"> Back </a> </div>
 			<div class="widgetUpperRectangle" id="usersWidgetUpperRectangle">
 				<div class="widgetTitle" id="usersWidgetTitle">Users <div id="helpIcon"></div> </div>
+				
 		</div>
 			
 		<div class="widgetLowerRectangle" id="usersWidgetLowerRectangle">

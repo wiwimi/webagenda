@@ -35,6 +35,7 @@
 <link rel="stylesheet" type="text/css" href="../wa_dashboard/CSS/style.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="../CSS/Confirmation/confirm.css"  media="screen"/>
 <link rel="stylesheet" type="text/css" href="../CSS/Flash/flashmessenger.css"  media="screen"/>
+<link rel="stylesheet" type="text/css"  href="CSS/icons.css"></link>
 </head>
 <body>
 
@@ -78,14 +79,14 @@
 						}
 					}
 				%>
-		<div id="skillsWidget" class="fullWidget">
+		<div id="skillsWidget" class="fullWidget"> <div id="backIcon" > <a href="newPosition.jsp"> Back </a> </div>
 			<div class="widgetUpperRectangle" id="positionssWidgetUpperRectangle">
 				<div class="widgetTitle" id="positionsTitle">Positions <div id="helpIcon"></div> </div>
 		</div>
 			
 		<div class="widgetLowerRectangle" id="positionsWidgetLowerRectangle">
 
-			<div id="skillsIcon">
+			<div id="positionsIcon">
 				<h3>Positions</h3>
 			</div>
 			

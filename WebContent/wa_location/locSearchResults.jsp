@@ -32,6 +32,7 @@
 
 <!--  CSS files -->
 <link rel="stylesheet" type="text/css" href="CSS/table.css" ></link>
+<link rel="stylesheet" type="text/css" href="CSS/icons.css" ></link>
 <link rel="stylesheet" type="text/css" href="../CSS/Confirmation/confirm.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="../wa_dashboard/CSS/style.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="../CSS/Flash/flashmessenger.css"  media="screen" />
@@ -81,7 +82,7 @@
 			}
 		%>
 		
-	   <div id="locationWidget" class="fullWidget">
+	   <div id="locationWidget" class="fullWidget"> <div id="backIcon" > <a href="newLocation.jsp"> Back </a> </div>
 			<div class="widgetUpperRectangle" id="locationsUpperRectangle">
 				<div class="widgetTitle" id="locationsWidgetTitle">Locations <div id="helpIcon"> </div></div>
 			</div>

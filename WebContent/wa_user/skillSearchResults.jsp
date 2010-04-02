@@ -27,6 +27,7 @@
 <link rel="stylesheet" type="text/css" href="../wa_dashboard/CSS/style.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="../CSS/Confirmation/confirm.css" media="screen"/>
 <link rel="stylesheet" type="text/css" href="../CSS/Flash/flashmessenger.css" media="screen"/>
+<link rel="stylesheet" type="text/css"  href="CSS/icons.css"></link>
 
 <!-- Sorttable is under the X11 licence, it is an open source project.-->
 <!-- Javascript Files -->
@@ -79,7 +80,7 @@
 					}
 				%>
 
-	<div id="skillsWidget" class="fullWidget">
+	<div id="skillsWidget" class="fullWidget"> <div id="backIcon" > <a href="newSkill.jsp"> Back </a> </div>
 			<div class="widgetUpperRectangle" id="skillsWidgetUpperRectangle">
 				<div class="widgetTitle" id="skillsTitle">Skills <div id="helpIcon"></div> </div>
 		</div>

@@ -1,0 +1,57 @@
+@CHARSET "ISO-8859-1";
+
+/*Mark*/
+#usersIcon
+{
+	font-size:1.2em;
+	float:left;
+	margin-left:20px;
+}
+
+#usersIcon h3:before
+{
+	position:relative;
+	top:5px;
+	content: url(../../lib/images/icons/Color/001_54.png)	
+}
+
+/**Author:Noorin*/
+
+#skillImage:before
+{
+	position:relative;
+	top:5px;
+	content: url(../../lib/images/icons/Vista/PNG/Config-Tools.png)
+}
+
+#skillsIcon, #positionsIcon
+{
+	font-size:1.2em;
+	float:left;
+	margin-left:20px;
+}
+
+#skillsIcon h3:before
+{
+	position:relative;
+	top:5px;
+	content: url(../../lib/images/icons/Vista/PNG/Config-Tools.png)	
+}
+#positionsIcon h3:before
+{
+	position:relative;
+	top:5px;
+	content: url(../../lib/images/icons/Color/001_57.png)	
+}
+#backIcon a
+{
+	font-size:1.1em;
+	float:left;
+	color:green;
+}
+#backIcon a:before
+{
+	position:relative;
+	top:5px;
+	content: url(../../lib/images/icons/Color/arrow_large_left.png)
+}

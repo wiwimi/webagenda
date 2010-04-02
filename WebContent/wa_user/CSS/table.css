@@ -1,19 +1,5 @@
 @CHARSET "ISO-8859-1";
 
-/*Mark*/
-#usersIcon
-{
-	font-size:1.2em;
-	float:left;
-	margin-left:20px;
-}
-
-#usersIcon h3:before
-{
-	position:relative;
-	top:5px;
-	content: url(../../lib/images/icons/Color/001_54.png)	
-}
 /*Author: Noorin*/
 
 #tableArea

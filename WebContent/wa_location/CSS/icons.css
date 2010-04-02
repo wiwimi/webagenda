@@ -1,0 +1,17 @@
+@CHARSET "ISO-8859-1";
+
+
+/**Author:Noorin*/
+
+#backIcon a
+{
+	font-size:1.1em;
+	float:left;
+	color:green;
+}
+#backIcon a:before
+{
+	position:relative;
+	top:5px;
+	content: url(../../lib/images/icons/Color/arrow_large_left.png)
+}
