@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="persistence.ScheduleBroker" %>
+<%@ page import="persistence.ScheduleTemplateBroker" %>
+<%@ page import="business.schedule.*" %>   
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,42 +18,19 @@
 <!-- Includes -->
 <jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
 
+
 <script type="text/javascript">
 function addPosition()
 {
-	  var numi = document.getElementById('positionValue');
-	  var num = (document.getElementById('positionValue').value -1)+ 2;
-	  var ni = document.getElementById('position');
+	  var ni = document.getElementById('addPositionDiv');
+	  var numi = document.getElementById('counter');
+	  var num = (document.getElementById('counter').value -1)+ 2;
 	  numi.value = num;
 	  var newdiv = document.createElement('div');
-	  var divIdName = 'position'+num;
-	  newdiv.setAttribute('id',num);
-
-	  newdiv.innerHTML = "<label for=\"Position1\">Position "+(num + 1)+":</label><input type=\"text\" size=\"15\" name=\"name\" /><label for=\"name\">Name:</label><input type=\"text\" size=\"15\" name=\"name\" />";
-	  ni.appendChild(newdiv);
-
-	
-}
-
-function addShift()
-{
-	  var ni = document.getElementById('shift');
-	  var numi = document.getElementById('theValue');
-	  var num = (document.getElementById('theValue').value -1)+ 2;
-	  numi.value = num;
-	  var newdiv = document.createElement('div');
-	  var divIdName = 'shift'+num;
-	  newdiv.setAttribute('id',num);
-
-	  newdiv.innerHTML = "<div id=\"shift"+num+"\">" + 					
-		"<h3>Shift "+(num + 1)+"</h3>" + 
-		"<label for=\"startTimeShift\">Start Time:</label><input type=\"text\"  size=\"30\" name=\"startTimeShift\"/>" + 
-		"<label for=\"endTimeShift\">End Time:</label><input type=\"text\"  size=\"30\" name=\"endTimeShift\"/>" + 
-		"<label for=\"day\">Day of the Week: </label><input type=\"text\" size=\"10\" name=\"day\" /><br />" + 
-		"<button onclick=\"addPosition()\" value=\"addPosition\">Add Position</button><br />" + 
-		"<label for=\"Position1\">Position 1:</label><input type=\"text\" size=\"15\" name=\"name\" /><label for=\"name\">Name:</label><input type=\"text\" size=\"15\" name=\"name\" />" + 
-		"<div id=\"position"+(num+1)+"\"></div>" +
-	"</div>";
+	  var divIdName = 'position'+(num +1);
+	  newdiv.setAttribute('id',divIdName);
+	  newdiv.innerHTML = '<label for="positionType'+(num + 1)+'">Position Type</label><input type="text" size=30 name="positionType'+(num + 1)+'" />' +
+			'<label for="positionNumber'+(num + 1)+'">Number of Positions</label><input type="text" size=10 name="positionNumber'+(num + 1)+'" />';
 	  ni.appendChild(newdiv);
 }
 </script>
@@ -64,24 +45,109 @@ function addShift()
 			
 			<div class="widgetLowerRectangle" id="scheduleWidgetLowerRectangle">
 				<a href="createShiftTemplate.jsp">Create Template</a> | <a href="addSchedule.jsp">Create Schedule</a><br /><br />
-				
-					<label for="templateName">Template Name:</label><input type="text" size="30" name="templateName"/><br />
-					<button onclick="addShift()">Add Shift</button>
-								
-					<div id="shift">				
-						<h3>Shift 1</h3>
-						<label for="startTimeShift">Start Time:</label><input type="text"  size="30" name="startTimeShift"/>
-						<label for="endTimeShift">End Time:</label><input type="text"  size="30" name="endTimeShift"/>
-						<label for="day">Day of the Week: </label><input type="text" size="10" name="day" /><br />
-						
-						<button onclick="addPosition()" value="addPosition">Add Position</button><br />
-						<label for="Position1">Position 1:</label><input type="text" size="15" name="name" /><label for="name">Name:</label><input type="text" size="15" name="name" />
-						<input type="hidden" value="0" id="positionValue" />
-						<div id="position"></div>
-						
-					<input type="hidden" value="0" id="theValue" />
-					</div>	
-			</div>
+
+<% 
+ScheduleTemplate newSched;
+
+	if(session.getAttribute("schedule") ==null)
+	{
+		newSched = new ScheduleTemplate();
+		session.setAttribute("schedule",newSched);
+	}
+	else
+	{
+		newSched = (ScheduleTemplate)session.getAttribute("schedule");
+	}
+%>
+					<label for="templateName">Template Name:</label><input type="text" size="30" name="templateName" value="<%
+						if(newSched.getName() == null)
+						{
+							
+						}
+						else
+						{
+							out.println(newSched.getName());
+						} %>"/><br />
+<h3>Current Shifts</h3>
+<%
+if(newSched.getShiftTemplates().size() == 0)
+{
+	%>
+	<table>
+		<thead>
+			<tr>
+				<td>Day</td>
+				<td>Start Time</td>
+				<td>End Time</td>
+				<td>Positions</td>
+				<td>Number</td>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+				<td>Day</td>
+				<td>Start Time</td>
+				<td>End Time</td>
+				<td>Positions</td>
+				<td>Number</td>
+			</tr>
+		</tfoot>
+		<tbody>
+			<tr>
+				<td colspan="5">There are no shifts added</td>
+			</tr>
+		</tbody>
+	</table>
+	<%	
+}
+else
+{
+	%>
+	<table>
+		<thead>
+			<tr>
+				<td>Day</td>
+				<td>Start Time</td>
+				<td>End Time</td>
+				<td>Positions</td>
+				<td>Number</td>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+				<td>Day</td>
+				<td>Start Time</td>
+				<td>End Time</td>
+				<td>Positions</td>
+				<td>Number</td>
+			</tr>
+		</tfoot>
+		<tbody>
+			<tr>
+				<td>test</td>			
+			</tr>
+		</tbody>
+	</table>
+	<%
+}
+%>
+<h3>Add a Shift Template</h3>						
+<form action="scheduleTemplate" method="POST">
+	<label for="startTime">Start Time: </label><input type="text" size=30 name="startTime" placeholder="00:00"/>
+	<label for="endTime">End Time: </label><input type="text" size=30 name="endTime" placeholder="00:00"/><br />
+	<label for="dayOfWeek">Day Of Week: </label><input type="text" size=10 name=dayOfWeek /><br /><br />
+	
+	Positions <button type="button" onClick="addPosition()">Add Position</button><br />
+	<label for="positionType1">Position Type</label><input type="text" size=30 name="positionType1" />
+	<label for="positionNumber1">Number of Positions</label><input type="text" size=10 name="positionNumber1" />
+	
+	<input type="hidden" value="0" id="counter" />
+	<div id="addPositionDiv"></div>
+	<br />
+	<button type="submit" value="submit">Submit Shift Template</button>
+</form>
+					
+		</div>
 </div>
 <div id="footer"></div>
 </body>
