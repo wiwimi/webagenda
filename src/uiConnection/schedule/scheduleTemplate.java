@@ -53,45 +53,66 @@ public class scheduleTemplate extends HttpServlet {
 			
 			ScheduleTemplate template = (ScheduleTemplate)session.getAttribute("schedule");
 			
-			String startTime = request.getParameter("startTime");
-			String endTime = request.getParameter("endTime");
-			String dayOfWeek = request.getParameter("dayOfWeek");
-			
-			int counter = Integer.parseInt(request.getParameter("counter"));
-			
-			DoubleLinkedList<ShiftPosition> listOfPositions = new DoubleLinkedList<ShiftPosition>();
-			
-			for(int index = 0; index < counter; index++)
+			if(request.getParameter("action").equals("change"))
 			{
-				
-				ShiftPosition position = new ShiftPosition();
-				position.setPosName(request.getParameter("positionType" + index));
-				position.setPosCount(Integer.parseInt(request.getParameter("positionNumber" + index)));
-				
-				listOfPositions.add(position);
+				/*
+				 * Changes a current shift template in the schedule template list
+				 * This needs to report back to the createShiftTemplate screen to fill in all the fields necessary in order to change it
+				 * The screen should report back with a changeSuccess action in order to completely modify successfully
+				 */
 			}
-			
-			DateFormat sdf = new SimpleDateFormat("hh:mm");
-
-			try
+			else if(request.getParameter("action").equals("delete"))
 			{
-				ShiftTemplate shiftTemplate = new ShiftTemplate();
-				
-				Time startTimeParsed = (Time) sdf.parse(startTime);	
-				Time endTimeParsed = (Time)sdf.parse(endTime);
-				
-				shiftTemplate.setStartTime(startTimeParsed);
-				shiftTemplate.setEndTime(endTimeParsed);
-				shiftTemplate.setDay(Integer.parseInt(dayOfWeek));
-				
-				shiftTemplate.setShiftPositions(listOfPositions);
-				
-				template.getShiftTemplates().add(shiftTemplate);
-				
+				//removes the shift template from the list
+				template.getShiftTemplates().remove(Integer.parseInt(request.getParameter("number")));
 			}
-			catch(Exception e)
+			else
 			{
-				//catch the date parse exception
+				/*
+				 * There was no parameters sent meaning the user wants to add a new shift template to the schedule template
+				 * 
+				 * */
+				
+				String startTime = request.getParameter("startTime");
+				String endTime = request.getParameter("endTime");
+				String dayOfWeek = request.getParameter("dayOfWeek");
+				
+				int counter = Integer.parseInt(request.getParameter("counter"));
+				
+				DoubleLinkedList<ShiftPosition> listOfPositions = new DoubleLinkedList<ShiftPosition>();
+				
+				for(int index = 0; index < counter; index++)
+				{
+					
+					ShiftPosition position = new ShiftPosition();
+					position.setPosName(request.getParameter("positionType" + index));
+					position.setPosCount(Integer.parseInt(request.getParameter("positionNumber" + index)));
+					
+					listOfPositions.add(position);
+				}
+				
+				DateFormat sdf = new SimpleDateFormat("hh:mm");
+	
+				try
+				{
+					ShiftTemplate shiftTemplate = new ShiftTemplate();
+					
+					Time startTimeParsed = (Time) sdf.parse(startTime);	
+					Time endTimeParsed = (Time)sdf.parse(endTime);
+					
+					shiftTemplate.setStartTime(startTimeParsed);
+					shiftTemplate.setEndTime(endTimeParsed);
+					shiftTemplate.setDay(Integer.parseInt(dayOfWeek));
+					
+					shiftTemplate.setShiftPositions(listOfPositions);
+					
+					template.getShiftTemplates().add(shiftTemplate);
+					
+				}
+				catch(Exception e)
+				{
+					//catch the date parse exception
+				}
 			}
 			
 		}
