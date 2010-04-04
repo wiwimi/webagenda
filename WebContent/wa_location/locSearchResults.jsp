@@ -229,11 +229,11 @@
 										<td>
 											<a href="updateLocation.jsp?locName=<%=locArray[index].getName()%>&locDesc=<%=locArray[index].getDesc() %>"><div id="locationImage"> <b> <%=locArray[index].getName()%> </b></div></a>
 											<div class="row-actions"><span class='edit'>
-											<a href="updateLocation.jsp?locName=<%=locArray[index].getName()%>&locDesc=<%=locArray[index].getDesc()%> "> Edit </a>   | </span>  <span class='delete'>
+											<a href="updateLocation.jsp?locName=<%=locArray[index].getName()%>&locDesc=<%=locArray[index].getDesc()%> "> Edit </a> </span>  <span class='delete'>
 											<a href="javascript:;" onClick="removeLocation('<%=locArray[index].getName()%>&locDesc=<%=locArray[index].getDesc()%>');">
-												Delete
+											 | Delete
 											</a></span></div>
-										</td>
+										 </td>
 											<td>
 											     <%
 											     	if(locArray[index].getDesc()!=null && !locArray[index].getDesc().equals(""))
