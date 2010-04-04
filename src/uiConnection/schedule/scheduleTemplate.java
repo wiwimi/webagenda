@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,6 +24,7 @@ import business.schedule.ShiftTemplate;
  * @author Mark Hazlett
  * Servlet implementation class scheduleTemplate
  */
+@WebServlet(name="scheduleTemplate", urlPatterns={"/wa_schedule/scheduleTemplate"})
 public class scheduleTemplate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
