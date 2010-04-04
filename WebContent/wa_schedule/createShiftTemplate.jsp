@@ -111,6 +111,8 @@ else
 				<td>End Time</td>
 				<td>Positions</td>
 				<td>Number</td>
+				<td>Change</td>
+				<td>Delete</td>
 			</tr>
 		</thead>
 		<tfoot>
@@ -120,18 +122,31 @@ else
 				<td>End Time</td>
 				<td>Positions</td>
 				<td>Number</td>
+				<td>Change</td>
+				<td>Delete</td>
 			</tr>
 		</tfoot>
 		<tbody>
-			<tr>
-				<td>test</td>			
-			</tr>
+		<%
+		for(int index = 0; index < newSched.getShiftTemplates().size(); index++)
+		{
+			out.println("<tr>");
+			out.println("<td>"+newSched.getShiftTemplates().get(index).getDay()+"</td>");
+			out.println("<td>"+newSched.getShiftTemplates().get(index).getStartTime()+"</td>");
+			out.println("<td>"+newSched.getShiftTemplates().get(index).getEndTime()+"</td>");
+			out.println("<td>"+newSched.getShiftTemplates().get(index).getShiftPositions()+"</td>");
+			out.println("<td><a href=\"scheduleTemplate?action=change&number="+index+"\">Change</a></td>");
+			out.println("<td><a href=\"scheduleTemplate?action=delete&number="+index+"\">Delete</a></td>");
+			out.println("</tr>");
+		}
+			
+		%>
 		</tbody>
 	</table>
 	<%
 }
 %>
-<h3>Add a Shift Template</h3>						
+<h3>Add a Shift Template</h3>			
 <form action="scheduleTemplate" method="POST">
 	<label for="startTime">Start Time: </label><input type="text" size=30 name="startTime" placeholder="00:00"/>
 	<label for="endTime">End Time: </label><input type="text" size=30 name="endTime" placeholder="00:00"/><br />
