@@ -56,7 +56,6 @@ public class EmployeeBroker extends Broker<Employee>
 	
 	/**
 	 * Method that contains all throwable conditions when attempting to access broker methods of EmployeeBroker.
-	 * TODO: Do all proper permission checks for broker methods
 	 * 
 	 * @param target Employee of desired create, update or delete.
 	 * @param caller Employee that invokes the method
@@ -147,11 +146,10 @@ public class EmployeeBroker extends Broker<Employee>
 		if (!nullMsg.equals("Missing Required Fields:"))
 			throw new DBException(nullMsg);
 		
+		//Get connection.
+		DBConnection conn = this.getConnection();
 		try
 			{
-			//Get connection.
-			DBConnection conn = this.getConnection();
-			
 			//Create insert statement.
 			PreparedStatement insert = conn.getConnection().prepareStatement(
 					"INSERT INTO `WebAgenda`.`EMPLOYEE`" +
@@ -196,16 +194,17 @@ public class EmployeeBroker extends Broker<Employee>
 			
 			insert.setInt(11, createEmp.getLevel());
 			insert.setString(12, createEmp.getVersion()+"");
-			//Run procedure and test result.
-			if (insert.executeUpdate() != 1)
-				throw new DBException("Failed to create employee.");
-			
-			//Get result boolean from procedure.
+			//Run procedure and get result.
+			int resultNum = insert.executeUpdate();
 			insert.close();
 			conn.setAvailable(true);
+			
+			if (resultNum != 1)
+				throw new DBException("Failed to create employee.");
 			}
 		catch (SQLException e)
 			{
+			conn.setAvailable(true);
 			throw new DBException("Failed to create employee.", e);
 			}
 		
@@ -233,24 +232,24 @@ public class EmployeeBroker extends Broker<Employee>
 				"DELETE FROM `WebAgenda`.`EMPLOYEE` WHERE empID = %s;",
 				deleteEmp.getEmpID()+"");
 		
-		boolean success;
+		DBConnection conn = this.getConnection();
 		try
 			{
-			DBConnection conn = this.getConnection();
 			Statement stmt = conn.getConnection().createStatement();
-			int result = stmt.executeUpdate(delete);
+			int resultNum = stmt.executeUpdate(delete);
+			stmt.close();
+			conn.setAvailable(true);
 			
-			if (result != 1)
-				throw new DBException("Failed to delete employee, result count incorrect: " +	result);
-			else
-				success = true;
+			if (resultNum != 1)
+				throw new DBException("Failed to delete employee. No match for empID.");
 			}
 		catch (SQLException e)
 			{
+			conn.setAvailable(true);
 			throw new DBException("Failed to delete employee.",e);
 			}
 		
-		return success;
+		return true;
 		}
 	
 	/*
@@ -334,17 +333,19 @@ public class EmployeeBroker extends Broker<Employee>
 		// Get DB connection, send query, and reopen connection for other users.
 		// Parse returned ResultSet into array of employees.
 		Employee[] foundEmployees = null;
+		DBConnection conn = this.getConnection();
 		try
 			{
-			DBConnection conn = this.getConnection();
 			Statement stmt = conn.getConnection().createStatement();
 			ResultSet searchResults = stmt.executeQuery(select);
+			stmt.close();
 			conn.setAvailable(true);
 			
 			foundEmployees = parseResults(searchResults);
 			}
 		catch (SQLException e)
 			{
+			conn.setAvailable(true);
 			throw new DBException("Failed to complete employee search.",e);
 			}
 		
@@ -364,11 +365,12 @@ public class EmployeeBroker extends Broker<Employee>
 		
 		// Get DB connection, send update, and reopen connection for other users.
 		int numEmps = 0;
+		DBConnection conn = this.getConnection();
 		try
 			{
-			DBConnection conn = this.getConnection();
 			Statement stmt = conn.getConnection().createStatement();
 			ResultSet countResult = stmt.executeQuery(count);
+			stmt.close();
 			conn.setAvailable(true);
 			
 			countResult.beforeFirst();
@@ -377,6 +379,7 @@ public class EmployeeBroker extends Broker<Employee>
 			}
 		catch (SQLException e)
 			{
+			conn.setAvailable(true);
 			throw new DBException("Failed to count employees", e);
 			}
 		
@@ -443,11 +446,12 @@ public class EmployeeBroker extends Broker<Employee>
 		System.out.println(update);
 		
 		// Get DB connection, send update, and reopen connection for other users.
+		DBConnection conn = this.getConnection();
 		try
 			{
-			DBConnection conn = this.getConnection();
 			Statement stmt = conn.getConnection().createStatement();
 			int updateRowCount = stmt.executeUpdate(update);
+			stmt.close();
 			conn.setAvailable(true);
 			
 			if (updateRowCount != 1)
@@ -456,6 +460,7 @@ public class EmployeeBroker extends Broker<Employee>
 			}
 		catch (SQLException e)
 			{
+			conn.setAvailable(true);
 			throw new DBException("Failed to update employee", e);
 			}
 		
@@ -481,19 +486,20 @@ public class EmployeeBroker extends Broker<Employee>
 				empID);
 		
 		// Get DB connection, send update, and reopen connection for other users.
+		DBConnection conn = this.getConnection();
 		try
 			{
-			DBConnection conn = this.getConnection();
 			Statement stmt = conn.getConnection().createStatement();
 			int updateRowCount = stmt.executeUpdate(update);
+			stmt.close();
 			conn.setAvailable(true);
 			
 			if (updateRowCount != 1)
-				throw new DBException(
-						"Failed to update employee: rowcount incorrect.");
+				throw new DBException("Failed to update employee. EmpID invalid.");
 			}
 		catch (SQLException e)
 			{
+			conn.setAvailable(true);
 			throw new DBException("Failed to update login time.", e);
 			}
 		
@@ -550,6 +556,99 @@ public class EmployeeBroker extends Broker<Employee>
 		 */
 		
 		return loggedIn;
+		}
+	
+	/**
+	 * Attempts to change the password of the currently logged in user.
+	 * 
+	 * @param oldPass The old password, matching what is currently in the database.
+	 * @param newPass The new password to change to.
+	 * @param caller The user who is currently logged in.
+	 * @return true if the password is changed, false otherwise.
+	 * @throws DBDownException 
+	 * @throws DBException 
+	 */
+	public boolean changePassword(String oldPass, String newPass, Employee caller) throws DBDownException, DBChangeException, DBException
+		{
+		if (oldPass == null)
+			throw new NullPointerException("Old password can not be null.");
+		if (newPass == null)
+			throw new NullPointerException("New password can not be null.");
+		if (caller == null)
+			throw new NullPointerException("Caller can not be null.");
+		
+		DBConnection conn = this.getConnection();
+		
+		try
+			{
+			PreparedStatement changePass = conn.getConnection().prepareStatement(
+					"UPDATE `WebAgenda`.`EMPLOYEE` SET password = ? WHERE username = ? AND password = ?");
+			
+			changePass.setString(1, newPass);
+			changePass.setString(2, caller.getUsername());
+			changePass.setString(3, oldPass);
+			
+			int resultNum = changePass.executeUpdate();
+			changePass.close();
+			conn.setAvailable(true);
+			
+			if (resultNum != 1)
+				throw new DBChangeException("Failed to update password. Old password incorrect or changed by another user.");
+			}
+		catch (SQLException e)
+			{
+			conn.setAvailable(true);
+			throw new DBException("Failed to change password.",e);
+			}
+		
+		return true;
+		}
+	
+	/**
+	 * 
+	 * 
+	 * @param username
+	 * @param newPassword
+	 * @param caller
+	 * @return
+	 * @throws DBDownException 
+	 * @throws DBException 
+	 */
+	public boolean resetPassword(String username, String newPassword, Employee caller) throws DBDownException, DBException
+		{
+		if (username == null)
+			throw new NullPointerException("Username can not be null.");
+		if (newPassword == null)
+			throw new NullPointerException("Username can not be null.");
+		if (caller == null)
+			throw new NullPointerException("Username can not be null.");
+		
+		//TODO Do check to make sure caller has permissions to reset the passwords of other users.
+		
+		DBConnection conn = this.getConnection();
+		
+		try
+			{
+			PreparedStatement changePass = conn.getConnection().prepareStatement(
+					"UPDATE `WebAgenda`.`EMPLOYEE` SET password = ? WHERE username = ?");
+			
+			changePass.setString(1, newPassword);
+			changePass.setString(2, username);
+			
+			int resultNum = changePass.executeUpdate();
+			changePass.close();
+			conn.setAvailable(true);
+			
+			if (resultNum != 1)
+				throw new DBChangeException("Failed to reset password. Username invalid.");
+			}
+		catch (SQLException e)
+			{
+			conn.setAvailable(true);
+			throw new DBException("Failed to change password.",e);
+			}
+		
+		return true;
 		}
 	
 	/*
