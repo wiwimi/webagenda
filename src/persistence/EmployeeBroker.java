@@ -360,21 +360,21 @@ public class EmployeeBroker extends Broker<Employee>
 	 */
 	public int getEmpCount() throws DBException, DBDownException
 		{
-		String count = "SELECT COUNT(*) FROM `WebAgenda`.`EMPLOYEE` WHERE active = TRUE;";
-		
 		// Get DB connection, send update, and reopen connection for other users.
 		int numEmps = 0;
 		DBConnection conn = this.getConnection();
 		try
 			{
-			Statement stmt = conn.getConnection().createStatement();
-			ResultSet countResult = stmt.executeQuery(count);
-			stmt.close();
-			conn.setAvailable(true);
+			PreparedStatement count = conn.getConnection().prepareStatement(
+					"SELECT COUNT(*) FROM `WebAgenda`.`EMPLOYEE` WHERE active = TRUE;");
 			
+			ResultSet countResult = count.executeQuery();
 			countResult.beforeFirst();
 			countResult.next();
 			numEmps = countResult.getInt(1);
+			
+			count.close();
+			conn.setAvailable(true);
 			}
 		catch (SQLException e)
 			{
