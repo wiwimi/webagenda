@@ -496,4 +496,30 @@ public class TestEmployeeBroker extends TestCase
 		}
 		}
 	
+	/**
+	 * Test method for {@link persistence.EmployeeBroker#changePassword(String, String, Employee)}
+	 * and {@link persistence.EmployeeBroker#resetPassword(String, String, Employee)}.
+	 */
+	@Test
+	public void testChangeResetPassword()
+		{
+		System.out.println("---------- Start Password Change Test ----------");
+		try
+			{
+			empBroker.resetPassword("user1", "test123", user);
+			
+			empBroker.changePassword("test123", "password", user);
+			}
+		catch (DBDownException e)
+			{
+			e.printStackTrace();
+			fail(e.getMessage());
+			}
+		catch (DBException e)
+			{
+			e.printStackTrace();
+			fail(e.getMessage());
+			}
+		System.out.println("---------- End Password Change Test ----------");
+		}
 	}

@@ -338,10 +338,9 @@ public class EmployeeBroker extends Broker<Employee>
 			{
 			Statement stmt = conn.getConnection().createStatement();
 			ResultSet searchResults = stmt.executeQuery(select);
+			foundEmployees = parseResults(searchResults);
 			stmt.close();
 			conn.setAvailable(true);
-			
-			foundEmployees = parseResults(searchResults);
 			}
 		catch (SQLException e)
 			{
@@ -623,7 +622,7 @@ public class EmployeeBroker extends Broker<Employee>
 		if (caller == null)
 			throw new NullPointerException("Username can not be null.");
 		
-		//TODO Do check to make sure caller has permissions to reset the passwords of other users.
+		//TODO Verify that caller has permissions to reset the passwords of other users.
 		
 		DBConnection conn = this.getConnection();
 		
