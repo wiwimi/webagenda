@@ -78,7 +78,7 @@
 					}
 				%>
 		
-		<div id="usersWidget" class="fullWidget"><div id="backIcon" > <a href="newUser.jsp"> Back </a> </div>
+		<div id="usersWidget" class="fullWidget"><div id="backIcon" > <a onClick="history.go(-1);return true;"> Back </a> </div>
 			<div class="widgetUpperRectangle" id="usersWidgetUpperRectangle">
 				<div class="widgetTitle" id="usersWidgetTitle">Users <div id="helpIcon"></div> </div>
 				

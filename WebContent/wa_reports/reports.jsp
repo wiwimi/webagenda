@@ -52,7 +52,7 @@ if(session.getAttribute("username") != null)
 					<div id="locationsIcon"><h3> Locations</h3> </div>
 						<ul>
 							<li>  <a href="reportLocations.jsp">  All Locations </a> </li>
-							<li>  <a href="#">  A Location </a></li>
+							<li>  <a href="searchLocation.jsp">  A Location </a></li>
 						</ul>
 					<div id="schedulesIcon"> <h3> Schedules</h3> </div> 
 						<ul>

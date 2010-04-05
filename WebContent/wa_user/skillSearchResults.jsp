@@ -80,7 +80,7 @@
 					}
 				%>
 
-	<div id="skillsWidget" class="fullWidget"> <div id="backIcon" > <a href="newSkill.jsp"> Back </a> </div>
+	<div id="skillsWidget" class="fullWidget"> <div id="backIcon" > <a onClick="history.go(-1);return true;"> Back </a> </div>
 			<div class="widgetUpperRectangle" id="skillsWidgetUpperRectangle">
 				<div class="widgetTitle" id="skillsTitle">Skills <div id="helpIcon"></div> </div>
 		</div>

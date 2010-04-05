@@ -82,7 +82,7 @@
 			}
 		%>
 		
-	   <div id="locationWidget" class="fullWidget"> <div id="backIcon" > <a href="newLocation.jsp"> Back </a> </div>
+	   <div id="locationWidget" class="fullWidget"> <div id="backIcon" > <a onClick="history.go(-1);return true;"> Back </a> </div>
 			<div class="widgetUpperRectangle" id="locationsUpperRectangle">
 				<div class="widgetTitle" id="locationsWidgetTitle">Locations <div id="helpIcon"> </div></div>
 			</div>
@@ -228,11 +228,13 @@
 									  <tr>
 										<td>
 											<a href="updateLocation.jsp?locName=<%=locArray[index].getName()%>&locDesc=<%=locArray[index].getDesc() %>"><div id="locationImage"> <b> <%=locArray[index].getName()%> </b></div></a>
-											<div class="row-actions"><span class='edit'>
-											<a href="updateLocation.jsp?locName=<%=locArray[index].getName()%>&locDesc=<%=locArray[index].getDesc()%> "> Edit </a> </span>  <span class='delete'>
-											<a href="javascript:;" onClick="removeLocation('<%=locArray[index].getName()%>&locDesc=<%=locArray[index].getDesc()%>');">
-											 | Delete
-											</a></span></div>
+											<div class="row-actions">
+												<span class='edit'> <a href="updateLocation.jsp?locName=<%=locArray[index].getName()%>&locDesc=<%=locArray[index].getDesc()%> "> Edit </a> </span>  
+												<span class='delete'> <a href="javascript:;" onClick="removeLocation('<%=locArray[index].getName()%>&locDesc=<%=locArray[index].getDesc()%>');">| Delete
+											     </a></span> 
+											     <span class='report'> <a href="../wa_reports/reportLocation.jsp?locName=<%=locArray[index].getName()%>&locDesc=<%=locArray[index].getDesc()%> "> | Report
+											      </a> </span>
+										    </div>
 										 </td>
 											<td>
 											     <%

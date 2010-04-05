@@ -549,7 +549,7 @@
 		top:5px;
 		content:url(../lib/images/icons/Color/001_41.png);
 	}
-	#instructions
+	#instructions, #endInstructions
 	{ 
 		font-family: cochin, Arial,  Verdana, Helvetica, sans-serif; 
 		font-size:100%;

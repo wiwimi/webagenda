@@ -39,6 +39,7 @@
 }
 #date
 {
+
 	float:right;
 	margin-right: 1.0em;
 }
@@ -59,6 +60,7 @@
 	font-size:1.2em;
 	float:left;
 	margin-left:20px;
+	padding-bottom: 1%; /* This allows better display on Safari and IE */ 
 }
 #excelIcon a:before
 {
@@ -132,6 +134,11 @@ li a:hover
 {
 	background-color:#C8C8C8 ;
 }
+
+
+
+
+
 
 
 

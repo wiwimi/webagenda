@@ -32,12 +32,12 @@ if(session.getAttribute("username") == null)
 <link rel="stylesheet" type="text/css" href="../CSS/creationForm.css"></link>
 <link rel="stylesheet" type="text/css" href="../wa_dashboard/CSS/style.css" media="screen" />
 <style type="text/css">@import "../CSS/jquery.datepick.css";</style> 
-<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/val.css" />
-<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/screen.css" />
+<link rel="stylesheet" type="text/css" href="../CSS/Validation/val.css" />
+<link rel="stylesheet" type="text/css" href="../CSS/Validation/screen.css" />
 <link rel="stylesheet" type="text/css" href="../CSS/Flash/flashmessenger.css" media="screen"/>
-<link rel="stylesheet" type="text/css" href="CSS/report.css" />
-<link rel="stylesheet" type="text/css" href="CSS/print.css" media="print"/>
-<link rel="stylesheet" type="text/css" href="CSS/table.css" media="all"></link>
+<link rel="stylesheet" type="text/css" href="CSS/report.css" media="screen">
+<link rel="stylesheet" type="text/css" href="CSS/print.css"  media="print"/>
+<link rel="stylesheet" type="text/css" href="CSS/table.css"  media="screen"/>
 
 </head>
 <body>
@@ -66,7 +66,7 @@ if(session.getAttribute("username") == null)
 				<div id="reportHeader">
 					<div id="titleHeader">
 						<h2 id="name">All Enabled Users </h2>
-						<h2 id="date"><%= new java.util.Date()%></h2>
+						<div id="date"><%= new java.util.Date()%></div>
 					</div>
 				</div>
 				
@@ -179,7 +179,7 @@ if(session.getAttribute("username") == null)
 					</div>
 			</div> <!-- End Div Report-->
 		</div>
-		<div id="instructions" class="center">
+		<div id="endInstructions" class="center">
 		   		End of Report
 		   		<div class="page-break"></div>
 		</div>  

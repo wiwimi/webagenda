@@ -31,14 +31,15 @@ if(session.getAttribute("username") == null)
 <script src= "../lib/js/val.js" type="text/javascript"> </script>
 
 <!--  CSS files -->
-<link rel="stylesheet" href="../CSS/creationForm.css" type="text/css"></link>
-<link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" type="text/css" href="../CSS/creationForm.css"></link>
+<link rel="stylesheet" type="text/css" href="../wa_dashboard/CSS/style.css" media="screen" />
 <style type="text/css">@import "../CSS/jquery.datepick.css";</style> 
-<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/val.css" />
-<link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/screen.css" />
-<link rel="stylesheet" href="../CSS/Flash/flashmessenger.css" type="text/css" media="screen"/>
-<link rel="stylesheet" href="CSS/report.css" type="text/css"/>
-<link rel="stylesheet" href="CSS/print.css" type="text/css" media="print"/>
+<link rel="stylesheet" type="text/css" href="../CSS/Validation/val.css" />
+<link rel="stylesheet" type="text/css" href="../CSS/Validation/screen.css" />
+<link rel="stylesheet" type="text/css" href="../CSS/Flash/flashmessenger.css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="CSS/report.css" media="screen">
+<link rel="stylesheet" type="text/css" href="CSS/print.css"  media="print"/>
+<link rel="stylesheet" type="text/css" href="CSS/table.css"  media="screen"/>
 
 </head>
 <body>
@@ -51,7 +52,8 @@ if(session.getAttribute("username") == null)
 				</div>
 			<div class="widgetLowerRectangle" id="passwordLowerRectangle">
 				<%
-					Location loc = new Location("Mohave Grill");
+					String locName = request.getParameter("locName");
+					Location loc = new Location(locName);
 					Employee user = (Employee) session.getAttribute("currentEmployee");
 					LocationBroker broker = LocationBroker.getBroker();
 					broker.initConnectionThread();
@@ -61,7 +63,7 @@ if(session.getAttribute("username") == null)
 				<div id="reportHeader">
 					<div id="titleHeader">
 						<h2 id="name"> <%= reported[0].getName()%> </h2>
-						<h2 id="date"><%= new java.util.Date()%></h2>
+						<div id="date"><%= new java.util.Date()%></div>
 					</div>
 				</div>
 				
@@ -77,7 +79,7 @@ if(session.getAttribute("username") == null)
 					</div>
 			    </div>
 			   
-			    <div id="instructions" class="center">
+			    <div id="endInstructions" class="center">
 			   		End of Report
 			   		<div class="page-break"></div>
 			</div>  

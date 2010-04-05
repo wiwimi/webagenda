@@ -79,7 +79,7 @@
 						}
 					}
 				%>
-		<div id="skillsWidget" class="fullWidget"> <div id="backIcon" > <a href="newPosition.jsp"> Back </a> </div>
+		<div id="skillsWidget" class="fullWidget"> <div id="backIcon" > <a onClick="history.go(-1);return true;"> Back </a> </div>
 			<div class="widgetUpperRectangle" id="positionssWidgetUpperRectangle">
 				<div class="widgetTitle" id="positionsTitle">Positions <div id="helpIcon"></div> </div>
 		</div>
