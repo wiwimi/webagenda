@@ -47,7 +47,7 @@ if(session.getAttribute("username") != null)
 						<ul>
 							<li> <a href="reportUsers.jsp"> All Active Users </a></li>
 							<li> <a href="reportDisabledUsers.jsp"> All Disabled Users </a></li>
-							<li>  <a href="#">  A User </a></li>
+							<li>  <a href="searchUser.jsp">  A User </a></li>
 						</ul>
 					<div id="locationsIcon"><h3> Locations</h3> </div>
 						<ul>
@@ -62,7 +62,7 @@ if(session.getAttribute("username") != null)
 					<div id="positionsIcon"> <h3> Positions </h3> </div>
 						<ul>
 							<li> <a href="reportPositions.jsp"> All Positions </a> </li>
-							<li> <a href="#"> A Position </a> </li>
+							<li> <a href="newPosition.jsp"> A Position </a> </li>
 						</ul>
 					 </div>
 		</div>

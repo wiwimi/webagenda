@@ -43,7 +43,7 @@
 </head>
 <body>
 	<div id="instructions">
-	        Fields marked with <em class="asterisk" > *</em> are required.
+	         Search a location to report.
 	</div>
 	
 	<% 
@@ -104,7 +104,6 @@
 			<form class="addLocationForm" action="../reportLocation" id="form" name="form" method="POST">
 				<div id="location">
 					<div id="formButtons">
-						<input type="submit" name="submit"  class="button" value="Report" > 
 						<input type="button" name="submit" class="button"  onClick="location.href='../wa_location/locSearchResults.jsp?locName=' + form.locName.value + '&locDesc=' + form.locDesc.value" value="Search" > 
 						<input type="reset" name="clear" class="button" value="Clear Screen" onClick="location.href='newLocation.jsp?locName=&locDesc='"> 
 				    </div>
@@ -115,7 +114,6 @@
 							<textarea  name="locDesc" cols="23" rows="6" tabindex="101"> <%=locDesc%> </textarea>
 				    </fieldset>
 				    <div id="formButtons">
-						<input type="submit" name="submit"  class="button" value="Report" > 
 						<input type="button" name="submit" class="button"  onClick="location.href='../wa_location/locSearchResults.jsp?locName=' + form.locName.value + '&locDesc=' + form.locDesc.value" value="Search" > 
 						<input type="reset" name="clear" class="button" value="Clear Screen" onClick="location.href='newLocation.jsp?locName=&locDesc='"> 
 				   </div>

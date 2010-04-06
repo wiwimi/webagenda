@@ -66,7 +66,11 @@ if(session.getAttribute("username") == null)
 						<div id="date"><%= new java.util.Date()%></div>
 					</div>
 				</div>
-				
+				<%
+					String descr ="NA";
+					if (reported[0].getDesc()!=null)
+						descr = reported[0].getDesc();
+				%>
 				<div id="report">
 					<hr class="d" />
 					<h3> Name: </h3>
@@ -75,7 +79,7 @@ if(session.getAttribute("username") == null)
 					</div>
 					<h3> Description:</h3>
 					<div id="desc">
-						<%= reported[0].getDesc()%>
+						<%= descr%>
 					</div>
 			    </div>
 			   

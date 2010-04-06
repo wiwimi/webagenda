@@ -113,8 +113,7 @@
 			<form class="addPositionForm" action="../AddPosition" id="form" method="post">
 				<div id="position">
 					<div id="formButtons">
-						<input type="submit" name="submit" class="button" value="Add"> 
-						<input type="button" name="submit" class="button" value="Search" onClick="location.href='posSearchResults.jsp?posName=' + form.posName.value + '&posDesc=' + form.posDesc.value"> 
+						<input type="button" name="submit" class="button" value="Search" onClick="location.href='../wa_user/posSearchResults.jsp?posName=' + form.posName.value + '&posDesc=' + form.posDesc.value"> 
 						<input type="reset" name="clear" class="button" value="Clear Screen" onClick="location.href='newPostion.jsp?posName=&posDesc='"> 
 					</div>
 					
@@ -146,8 +145,7 @@
 							<textarea  name="posDesc" cols="23" rows="6" tabindex="101" > <%=posDesc %> </textarea>
 					</fieldset>
 					<div id="formButtons">
-							<input type="submit" name="submit" class="button" value="Add"> 
-							<input type="button" name="submit" class="button" value="Search" onClick="location.href='posSearchResults.jsp?posName=' + form.posName.value + '&posDesc=' + form.posDesc.value"> 
+							<input type="button" name="submit" class="button" value="Search" onClick="location.href='../wa_user/posSearchResults.jsp?posName=' + form.posName.value + '&posDesc=' + form.posDesc.value"> 
 		 					<input type="reset" name="clear" class="button" value="Clear Screen" onClick="location.href='newPostion.jsp?posName=&posDesc='"> 
 				      </div>
 				 </div>

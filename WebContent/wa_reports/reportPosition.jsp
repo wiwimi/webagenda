@@ -45,25 +45,31 @@ if(session.getAttribute("username") == null)
 <body>
 	<div id="usersWidget" class="fullWidget">
 				<div class="widgetUpperRectangle" id="locationsUpperRectangle">
-					<div class="widgetTitle" id="locationTitle">Report Position</div>
+					<div class="widgetTitle" id="positionTitle">Report Position</div>
 				</div>
 				<div id="printerIcon">
 					<h3></h3>
 				</div>
-			<div class="widgetLowerRectangle" id="passwordLowerRectangle">
+			<div class="widgetLowerRectangle" id="positionLowerRectangle">
 			
 				<%
-					Position pos = new Position("Waiter");
+					String posName = request.getParameter("posName");
+					Position pos = new Position(posName);
 					Employee user = (Employee) session.getAttribute("currentEmployee");
 					PositionBroker broker = PositionBroker.getBroker();
 					Position[] reported = broker.get(pos, user);
 					broker.initConnectionThread();
+					String descr = "NA";
+					
+					if(pos.getDescription()!=null)
+					descr = pos.getDescription();
+					
 				%>
 				
 				<div id="reportHeader">
 					<div id="titleHeader">
 						<h2 id="name"> <%= reported[0].getName()%> </h2>
-						<h2 id="date"><%= new java.util.Date()%></h2>
+						<div id="date"><%= new java.util.Date()%></div>
 					</div>
 				</div>
 				
@@ -73,27 +79,13 @@ if(session.getAttribute("username") == null)
 					<div id="pos">
 						<%= reported[0].getName()%>
 					</div>
-					<h3> Description:</h3>
-					<div id="desc">
-						<%
-							if(!reported[0].getDescription().equals(null))
-							{
-						%>
-								<%= reported[0].getDescription()%>
-						<%
-							}
-							else
-							{
-						%>
-								NA
-						<%
-							}
-						
-						%>
-						
+			   <h3> Description:</h3>
+					<div id="pos">
+						<%= descr%>
 					</div>
 					
 					<h3> Skills:</h3>
+					
 					<div id="skills">
 						<%
 							Skill[] skills = reported[0].getPos_skills();
@@ -118,7 +110,7 @@ if(session.getAttribute("username") == null)
 							}
 							%>
 					</div>
-			   </div>
+				</div>
 			   <div id="endInstructions" class="center">
 			   		End of Report
 			   		<div class="page-break"></div>

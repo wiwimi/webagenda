@@ -6,7 +6,7 @@ if(session.getAttribute("username") == null)
 %>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page import="persistence.LocationBroker" %>
+<%@ page import="persistence.EmployeeBroker" %>
 <%@ page import="business.schedule.Location" %>
 <%@ page import="business.Employee" %>
 <%@ page import="java.util.*" %>
@@ -44,41 +44,71 @@ if(session.getAttribute("username") == null)
 </head>
 <body>
 	<div id="usersWidget" class="fullWidget">
-				<div class="widgetUpperRectangle" id="locationsUpperRectangle">
-					<div class="widgetTitle" id="locationTitle">Report Location</div>
+				<div class="widgetUpperRectangle" id="usersUpperRectangle">
+					<div class="widgetTitle" id="locationTitle">Report User</div>
 				</div>
 				<div id="printerIcon">
 					<h3></h3>
 				</div>
-			<div class="widgetLowerRectangle" id="passwordLowerRectangle">
-			
-			
-				
+			<div class="widgetLowerRectangle" id="userLowerRectangle">
 				<%
-					Location loc = new Location("Mohave Grill");
+					Employee emp = new Employee();
+				    String empId = request.getParameter("empId");
+				    int empIdInt = Integer.parseInt(empId);
+				    emp.setEmpID(empIdInt);
 					Employee user = (Employee) session.getAttribute("currentEmployee");
-					LocationBroker broker = LocationBroker.getBroker();
-					Location[] reported = broker.get(loc, user);
+					EmployeeBroker broker = EmployeeBroker.getBroker();
+					Employee[] reported = broker.get(emp, user);
 					broker.initConnectionThread();
 					
 				%>
 				
 				<div id="reportHeader">
-					<div id="locName">
-						<h2 id="name"> <%= reported[0].getName()%> </h2>
-						<h2 id="date"><%= new java.util.Date()%></h2>
+					<div id="userName">
+						<h2 id="name"> <%= reported[0].getEmpID()%> </h2>
+						<div id="date"><%= new java.util.Date()%></div>
 					</div>
 				</div>
 				
 				<div id="report">
+				
+				<%
+					String email ="NA", pos ="NA", birthDate="NA";
+				if (reported[0].getEmail()!=null)
+					email = reported[0].getEmail();
+				if ( reported[0].getPrefPosition()!=null)
+					pos =  reported[0].getPrefPosition();
+				if(reported[0].getBirthDate()!=null)
+					birthDate = reported[0].getBirthDate().toString();
+				%>
 				<hr></hr>
-					<h3> Name: </h3>
+					<h3> Given Name: </h3>
 					<div id="loc">
-						<%= reported[0].getName()%>
+						<%= reported[0].getGivenName()%>
 					</div>
-					<h3> Description:</h3>
-					<div id="desc">
-						<%= reported[0].getDesc()%>
+					<h3> Family Name:</h3>
+					<div id="loc">
+						<%= reported[0].getFamilyName()%>
+					</div>
+					
+					<h3> Employee ID:</h3>
+					<div id="loc">
+						<%= reported[0].getEmpID()%>
+					</div>
+					
+					<h3> Email:</h3>
+					<div id="loc">
+						<%=email %>
+					</div>
+					
+					<h3> Position:</h3>
+					<div id="loc">
+						<%=pos%>
+					</div>
+					
+					<h3> Birth Date:</h3>
+					<div id="loc">
+						<%= birthDate%>
 					</div>
 			   </div>
 			   

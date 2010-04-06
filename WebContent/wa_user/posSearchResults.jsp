@@ -221,9 +221,13 @@
 										   <td>
 												<a href="newPostion.jsp?=<%=posArray[index].getName()%>"> <b> <%=posArray[index].getName()%> </b></a>
 												<div class="row-actions"><span class='edit'>
-												<a href="updatePosition.jsp?posName=<%=posArray[index].getName()%>&posDesc=<%=posArray[index].getDescription()%>" > Edit </a> </span>  <span class='delete'>
-												<a href="javascript:;" onClick="removePosition('<%=posArray[index].getName()%>');">
-													| Delete</a></span></div>
+													<a href="updatePosition.jsp?posName=<%=posArray[index].getName()%>&posDesc=<%=posArray[index].getDescription()%>" > Edit </a> </span>  <span class='delete'>
+													<a href="javascript:;" onClick="removePosition('<%=posArray[index].getName()%>');">
+														| Delete</a></span>
+													<span class='report'> <a href="../wa_reports/reportPosition.jsp?posName=<%=posArray[index].getName()%>"> | Report
+													</a> </span>
+													
+											    </div>
 											</td>
 											<td>
 											     <%

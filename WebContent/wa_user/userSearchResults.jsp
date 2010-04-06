@@ -320,9 +320,12 @@
 										<td>
 											<a href="updateUser.jsp?empId=<%=empArray[index].getEmpID()%>"> <div id="profileImage"> <b><%=empArray[index].getUsername()%> </b></div></a>
 											<div class="row-actions"><span class='edit'>
-											<a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"> Edit </a>  </span>  <span class='delete'>
-											<a href="javascript:;" onClick="removeUser('<%=empArray[index].getEmpID()%>');">
-											| Delete</a></span></div>
+												<a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"> Edit </a>  </span>  <span class='delete'>
+												<a href="javascript:;" onClick="removeUser('<%=empArray[index].getEmpID()%>');">
+												| Delete</a></span>
+												<span class='report'> <a href="../wa_reports/reportUser.jsp?empId=<%=empArray[index].getEmpID()%>"> | Report
+												</a> </span>
+											</div>
 										</td>
 										<td><a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= empArray[index].getEmpID() %></a></td>
 										<td><a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= empArray[index].getFamilyName() %></a></td>
