@@ -88,15 +88,15 @@ public class NotificationBroker extends Broker<Notification> {
 		 */
 		String insert = String.format(
 				"INSERT INTO `WebAgenda`.`NOTIFICATION` " +
-				"(`notificationID`, `senderID`,`recipientID`,`viewed`,`message`,`type`)" +
-				" VALUES (%s,%s,%s,%s,%s,%s);",
-				createObj.getNotificationID(), createObj.getSenderID(), createObj.getRecipientID(),
-				createObj.isViewed(),
+				"(`senderID`,`recipientID`,`message`,`type`)" +
+				" VALUES (%s,%s,%s,%s);",
+				(createObj.getSenderID() == -1 ? "NULL" : createObj.getSenderID()),
+				createObj.getRecipientID(),
 				(createObj.getMessage() == null ? "NULL" : "'" + createObj.getMessage() + "'"),
 				(createObj.getType() == null ? "NULL" : "'" + createObj.getType() + "'"));
 		/*
 		 * Send insert to database. SQL errors such as primary key already in use
-		 * will be caught, and turned into our own DBAddException, so this method
+		 * will be caught, and turned into our own DBException, so this method
 		 * will only have one type of exception that needs to be caught. If the
 		 * insert is successful, return true.
 		 */
@@ -171,7 +171,7 @@ public class NotificationBroker extends Broker<Notification> {
 			}
 		else
 			{
-			// we do not factor message contents in (as of current)
+			// We do not factor message contents in (as of current)
 			select = String.format(
 					"SELECT * FROM `WebAgenda`.`NOTIFICATION` WHERE notificationID LIKE '%s%%' AND " +
 					"senderID LIKE '%s%%' AND recipientID LIKE '%s%%' AND type LIKE '%s%%' ORDER BY sentTime;",
@@ -240,13 +240,12 @@ public class NotificationBroker extends Broker<Notification> {
 		//FIXED: (Daniel Kettle) Removed sentTime from update notification as a) time is restamped upon being written to db, and b) 
 		// attempting to set a timeStamp will cause an update to fail because the notification being updated doesn't have one.
 		String update = String.format(
-				"UPDATE `WebAgenda`.`NOTIFICATION` SET senderID = '%s',recipientID = '%s', viewed = '%s', " +
+				"UPDATE `WebAgenda`.`NOTIFICATION` SET senderID = %s,recipientID = %s, viewed = %s, " +
 				"message = '%s', type = '%s' " +
 				"WHERE notificationID = %s;",
-				updateObj.getSenderID(), updateObj.getRecipientID(), (updateObj.isViewed() == true ? 1 : 0), updateObj.getMessage(),
+				(updateObj.getSenderID() == -1 ? "NULL" : updateObj.getSenderID()),
+				updateObj.getRecipientID(), (updateObj.isViewed() == true ? 1 : 0), updateObj.getMessage(),
 				updateObj.getType(), updateObj.getNotificationID());
-		
-		
 		
 		// Get DB connection, send update, and reopen connection for other users.
 		try
@@ -256,7 +255,6 @@ public class NotificationBroker extends Broker<Notification> {
 			int updateRowCount = stmt.executeUpdate(update);
 			conn.setAvailable(true);
 			
-			// Ensure
 			if (updateRowCount != 1)
 				throw new DBException(
 						"Failed to update notification: rowcount incorrect.");

@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 import exception.DBDownException;
 import exception.DBException;
+import exception.InvalidPermissionException;
 import application.ScheduleGenerator;
 import business.Employee;
 import business.schedule.Location;
@@ -127,10 +128,17 @@ public class TestScheduleGenerator
 		catch (DBException e)
 			{
 			e.printStackTrace();
+			fail();
 			}
 		catch (DBDownException e)
 			{
 			e.printStackTrace();
+			fail();
+			}
+		catch (InvalidPermissionException e)
+			{
+			e.printStackTrace();
+			fail();
 			}
 		}
 	

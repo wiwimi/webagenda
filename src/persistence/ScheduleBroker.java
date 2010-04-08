@@ -8,12 +8,15 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import application.DBConnection;
 import business.Employee;
+import business.Notification;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import utilities.DoubleLinkedList;
 import exception.DBChangeException;
 import exception.DBDownException;
 import exception.DBException;
+import exception.InvalidPermissionException;
 import business.schedule.Schedule;
 import business.schedule.Shift;
 import messagelog.Logging;
@@ -53,7 +56,7 @@ public class ScheduleBroker extends Broker<Schedule>
 	
 	@Override
 	public boolean create(Schedule createObj, Employee caller)
-			throws DBException, DBDownException
+			throws DBException, DBDownException, InvalidPermissionException
 		{
 		if (createObj == null)
 			throw new NullPointerException("Can not create, given schedule is null.");
@@ -127,7 +130,7 @@ public class ScheduleBroker extends Broker<Schedule>
 			throw new DBException("Failed to get schedules.", e);
 			}
 		
-		notifyScheduleEmps(createObj, "A new schedule has been added for you.");
+		notifyScheduleEmps(null,createObj,caller);
 		
 		return true;
 		}
@@ -249,7 +252,7 @@ public class ScheduleBroker extends Broker<Schedule>
 	 */
 	@Override
 	public boolean update(Schedule oldObj, Schedule updateObj, Employee caller)
-			throws DBException, DBChangeException, DBDownException
+			throws DBException, DBChangeException, DBDownException, InvalidPermissionException
 		{
 		//Ensure Old/Update objects aren't null.
 		if (oldObj == null || oldObj.getSchedID() == -1)
@@ -460,7 +463,9 @@ public class ScheduleBroker extends Broker<Schedule>
 			conn.setAvailable(true);
 			throw new DBException("Failed to get schedule templates.", e);
 			}
-		
+
+		notifyScheduleEmps(oldObj,updateObj,caller);
+
 		return true;
 		}
 	
@@ -504,13 +509,6 @@ public class ScheduleBroker extends Broker<Schedule>
 			shifts.add(sortedShifts[k]);
 		}
 	
-	public boolean notifyScheduleEmps(Schedule sched, String customMessage)
-		{
-		//TODO send notification to all employees in the system.
-		
-		return false;
-		}
-
 	@Override
 	protected Schedule[] parseResults(ResultSet rs) throws SQLException
 		{
@@ -574,6 +572,51 @@ public class ScheduleBroker extends Broker<Schedule>
 		return stList;
 		}
 	
+	/**
+	 * @param oldSched
+	 * @param newSched
+	 * @return
+	 * @throws InvalidPermissionException 
+	 * @throws DBDownException 
+	 * @throws DBException 
+	 */
+	private boolean notifyScheduleEmps(Schedule oldSched, Schedule newSched, Employee caller) throws DBException, DBDownException, InvalidPermissionException
+		{
+		/*
+		 * If oldSched is null, a new schedule was created. Send notifications
+		 * to all employees to inform them of the new schedule.
+		 */
+		if (oldSched == null)
+			{
+			ArrayList<Employee> notifyEmps = new ArrayList<Employee>();
+			
+			//Get list of unique employees in the new schedule.
+			for (Shift sh : newSched.getShifts().toArray())
+				{
+				for (Employee e : sh.getEmployees().toArray())
+					{
+					//Remove duplicates.
+					while (notifyEmps.remove(e));
+					
+					//Add employee to list.
+					notifyEmps.add(e);
+					}
+				}
+			
+			//Send notification to each employee.
+			NotificationBroker nb = NotificationBroker.getBroker();
+			for (Employee e : notifyEmps)
+				{
+				Notification newNoti = new Notification(
+						e.getEmpID(),"You have a new schedule for the week of "+newSched.getStartDate() + " to "+newSched.getEndDate(),"schedule");
+				
+				nb.create(newNoti, caller);
+				}
+			}
+		
+		return true;
+		}
+
 	/**
 	 * Fetches all shift templates and shift position objects from the database
 	 * for each shiftTemplate.

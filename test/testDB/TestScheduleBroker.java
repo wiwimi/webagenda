@@ -15,6 +15,7 @@ import business.schedule.Schedule;
 import business.schedule.Shift;
 import exception.DBDownException;
 import exception.DBException;
+import exception.InvalidPermissionException;
 
 /**
  * 
@@ -109,6 +110,11 @@ public class TestScheduleBroker extends TestCase
 			e.printStackTrace();
 			fail();
 			}
+		catch (InvalidPermissionException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
 		System.out.println("---------- END TEST CREATE ----------");
 		System.out.println("---------- START TEST UPDATE ----------");
 		
@@ -141,6 +147,11 @@ public class TestScheduleBroker extends TestCase
 			fail();
 			}
 		catch (DBDownException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		catch (InvalidPermissionException e)
 			{
 			e.printStackTrace();
 			fail();

@@ -3,7 +3,6 @@
  */
 package business;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
@@ -65,6 +64,20 @@ public class Notification extends BusinessObject {
 	{
 		this(notificationID,senderID,recipientID,viewed,message,type);
 		this.sentTime = time;
+	}
+	
+	/**
+	 * Constructor used for system notifications.
+	 * 
+	 * @param recipientID id of employee who is receiving notification.
+	 * @param message String message of the notification.
+	 * @param type String type of notification.
+	 */
+	public Notification(int recipientID, String message, String type)
+	{
+		this.recipientID = recipientID;
+		this.message = message;
+		this.type = type;
 	}
 	
 	/**
