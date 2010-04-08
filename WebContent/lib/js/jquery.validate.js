@@ -1018,17 +1018,21 @@ $.extend($.validator, {
 			return this.optional(element) || /^\d{4}[\/-]\d{1,2}[\/-]\d{1,2}$/.test(value);
 		},
 		
-		//Added to match the format of our calendar
+		//Added by Noorin to match the format of our calendar
 		dateCalendar: function(value, element) {
 			return this.optional(element) || /^\d\d?\/\d\d?\/\d\d\d\d$/.test(value);
 		},
 		
-		// Added to verify that start date is before end date in creating schedules
+		// Added by Noorin to verify that start date is before end date in creating schedules
 		
 		 compareDates: function(value, element) {
 	            var startDate = $('.startDate').val();
 	            return Date.parse(startDate) <= Date.parse(value);
 	    }, 
+	    
+	    // Added by Noorin to ensure schedule date is not in the past 
+	    
+	    
 		
 		// http://docs.jquery.com/Plugins/Validation/Methods/number
 		number: function(value, element) {

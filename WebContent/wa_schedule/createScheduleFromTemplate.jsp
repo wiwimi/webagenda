@@ -48,6 +48,68 @@
 </head>
 <body>
 
+<% 
+					if(request.getParameter("message") != null)
+					{
+						if(request.getParameter("message").equals("true"))
+						{
+							//out.println("Location was added");
+			%>
+				              <script type="text/javascript">
+		
+								$(function()
+								    {
+										
+										    $.flashMessenger("The schedule has been successfully created", 
+											{ 	
+												modal:true, 
+												autoClose: false 
+											});	
+										
+										
+								    });
+								</script>
+			
+			    <% 			   
+						}
+						else if(request.getParameter("message").equals("false"))
+						{
+				%>
+							<script type="text/javascript">
+								$(function()
+								    {
+										
+								       $.flashMessenger("An error occurred while creating the schedule.",
+								        {
+											   modal:true,
+							    		       clsName:"err", 
+								    		   autoClose:false
+								    	 }); 
+								   }); 
+							</script>
+				<%
+						}
+						else if(request.getParameter("message").equals("perm"))
+						{
+				%>
+							<script type="text/javascript">
+								$(function()
+								    {
+										
+								       $.flashMessenger("You don't have the right permission to create the schedule. Please make sure you are logged in",
+								        {
+											   modal:true,
+							    		       clsName:"err", 
+								    		   autoClose:false
+								    	 }); 
+								   }); 
+							</script>
+				<%
+						}
+						
+					}
+				%>
+
 	<%
 		Employee user = (Employee) session.getAttribute("currentEmployee");
 		ScheduleTemplate search = new ScheduleTemplate();
@@ -71,6 +133,8 @@
 				   <form class="validatedForm" action="../GenerateSchedule" id="form" method="post">
 					 	<fieldset> 
 							<legend> Template Selection</legend>
+							
+							
 								<p>	<label class ="label"> Template: </label> 
 									<select class="required">
 									<%
@@ -91,7 +155,7 @@
 								<p>	<label class ="label"> Start Date: </label> <input type="text" name ="schedStart" id="schedStart" class="required" size ="10" value=""/></p>
 								
 								<p>	<label class ="label"> Location: </label> 
-									<select name = "option" class="required">
+									<select name = "loc" class="required">
 									<%
 										LocationBroker locBroker = LocationBroker.getBroker();
 										Location loc= null;
@@ -114,31 +178,6 @@
 						</fieldset>	
 					</form>	
 				</div>
-				
-					
-	<% 
-		if(request.getParameter("message") != null)
-		{
-			if(request.getParameter("message").equals("true"))
-			{
-				// Display the proposed schedule that was created by the selected template
-				Schedule genSched = (Schedule) session.getAttribute("genSched");
-				
-				Shift[] shiftList = genSched.getShifts().toArray();
-				
-				for (Shift shift : shiftList)
-				{
-					//System.out.println("\tShift - Day: "+shift.getDay()+" - Time: "+shift.getStartTime() + " to " + shift.getEndTime());
-					
-					//Employee[] emps = shift.getEmployees().toArray();
-	%>
-			
-				
-	<%
-	    	    }
-		   } 
-		}
-	%>
 		</div>	
 	</div>
 <div id="footer"></div>

@@ -83,7 +83,7 @@ $().ready(function() {
 			},
 			email: "Please enter a valid email address",
 			agree: "Please accept our policy", 
-			schedEnd:"* End date must be after start date"
+			schedEnd:"* Required field , End date must be after start date"
 			
 		}
 	});
