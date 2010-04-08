@@ -1,13 +1,9 @@
 package uiConnection.schedule;
-
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.mail.MessagingException;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,12 +11,10 @@ import javax.servlet.http.HttpSession;
 
 import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import exception.DBDownException;
 import exception.DBException;
-import exception.InvalidPermissionException;
-import exception.PermissionViolationException;
+
 import application.ScheduleGenerator;
 import business.Employee;
 import business.schedule.Location;
@@ -30,12 +24,12 @@ import business.schedule.Shift;
 import persistence.EmployeeBroker;
 import persistence.ScheduleBroker;
 import persistence.ScheduleTemplateBroker;
-import uiConnection.update.user.GoogleTest3;
 
 /**
  * Servlet implementation class GenerateSchedule
  * @author Noorin Hasan
  */
+@WebServlet(name="GenerateSchedule", urlPatterns={"/GenerateSchedule"})
 public class GenerateSchedule extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -46,6 +40,7 @@ public class GenerateSchedule extends HttpServlet {
 		    throws ServletException, IOException 
 		    {
 		        response.setContentType("text/html;charset=UTF-8");
+		        PrintWriter out= response.getWriter();;
 		        EmployeeBroker empBroker;
 		        java.sql.Date  sqlStartDate, sqlEndDate;
 		        empBroker = EmployeeBroker.getBroker();
@@ -87,18 +82,23 @@ public class GenerateSchedule extends HttpServlet {
 					ArrayList<Shift> partialMatches = new ArrayList<Shift>();
 					
 					//---------- Generating Schedule ----------
-					Schedule genSched = ScheduleGenerator.generateSchedule(fromDB, Date.valueOf("2010-04-18"), Date.valueOf("2010-04-24"), location, partialMatches, user);
+					Schedule genSched = ScheduleGenerator.generateSchedule(fromDB, Date.valueOf("2010-04-11"), Date.valueOf("2010-04-17"), location, partialMatches, user);
 					
 					//---------- Send the generated proposal back to the user by displaying it in jsp ----------");
 					
-					
-					
-					//Shift[] shiftList = genSched.getShifts().toArray();
+					Shift[] shiftList = genSched.getShifts().toArray();
 					
 					//Setting the proposed schedule in the session
-					session.setAttribute("genSched", genSched);
-					response.sendRedirect("wa_schedule/createScheduleFromTemplate.jsp?message=true");
 					
+					if(genSched!=null)
+					{
+						session.setAttribute("genSched", genSched);
+						response.sendRedirect("wa_schedule/displayScheduleFromTemplate.jsp?message=true");
+					}
+					else
+					{
+						response.sendRedirect("wa_schedule/displayScheduleFromTemplate.jsp?message=false");
+					}
 				}
 					
 				catch (DBException e)

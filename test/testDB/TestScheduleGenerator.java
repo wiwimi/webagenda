@@ -66,14 +66,12 @@ public class TestScheduleGenerator
 			{
 			//Attempt to create a schedule from the test template.
 			ScheduleTemplate get = new ScheduleTemplate(1,-1,null);
-			
-		
 			ScheduleTemplate fromDB = stb.get(get, user)[0];
 			
 			ArrayList<Shift> partialMatches = new ArrayList<Shift>();
 			
 			System.out.println("---------- Generating Schedule ----------");
-			Schedule genSched = ScheduleGenerator.generateSchedule(fromDB, Date.valueOf("2010-04-18"), Date.valueOf("2010-04-24"), new Location("Mohave Grill"), partialMatches, user);
+			Schedule genSched = ScheduleGenerator.generateSchedule(fromDB, Date.valueOf("2010-04-11"), Date.valueOf("2010-04-17"), new Location("Mohave Grill"), partialMatches, user);
 			assertNotNull(genSched);
 			System.out.println("---------- Generation Successful ----------");
 			
