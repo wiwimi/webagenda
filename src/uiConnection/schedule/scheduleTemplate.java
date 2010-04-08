@@ -55,21 +55,21 @@ public class scheduleTemplate extends HttpServlet {
 			
 			ScheduleTemplate template = (ScheduleTemplate)session.getAttribute("schedule");
 			
-			if(request.getParameter("action").equals("change"))
-			{
+			//if(request.getParameter("action").equals("change"))
+			//{
 				/*
 				 * Changes a current shift template in the schedule template list
 				 * This needs to report back to the createShiftTemplate screen to fill in all the fields necessary in order to change it
 				 * The screen should report back with a changeSuccess action in order to completely modify successfully
 				 */
-			}
-			else if(request.getParameter("action").equals("delete"))
-			{
+			//}
+			//else if(request.getParameter("action").equals("delete"))
+			//{
 				//removes the shift template from the list
-				template.getShiftTemplates().remove(Integer.parseInt(request.getParameter("number")));
-			}
-			else
-			{
+				//template.getShiftTemplates().remove(Integer.parseInt(request.getParameter("number")));
+			//}
+			//else
+			//{
 				/*
 				 * There was no parameters sent meaning the user wants to add a new shift template to the schedule template
 				 * 
@@ -82,15 +82,29 @@ public class scheduleTemplate extends HttpServlet {
 				int counter = Integer.parseInt(request.getParameter("counter"));
 				
 				DoubleLinkedList<ShiftPosition> listOfPositions = new DoubleLinkedList<ShiftPosition>();
-				
-				for(int index = 0; index < counter; index++)
+				if((counter + 1) == 1)
 				{
-					
 					ShiftPosition position = new ShiftPosition();
-					position.setPosName(request.getParameter("positionType" + index));
-					position.setPosCount(Integer.parseInt(request.getParameter("positionNumber" + index)));
+					position.setPosName(request.getParameter("positionType1"));
+					position.setPosCount(Integer.parseInt(request.getParameter("positionNumber1")));
+					
+					System.out.println("Counter: "+counter+" ;Position: " + position.getPosName());
 					
 					listOfPositions.add(position);
+				}
+				else
+				{
+					for(int index = 1; index <= counter; index++)
+					{
+						
+						ShiftPosition position = new ShiftPosition();
+						position.setPosName(request.getParameter("positionType" + index));
+						position.setPosCount(Integer.parseInt(request.getParameter("positionNumber" + index)));
+						
+						System.out.println("Counter: 0 ;Position: " + position.getPosName());
+						
+						listOfPositions.add(position);
+					}					
 				}
 				
 				DateFormat sdf = new SimpleDateFormat("hh:mm");
@@ -115,7 +129,7 @@ public class scheduleTemplate extends HttpServlet {
 				{
 					//catch the date parse exception
 				}
-			}
+			//}
 			
 		}
 		finally

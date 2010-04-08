@@ -156,7 +156,7 @@ else
 	<label for="positionType1">Position Type</label><input type="text" size=30 name="positionType1" />
 	<label for="positionNumber1">Number of Positions</label><input type="text" size=10 name="positionNumber1" />
 	
-	<input type="hidden" value="0" id="counter" />
+	<input type="hidden" value="0" id="counter" name="counter"/>
 	<div id="addPositionDiv"></div>
 	<br />
 	<button type="submit" value="submit">Submit Shift Template</button>
