@@ -18,6 +18,7 @@ import exception.DBException;
 
 /**
  * Servlet implementation class DeletePosition
+ * @author Noorin Hasan
  */
 public class DeletePosition extends HttpServlet {
 	private static final long serialVersionUID = 1L;

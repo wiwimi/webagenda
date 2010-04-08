@@ -580,6 +580,10 @@
 		padding: 2px 0 0;
 		cursor: pointer;
 	}
+	.center{
+		margin:1% 0px; padding:0px;
+		text-align:center;
+	}
 	
 	
 	

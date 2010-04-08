@@ -19,6 +19,7 @@ import business.Employee;
 
 /**
  * Servlet implementation class addUser
+ * @author Noorin Hasan
  */
 @WebServlet(name="AddUser", urlPatterns={"/AddUser"})
 public class AddUser extends HttpServlet {

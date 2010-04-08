@@ -19,6 +19,7 @@ import business.schedule.Location;
 
 /**
  * Servlet implementation class addLocation
+ * @author Noorin Hasan
  */
 @WebServlet(name="AddLocation", urlPatterns={"/AddLocation"})
 public class AddLocation extends HttpServlet {

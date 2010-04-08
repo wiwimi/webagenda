@@ -16,6 +16,7 @@ import exception.DBException;
 
 /**
  * Servlet implementation class DeleteLocation
+ * @author Noorin Hasan
  */
 @WebServlet(name="DeleteLocation", urlPatterns={"/DeleteLocation"})
 public class DeleteLocation extends HttpServlet {

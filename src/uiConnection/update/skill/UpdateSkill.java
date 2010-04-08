@@ -17,6 +17,7 @@ import business.Skill;
 
 /**
  * Servlet implementation class UpdateLocation
+ * @author Noorin Hasan
  */
 @WebServlet(name="UpdateSkill", urlPatterns={"/UpdateSkill"})
 public class UpdateSkill extends HttpServlet {

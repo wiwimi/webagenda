@@ -86,7 +86,7 @@ if(session.getAttribute("username") == null)
 			    <div id="endInstructions" class="center">
 			   		End of Report
 			   		<div class="page-break"></div>
-			</div>  
+			  </div>  
 		</div>  
 		</div>      
                  

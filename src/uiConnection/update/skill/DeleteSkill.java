@@ -20,6 +20,7 @@ import exception.DBException;
 
 /**
  * Servlet implementation class DeleteSkill
+ * @author Noorin Hasan
  */
 @WebServlet(name="DeleteSkill", urlPatterns={"/DeleteSkill"})
 public class DeleteSkill extends HttpServlet {

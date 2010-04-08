@@ -149,4 +149,14 @@
     <servlet-name>GoogleTest</servlet-name>
     <url-pattern>/GoogleTest</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GenerateSchedule</display-name>
+    <servlet-name>GenerateSchedule</servlet-name>
+    <servlet-class>schedule.GenerateSchedule</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GenerateSchedule</servlet-name>
+    <url-pattern>/GenerateSchedule</url-pattern>
+  </servlet-mapping>
 </web-app>

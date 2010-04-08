@@ -18,6 +18,7 @@ import business.Skill;
 
 /**
  * Servlet implementation class addSkill
+ * @author Noorin Hasan
  */
 @WebServlet(name="AddSkill", urlPatterns={"/AddSkill"})
 public class AddSkill extends HttpServlet {

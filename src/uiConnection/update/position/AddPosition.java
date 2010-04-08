@@ -15,6 +15,7 @@ import exception.DBException;
 
 /**
  * Servlet implementation class AddPosition
+ * @author Noorin Hasan
  */
 public class AddPosition extends HttpServlet {
 	private static final long serialVersionUID = 1L;

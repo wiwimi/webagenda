@@ -65,6 +65,8 @@ public class TestScheduleGenerator
 			{
 			//Attempt to create a schedule from the test template.
 			ScheduleTemplate get = new ScheduleTemplate(1,-1,null);
+			
+		
 			ScheduleTemplate fromDB = stb.get(get, user)[0];
 			
 			ArrayList<Shift> partialMatches = new ArrayList<Shift>();

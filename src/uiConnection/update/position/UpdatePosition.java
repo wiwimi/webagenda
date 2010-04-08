@@ -18,6 +18,7 @@ import business.schedule.Position;;
 
 /**
  * Servlet implementation class UpdateLocation
+ * @author Noorin Hasan
  */
 @WebServlet(name="UpdatePosition", urlPatterns={"/UpdatePosition"})
 public class UpdatePosition extends HttpServlet {
