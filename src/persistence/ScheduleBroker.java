@@ -582,12 +582,15 @@ public class ScheduleBroker extends Broker<Schedule>
 	 */
 	private boolean notifyScheduleEmps(Schedule oldSched, Schedule newSched, Employee caller) throws DBException, DBDownException, InvalidPermissionException
 		{
+		NotificationBroker nb = NotificationBroker.getBroker();
+		
 		/*
 		 * If oldSched is null, a new schedule was created. Send notifications
 		 * to all employees to inform them of the new schedule.
 		 */
 		if (oldSched == null)
 			{
+			//New schedule has been created.
 			ArrayList<Employee> notifyEmps = new ArrayList<Employee>();
 			
 			//Get list of unique employees in the new schedule.
@@ -604,13 +607,75 @@ public class ScheduleBroker extends Broker<Schedule>
 				}
 			
 			//Send notification to each employee.
-			NotificationBroker nb = NotificationBroker.getBroker();
 			for (Employee e : notifyEmps)
 				{
 				Notification newNoti = new Notification(
 						e.getEmpID(),"You have a new schedule for the week of "+newSched.getStartDate() + " to "+newSched.getEndDate(),"schedule");
 				
 				nb.create(newNoti, caller);
+				}
+			}
+		else
+			{
+			//Schedule has been updated.
+			ArrayList<Employee> oldEmps = new ArrayList<Employee>();
+			ArrayList<Employee> newEmps = new ArrayList<Employee>();
+			
+			//Get unique employees from old schedule.
+			for (Shift sh : oldSched.getShifts().toArray())
+				{
+				for (Employee e : sh.getEmployees().toArray())
+					{
+					//Remove duplicates.
+					while (oldEmps.remove(e));
+					
+					//Add employee to list.
+					oldEmps.add(e);
+					}
+				}
+			//Get unique employees from new schedule.
+			for (Shift sh : newSched.getShifts().toArray())
+				{
+				for (Employee e : sh.getEmployees().toArray())
+					{
+					//Remove duplicates.
+					while (newEmps.remove(e));
+					
+					//Add employee to list.
+					newEmps.add(e);
+					}
+				}
+			
+			//Notify employees.
+			for (Employee e : oldEmps)
+				{
+				if (newEmps.contains(e))
+					{
+					//Employee is in both schedules, has had their sched changed.
+					Notification newNoti = new Notification(
+							e.getEmpID(),"Your schedule for the week of "+newSched.getStartDate() + " to " + newSched.getEndDate() + "has been changed.","schedule");
+					
+					nb.create(newNoti, caller);
+					}
+				else
+					{
+					//Emp is in old but not new, was removed from sched.
+					Notification newNoti = new Notification(
+							e.getEmpID(),"You have been removed from a schedule for the week of "+newSched.getStartDate() + " to " + newSched.getEndDate() + ".","schedule");
+					
+					nb.create(newNoti, caller);
+					}
+				}
+			
+			for (Employee e : newEmps)
+				{
+				if (!oldEmps.contains(e))
+					{
+					Notification newNoti = new Notification(
+							e.getEmpID(),"You have a new schedule for the week of "+newSched.getStartDate() + " to "+newSched.getEndDate(),"schedule");
+					
+					nb.create(newNoti, caller);
+					}
 				}
 			}
 		
