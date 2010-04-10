@@ -73,7 +73,7 @@ public class ScheduleBroker extends Broker<Schedule>
 					"INSERT INTO `WebAgenda`.`SCHEDULE` " +
 					"(`startDate`,`endDate`,`creatorID`) " +
 					"VALUES " +
-					"(?,?,?)",Statement.RETURN_GENERATED_KEYS);
+					"(?,DATE_ADD(?, INTERVAL 6 DAY),?)",Statement.RETURN_GENERATED_KEYS);
 			
 			PreparedStatement createShift = conn.getConnection().prepareStatement(
 					"INSERT INTO `WebAgenda`.`SHIFT` " +
@@ -89,7 +89,7 @@ public class ScheduleBroker extends Broker<Schedule>
 			
 			//Attempt to insert schedule template.
 			createSched.setDate(1, createObj.getStartDate());
-			createSched.setDate(2, createObj.getEndDate());
+			createSched.setDate(2, createObj.getStartDate());
 			createSched.setInt(3, createObj.getCreatorID());
 			if (createSched.executeUpdate() != 1)
 				throw new DBException("Failed to insert schedule template.");
