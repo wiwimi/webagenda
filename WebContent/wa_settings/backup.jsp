@@ -117,7 +117,7 @@ if(session.getAttribute("username") == null)
 		 						   			
 		 						   		%>
 		 						   		
-		 						   		<p>	<label class="label"> Name: <em class="asterisk"> * </em> </label>
+		 						   		<p>	<label class="label"> Path: <em class="asterisk"> * </em> </label>
 		 						   		     <input type="text"  name ="destFile" class="required" size ="60" value="<%=destFile%>"/> 
 		 						   		</p>
 		 						   		
@@ -128,7 +128,7 @@ if(session.getAttribute("username") == null)
 		 						  <div id="instructions"> If you do not enter the path for the bin directory found under MySql, it will use the default path.
 		 						  	    <br>  <br>
 		 						  	    
-		 						   	    <p>	<label class="label"> Name: <em class="asterisk"> * </em> </label>
+		 						   	    <p>	<label class="label"> Path: <em class="asterisk"> * </em> </label>
 		 						   		     <input type="text"  name ="sqlFile" class="required" size ="60" value="<%=sqlFile%>"/> 
 		 						   		</p> 
 		 						  </div>

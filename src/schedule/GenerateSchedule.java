@@ -82,7 +82,7 @@ public class GenerateSchedule extends HttpServlet {
 					ArrayList<Shift> partialMatches = new ArrayList<Shift>();
 					
 					//---------- Generating Schedule ----------
-					Schedule genSched = ScheduleGenerator.generateSchedule(fromDB, sqlStartDate, Date.valueOf("2010-04-17"), location, partialMatches, user);
+					Schedule genSched = ScheduleGenerator.generateSchedule(fromDB, Date.valueOf("2010-04-11"), Date.valueOf("2010-04-17"), location, partialMatches, user);
 					
 					//---------- Send the generated proposal back to the user by displaying it in jsp ----------");
 					
