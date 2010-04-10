@@ -70,7 +70,7 @@ public class Backup
 	 */
 	public static void main(String[] args)
 		{
-		Backup.backupDB(new File("C:/WebAgendaBackup/"), new File("C:/Program Files/MySQL/MySQL Server 5.1/bin/"));
+		Backup.backupDB(new File("C:/WebAgendaBackup/"), new File("D:/Program Files/MySQL/MySQL Server 5.1/bin/"));
 		}
 	
 	}
