@@ -507,8 +507,11 @@ public class TestEmployeeBroker extends TestCase
 		try
 			{
 			empBroker.resetPassword("user1", "test123", user);
-			
+			System.out.println(user.getPassword());
 			empBroker.changePassword("test123", "password", user);
+			System.out.println(user.getPassChanged());
+			
+			
 			}
 		catch (DBDownException e)
 			{

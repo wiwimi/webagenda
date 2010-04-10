@@ -313,7 +313,7 @@
 									}
 									if (empArray[index].getPrefPosition()!=null)
 									{
-										email = empArray[index].getPrefPosition();
+										position = empArray[index].getPrefPosition();
 									}
 						%>
 									<tr>

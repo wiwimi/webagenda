@@ -25,8 +25,8 @@ import business.schedule.Position;
  * Servlet implementation class updateUser
  * @author Noorin Hasan
  */
-@WebServlet(name="UpdateUser", urlPatterns={"/UpdateUser"})
-public class UpdateUser extends HttpServlet {
+@WebServlet(name="UpdateAdminProfile", urlPatterns={"/UpdateAdminProfile"})
+public class UpdateAdminProfile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	/**
@@ -35,57 +35,44 @@ public class UpdateUser extends HttpServlet {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 		    throws ServletException, IOException 
 		    {
-		        response.setContentType("text/html;charset=UTF-8");
-		        EmployeeBroker broker;
-		        boolean success = false;
-		        java.sql.Date  sqlBirthDate;
-		        broker = EmployeeBroker.getBroker();
-				broker.initConnectionThread();
-				Employee result =null;
-				Employee newEmp=null;
-		       //Create or get the session object from the HTTPSession object
-		        HttpSession session = request.getSession();
-		   
-		        Employee user = (Employee)session.getAttribute("currentEmployee");
-		        
-		        PrintWriter out = response.getWriter();
-		        
-		        String familyName = request.getParameter("familyName");
-		        String givenName = request.getParameter("givenName");
-		        
-		        String status =  request.getParameter("status");
-				String pos = request.getParameter("pos");
-				String email=request.getParameter("email");
-				String username = request.getParameter("user");
-				String dob = request.getParameter("dob");
+			        response.setContentType("text/html;charset=UTF-8");
+			        EmployeeBroker broker;
+			        boolean success = false;
+			        java.sql.Date  sqlBirthDate;
+			        broker = EmployeeBroker.getBroker();
+					broker.initConnectionThread();
+					Employee result =null;
+					Employee newEmp=null;
+			       //Create or get the session object from the HTTPSession object
+			        HttpSession session = request.getSession();
+			   
+			        Employee user = (Employee)session.getAttribute("currentEmployee");
+			        PrintWriter out = response.getWriter();
+			        String familyName = request.getParameter("familyName");
+			        String givenName = request.getParameter("givenName");
+			        String email=request.getParameter("email");
+					String username = request.getParameter("user");
+					String dob = request.getParameter("dob");
+					Employee oldEmp =null;
 				
-				//String permLevel = request.getParameter("permLevel");
-				String loc= request.getParameter("loc");
-				String empId = request.getParameter("empId");
-				String supId = request.getParameter("supId");
-				Employee oldEmp =null;
-				int empIdInt = Integer.parseInt(empId);
 				
 				try 
 				{
 					newEmp = new Employee();
 					oldEmp = (Employee)session.getAttribute("oldEmp");
+					newEmp.setEmpID(user.getEmpID());
+					
 					result = broker.get(oldEmp, user)[0];
-				
 					newEmp = oldEmp.clone();
 					
-					
-					newEmp.setEmpID(empIdInt);
+					newEmp.setEmpID(user.getEmpID());
+					newEmp.setPassword(user.getPassword());
+					newEmp.setPrefLocation(user.getPrefLocation());
+					newEmp.setPrefPosition(user.getPrefPosition());
+					newEmp.setSupervisorID(user.getSupervisorID());
 					newEmp.setFamilyName(familyName);
 					newEmp.setGivenName(givenName);
 					newEmp.setUsername(username);
-					
-					if (status.equalsIgnoreCase("enabled"))
-						newEmp.setActive(true);
-					
-					else 
-						newEmp.setActive(false);
-					
 					
 					// Convert the date of birth from string to util.Date
 					// Then convert the util.Date to sql.Date
@@ -101,29 +88,13 @@ public class UpdateUser extends HttpServlet {
 					{
 						newEmp.setEmail(email);
 					}
-					
-					if(supId!=null)
-					{
-						int supIdInt = Integer.parseInt(supId);
-						newEmp.setSupervisorID(supIdInt);
-						
-					}
-					if(pos!=null)
-					{
-						newEmp.setPrefPosition(pos);
-					}
-					if(loc!=null)
-					{
-						newEmp.setPrefLocation(loc);
-					}
-					
 					success = broker.update(result, newEmp, user);
 					if (success)
 					{
 						//Confirm that the user was updated
-						response.sendRedirect("wa_user/updateUser.jsp?message=true&familyName=" + familyName +"&givenName=" + givenName
+						response.sendRedirect("wa_settings/adminProfile.jsp?message=true&familyName=" + familyName +"&givenName=" + givenName
 								+ "&username=" + username +  "&email=" + email 
-								+ "&dob=" + dob + "&empId=" + empId + "&status=" + newEmp.getActive());
+								+ "&dob=" + dob + "&userID=" + user.getEmpID());
 					}
 				}
 				catch (DBException e) 
@@ -131,51 +102,50 @@ public class UpdateUser extends HttpServlet {
 					e.printStackTrace();
 					
 					//DEBUGGING
-					out.println("DB Exception");
-					out.println(newEmp.getGivenName() + " ");
-					out.println(newEmp.getEmpID() + " ");
-					out.println(newEmp.getFamilyName() + " ");
-					out.println(newEmp.getBirthDate() + " ");
-					out.println(newEmp.getUsername() + " ");
-					out.println("OLD");
-					out.println(result.getEmpID() + " ");
 					
+					//out.println(newEmp.getUsername());
+					//out.println(newEmp.getEmpID());
+					//out.println(newEmp.getFamilyName());
 					
+					//out.println(oldEmp.getUsername());
+					//out.println(oldEmp.getEmpID());
+					//out.println(oldEmp.getFamilyName());
 					//Even if the user is not updated, return the values to the form
-					//response.sendRedirect("wa_user/updateUser.jsp?message=false&familyName=" + familyName +"&givenName=" + givenName+ "&username=" + username +  "&email=" + email 
-							//+ "&dob=" + dob + "&empId=" + empId);
+					response.sendRedirect("wa_settings/adminProfile.jsp?message=false&familyName=" + familyName +"&givenName=" + givenName
+							+ "&username=" + username +  "&email=" + email 
+							+ "&dob=" + dob + "&userID=" + user.getEmpID());
 				}
 				catch (DBDownException e) 
 				{
 					e.printStackTrace();
-					out.println("DB Down Exception");
-					//out.println(givenName);
-					//out.println(familyName);
-					//out.println(empIdInt);
+					//out.println("DB Down Exception");
+				
 					
 					//Even if the user is not created, return the values to the form
-					//response.sendRedirect("wa_user/updateUser.jsp?message=false&familyName=" + familyName +"&givenName=" + givenName
-						//	+ "&username=" + username +  "&email=" + email + "&dob=" + dob + "&empId=" + empId);
+					response.sendRedirect("wa_settings/adminProfile.jsp?message=false&familyName=" + familyName +"&givenName=" + givenName
+							+ "&username=" + username +  "&email=" + email 
+							+ "&dob=" + dob + "&userID=" + user.getEmpID());
 				}
 				catch (InvalidPermissionException  e)
 				{
 					e.printStackTrace();
 					
 					//DEBUGGING
-					out.println("Invalid Permission");
+					//out.println("Invalid Permission");
 					
 					//Even if the user is not created, return the values to the form
-					//response.sendRedirect("wa_user/updateUser.jsp?message=perm&familyName=" + familyName +"&givenName=" + givenName+ "&username=" + username +  "&email=" + email 
-						//	+ "&dob=" + dob + "&empId=" + empId);
+					response.sendRedirect("wa_settings/adminProfile.jsp?message=perm&familyName=" + familyName +"&givenName=" + givenName
+							+ "&username=" + username +  "&email=" + email 
+							+ "&dob=" + dob + "&userID=" + user.getEmpID());
 				}
 				catch (PermissionViolationException e) 
 				{
 					e.printStackTrace();
-					out.println("Perm Violation");
+					//out.println("Perm Violation");
 					//Even if the user is not created, return the values to the form
-					response.sendRedirect("wa_user/updateUser.jsp?message=perm&familyName=" + familyName +"&givenName=" + givenName
-							+ "&username=" + username +  "&email=" + email
-							+ "&dob=" + dob + "&empId=" + empId);
+					response.sendRedirect("wa_settings/adminProfile.jsp?message=perm&familyName=" + familyName +"&givenName=" + givenName
+							+ "&username=" + username +  "&email=" + email 
+							+ "&dob=" + dob + "&userID=" + user.getEmpID());
 				}
 				finally
 				{
@@ -187,7 +157,7 @@ public class UpdateUser extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateUser() {
+    public UpdateAdminProfile() {
         super();
         // TODO Auto-generated constructor stub
     }

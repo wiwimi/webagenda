@@ -159,4 +159,24 @@
     <servlet-name>GenerateSchedule</servlet-name>
     <url-pattern>/GenerateSchedule</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateAdminProfile</display-name>
+    <servlet-name>UpdateAdminProfile</servlet-name>
+    <servlet-class>uiConnection.update.user.UpdateAdminProfile</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateAdminProfile</servlet-name>
+    <url-pattern>/UpdateAdminProfile</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ChangePassword</display-name>
+    <servlet-name>ChangePassword</servlet-name>
+    <servlet-class>uiConnection.update.user.ChangePassword</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChangePassword</servlet-name>
+    <url-pattern>/ChangePassword</url-pattern>
+  </servlet-mapping>
 </web-app>

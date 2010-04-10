@@ -32,8 +32,48 @@ if(session.getAttribute("username") == null)
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/val.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/screen.css" />
 <link rel="stylesheet" href="../CSS/Flash/flashmessenger.css" type="text/css" media="screen"/>
-	
+
 </head>
+	<% 
+		if(request.getParameter("message") != null)
+		{
+			if(request.getParameter("message").equals("true"))
+			{
+				
+ 	%>
+	              <script type="text/javascript">
+
+					$(function()
+					    {
+							
+							    $.flashMessenger("The password has been successfully changed.", 
+								{ 	
+									modal:true, 
+									autoClose: false 
+								});	
+						});
+					</script>
+	<% 			   
+			}
+			else if(request.getParameter("message").equals("sent"))
+			{
+	%>
+	              <script type="text/javascript">
+
+					$(function()
+					    {
+							
+							    $.flashMessenger("An error occurred. Make sure your old password is valid", 
+								{ 	
+									modal:true, 
+									autoClose: false 
+								});	
+						});
+					</script>
+	<% 			   
+			}
+		}
+	%>
 <body>
 	<div id="instructions">
 		Fields marked with <em class="asterisk" > * </em> are required.
@@ -47,26 +87,18 @@ if(session.getAttribute("username") == null)
 				
 			<div class="widgetLowerRectangle" id="passwordLowerRectangle">
 				<div id ="creationForm">
-					<form class="validatedForm" action="" id="form" method="post">
+					<form class="validatedForm" action="../ChangePassword" id="form" method="post">
 						<div id="security">
 					 		<div id="formButtons">
 							 	    <input type="submit" name="submit" class="button" value="Update"> 
 									<input type="reset" name="clear" class="button" value="Clear Screen">
 							</div>
 							<fieldset>
-								<legend > Account Settings </legend>
-									<p>
-										<label for="old_pwd" class = "label"> Old Password: <em class="asterisk"> * </em> </label> 
-										<input type="password"  name ="old_pwd" id="old_pwd" size ="7" maxlength="8"/> 
-									</p>
-									<p>	 	
-										<label for="password" class = "label" > New Password: <em class="asterisk"> * </em> </label> 
-										<input type="password"  name ="password" id="password" size ="7" maxlength="8"//> 
-									</p>	
-									<p>
-										<label for="confirm_password" class = "label" >Confirm password  <em class="asterisk"> * </em>  </label>
-										<input id="confirm_password" name="confirm_password" type="password" size ="7" maxlength="8"/>
-									</p>	 
+								<legend > Security Settings </legend>
+									<p> <label class ="label"> Old Password: <em class="asterisk"> * </em> </label> <input type="password"  class="required" size ="7"> </p>
+									<p> <label class ="label"> New Password: <em class="asterisk"> * </em> </label> <input type="password"    size ="7"> </p>
+									<p> <label class ="label"> Confirm New Password: <em class="asterisk"> * </em> </label> <input type="password"   size ="7"> </p>
+						 
 						   </fieldset>
 					   </div>
 				 </form>
