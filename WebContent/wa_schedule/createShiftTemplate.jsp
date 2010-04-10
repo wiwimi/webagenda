@@ -3,7 +3,8 @@
 <%@ page import="persistence.ScheduleBroker" %>
 <%@ page import="persistence.ScheduleTemplateBroker" %>
 <%@ page import="business.schedule.*" %>   
-    
+ 
+<!-- Author: Mark Hazlett -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -17,6 +18,16 @@
 
 <!-- Includes -->
 <jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+
+<%@ page import="persistence.ScheduleBroker" %>
+<%@ page import="persistence.ScheduleTemplateBroker" %>
+<%@ page import="business.schedule.ScheduleTemplate" %>
+<%@ page import="business.schedule.Shift" %>
+<%@ page import="business.schedule.Schedule" %>
+<%@ page import="business.Employee" %>
+<%@ page import="persistence.LocationBroker" %>
+<%@ page import="business.schedule.Location" %>
+<%@ page import="persistence.PositionBroker" %>
 
 
 <script type="text/javascript">
@@ -153,7 +164,22 @@ else
 	<label for="dayOfWeek">Day Of Week: </label><input type="text" size=10 name=dayOfWeek /><br /><br />
 	
 	Positions <button type="button" onClick="addPosition()">Add Position</button><br />
-	<label for="positionType1">Position Type</label><input type="text" size=30 name="positionType1" />
+	
+<% 
+	PositionBroker broker = PositionBroker.getBroker();
+	
+	Position[] positions = broker.get(new Position(), (Employee)session.getAttribute("currentEmployee"));
+	
+	out.println("<label for=\"positionType1\">Position Type</label>");
+	out.println("<select name=\"positionType1\">");
+	
+	for(int index = 0; index < positions.length; index++)
+	{
+		out.println("<option value="+index+">"+positions[index].getName()+"</option>");		
+	}
+	
+	out.println("</select>");
+%>
 	<label for="positionNumber1">Number of Positions</label><input type="text" size=10 name="positionNumber1" />
 	
 	<input type="hidden" value="0" id="counter" name="counter"/>

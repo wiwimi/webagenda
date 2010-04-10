@@ -4,7 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<!--  Noorin Hasan -->
+<!--  Author: Noorin Hasan 
+		Edited by: Mark Hazlett
+-->
 
 <%@ page import="persistence.ScheduleBroker" %>
 <%@ page import="persistence.ScheduleTemplateBroker" %>

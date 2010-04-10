@@ -6,16 +6,13 @@ import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import utilities.DoubleLinkedList;
-
 import business.schedule.ScheduleTemplate;
 import business.schedule.ShiftPosition;
 import business.schedule.ShiftTemplate;

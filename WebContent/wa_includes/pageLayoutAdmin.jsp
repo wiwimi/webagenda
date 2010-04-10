@@ -66,7 +66,7 @@ if(session.getAttribute("username") == null)
 		<!-- White Background for boxes-->
 		
 		<div id= "scheduleLowerRectangle" class = "lowerRectangle">
-			<b> <a href ="../wa_schedule/schedule.jsp" > View Schedule  </a> </b> <br>
+			<b> <a href ="../wa_schedule/displayScheduleFromTemplate.jsp" > View Schedule  </a> </b> <br>
 			<b> <a href ="../wa_schedule/requestChange.jsp" > Request Shift Change </a> </b> <br>
 			<b> <a href ="../wa_schedule/ShiftExchangePool.jsp" > Availability </a> </b> <br>
 			<b> <a href ="../wa_schedule/createSchedule.jsp" > Create schedule </a> </b> <br>
