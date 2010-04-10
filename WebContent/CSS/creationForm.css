@@ -2,15 +2,16 @@
 
 /*Author:Noorin*/
 
-#creationForm input[type=text], input[type=password], select, textarea
+#creationForm input[type=text], input[type=password],input[type=file], select, textarea
 
 {
 	background-color: #FFFFFF;
 	font-family: cochin,Verdana, Times,helvetica,sans-serif 100%;;
 	border: 1px solid #000080;
 	border:solid 1px #aacfe4;
-	
 }
+
+
 #creationForm input:focus
 {
 	background-color:#E0E0E0;
@@ -72,9 +73,10 @@
 input.button
 { 
 	  font-family: cochin, Verdana, georgia, Times, helvetica,sans-serif;
-	  font-size:80%;
+	  font-size:90%;
+	  font-weight: bold;
 	  color:black;
-	  background-color:#E6E6E6;
+	  background-color:	#F0F0F0  ;
 	  padding-top: 2px;
 	  padding-bottom: 2px;
 	 -webkit-border-top-left-radius:2px; 

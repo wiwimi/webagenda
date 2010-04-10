@@ -9,7 +9,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-
 <title>Adding Location</title>
 
 <!--  Includes -->
@@ -25,7 +24,7 @@
 
 <!-- Javascript Files -->
 <script type="text/javascript" src="../lib/js/cmxforms.js"></script>
-<script type="text/javascript" src= "../lib/js/val.js" type="text/javascript"> </script> 
+<script type="text/javascript" src= "../lib/js/val.js"> </script> 
 <script type="text/javascript" src="../lib/js/popup.js"></script>
 <script type="text/javascript" src="../lib/js/deleteLocation.js"></script>
 <script type="text/javascript" src="../lib/js/helpLocation.js"></script>
