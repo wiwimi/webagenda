@@ -3,6 +3,7 @@
  */
 package persistence;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -12,6 +13,7 @@ import business.Notification;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import utilities.DoubleLinkedList;
 import exception.DBChangeException;
 import exception.DBDownException;
@@ -61,6 +63,11 @@ public class ScheduleBroker extends Broker<Schedule>
 		if (createObj == null)
 			throw new NullPointerException("Can not create, given schedule is null.");
 		
+		Calendar cal = Calendar.getInstance();
+		cal.setTimeInMillis(createObj.getStartDate().getTime());
+		cal.add(Calendar.DATE, 6);
+		createObj.setEndDate(new Date(cal.getTimeInMillis()));
+		
 		DBConnection conn = null;
 		try
 			{
@@ -73,7 +80,7 @@ public class ScheduleBroker extends Broker<Schedule>
 					"INSERT INTO `WebAgenda`.`SCHEDULE` " +
 					"(`startDate`,`endDate`,`creatorID`) " +
 					"VALUES " +
-					"(?,DATE_ADD(?, INTERVAL 6 DAY),?)",Statement.RETURN_GENERATED_KEYS);
+					"(?,?,?)",Statement.RETURN_GENERATED_KEYS);
 			
 			PreparedStatement createShift = conn.getConnection().prepareStatement(
 					"INSERT INTO `WebAgenda`.`SHIFT` " +
@@ -89,7 +96,7 @@ public class ScheduleBroker extends Broker<Schedule>
 			
 			//Attempt to insert schedule template.
 			createSched.setDate(1, createObj.getStartDate());
-			createSched.setDate(2, createObj.getStartDate());
+			createSched.setDate(2, createObj.getEndDate());
 			createSched.setInt(3, createObj.getCreatorID());
 			if (createSched.executeUpdate() != 1)
 				throw new DBException("Failed to insert schedule template.");

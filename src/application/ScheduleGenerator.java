@@ -6,7 +6,9 @@ package application;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import exception.DBDownException;
 import exception.DBException;
 import persistence.EmployeeBroker;
@@ -40,8 +42,6 @@ public class ScheduleGenerator
 	 * 
 	 * @param template The schedule template to generate a schedule from.
 	 * @param startDate The start date of the new schedule. Must be a Sunday.
-	 * @param endDate The end date of the new schedule. Must be the Saturday
-	 *           following the startDate.
 	 * @param prefLocation The preferred location to match employees for.
 	 * @param partialMatches An empty list that will be filled with recommended
 	 *           employees.
@@ -51,7 +51,7 @@ public class ScheduleGenerator
 	 * @throws DBDownException
 	 */
 	public static Schedule generateSchedule(ScheduleTemplate template,
-			Date startDate, Date endDate, Location prefLocation,
+			Date startDate, Location prefLocation,
 			ArrayList<Shift> partialMatches, Employee creator) throws DBException,
 			DBDownException
 		{
@@ -61,9 +61,6 @@ public class ScheduleGenerator
 		if (startDate == null)
 			throw new NullPointerException("Start date can not be null.");
 		
-		if (endDate == null)
-			throw new NullPointerException("End date can not be null.");
-		
 		if (prefLocation == null)
 			throw new NullPointerException("Preferred location can not be null.");
 		
@@ -72,6 +69,11 @@ public class ScheduleGenerator
 		
 		if (creator == null)
 			throw new NullPointerException("Creator can not be null.");
+		
+		Calendar cal = Calendar.getInstance();
+		cal.setTimeInMillis(startDate.getTime());
+		cal.add(Calendar.DATE, 6);
+		Date endDate = new Date(cal.getTimeInMillis());
 		
 		Schedule genSched = new Schedule(-1, creator.getEmpID(), startDate,
 				endDate);

@@ -71,7 +71,7 @@ public class TestScheduleGenerator
 			ArrayList<Shift> partialMatches = new ArrayList<Shift>();
 			
 			System.out.println("---------- Generating Schedule ----------");
-			Schedule genSched = ScheduleGenerator.generateSchedule(fromDB, Date.valueOf("2010-04-11"), Date.valueOf("2010-04-17"), new Location("Mohave Grill"), partialMatches, user);
+			Schedule genSched = ScheduleGenerator.generateSchedule(fromDB, Date.valueOf("2010-04-11"), new Location("Mohave Grill"), partialMatches, user);
 			assertNotNull(genSched);
 			System.out.println("---------- Generation Successful ----------");
 			
