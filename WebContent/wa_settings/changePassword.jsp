@@ -18,12 +18,8 @@ if(session.getAttribute("username") == null)
 <jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
 
 <!-- Libraries -->
-<script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
-<script src="../lib/js/jquery.validate.js" type="text/javascript"></script>
 
-<!-- Javascript Files -->
-<script src="../lib/js/cmxforms.js" type="text/javascript"></script>
-<script src= "../lib/js/val.js" type="text/javascript"> </script>
+
 
 <!--  CSS files -->
 <link rel="stylesheet" href="../CSS/creationForm.css" type="text/css"></link>
@@ -95,9 +91,9 @@ if(session.getAttribute("username") == null)
 							</div>
 							<fieldset>
 								<legend > Security Settings </legend>
-									<p> <label class ="label"> Old Password: <em class="asterisk"> * </em> </label> <input type="password"  class="required" size ="7"> </p>
-									<p> <label class ="label"> New Password: <em class="asterisk"> * </em> </label> <input type="password"    size ="7"> </p>
-									<p> <label class ="label"> Confirm New Password: <em class="asterisk"> * </em> </label> <input type="password"   size ="7"> </p>
+									<p> <label class ="label"> Old Password: <em class="asterisk"> * </em> </label> <input type="password" name="oldPassword" class="required" size ="7"> </p>
+									<p> <label class ="label"> New Password: <em class="asterisk"> * </em> </label> <input type="password"  name="password"   size ="7"> </p>
+									<p> <label class ="label"> Confirm New Password: <em class="asterisk"> * </em> </label> <input type="password" name="confirm_password"  size ="7"> </p>
 						 
 						   </fieldset>
 					   </div>
