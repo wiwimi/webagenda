@@ -12,6 +12,7 @@ if(session.getAttribute("username") == null)
 
 
 <!--Author:Noorin-->
+<!-- Edited by: Mark -->
 
 <html>
 <head>
@@ -34,7 +35,7 @@ if(session.getAttribute("username") == null)
 		<div id="headerTitle">Deerfoot Inn and Casino 	</div>
 		
 	<div id="userArea">
-		<h6>Welcome: <%out.println(session.getAttribute("username")); %> | <a href="#">Settings</a> | <a href="../logout">Logout</a></h6>
+		<h6>Welcome: <%out.println(session.getAttribute("username")); %> | <a href="../wa_settings/adminProfile.jsp">Settings</a> | <a href="../logout">Logout</a></h6>
 	</div>
 </div>
 </div>
@@ -83,23 +84,6 @@ if(session.getAttribute("username") == null)
 			
 			<b> <a href ="../wa_user/newUser.jsp" > Users </a> </b> <br>
 			
-		</div>
-		<br>
-		
-		<div id= "locationsUpperRectangle" class="upperRectangle">
-		
-			<div class="sidebarTitle" id="locationsTitle"> Maintenance </div>
-		
-		</div>
-		
-		<!-- White Background for boxes-->
-		
-		<div id= "locationsLowerRectangle" class = "lowerRectangle">
-			
-			<b> <a href ="../wa_location/newLocation.jsp"> Locations </a> </b> <br>
-			<b> <a href ="../wa_user/newSkill.jsp" > Skills </a> </b> <br>
-			<b> <a href ="../wa_user/newPosition.jsp" > Positions </a> </b> <br>
-		
 		</div>
 		
 		<br>
