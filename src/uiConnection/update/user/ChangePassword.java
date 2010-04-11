@@ -52,36 +52,45 @@ public class ChangePassword extends HttpServlet {
 		        
 		        String oldPassword = request.getParameter("oldPassword");
 		        String newPassword = request.getParameter("password");
+		        String confirmPassword = request.getParameter("confirmm_password");
 		        
-		        try 
-				{
-					newEmp = new Employee();
-					
-					success = broker.changePassword(oldPassword, newPassword, user);
-					if (success)
+		        if (!newPassword.equals(confirmPassword))
+		        {
+		        	response.sendRedirect("wa_settings/changePassword.jsp?message=mismatch");
+		        }
+		        else 
+		        {
+		        
+			        try 
 					{
-						//Confirm that the user was updated
-						response.sendRedirect("wa_settings/changePassword.jsp?message=true");
+						newEmp = new Employee();
+						
+						success = broker.changePassword(oldPassword, newPassword, user);
+						if (success)
+						{
+							//Confirm that the user was updated
+							response.sendRedirect("wa_settings/changePassword.jsp?message=true");
+						}
 					}
-				}
-				catch (DBException e) 
-				{
-					e.printStackTrace();
-
-					response.sendRedirect("wa_settings/changePassword.jsp?message=false");
-				}
-				catch (DBDownException e) 
-				{
-					e.printStackTrace();
+					catch (DBException e) 
+					{
+						e.printStackTrace();
+	
+						response.sendRedirect("wa_settings/changePassword.jsp?message=false");
+					}
+					catch (DBDownException e) 
+					{
+						e.printStackTrace();
+						
+						response.sendRedirect("wa_settings/changePassword.jsp?message=false");
+						
+				  }
 					
-					response.sendRedirect("wa_settings/changePassword.jsp?message=false");
-					
-			  }
-				
-				finally
-				{
-					broker.stopConnectionThread();
-				}
+					finally
+					{
+						broker.stopConnectionThread();
+					}
+		        }
 			
 			 }
        

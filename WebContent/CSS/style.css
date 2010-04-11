@@ -584,6 +584,15 @@
 		margin:1% 0px; padding:0px;
 		text-align:center;
 	}
+	#success
+	{
+		color: 	#348017;
+		font-style: italic;
+		font-weight:bold;
+		font-size: 13px;
+		font-family: Arial, Verdana, Helvetica, sans-serif;
+	}
+	
 	
 	
 	

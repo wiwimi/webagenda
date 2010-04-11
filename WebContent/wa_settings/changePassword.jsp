@@ -17,59 +17,15 @@ if(session.getAttribute("username") == null)
 <!--  Includes -->
 <jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
 
-<!-- Libraries -->
-
-
+<!-- The Jquery Library was taken off from this screen due to conflict errors -->
 
 <!--  CSS files -->
 <link rel="stylesheet" href="../CSS/creationForm.css" type="text/css"></link>
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
-<style type="text/css">@import "../CSS/jquery.datepick.css";</style> 
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/val.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/screen.css" />
-<link rel="stylesheet" href="../CSS/Flash/flashmessenger.css" type="text/css" media="screen"/>
 
 </head>
-	<% 
-		if(request.getParameter("message") != null)
-		{
-			if(request.getParameter("message").equals("true"))
-			{
-				
- 	%>
-	              <script type="text/javascript">
-
-					$(function()
-					    {
-							
-							    $.flashMessenger("The password has been successfully changed.", 
-								{ 	
-									modal:true, 
-									autoClose: false 
-								});	
-						});
-					</script>
-	<% 			   
-			}
-			else if(request.getParameter("message").equals("sent"))
-			{
-	%>
-	              <script type="text/javascript">
-
-					$(function()
-					    {
-							
-							    $.flashMessenger("An error occurred. Make sure your old password is valid", 
-								{ 	
-									modal:true, 
-									autoClose: false 
-								});	
-						});
-					</script>
-	<% 			   
-			}
-		}
-	%>
 <body>
 	<div id="instructions">
 		Fields marked with <em class="asterisk" > * </em> are required.
@@ -93,8 +49,32 @@ if(session.getAttribute("username") == null)
 								<legend > Security Settings </legend>
 									<p> <label class ="label"> Old Password: <em class="asterisk"> * </em> </label> <input type="password" name="oldPassword" class="required" size ="7"> </p>
 									<p> <label class ="label"> New Password: <em class="asterisk"> * </em> </label> <input type="password"  name="password"   size ="7"> </p>
-									<p> <label class ="label"> Confirm New Password: <em class="asterisk"> * </em> </label> <input type="password" name="confirm_password"  size ="7"> </p>
-						 
+									<p> <label class ="label"> Confirm New Password: <em class="asterisk"> * </em> </label> <input type="password" name="confirm_password"  size ="7"></p>
+						            <%
+						            
+						             	String message = request.getParameter("message");
+						            	if (message!=null) 
+						            	{
+						            		if (message.equals("false"))
+						            		{
+						            %>
+						            			<div id="error"> An error occurred. Make sure the old password is correct. </div>
+						            <%
+						            		}
+						            		else if (message.equals("mismatch"))
+						            		{
+						            %>	
+						            				<div id="error"> Make sure the passwords match. </div>
+						            <%			
+						            		}
+						            		else
+						            		{
+						            %>
+						            			<div id="success"> The password was successfully created. </div>
+						            <%
+						            		}
+						            	}
+						            %>
 						   </fieldset>
 					   </div>
 				 </form>
