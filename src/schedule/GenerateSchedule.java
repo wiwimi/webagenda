@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 import exception.DBDownException;
 import exception.DBException;
+import exception.DayNotSundayException;
 
 import application.ScheduleGenerator;
 import business.Employee;
@@ -82,7 +83,7 @@ public class GenerateSchedule extends HttpServlet {
 					ArrayList<Shift> partialMatches = new ArrayList<Shift>();
 					
 					//---------- Generating Schedule ----------
-					Schedule genSched = ScheduleGenerator.generateSchedule(fromDB, Date.valueOf("2010-04-11"), location, partialMatches, user);
+					Schedule genSched = ScheduleGenerator.generateSchedule(fromDB, sqlStartDate, location, partialMatches, user);
 					
 					//---------- Send the generated proposal back to the user by displaying it in jsp ----------");
 					
@@ -95,8 +96,12 @@ public class GenerateSchedule extends HttpServlet {
 					}
 					else
 					{
-						response.sendRedirect("wa_schedule/displayScheduleFromTemplate.jsp?message=false");
+						response.sendRedirect("wa_schedule/createScheduleFromTemplate.jsp?message=false");
 					}
+				}
+				catch(DayNotSundayException se)
+				{
+					response.sendRedirect("wa_schedule/createScheduleFromTemplate.jsp?message=sundayError");
 				}
 					
 				catch (DBException e)

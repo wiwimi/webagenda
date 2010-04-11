@@ -23,6 +23,7 @@
 <!-- Plug-ins -->
 <script src="../lib/js/jquery.validate.js" type="text/javascript"></script>
 <script src ="../lib/js/jquery.flashmessenger.js"   type ="text/javascript"> </script>
+<script type="text/javascript" src="../lib/js/jquery-impromptu.3.0.min.js"></script>
 
 <!-- Javascript Files -->
 <script src="../lib/js/cmxforms.js" type="text/javascript"></script>
@@ -31,6 +32,7 @@
 <script type="text/javascript" src="../lib/js/calendar.js"></script>
 <script type="text/javascript" src="../lib/js/popup.js"></script>
 <script type="text/javascript" src="../lib/js/deleteUser.js"></script>
+<script type="text/javascript" src="../lib/js/helpSchedule.js"></script>
 
 <!--  CSS files -->
 <link rel="stylesheet" href="../CSS/creationForm.css" type="text/css"></link>
@@ -41,6 +43,7 @@
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/val.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/screen.css" />
 <link rel="stylesheet" href="../CSS/Flash/flashmessenger.css" type="text/css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="../CSS/Confirmation/confirm.css" media="screen" />
 
 <title>Web Agenda- Template Schedule</title>
 
@@ -106,11 +109,26 @@
 								    	 }); 
 								   }); 
 							</script>
-				<%
-						}
-						
-					}
-				%>
+					<%
+						}	else if(request.getParameter("message").equals("sundayError"))
+						{
+					%>
+										<script type="text/javascript">
+											$(function()
+											    {
+													
+											       $.flashMessenger("Make sure the day you selected is a Sunday",
+											        {
+														   modal:true,
+										    		       clsName:"err", 
+											    		   autoClose:false
+											    	 }); 
+											   }); 
+										</script>
+					<%
+							}
+					    }
+					%>
 
 	<%
 		Employee user = (Employee) session.getAttribute("currentEmployee");
@@ -128,7 +146,7 @@
 	%>
 <div id="scheduleWidget" class="fullWidget">
 			<div class="widgetUpperRectangle" id="scheduleUpperRectangle">
-				<div class="widgetTitle" id="scheduleWidgetTitle">Schedule Generation</div>
+				<div class="widgetTitle" id="scheduleWidgetTitle">Schedule Generation <div id="helpIcon"></div> </div>
 			</div>
 			<div class="widgetLowerRectangle" id="scheduleWidgetLowerRectangle">
 				<div id="creationForm">

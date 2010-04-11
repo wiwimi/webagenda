@@ -130,9 +130,9 @@ if(session.getAttribute("username") == null)
 		<!-- White Background for boxes-->
 		
 		<div id= "helpLowerRectangle" class = "lowerRectangle">
-			<b> <a href =" " > Search Help </a> </b> <br>
+			<b> <a href ="../wa_help/demo.jsp"> Demo </a> </b> <br>
 			<b> <a href ="../wa_help/contactAdmin.jsp">  Contact Admin </a> </b> <br>
-			<b> <a href =" " > Online Help </a> </b> <br>
+			<b> <a href ="http://code.google.com/p/webagenda/w/list" > Online Help </a> </b> <br>
 		</div>
 		
 		<br>

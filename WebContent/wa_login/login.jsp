@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="CSS/loginStyle.css" type="text/css" media="screen" />
 
-<title>Web Agenda Login</title>
+<title>Web Agenda - Login</title>
 </head>
 <body>
 <div id="container">

@@ -83,6 +83,11 @@ public class Login extends HttpServlet
         	//create a session variable for just the currently logged in user's username
             loginSession.setAttribute("username", username);
             
+            
+            //Noorin - extend the session timeout 
+            HttpSession session = request.getSession(); 
+            session.setMaxInactiveInterval(1800);
+            
             //redirect the user to the dashbaord
             response.sendRedirect("wa_dashboard/dashboard.jsp");
         } 

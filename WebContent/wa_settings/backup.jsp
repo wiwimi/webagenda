@@ -45,9 +45,7 @@ if(session.getAttribute("username") == null)
 <link rel="stylesheet" type="text/css" href="../CSS/Confirmation/confirm.css" media="screen"/>
 </head>
 <body>
-
-
-	<% 
+   <% 
 		if(request.getParameter("message") != null)
 		{
 			if(request.getParameter("message").equals("true"))
@@ -72,7 +70,7 @@ if(session.getAttribute("username") == null)
 					$(function()
 					{
 
-						$.flashMessenger("An error occurred while creating the backup.",
+						$.flashMessenger("An error occurred while creating the backup. Contact your admin",
 
 						{
 							modal:true,
@@ -104,64 +102,12 @@ if(session.getAttribute("username") == null)
 									    backup to ensure recover in the unfortunate case of any failure.
 									    Once you hit the button a .sql file is automatically exported. The file's name
 									    corresponds to the exact time it was made. 
-									    This file could be imported later for recovery.
 									 </div>
 							 </fieldset>
-							 <fieldset> 
-									 <legend > Backup Destination </legend>
-								 	<div id="instructions"> If you do not type in a destination, it will be imported to the default location.
-		 						   		<br>  <br>
-		 						   		<%
-		 						   			String destFile = "C:/WebAgendaBackup/";
-		 						   			String sqlFile = "D:/Program Files/MySQL/MySQL Server 5.1/bin/";
-		 						   			
-		 						   		%>
-		 						   		
-		 						   		<p>	<label class="label"> Path: <em class="asterisk"> * </em> </label>
-		 						   		     <input type="text"  name ="destFile" class="required" size ="60" value="<%=destFile%>"/> 
-		 						   		</p>
-		 						   		
-	 						   		</div>
-		 					 </fieldset>
-		 					 <fieldset>
-		 						   <legend > SQL Path </legend>
-		 						  <div id="instructions"> If you do not enter the path for the bin directory found under MySql, it will use the default path.
-		 						  	    <br>  <br>
-		 						  	    
-		 						   	    <p>	<label class="label"> Path: <em class="asterisk"> * </em> </label>
-		 						   		     <input type="text"  name ="sqlFile" class="required" size ="60" value="<%=sqlFile%>"/> 
-		 						   		</p> 
-		 						  </div>
-						     </fieldset>
-						     
-						     <div id="formButtons">
-							 	    <input type="submit" name="submit" class="button" value="Backup" onClick ="save()"> 
-							</div>
-						
-					</form>
-					<form class="validatedForm" action="../Import" id="form" method="post">
-						   <div id="formButtons">
-							 	    <input type="submit" name="submit" class="button" value="Import"> 
-							</div>
-						 	<fieldset>
-								<legend > Import Backup </legend>
-									<div id="instructions"> 
-									    You can import files that you have previously exported by simply uploading an appropriate .sql file below.
-									    Then click the Import button on the right.
-									    
-									 </div> 
-								   <br>  <br>
-		 						   <input type="file" name="import"  > 
-							</fieldset>
-							<div id="formButtons">
-							 	    <input type="submit" name="submit" class="button" value="Import"> 
-							</div>
-				  </form>
+					 </form>
 				</div>                  
 	         </div>                     
 	    </div>                             
 <div id="footer"></div>
-
-
 </body>
 </html>
