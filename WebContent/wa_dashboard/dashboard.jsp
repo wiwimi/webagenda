@@ -8,7 +8,10 @@ if(session.getAttribute("username") != null)
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 
-
+<%@ page import="persistence.ScheduleBroker" %>
+<%@ page import="persistence.*" %>
+<%@ page import="business.*" %>
+<%@ page import="business.schedule.*" %>
 <%@page import="uiConnection.users.UserNotifications"%>
 <%@page import="persistence.EmployeeBroker"%><html>
 <head>
@@ -75,36 +78,6 @@ if(session.getAttribute("username") != null)
 	
 	<!-- Start middle Content div -->
 	<div id="middleContent">
-		<div id="quickLinksWidget" class="fullWidgetDashboard">
-			<div class="widgetUpperRectangle" id="quickLinksUpperRectangle">
-				<div class="widgetTitle" id="quickLinksTitle">Quick Links</div>
-			</div>
-			
-			<div class="widgetLowerRectangle" id="quickLinksLowerRectangle">
-				<div id="contentHolder">
-					<a href="#"><div class="linkBox">test</div></a>
-					<a href="#"><div class="linkBox">test</div></a>
-					<a href="#"><div class="linkBox">test</div></a>
-					<a href="#"><div class="linkBox">test</div></a>
-					<a href="#"><div class="linkBox">test</div></a>
-					<a href="#"><div class="linkBox">test</div></a>
-					<a href="#"><div class="linkBox">test</div></a>
-					<a href="#"><div class="linkBox">test</div></a>
-					<a href="#"><div class="linkBox">test</div></a>
-					<a href="#"><div class="linkBox">test</div></a>
-					<a href="#"><div class="linkBox">test</div></a>
-					<a href="#"><div class="linkBox">test</div></a>
-					<a href="#"><div class="linkBox">test</div></a>
-					<a href="#"><div class="linkBox">test</div></a>
-					<a href="#"><div class="linkBox">test</div></a>
-					<a href="#"><div class="linkBox">test</div></a>
-					<a href="#"><div class="linkBox">test</div></a>
-					<a href="#"><div class="linkBox">test</div></a>
-					<a href="#"><div class="linkBox">test</div></a>
-					<a href="#"><div class="linkBox">test</div></a>
-				</div>
-			</div>
-		</div>
 		
 		<div id="scheduleWidget" class="fullWidgetDashboard">
 			<div class="widgetUpperRectangle" id="scheduleUpperRectangle">
@@ -112,12 +85,64 @@ if(session.getAttribute("username") != null)
 			</div>
 			
 			<div class="widgetLowerRectangle" id="scheduleWidgetLowerRectangle">
-				some widget data here
+			<div id="shiftsTable">
+				<table>
+					<thead>
+						<tr>
+							<td>Sunday</td>
+							<td>Monday</td>
+							<td>Tuesday</td>
+							<td>Wednesday</td>
+							<td>Thursday</td>
+							<td>Friday</td>
+							<td>Saturday</td>
+						</tr>
+					</thead>
+					
+					<tfoot>
+						<tr>
+							<td>Sunday</td>
+							<td>Monday</td>
+							<td>Tuesday</td>
+							<td>Wednesday</td>
+							<td>Thursday</td>
+							<td>Friday</td>
+							<td>Saturday</td>
+						</tr>					
+					</tfoot>
+					<tbody>
+					<tr>
+<% 
+	ScheduleBroker broker = ScheduleBroker.getBroker();
+	Schedule[] schedule = broker.get(new Schedule(), (Employee)session.getAttribute("currentEmployee"));
+	
+	if(schedule.length == 0)
+	{
+		out.println("<td colSpan=\"7\">There are no shifts in the system<td>");
+	}
+	else
+	{
+	
+		for(int index = 0; index < schedule.length; index++)
+		{
+			if(schedule[index].getShifts().get(index).getEmployees().get(index).equals((Employee)session.getAttribute("currentEmployee")))
+			{
+				for(int i = 0; i < schedule[index].getShifts().size(); i++)
+				{
+					out.println("<td>"+schedule[index].getShifts().get(i)+"</td>");
+				}
+			}
+		}
+	}
+%>
+						</tr>
+					</tbody>
+				</table>
+				</div>
 			</div>
 		</div>
 		
-		<div id="firstColumn" class="column">
-			<div id="notificationsWidget" class="halfWidgetDashboard">
+			<div id="notificationsWidget" class="fullWidgetDashboard">
 				<div class="widgetUpperRectangle" id="notificationsUpperRectangle">
 					<div class="widgetTitle" id="notificationsWidgetTitle">Notifications</div>
 				</div>
@@ -145,19 +170,7 @@ if(session.getAttribute("username") != null)
 					
 				</div>
 			</div>
-		</div>
-		
-		<div id="secondColumn" class="column">
-			<div id="mailWidget" class="halfWidgetDashboard">
-				<div class="widgetUpperRectangle" id="mailWidgetUpperRectangle">
-					<div class="widgetTitle" id="mailWidgetTitle">Mail(1)</div>
-				</div>
-				<div class="widgetLowerRectangle" id="mailWidgetLowerRectangle">
-					some widget data here
-				</div>
-			</div>
-		</div>
-	</div>	<!-- End middle content div -->
+		</div><!-- End middle content div -->
 <div id="footer"></div>
 
 </body>
