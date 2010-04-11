@@ -68,7 +68,7 @@ public class ScheduleBroker extends Broker<Schedule>
 		cal.setTimeInMillis(createObj.getStartDate().getTime());
 		
 		if (cal.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY)
-			throw new DayNotSundayException();
+			throw new DayNotSundayException("Sunday startDate required. "+createObj.getStartDate()+ " detected as "+Calendar.DAY_OF_WEEK+", Sunday is "+Calendar.SUNDAY+".");
 		
 		cal.add(Calendar.DATE, 6);
 		createObj.setEndDate(new Date(cal.getTimeInMillis()));
@@ -205,7 +205,7 @@ public class ScheduleBroker extends Broker<Schedule>
 	public Schedule[] get(Schedule searchTemplate, Employee caller)
 			throws DBException, DBChangeException, DBDownException
 		{
-		// Get all schedules for the given creator.
+		// Ensure schedule search template is not null.
 		if (searchTemplate == null)
 			throw new NullPointerException("Cannot search with null template.");
 		
@@ -217,18 +217,21 @@ public class ScheduleBroker extends Broker<Schedule>
 			PreparedStatement select = null;
 			if (searchTemplate.getSchedID() != -1)
 				{
+				//Get the schedule with a matching ID.
 				select = conn.getConnection().prepareStatement(
 					"SELECT * FROM `WebAgenda`.`SCHEDULE` WHERE schedID = ? ORDER BY creatorID, startDate, endDate");
 				select.setInt(1, searchTemplate.getSchedID());
 				}
 			else if (searchTemplate.getCreatorID() != -1)
 				{
+				//Get all schedules created by the given employee.
 				select = conn.getConnection().prepareStatement(
 					"SELECT * FROM `WebAgenda`.`SCHEDULE` WHERE creatorID = ? ORDER BY creatorID, startDate, endDate");
 				select.setInt(1, searchTemplate.getCreatorID());
 				}
 			else if (searchTemplate.getStartDate() != null && searchTemplate.getEndDate() != null)
 				{
+				//Get all schedules that start or end within the given dates.
 				select = conn.getConnection().prepareStatement(
 					"SELECT * FROM `WebAgenda`.`SCHEDULE` WHERE (`startDate` BETWEEN ? AND ?) OR (`endDate` BETWEEN ? AND ?) ORDER BY creatorID, startDate, endDate");
 				select.setDate(1, searchTemplate.getStartDate());
@@ -251,6 +254,56 @@ public class ScheduleBroker extends Broker<Schedule>
 		catch (SQLException e)
 			{
 			throw new DBException("Failed to get schedule(s).", e);
+			}
+		
+		// Return schedule templates that matched search.
+		return found;
+		}
+	
+	/**
+	 * Returns all schedules that a given employee is part of, limited only to
+	 * schedules that have not yet ended, and sorted by the schedule start date.
+	 * 
+	 * @param emp The employee to get the schedules for.
+	 * @return All current and future schedules that the employee is part of.
+	 * @throws DBException if there was an error in getting the schedules from
+	 * 		the database.
+	 * @throws DBDownException if the mysql server is currently down.
+	 */
+	public Schedule[] getEmpSchedules(Employee emp) throws DBException, DBDownException
+		{
+		//Ensure the given emp is not null.
+		if (emp == null)
+			throw new NullPointerException("Emp can not be null. Required to find employee schedules.");
+		
+		if (emp.getEmpID() == -1)
+			throw new NullPointerException("Given employee does not have an employee ID.");
+		
+		Schedule[] found;
+		try
+			{
+			DBConnection conn = this.getConnection();
+			
+			//Get all schedules for the given employee.
+			PreparedStatement select = conn.getConnection().prepareStatement(
+				"SELECT * " +
+				"FROM `WebAgenda`.`SCHEDULE` s JOIN `WebAgenda`.`SHIFT` sh ON s.schedID = sh.schedID " +
+					"JOIN `WebAgenda`.`SHIFTEMP` se ON sh.shiftID = se.shiftID " +
+				"WHERE se.empID = ? AND s.endDate > NOW() " +
+				"GROUP BY s.schedID " +
+				"ORDER BY s.startDate");
+			
+			select.setInt(1, emp.getEmpID());
+			
+			ResultSet schResults = select.executeQuery();
+			found = parseResults(schResults);
+			fillSched(found, conn);
+			
+			conn.setAvailable(true);
+			}
+		catch (SQLException e)
+			{
+			throw new DBException("Failed to get employee schedule(s).", e);
 			}
 		
 		// Return schedule templates that matched search.

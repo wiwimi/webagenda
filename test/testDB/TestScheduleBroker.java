@@ -76,8 +76,7 @@ public class TestScheduleBroker extends TestCase
 		
 		Schedule sched = new Schedule();
 		sched.setCreatorID(12314);
-		sched.setStartDate(Date.valueOf("2010-04-21"));
-		sched.setEndDate(Date.valueOf("2010-04-27"));
+		sched.setStartDate(Date.valueOf("2010-04-25"));
 		sched.getShifts().add(shift2);
 		sched.getShifts().add(shift1);
 		
@@ -214,7 +213,7 @@ public class TestScheduleBroker extends TestCase
 		
 		Schedule st = results[results.length-1];
 		
-		System.out.println("Schedule ID: "+st.getSchedID());
+		System.out.println("Schedule: "+st);
 		
 		Shift[] shiftList = st.getShifts().toArray();
 		
@@ -232,4 +231,54 @@ public class TestScheduleBroker extends TestCase
 		
 		System.out.println("----- END TEST GET -----");
 		}
+	
+	/**
+	 * Test method for {@link persistence.ScheduleBroker#getEmpSchedules(Employee)}.
+	 */
+	@Test
+	public void testGetEmpSchedules()
+		{
+		System.out.println("----- START TEST GET EMP SCHEDULES -----");
+		//Grab the test schedules and print contents.
+		Employee emp = new Employee();
+		emp.setEmpID(38202);
+		
+		
+		Schedule[] results = null;
+		try
+			{
+			results = sb.getEmpSchedules(emp);
+			}
+		catch (DBException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		catch (DBDownException e)
+			{
+			e.printStackTrace();
+			fail();
+			}
+		
+		Schedule st = results[results.length-1];
+		
+		System.out.println("Schedule: "+st);
+		
+		Shift[] shiftList = st.getShifts().toArray();
+		
+		for (Shift shift : shiftList)
+			{
+			System.out.println("\tShift - Day: "+shift.getDay()+" - Time: "+shift.getStartTime() + " to " + shift.getEndTime());
+			
+			Employee[] emps = shift.getEmployees().toArray();
+			
+			for (Employee e : emps)
+				{
+				System.out.println("\t\tApplies to: "+e);
+				}
+			}
+		
+		System.out.println("----- END TEST GET EMP SCHEDULES -----");
+		}
+
 	}
