@@ -236,12 +236,10 @@ public class ScheduleBroker extends Broker<Schedule>
 				select.setDate(3, searchTemplate.getStartDate());
 				select.setDate(4, searchTemplate.getEndDate());
 				}
-			
-			//If nothing is being searched for, return null.
-			if (select == null)
+			else
 				{
-				conn.setAvailable(true);
-				return null;
+				select = conn.getConnection().prepareStatement(
+					"SELECT * FROM `WebAgenda`.`SCHEDULE`");
 				}
 			
 			ResultSet schResults = select.executeQuery();
