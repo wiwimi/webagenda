@@ -1,6 +1,15 @@
+<% 
+if(session.getAttribute("username") == null)
+{
+	response.sendRedirect("../wa_login/login.jsp");
+}
+%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="business.Employee" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 
 <!--Author:Noorin-->
 
@@ -13,12 +22,8 @@
 <link rel="stylesheet" href="CSS/style.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="../CSS/style.css" type="text/css" media="screen" />
 
-<!-- Libraries -->
-<script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>	
-
 <!-- Javascript Files -->
 <script type="text/javascript" src="../lib/js/dashboard.js"></script>
-
 
 <title>Insert title here</title>
 </head>
@@ -26,31 +31,28 @@
 
 <div id="container">
 <div id="header">
-	<div id="headerTitle">Deerfoot Inn and Casino	
+		<div id="headerTitle">Deerfoot Inn and Casino 	</div>
+		
+	<div id="userArea">
+		<h6>Welcome: <%out.println(session.getAttribute("username")); %> | <a href="#">Settings</a> | <a href="../logout">Logout</a></h6>
 	</div>
-<div id="userArea">
-	<h6>Welcome: <%session.getAttribute("username"); %> | <a href="#">Settings</a> | Logout</h6>
-</div>
 </div>
 </div>
 
-<div id="middle">
+<div id="middle"> 
 
 <div id="sidebar">
 	<!-- Gray colour for rectangles -->
 		
 		<div id= "dashboardUpperRectangle" class="upperRectangleCurrent">
-		
 			<div class="sidebarTitle" id="dashboardTitle">Dashboard</div>
-		
 		</div>
 		
 		<!-- White Background for boxes-->
 		
 		<div id = "dashboardLowerRectangle" class = "lowerRectangle">
-			
 			<b> <a href ="../wa_dashboard/dashboard.jsp" > Dashboard  </a> </b> <br>
-			<b> <a href ="" > Reports </a> </b> <br>
+			<b> <a href ="../wa_reports/reports.jsp" > Reports </a> </b> <br>
 		</div>
 		
 		<br>
@@ -58,19 +60,16 @@
 		<!-- Gray colour for rectangles -->
 		
 		<div id = "scheduleUpperRectangle" class="upperRectangle">
-		
 			<div class="sidebarTitle" id="scheduleTitle">Schedule</div>
-		
 		</div>
 		
 		<!-- White Background for boxes-->
 		
 		<div id= "scheduleLowerRectangle" class = "lowerRectangle">
-			
-			<b> <a href ="../wa_schedule/schedule.jsp" > View Schedule  </a> </b> <br>
-			<b> <a href ="../wa_schedule/request_change.jsp" > Request Shift Change </a> </b> <br>
-			<b> <a href ="../wa_schedule/shift_exchange_pool.jsp" > Availability </a> </b> <br>
-			<b> <a href ="../wa_schedule/" > Create schedule </a> </b> <br>
+			<b> <a href ="../wa_schedule/displayScheduleFromTemplate.jsp" > View Schedule  </a> </b> <br>
+			<b> <a href ="../wa_schedule/requestChange.jsp" > Request Shift Change </a> </b> <br>
+			<b> <a href ="../wa_schedule/ShiftExchangePool.jsp" > Availability </a> </b> <br>
+			<b> <a href ="../wa_schedule/createSchedule.jsp" > Create schedule </a> </b> <br>
 		</div>
 		
 		<br>
@@ -78,9 +77,7 @@
 		<!-- Gray colour for rectangles -->
 		
 		<div id ="usersUpperRectangle" class="upperRectangle">
-		
 			<div class="sidebarTitle" id="usersTitle">Users</div>
-		
 		</div>
 		
 		<!-- White Background for boxes-->
@@ -112,9 +109,7 @@
 		<!-- Gray colour for rectangles -->
 		
 		<div id="mailUpperRectangle" class="upperRectangle">
-		
 			<div class="sidebarTitle" id="mailTitle"> Mail</div>
-		
 		</div>
 		
 		<!-- White Background for boxes-->
@@ -125,54 +120,35 @@
 			<b> <a href ="../wa_email/compose.jsp"> Compose </a> </b> <br>
 			<b> <a href ="../wa_email/drafts.jsp"> Drafts </a> </b> <br>
 			<b> <a href =" " > Notifications </a> </b> <br>
-			
-		
 		</div>
 		
 		<br>
-		
 		<div id= "helpUpperRectangle" class="upperRectangle">
-		
 			<div class="sidebarTitle" id="helpTitle">Help</div>
-		
 		</div>
 		
 		<!-- White Background for boxes-->
 		
 		<div id= "helpLowerRectangle" class = "lowerRectangle">
-			
-			<b> <a href =" " > Search Help </a> </b> <br>
+			<b> <a href ="../wa_help/demo.jsp"> Demo </a> </b> <br>
 			<b> <a href ="../wa_help/contactAdmin.jsp">  Contact Admin </a> </b> <br>
-			<b> <a href =" " > Online Help </a> </b> <br>
+			<b> <a href ="http://code.google.com/p/webagenda/w/list" > Online Help </a> </b> <br>
 		</div>
 		
 		<br>
-		
-		
 		<div id= "settingsUpperRectangle" class="upperRectangle">
-		
 			<div class="sidebarTitle" id="settingsTitle">Settings</div>
-		
 		</div>
 		
 		<!-- White Background for boxes-->
 		
 		<div id= "settingsLowerRectangle" class = "lowerRectangle">
-			
-			
-			<b> <a href ="../wa_settings/user_profile.jsp"> User's Profile </a> </b> <br>
-			<b> <a href ="../wa_settings/Password.jsp"> Change Password </a> </b> <br>
-			
+			<b> <a href ="../wa_settings/changePassword.jsp"> Change Password </a> </b> <br>
+			<b> <a href ="../wa_settings/adminProfile.jsp"> User's Profile </a> </b> <br>
 		</div>
-		
-		
 	</div>
+	
 	<!-- End sidebar div -->
 	<!-- End of Header file -->
-	
-	
-
-</body>
-</html>
 </body>
 </html>

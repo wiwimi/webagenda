@@ -11,9 +11,23 @@
 
 <title>Web Agenda- Adding a User</title>
 
-<!--  Includes -->
-<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
-
+    <%
+		Employee user = (Employee) request.getSession().getAttribute("currentEmployee");
+	if (user.getLevel()==99)
+	{
+	%>
+		<!-- Includes -->
+		<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+	<%
+		}
+		else
+		{
+	%>
+			<!--  Includes -->
+		<jsp:include page="../wa_includes/pageLayoutUser.jsp"/>
+	<%
+		}
+	%>
 
 <!-- Libraries -->
 <script type="text/javascript" src ="../lib/js/jquery-1.3.2.min.js"></script>
@@ -53,8 +67,6 @@
 			EmployeeBroker broker = EmployeeBroker.getBroker();
 		
 			int count = broker.getEmpCount();
-			
-			Employee user = (Employee) session.getAttribute("currentEmployee");
 			
 			Employee emp = new Employee();
 			

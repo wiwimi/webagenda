@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%@ page import="business.Employee" %>
 <% 
 if(session.getAttribute("username") != null)
 {
@@ -25,8 +25,23 @@ if(session.getAttribute("username") != null)
 
 <title>Web Agenda - Reports</title>
 
-<!--  Includes -->
-<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+<%
+	Employee e = (Employee) request.getSession().getAttribute("currentEmployee");
+	if (e.getLevel()==99)
+	{
+%>
+	<!--  Includes -->
+	<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+<%
+	}
+	else
+	{
+%>
+		<!--  Includes -->
+	<jsp:include page="../wa_includes/pageLayoutUser.jsp"/>
+<%
+	}
+%>
 </head>
 <body>
 
@@ -57,7 +72,7 @@ if(session.getAttribute("username") != null)
 					<div id="schedulesIcon"> <h3> Schedules</h3> </div> 
 						<ul>
 							<li> <a href="reportSchedules.jsp"> All Schedules </a></li>
-							<li> <a href="reportSchedule.jsp"> A Schedule </a> </li>
+							<li> <a href="reportScheduleDates.jsp"> A Schedule </a> </li>
 						</ul>
 					<div id="positionsIcon"> <h3> Positions </h3> </div>
 						<ul>

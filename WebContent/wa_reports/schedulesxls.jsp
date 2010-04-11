@@ -1,4 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="persistence.ScheduleBroker" %>
 <%@ page import="business.schedule.Location" %>
 <%@ page import="business.schedule.Shift" %>
@@ -11,7 +10,7 @@
 <%@ page contentType="application/vnd.ms-excel" %>
                                                                                                                    
 <%-- Set the content disposition header --%>
-<% response.setHeader("Content-Disposition", "attachment; filename=\"users-report.xls\""); %>                                                                                                           
+<% response.setHeader("Content-Disposition", "attachment; filename=\"schedules-report.xls\""); %>                                                                                                           
 
 <%-- Can't import CSS Files thus the style was explicitly identified below --%>
 <style type="text/css">
@@ -138,59 +137,106 @@ td
 -->
 </style>
 <%
-		Schedule sched = new Schedule();
-		Employee user = (Employee) session.getAttribute("currentEmployee");
-		sched.setCreatorID(user.getEmpID());
-		ScheduleBroker broker = ScheduleBroker.getBroker();
-		Schedule[] reported = broker.get(sched, user);
+	Schedule sched = new Schedule();
+	Employee user = (Employee) session.getAttribute("currentEmployee");
+	sched.setCreatorID(user.getEmpID());
+	ScheduleBroker broker = ScheduleBroker.getBroker();
+
+
+
+	String startDate = request.getParameter("startDate");
+	String endDate = request.getParameter("endDate");
+
+	if(startDate!=null && endDate!=null)
+	{
+		// Reversing the date so that it matches the argument required for sql.Date
+		java.sql.Date sqlStartDate = java.sql.Date.valueOf(startDate);
 		
-		Schedule st = reported[reported.length-1];
+		// Reversing the date so that it matches the argument required for sql.Date
+		java.sql.Date sqlEndDate = java.sql.Date.valueOf(endDate);
+		
+		
+		sched.setStartDate(sqlStartDate);
+		sched.setEndDate(sqlEndDate);
+	}
+
+	Schedule[] reported = broker.get(sched, user);
+	Schedule st = reported[reported.length-1];
+	Shift[] shiftList = st.getShifts().toArray();
 %>
 
-				<div id="reportHeader">
-							<div id="titleHeader">
-								<h2 id="name">Schedules Report:  </h2>
-								<div id="date"><%= new java.util.Date()%></div>
-							</div>
-		</div>
-		<div id="report">
-				     <hr/>
-					<div id="tableArea">
-										<div class="userAdmin">
-											<table class="sortable" id="userTable">
-												<thead class="head">
-													<tr class="headerRow">
-														<th>Start Date : </th>
-														<th> End Date:</th>
-													</tr>
-												</thead>
-												<tfoot class="foot">
-													<tr class="headerRow">
-														<th>Start Date : </th>
-														<th> End Date:</th>
-													</tr>
-												</tfoot>
-												<tbody>
-			<%
+		     <div id="reportHeader">
+				<div id="titleHeader">
+					<h2 id="name">Schedule Report:  </h2>
+					<div id="date"><%= new java.util.Date()%></div>
+				</div>
+		       </div>
+		
+		<%
 				for (int i=0; i<reported.length; i++)
 				{
-					st=reported[i];
-		    %>									
-							  		<tr>
-										<td><%=st.getStartDate()%></td>
-										<td><%= st.getEndDate()%>  </td>
-					  				</tr>
-		    <%
-				}
-		    %>
-		    	  		</tbody>
-					  </table>
-					</div>
-				</div>
-		       </div>  
-		    <div id="endInstructions" class="center">
-				   		End of Report
-				   		<div class="page-break"></div>
-			</div>  
-			  
-	     </div>  
+					
+		%>
+				<div class="sched">
+						<div id="left"><div class="bold"> Start Date:</div><%=st.getStartDate() %> </div>
+						<div id="right"><div class="bold">End Date:</div><%= st.getEndDate()%></div> 
+				    </div> 
+				   <br><br>
+					<div>		
+					
+					  <%
+							for (Shift shift : shiftList)
+							{
+								//System.out.println("\tShift - Day: "+shift.getDay()+" - Time: "+shift.getStartTime() + " to " + shift.getEndTime());
+								
+								Employee[] emps = shift.getEmployees().toArray();
+						%>
+						<div id="report">
+						     <hr/>
+							<div id="tableArea">
+												<div class="userAdmin">
+													<table class="sortable" id="userTable">
+														<thead class="head">
+															<tr class="headerRow">
+																<th>Shift - Day: <%=shift.getDay() %></th>
+																<th colspan=4>Time</th>
+															</tr>
+														</thead>
+														<tfoot class="foot">
+															<tr class="headerRow">
+																<th>Shift - Day: <%=shift.getDay() %></th>
+																<th colspan=4>Time</th>
+															</tr>
+														</tfoot>
+														<tbody>
+															<tr id="colored">
+																<th>Employee</th>
+																<th><%= shift.getStartTime()%> - <%=shift.getEndTime()%></th>
+															</tr>	
+											  		<%
+														  	for (Employee emp : emps)
+															{
+																//System.out.println("\t\tApplies to: "+emp);
+											  		%>
+												  				<tr>
+																	<td><%=emp.getGivenName() %> , <%=emp.getFamilyName() %> </td>
+																	<td id="center"><%= emp.getPrefPosition()%> / <%= emp.getPrefLocation()%>  </td>
+												  				</tr>
+											  		<%
+														  	}
+											  		%>
+											  		    
+														</tbody>
+												</table>
+											</div>
+									</div>
+						       </div>  
+				    <%
+								}
+							  }
+				    %>
+				        </div>
+					 	<div id="endInstructions" class="center">
+						   		End of Report
+						   		<div class="page-break"></div>
+					   </div> 

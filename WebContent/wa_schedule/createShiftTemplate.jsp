@@ -2,7 +2,8 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page import="persistence.ScheduleBroker" %>
 <%@ page import="persistence.ScheduleTemplateBroker" %>
-<%@ page import="business.schedule.*" %>   
+<%@ page import="business.schedule.*" %> 
+<%@ page import="business.Employee" %>
  
 <!-- Author: Mark Hazlett -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -16,8 +17,23 @@
 
 <title>Web Agenda- Schedule</title>
 
-<!-- Includes -->
-<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+<%
+	Employee user = (Employee) request.getSession().getAttribute("currentEmployee");
+	if (user.getLevel()==99)
+	{
+%>
+	<!-- Includes -->
+	<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+<%
+	}
+	else
+	{
+%>
+		<!--  Includes -->
+	<jsp:include page="../wa_includes/pageLayoutUser.jsp"/>
+<%
+	}
+%>
 
 <%@ page import="persistence.ScheduleBroker" %>
 <%@ page import="persistence.ScheduleTemplateBroker" %>

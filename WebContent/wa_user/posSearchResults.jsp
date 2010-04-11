@@ -13,8 +13,23 @@
 
 <title>Web Agenda- Updating Position </title>
 
-<!--  Includes -->
-<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+   <%
+		Employee user = (Employee) request.getSession().getAttribute("currentEmployee");
+	if (user.getLevel()==99)
+	{
+	%>
+		<!-- Includes -->
+		<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+	<%
+		}
+		else
+		{
+	%>
+			<!--  Includes -->
+		<jsp:include page="../wa_includes/pageLayoutUser.jsp"/>
+	<%
+		}
+	%>
 
 <!-- Libraries -->
 <script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
@@ -100,7 +115,6 @@
 							<% 
 							 try
 							 {
-								Employee user = (Employee) session.getAttribute("currentEmployee");
 								PositionBroker broker = PositionBroker.getBroker();
 								Position pos= null;
 								Position[] posArray=null;

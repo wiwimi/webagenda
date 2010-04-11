@@ -1,12 +1,28 @@
 <!-- DOCTYPE is always recommended. see: http://www.quirksmode.org/css/quirksmode.html -->
+<%@ page import="business.Employee" %>
 <!-- Author: Noorin -->
 <html>
 <head>
 
 <title>Web Agenda - Request Shift Change </title>
 	
-	<!-- Includes -->
-	<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+	<%
+	Employee user = (Employee) request.getSession().getAttribute("currentEmployee");
+	if (user.getLevel()==99)
+	{
+	%>
+		<!-- Includes -->
+		<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+	<%
+		}
+		else
+		{
+	%>
+			<!--  Includes -->
+		<jsp:include page="../wa_includes/pageLayoutUser.jsp"/>
+	<%
+		}
+	%>
 	
 	<!-- CSS Files -->
 	<link rel="stylesheet" type="text/css" href="http://static.flowplayer.org/css/tabs.css"/> <!-- tab styling -->

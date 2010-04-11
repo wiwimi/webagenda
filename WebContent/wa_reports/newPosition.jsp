@@ -13,8 +13,23 @@
 
 <title>Web Agenda- Positions</title>
 
-<!--  Includes -->
-<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+<%
+	Employee user = (Employee) request.getSession().getAttribute("currentEmployee");
+	if (user.getLevel()==99)
+	{
+%>
+	<!--  Includes -->
+	<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+<%
+	}
+	else
+	{
+%>
+		<!--  Includes -->
+	<jsp:include page="../wa_includes/pageLayoutUser.jsp"/>
+<%
+	}
+%>
 
 <!-- Libraries -->
 <script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
@@ -47,7 +62,7 @@
 </head>
 <body>
 	<div id="instructions">
-		Fields marked with <em class="asterisk" > *</em> are required.
+		Search a position to report.
 	</div>
 	<% 
 		if(request.getParameter("message") != null)
@@ -174,7 +189,6 @@
 									</tfoot>
 									<tbody>
 										<% 
-											Employee user = (Employee) session.getAttribute("currentEmployee");
 											SkillBroker broker = SkillBroker.getBroker();
 											Skill skill = new Skill("");
 											Skill[] skillArray = broker.get(skill, user);

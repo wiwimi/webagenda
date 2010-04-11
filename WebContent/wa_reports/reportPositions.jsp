@@ -19,8 +19,23 @@ if(session.getAttribute("username") == null)
 
 <title>Web Agenda- Report Positions</title>
 
-<!--  Includes -->
-<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+<%
+	Employee user = (Employee) request.getSession().getAttribute("currentEmployee");
+	if (user.getLevel()==99)
+	{
+%>
+	<!--  Includes -->
+	<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+<%
+	}
+	else
+	{
+%>
+		<!--  Includes -->
+	<jsp:include page="../wa_includes/pageLayoutUser.jsp"/>
+<%
+	}
+%>
 
 <!-- Libraries -->
 <script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
@@ -63,7 +78,6 @@ please generate a report for that particular location.
 			<div class="widgetLowerRectangle" id="passwordLowerRectangle">
 				<%
 					Position pos = new Position("");
-					Employee user = (Employee) session.getAttribute("currentEmployee");
 					PositionBroker broker = PositionBroker.getBroker();
 					broker.initConnectionThread();
 					Position[] reportedArray = broker.get(pos, user);

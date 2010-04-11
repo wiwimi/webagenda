@@ -17,8 +17,23 @@ if(session.getAttribute("username") == null)
 
 <title>Web Agenda- Report Employees</title>
 
-<!--  Includes -->
-<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+<%
+	Employee user = (Employee) request.getSession().getAttribute("currentEmployee");
+	if (user.getLevel()==99)
+	{
+%>
+	<!--  Includes -->
+	<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+<%
+	}
+	else
+	{
+%>
+		<!--  Includes -->
+	<jsp:include page="../wa_includes/pageLayoutUser.jsp"/>
+<%
+	}
+%>
 
 <!-- Libraries -->
 <script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
@@ -57,7 +72,6 @@ if(session.getAttribute("username") == null)
 				<%
 					Employee emp = new Employee();
 					emp.setActive(true);
-					Employee user = (Employee) session.getAttribute("currentEmployee");
 					EmployeeBroker broker = EmployeeBroker.getBroker();
 					broker.initConnectionThread();
 					Employee[] reportedArray = broker.get(emp, user);

@@ -19,8 +19,23 @@ if(session.getAttribute("username") == null)
 
 <title>Web Agenda- Report Location</title>
 
-<!--  Includes -->
-<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+<%
+	Employee user = (Employee) request.getSession().getAttribute("currentEmployee");
+	if (user.getLevel()==99)
+	{
+%>
+	<!--  Includes -->
+	<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+<%
+	}
+	else
+	{
+%>
+		<!--  Includes -->
+	<jsp:include page="../wa_includes/pageLayoutUser.jsp"/>
+<%
+	}
+%>
 
 <!-- Libraries -->
 <script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
@@ -48,24 +63,23 @@ if(session.getAttribute("username") == null)
 					<div class="widgetTitle" id="locationTitle">Report User</div>
 				</div>
 				<div id="printerIcon">
-					<h3></h3>
+					<a href="javascript:window.print()"> </a>
 				</div>
 			<div class="widgetLowerRectangle" id="userLowerRectangle">
+			
 				<%
 					Employee emp = new Employee();
 				    String empId = request.getParameter("empId");
 				    int empIdInt = Integer.parseInt(empId);
 				    emp.setEmpID(empIdInt);
-					Employee user = (Employee) session.getAttribute("currentEmployee");
 					EmployeeBroker broker = EmployeeBroker.getBroker();
 					Employee[] reported = broker.get(emp, user);
 					broker.initConnectionThread();
 					
 				%>
-				
 				<div id="reportHeader">
 					<div id="userName">
-						<h2 id="name"> <%= reported[0].getEmpID()%> </h2>
+						<h2 id="name">Employee ID: <%= reported[0].getEmpID()%> </h2>
 						<div id="date"><%= new java.util.Date()%></div>
 					</div>
 				</div>

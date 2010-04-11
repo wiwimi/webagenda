@@ -16,8 +16,23 @@
 
 <title>Web Agenda- Positions</title>
 
-<!--  Includes -->
-<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+    <%
+		Employee user = (Employee) request.getSession().getAttribute("currentEmployee");
+	if (user.getLevel()==99)
+	{
+	%>
+		<!-- Includes -->
+		<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+	<%
+		}
+		else
+		{
+	%>
+			<!--  Includes -->
+		<jsp:include page="../wa_includes/pageLayoutUser.jsp"/>
+	<%
+		}
+	%>
 
 <!-- Libraries -->
 <script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
@@ -117,9 +132,7 @@
 					   	PositionBroker posBroker = PositionBroker.getBroker();
 						posBroker.initConnectionThread();
 						
-						Employee user = (Employee) session.getAttribute("currentEmployee");
-						
-					    Position[] results = posBroker.get(oldPos, user);
+						Position[] results = posBroker.get(oldPos, user);
 					   	session.setAttribute("oldPos",oldPos);
 					 %>
 					

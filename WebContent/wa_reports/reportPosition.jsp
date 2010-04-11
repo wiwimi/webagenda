@@ -19,8 +19,23 @@ if(session.getAttribute("username") == null)
 
 <title>Web Agenda- Report Position</title>
 
-<!--  Includes -->
-<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+<%
+	Employee user = (Employee) request.getSession().getAttribute("currentEmployee");
+	if (user.getLevel()==99)
+	{
+%>
+	<!--  Includes -->
+	<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+<%
+	}
+	else
+	{
+%>
+		<!--  Includes -->
+	<jsp:include page="../wa_includes/pageLayoutUser.jsp"/>
+<%
+	}
+%>
 
 <!-- Libraries -->
 <script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
@@ -48,14 +63,13 @@ if(session.getAttribute("username") == null)
 					<div class="widgetTitle" id="positionTitle">Report Position</div>
 				</div>
 				<div id="printerIcon">
-					<h3></h3>
+					<a href="javascript:window.print()"> </a>
 				</div>
 			<div class="widgetLowerRectangle" id="positionLowerRectangle">
 			
 				<%
 					String posName = request.getParameter("posName");
 					Position pos = new Position(posName);
-					Employee user = (Employee) session.getAttribute("currentEmployee");
 					PositionBroker broker = PositionBroker.getBroker();
 					Position[] reported = broker.get(pos, user);
 					broker.initConnectionThread();

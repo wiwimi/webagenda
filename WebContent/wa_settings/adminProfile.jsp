@@ -16,8 +16,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Web Agenda- Updating a User</title>
 
-<!--  Includes -->
-<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+<%
+	Employee user = (Employee) request.getSession().getAttribute("currentEmployee");
+	if (user.getLevel()==99)
+	{
+%>
+	<!--  Includes -->
+	<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+<%
+	}
+	else
+	{
+%>
+		<!--  Includes -->
+	<jsp:include page="../wa_includes/pageLayoutUser.jsp"/>
+<%
+	}
+%>
 
 <!-- Libraries -->
 <script type ="text/javascript" src ="../lib/js/jquery-1.3.2.min.js"> </script>
@@ -127,7 +142,7 @@
 				 	String givenName = "", familyName ="", dob ="" , username ="", email="", password ="";
 					
 					EmployeeBroker empBroker = EmployeeBroker.getBroker();
-					Employee user = (Employee)session.getAttribute("currentEmployee");
+					user = (Employee)session.getAttribute("currentEmployee");
 					
 					int empIdInt = user.getEmpID();
 					

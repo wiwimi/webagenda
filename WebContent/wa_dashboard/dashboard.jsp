@@ -27,12 +27,28 @@ if(session.getAttribute("username") != null)
 
 <title>Web Agenda - Dashboard</title>
 
-<!--  Includes -->
-<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+<%
+	Employee e = (Employee) request.getSession().getAttribute("currentEmployee");
+	if (e.getLevel()==99)
+	{
+%>
+	<!--  Includes -->
+	<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+<%
+	}
+	else
+	{
+%>
+		<!--  Includes -->
+	<jsp:include page="../wa_includes/pageLayoutUser.jsp"/>
+<%
+	}
+%>
+
 </head>
 <body>
 <% 
-	Employee e = (Employee) request.getSession().getAttribute("currentEmployee");
+	
 	Notification n = null;
 	try {
 		System.out.println(e);

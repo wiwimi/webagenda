@@ -145,7 +145,7 @@ tbody
 <div id="reportHeader">
 					<div id="titleHeader">
 						<h1 id="name">Deerfoot Users </h1>
-						<h2 id="date"><%= new java.util.Date()%></h2>
+						<div id="date"><%= new java.util.Date()%></div>
 					</div>
 </div>
 				

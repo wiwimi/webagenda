@@ -47,8 +47,23 @@
 
 <title>Web Agenda- Template Schedule</title>
 
-<!-- Includes -->
-<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+<%
+	Employee user = (Employee) request.getSession().getAttribute("currentEmployee");
+	if (user.getLevel()==99)
+	{
+%>
+	<!-- Includes -->
+	<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+<%
+	}
+	else
+	{
+%>
+		<!--  Includes -->
+	<jsp:include page="../wa_includes/pageLayoutUser.jsp"/>
+<%
+	}
+%>
 
 </head>
 <body>
@@ -131,7 +146,6 @@
 					%>
 
 	<%
-		Employee user = (Employee) session.getAttribute("currentEmployee");
 		ScheduleTemplate search = new ScheduleTemplate();
 		search.setCreatorID(user.getEmpID());
 		ScheduleTemplateBroker stb = null;

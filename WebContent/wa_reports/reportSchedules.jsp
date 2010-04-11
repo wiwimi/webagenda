@@ -21,8 +21,23 @@
 
 <title>Web Agenda- All Schedules</title>
 
-<!--  Includes -->
-<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+<%
+	Employee user = (Employee) request.getSession().getAttribute("currentEmployee");
+	if (user.getLevel()==99)
+	{
+%>
+	<!--  Includes -->
+	<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+<%
+	}
+	else
+	{
+%>
+		<!--  Includes -->
+	<jsp:include page="../wa_includes/pageLayoutUser.jsp"/>
+<%
+	}
+%>
 
 <!-- Libraries -->
 <script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
@@ -47,21 +62,36 @@
 <body>
 	<div id="usersWidget" class="fullWidget">
 		<div class="widgetUpperRectangle" id="locationsUpperRectangle">
-					<div class="widgetTitle" id="locationTitle">Report Schedule</div>
+					<div class="widgetTitle" id="locationTitle">Report Schedules</div>
 	   </div>
 		<div id="printerIcon">
 			<h3></h3>
 		</div>
 		<%
 			Schedule sched = new Schedule();
-		   	Employee user = (Employee) session.getAttribute("currentEmployee");
 		   	sched.setCreatorID(user.getEmpID());
 		    ScheduleBroker broker = ScheduleBroker.getBroker();
+			
+			String startDate = request.getParameter("startDate");
+			String endDate = request.getParameter("endDate");
+			
+			if(startDate!=null && endDate!=null)
+			{
+				// Reversing the date so that it matches the argument required for sql.Date
+				java.sql.Date sqlStartDate = java.sql.Date.valueOf(startDate);
+				
+				// Reversing the date so that it matches the argument required for sql.Date
+				java.sql.Date sqlEndDate = java.sql.Date.valueOf(endDate);
+				
+				
+				sched.setStartDate(sqlStartDate);
+				sched.setEndDate(sqlEndDate);
+			}
+			
 			Schedule[] reported = broker.get(sched, user);
-			
 			Schedule st = reported[reported.length-1];
-			
 			Shift[] shiftList = st.getShifts().toArray();
+			
 		%>
 		
 			<div id="printerIcon">
@@ -69,25 +99,24 @@
 			</div>
 				
 			<div id="excelIcon" >
-				<a href="schedulexls.jsp"> </a>
+				<a href="schedulesxls.jsp"> </a>
 			</div>
 		
 		<div class="widgetLowerRectangle" id="reportLowerRectangle">
 		
-		<div id="reportHeader">
-							<div id="titleHeader">
-								<h2 id="name">Schedule Report:  </h2>
-								<div id="date"><%= new java.util.Date()%></div>
-							</div>
+	  <div id="reportHeader">
+				<div id="titleHeader">
+					<h2 id="name">Schedules Report  </h2>
+					<div id="date"><%= new java.util.Date()%></div>
+				</div>
 		</div>
 		
 		<%
 				for (int i=0; i<reported.length; i++)
 				{
-					st=reported[i];
+					
 		%>
-		
-					<div class="sched">
+				<div class="sched">
 						<div id="left"><div class="bold"> Start Date:</div><%=st.getStartDate() %> </div>
 						<div id="right"><div class="bold">End Date:</div><%= st.getEndDate()%></div> 
 				    </div> 
@@ -142,8 +171,8 @@
 									</div>
 						       </div>  
 				    <%
-								} 
-						}
+								}
+							  }
 				    %>
 				        </div>
 					 	<div id="endInstructions" class="center">

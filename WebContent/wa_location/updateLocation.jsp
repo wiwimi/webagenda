@@ -2,6 +2,7 @@
 <%@ page import="persistence.LocationBroker" %>
 <%@ page import="business.schedule.Location" %>
 <%@ page import="java.util.*" %>
+<%@ page import="business.Employee" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- Author: Noorin -->
@@ -11,8 +12,23 @@
 
 <title>WebAgenda -Updating Location- </title>
 
-<!--  Includes -->
-<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+    <%
+		Employee user = (Employee) request.getSession().getAttribute("currentEmployee");
+	if (user.getLevel()==99)
+	{
+	%>
+		<!-- Includes -->
+		<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+	<%
+		}
+		else
+		{
+	%>
+			<!--  Includes -->
+		<jsp:include page="../wa_includes/pageLayoutUser.jsp"/>
+	<%
+		}
+	%>
 
 <!-- Libraries -->
 <script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
