@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import exception.DBDownException;
 import exception.DBException;
+import exception.DayNotSundayException;
 import persistence.EmployeeBroker;
 import persistence.ScheduleBroker;
 import business.Employee;
@@ -37,8 +38,8 @@ public class ScheduleGenerator
 	 * If the system was unable to fully meet the requirements of the template
 	 * (E.g., only 4 people found available to work a shift, but 5 are needed),
 	 * then additional employees that are capable of working the position, but
-	 * have a different preferred will be inserted (grouped by shift and position)
-	 * into the given ArrayList parameter.
+	 * have a different preferred will be inserted (grouped by shift and
+	 * position) into the given ArrayList parameter.
 	 * 
 	 * @param template The schedule template to generate a schedule from.
 	 * @param startDate The start date of the new schedule. Must be a Sunday.
@@ -47,13 +48,15 @@ public class ScheduleGenerator
 	 *           employees.
 	 * @param creator The employee that is generating the new schedule.
 	 * @return A filled schedule containing available employees.
-	 * @throws DBException
+	 * @throws DBException If there is a problem getting information from the
+	 *            database
 	 * @throws DBDownException
+	 * @throws DayNotSundayException
 	 */
 	public static Schedule generateSchedule(ScheduleTemplate template,
 			Date startDate, Location prefLocation,
 			ArrayList<Shift> partialMatches, Employee creator) throws DBException,
-			DBDownException
+			DBDownException, DayNotSundayException
 		{
 		if (template == null)
 			throw new NullPointerException("Template can not be null.");
@@ -72,6 +75,10 @@ public class ScheduleGenerator
 		
 		Calendar cal = Calendar.getInstance();
 		cal.setTimeInMillis(startDate.getTime());
+		
+		if (cal.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY)
+			throw new DayNotSundayException();
+		
 		cal.add(Calendar.DATE, 6);
 		Date endDate = new Date(cal.getTimeInMillis());
 		

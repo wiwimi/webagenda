@@ -18,6 +18,7 @@ import utilities.DoubleLinkedList;
 import exception.DBChangeException;
 import exception.DBDownException;
 import exception.DBException;
+import exception.DayNotSundayException;
 import exception.InvalidPermissionException;
 import business.schedule.Schedule;
 import business.schedule.Shift;
@@ -58,13 +59,17 @@ public class ScheduleBroker extends Broker<Schedule>
 	
 	@Override
 	public boolean create(Schedule createObj, Employee caller)
-			throws DBException, DBDownException, InvalidPermissionException
+			throws DBException, DBDownException, InvalidPermissionException, DayNotSundayException
 		{
 		if (createObj == null)
 			throw new NullPointerException("Can not create, given schedule is null.");
 		
 		Calendar cal = Calendar.getInstance();
 		cal.setTimeInMillis(createObj.getStartDate().getTime());
+		
+		if (cal.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY)
+			throw new DayNotSundayException();
+		
 		cal.add(Calendar.DATE, 6);
 		createObj.setEndDate(new Date(cal.getTimeInMillis()));
 		
