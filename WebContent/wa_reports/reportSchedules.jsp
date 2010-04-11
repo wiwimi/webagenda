@@ -19,7 +19,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<title>Web Agenda- Report Schedules</title>
+<title>Web Agenda- All Schedules</title>
 
 <!--  Includes -->
 <jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
@@ -61,6 +61,7 @@
 			
 			Schedule st = reported[reported.length-1];
 			
+			Shift[] shiftList = st.getShifts().toArray();
 		%>
 		
 			<div id="printerIcon">
@@ -68,59 +69,90 @@
 			</div>
 				
 			<div id="excelIcon" >
-				<a href="schedulesxls.jsp"> </a>
+				<a href="schedulexls.jsp"> </a>
 			</div>
 		
 		<div class="widgetLowerRectangle" id="reportLowerRectangle">
 		
 		<div id="reportHeader">
 							<div id="titleHeader">
-								<h2 id="name">Schedules Report:  </h2>
+								<h2 id="name">Schedule Report:  </h2>
 								<div id="date"><%= new java.util.Date()%></div>
 							</div>
 		</div>
-		<div id="report">
-				     <hr/>
-					<div id="tableArea">
-										<div class="userAdmin">
-											<table class="sortable" id="userTable">
-												<thead class="head">
-													<tr class="headerRow">
-														<th>Start Date : </th>
-														<th> End Date:</th>
-													</tr>
-												</thead>
-												<tfoot class="foot">
-													<tr class="headerRow">
-														<th>Start Date : </th>
-														<th> End Date:</th>
-													</tr>
-												</tfoot>
-												<tbody>
-			<%
+		
+		<%
 				for (int i=0; i<reported.length; i++)
 				{
 					st=reported[i];
-		    %>									
-							  		<tr>
-										<td><%=st.getStartDate()%></td>
-										<td><%= st.getEndDate()%>  </td>
-					  				</tr>
-		    <%
-				}
-		    %>
-		    	  		</tbody>
-					  </table>
-					</div>
-				</div>
-		       </div>  
-		    <div id="endInstructions" class="center">
-				   		End of Report
-				   		<div class="page-break"></div>
-			</div>  
-			  
-	     </div>  
-   </div>  
+		%>
+		
+					<div class="sched">
+						<div id="left"><div class="bold"> Start Date:</div><%=st.getStartDate() %> </div>
+						<div id="right"><div class="bold">End Date:</div><%= st.getEndDate()%></div> 
+				    </div> 
+				   <br><br>
+					<div>		
+					
+					  <%
+							for (Shift shift : shiftList)
+							{
+								//System.out.println("\tShift - Day: "+shift.getDay()+" - Time: "+shift.getStartTime() + " to " + shift.getEndTime());
+								
+								Employee[] emps = shift.getEmployees().toArray();
+						%>
+						<div id="report">
+						     <hr/>
+							<div id="tableArea">
+												<div class="userAdmin">
+													<table class="sortable" id="userTable">
+														<thead class="head">
+															<tr class="headerRow">
+																<th>Shift - Day: <%=shift.getDay() %></th>
+																<th colspan=4>Time</th>
+															</tr>
+														</thead>
+														<tfoot class="foot">
+															<tr class="headerRow">
+																<th>Shift - Day: <%=shift.getDay() %></th>
+																<th colspan=4>Time</th>
+															</tr>
+														</tfoot>
+														<tbody>
+															<tr id="colored">
+																<th>Employee</th>
+																<th><%= shift.getStartTime()%> - <%=shift.getEndTime()%></th>
+															</tr>	
+											  		<%
+														  	for (Employee emp : emps)
+															{
+																//System.out.println("\t\tApplies to: "+emp);
+											  		%>
+												  				<tr>
+																	<td><%=emp.getGivenName() %> , <%=emp.getFamilyName() %> </td>
+																	<td id="center"><%= emp.getPrefPosition()%> / <%= emp.getPrefLocation()%>  </td>
+												  				</tr>
+											  		<%
+														  	}
+											  		%>
+											  		    
+														</tbody>
+												</table>
+											</div>
+									</div>
+						       </div>  
+				    <%
+								} 
+						}
+				    %>
+				        </div>
+					 	<div id="endInstructions" class="center">
+						   		End of Report
+						   		<div class="page-break"></div>
+					   </div>  
+					  
+			     </div>  
+		   </div>  
               
 <div id="footer"></div>
 </body>
