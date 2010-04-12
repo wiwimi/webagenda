@@ -3,31 +3,73 @@
 package Persistence;
 
 /**
- * Broker interface, determining global functions that all broker classes should contain.  Provides functionality for retrieving, creating, updating and deleting data from the database. 
- */
+ * Broker interface, determining global functions that all broker classes should contain.  Provides functionality for retrieving, creating, updating and deleting data from the database. */
 public interface Broker {
-    /**
-     * Retrieves the type of object from the database. The search criteria is given as a new object of that type, with all attributes empty except for those that will be used to match results.  This allows for single objects to be retrieved, or any combination of search terms to be used through the same command. 
-     */
-    Object[] get(Object parameter0);
+    Broker getBroker();
 
     /**
-     * Applies any changes in the object to the database, or saves it as a new record if it does not yet exist. 
+     * Accepts a newly made Business Object, and creates its equivalent record within the database. 
+     */
+    boolean create();
+
+    /**
+     * Retrieves Business Objects from the database and return them given a set of search parameters.
+     */
+    BusinessObject[] get(Object parameter0);
+
+    /**
+     * Applies all changes to the updated object to its equivalent record within the database. The updated object must have originally been retrieved from the database.
      */
     boolean update(Object parameter0);
 
     /**
-     * Deletes the record for the given object from the database. 
+     * Removes the record from the database that is equivalent to the given object. The object to be deleted must have originally been retrieved from the database.
      */
     boolean delete(Object parameter0);
 
     /**
-     * Opens the broker and prepares it's connection to the database.  Once complete, the broker can be used to interact with the database. 
+     * Parses a ResultSet returned by a select query back into cachable objects. The original search must have used a "SELECT *" so that full employee objects are in the ResultSet. 
      */
-    boolean openBroker();
+    BusinessObject[] parseResults();
 
     /**
-     * Closes the broker and it's accompanying connection to the database, ensuring all pending transactions are completed first. 
+     * Grabs a connection from the DBConnection wrapper class that also monitors how many connections this Broker object has retrieved in total; One connection instance is available at a minimum and this will add any and all created connection to a list where they can be managed. 
      */
-    boolean closeBroker();
+    DBConnection getConnection();
+
+    /**
+     * Initializes the thread that manages old and unused connections in the DBConnection-based list. Creates the Broker Connection Monitor object which runs in the background as a thread. 
+     */
+    void initConnectionThread();
+
+    /**
+     * Stops the Broker Connection Monitor from running. 
+     */
+    void stopConnectionThread();
+
+    /**
+     * Includes database information for multiple db connectivity, BrokerThreads and associated methods for fetching results from the database and managing the threads. This should be inherited by all broker classes. 
+     */
+    DBConnection[] connections = 0;
+
+    /**
+     * Monitor thread for checking broker objects that are inactive, unused and consuming memory needlessly. 
+     */
+    Broker.BrokerConMonitor bcon_mon = 0;
+
+    /**
+     * Minimum connections for Broker object, must be 1 or higher to be valid. This prevents NullPointerExceptions when all connections are removed from the DoubleLinkedList. 
+     */
+    int int_min_connections = 0;
+
+    /**
+     * Boolean used to determine if the BrokerConMonitor should continue to run. 
+     */
+    boolean runConnectionThread = 0;
+
+    /**
+     * Class to monitor a list of db connections for each broker, closing them when they are old and unused within a certain time period (default is 5 minutes) to prevent overuse of memory. 
+     */
+    static class BrokerConMonitor {
+    }
 }

@@ -8,4 +8,32 @@ import Business.Position;
  * Provides functionality for retrieving, creating, updating and deleting Position data from the database. 
  */
 public class PositionBroker implements Broker {
+    /**
+     * Must be used to get a Broker, ensures that singleton pattern is enforced. 
+     */
+    public PositionBroker getBroker() {
+    }
+
+    /**
+     * Method to parse and return all the skills that would be associated to positions that would be returned. 
+     */
+    private Skills[] parseSkills() {
+    }
+
+    /**
+     * Method returns a completed list of skills (adds descriptions, does not throw exception if executed without error.) - Checks to ensure that skills exist in skill broker. 
+     */
+    private Skill[] ensureSkillsExist() {
+    }
+
+    /**
+     * Checks whether the desired objects exist as expected before modifying them. The new Position object can be null when specifying a delete(), otherwise is considered an update(). A null old position will throw an error. 
+     */
+    public void raceCondition() {
+    }
+
+    /**
+     * Static representation of the broker. Initialized the first time getBroker is called. 
+     */
+    private PositionBroker pbrok;
 }

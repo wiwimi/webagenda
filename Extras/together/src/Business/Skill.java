@@ -5,7 +5,7 @@ package Business;
 /**
  * Holds all information for a skill, matching the structure of skills in the database. Skills are used to record what skills an employee has both within and outside of their position, and positions may have a set of skills that are required.
  */
-public class Skill {
+public class Skill implements BusinessObject {
     /**
      * The name of the skill which is to be attributed to the employees of WebAgenda. Non-unique skill names will cause conflicts so only unique names can be used.
      */

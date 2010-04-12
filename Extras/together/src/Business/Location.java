@@ -5,7 +5,7 @@ package Business;
 /**
  * Locations are used to keep track of specific real-world places.  An employee may have a preferred location to work in, used by the schedule and report generators.
  */
-public class Location {
+public class Location implements BusinessObject {
     /**
      * The name of the location which is to be used by other components of WebAgenda. Non-unique location names will cause conflicts so only unique names can be used.
      */

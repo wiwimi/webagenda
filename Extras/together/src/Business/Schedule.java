@@ -7,7 +7,7 @@ package Business;
  * 
  * May also be used as a template when searching for schedules in the system.
  */
-public class Schedule {
+public class Schedule implements BusinessObject {
     /**
      * The internal DB ID of the schedule.  This is for broker use only. 
      */

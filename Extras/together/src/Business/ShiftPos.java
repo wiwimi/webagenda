@@ -5,7 +5,7 @@ package Business;
 /**
  * Holds information on a position required by a shift template, and the number of employees that are required for that position.
  */
-public class ShiftPos {
+public class ShiftPos implements BusinessObject {
     /**
      * The ID of the shift template that the shift position belongs to. 
      */

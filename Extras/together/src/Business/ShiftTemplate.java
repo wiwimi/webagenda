@@ -5,7 +5,7 @@ package Business;
 /**
  * Defines the start and end time of a shift for a set of required positions.
  */
-public class ShiftTemplate {
+public class ShiftTemplate implements BusinessObject {
     /**
      * The internal DB ID of the shift template. This is for broker use only. 
      */

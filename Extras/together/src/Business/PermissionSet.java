@@ -5,7 +5,7 @@ package Business;
 /**
  * All employees have a set of permission settings that determine what levels of access they have within the system. 
  */
-public class PermissionSet {
+public class PermissionSet implements BusinessObject {
     /**
      * Permission level value that depicts the authority of an Employee over other employees. When a higher level employee makes a decision, it cannot be overruled by one with a lower permission. Basic heirachical permission functionality.
      */

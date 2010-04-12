@@ -5,7 +5,7 @@ package Business;
 /**
  * An object that determines the influences that affect Schedule Templates, such as a minimum age rule for example. 
  */
-public class Rule {
+public class Rule implements BusinessObject {
     /**
      * Id of the Rule object 
      */

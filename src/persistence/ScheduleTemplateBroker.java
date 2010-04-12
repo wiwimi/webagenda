@@ -603,7 +603,7 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 	
 	/**
 	 * Fetches all shift templates and shift position objects from the database
-	 * for each shiftTemplate.
+	 * for each ScheduleTemplate.
 	 * 
 	 * @param templates
 	 * @param conn

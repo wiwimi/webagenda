@@ -6,5 +6,50 @@ package Persistence;
  * Provides functionality for retrieving, creating, updating and deleting Employee data from the database.
  */
 public class EmployeeBroker implements Broker {
-    public Employee[] getSupervisorEmps(Employee parameter0){}
+    /**
+     * Must be used to get a Broker, ensures that singleton pattern is enforced. 
+     */
+    public EmployeeBroker getBroker() {
+    }
+
+    /**
+     * Gets the current total number of active employees stored within the system. 
+     */
+    public int getEmpCount() {
+    }
+
+    /**
+     * Updates the last login time of the given employee to the time contained within the given timestamp. 
+     */
+    public boolean updateLastLoginTime() {
+    }
+
+    /**
+     * Validates the given username and password by attempting to retrieve a matching employee from the database. If found, the employee object will be returned, otherwise an exception will be thrown. 
+     */
+    public boolean tryLogin() {
+    }
+
+    /**
+     * Attempts to change the password of the currently logged in user. 
+     */
+    public boolean changePassword() {
+    }
+
+    /**
+     * Resets the password of a target username to a new value, regardless of what the old password was. This method should only be used by supervisors or admins. 
+     */
+    public boolean resetPassword() {
+    }
+
+    /**
+     * Checks if an employee object is an exact match with an employee record in the database. 
+     */
+    public boolean raceCheck() {
+    }
+
+    /**
+     * Static representation of the broker. Initialized the first time getBroker is called. 
+     */
+    private EmployeeBroker employeeBroker;
 }

@@ -137,6 +137,13 @@
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
             </reference>
+            <reference referencedUin="jdt:l_impl:src:Business.Employee:Business.BusinessObject">
+                <property name="sourceAnchor" value="445,602"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="740,602"/>
+                <property name="$hidden" value="true"/>
+                <property name="@$hidden" value="true"/>
+            </reference>
             <reference referencedUin="jdt:l_ast:src:Business.Employee:lnkPermissionLevel">
                 <property name="sourceAnchor" value="300,480"/>
                 <property name="bendpoints" value="260,480,260,410"/>
@@ -165,6 +172,13 @@
             <property name="bounds" value="100,50,136,187"/>
             <reference referencedUin="jdt:e_field:src:Business.Notification.message">
                 <property name="bounds" value="70,700,129,16"/>
+            </reference>
+            <reference referencedUin="jdt:l_impl:src:Business.Notification:Business.BusinessObject">
+                <property name="sourceAnchor" value="206,237"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="775,590"/>
+                <property name="$hidden" value="true"/>
+                <property name="@$hidden" value="true"/>
             </reference>
         </reference>
         <reference df-class-name="reference32" referencedUin="jdt:e_class:src:Business.Schedule">
@@ -219,6 +233,13 @@
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
             </reference>
+            <reference referencedUin="jdt:l_impl:src:Business.Schedule:Business.BusinessObject">
+                <property name="sourceAnchor" value="628,165"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="789,590"/>
+                <property name="$hidden" value="true"/>
+                <property name="@$hidden" value="true"/>
+            </reference>
         </reference>
         <reference df-class-name="reference33" referencedUin="jdt:e_class:src:Business.ShiftTemplate">
             <property name="$shortcutReference" value="true"/>
@@ -230,10 +251,6 @@
                 <property name="sourceAnchor" value="624,433"/>
                 <property name="bendpoints" value=""/>
                 <property name="targetAnchor" value="624,510"/>
-                <reference referencedUin="linklabel:supplierCardinality:jdt:l_ast:src:Business.ShiftTemplate:positions">
-                    <property name="bounds" value="0,0,26,16"/>
-                    <property name="bounds_setted_by_user" value="true"/>
-                </reference>
                 <property name="$hidden" value="true"/>
                 <property name="@$hidden" value="true"/>
             </reference>
@@ -258,6 +275,13 @@
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
             </reference>
+            <reference referencedUin="jdt:l_impl:src:Business.ShiftTemplate:Business.BusinessObject">
+                <property name="sourceAnchor" value="655,551"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="768,590"/>
+                <property name="$hidden" value="true"/>
+                <property name="@$hidden" value="true"/>
+            </reference>
         </reference>
         <reference df-class-name="reference34" referencedUin="jdt:e_class:src:Business.Location">
             <property name="$shortcutReference" value="true"/>
@@ -265,12 +289,26 @@
             <reference referencedUin="jdt:e_field:src:Business.Location.locName">
                 <property name="bounds" value="190,-30,108,16"/>
             </reference>
+            <reference referencedUin="jdt:l_impl:src:Business.Location:Business.BusinessObject">
+                <property name="sourceAnchor" value="192,710"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="740,669"/>
+                <property name="$hidden" value="true"/>
+                <property name="@$hidden" value="true"/>
+            </reference>
         </reference>
         <reference df-class-name="reference35" referencedUin="jdt:e_class:src:Business.Skill">
             <property name="$shortcutReference" value="true"/>
             <property name="bounds" value="269,770,138,107"/>
             <reference referencedUin="jdt:e_field:src:Business.Skill.skillName">
                 <property name="bounds" value="71,-80,108,16"/>
+            </reference>
+            <reference referencedUin="jdt:l_impl:src:Business.Skill:Business.BusinessObject">
+                <property name="sourceAnchor" value="397,770"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="765,688"/>
+                <property name="$hidden" value="true"/>
+                <property name="@$hidden" value="true"/>
             </reference>
         </reference>
         <reference df-class-name="reference4" referencedUin="jdt:e_class:src:Business.Shift">
@@ -289,10 +327,6 @@
                 <property name="sourceAnchor" value="351,163"/>
                 <property name="bendpoints" value=""/>
                 <property name="targetAnchor" value="425,300"/>
-                <reference referencedUin="linklabel:supplierCardinality:jdt:l_ast:src:Business.Shift:employees">
-                    <property name="bounds" value="0,0,26,16"/>
-                    <property name="bounds_setted_by_user" value="true"/>
-                </reference>
                 <property name="$hidden" value="true"/>
                 <property name="@$hidden" value="true"/>
             </reference>
@@ -338,6 +372,13 @@
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
             </reference>
+            <reference referencedUin="jdt:l_impl:src:Business.Shift:Business.BusinessObject">
+                <property name="sourceAnchor" value="383,221"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="779,590"/>
+                <property name="$hidden" value="true"/>
+                <property name="@$hidden" value="true"/>
+            </reference>
         </reference>
         <reference df-class-name="reference1" referencedUin="jdt:e_class:src:Business.PermissionSet">
             <property name="$shortcutReference" value="true"/>
@@ -353,6 +394,13 @@
             </reference>
             <reference referencedUin="jdt:e_field:src:Business.PermissionSet.canReadSched">
                 <property name="bounds" value="20,-10,193,16"/>
+            </reference>
+            <reference referencedUin="jdt:l_impl:src:Business.PermissionSet:Business.BusinessObject">
+                <property name="sourceAnchor" value="210,626"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="740,626"/>
+                <property name="$hidden" value="true"/>
+                <property name="@$hidden" value="true"/>
             </reference>
         </reference>
         <reference df-class-name="reference3" referencedUin="jdt:e_class:src:Business.Position">
@@ -381,6 +429,13 @@
             </reference>
             <reference referencedUin="jdt:e_field:src:Business.Position.positionDescription">
                 <property name="bounds" value="20,-40,154,16"/>
+            </reference>
+            <reference referencedUin="jdt:l_impl:src:Business.Position:Business.BusinessObject">
+                <property name="sourceAnchor" value="690,760"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="791,688"/>
+                <property name="$hidden" value="true"/>
+                <property name="@$hidden" value="true"/>
             </reference>
         </reference>
         <reference df-class-name="reference5" referencedUin="jdt:e_class:src:Business.ScheduleTemplate">
@@ -420,10 +475,6 @@
                 <property name="sourceAnchor" value="630,281"/>
                 <property name="bendpoints" value=""/>
                 <property name="targetAnchor" value="630,330"/>
-                <reference referencedUin="linklabel:supplierCardinality:jdt:l_ast:src:Business.ScheduleTemplate:shiftTemps">
-                    <property name="bounds" value="0,0,26,16"/>
-                    <property name="bounds_setted_by_user" value="true"/>
-                </reference>
                 <property name="$hidden" value="true"/>
                 <property name="@$hidden" value="true"/>
             </reference>
@@ -448,6 +499,13 @@
                     <property name="bounds" value="450,350,15,16"/>
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
+            </reference>
+            <reference referencedUin="jdt:l_impl:src:Business.ScheduleTemplate:Business.BusinessObject">
+                <property name="sourceAnchor" value="676,319"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="782,590"/>
+                <property name="$hidden" value="true"/>
+                <property name="@$hidden" value="true"/>
             </reference>
         </reference>
         <reference df-class-name="reference6" referencedUin="jdt:e_class:src:Business.ShiftPos">
@@ -481,6 +539,13 @@
                 <property name="$hidden" value="true"/>
                 <property name="@$hidden" value="true"/>
             </reference>
+            <reference referencedUin="jdt:l_impl:src:Business.ShiftPos:Business.BusinessObject">
+                <property name="sourceAnchor" value="690,639"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="740,639"/>
+                <property name="$hidden" value="true"/>
+                <property name="@$hidden" value="true"/>
+            </reference>
         </reference>
         <reference df-class-name="reference" referencedUin="jdt:e_class:src:Business.Rule">
             <property name="$shortcutReference" value="true"/>
@@ -510,6 +575,17 @@
                     <property name="bounds_setted_by_user" value="true"/>
                 </reference>
             </reference>
+            <reference referencedUin="jdt:l_impl:src:Business.Rule:Business.BusinessObject">
+                <property name="sourceAnchor" value="796,539"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="796,590"/>
+                <property name="$hidden" value="true"/>
+                <property name="@$hidden" value="true"/>
+            </reference>
+        </reference>
+        <reference df-class-name="reference7" referencedUin="jdt:e_class:src:Business.BusinessObject">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="740,590,102,98"/>
         </reference>
         <property name="$defaultDiagram" value=""/>
     </view>

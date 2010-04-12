@@ -5,7 +5,7 @@ package Business;
 /**
  * Represents a Position that an employee can work. It is used extensively in Scheduling for auto-generation; it places employees that can work certain positions in those positions that are required for a completely schedule to be generated.
  */
-public class Position {
+public class Position implements BusinessObject {
     /**
      * This attribute represents the name of the position. It is unique and should accurately represent the the position.
      */

@@ -5,7 +5,7 @@ package Business;
 /**
  * Defines the the day of the week, start time and end time of a shift for a set of employees.
  */
-public class Shift {
+public class Shift implements BusinessObject {
     /**
      * The internal DB ID of the shift. This is for broker use only. 
      */

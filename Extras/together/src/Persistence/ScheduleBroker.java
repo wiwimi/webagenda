@@ -5,7 +5,62 @@ package Persistence;
 import Business.Schedule;
 
 /**
- * Provides functionality for retrieving, creating, updating and deleting Schedule data from the database.
+ * Provides functionality for adding, updating and deleting schedules in the database. This includes shifts and shift employees.
  */
 public class ScheduleBroker implements Broker {
+    /**
+     * Must be used to get a Broker, ensures that singleton pattern is enforced. 
+     */
+    public ScheduleBroker getBroker() {
+    }
+
+    /**
+     * Returns all schedules that a given employee is part of, limited only to schedules that have not yet ended, and sorted by the schedule start date. 
+     */
+    public Schedule[] getEmpSchedules() {
+    }
+
+    /**
+     * Steps through a schedule and sorts all shifts, as well as all employees within them, to match the order that would be returned by the database. 
+     */
+    public void sortSchedule() {
+    }
+
+    /**
+     * Attempts to create shift templates out of a given result set. 
+     */
+    public Shift[] parseShifts() {
+    }
+
+    /**
+     * Used to automatically notify employees if they have been added to a new schedule, removed from a schedule, or their schedule has been updated. 
+     */
+    private boolean notifyScheduleEmps() {
+    }
+
+    /**
+     * Fetches all shift templates and shift position objects from the database for each shiftTemplate. 
+     */
+    private void fillSched() {
+    }
+
+    /**
+     * Compares a given schedule template against the database, ensuring that it has not been changed by another user. This is used check for race conditions when updating or deleting schedule templates in the database. 
+     */
+    private boolean raceCheck() {
+    }
+
+    /**
+     * Inserts the given shift, using the given connection, resultSet, and schedule ID. 
+     */
+    private void insertShift() {
+    }
+
+    /**
+     * Attempts to insert an array of shift employees into the database. 
+     */
+    private void insertShiftEmployees() {
+    }
+
+    private ScheduleBroker broker_schedule;
 }

@@ -5,7 +5,7 @@ package Business;
 /**
  * Holds all information for an employee, matching a record in the database.
  */
-public class Employee {
+public class Employee implements BusinessObject {
     /**
      * Identifier for the user. The name employee does not reflect their position. Cannot be negative in the database.
      */

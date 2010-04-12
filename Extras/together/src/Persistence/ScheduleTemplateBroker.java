@@ -6,4 +6,56 @@ package Persistence;
  * Provides functionality for retrieving, creating, updating and deleting ScheduleTemplate data from the database. 
  */
 public class ScheduleTemplateBroker implements Broker {
+    /**
+     * Must be used to get a Broker, ensures that singleton pattern is enforced. 
+     */
+    public ScheduleTemplateBroker getBroker() {
+    }
+
+    /**
+     * Steps through a schedule templates and sorts all shift templates, as well as all shift positions within them, to match the order that would be returned by the database. 
+     */
+    public void sortScheduleTemplate() {
+    }
+
+    /**
+     * Attempts to create shift templates out of a given result set. 
+     */
+    public ShiftTemplate[] parseShiftTemps() {
+    }
+
+    /**
+     * Parses a result set into an array of shift positions. 
+     */
+    public ShiftPosition[] parseShiftPos() {
+    }
+
+    /**
+     * Fetches all shift templates and shift position objects from the database for each ScheduleTemplate. 
+     */
+    private void fillSchedTemp() {
+    }
+
+    /**
+     * Compares a given schedule template against the database, ensuring that it has not been changed by another user.  This is used check for race conditions when updating or deleting schedule templates in the database. 
+     */
+    private boolean raceCheck() {
+    }
+
+    /**
+     * Inserts the given shift template, using the given connection, resultSet, and schedule ID. 
+     */
+    private void insertShiftTemplate() {
+    }
+
+    /**
+     * Attempts to insert an array of shift positions into the database. 
+     */
+    private void insertShiftPositions() {
+    }
+
+    /**
+     * Static representation of the broker. Initialized the first time getBroker is called. 
+     */
+    private ScheduleTemplateBroker stb;
 }

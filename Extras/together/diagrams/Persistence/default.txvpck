@@ -10,104 +10,151 @@
         <property name="@__options" value=""/>
         <reference df-class-name="reference" referencedUin="jdt:e_class:src:Persistence.ScheduleBroker">
             <property name="$shortcutReference" value="true"/>
-            <property name="@hideAttributes" value=""/>
-            <property name="bounds" value="80,10,130,80"/>
+            <property name="bounds" value="60,10,190,230"/>
             <property name="bounds_setted_by_user" value="true"/>
             <reference referencedUin="jdt:l_impl:src:Persistence.ScheduleBroker:Persistence.Broker">
-                <property name="sourceAnchor" value="210,80"/>
-                <property name="bendpoints" value="290,80"/>
-                <property name="targetAnchor" value="290,140"/>
+                <property name="sourceAnchor" value="250,171"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="300,171"/>
+            </reference>
+            <reference referencedUin="jdt:l_ast:src:Persistence.ScheduleBroker:broker_schedule">
+                <property name="sourceAnchor" value="230,240"/>
+                <property name="bendpoints" value="230,260,280,260,280,220"/>
+                <property name="targetAnchor" value="250,220"/>
                 <property name="bounds_setted_by_user" value="true"/>
             </reference>
         </reference>
         <reference df-class-name="reference8" referencedUin="jdt:e_class:src:Persistence.EmployeeBroker">
             <property name="$shortcutReference" value="true"/>
-            <property name="@hideAttributes" value=""/>
-            <property name="bounds" value="470,10,194,75"/>
+            <property name="bounds" value="530,10,200,190"/>
             <reference referencedUin="jdt:l_impl:src:Persistence.EmployeeBroker:Persistence.Broker">
-                <property name="sourceAnchor" value="470,80"/>
-                <property name="bendpoints" value="370,80"/>
-                <property name="targetAnchor" value="370,140"/>
+                <property name="sourceAnchor" value="530,170"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="500,170"/>
+            </reference>
+            <reference referencedUin="jdt:l_ast:src:Persistence.EmployeeBroker:employeeBroker">
+                <property name="sourceAnchor" value="712,200"/>
+                <property name="bendpoints" value="712,228,758,228,758,182"/>
+                <property name="targetAnchor" value="730,182"/>
                 <property name="bounds_setted_by_user" value="true"/>
             </reference>
         </reference>
         <reference df-class-name="reference9" referencedUin="jdt:e_class:src:Persistence.NotificationBroker">
             <property name="$shortcutReference" value="true"/>
-            <property name="@hideAttributes" value=""/>
-            <property name="bounds" value="470,190,115,72"/>
+            <property name="bounds" value="530,380,174,94"/>
+            <reference referencedUin="jdt:l_ast:src:Persistence.NotificationBroker:nbrok">
+                <property name="sourceAnchor" value="686,474"/>
+                <property name="bendpoints" value="686,502,732,502,732,456"/>
+                <property name="targetAnchor" value="704,456"/>
+                <property name="bounds_setted_by_user" value="true"/>
+            </reference>
             <reference referencedUin="jdt:l_impl:src:Persistence.NotificationBroker:Persistence.Broker">
-                <property name="sourceAnchor" value="470,210"/>
+                <property name="sourceAnchor" value="530,407"/>
                 <property name="bendpoints" value=""/>
-                <property name="targetAnchor" value="396,210"/>
+                <property name="targetAnchor" value="500,407"/>
             </reference>
         </reference>
-        <reference df-class-name="reference2" referencedUin="jdt:e_class:src:Persistence.PermissionSetBroker">
+        <reference df-class-name="reference2" referencedUin="jdt:e_class:src:Persistence.PermissionBroker">
             <property name="$shortcutReference" value="true"/>
-            <property name="@hideAttributes" value=""/>
-            <property name="bounds" value="470,100,135,72"/>
-            <reference referencedUin="jdt:l_impl:src:Persistence.PermissionSetBroker:Persistence.Broker">
-                <property name="sourceAnchor" value="470,160"/>
+            <property name="bounds" value="530,230,181,110"/>
+            <reference referencedUin="jdt:l_ast:src:Persistence.PermissionBroker:pbrok">
+                <property name="sourceAnchor" value="689,340"/>
+                <property name="bendpoints" value="689,372,743,372,743,318"/>
+                <property name="targetAnchor" value="711,318"/>
+                <property name="bounds_setted_by_user" value="true"/>
+            </reference>
+            <reference referencedUin="jdt:l_impl:src:Persistence.PermissionBroker:Persistence.Broker">
+                <property name="sourceAnchor" value="530,265"/>
                 <property name="bendpoints" value=""/>
-                <property name="targetAnchor" value="396,160"/>
+                <property name="targetAnchor" value="500,265"/>
             </reference>
         </reference>
         <reference df-class-name="reference1" referencedUin="jdt:e_class:src:Persistence.LocationBroker">
             <property name="$shortcutReference" value="true"/>
-            <property name="@hideAttributes" value=""/>
-            <property name="bounds" value="470,370,100,72"/>
+            <property name="bounds" value="530,520,183,94"/>
             <reference referencedUin="jdt:l_impl:src:Persistence.LocationBroker:Persistence.Broker">
-                <property name="sourceAnchor" value="470,390"/>
-                <property name="bendpoints" value="410,390"/>
-                <property name="targetAnchor" value="350,295"/>
+                <property name="sourceAnchor" value="530,530"/>
+                <property name="bendpoints" value="500,530"/>
+                <property name="targetAnchor" value="450,458"/>
+                <property name="bounds_setted_by_user" value="true"/>
+            </reference>
+            <reference referencedUin="jdt:l_ast:src:Persistence.LocationBroker:locationBroker">
+                <property name="sourceAnchor" value="695,614"/>
+                <property name="bendpoints" value="695,642,741,642,741,596"/>
+                <property name="targetAnchor" value="713,596"/>
                 <property name="bounds_setted_by_user" value="true"/>
             </reference>
         </reference>
         <reference df-class-name="reference3" referencedUin="jdt:e_class:src:Persistence.PositionBroker">
             <property name="$shortcutReference" value="true"/>
-            <property name="@hideAttributes" value=""/>
-            <property name="bounds" value="110,200,97,72"/>
+            <property name="bounds" value="100,510,158,142"/>
+            <reference referencedUin="jdt:l_ast:src:Persistence.PositionBroker:pbrok">
+                <property name="sourceAnchor" value="240,652"/>
+                <property name="bendpoints" value="240,680,286,680,286,634"/>
+                <property name="targetAnchor" value="258,634"/>
+                <property name="bounds_setted_by_user" value="true"/>
+            </reference>
             <reference referencedUin="jdt:l_impl:src:Persistence.PositionBroker:Persistence.Broker">
-                <property name="sourceAnchor" value="207,250"/>
-                <property name="bendpoints" value=""/>
-                <property name="targetAnchor" value="260,250"/>
+                <property name="sourceAnchor" value="258,520"/>
+                <property name="bendpoints" value="300,520"/>
+                <property name="targetAnchor" value="354,458"/>
+                <property name="bounds_setted_by_user" value="true"/>
             </reference>
         </reference>
         <reference df-class-name="reference4" referencedUin="jdt:e_class:src:Persistence.ScheduleTemplateBroker">
             <property name="$shortcutReference" value="true"/>
-            <property name="@hideAttributes" value=""/>
-            <property name="bounds" value="50,110,157,72"/>
+            <property name="bounds" value="60,270,200,206"/>
+            <reference referencedUin="jdt:l_ast:src:Persistence.ScheduleTemplateBroker:stb">
+                <property name="sourceAnchor" value="242,476"/>
+                <property name="bendpoints" value="242,504,288,504,288,458"/>
+                <property name="targetAnchor" value="260,458"/>
+                <property name="bounds_setted_by_user" value="true"/>
+            </reference>
             <reference referencedUin="jdt:l_impl:src:Persistence.ScheduleTemplateBroker:Persistence.Broker">
-                <property name="sourceAnchor" value="207,166"/>
+                <property name="sourceAnchor" value="260,364"/>
                 <property name="bendpoints" value=""/>
-                <property name="targetAnchor" value="260,166"/>
+                <property name="targetAnchor" value="300,364"/>
             </reference>
         </reference>
         <reference df-class-name="reference5" referencedUin="jdt:e_class:src:Persistence.SkillBroker">
             <property name="$shortcutReference" value="true"/>
-            <property name="@hideAttributes" value=""/>
-            <property name="bounds" value="120,290,83,72"/>
-            <reference referencedUin="jdt:l_impl:src:Persistence.SkillBroker:Persistence.Broker">
-                <property name="sourceAnchor" value="203,350"/>
-                <property name="bendpoints" value="260,350"/>
-                <property name="targetAnchor" value="305,295"/>
+            <property name="bounds" value="330,520,136,94"/>
+            <reference referencedUin="jdt:l_ast:src:Persistence.SkillBroker:sbrok">
+                <property name="sourceAnchor" value="448,614"/>
+                <property name="bendpoints" value="448,642,494,642,494,596"/>
+                <property name="targetAnchor" value="466,596"/>
                 <property name="bounds_setted_by_user" value="true"/>
             </reference>
-        </reference>
-        <reference df-class-name="reference6" referencedUin="jdt:e_class:src:Persistence.GlobalSettingsBroker">
-            <property name="$shortcutReference" value="true"/>
-            <property name="@hideAttributes" value=""/>
-            <property name="bounds" value="470,280,133,72"/>
-            <reference referencedUin="jdt:l_impl:src:Persistence.GlobalSettingsBroker:Persistence.Broker">
-                <property name="sourceAnchor" value="470,310"/>
-                <property name="bendpoints" value="440,310"/>
-                <property name="targetAnchor" value="396,278"/>
-                <property name="bounds_setted_by_user" value="true"/>
+            <reference referencedUin="jdt:l_impl:src:Persistence.SkillBroker:Persistence.Broker">
+                <property name="sourceAnchor" value="400,520"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="400,458"/>
             </reference>
         </reference>
         <reference df-class-name="reference12" referencedUin="jdt:e_class:src:Persistence.Broker">
             <property name="$shortcutReference" value="true"/>
-            <property name="@hideAttributes" value=""/>
-            <property name="bounds" value="260,140,136,155"/>
+            <property name="bounds" value="300,140,200,318"/>
+            <reference referencedUin="jdt:e_field:src:Persistence.Broker.bcon_mon">
+                <property name="bounds" value="0,50,183,16"/>
+            </reference>
+            <reference referencedUin="jdt:e_field:src:Persistence.Broker.connections">
+                <property name="bounds" value="0,30,178,16"/>
+            </reference>
+        </reference>
+        <reference df-class-name="reference6" referencedUin="jdt:e_class:src:Persistence.RuleBroker">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="320,10,139,94"/>
+            <reference referencedUin="jdt:l_ast:src:Persistence.RuleBroker:rbrok">
+                <property name="sourceAnchor" value="441,104"/>
+                <property name="bendpoints" value="441,132,487,132,487,86"/>
+                <property name="targetAnchor" value="459,86"/>
+                <property name="bounds_setted_by_user" value="true"/>
+            </reference>
+            <reference referencedUin="jdt:l_impl:src:Persistence.RuleBroker:Persistence.Broker">
+                <property name="sourceAnchor" value="390,104"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="390,140"/>
+            </reference>
         </reference>
         <property name="$defaultDiagram" value=""/>
     </view>

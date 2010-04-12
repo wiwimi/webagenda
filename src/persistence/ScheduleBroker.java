@@ -34,7 +34,9 @@ import messagelog.Logging;
  */
 public class ScheduleBroker extends Broker<Schedule>
     {
-    /** ScheduleBroker object for singleton pattern */
+    /**
+     * ScheduleBroker object for singleton pattern.
+     */
     private static ScheduleBroker broker_schedule = null;
     
     /**
@@ -709,6 +711,9 @@ public class ScheduleBroker extends Broker<Schedule>
         }
     
     /**
+     * Used to automatically notify employees if they have been added to a new
+     * schedule, removed from a schedule, or their schedule has been updated.
+     * 
      * @param oldSched
      * @param newSched
      * @return

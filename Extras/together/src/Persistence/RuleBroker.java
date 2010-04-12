@@ -2,20 +2,18 @@
 
 package Persistence;
 
-import Business.Skill;
-
 /**
- * Provides functionality for adding, updating and deleting skills in the database.
+ * Provides functionality for adding, updating and deleting Rules in the database. 
  */
-public class SkillBroker implements Broker {
+public class RuleBroker implements Broker {
     /**
      * Must be used to get a Broker, ensures that singleton pattern is enforced. 
      */
-    public SkillBroker getBroker() {
+    public RuleBroker getBroker() {
     }
 
     /**
      * Static representation of the broker. Initialized the first time getBroker is called. 
      */
-    private SkillBroker sbrok;
+    private RuleBroker rbrok;
 }

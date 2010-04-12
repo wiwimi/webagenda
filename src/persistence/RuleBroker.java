@@ -84,7 +84,6 @@ public class RuleBroker extends Broker<Rule> {
 			}
 		catch (SQLException e)
 			{
-			// TODO Need additional SQL exception processing here.
 			throw new DBException("Failed to create rule.", e);
 			}
 		
@@ -215,7 +214,6 @@ public class RuleBroker extends Broker<Rule> {
 			int updateRowCount = stmt.executeUpdate(update);
 			conn.setAvailable(true);
 			
-			// Ensure
 			if (updateRowCount != 1)
 				throw new DBException(
 						"Failed to update rule: rowcount incorrect.");

@@ -5,7 +5,7 @@ package Business;
 /**
  * Stores all information on a schedule template, matching the database. Schedule templates match required positions to shifts, and are used to generate new filled schedules that assign work times to specific employees.
  */
-public class ScheduleTemplate {
+public class ScheduleTemplate implements BusinessObject {
     /**
      * The internal DB ID of the schedule template. This is for broker use only. 
      */

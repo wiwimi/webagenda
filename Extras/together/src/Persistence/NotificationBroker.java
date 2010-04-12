@@ -3,7 +3,17 @@
 package Persistence;
 
 /**
- * Provides functionality for retrieving, creating, updating and deleting Notification data from the database.
+ * Provides functionality to add, update and delete notifications in the database.
  */
 public class NotificationBroker implements Broker {
+    /**
+     * Must be used to get a Broker, ensures that singleton pattern is enforced. 
+     */
+    public NotificationBroker getBroker() {
+    }
+
+    /**
+     * Static representation of the broker. Initialized the first time getBroker is called. 
+     */
+    private NotificationBroker nbrok;
 }
