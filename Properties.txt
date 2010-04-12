@@ -1,5 +1,4 @@
 WABroker
 password
 WebAgenda
-com.mysql.jdbc.Driver
 jdbc:mysql://localhost:3306/

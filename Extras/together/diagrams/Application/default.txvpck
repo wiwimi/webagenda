@@ -15,41 +15,42 @@
     <view uin="idiazwsg57cbh5ag57cckie">
         <property name="$metaclass" value="Package Diagram"/>
         <property name="@__options" value=""/>
-        <reference df-class-name="reference" referencedUin="jdt:e_class:src:Application.MaintainEmployee">
+        <reference df-class-name="reference" referencedUin="jdt:e_class:src:Application.Backup">
             <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="10,260,147,101"/>
+            <property name="bounds" value="190,100,113,85"/>
         </reference>
-        <reference df-class-name="reference1" referencedUin="jdt:e_class:src:Application.LogIn">
+        <reference df-class-name="reference2" referencedUin="jdt:e_class:src:Application.ConnectionManager">
             <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="180,210,134,85"/>
+            <property name="bounds" value="10,10,167,206"/>
+            <reference referencedUin="jdt:l_ast:src:Application.ConnectionManager:lnkDBConnection">
+                <property name="sourceAnchor" value="92,216"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="92,260"/>
+                <reference referencedUin="linklabel:clientQualifier:jdt:l_ast:src:Application.ConnectionManager:lnkDBConnection">
+                    <property name="bounds" value="96,216,49,16"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
+                <reference referencedUin="linklabel:supplierQualifier:jdt:l_ast:src:Application.ConnectionManager:lnkDBConnection">
+                    <property name="bounds" value="10,240,77,16"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
+                <reference referencedUin="linklabel:clientCardinality:jdt:l_ast:src:Application.ConnectionManager:lnkDBConnection">
+                    <property name="bounds" value="73,216,15,16"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
+                <reference referencedUin="linklabel:supplierCardinality:jdt:l_ast:src:Application.ConnectionManager:lnkDBConnection">
+                    <property name="bounds" value="100,240,26,16"/>
+                    <property name="bounds_setted_by_user" value="true"/>
+                </reference>
+            </reference>
         </reference>
-        <reference df-class-name="reference2" referencedUin="jdt:e_class:src:Application.MaintainSchedule">
+        <reference df-class-name="reference3" referencedUin="jdt:e_class:src:Application.DBConnection">
             <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="10,10,164,133"/>
+            <property name="bounds" value="10,260,167,142"/>
         </reference>
-        <reference df-class-name="reference3" referencedUin="jdt:e_class:src:Application.GenerateReport">
+        <reference df-class-name="reference4" referencedUin="jdt:e_class:src:Application.ScheduleGenerator">
             <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="190,10,133,181"/>
-        </reference>
-        <reference df-class-name="reference4" referencedUin="jdt:e_class:src:Application.MaintainLocation">
-            <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="340,110,111,85"/>
-        </reference>
-        <reference df-class-name="reference5" referencedUin="jdt:e_class:src:Application.MaintainSkill">
-            <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="330,210,111,85"/>
-        </reference>
-        <reference df-class-name="reference6" referencedUin="jdt:e_class:src:Application.MaintainPosition">
-            <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="340,10,111,85"/>
-        </reference>
-        <reference df-class-name="reference8" referencedUin="jdt:e_class:src:Application.ReviewRequest">
-            <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="170,310,100,82"/>
-        </reference>
-        <reference df-class-name="reference9" referencedUin="jdt:e_class:src:Application.SendNotification">
-            <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="10,160,158,85"/>
+            <property name="bounds" value="190,10,177,85"/>
         </reference>
         <property name="$defaultDiagram" value=""/>
     </view>

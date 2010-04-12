@@ -15,8 +15,11 @@ import com.mysql.jdbc.exceptions.jdbc4.CommunicationsException;
 import exception.DBDownException;
 
 /**
+ * Provides functionality for creating database connections, which are then used
+ * by broker classes to manipulate data in the database.
+ * 
  * @author Daniel Wehr, Daniel Kettle
- * @version 0.1.0
+ * @version 0.2.0
  */
 public class ConnectionManager
     {
@@ -44,7 +47,7 @@ public class ConnectionManager
     private static Object  db_drv_instance = null;
     /**
      * Driver information string that determines port and host and table name
-     * used in the connection
+     * used in the connection.
      */
     private static String  db_url          = "jdbc:mysql://localhost:3306/" + db_name;
     /**
@@ -111,7 +114,7 @@ public class ConnectionManager
         {
         return db_name;
         }
-
+    
     /**
      * Attempts to get connection configuration information from an external
      * properties file.
@@ -128,7 +131,6 @@ public class ConnectionManager
                 db_user = bw.readLine();
                 db_pass = bw.readLine();
                 db_name = bw.readLine();
-                db_driver = bw.readLine();
                 db_url = bw.readLine() + db_name;
                 bw.close();
                 
