@@ -163,6 +163,31 @@ public class Employee extends BusinessObject implements Comparable<Employee>
         this.version = ver;
         }
     
+    /**
+     * Base constructor for a new employee object. Is required to create a new
+     * employee, but values can be null or invalid if using an employee object
+     * as an object to search criteria off of.
+     * 
+     * @param empID int employee id
+     * @param fname String first name
+     * @param lname String last (family) name
+     * @param date Date birthdate
+     * @param username String username for employee account
+     * @param password String password for employee account
+     * @throws DBException
+     */
+    public Employee(int empID, String fname, String lname,
+    		String username, String password)
+    {
+    	this.empID = empID;
+        this.givenName = fname;
+        this.familyName = lname;
+        this.username = username;
+        this.password = password;
+        this.version = ' ';
+        this.level = 0;
+    }
+    
     /** Produces a blank template of an employee */
     public Employee()
         {
