@@ -42,7 +42,7 @@ public class DoubleLinkedList<E> implements List<E> {
 		size = 0;
 		DLLNode<E> head = null,
 				tail = null;
-		// Assign head
+		// Assign head.
 		head = new DLLNode<E>(null,null,array.get(0));
 		tail = head;
 		// All are assigned if array size is 1. 

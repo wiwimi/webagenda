@@ -24,8 +24,8 @@ public class GenTestEmps
 		{
 		System.out.println("Generating employee sql.");
 		
-		File inCSV = new File("test/gen/testEmps.csv");
-		File outSQL = new File("test/gen/testEmps.sql");
+		File inCSV = new File("test/generateTestData/testEmps.csv");
+		File outSQL = new File("test/generateTestData/testEmps.sql");
 		
 		if (inCSV.exists())
 			System.out.println("File Exists!");
@@ -57,7 +57,7 @@ public class GenTestEmps
 			
 			if (i == 1)
 				{
-				out.println("----- INSERT CEO -----");
+				out.println("-- --- INSERT CEO -----");
 				out.println(String.format(
 						"insert into `WebAgenda`.`EMPLOYEE` " +
 						"(`empID`,`givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `pversion`, `active`, `passChanged`) " +
@@ -69,13 +69,13 @@ public class GenTestEmps
 						birthdate,
 						split[2],
 						username,
-						split[3]));
+						split[3].substring(0, (split[3].length() > 8 ? 8 : split[3].length()))));
 				out.println("");
 				}//End of create CEO.
 			else if (i <= 5)
 				{
 				if (i == 2)
-					out.println("----- INSERT MANAGERS -----");
+					out.println("-- --- INSERT MANAGERS -----");
 				
 				String location = "TestLocation" + (1 + ((i - 2)*2));
 				String position = "Manager" + (i % 2 == 0 ? 1 : 2);
@@ -91,7 +91,7 @@ public class GenTestEmps
 						birthdate,
 						split[2],
 						username,
-						split[3],
+						split[3].substring(0, (split[3].length() > 8 ? 8 : split[3].length())),
 						position,
 						location));
 				
@@ -104,7 +104,7 @@ public class GenTestEmps
 			else if (i <= 37)
 				{
 				if (i == 6)
-					out.println("----- INSERT SUPERVISORS -----");
+					out.println("-- --- INSERT SUPERVISORS -----");
 				
 				//Assign test locations 1-8
 				String location = "TestLocation" + ((int)(((i - 5) / 4.01))+1);
@@ -125,7 +125,7 @@ public class GenTestEmps
 						birthdate,
 						split[2],
 						username,
-						split[3],
+						split[3].substring(0, (split[3].length() > 8 ? 8 : split[3].length())),
 						position,
 						location));
 				
@@ -137,7 +137,7 @@ public class GenTestEmps
 			else
 				{
 				if (i == 38)
-					out.println("----- INSERT EMPLOYEES --------");
+					out.println("-- --- INSERT EMPLOYEES --------");
 				
 				//Assign test locations 1-8
 				String location = "TestLocation" + ((int)(((i - 37) / 60.01))+1);
@@ -161,7 +161,7 @@ public class GenTestEmps
 						birthdate,
 						split[2],
 						username,
-						split[3],
+						split[3].substring(0, (split[3].length() > 8 ? 8 : split[3].length())),
 						position,
 						location));
 				
