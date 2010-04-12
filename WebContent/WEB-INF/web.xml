@@ -199,4 +199,14 @@
     <servlet-name>SessionTimer</servlet-name>
     <url-pattern>/SessionTimer</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EmpPermission</display-name>
+    <servlet-name>EmpPermission</servlet-name>
+    <servlet-class>uiConnection.Settings.EmpPermission</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmpPermission</servlet-name>
+    <url-pattern>/EmpPermission</url-pattern>
+  </servlet-mapping>
 </web-app>

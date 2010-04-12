@@ -6,6 +6,8 @@ if(session.getAttribute("username") == null)
 %>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page import="business.Employee" %>
+<%@ page import="persistence.EmployeeBroker" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- Author: Noorin -->
 <html>
@@ -35,9 +37,6 @@ if(session.getAttribute("username") == null)
 	
 </head>
 <body>
-	<div id="instructions">
-		Fields marked with <em class="asterisk" > * </em> are required.
-	</div>
 	<div id="usersWidget" class="fullWidget">
 				<div class="widgetUpperRectangle" id="passwordsUpperRectangle">
 					<div class="widgetTitle" id="passwordTitle">Security Settings</div>
@@ -45,15 +44,59 @@ if(session.getAttribute("username") == null)
 				
 			<div class="widgetLowerRectangle" id="passwordLowerRectangle">
 				<div id ="creationForm">
-					<form class="validatedForm" action="" id="form" method="post">
+				<form action="securitySettings.jsp?load=y" method="post" style="text-align: right">
+									 <input type="submit" id="getSearch" name="Search" value="Load Employees"/>
+				</form>
+				<form action="securitySettings.jsp?clear=y" method="post" style="text-align: right">
+									 <input type="submit" id="getClear" name="Clear" value="Unload Employees"/>
+				</form>
+					<form class="validatedForm" action="securitySettings.jsp" id="form" method="post">
 						<div id="security">
 					 		<div id="formButtons">
-							 	    <input type="submit" name="submit" class="button" value="Update"> 
-									<input type="reset" name="clear" class="button" value="Clear Screen">
+							 	    <input type="submit" name="submit" class="button" value="Update" /> 
+									<input type="reset" name="clear" class="button" value="Clear Screen" />
 							</div>
 							<fieldset>
 								<legend > Security Settings </legend>
-									 
+								<% 
+								
+								if(request.getParameter("clear") != null && !request.getParameter("clear").equals(""))
+								{
+									
+								}
+								else if(request.getParameter("secUser") != null && !request.getParameter("secUser").equals(""))
+								{
+									int empId = -1;
+									try {
+										empId = Integer.parseInt(request.getParameter("secUser"));
+									}
+									catch(NumberFormatException nfE) {
+										response.sendRedirect("securitySettings.jsp?clear=y");
+									}
+									%>
+									<input type="text" name="empId" value="<% out.println(empId); %>" id="empid" readonly />"
+									<%
+									out.println("<br /><br /><input type=\"submit\" name=\"update\" value=\"Update Permissions\" id=\"update\" />");
+								}
+								else {
+									String load = request.getParameter("load");
+									if(load != null)
+										if(load.equals("y")) {
+											Employee user = (Employee) request.getSession().getAttribute("currentEmployee");
+											Employee e = new Employee();
+											
+											Employee[] emps = EmployeeBroker.getBroker().get(e,user);
+											for(int i = 0; i < emps.length; i++)
+											{
+												out.println("<a href=\"securitySettings.jsp?secUser=" + emps[i].getEmpID() + " \"> " + emps[i].getGivenName() + " " + 
+														emps[i].getFamilyName() + " </a><br /> ");
+											}
+											
+										}
+								}
+								%>	 
+								<br />
+								<br />"
 						   </fieldset>
 					   </div>
 				 </form>
@@ -61,7 +104,5 @@ if(session.getAttribute("username") == null)
 	         </div>                     
 	    </div>                             
 <div id="footer"></div>
-
-
 </body>
 </html>
