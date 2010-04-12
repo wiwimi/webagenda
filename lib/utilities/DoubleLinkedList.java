@@ -4,6 +4,7 @@
 package utilities;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 
@@ -20,8 +21,8 @@ public class DoubleLinkedList<E> implements List<E> {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private DLLNode head = null;
-	private DLLNode tail = null;
+	private DLLNode<E> head = null;
+	private DLLNode<E> tail = null;
 	
 	private int size = 0;
 	
@@ -40,17 +41,17 @@ public class DoubleLinkedList<E> implements List<E> {
 	public DoubleLinkedList(List<E> array)
 	{
 		size = 0;
-		DLLNode head = null,
+		DLLNode<E> head = null,
 				tail = null;
 		// Assign head
-		head = new DLLNode(null,null,array.get(0));
+		head = new DLLNode<E>(null,null,array.get(0));
 		tail = head;
 		// All are assigned if array size is 1. 
 		size ++;
 		// Array has to be 2 or more for loop to work, so there will be a previous node
 		for(int i = 1; i < array.size(); i++)
 		{
-			tail = new DLLNode(tail,null,array.get(i)); // tail is now a node after previous tail, which is now a back-link
+			tail = new DLLNode<E>(tail,null,array.get(i)); // tail is now a node after previous tail, which is now a back-link
 			tail.getPreviousNode().setNextNode(tail); // original tail can forward-link to current tail
 			size ++;
 		}
@@ -60,7 +61,7 @@ public class DoubleLinkedList<E> implements List<E> {
 	public boolean add(int index, E toAdd) throws NullPointerException,
 			IndexOutOfBoundsException {
 		int i = 0;
-		DLLNode current = head; 
+		DLLNode<E> current = head; 
 		if(index > (size / 2)) {
 			i = size;
 			current = tail;
@@ -71,13 +72,13 @@ public class DoubleLinkedList<E> implements List<E> {
 			// Add to position before index
 			if(i == size) {
 				// No change, position is at tail
-				DLLNode dll = new DLLNode(tail,null,toAdd);
+				DLLNode<E> dll = new DLLNode<E>(tail,null,toAdd);
 				tail.setNextNode(dll);
 				tail = dll;
 			}
 			else {
 				//Add utilizing both next and previous nodes
-				DLLNode dll = new DLLNode(current,current.getNextNode(),toAdd);
+				DLLNode<E> dll = new DLLNode<E>(current,current.getNextNode(),toAdd);
 				current.setNextNode(dll);
 				current.getNextNode().setPreviousNode(dll);
 			}
@@ -85,7 +86,7 @@ public class DoubleLinkedList<E> implements List<E> {
 			return true;
 		}
 		else if(size == 0) {
-			current = new DLLNode(null,null,toAdd); // current takes place of head, prev is null
+			current = new DLLNode<E>(null,null,toAdd); // current takes place of head, prev is null
 			if(head == null) {
 				head = current;
 				tail = head;
@@ -100,14 +101,14 @@ public class DoubleLinkedList<E> implements List<E> {
 			{
 				current = current.getNextNode();
 			}
-			DLLNode dll = new DLLNode(current.getPreviousNode(),current,toAdd);
+			DLLNode<E> dll = new DLLNode<E>(current.getPreviousNode(),current,toAdd);
 			try {
 				current.getPreviousNode().setNextNode(dll);
 				current.setPreviousNode(dll);
 			}
 			catch(NullPointerException npE) {
 				// This is at head position : create before head node
-				dll = new DLLNode(null,head,toAdd);
+				dll = new DLLNode<E>(null,head,toAdd);
 				head.setPreviousNode(dll);
 				head = dll;
 				
@@ -121,13 +122,13 @@ public class DoubleLinkedList<E> implements List<E> {
 	public boolean add(E toAdd) throws NullPointerException,
 			IndexOutOfBoundsException {
 		if(size == 0) {
-			head = new DLLNode(null,null,toAdd);
+			head = new DLLNode<E>(null,null,toAdd);
 			tail = head;
 			size++;
 			return true;
 		}
 		else {
-			DLLNode add_this = new DLLNode(tail,null,toAdd);
+			DLLNode<E> add_this = new DLLNode<E>(tail,null,toAdd);
 			tail.setNextNode(add_this);
 			tail = add_this;
 			size++;
@@ -154,7 +155,7 @@ public class DoubleLinkedList<E> implements List<E> {
 
 	@Override
 	public boolean contains(E toFind) throws NullPointerException {
-		DLLNode dll = head;
+		DLLNode<E> dll = head;
 		for(int i = 0; i < size; i++)
 		{
 			if(dll.getElement() == toFind) return true;
@@ -165,12 +166,12 @@ public class DoubleLinkedList<E> implements List<E> {
 
 	@Override
 	public E get(int index) throws IndexOutOfBoundsException {
-		DLLNode to_return = head;
+		DLLNode<E> to_return = head;
 		for(int i = 0; i < index; i++)
 		{
 			to_return = to_return.getNextNode();
 		}
-		return (E) to_return.getElement();
+		return to_return.getElement();
 	}
 
 	@Override
@@ -190,7 +191,7 @@ public class DoubleLinkedList<E> implements List<E> {
 	public E remove(int index) throws IndexOutOfBoundsException, NullPointerException {
 		if(index == size) throw new IndexOutOfBoundsException();
 		if(size == 0) throw new NullPointerException();
-		DLLNode current = null;
+		DLLNode<E> current = null;
 		int i = 0;
 		if(index > (size / 2)) {
 			current = tail;
@@ -206,7 +207,7 @@ public class DoubleLinkedList<E> implements List<E> {
 					tail = null;
 				}
 				size --;
-				return (E) current.getElement();
+				return current.getElement();
 			}
 			
 			// Start at tail, traverse 
@@ -217,7 +218,7 @@ public class DoubleLinkedList<E> implements List<E> {
 			current.getPreviousNode().setNextNode(current.getNextNode());
 			current.getNextNode().setPreviousNode(current.getPreviousNode());
 			size --;
-			return (E) current.getElement();
+			return current.getElement();
 		}
 		else {
 			current = head;
@@ -234,7 +235,7 @@ public class DoubleLinkedList<E> implements List<E> {
 					tail = null;
 				}
 				size --;
-				return (E) current.getElement();
+				return current.getElement();
 			}
 			for(; i < index; i++)
 			{
@@ -243,7 +244,7 @@ public class DoubleLinkedList<E> implements List<E> {
 			current.getPreviousNode().setNextNode(current.getNextNode());
 			current.getNextNode().setPreviousNode(current.getPreviousNode());
 			size --;
-			return (E) current.getElement();
+			return current.getElement();
 			
 		}
 	}
@@ -251,7 +252,7 @@ public class DoubleLinkedList<E> implements List<E> {
 	@Override
 	public E remove(E toRemove) throws NullPointerException {
 		// Because the item cannot be determined its head or tail proximity, we use head
-		DLLNode current = head;
+		DLLNode<E> current = head;
 		/* Use a boolean so that loop is forced to act as a 'do-while' loop, not be one.
 		 * Loop cannot be a do-while since the statement "current = current.getNextNode" will
 		 * ruin the current.hasNextNode() test in the 'while' since the current node is
@@ -267,26 +268,26 @@ public class DoubleLinkedList<E> implements List<E> {
 				
 				if(! current.hasPreviousNode()) {
 					// Head
-					Object o = (E) current.getElement();
+					E o = current.getElement();
 					head = current.getNextNode();
 					head.setPreviousNode(null);
 					size--;
-					return (E) o;
+					return o;
 				}
 				else if(! current.hasNextNode()) {
 					// Tail
-					Object o = (E) current.getElement();
+					E o = current.getElement();
 					tail = current.getPreviousNode();
 					tail.setNextNode(null);
 					size--;
-					return (E) o;
+					return o;
 				}
 				else {
 					// Anything in between
 					current.getPreviousNode().setNextNode(current.getNextNode());
 					current.getNextNode().setPreviousNode(current.getPreviousNode());
 					size--;
-					return (E) current.getElement();
+					return current.getElement();
 				}
 			}
 			b = current.hasNextNode(); // When b is false, it still must be checked once more.
@@ -299,13 +300,13 @@ public class DoubleLinkedList<E> implements List<E> {
 	@Override
 	public E set(int index, E toChange) throws NullPointerException,
 			IndexOutOfBoundsException {
-		DLLNode current = head;
+		DLLNode<E> current = head;
 		for(int i = 0; i < index; i++)
 		{
 			current = current.getNextNode();
 		}
 		current.setElement(toChange);
-		return (E) current.getElement();
+		return current.getElement();
 	}
 
 	@Override
@@ -322,15 +323,15 @@ public class DoubleLinkedList<E> implements List<E> {
 	 */
 	@Override
 	public E[] toArray(E[] toHold) throws NullPointerException {
-		Object[] temp = (E[]) new Object[toHold.length];
+		E[] temp = (E[])Array.newInstance(toHold.getClass(), toHold.length);
 		if(temp.length < (size + toHold.length)) {
-			temp = (E[]) new Object[(size + toHold.length)];
+			temp = (E[])Array.newInstance(toHold.getClass(), (size + toHold.length));
 		}
-		DLLNode current = head;
+		DLLNode<E> current = head;
 		int i = 0;
 		for(; i < size; i++)
 		{
-			temp[i] = (E) current.getElement();
+			temp[i] = current.getElement();
 			current = current.getNextNode(); 
 		}
 		for(int j = 0; j < toHold.length; j++)
@@ -341,27 +342,40 @@ public class DoubleLinkedList<E> implements List<E> {
 			}
 			i++;
 		}
-		return (E[]) temp;
+		return temp;
 	}
 
-	@Override
-	public E[] toArray() {
+	public ArrayList<E> toArrayList() {
 		if (size == 0)
 			return null;
 		
-		E[] array = (E[])(Array.newInstance(head.getElement().getClass(), size));
-		DLLNode current = head;
+		DLLNode<E> current = head;
+		ArrayList<E> array = new ArrayList<E>();
 		for (int i = 0; i < size; i++)
 		{
-		array[i] = (E) current.getElement();
+		array.add(current.getElement());
 		current = current.getNextNode();
 		}
 		return array;
 	}
-
+	
+	public E[] toArray() {
+		if (size == 0)
+			return null;
+		
+		E[] array = (E[])Array.newInstance(head.getElement().getClass(), size);
+		DLLNode<E> current = head;
+		for (int i = 0; i < size; i++)
+		{
+		array[i] = current.getElement();
+		current = current.getNextNode();
+		}
+		return array;
+	}
+	
 	public class DLLIterator implements Iterator<E> {
 
-		DLLNode dll_current = head;
+		DLLNode<E> dll_current = head;
 		
 		@Override
 		public boolean hasNext() {
@@ -370,9 +384,9 @@ public class DoubleLinkedList<E> implements List<E> {
 
 		@Override
 		public E next() throws NoSuchElementException {
-			Object o = (E) dll_current.getElement();
+			E o = dll_current.getElement();
 			dll_current = dll_current.getNextNode();
-			return (E) o;
+			return o;
 		}
 		
 	}

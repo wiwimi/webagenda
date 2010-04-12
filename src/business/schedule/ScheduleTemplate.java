@@ -136,7 +136,7 @@ public class ScheduleTemplate extends BusinessObject implements Cloneable
 		
 		DoubleLinkedList<ShiftTemplate> cloneShift = new DoubleLinkedList<ShiftTemplate>();
 		
-		for (ShiftTemplate shift : shiftTemplates.toArray())
+		for (ShiftTemplate shift : shiftTemplates.toArrayList())
 			cloneShift.add(shift.clone());
 		
 		clone.setShiftTemplates(cloneShift);

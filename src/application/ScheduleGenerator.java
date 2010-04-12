@@ -111,13 +111,13 @@ public class ScheduleGenerator
 									+ "AND ((? BETWEEN sh.startTime AND sh.endTime) OR (? BETWEEN sh.startTime AND sh.endTime)))");
 			
 			// Create empty schedule that matches the template structure.
-			for (ShiftTemplate st : template.getShiftTemplates().toArray())
+			for (ShiftTemplate st : template.getShiftTemplates().toArrayList())
 				{
 				// Create shift to match shift template.
 				Shift newShift = new Shift(-1, -1, st.getDay(), st.getStartTime(),
 						st.getEndTime());
 				
-				for (ShiftPosition shiftPos : st.getShiftPositions().toArray())
+				for (ShiftPosition shiftPos : st.getShiftPositions().toArrayList())
 					{
 					// Get available employees that meet all requirements.
 					selectStrict.setString(1, shiftPos.getPosName());

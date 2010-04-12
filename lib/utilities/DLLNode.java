@@ -7,11 +7,11 @@ package utilities;
  * @author peon-dev
  *
  */
-public class DLLNode {
+public class DLLNode<E> {
 
-	private DLLNode next = null;
-	private DLLNode prev = null;
-	private Object element = null;
+	private DLLNode<E> next = null;
+	private DLLNode<E> prev = null;
+	private E element = null;
 	
 	/**
 	 * Constructor creates a Node that has references to a next node and a previous node.
@@ -22,19 +22,19 @@ public class DLLNode {
 	 * @param next - DLLNode that refers to the next item in the list
 	 * @param o - Object that is stored in the node.
 	 */
-	public DLLNode(DLLNode previous, DLLNode next, Object o)
+	public DLLNode(DLLNode<E> previous, DLLNode<E> next, E o)
 	{
 		this.prev = previous;
 		this.next = next;
 		this.element = o;
 	}
 	
-	public DLLNode getPreviousNode()
+	public DLLNode<E> getPreviousNode()
 	{
 		return this.prev;
 	}
 	
-	public DLLNode getNextNode()
+	public DLLNode<E> getNextNode()
 	{
 		return this.next;
 	}
@@ -49,22 +49,22 @@ public class DLLNode {
 		return !(this.prev == null);
 	}
 	
-	public Object getElement()
+	public E getElement()
 	{
 		return this.element;
 	}
 	
-	public void setNextNode(DLLNode nn)
+	public void setNextNode(DLLNode<E> nn)
 	{
 		this.next = nn;
 	}
 	
-	public void setPreviousNode(DLLNode pn)
+	public void setPreviousNode(DLLNode<E> pn)
 	{
 		this.prev = pn;
 	}
 	
-	public void setElement(Object o)
+	public void setElement(E o)
 	{
 		this.element = o;
 	}

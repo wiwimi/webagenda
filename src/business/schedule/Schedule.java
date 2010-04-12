@@ -167,7 +167,7 @@ public class Schedule extends BusinessObject
 		
 		DoubleLinkedList<Shift> cloneShift = new DoubleLinkedList<Shift>();
 		
-		for (Shift shift : this.shifts.toArray())
+		for (Shift shift : this.shifts.toArrayList())
 			cloneShift.add(shift.clone());
 		
 		clone.setShifts(cloneShift);

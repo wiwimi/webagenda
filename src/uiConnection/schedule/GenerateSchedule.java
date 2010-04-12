@@ -87,13 +87,13 @@ public class GenerateSchedule extends HttpServlet {
 					
 					//---------- Send the generated proposal back to the user by displaying it in jsp ----------");
 					
-					Shift[] shiftList = genSched.getShifts().toArray();
+					ArrayList<Shift> shiftList = genSched.getShifts().toArrayList();
 					
 					//Setting the proposed schedule in the session
 					
-					if(genSched!=null && shiftList.length!=0)
+					if(genSched!=null && shiftList.size() !=0)
 					{
-						out.println(shiftList.length);
+						out.println(shiftList.size());
 						//session.setAttribute("genSched", genSched);
 						//response.sendRedirect("wa_schedule/displayScheduleFromTemplate.jsp?message=true");
 					}

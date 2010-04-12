@@ -4,6 +4,7 @@
 package testDB;
 
 import java.sql.Time;
+import java.util.ArrayList;
 import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
@@ -123,7 +124,7 @@ public class TestScheduleTemplateBroker extends TestCase
 			ScheduleTemplate update = old.clone();
 			
 			//Set shifts to start at 7am instead of 8am.
-			for (ShiftTemplate shiftTemp : update.getShiftTemplates().toArray())
+			for (ShiftTemplate shiftTemp : update.getShiftTemplates().toArrayList())
 				{
 				shiftTemp.setStartTime(Time.valueOf("07:00:00"));
 				}
@@ -204,13 +205,13 @@ public class TestScheduleTemplateBroker extends TestCase
 		
 		System.out.println("Schedule Template: "+st.getName()+" - ID: "+st.getSchedTempID());
 		
-		ShiftTemplate[] shiftList = st.getShiftTemplates().toArray();
+		ArrayList<ShiftTemplate> shiftList = st.getShiftTemplates().toArrayList();
 		
 		for (ShiftTemplate shift : shiftList)
 			{
 			System.out.println("\tShift Template - Day: "+shift.getDay()+" - Time: "+shift.getStartTime() + " to " + shift.getEndTime() + " - "+shift);
 			
-			ShiftPosition[] positions = shift.getShiftPositions().toArray();
+			ArrayList<ShiftPosition> positions = shift.getShiftPositions().toArrayList();
 			
 			for (ShiftPosition pos : positions)
 				{
