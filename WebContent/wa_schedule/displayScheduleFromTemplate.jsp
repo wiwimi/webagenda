@@ -24,6 +24,7 @@
 <!-- Plug-ins -->
 <script src="../lib/js/jquery.validate.js" type="text/javascript"></script>
 <script src ="../lib/js/jquery.flashmessenger.js"   type ="text/javascript"> </script>
+<script type="text/javascript" src="../lib/js/jquery-impromptu.3.0.min.js"></script>
 
 <!-- Javascript Files -->
 <script src="../lib/js/cmxforms.js" type="text/javascript"></script>
@@ -32,9 +33,11 @@
 <script type="text/javascript" src="../lib/js/calendar.js"></script>
 <script type="text/javascript" src="../lib/js/popup.js"></script>
 <script type="text/javascript" src="../lib/js/deleteUser.js"></script>
+<script type="text/javascript" src="../lib/js/helpActivateSchedule.js"></script>
 
 <!--  CSS files -->
 <link rel="stylesheet" href="../CSS/creationForm.css" type="text/css"></link>
+<link rel="stylesheet" type="text/css" href="../CSS/Confirmation/confirm.css" media="screen" />
 <link rel="stylesheet" href="CSS/table.css" type="text/css"></link>
 <link rel="stylesheet" href="../CSS/Popup/popup.css" type="text/css"></link>
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
@@ -45,8 +48,33 @@
 <link rel="stylesheet" href="../CSS/breadcrumb.css" type="text/css" media="screen" />
 <title>Web Agenda- Template Schedule</title>
 
+
+
+  			<% 
+					if(request.getParameter("message") != null)
+					{
+						if(request.getParameter("message").equals("false"))
+						{
+				%>
+							<script type="text/javascript">
+								$(function()
+								    {
+										
+								       $.flashMessenger("An error occurred while creating the schedule.",
+								        {
+											   modal:true,
+							    		       clsName:"err", 
+								    		   autoClose:false
+								    	 }); 
+								   }); 
+							</script>
+				<%
+						}
+					}
+  			    %>
+
 <%
-         Employee user = (Employee) request.getSession().getAttribute("currentEmployee");
+        Employee user = (Employee) request.getSession().getAttribute("currentEmployee");
         if (user==null)
         {
         	response.sendRedirect("../wa_login/login.jsp");
@@ -102,16 +130,9 @@
 		
 <div id="scheduleWidget" class="fullWidget">
 	<div class="widgetUpperRectangle" id="scheduleUpperRectangle">
-			<div class="widgetTitle" id="scheduleWidgetTitle">Schedule Generation</div>
+			<div class="widgetTitle" id="scheduleWidgetTitle">Schedule Generation <div id="helpIcon"> </div></div>
 	</div>
-	<div class="widgetLowerRectangle" id="scheduleWidgetLowerRectangle">
-		<div id="creationForm">
-	   		<form class="validatedForm" action="../ActivateSchedule" id="form" method="post">
-			 	<div id="formButtons">
-								<input type="submit" name="submit" class="button" value="Activate Schedule"> 
-				</div>
-			 	<fieldset> 
-					<legend> Generated Schedule</legend>	
+	
 				<% 
 				if(request.getParameter("message") != null)
 				{
@@ -138,15 +159,23 @@
 							
 									if (shift.getEmployees().size() > 0)
 									{
+									
 										//for (Employee emp : shift.getEmployees().toArray())
 										emps = shift.getEmployees().toArray();
 										
 									
 						%>
-						
-									<div id="report">
-										    <div id="tableArea">
-												<div class="userAdmin">
+						<div class="widgetLowerRectangle" id="scheduleWidgetLowerRectangle">
+							<div id="creationForm">
+	   							<form class="validatedForm" action="../ActivateSchedule" id="form" method="post">
+  							 			<div id="formButtons">
+											<input type="submit" name="submit" class="button" value="Activate Schedule"> 
+										</div>
+			 						    <fieldset> 
+												<legend> Generated Schedule</legend>	
+									       <div id="report">
+											    <div id="tableArea">
+												     <div class="userAdmin">
 														<table class="sortable" id="userTable">
 																		<thead class="head">
 																			<tr class="headerRow">
@@ -179,18 +208,31 @@
 															  		%>
 																		</tbody>
 																</table>
-												   </div>
-										     </div>
-									    </div>	
+												        </div>
+										            </div>
+									            </div>
+									        </fieldset>
+									 </form>
+								</div>
+							</div>
+									   	
 					<%
 					    	    	}
 									else 
 									{
-					%>
+					%>				
+					     <div class="widgetLowerRectangle" id="scheduleWidgetLowerRectangle">
+							<div id="creationForm">
+	   							<form class="validatedForm" action="../ActivateSchedule" id="form" method="post">
+  							 			<fieldset> 
+												<legend> Generated Schedule</legend>	
+									       <div id="report">
+											    <div id="tableArea">
+												     <div class="userAdmin">
 					
 											<div id="report">
-										    <div id="tableArea">
-												<div class="userAdmin">
+										       <div id="tableArea">
+												    <div class="userAdmin">
 														<table class="sortable" id="userTable">
 																		<thead class="head">
 																			<tr class="headerRow">
@@ -209,16 +251,22 @@
 																				<th>Employee</th>
 																				<th></th>
 																			</tr>	
-																		<tbody>
 																			<tr >
 																				<td>There are no employees available to assign using the requested templates and date range</td>
 																			</tr>	
 															  		
 																		</tbody>
-													</table>
-												   </div>
-										     </div>
-									    </div>	
+													            </table>
+												            </div>
+										                 </div>
+										            </div>
+									             </div>
+								              </div>
+								           </div>	
+								        </fieldset>
+								     </form>
+								  </div>
+                               </div>
 					
 					
 					<%
@@ -231,14 +279,8 @@
 				   <%
 							}
 				       }
-				    %>	
-		 </fieldset>
-		 <div id="formButtons">
-								<input type="submit" name="submit" class="button" value="Activate Schedule"> 
-		</div>
-	  </form>
-    </div>	
-  </div>
+				   %>	
+     
 </div>
 <div id="footer"></div>
 </body>

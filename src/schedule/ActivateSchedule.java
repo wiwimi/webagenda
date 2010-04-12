@@ -59,11 +59,11 @@ public class ActivateSchedule extends HttpServlet {
 					if(genSched!=null)
 					{
 						session.setAttribute("genSched", genSched);
-						response.sendRedirect("wa_schedule/createScheduleFromTemplate.jsp?message=true");
+						response.sendRedirect("wa_schedule/createScheduleFromTemplate.jsp?message=activated");
 					}
 					else
 					{
-						response.sendRedirect("wa_schedule/createScheduleFromTemplate.jsp?message=false");
+						response.sendRedirect("wa_schedule/displayScheduleFromTemplate.jsp?message=false");
 					}
 				}
 					

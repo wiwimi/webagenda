@@ -84,48 +84,10 @@
 </head>
 <body>
 
-            <% 
+                <% 
 					if(request.getParameter("message") != null)
 					{
-						if(request.getParameter("message").equals("true"))
-						{
-							//out.println("Location was added");
-			%>
-				              <script type="text/javascript">
-		
-								$(function()
-								    {
-										
-										    $.flashMessenger("The schedule has been successfully created", 
-											{ 	
-												modal:true, 
-												autoClose: false 
-											});	
-										
-										
-								    });
-								</script>
-			
-			    <% 			   
-						}
-						else if(request.getParameter("message").equals("false"))
-						{
-				%>
-							<script type="text/javascript">
-								$(function()
-								    {
-										
-								       $.flashMessenger("An error occurred while creating the schedule.",
-								        {
-											   modal:true,
-							    		       clsName:"err", 
-								    		   autoClose:false
-								    	 }); 
-								   }); 
-							</script>
-				<%
-						}
-						else if(request.getParameter("message").equals("perm"))
+						if(request.getParameter("message").equals("perm"))
 						{
 				%>
 							<script type="text/javascript">
@@ -140,10 +102,10 @@
 								    	 }); 
 								   }); 
 							</script>
-					<%
+			   <%
 						}	else if(request.getParameter("message").equals("sundayError"))
-						 {
-					%>
+						{
+			    %>
 										<script type="text/javascript">
 											$(function()
 											    {
@@ -175,8 +137,24 @@
 										</script>
 					<%
 							}
-					     }
-					%>
+						else if(request.getParameter("message").equals("activated"))
+						{
+				%>
+							<script type="text/javascript">
+								$(function()
+								    {
+										
+								       $.flashMessenger("The schedule has been successfully activated.",
+								        {
+											   modal:true,
+								    		   autoClose:false
+								    	 }); 
+								   }); 
+							</script>
+				<%
+						}
+					}
+				%>
 
 	<%
 		ScheduleTemplate search = new ScheduleTemplate();
