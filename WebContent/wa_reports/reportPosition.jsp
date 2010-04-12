@@ -90,12 +90,8 @@ if(session.getAttribute("username") == null)
 			<div class="widgetUpperRectangle" id="positionUpperRectangle">
 				<div class="widgetTitle" id="positionsWidgetTitle">Report Position  <div id="helpIcon"></div></div>
 			</div>
-				<div id="printerIcon">
-					<a href="javascript:window.print()"> </a>
-				</div>
-			<div class="widgetLowerRectangle" id="positionLowerRectangle">
 			
-				<%
+			    <%
 					String posName = request.getParameter("posName");
 					Position pos = new Position(posName);
 					PositionBroker broker = PositionBroker.getBroker();
@@ -107,8 +103,16 @@ if(session.getAttribute("username") == null)
 					descr = pos.getDescription();
 					
 				%>
+				<div id="printerIcon">
+					<a href="javascript:window.print()"> </a>
+				</div>
 				
-				<div id="reportHeader">
+				<div id="excelIcon" >
+					<a href="positionsxls.jsp?posName=<%=posName%>"> </a>
+				</div>
+				
+			<div class="widgetLowerRectangle" id="positionLowerRectangle">
+			   <div id="reportHeader">
 					<div id="titleHeader">
 						<h2 id="name"> <%= reported[0].getName()%> </h2>
 						<div id="date"><%= new java.util.Date()%></div>

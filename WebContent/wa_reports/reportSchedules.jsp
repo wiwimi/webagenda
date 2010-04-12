@@ -88,35 +88,39 @@
 		   	sched.setCreatorID(user.getEmpID());
 		    ScheduleBroker broker = ScheduleBroker.getBroker();
 			
-			String startDate = request.getParameter("startDate");
-			String endDate = request.getParameter("endDate");
+			String schedID = request.getParameter("schedID");
 			
-			if(startDate!=null && endDate!=null)
+			if(schedID!=null)
 			{
-				// Reversing the date so that it matches the argument required for sql.Date
-				java.sql.Date sqlStartDate = java.sql.Date.valueOf(startDate);
-				
-				// Reversing the date so that it matches the argument required for sql.Date
-				java.sql.Date sqlEndDate = java.sql.Date.valueOf(endDate);
-				
-				
-				sched.setStartDate(sqlStartDate);
-				sched.setEndDate(sqlEndDate);
+				sched.setSchedID(Integer.parseInt(schedID));
 			}
 			
 			Schedule[] reported = broker.get(sched, user);
 			Schedule st = reported[reported.length-1];
 			Shift[] shiftList = st.getShifts().toArray();
-			
 		%>
 		
 			<div id="printerIcon">
 				<a href="javascript:window.print()"> </a>
 			</div>
-				
-			<div id="excelIcon" >
-				<a href="schedulesxls.jsp"> </a>
-			</div>
+		<% 	
+			if(schedID!=null)
+			{
+		%>	
+				<div id="excelIcon" >
+					<a href="schedulesxls.jsp?schedID=<%=schedID%>"> </a>
+				</div>
+		<%
+			}
+			else
+			{
+		%>
+				<div id="excelIcon" >
+					<a href="schedulesxls.jsp"> </a>
+				</div>
+		<%	
+			}
+		%>
 		
 		<div class="widgetLowerRectangle" id="reportLowerRectangle">
 		

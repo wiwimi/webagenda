@@ -86,7 +86,7 @@ if(session.getAttribute("username") == null)
 				</div>
 				
 				<div id="excelIcon" >
-					<a href="usersxls.jsp"> </a>
+					<a href="usersxls.jsp?active=false"> </a>
 				</div>
 				
 			<div class="widgetLowerRectangle" id="userLowerRectangle">

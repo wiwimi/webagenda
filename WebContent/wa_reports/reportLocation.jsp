@@ -95,7 +95,7 @@ if(session.getAttribute("username") == null)
 		       <div id="printerIcon">
 					<a href="javascript:window.print()"> </a>
 				</div>
-			<div class="widgetLowerRectangle" id="passwordLowerRectangle">
+				
 				<%
 					String locName = request.getParameter("locName");
 					Location loc = new Location(locName);
@@ -103,6 +103,12 @@ if(session.getAttribute("username") == null)
 					broker.initConnectionThread();
 					Location[] reported = broker.get(loc, user);
 				%>
+				
+				<div id="excelIcon" >
+					<a href="locationsxls.jsp?locName=<%=locName%>"> </a>
+				</div>
+				
+			<div class="widgetLowerRectangle" id="passwordLowerRectangle">
 				
 				<div id="reportHeader">
 					<div id="titleHeader">

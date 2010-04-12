@@ -135,11 +135,26 @@ tbody
 </style>
 <%
 		Employee emp = new Employee();
-		emp.setActive(true);
+		
 		Employee user = (Employee) session.getAttribute("currentEmployee");
 		EmployeeBroker broker = EmployeeBroker.getBroker();
 		broker.initConnectionThread();
-		Employee[] reportedArray = broker.get(emp, user);
+		
+		String empID = request.getParameter("empID");
+		String active = request.getParameter("active");
+		
+		if(empID!=null)
+		{
+			emp.setEmpID(Integer.parseInt(empID));
+		}
+		if (active!=null)
+		{
+			if(active.equals("true"))
+				emp.setActive(true);
+			else
+				emp.setActive(false);
+		}
+		Employee[] reportedArray = broker.get(emp, user);	
 %>
 
 <div id="reportHeader">

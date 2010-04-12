@@ -138,16 +138,16 @@
 						%>	
 									  <tr>
 										<td>
-											<a href="reportSchedules.jsp?startDate=<%=st.getStartDate()%>&endDate=<%=st.getEndDate() %>"><%=st.getStartDate()%></a>
+											<a href="reportSchedules.jsp?schedID=<%=st.getSchedID()%>"><%=st.getStartDate()%></a>
 											<div class="row-actions">
-												 <span class='report'> <a href="reportSchedules.jsp?startDate=<%=st.getStartDate()%>&endDate=<%=st.getEndDate()%>"> | Report
+												<span class='report'> <a href="reportSchedules.jsp?schedID=<%=st.getSchedID()%>"> | Report
 											      </a> </span>
 										    </div>
 										 </td>
 										<td>
-											<a href="reportSchedules.jsp?startDate=<%=st.getStartDate()%>&endDate=<%=st.getEndDate() %>"><%=st.getEndDate()%></a>
+											<a href="reportSchedules.jsp?schedID=<%=st.getSchedID()%>"><%=st.getEndDate()%></a>
 											<div class="row-actions">
-												 <span class='report'> <a href="reportSchedules.jsp?startDate=<%=st.getStartDate()%>&endDate=<%=st.getEndDate()%>"> | Report
+												 <span class='report'> <a href="reportSchedules.jsp?schedID=<%=st.getSchedID()%>"> | Report
 											      </a> </span>
 										    </div>
 										 </td>

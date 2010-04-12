@@ -54,7 +54,7 @@
 #date
 {
 	float:right;
-	margin-right: 1.0em;
+	margin-right: 5.0em;
 }
 #reportHeader
 {
@@ -134,6 +134,28 @@ td
 	padding: 7px 7px 8px;
 	text-align: left;
 }
+.sched
+{
+	float:left;
+	margin-left: 4.0em;
+	font-size: 100%;
+	font-family: Arial,  Verdana, Helvetica, sans-serif;
+	
+}
+.bold
+{
+	font-weight:bold;
+}
+#left
+{
+	float:left;
+	margin-right:0%;
+}
+#right
+{
+	float:right;
+	margin-left:10px;
+}
 -->
 </style>
 <%
@@ -143,21 +165,11 @@ td
 	ScheduleBroker broker = ScheduleBroker.getBroker();
 
 
-
-	String startDate = request.getParameter("startDate");
-	String endDate = request.getParameter("endDate");
-
-	if(startDate!=null && endDate!=null)
+	String schedID = request.getParameter("schedID");
+	
+	if(schedID!=null)
 	{
-		// Reversing the date so that it matches the argument required for sql.Date
-		java.sql.Date sqlStartDate = java.sql.Date.valueOf(startDate);
-		
-		// Reversing the date so that it matches the argument required for sql.Date
-		java.sql.Date sqlEndDate = java.sql.Date.valueOf(endDate);
-		
-		
-		sched.setStartDate(sqlStartDate);
-		sched.setEndDate(sqlEndDate);
+		sched.setSchedID(Integer.parseInt(schedID));
 	}
 
 	Schedule[] reported = broker.get(sched, user);
@@ -170,7 +182,7 @@ td
 					<h2 id="name">Schedule Report:  </h2>
 					<div id="date"><%= new java.util.Date()%></div>
 				</div>
-		       </div>
+		    </div>
 		
 		<%
 				for (int i=0; i<reported.length; i++)
@@ -180,7 +192,7 @@ td
 				<div class="sched">
 						<div id="left"><div class="bold"> Start Date:</div><%=st.getStartDate() %> </div>
 						<div id="right"><div class="bold">End Date:</div><%= st.getEndDate()%></div> 
-				    </div> 
+			    </div> 
 				   <br><br>
 					<div>		
 					
@@ -202,12 +214,6 @@ td
 																<th colspan=4>Time</th>
 															</tr>
 														</thead>
-														<tfoot class="foot">
-															<tr class="headerRow">
-																<th>Shift - Day: <%=shift.getDay() %></th>
-																<th colspan=4>Time</th>
-															</tr>
-														</tfoot>
 														<tbody>
 															<tr id="colored">
 																<th>Employee</th>
@@ -225,7 +231,12 @@ td
 											  		<%
 														  	}
 											  		%>
-											  		    
+											  		    <tfoot class="foot">
+															<tr class="headerRow">
+																<th>Shift - Day: <%=shift.getDay() %></th>
+																<th colspan=4>Time</th>
+															</tr>
+														</tfoot>
 														</tbody>
 												</table>
 											</div>

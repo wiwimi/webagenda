@@ -84,12 +84,7 @@ if(session.getAttribute("username") == null)
 			<div class="widgetUpperRectangle" id="usersUpperRectangle">
 				<div class="widgetTitle" id="usersWidgetTitle">User Report <div id="helpIcon"></div></div>
 			</div>
-				<div id="printerIcon">
-						<a href="javascript:window.print()"> </a>
-				</div>
-			<div class="widgetLowerRectangle" id="userLowerRectangle">
-			
-				<%
+			<%
 					Employee emp = new Employee();
 				    String empId = request.getParameter("empId");
 				    int empIdInt = Integer.parseInt(empId);
@@ -99,7 +94,14 @@ if(session.getAttribute("username") == null)
 					broker.initConnectionThread();
 					
 				%>
-				<div id="reportHeader">
+				<div id="printerIcon">
+						<a href="javascript:window.print()"> </a>
+				</div>
+				<div id="excelIcon" >
+					<a href="usersxls.jsp?empID=<%=empId%>"> </a>
+				</div>
+			<div class="widgetLowerRectangle" id="userLowerRectangle">
+			    <div id="reportHeader">
 					<div id="userName">
 						<h2 id="name">Employee ID: <%= reported[0].getEmpID()%> </h2>
 						<div id="date"><%= new java.util.Date()%></div>

@@ -1,5 +1,5 @@
-<%@ page import="persistence.LocationBroker" %>
-<%@ page import="business.schedule.Location" %>
+<%@ page import="persistence.PositionBroker" %>
+<%@ page import="business.schedule.Position" %>
 <%@ page import="business.Employee" %>
 <%@ page import="java.util.*" %>
 
@@ -134,17 +134,26 @@ td
 -->
 </style>
 <%
-	Location loc = new Location("");
+	Position pos = new Position("");
 	Employee user = (Employee) session.getAttribute("currentEmployee");
-	LocationBroker broker = LocationBroker.getBroker();
+	PositionBroker broker = PositionBroker.getBroker();
 	broker.initConnectionThread();
-	Location[] reportedArray = broker.get(loc, user);
+	
+	String posName = request.getParameter("posName");
+	
+	if(posName!=null)
+	{
+		pos.setName(posName);
+	}
+	
+	
+	Position[] reportedArray = broker.get(pos, user);
 %>
 
 <div id="reportHeader">
 					<div id="titleHeader">
-						<h2 id="name">Deerfoot Locations </h2>
-						<h2 id="date"><%= new java.util.Date()%></h2>
+						<h2 id="name">Deerfoot Positions</h2>
+						<div id="date"><%= new java.util.Date()%></div>
 					</div>
 </div>
 				
@@ -167,19 +176,19 @@ td
 											</td>
 											<td>
 								<%
-										if (reportedArray[index].getDesc()!=null)
+										if (reportedArray[index].getDescription()!=null)
 										{
-											if (reportedArray[index].getDesc().length()>2)
+											if (reportedArray[index].getDescription().length()>2)
 											{
 								%>	
-												<%=reportedArray[index].getDesc().substring(0, 1)%>
+												<%=reportedArray[index].getDescription().substring(0, 1)%>
 								<%
 											}
 										
 											else
 											{
 								%>
-												<%=reportedArray[index].getDesc()%>
+												<%=reportedArray[index].getDescription()%>
 								<%
 											}
 										}

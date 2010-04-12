@@ -139,13 +139,20 @@ td
 	Employee user = (Employee) session.getAttribute("currentEmployee");
 	LocationBroker broker = LocationBroker.getBroker();
 	broker.initConnectionThread();
+	String locName = request.getParameter("locName");
+	
+	if(locName!=null)
+	{
+		loc.setName(locName);
+	}
+	
 	Location[] reportedArray = broker.get(loc, user);
 %>
 
 <div id="reportHeader">
 					<div id="titleHeader">
 						<h2 id="name">Deerfoot Locations </h2>
-						<h2 id="date"><%= new java.util.Date()%></h2>
+						<div id="date"><%= new java.util.Date()%></div>
 					</div>
 </div>
 				
