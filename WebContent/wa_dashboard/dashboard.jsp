@@ -89,53 +89,41 @@ if(session.getAttribute("username") != null)
 				<table>
 					<thead>
 						<tr>
-							<td>Sunday</td>
-							<td>Monday</td>
-							<td>Tuesday</td>
-							<td>Wednesday</td>
-							<td>Thursday</td>
-							<td>Friday</td>
-							<td>Saturday</td>
+							<td>Date</td>
+							<td>Start Time</td>
+							<td>End Time</td>
 						</tr>
 					</thead>
 					
 					<tfoot>
 						<tr>
-							<td>Sunday</td>
-							<td>Monday</td>
-							<td>Tuesday</td>
-							<td>Wednesday</td>
-							<td>Thursday</td>
-							<td>Friday</td>
-							<td>Saturday</td>
+							<td>Date</td>
+							<td>Start Time</td>
+							<td>End Time</td>
 						</tr>					
 					</tfoot>
 					<tbody>
-					<tr>
 <% 
 	ScheduleBroker broker = ScheduleBroker.getBroker();
-	Schedule[] schedule = broker.get(new Schedule(), (Employee)session.getAttribute("currentEmployee"));
 	
-	if(schedule.length == 0)
+	Schedule[] empSched = broker.getEmpSchedules((Employee)session.getAttribute("currentEmployee"));
+
+	if(empSched == null)
 	{
-		out.println("<td colSpan=\"7\">There are no shifts in the system<td>");
+		out.println("<td colSpan=\"7\">There are no schedules for you that have been made</td>");
 	}
 	else
 	{
-	
-		for(int index = 0; index < schedule.length; index++)
+		for(int index = 0; index < empSched[0].getShifts().size(); index++)
 		{
-			if(schedule[index].getShifts().get(index).getEmployees().get(index).equals((Employee)session.getAttribute("currentEmployee")))
-			{
-				for(int i = 0; i < schedule[index].getShifts().size(); i++)
-				{
-					out.println("<td>"+schedule[index].getShifts().get(i)+"</td>");
-				}
-			}
+			out.println("<tr>");
+				out.println("<td>"+empSched[0].getShifts().get(index).getDay()+"</td>");
+				out.println("<td>"+empSched[0].getShifts().get(index).getStartTime()+"</td>");
+				out.println("<td>"+empSched[0].getShifts().get(index).getEndTime()+"</td>");
+			out.println("</tr>");
 		}
 	}
 %>
-						</tr>
 					</tbody>
 				</table>
 				</div>
