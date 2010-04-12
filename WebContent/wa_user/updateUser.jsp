@@ -121,16 +121,19 @@
 						}
 					}
 				%>
-		<div id="instructions">
-			Fields marked with <em class="asterisk" > *</em> are required.
-			Randomly generated passwords are going to be sent to the employee's e-mail. If that field was missing it will be sent to your e-mail.
-		</div>
 
         <div id="usersWidget" class="fullWidget">
 			<div class="widgetUpperRectangle" id="usersUpperRectangle">
 				<div class="widgetTitle" id="usersWidgetTitle">Users <div id="helpIcon"></div></div>
 			</div>
 		<div class="widgetLowerRectangle" id="usersLowerRectangle">
+		
+		<div id="instructions">
+			Fields marked with <em class="asterisk" > *</em> are required.
+			Randomly generated passwords are going to be sent to the employee's e-mail. If that field was missing it will be sent to your e-mail.
+		</div>
+		
+		
 		<div id ="creationForm">
 			<form class="validatedForm" action="../UpdateUser" id="form" method="post">
 				 <div id="personal">

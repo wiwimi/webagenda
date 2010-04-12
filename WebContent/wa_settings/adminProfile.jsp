@@ -162,12 +162,12 @@
 				 <div id="personal">
 					 	<div id="formButtons">
 					 	    <input type="submit" name="submit" class="button" value="Update"> 
-							<input type="reset" name="clear" class="button" value="Clear Screen" onClick="location.href='updateUser.jsp?empId=&familyName=&status=&username=&dob='">
+							<input type="reset" name="clear" class="button" value="Clear Screen" onClick="location.href='adminProfile.jsp?message=clear'">
 						</div>
 				<%
 				 	String givenName = "", familyName ="", dob ="" , username ="", email="", password ="";
 					
-					EmployeeBroker empBroker = EmployeeBroker.getBroker();
+				    EmployeeBroker empBroker = EmployeeBroker.getBroker();
 					user = (Employee)session.getAttribute("currentEmployee");
 					
 					int empIdInt = user.getEmpID();
@@ -200,6 +200,19 @@
 					oldEmp.setEmpID(empIdInt);
 					
 					session.setAttribute("oldEmp", oldEmp);
+					
+					 if (request.getParameter("message")!=null)
+					 {
+						 if (request.getParameter("message").equals("clear"))
+						 {
+							 givenName = "";
+							 familyName ="";
+							 dob ="" ;
+							 username ="";
+							 email="";
+							 password="";
+						 }
+					 }
 						
 
 				%>

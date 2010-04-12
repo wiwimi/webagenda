@@ -26,6 +26,7 @@ if(session.getAttribute("username") == null)
         if (user==null)
         {
         	response.sendRedirect("wa_login/login.jsp");
+        	return;
         }
         else
         {
@@ -45,6 +46,7 @@ if(session.getAttribute("username") == null)
 			else
 			{
 		        response.sendRedirect("wa_login/login.jsp");
+		        return;
 			}
         }
 	%>

@@ -7,7 +7,7 @@
 <%@ page import="persistence.EmployeeBroker" %>
 <%@ page import="business.permissions.PermissionBroker" %>
 <%@ page import="business.permissions.PermissionLevel" %>
-<%@ page import="business.permissions.PermissionAccess" %>
+<%@ page import="business.permissions.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- Author: Noorin -->
 <html>
@@ -16,22 +16,36 @@
 <title>Web Agenda- Contact Admin</title>
 
 <%
-	Employee e = (Employee) request.getSession().getAttribute("currentEmployee");
-	if (e.getLevel()==99)
-	{
-%>
-	<!--  Includes -->
-	<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
-<%
-	}
-	else
-	{
-%>
-		<!--  Includes -->
-	<jsp:include page="../wa_includes/pageLayoutUser.jsp"/>
-<%
-	}
-%>
+         Employee e = (Employee) request.getSession().getAttribute("currentEmployee");
+        if (e==null)
+        {
+        	response.sendRedirect("wa_login/login.jsp");
+        	return;
+        }
+        else
+        {
+		
+	    	PermissionBroker pb = PermissionBroker.getBroker();
+	    	PermissionLevel[] perms =  pb.get(e.getLevel(), e.getVersion(), e);
+	    	Permissions perm = perms[0].getLevel_permissions();
+	    	
+	    
+	        if (perm.isCanManageEmployees()==true)
+			{
+			%>
+				<!-- Includes -->
+				<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+			<%
+				}
+				else
+				{
+			%>
+					<!--  Includes -->
+				<jsp:include page="../wa_includes/pageLayoutUser.jsp"/>
+			<%
+				}
+        }
+	%>
 
 <!-- Libraries -->
 <script type ="text/javascript" src ="../lib/js/jquery-1.3.2.min.js"> </script>

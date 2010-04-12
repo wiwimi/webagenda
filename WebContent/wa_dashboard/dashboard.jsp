@@ -40,6 +40,7 @@ if(session.getAttribute("username") != null)
         if (e==null)
         {
         	response.sendRedirect("wa_login/login.jsp");
+        	return;
         }
         else
         {

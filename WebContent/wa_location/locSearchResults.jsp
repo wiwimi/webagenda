@@ -15,11 +15,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Web Agenda- Updating Location</title>
 
-    <%
+     <%
          Employee user = (Employee) request.getSession().getAttribute("currentEmployee");
         if (user==null)
         {
         	response.sendRedirect("wa_login/login.jsp");
+        	return;
         }
         else
         {
@@ -38,10 +39,8 @@
 				}
 				else
 				{
-			%>
-					<!--  Includes -->
-				<jsp:include page="../wa_includes/pageLayoutUser.jsp"/>
-			<%
+					response.sendRedirect("wa_login/login.jsp");
+        			return;
 				}
         }
 	%>

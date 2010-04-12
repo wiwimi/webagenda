@@ -54,9 +54,7 @@
 
 </head>
 <body>
-		<div id="instructions">
-			Fields marked with <em class="asterisk" > *</em> are required.
-		</div>
+		
 			<% 
 					System.out.println(request.getParameter("update"));
 					if(request.getParameter("update") != null)
@@ -105,6 +103,10 @@
 			</div>
 			
 		<div class="widgetLowerRectangle" id="skillLowerRectangle">
+		
+		<div id="instructions">
+			Fields marked with <em class="asterisk" > *</em> are required.
+		</div>
 		
         <div id ="creationForm">
 			<form class="addSkillForm" action="../UpdateSkill" id="form" method="post">
