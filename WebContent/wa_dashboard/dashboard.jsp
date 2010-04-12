@@ -29,7 +29,6 @@ if(session.getAttribute("username") != null)
 
 
 <!-- Javascript Files -->
-<script type="text/javascript" src="../lib/js/dashboard.js"></script>
 
 <title>Web Agenda - Dashboard</title>
 
