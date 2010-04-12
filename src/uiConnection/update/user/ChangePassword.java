@@ -56,7 +56,7 @@ public class ChangePassword extends HttpServlet {
 		        
 		        if (!newPassword.equals(confirmPassword))
 		        {
-		        	response.sendRedirect("wa_settings/changePassword.jsp?message=mismatch&password=" + newPassword+ "&confirmPassword=" + confirmPassword);
+		        	response.sendRedirect("wa_settings/changePassword.jsp?message=mismatch");
 		        }
 		        else 
 		        {
