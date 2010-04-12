@@ -5,7 +5,6 @@ package testDB;
 
 import java.sql.Date;
 import java.sql.Time;
-import java.util.ArrayList;
 import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
@@ -130,7 +129,7 @@ public class TestScheduleBroker extends TestCase
 			Schedule update = old.clone();
 			
 			//Set shifts to start at 7am instead of 8am.
-			for (Shift shift : update.getShifts().toArrayList())
+			for (Shift shift : update.getShifts().toArray())
 				{
 				shift.setStartTime(Time.valueOf("07:00:00"));
 				}
@@ -216,13 +215,13 @@ public class TestScheduleBroker extends TestCase
 		
 		System.out.println("Schedule: "+st);
 		
-		ArrayList<Shift> shiftList = st.getShifts().toArrayList();
+		Shift[] shiftList = st.getShifts().toArray();
 		
 		for (Shift shift : shiftList)
 			{
 			System.out.println("\tShift - Day: "+shift.getDay()+" - Time: "+shift.getStartTime() + " to " + shift.getEndTime());
 			
-			ArrayList<Employee> emps = shift.getEmployees().toArrayList();
+			Employee[] emps = shift.getEmployees().toArray();
 			
 			for (Employee emp : emps)
 				{
@@ -265,13 +264,13 @@ public class TestScheduleBroker extends TestCase
 		
 		System.out.println("Schedule: "+st);
 		
-		ArrayList<Shift> shiftList = st.getShifts().toArrayList();
+		Shift[] shiftList = st.getShifts().toArray();
 		
 		for (Shift shift : shiftList)
 			{
 			System.out.println("\tShift - Day: "+shift.getDay()+" - Time: "+shift.getStartTime() + " to " + shift.getEndTime());
 			
-			ArrayList<Employee> emps = shift.getEmployees().toArrayList();
+			Employee[] emps = shift.getEmployees().toArray();
 			
 			for (Employee e : emps)
 				{

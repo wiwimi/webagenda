@@ -14,7 +14,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Collections;
 import utilities.DoubleLinkedList;
 import exception.DBChangeException;
 import exception.DBDownException;
@@ -80,7 +79,7 @@ public class ScheduleBroker extends Broker<Schedule>
 			throw new EmptyScheduleException("Can not create schedule, no shifts found.");
 		
 		boolean hasEmployee = false;
-		for (Shift s : createObj.getShifts().toArrayList())
+		for (Shift s : createObj.getShifts().toArray())
 			{
 			if (s.getEmployees().size() > 0)
 				hasEmployee = true;
@@ -137,7 +136,7 @@ public class ScheduleBroker extends Broker<Schedule>
 				createObj.setSchedID(temp.getInt(1));
 			
 			//Insert each shift.
-			for (Shift shift : createObj.getShifts().toArrayList())
+			for (Shift shift : createObj.getShifts().toArray())
 				{
 				insertShift(shift, createObj.getSchedID(),
 						createShift, createShiftEmp);
@@ -420,33 +419,33 @@ public class ScheduleBroker extends Broker<Schedule>
 				}
 			
 			//Convert old/new shifts to array.
-			ArrayList<Shift> oldShiftArr = oldObj.getShifts().toArrayList();
-			ArrayList<Shift> updShiftArr = updateObj.getShifts().toArrayList();
+			Shift[] oldShiftArr = oldObj.getShifts().toArray();
+			Shift[] updShiftArr = updateObj.getShifts().toArray();
 			
 			//Check for old shifts that are not used, and can be deleted.
-			for (int i = 0; i < oldShiftArr.size(); i++)
+			for (int i = 0; i < oldShiftArr.length; i++)
 				{
 				boolean found = false;
-				for (int j = 0; j < updShiftArr.size() && !found; j++)
+				for (int j = 0; j < updShiftArr.length && !found; j++)
 					{
 					//If old shift exists in new shift array, set found.
-					if (oldShiftArr.get(i).getShiftID() == updShiftArr.get(j).getShiftID())
+					if (oldShiftArr[i].getShiftID() == updShiftArr[j].getShiftID())
 						found = true;
 					}
 				
 				//Old shift not in update, delete from database.
 				if (!found)
 					{
-					deleteShift.setInt(1, oldShiftArr.get(i).getShiftID());
+					deleteShift.setInt(1, oldShiftArr[i].getShiftID());
 					if (deleteShift.executeUpdate() != 1)
 						throw new DBException("Failed to delete shift during update.");
 					}
 				}
 			
 			//Check updated shifts against old shifts, adding and updating as necessary.
-			for (int i = 0; i < updShiftArr.size(); i++)
+			for (int i = 0; i < updShiftArr.length; i++)
 				{
-				Shift updShift = updShiftArr.get(i);
+				Shift updShift = updShiftArr[i];
 				
 				//If update shift doesn't have an ID, it is new.
 				if (updShift.getShiftID() == -1)
@@ -466,10 +465,10 @@ public class ScheduleBroker extends Broker<Schedule>
 					
 					//Shift template has an ID should match an old shift template.
 					int oldShiftIdx = -1;
-					for (int j = 0; j < oldShiftArr.size() && oldShiftIdx == -1; j++)
+					for (int j = 0; j < oldShiftArr.length && oldShiftIdx == -1; j++)
 						{
-						if (oldShiftArr.get(j).getSchedID() == updShift.getSchedID() &&
-								oldShiftArr.get(j).getShiftID() == updShift.getShiftID())
+						if (oldShiftArr[j].getSchedID() == updShift.getSchedID() &&
+								oldShiftArr[j].getShiftID() == updShift.getShiftID())
 							{
 							//Matching shift template found.
 							oldShiftIdx = j;
@@ -478,7 +477,7 @@ public class ScheduleBroker extends Broker<Schedule>
 					
 					if (oldShiftIdx != -1)
 						{
-						Shift oldShift = oldShiftArr.get(oldShiftIdx);
+						Shift oldShift = oldShiftArr[oldShiftIdx];
 						
 						//If shift attributes different, update DB.
 						if (oldShift.getDay() != updShift.getDay() ||
@@ -502,15 +501,15 @@ public class ScheduleBroker extends Broker<Schedule>
 							}
 						
 						//Check if shifts have same employees.
-						ArrayList<Employee> oldShiftEmpArr = oldShift.getEmployees().toArrayList();
-						ArrayList<Employee> updShiftEmpArr = updShift.getEmployees().toArrayList();
+						Employee[] oldShiftEmpArr = oldShift.getEmployees().toArray();
+						Employee[] updShiftEmpArr = updShift.getEmployees().toArray();
 						
 						boolean shiftEmpChanged = false;
-						if (oldShiftEmpArr.size() == updShiftEmpArr.size())
+						if (oldShiftEmpArr.length == updShiftEmpArr.length)
 							{
-							for (int j = 0; j < oldShiftEmpArr.size() && !shiftEmpChanged; j++)
+							for (int j = 0; j < oldShiftEmpArr.length && !shiftEmpChanged; j++)
 								{
-								if (oldShiftEmpArr.get(j).getEmpID() != updShiftEmpArr.get(j).getEmpID())
+								if (oldShiftEmpArr[j].getEmpID() != updShiftEmpArr[j].getEmpID())
 									shiftEmpChanged = true;
 								}
 							}
@@ -584,27 +583,27 @@ public class ScheduleBroker extends Broker<Schedule>
 			{
 			//Get employees and sort.
 			DoubleLinkedList<Employee> emps = shifts.get(i).getEmployees(); 
-			ArrayList<Employee> sortedEmps = emps.toArrayList();
+			Employee[] sortedEmps = emps.toArray();
 			
 			if (sortedEmps != null)
 				{
-				Collections.sort(sortedEmps);
+				Arrays.sort(sortedEmps);
 				
 				//Add sorted employees back to list.
 				emps.clear();
-				for (int j = 0; j < sortedEmps.size(); j++)
-					emps.add(sortedEmps.get(j));
+				for (int j = 0; j < sortedEmps.length; j++)
+					emps.add(sortedEmps[j]);
 				}
 			}
 		
 		//Employees sorted, now sort shifts.
-		ArrayList<Shift> sortedShifts = shifts.toArrayList();
-		Collections.sort(sortedShifts);
+		Shift[] sortedShifts = shifts.toArray();
+		Arrays.sort(sortedShifts);
 		
 		//Add sorted shifts back to list.
 		shifts.clear();
-		for (int k = 0; k < sortedShifts.size(); k++)
-			shifts.add(sortedShifts.get(k));
+		for (int k = 0; k < sortedShifts.length; k++)
+			shifts.add(sortedShifts[k]);
 		}
 	
 	/* (non-Javadoc)
@@ -695,9 +694,9 @@ public class ScheduleBroker extends Broker<Schedule>
 			ArrayList<Employee> notifyEmps = new ArrayList<Employee>();
 			
 			//Get list of unique employees in the new schedule.
-			for (Shift sh : newSched.getShifts().toArrayList())
+			for (Shift sh : newSched.getShifts().toArray())
 				{
-				for (Employee e : sh.getEmployees().toArrayList())
+				for (Employee e : sh.getEmployees().toArray())
 					{
 					//Remove duplicates.
 					while (notifyEmps.remove(e));
@@ -723,9 +722,9 @@ public class ScheduleBroker extends Broker<Schedule>
 			ArrayList<Employee> newEmps = new ArrayList<Employee>();
 			
 			//Get unique employees from old schedule.
-			for (Shift sh : oldSched.getShifts().toArrayList())
+			for (Shift sh : oldSched.getShifts().toArray())
 				{
-				for (Employee e : sh.getEmployees().toArrayList())
+				for (Employee e : sh.getEmployees().toArray())
 					{
 					//Remove duplicates.
 					while (oldEmps.remove(e));
@@ -735,9 +734,9 @@ public class ScheduleBroker extends Broker<Schedule>
 					}
 				}
 			//Get unique employees from new schedule.
-			for (Shift sh : newSched.getShifts().toArrayList())
+			for (Shift sh : newSched.getShifts().toArray())
 				{
-				for (Employee e : sh.getEmployees().toArrayList())
+				for (Employee e : sh.getEmployees().toArray())
 					{
 					//Remove duplicates.
 					while (newEmps.remove(e));
@@ -935,7 +934,7 @@ public class ScheduleBroker extends Broker<Schedule>
 			shift.setShiftID(temp.getInt(1));
 		
 		//Insert each shift employee.
-		insertShiftEmployees(shift.getEmployees().toArrayList(), shift.getShiftID(), createShiftEmp);
+		insertShiftEmployees(shift.getEmployees().toArray(), shift.getShiftID(), createShiftEmp);
 		}
 	
 	/**
@@ -945,7 +944,7 @@ public class ScheduleBroker extends Broker<Schedule>
 	 * @param shiftID The shift template ID to use for all shift employees.
 	 * @param createShiftEmp The prepared statement used to execute the inserts.
 	 */
-	private void insertShiftEmployees(ArrayList<Employee> shiftEmpArr, int shiftID,
+	private void insertShiftEmployees(Employee[] shiftEmpArr, int shiftID,
 			PreparedStatement createShiftEmp) throws DBException, SQLException
 		{
 		if (shiftEmpArr != null)

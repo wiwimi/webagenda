@@ -7,9 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import utilities.DoubleLinkedList;
 import exception.DBChangeException;
 import exception.DBDownException;
@@ -104,7 +102,7 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 				createObj.setSchedTempID(temp.getInt(1));
 			
 			//Insert each shift template.
-			for (ShiftTemplate shiftTemp : createObj.getShiftTemplates().toArrayList())
+			for (ShiftTemplate shiftTemp : createObj.getShiftTemplates().toArray())
 				{
 				insertShiftTemplate(shiftTemp, createObj.getSchedTempID(),
 						createShiftTemp, createShiftPos);
@@ -316,33 +314,33 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 				}
 			
 			//Convert old/new shift templates to array.
-			ArrayList<ShiftTemplate> oldShiftArr = oldObj.getShiftTemplates().toArrayList();
-			ArrayList<ShiftTemplate> updShiftArr = updateObj.getShiftTemplates().toArrayList();
+			ShiftTemplate[] oldShiftArr = oldObj.getShiftTemplates().toArray();
+			ShiftTemplate[] updShiftArr = updateObj.getShiftTemplates().toArray();
 			
 			//Check for old shift templates that are not used, and can be deleted.
-			for (int i = 0; i < oldShiftArr.size(); i++)
+			for (int i = 0; i < oldShiftArr.length; i++)
 				{
 				boolean found = false;
-				for (int j = 0; j < updShiftArr.size() && !found; j++)
+				for (int j = 0; j < updShiftArr.length && !found; j++)
 					{
 					//If old shift exists in new shift array, set found.
-					if (oldShiftArr.get(i).getShiftTempID() == updShiftArr.get(j).getShiftTempID())
+					if (oldShiftArr[i].getShiftTempID() == updShiftArr[j].getShiftTempID())
 						found = true;
 					}
 				
 				//Old shift not in update, delete from database.
 				if (!found)
 					{
-					deleteShiftTemp.setInt(1, oldShiftArr.get(i).getShiftTempID());
+					deleteShiftTemp.setInt(1, oldShiftArr[i].getShiftTempID());
 					if (deleteShiftTemp.executeUpdate() != 1)
 						throw new DBException("Failed to delete shift template during update.");
 					}
 				}
 			
 			//Check updated shifts against old shifts, adding and updating as necessary.
-			for (int i = 0; i < updShiftArr.size(); i++)
+			for (int i = 0; i < updShiftArr.length; i++)
 				{
-				ShiftTemplate updShift = updShiftArr.get(i);
+				ShiftTemplate updShift = updShiftArr[i];
 				
 				//If update shift doesn't have an ID, it is new.
 				if (updShift.getShiftTempID() == -1)
@@ -362,10 +360,10 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 					
 					//Shift template has an ID should match an old shift template.
 					int oldShiftIdx = -1;
-					for (int j = 0; j < oldShiftArr.size() && oldShiftIdx == -1; j++)
+					for (int j = 0; j < oldShiftArr.length && oldShiftIdx == -1; j++)
 						{
-						if (oldShiftArr.get(j).getSchedTempID() == updShift.getSchedTempID() &&
-								oldShiftArr.get(j).getShiftTempID() == updShift.getShiftTempID())
+						if (oldShiftArr[j].getSchedTempID() == updShift.getSchedTempID() &&
+								oldShiftArr[j].getShiftTempID() == updShift.getShiftTempID())
 							{
 							//Matching shift template found.
 							oldShiftIdx = j;
@@ -374,7 +372,7 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 					
 					if (oldShiftIdx != -1)
 						{
-						ShiftTemplate oldShift = oldShiftArr.get(oldShiftIdx);
+						ShiftTemplate oldShift = oldShiftArr[oldShiftIdx];
 						
 						//If shift attributes different, update DB.
 						if (oldShift.getDay() != updShift.getDay() ||
@@ -398,17 +396,17 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 							}
 						
 						//Check if shifts have same positions.
-						ArrayList<ShiftPosition> oldShiftPosArr = oldShift.getShiftPositions().toArrayList();
-						ArrayList<ShiftPosition> updShiftPosArr = updShift.getShiftPositions().toArrayList();
+						ShiftPosition[] oldShiftPosArr = oldShift.getShiftPositions().toArray();
+						ShiftPosition[] updShiftPosArr = updShift.getShiftPositions().toArray();
 						
 						boolean shiftPosChanged = false;
-						if (oldShiftPosArr.size() == updShiftPosArr.size())
+						if (oldShiftPosArr.length == updShiftPosArr.length)
 							{
-							for (int j = 0; j < oldShiftPosArr.size() && !shiftPosChanged; j++)
+							for (int j = 0; j < oldShiftPosArr.length && !shiftPosChanged; j++)
 								{
-								if (oldShiftPosArr.get(j).getShiftTempID() != updShiftPosArr.get(j).getShiftTempID() ||
-										!oldShiftPosArr.get(j).getPosName().equals(updShiftPosArr.get(j).getPosName()) ||
-										oldShiftPosArr.get(j).getPosCount() != updShiftPosArr.get(j).getPosCount())
+								if (oldShiftPosArr[j].getShiftTempID() != updShiftPosArr[j].getShiftTempID() ||
+										!oldShiftPosArr[j].getPosName().equals(updShiftPosArr[j].getPosName()) ||
+										oldShiftPosArr[j].getPosCount() != updShiftPosArr[j].getPosCount())
 									shiftPosChanged = true;
 								}
 							}
@@ -481,23 +479,23 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 			{
 			//Get shift positions and sort.
 			DoubleLinkedList<ShiftPosition> shiftPositions = shiftTemps.get(i).getShiftPositions(); 
-			ArrayList<ShiftPosition> sortedShiftPos = shiftPositions.toArrayList();
-			Collections.sort(sortedShiftPos);
+			ShiftPosition[] sortedShiftPos = shiftPositions.toArray();
+			Arrays.sort(sortedShiftPos);
 			
 			//Add sorted shift positions back to list.
 			shiftPositions.clear();
-			for (int j = 0; j < sortedShiftPos.size(); j++)
-				shiftPositions.add(sortedShiftPos.get(j));
+			for (int j = 0; j < sortedShiftPos.length; j++)
+				shiftPositions.add(sortedShiftPos[j]);
 			}
 		
 		//Employees sorted, now sort shifts.
-		ArrayList<ShiftTemplate> sortedShiftTemps = shiftTemps.toArrayList();
-		Collections.sort(sortedShiftTemps);
+		ShiftTemplate[] sortedShiftTemps = shiftTemps.toArray();
+		Arrays.sort(sortedShiftTemps);
 		
 		//Add sorted shifts back to list.
 		shiftTemps.clear();
-		for (int k = 0; k < sortedShiftTemps.size(); k++)
-			shiftTemps.add(sortedShiftTemps.get(k));
+		for (int k = 0; k < sortedShiftTemps.length; k++)
+			shiftTemps.add(sortedShiftTemps[k]);
 		}
 	
 	/* (non-Javadoc)
@@ -752,7 +750,7 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 			shiftTemp.setShiftTempID(temp.getInt(1));
 		
 		//Insert each shift position.
-		insertShiftPositions(shiftTemp.getShiftPositions().toArrayList(), shiftTemp.getShiftTempID(), createShiftPos);
+		insertShiftPositions(shiftTemp.getShiftPositions().toArray(), shiftTemp.getShiftTempID(), createShiftPos);
 		}
 	
 	/**
@@ -762,7 +760,7 @@ public class ScheduleTemplateBroker extends Broker<ScheduleTemplate>
 	 * @param shiftTempID The shift template ID to use for all shift positions.
 	 * @param createShiftPos The prepared statement used to execute the inserts.
 	 */
-	private void insertShiftPositions(ArrayList<ShiftPosition> shiftPosArr, int shiftTempID,
+	private void insertShiftPositions(ShiftPosition[] shiftPosArr, int shiftTempID,
 			PreparedStatement createShiftPos) throws DBException, SQLException
 		{
 		for (ShiftPosition shiftPos : shiftPosArr)

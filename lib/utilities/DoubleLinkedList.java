@@ -4,7 +4,6 @@
 package utilities;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 
@@ -343,20 +342,6 @@ public class DoubleLinkedList<E> implements List<E> {
 			i++;
 		}
 		return temp;
-	}
-
-	public ArrayList<E> toArrayList() {
-		if (size == 0)
-			return null;
-		
-		DLLNode<E> current = head;
-		ArrayList<E> array = new ArrayList<E>();
-		for (int i = 0; i < size; i++)
-		{
-		array.add(current.getElement());
-		current = current.getNextNode();
-		}
-		return array;
 	}
 	
 	public E[] toArray() {

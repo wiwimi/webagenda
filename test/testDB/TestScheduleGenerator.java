@@ -79,7 +79,7 @@ public class TestScheduleGenerator
 			System.out.println("---------- Printing Unadded ----------");
 			System.out.println("Schedule: "+genSched);
 			
-			ArrayList<Shift> shiftList = genSched.getShifts().toArrayList();
+			Shift[] shiftList = genSched.getShifts().toArray();
 			
 			for (Shift shift : shiftList)
 				{
@@ -87,7 +87,7 @@ public class TestScheduleGenerator
 				
 				if (shift.getEmployees().size() > 0)
 					{
-					for (Employee emp : shift.getEmployees().toArrayList())
+					for (Employee emp : shift.getEmployees().toArray())
 						System.out.println("\t\tApplies to: "+emp);
 					}
 				}
@@ -96,7 +96,7 @@ public class TestScheduleGenerator
 			for (Shift s : partialMatches)
 				{
 				System.out.println("For shift: "+s);
-				for (Employee e : s.getEmployees().toArrayList())
+				for (Employee e : s.getEmployees().toArray())
 					System.out.println("\t"+e);
 				}
 			System.out.println("---------- Print Complete ----------");
@@ -106,7 +106,7 @@ public class TestScheduleGenerator
 			System.out.println("---------- DB Add Successful ----------");
 			
 			System.out.println("---------- Printing Added Schedule ----------");
-			shiftList = genSched.getShifts().toArrayList();
+			shiftList = genSched.getShifts().toArray();
 			
 			for (Shift shift : shiftList)
 				{
@@ -114,7 +114,7 @@ public class TestScheduleGenerator
 				
 				if (shift.getEmployees().size() > 0)
 					{
-					for (Employee emp : shift.getEmployees().toArrayList())
+					for (Employee emp : shift.getEmployees().toArray())
 						System.out.println("\t\tApplies to: "+emp);
 					}
 				}

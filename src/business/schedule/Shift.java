@@ -208,7 +208,7 @@ public class Shift extends BusinessObject implements Comparable<Shift>
 		
 		DoubleLinkedList<Employee> cloneEmp = new DoubleLinkedList<Employee>();
 		
-		for (Employee emp : this.employees.toArrayList())
+		for (Employee emp : this.employees.toArray())
 			cloneEmp.add(emp.clone());
 		
 		clone.setEmployees(cloneEmp);
