@@ -3,85 +3,83 @@
 package Business;
 
 /**
- * Contains information on an employee within the system including username and passwords to log in, and basic employee information such as first and last name. 
+ * Holds all information for an employee, matching a record in the database.
  */
 public class Employee {
     /**
-     * Retrieves the list of active working shifts that the employee is currently scheduled for. 
-     */
-    public Shift[] getWorkingTimes(){}
-
-    /**
-     * Retrieves the last time that the employee logged into the system. 
-     */
-    public Date getLoginTime(){}
-
-    /**
-     * The ID number of the employee within the system. 
+     * Identifier for the user. The name employee does not reflect their position. Cannot be negative in the database.
      */
     private int empID;
 
     /**
-     * The supervisor of the employee. 
+     * Like employee_id, supervisor doesn't entail the position; it's the authoritative figure for the employee. Cannot be negative, if this user has no supervisor, this value should point to the employee_id.
      */
-    private int supervisorID;
+    private int supID;
 
     /**
-     * The given name of the employee.
+     * User's first name, or preferred name. Name values cannot be changed by current user, they have to be changed by a higher authority with permissions to do so, they cannnot be changed by current user.
      */
     private String givenName;
 
     /**
-     * The family name of the employee.
+     * User's last name, family name, or referenced name. May depend on culture how this is used. Has the same constraints as the firstname.
      */
     private String familyName;
 
     /**
-     * The birthday of the employee.  Not required by default. 
+     * The date of birth for the employee. While not required by the system for general use, it can be made required by certain positions that may require users to be over the age of 16/18/21.
      */
     private Date birthDate;
 
     /**
-     * The email at which the employee can be contacted. 
+     * User's e-mail address that they want information sent to. Is changeable by the user. It is highly recommended that this be set.
      */
     private String email;
 
     /**
-     * The username that the employee uses to log into the system. 
+     * Name that is entered into the username field when logging into the system; does not reflect personal data such as name or id, while allowing users to communicate with each other in a recognizable format. Cannot be null.
      */
     private String username;
 
     /**
-     * The password that the employee uses to log into the system. 
+     * Password for logging onto the system. This is only used when creating a new employee to assign the initial password. All other password verification and changing functions are handled by the employee broker.
      */
     private String password;
 
     /**
-     * Holds the last day and time that the employee logged in. 
+     * The last time at which the employee logged into the system.
      */
-    private Date lastLogin;
+    private Timestamp lastLogin;
 
     /**
-     * The preferred position that the employee will be working in. 
+     * Position is the job that an Employee prefers to work at. This assumes that multiple positions for work are available. May influence the automatically generated schedule.
      */
-    private Position prefPosition;
+    private String prefPosition;
 
     /**
-     * The preferred location within the business that the employee will be working in. 
+     * Location refers to the location in the business or company. If more than one locations exist, such as multiple buildings, instances, or groups of working units, this can be specified. Is not required, but if set may influence automatic schedule generation.
      */
-    private Location prefLocation;
+    private String prefLocation;
 
     /**
-     * The current permission level of the employee, tied to a permission set. 
+     * Permission level value that depicts the authority of this Employee over other employees. When a higher level employee makes a decision, it cannot be overruled by one with a lower permission. Basic heirachical permission functionality.
      */
-    private PermissionSet plevel;
+    private int plevel;
 
     /**
-     * The active state of the employee.  When active, an employee can be included in shifts and schedules.
-     * 
-     * An inactive employee is equivalent to one that has been deleted, and is kept in the system so they may still be included in reports and auditing procedures. 
+     * Version of a PermissionLevel that depicts having the same authority of the equivalent permission level, but whose job has different permissions and therefore a different goal. Defaults to a space character, or basic version. 
+     */
+    private char pversion;
+
+    /**
+     * Boolean value that represents if the user can access their account; all accounts are saved in the database and can only be deleted when explicitly requested; since some records cannot be deleted (see tax records), employee entries will be kept and searches will generally only return active employees. An exception is when someone with proper permissions wants to browse inactive user, or generate reports on active/inactive users.
      */
     private boolean active;
+
+    /**
+     * Users that have a default system assigned password will be notified to change it. 
+     */
+    private boolean passChanged;
 
     /**
      * Employees will receive and view notifications that are sent automatically, or manually sent by their supervisor. 

@@ -3,21 +3,36 @@
 package Business;
 
 /**
- * Contains a list of what positions must be filled by employees within a given range of time.
+ * Defines the start and end time of a shift for a set of required positions.
  */
 public class ShiftTemplate {
     /**
-     * The time at which work begins for the employees assigned to the shift. 
+     * The internal DB ID of the shift template. This is for broker use only. 
+     */
+    private int shiftTempID;
+
+    /**
+     * The internal DB ID of the schedule template that the shift belongs to. This is for broker use only. 
+     */
+    private int schedTempID;
+
+    /**
+     * The day of the week that the shift is on. 
+     */
+    private int day;
+
+    /**
+     * The time at which the shift begins.
      */
     private Time startTime;
 
     /**
-     * The time at which work ends for the employees assigned to the shift. 
+     * The time at which the shift ends.
      */
     private Time endTime;
 
     /**
-     * The positions that are required for the shift. 
+     * An array or list of all shift positions for this shift template.
      */
     private ShiftPos[] positions;
 

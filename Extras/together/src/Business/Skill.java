@@ -3,16 +3,16 @@
 package Business;
 
 /**
- * Skills are assigned to both Employees and Positions.  Together, they keep track of what skills an employee must have to work a certain position, and are checked against an employee's skill list when an attempt is made to assign a preferred position to them.
+ * Holds all information for a skill, matching the structure of skills in the database. Skills are used to record what skills an employee has both within and outside of their position, and positions may have a set of skills that are required.
  */
 public class Skill {
     /**
-     * The name of the skill, uniquely identifying it apart from other skills. 
+     * The name of the skill which is to be attributed to the employees of WebAgenda. Non-unique skill names will cause conflicts so only unique names can be used.
      */
-    private String name;
+    private String skillName;
 
     /**
-     * The description of the skill, if desired. 
+     * A description of the skill being used. If skill names are similar, a description of what the skill is or how it is applied should be included. This is optional.
      */
-    private String description;
+    private String skillDescription;
 }

@@ -3,18 +3,23 @@
 package Business;
 
 /**
- * Used by Shifts to record what positions they required, as well as a count of how many of each unique position they require. 
+ * Holds information on a position required by a shift template, and the number of employees that are required for that position.
  */
 public class ShiftPos {
     /**
-     * The position that is required. 
+     * The ID of the shift template that the shift position belongs to. 
      */
-    private Position position;
+    private int shiftTempID;
 
     /**
-     * The number of people that must fill this position for the containing shift. 
+     * The name of the position that is required on the shift.
      */
-    private int count;
+    private String positionName;
+
+    /**
+     * The number of people required to be working the position on the shift.
+     */
+    private int posCount;
 
     /**
      * @clientQualifier contains

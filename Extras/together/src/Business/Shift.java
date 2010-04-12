@@ -3,26 +3,36 @@
 package Business;
 
 /**
- * Working shifts determine which employees are working at what times for a specific schedule.
+ * Defines the the day of the week, start time and end time of a shift for a set of employees.
  */
 public class Shift {
     /**
-     * Returns an array containing the start and end time of a working shift. 
+     * The internal DB ID of the shift. This is for broker use only. 
      */
-    public Time[] getTimes(){}
+    private int shiftID;
 
     /**
-     * The starting time of this working shift. 
+     * The internal DB ID of the schedule the shift belongs to. This is for broker use only. 
+     */
+    private int schedID;
+
+    /**
+     * The day of the week that the shift is on. 
+     */
+    private int day;
+
+    /**
+     * The time at which the shift begins.
      */
     private Time startTime;
 
     /**
-     * The end time of this working shift. 
+     * The time at which the shift ends.
      */
     private Time endTime;
 
     /**
-     * The employees that will be working during the times set by the working shift. 
+     * The array or list of all employees that are working on the shift.
      */
     private Employee[] employees;
 

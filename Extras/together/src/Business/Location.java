@@ -7,12 +7,12 @@ package Business;
  */
 public class Location {
     /**
-     * The name of the location, uniquely identifying it apart from other locations. 
+     * The name of the location which is to be used by other components of WebAgenda. Non-unique location names will cause conflicts so only unique names can be used.
      */
-    private String name;
+    private String locName;
 
     /**
-     * The description of the location, if desired. 
+     * A description of the location being used. If location names are similar, a description of what goes on at that location or who should/does work at that location. This is optional.
      */
-    private String description;
+    private String locDescription;
 }

@@ -3,13 +3,20 @@
 package Business;
 
 /**
- * A group of working shifts that apply within a given range of dates.
+ * Stores all information on a specific schedule, matching the structure of the database.  A filled schedule will list what days and times a set of employees are working.
+ * 
+ * May also be used as a template when searching for schedules in the system.
  */
 public class Schedule {
     /**
-     * Retrieves an array of all working shifts held by the schedule. 
+     * The internal DB ID of the schedule.  This is for broker use only. 
      */
-    public Shift[] getWorkingShifts(){}
+    private int schedID;
+
+    /**
+     * The ID of the employee who created this schedule.
+     */
+    private int creatorID;
 
     /**
      * The start date for when this schedule will be in effect for all applicable employees.
@@ -22,14 +29,9 @@ public class Schedule {
     private Date endDate;
 
     /**
-     * The collection of working shifts that will be active between the dates set by the schedule.
+     * The collection of shifts that will be active between the dates set by the schedule.
      */
     private Shift[] shifts;
-
-    /**
-     * The ID of the employee that created the schedule. 
-     */
-    private int creatorID;
 
     /**
      * @clientCardinality 0..*

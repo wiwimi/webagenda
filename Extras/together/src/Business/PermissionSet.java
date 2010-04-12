@@ -7,88 +7,96 @@ package Business;
  */
 public class PermissionSet {
     /**
-     * Each collection of unique permission settings are tied to a specific permission level number.  Employee permissions are determines by setting them to a permission level, rather than having to set all permission settings individually for each employee. 
+     * Permission level value that depicts the authority of an Employee over other employees. When a higher level employee makes a decision, it cannot be overruled by one with a lower permission. Basic heirachical permission functionality.
      */
     private int plevel;
 
     /**
-     * Employee can access times on a schedule under their
-     * name and lower plevels for the current date or period. 
+     * Version of a PermissionLevel that depicts having the same authority of the equivalent permission level, but whose job has different permissions and therefore a different goal. Defaults to a space character, or basic version. 
      */
-    private boolean canReadSched;
+    private char pversion;
 
     /**
-     * Employee is able to access archived schedules that have ened before the current date. 
-     */
-    private boolean canReadOldSched;
-
-    /**
-     * Sets whether or not the employee is able to edit schedules, either by creating new ones or by editing future schedules that have not yet come into effect. 
+     * Permission that allows a user to call methods in ScheduleBroker successfully that add/edit/delete shifts and a-e-d employees from those shifts. For Automatic Scheduling to occur, this must be enabled as well. Changes can be saved with this permission.
      */
     private boolean canEditSched;
 
     /**
-     * Sets whether or not the employee is able to view employee resources, such as employees that are available, booked off, or are already working at a given time. 
+     * Permission that allows a user to view the current saved schedule. That schedule is determined by other classes, but this is true by default as the purpose of WebAgenda is to allow any user to view their schedule.
+     * 
+     * If an employee is contracting outside the company, but is given an account for contacting those in the business, this will always return a blank schedule unless this permission is set to false.
+     */
+    private boolean canReadSched;
+
+    /**
+     * canReadOldSchedule is a dependancy permission for a user to create reports (but not required) and allows viewing of schedules that are past the current date. For reference and historical value; schedules are not deleted by default, only 'de-activated'.
+     */
+    private boolean canReadOldSched;
+
+    /**
+     * Permission that defines if a user can modify Employee attributes including Permissions and PermissionLevel up to their current permission level - 1. In the event that a business would desire having administration that cannot modify employees, this should be set to false. That way Employee-specific administration is kept in the hands of those trusted, or those set with the task of such a job. 
+     */
+    private boolean canManageEmployees;
+
+    /**
+     * Permission that allows a user to view employees, their hours working, their status whether on vacation, emergency leave, shift traded, or other defined statuses. It also provides access to their availability, but no personal data other than name and job-related info.
      */
     private boolean canViewResources;
 
     /**
-     * Sets whether or not the employee is able to change the permission settings of other employees that are below their permission level. 
+     * Permission that allows the current employee level to modify permissions of lower levels. The optimal permission level for this to work is n -2, where n is the user who can change permissions. Because a user's permission level cannot be elevated to the same level as the elevating user, so a supervisor cannot make a non-supervisor the same status as them, this will fail if used incorrectly. This permission also affects deleting and creating permissions and permission levels. If false, user cannot manage permissions in any way, regardless of level.
      */
     private boolean canChangePermissions;
 
     /**
-     * Sets whether or not the employee is able to view system logs. 
+     * Permission more for administrators and those interested in viewing program history for violations and irregular unexpected behavior. It also lists actions performed by users and the time they occur.
      */
     private boolean canReadLogs;
 
     /**
-     * Sets whether or not the employee can access the reporting system, allowing them to both generate and distribute reports. 
+     * Permission to allow users to view and create reports. When a report is generated, it is saved to the user's account and can be sent via notifications, internal e-mail, external e-mail (it is exported first) and of course exporting to file format onto a hard drive.
      */
     private boolean canAccessReports;
 
     /**
-     * Sets whether or not the employee is able to request days off. 
+     * Permission that allows a user to request days off from a higher permission level user, in most cases this will be based on their job or designated supervisor/authority, and will be dependant on their maxDaysOff and will require authentication via a notification to user's authority.
      */
     private boolean canRequestDaysOff;
 
     /**
-     * Sets the maximum number of days off that an employee can request for a given schedule period.  This value will only be accessed if the employee already has permission to request days off. 
+     * Permission that represents the number of days off that a user has. This value is automatically refreshed every n period of days or as defined by the administrator/highest permission level. Setting the value to -1 will result in unlimited requests allowed. (Not recommended on that setting)
      */
     private int maxDaysOff;
 
     /**
-     * Sets whether or not the employee is able to take vacation days. 
+     * Permission that is similar to the canRequestDaysOff. Part of the difference between the two is that vacations have a more positive political stigma, as some users are allowed to take 2 weeks off work. To make a request for 14 days straight as a part time or temporary employee without reason looks bad.
+     * 
+     * Generally vacations are only allowable for full-time employees. Booked days off do not count towards or against vacation days and vice versa.
      */
     private boolean canTakeVacations;
 
     /**
-     * Determines the maximum number of vacation days that an employee can take off over a schedule period, assuming they have the required permission for vacation days. 
+     * Permission that represents the number of vacation days. Similar to the maxDaysOff, this value is regenerated every period of time (assumed to be yearly). Unlike booking days off, the user does not require confirmation from superiors, but a notification is sent out so that rearrangements can be discussed. If this method does not appeal to the business, they can add more days off (via manually or by assigning different permission level variations) that count towards their vacation.
      */
     private int maxVacationDays;
 
     /**
-     * Sets whether or not the employee is able to take emergency days off.  This will be on by default, but can be turned off if desired. 
+     * This should always remain true for an employee unless it is abused; canTakeEmergencyDays is a permission that overrides procedures to book a day off as it is assumed that an emergency situation has occured that stops a user from coming into work. Reasons are requested when setting an emergency day off, but optional. Superiors are notified of these events so they can review reasons for the absence especially.
      */
     private boolean canTakeEmergencyDays;
 
     /**
-     * Sets whether or not the employee can view details on inactive employees who are not currently working, such as ones that have left the company.  This is primarily used for reports and auditing. 
+     * Permission that allows a user to not only queue inactive employee profiles when making requests of the system, but also browse their resource information like a normal employee. Recommended for creating reports and sys admins.
      */
     private boolean canViewInactiveEmps;
 
     /**
-     * Sets whether or not the employee can send notifications which are messages internal to the system that can be sent to specific employees, workgroups, or job types. 
+     * Permission that allows a user to send their own notification, as opposed to a system generated notification, to a user or users. Events can be displayed this way, promotions, and other items / news.
      */
     private boolean canSendNotifications;
 
     /**
-     * Similar to a permission promotion (which canot be given by self), trusted is a permission that allows any employee to perform actions that affect the next highest level without requiring authorization from a superior.  However, a notification will be sent notifying the supervisor (n/a if highest plevel) explaining actions.  This only applies to permissions that are currently enabled. Ex: If an employee cannot book days off, a trusted employee canot book days off either. 
+     * Permission that elevates a user's permissions to the elevator's level. However, since checks look at this permission as a permission, not an actual level, users that naturally have a permission level equal or higher than the user id recorded in this variable will have superiority.
      */
     private int trusted;
-
-    /**
-     * Starting with 0 as the highest priority employee and then incrementing, this differentiates seniority within the same plevel. 
-     */
-    private int preferredRank;
 }

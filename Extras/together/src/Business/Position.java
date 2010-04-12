@@ -3,18 +3,23 @@
 package Business;
 
 /**
- * The primary object used to match an employee with a shift.  Positions will in most cases be equivalent to a specific job title in the business. 
+ * Represents a Position that an employee can work. It is used extensively in Scheduling for auto-generation; it places employees that can work certain positions in those positions that are required for a completely schedule to be generated.
  */
 public class Position {
     /**
-     * The name of the position, uniquely identifying it apart from other positions. 
+     * This attribute represents the name of the position. It is unique and should accurately represent the the position.
      */
-    private String name;
+    private String positionName;
 
     /**
-     * The description of the position, if desired. 
+     * This attribute is a description of the name of the position. It is optional, but may aid in informed decisions that new users may require when scheduling.
      */
-    private String description;
+    private String positionDescription;
+
+    /**
+     * An array or list of strings, indicating all of the skills that this position requires. 
+     */
+    private String[] reqSkills;
 
     /**
      * @clientQualifier requires
