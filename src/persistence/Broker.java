@@ -236,8 +236,8 @@ public abstract class Broker<E extends BusinessObject>
 						for(int i = connections.size() - 1; i >= int_min_connections; i--)
 						{
 							dbc = connections.get(i);
-							System.out.println("Connection "+i+": "+((dbc.getAccessTime() - now) + lng_time_to_close) + " time to remove");
-							System.out.println("Connection "+i+" is available: "+dbc.isAvailable());
+//							System.out.println("Connection "+i+": "+((dbc.getAccessTime() - now) + lng_time_to_close) + " time to remove");
+//							System.out.println("Connection "+i+" is available: "+dbc.isAvailable());
 							if(dbc == null) {
 								System.out.println("DBConnection is null");
 							}
@@ -245,7 +245,7 @@ public abstract class Broker<E extends BusinessObject>
 							{
 								if(dbc.getAccessTime() < now - lng_time_to_close)
 								{
-									System.out.println("Closing connection " + i);
+//									System.out.println("Closing connection " + i);
 									connections.remove(dbc);
 									dbc.getConnection().close();
 								}
