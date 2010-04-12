@@ -21,6 +21,7 @@
         if (user==null)
         {
         	response.sendRedirect("wa_login/login.jsp");
+        	return;
         }
         else
         {
@@ -39,11 +40,11 @@
 		    }
 			else
 			{
-		        response.sendRedirect("wa_login/login.jsp");
+				response.sendRedirect("../wa_login/login.jsp");
+		        return;
 			}
         }
 	%>
-%>
 
 <!-- Libraries -->
 <script type ="text/javascript" src ="../lib/js/jquery-1.3.2.min.js"> </script>

@@ -22,7 +22,7 @@ if(session.getAttribute("username") == null)
          Employee user = (Employee) request.getSession().getAttribute("currentEmployee");
         if (user==null)
         {
-        	response.sendRedirect("wa_login/login.jsp");
+        	response.sendRedirect("../wa_login/login.jsp");
         	return;
         }
         else
@@ -42,7 +42,7 @@ if(session.getAttribute("username") == null)
 		    }
 			else
 			{
-		        response.sendRedirect("wa_login/login.jsp");
+		        response.sendRedirect("../wa_login/login.jsp");
 		        return;
 			}
         }
@@ -63,9 +63,17 @@ if(session.getAttribute("username") == null)
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/val.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/screen.css" />
 <link rel="stylesheet" href="../CSS/Flash/flashmessenger.css" type="text/css" media="screen"/>
-	
+<link rel="stylesheet" href="../CSS/breadcrumb.css" type="text/css" media="screen" />
+
 </head>
 <body>
+
+<div id="crumb">
+		  <ul id="crumbsLonger">
+		    <li><a href="../wa_dashboard/dashboard.jsp">Home</a></li>
+		    <li><b><a href="#">Security Settings</a></b></li>
+		   </ul>
+</div>
 	<div id="usersWidget" class="fullWidget">
 				<div class="widgetUpperRectangle" id="passwordsUpperRectangle">
 					<div class="widgetTitle" id="passwordTitle">Security Settings</div>
