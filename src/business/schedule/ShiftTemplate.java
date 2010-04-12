@@ -8,7 +8,7 @@ import utilities.DoubleLinkedList;
 import business.BusinessObject;
 
 /**
- * 
+ * Defines the start and end time of a shift for a set of required positions.
  * 
  * @author Daniel Wehr
  * @version 0.1.0

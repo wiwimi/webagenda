@@ -25,8 +25,11 @@ import business.schedule.Shift;
 import messagelog.Logging;
 
 /**
+ * Provides functionality for adding, updating and deleting schedules in the
+ * database. This includes shifts and shift employees.
+ * 
  * @author Daniel Wehr
- * @version 0.3.0
+ * @version 0.4.0
  */
 public class ScheduleBroker extends Broker<Schedule>
 	{
@@ -57,6 +60,9 @@ public class ScheduleBroker extends Broker<Schedule>
 		return broker_schedule;
 		}
 	
+	/* (non-Javadoc)
+	 * @see persistence.Broker#create(business.BusinessObject, business.Employee)
+	 */
 	@Override
 	public boolean create(Schedule createObj, Employee caller)
 			throws DBException, DBDownException, InvalidPermissionException, DayNotSundayException
@@ -147,6 +153,9 @@ public class ScheduleBroker extends Broker<Schedule>
 		return true;
 		}
 	
+	/* (non-Javadoc)
+	 * @see persistence.Broker#delete(business.BusinessObject, business.Employee)
+	 */
 	@Override
 	public boolean delete(Schedule deleteObj, Employee caller)
 			throws DBException, DBDownException
@@ -200,6 +209,9 @@ public class ScheduleBroker extends Broker<Schedule>
 	 * @throws DBException
 	 * @throws DBDownException
 	 * @see persistence.Broker#get(business.BusinessObject)
+	 */
+	/* (non-Javadoc)
+	 * @see persistence.Broker#get(business.BusinessObject, business.Employee)
 	 */
 	@Override
 	public Schedule[] get(Schedule searchTemplate, Employee caller)
@@ -572,6 +584,9 @@ public class ScheduleBroker extends Broker<Schedule>
 			shifts.add(sortedShifts[k]);
 		}
 	
+	/* (non-Javadoc)
+	 * @see persistence.Broker#parseResults(java.sql.ResultSet)
+	 */
 	@Override
 	protected Schedule[] parseResults(ResultSet rs) throws SQLException
 		{

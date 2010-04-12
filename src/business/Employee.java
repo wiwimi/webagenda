@@ -9,6 +9,8 @@ import java.sql.Timestamp;
 import exception.DBException;
 
 /**
+ * Holds all information for an employee, matching a record in the database.
+ * 
  * @author Daniel Kettle, Daniel Wehr
  * @version 0.3.0
  */
@@ -109,15 +111,6 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 	 * it.
 	 */
 	private boolean				passChanged			= false;
-	
-	/**
-	 * An object that contains the personal visual settings of a user; loaded
-	 * upon login to set up their dashboard, retrieved by broker. Value can be
-	 * null, in which case it will be set to the default built-in view. May not
-	 * apply through mobile device/browser views (mobile device meaning native
-	 * mobile apps.)
-	 */
-	private Settings				userSettings		= null;
 	
 	/** Version of a PermissionLevel that depicts having the same authority of the
 	 * equivalent permission level, but whose job has different permissions and
@@ -403,24 +396,6 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 		}
 	
 	/**
-	 * Gets the Settings object of an Employee
-	 * @return the user_settings
-	 */
-	public Settings getUserSettings()
-		{
-		return userSettings;
-		}
-	
-	/**
-	 * Sets the Settings object of an Employee
-	 * @param userSettings the user_settings to set
-	 */
-	public void setUserSettings(Settings userSettings)
-		{
-		this.userSettings = userSettings;
-		}
-	
-	/**
 	 * Gets the version of the Employee's Permission Level
 	 * @return the version
 	 */
@@ -495,6 +470,9 @@ public class Employee extends BusinessObject implements Comparable<Employee>
 		return clone;
 		}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString()
 		{

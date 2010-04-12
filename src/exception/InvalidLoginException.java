@@ -24,10 +24,10 @@ public class InvalidLoginException extends Exception
 	
 	/**
 	 * Constructor with message that is displayed when thrown
-	 * @param String
+	 * @param message a custom debug message for the exception.
 	 */
-	public InvalidLoginException(String msg)
+	public InvalidLoginException(String message)
 		{
-		super(msg);
+		super(message);
 		}
 	}

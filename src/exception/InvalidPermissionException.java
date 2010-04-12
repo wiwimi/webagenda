@@ -11,10 +11,6 @@ import messagelog.Logging;
  * @license GPL 2
  */
 public class InvalidPermissionException extends Exception {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 3559826756270573552L;
 
 	/**
@@ -28,7 +24,7 @@ public class InvalidPermissionException extends Exception {
 	/**
 	 * Constructor with message that is displayed when thrown.
 	 * Message is also logged.
-	 * @param message
+	 * @param message The custom debug message for the exception.
 	 */
 	public InvalidPermissionException(String message)
 	{

@@ -6,9 +6,8 @@ package business.schedule;
 import business.BusinessObject;
 
 /**
- * This class represents the locations where employees can work; is used mainly
- * by scheduling and job-related tasks. TODO: Perhaps work this into reporting
- * functions.
+ * Represents the locations where employees can work; is used mainly by
+ * scheduling and job-related tasks.
  * 
  * @author Daniel Kettle, Daniel Wehr
  * @version 0.2.0
@@ -91,6 +90,9 @@ public class Location extends BusinessObject
 		this.desc = desc;
 		}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString()
 		{

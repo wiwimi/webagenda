@@ -5,7 +5,7 @@ package exception;
 
 /**
  * Thrown if the startDate in a schedule, or the startDate given to the schedule
- * generator is not a sunday.
+ * generator is not a Sunday.
  * 
  * @author Daniel Wehr
  * @version 0.1.0

@@ -19,18 +19,16 @@ import business.Employee;
 import application.ConnectionManager;
 import application.DBConnection;
 
-
 /**
- * All brokers should inherit this class. Includes database information for
- * multiple db connectivity, BrokerThreads and associated methods for fetching
- * results from the database and managing the threads.
+ * Includes database information for multiple db connectivity, BrokerThreads and
+ * associated methods for fetching results from the database and managing the
+ * threads. This should be inherited by all broker classes.
  * 
  * @author Daniel Kettle, Daniel Wehr
  * @version 0.3.0
  */
 public abstract class Broker<E extends BusinessObject>
 	{
-	
 	/** Double linked list for holding connection objects. List changes dynamically depending on
 	 * the need of the application, old connections will be closed and removed periodically. */
 	private DoubleLinkedList<DBConnection>	connections	= new DoubleLinkedList<DBConnection>();
@@ -94,14 +92,13 @@ public abstract class Broker<E extends BusinessObject>
 	 */
 	protected abstract E[] parseResults(ResultSet rs) throws SQLException;
 	
-	
-	
 	/**
 	 * Grabs a connection from the DBConnection wrapper class that also monitors how many connections
 	 * this Broker object has retrieved in total; One connection instance is available at a minimum
 	 * and this will add any and all created connection to a list where they can be managed.
-	 * @return DBConnection wrapper class with active connection
-	 * @throws DBDownException if the database is unreachable
+	 * 
+	 * @return DBConnection wrapper class with active connection.
+	 * @throws DBDownException if the database is unreachable.
 	 */
 	public DBConnection getConnection() throws DBDownException
 		{

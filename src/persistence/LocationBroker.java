@@ -16,9 +16,11 @@ import business.schedule.Location;
 import business.Employee;
 
 /**
+ * Provides functionality for adding, updating and deleting locations in the
+ * database.
+ * 
  * @author Daniel Wehr
- * @version 0.1.0
- *
+ * @version 0.2.0
  */
 public class LocationBroker extends Broker<Location>
 	{

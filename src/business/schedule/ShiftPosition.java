@@ -6,7 +6,8 @@ package business.schedule;
 import business.BusinessObject;
 
 /**
- * 
+ * Holds information on a position required by a shift template, and the number
+ * of employees that are required for that position.
  * 
  * @author Daniel Wehr
  * @version 0.1.0
@@ -101,6 +102,9 @@ public class ShiftPosition extends BusinessObject implements Comparable<ShiftPos
 		this.posCount = posCount;
 		}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Comparable#compareTo(java.lang.Object)
+	 */
 	@Override
 	public int compareTo(ShiftPosition o)
 		{
@@ -129,6 +133,9 @@ public class ShiftPosition extends BusinessObject implements Comparable<ShiftPos
 		return (ShiftPosition)super.clone();
 		}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString()
 		{

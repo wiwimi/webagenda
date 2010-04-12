@@ -19,6 +19,9 @@ import business.Employee;
 import business.permissions.PermissionLevel;
 
 /**
+ * Provides functionality for adding, removing and changing employee data in the
+ * database.
+ * 
  * @author Daniel Kettle, Daniel Wehr
  * @version 0.3.0
  */
@@ -29,8 +32,7 @@ public class EmployeeBroker extends Broker<Employee>
 	
 	/**
 	 * Constructor for EmployeeBroker, initializes the Broker Connection
-	 * Monitor
-	 * 
+	 * Monitor.
 	 */
 	private EmployeeBroker()
 		{
@@ -102,8 +104,6 @@ public class EmployeeBroker extends Broker<Employee>
 		}
 		return pl;
 	}
-	
-	
 	
 	/*
 	 * (non-Javadoc)
@@ -211,6 +211,9 @@ public class EmployeeBroker extends Broker<Employee>
 		return true;
 		}
 	
+	/* (non-Javadoc)
+	 * @see persistence.Broker#delete(business.BusinessObject, business.Employee)
+	 */
 	@Override
 	public boolean delete(Employee deleteEmp, Employee caller) throws DBException, DBChangeException, DBDownException, InvalidPermissionException, PermissionViolationException
 		{
@@ -604,14 +607,17 @@ public class EmployeeBroker extends Broker<Employee>
 		}
 	
 	/**
+	 * Resets the password of a target username to a new value, regardless of
+	 * what the old password was.  This method should only be used by supervisors
+	 * or admins.
 	 * 
-	 * 
-	 * @param username
-	 * @param newPassword
-	 * @param caller
-	 * @return
-	 * @throws DBDownException 
-	 * @throws DBException 
+	 * @param username the user who's password will be reset.
+	 * @param newPassword the new password to give to the user.
+	 * @param caller The user currently logged into the system, who should have
+	 * 		the necessary permissions to reset passwords.
+	 * @return true if the target user's password was reset, otherwise false.
+	 * @throws DBDownException if the database is currently down.
+	 * @throws DBException if there was an error updating the password.
 	 */
 	public boolean resetPassword(String username, String newPassword, Employee caller) throws DBDownException, DBException
 		{
@@ -683,7 +689,6 @@ public class EmployeeBroker extends Broker<Employee>
 						rs.getInt("plevel"),
 						rs.getString("pversion").charAt(0));
 				} catch (DBException e) {
-					// TODO Auto-generated catch block
 					throw new SQLException("Attempting to create an Employee with an Invalid Permission Level");
 				}
 				

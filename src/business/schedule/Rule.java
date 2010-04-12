@@ -6,8 +6,8 @@ package business.schedule;
 import business.BusinessObject;
 
 /**
- * A rule is an object that determines the influences that affect Shift templates,
- * such as a minimum age rule for example.
+ * An object that determines the influences that affect Shift templates, such as
+ * a minimum age rule for example.
  * 
  * @author Daniel Kettle
  * @version 0.01.00

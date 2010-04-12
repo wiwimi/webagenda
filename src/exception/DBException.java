@@ -15,7 +15,7 @@ public class DBException extends Exception
 	private static final long	serialVersionUID	= 4422954236349309804L;
 
 	/**
-	 * Empty Constructor
+	 * Empty Constructor.
 	 */
 	public DBException()
 		{
@@ -23,8 +23,9 @@ public class DBException extends Exception
 		}
 	
 	/**
-	 * Contructor with message that is displayed when thrown
-	 * @param message
+	 * Constructor with message that is displayed when thrown.
+	 * 
+	 * @param message a custom debug message for the exception.
 	 */
 	public DBException(String message)
 		{
@@ -33,8 +34,8 @@ public class DBException extends Exception
 	
 	/**
 	 * Constructor with message and throwable cause
-	 * @param message
-	 * @param cause
+	 * @param message a custom debug message for the exception.
+	 * @param cause the exception that caused the DBException to be thrown.
 	 */
 	public DBException(String message, Throwable cause)
 		{

@@ -17,6 +17,9 @@ import business.Skill;
 import business.schedule.Position;
 
 /**
+ * Provides functionality for adding, updating and deleting positions in the
+ * database.
+ * 
  * @author dann
  * @version 0.01.00
  * @license GPL 2

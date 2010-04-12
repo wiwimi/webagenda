@@ -31,14 +31,17 @@ public class ConnectionManager
 	private static String	db_url				= "jdbc:mysql://localhost:3306/" + db_name;
 	
 	/**
-	 * Returns an initialized connection instance wrapped in WebAgenda's DBConnection object for
-	 * use with Broker objects for connecting to database and performing statements.
-	 * Instances are controlled by Brokers so memory usage doesn't spiral out of control when
-	 * the database is it with many connection requests.
+	 * Returns an initialized connection instance wrapped in WebAgenda's
+	 * DBConnection object for use with Broker objects for connecting to database
+	 * and performing statements. Instances are controlled by Brokers so memory
+	 * usage doesn't spiral out of control when the database is it with many
+	 * connection requests.
 	 * 
-	 * @return DBConnection object -- holds a connection with availability settings
-	 * @throws DBDownException If the database information is incorrect or connection cannot be made
-	 * (Database daemon / process / service is not running
+	 * @return DBConnection object -- holds a connection with availability
+	 *         settings.
+	 * @throws DBDownException If the database information is incorrect or
+	 *            connection cannot be made (Database daemon / process / service
+	 *            is not running
 	 */
 	public static DBConnection getConnection() throws DBDownException
 		{
@@ -49,7 +52,6 @@ public class ConnectionManager
 				{
 				db_drv_instance = Class.forName(db_driver).newInstance();
 				}
-			// +"&noAccessToProcedureBodies=true"
 			conn = DriverManager.getConnection(db_url+"?user="+db_user+"&password="+db_pass);
 			}
 		catch (CommunicationsException e)
@@ -58,22 +60,18 @@ public class ConnectionManager
 			}
 		catch (InstantiationException e)
 			{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			}
 		catch (IllegalAccessException e)
 			{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			}
 		catch (ClassNotFoundException e)
 			{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			}
 		catch (SQLException e)
 			{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			}
 		
@@ -122,7 +120,7 @@ public class ConnectionManager
 	}
 
 	/**
-	 * Gets the Databaes user
+	 * Gets the Database user
 	 * @return the db_user
 	 */
 	protected static String getDb_user() {

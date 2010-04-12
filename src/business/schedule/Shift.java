@@ -9,6 +9,8 @@ import business.Employee;
 import utilities.DoubleLinkedList;
 
 /**
+ * Defines the the start and end time of a shift for a set of employees.
+ * 
  * @author Daniel Kettle, Daniel Wehr
  * @version 0.2.0
  */

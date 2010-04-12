@@ -7,10 +7,11 @@ import business.BusinessObject;
 import business.Skill;
 
 /**
- * This class represents a Position that an employee can work. It is used extensively in Scheduling for
- * auto-generation; it places employees that can work certain positions in those positions that are
- * required for a completely schedule to be generated. (No errors)
- *
+ * Represents a Position that an employee can work. It is used extensively in
+ * Scheduling for auto-generation; it places employees that can work certain
+ * positions in those positions that are required for a completely schedule to
+ * be generated.
+ * 
  * @author peon-dev
  * @version 0.2.0
  */

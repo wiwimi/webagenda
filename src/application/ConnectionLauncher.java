@@ -16,11 +16,11 @@ public class ConnectionLauncher {
 	/**
 	 * Method that sets the database information when run;
 	 * Uses Properties file in following order to determine
-	 * what values are set:
-	 * Username
-	 * Password
-	 * Database Instance Name
-	 * Driver String (Name)
+	 * what values are set:<br>
+	 * Username<br>
+	 * Password<br>
+	 * Database Instance Name<br>
+	 * Driver String (Name)<br>
 	 * Driver URL (hostname, port; database instance name is appended in 
 	 * this method) 
 	 * 

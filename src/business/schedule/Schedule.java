@@ -8,12 +8,17 @@ import utilities.DoubleLinkedList;
 import business.BusinessObject;
 
 /**
+ * Stores all information on a specific schedule, matching the structure of the
+ * database.  A filled schedule will list what days and times a set of employees
+ * are working.
+ * 
+ * May also be used as a template when searching for schedules in the system.
+ * 
  * @author Daniel Kettle, Daniel Wehr
  * @version 0.2.0
  */
 public class Schedule extends BusinessObject
 	{
-	
 	/**
 	 * The internal DB ID of the schedule.  This is for broker use only.
 	 */

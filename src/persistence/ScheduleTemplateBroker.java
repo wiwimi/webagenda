@@ -19,6 +19,9 @@ import business.schedule.ShiftTemplate;
 import business.Employee;
 
 /**
+ * Provides functionality for adding, updating and deleting schedule templates
+ * in the database. This includes shift templates, and shift positions.
+ * 
  * @author Daniel Wehr
  * @version 0.3.0
  */

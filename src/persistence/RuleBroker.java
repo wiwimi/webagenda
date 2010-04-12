@@ -15,6 +15,9 @@ import exception.DBException;
 import business.Employee;
 
 /**
+ * Provides functionality for adding, updating and deleting Rules in the
+ * database.
+ * 
  * @author dann
  * @version 0.01.00
  * @license GPL 2
@@ -43,6 +46,9 @@ public class RuleBroker extends Broker<Rule> {
 		return rbrok;
 	}
 
+	/* (non-Javadoc)
+	 * @see persistence.Broker#create(business.BusinessObject, business.Employee)
+	 */
 	@Override
 	public boolean create(Rule createObj,Employee caller) throws DBException, DBDownException {
 		if (createObj == null)
@@ -85,6 +91,9 @@ public class RuleBroker extends Broker<Rule> {
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see persistence.Broker#delete(business.BusinessObject, business.Employee)
+	 */
 	@Override
 	public boolean delete(Rule deleteObj,Employee caller) throws DBException, DBDownException {
 		if (deleteObj == null)
@@ -114,6 +123,9 @@ public class RuleBroker extends Broker<Rule> {
 		return success;
 	}
 
+	/* (non-Javadoc)
+	 * @see persistence.Broker#get(business.BusinessObject, business.Employee)
+	 */
 	@Override
 	public Rule[] get(Rule searchTemplate,Employee caller) throws DBException, DBDownException {
 		String select;
@@ -150,6 +162,9 @@ public class RuleBroker extends Broker<Rule> {
 		return foundRules;
 	}
 
+	/* (non-Javadoc)
+	 * @see persistence.Broker#parseResults(java.sql.ResultSet)
+	 */
 	@Override
 	protected Rule[] parseResults(ResultSet rs) throws SQLException {
 		// List will be returned as null if no results are found.
@@ -176,6 +191,9 @@ public class RuleBroker extends Broker<Rule> {
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see persistence.Broker#update(business.BusinessObject, business.BusinessObject, business.Employee)
+	 */
 	@Override
 	public boolean update(Rule oldRule, Rule updateObj,Employee caller) throws DBException, DBDownException {
 		if (updateObj == null)

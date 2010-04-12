@@ -15,6 +15,9 @@ import exception.DBException;
 import business.Employee;
 
 /**
+ * Provides functionality for adding, updating and deleting skills in the
+ * database.
+ * 
  * @author dann
  * @version 0.01.00
  * @license GPL 2
@@ -42,6 +45,9 @@ public class SkillBroker extends Broker<Skill> {
 		return sbrok;
 	}
 
+	/* (non-Javadoc)
+	 * @see persistence.Broker#create(business.BusinessObject, business.Employee)
+	 */
 	@Override
 	public boolean create(Skill createObj,Employee caller) throws DBException, DBDownException {
 		if (createObj == null)
@@ -62,7 +68,7 @@ public class SkillBroker extends Broker<Skill> {
 				
 		/*
 		 * Send insert to database. SQL errors such as primary key already in use
-		 * will be caught, and turned into our own DBAddException, so this method
+		 * will be caught, and turned into our own DBException, so this method
 		 * will only have one type of exception that needs to be caught. If the
 		 * insert is successful, return true.
 		 */
@@ -81,13 +87,15 @@ public class SkillBroker extends Broker<Skill> {
 			}
 		catch (SQLException e)
 			{
-			// TODO Need additional SQL exception processing here.
 			throw new DBException("Failed to create skill.", e);
 			}
 		
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see persistence.Broker#delete(business.BusinessObject, business.Employee)
+	 */
 	@Override
 	public boolean delete(Skill deleteObj,Employee caller) throws DBChangeException, DBException, DBDownException {
 		if (deleteObj== null)
@@ -119,6 +127,9 @@ public class SkillBroker extends Broker<Skill> {
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see persistence.Broker#get(business.BusinessObject, business.Employee)
+	 */
 	@Override
 	public Skill[] get(Skill searchTemplate,Employee caller)
 			throws DBException, DBDownException {
@@ -164,6 +175,9 @@ public class SkillBroker extends Broker<Skill> {
 		return foundSkills;
 	}
 
+	/* (non-Javadoc)
+	 * @see persistence.Broker#update(business.BusinessObject, business.BusinessObject, business.Employee)
+	 */
 	@Override
 	public boolean update(Skill oldSkill, Skill updateSkill, Employee caller) throws DBChangeException, DBException, DBDownException {
 		if (updateSkill == null)
@@ -204,6 +218,9 @@ public class SkillBroker extends Broker<Skill> {
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see persistence.Broker#parseResults(java.sql.ResultSet)
+	 */
 	@Override
 	protected Skill[] parseResults(ResultSet rs) throws SQLException {
 		// List will be returned as null if no results are found.

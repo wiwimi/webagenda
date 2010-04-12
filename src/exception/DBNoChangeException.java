@@ -12,10 +12,6 @@ package exception;
  * @license GPL 2
  */
 public class DBNoChangeException extends DBException {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 5381735819317615138L;
 	
 	/**
@@ -28,7 +24,7 @@ public class DBNoChangeException extends DBException {
 	
 	/**
 	 * Constructor with message that is displayed when thrown
-	 * @param message
+	 * @param message a custom debug message for the exception.
 	 */
 	public DBNoChangeException(String message)
 	{

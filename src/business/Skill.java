@@ -5,8 +5,10 @@ package business;
 
 
 /**
- * Skill is an object that is applied to an employee that determines
- * what positions they can work in a schedule.
+ * Holds all information for a skill, matching the structure of skills in the
+ * database.  Skills are used to record what skills an employee has both within
+ * and outside of their position, and positions may have a set of skills
+ * that are required.
  * 
  * @author dann
  * @version 0.01.00
@@ -30,7 +32,6 @@ public class Skill extends BusinessObject {
 	/** Produces a blank template of an skill */
 	public Skill()
 		{
-		
 		}
 
 	/**

@@ -6,6 +6,8 @@ package business;
 import java.sql.Timestamp;
 
 /**
+ * Holds all information for a notification, matching a record in the database.
+ * 
  * @author dann
  * @version 0.01.00
  * @license GPL 2
@@ -26,9 +28,6 @@ public class Notification extends BusinessObject {
 	private String message					= null;
 	/** Type of notification being sent */
 	private String type						= null;
-	
-	// FIXME: I'm a little unsure of how notifications are supposed to be
-	// constructed. Modify if wrong.
 	
 	/**
 	 * Constructor that creates a Notification with all required parameters.

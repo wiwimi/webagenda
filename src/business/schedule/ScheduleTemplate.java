@@ -7,7 +7,9 @@ import utilities.DoubleLinkedList;
 import business.BusinessObject;
 
 /**
- * 
+ * Stores all information on a schedule template, matching the database.
+ * Schedule templates match required positions to shifts, and are used to
+ * generate new filled schedules that assign work times to specific employees.
  * 
  * @author Daniel Wehr, Daniel Kettle
  * @version 0.1.00
