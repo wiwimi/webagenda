@@ -93,7 +93,8 @@ public class ScheduleBroker extends Broker<Schedule>
 		cal.setTimeInMillis(createObj.getStartDate().getTime());
 		
 		if (cal.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY)
-			throw new DayNotSundayException("Sunday startDate required. " + createObj.getStartDate() + " detected as " +
+			throw new DayNotSundayException("Sunday startDate required. " + createObj.getStartDate() +
+					" detected as " +
 					Calendar.DAY_OF_WEEK +
 					", Sunday is " + Calendar.SUNDAY + ".");
 		
@@ -109,16 +110,20 @@ public class ScheduleBroker extends Broker<Schedule>
 			
 			// Create prepared statements for inserts.
 			PreparedStatement createSched = conn.getConnection().prepareStatement(
-					"INSERT INTO `WebAgenda`.`SCHEDULE` " + "(`startDate`,`endDate`,`creatorID`) " + "VALUES " + "(?,?,?)",
+					"INSERT INTO `WebAgenda`.`SCHEDULE` " + "(`startDate`,`endDate`,`creatorID`) "
+							+ "VALUES " + "(?,?,?)",
 					Statement.RETURN_GENERATED_KEYS);
 			
 			PreparedStatement createShift = conn.getConnection().prepareStatement(
-					"INSERT INTO `WebAgenda`.`SHIFT` " + "(`schedID`,`day`,`startTime`,`endTime`) " + "VALUES "
+					"INSERT INTO `WebAgenda`.`SHIFT` " + "(`schedID`,`day`,`startTime`,`endTime`) "
+							+ "VALUES "
 							+ "(?,?,?,?)",
 					Statement.RETURN_GENERATED_KEYS);
 			
-			PreparedStatement createShiftEmp = conn.getConnection().prepareStatement(
-					"INSERT INTO `WebAgenda`.`SHIFTEMP` " + "(`shiftID`,`empID`) " + "VALUES " + "(?,?)");
+			PreparedStatement createShiftEmp = conn.getConnection()
+					.prepareStatement(
+							"INSERT INTO `WebAgenda`.`SHIFTEMP` " + "(`shiftID`,`empID`) " + "VALUES "
+									+ "(?,?)");
 			
 			// Attempt to insert schedule template.
 			createSched.setDate(1, createObj.getStartDate());
@@ -229,7 +234,8 @@ public class ScheduleBroker extends Broker<Schedule>
 	 * @see persistence.Broker#get(business.BusinessObject, business.Employee)
 	 */
 	@Override
-	public Schedule[] get(Schedule searchTemplate, Employee caller) throws DBException, DBChangeException,
+	public Schedule[] get(Schedule searchTemplate, Employee caller) throws DBException,
+			DBChangeException,
 			DBDownException
 		{
 		// Ensure schedule search template is not null.
@@ -245,15 +251,19 @@ public class ScheduleBroker extends Broker<Schedule>
 			if (searchTemplate.getSchedID() != -1)
 				{
 				// Get the schedule with a matching ID.
-				select = conn.getConnection().prepareStatement(
-						"SELECT * FROM `WebAgenda`.`SCHEDULE` WHERE schedID = ? ORDER BY creatorID, startDate, endDate");
+				select = conn
+						.getConnection()
+						.prepareStatement(
+								"SELECT * FROM `WebAgenda`.`SCHEDULE` WHERE schedID = ? ORDER BY creatorID, startDate, endDate");
 				select.setInt(1, searchTemplate.getSchedID());
 				}
 			else if (searchTemplate.getCreatorID() != -1)
 				{
 				// Get all schedules created by the given employee.
-				select = conn.getConnection().prepareStatement(
-						"SELECT * FROM `WebAgenda`.`SCHEDULE` WHERE creatorID = ? ORDER BY creatorID, startDate, endDate");
+				select = conn
+						.getConnection()
+						.prepareStatement(
+								"SELECT * FROM `WebAgenda`.`SCHEDULE` WHERE creatorID = ? ORDER BY creatorID, startDate, endDate");
 				select.setInt(1, searchTemplate.getCreatorID());
 				}
 			else if (searchTemplate.getStartDate() != null && searchTemplate.getEndDate() != null)
@@ -315,11 +325,14 @@ public class ScheduleBroker extends Broker<Schedule>
 			DBConnection conn = this.getConnection();
 			
 			// Get all schedules for the given employee.
-			PreparedStatement select = conn.getConnection().prepareStatement(
-					"SELECT * " + "FROM `WebAgenda`.`SCHEDULE` s JOIN `WebAgenda`.`SHIFT` sh ON s.schedID = sh.schedID "
-							+ "JOIN `WebAgenda`.`SHIFTEMP` se ON sh.shiftID = se.shiftID "
-							+ "WHERE se.empID = ? AND s.endDate > NOW() "
-							+ "GROUP BY s.schedID " + "ORDER BY s.startDate");
+			PreparedStatement select = conn
+					.getConnection()
+					.prepareStatement(
+							"SELECT * "
+									+ "FROM `WebAgenda`.`SCHEDULE` s JOIN `WebAgenda`.`SHIFT` sh ON s.schedID = sh.schedID "
+									+ "JOIN `WebAgenda`.`SHIFTEMP` se ON sh.shiftID = se.shiftID "
+									+ "WHERE se.empID = ? AND s.endDate > NOW() "
+									+ "GROUP BY s.schedID " + "ORDER BY s.startDate");
 			
 			select.setInt(1, emp.getEmpID());
 			
@@ -346,7 +359,8 @@ public class ScheduleBroker extends Broker<Schedule>
 	 * business.BusinessObject, business.Employee)
 	 */
 	@Override
-	public boolean update(Schedule oldObj, Schedule updateObj, Employee caller) throws DBException, DBChangeException,
+	public boolean update(Schedule oldObj, Schedule updateObj, Employee caller) throws DBException,
+			DBChangeException,
 			DBDownException,
 			InvalidPermissionException
 		{
@@ -377,7 +391,8 @@ public class ScheduleBroker extends Broker<Schedule>
 							+ "WHERE schedID = ? AND creatorID = ? AND startDate = ? AND endDate = ?");
 			
 			PreparedStatement createShift = conn.getConnection().prepareStatement(
-					"INSERT INTO `WebAgenda`.`SHIFT` " + "(`schedID`,`day`,`startTime`,`endTime`) " + "VALUES "
+					"INSERT INTO `WebAgenda`.`SHIFT` " + "(`schedID`,`day`,`startTime`,`endTime`) "
+							+ "VALUES "
 							+ "(?,?,?,?)",
 					Statement.RETURN_GENERATED_KEYS);
 			
@@ -389,8 +404,10 @@ public class ScheduleBroker extends Broker<Schedule>
 			PreparedStatement deleteShift = conn.getConnection().prepareStatement(
 					"DELETE FROM `WebAgenda`.`SHIFT` WHERE shiftID = ?");
 			
-			PreparedStatement createShiftEmp = conn.getConnection().prepareStatement(
-					"INSERT INTO `WebAgenda`.`SHIFTEMP` " + "(`shiftID`,`empID`) " + "VALUES " + "(?,?)");
+			PreparedStatement createShiftEmp = conn.getConnection()
+					.prepareStatement(
+							"INSERT INTO `WebAgenda`.`SHIFTEMP` " + "(`shiftID`,`empID`) " + "VALUES "
+									+ "(?,?)");
 			
 			PreparedStatement deleteMultiShiftEmp = conn.getConnection().prepareStatement(
 					"DELETE FROM `WebAgenda`.`SHIFTEMP` WHERE shiftID = ?");
@@ -475,7 +492,8 @@ public class ScheduleBroker extends Broker<Schedule>
 						Shift oldShift = oldShiftArr[oldShiftIdx];
 						
 						// If shift attributes different, update DB.
-						if (oldShift.getDay() != updShift.getDay() || oldShift.getStartTime() != updShift.getStartTime() ||
+						if (oldShift.getDay() != updShift.getDay() ||
+								oldShift.getStartTime() != updShift.getStartTime() ||
 								oldShift.getEndTime() != updShift.getEndTime())
 							{
 							// Add new parameters.
@@ -516,7 +534,8 @@ public class ScheduleBroker extends Broker<Schedule>
 							// Shift employees changed. Delete old shift employees.
 							deleteMultiShiftEmp.setInt(1, updShift.getShiftID());
 							if (deleteMultiShiftEmp.executeUpdate() < 1)
-								throw new DBChangeException("Failed to delete old shift employees for: " + updShift);
+								throw new DBChangeException("Failed to delete old shift employees for: " +
+										updShift);
 							
 							// Create new shift employees.
 							insertShiftEmployees(updShiftEmpArr, updShift.getShiftID(), createShiftEmp);
@@ -525,7 +544,8 @@ public class ScheduleBroker extends Broker<Schedule>
 					else
 						{
 						// Shift was given incorrect IDs, no matches found.
-						throw new DBException("Shift template has non-matching ID's, can not update. " + updShift);
+						throw new DBException("Shift template has non-matching ID's, can not update. " +
+								updShift);
 						}
 					}
 				}
@@ -622,7 +642,8 @@ public class ScheduleBroker extends Broker<Schedule>
 			rs.beforeFirst();
 			for (int i = 0; i < resultCount && rs.next(); i++)
 				{
-				Schedule st = new Schedule(rs.getInt("schedID"), rs.getInt("creatorID"), rs.getDate("startDate"), rs
+				Schedule st = new Schedule(rs.getInt("schedID"), rs.getInt("creatorID"), rs
+						.getDate("startDate"), rs
 						.getDate("endDate"));
 				
 				schedList[i] = st;
@@ -657,7 +678,8 @@ public class ScheduleBroker extends Broker<Schedule>
 			rs.beforeFirst();
 			for (int i = 0; i < resultCount && rs.next(); i++)
 				{
-				Shift st = new Shift(rs.getInt("shiftID"), rs.getInt("schedID"), rs.getInt("day"), rs.getTime("startTime"),
+				Shift st = new Shift(rs.getInt("shiftID"), rs.getInt("schedID"), rs.getInt("day"), rs
+						.getTime("startTime"),
 						rs.getTime("endTime"));
 				
 				stList[i] = st;
@@ -676,7 +698,8 @@ public class ScheduleBroker extends Broker<Schedule>
 	 * @throws DBDownException
 	 * @throws DBException
 	 */
-	private boolean notifyScheduleEmps(Schedule oldSched, Schedule newSched, Employee caller) throws DBException,
+	private boolean notifyScheduleEmps(Schedule oldSched, Schedule newSched, Employee caller)
+			throws DBException,
 			DBDownException,
 			InvalidPermissionException
 		{
@@ -708,9 +731,10 @@ public class ScheduleBroker extends Broker<Schedule>
 			// Send notification to each employee.
 			for (Employee e : notifyEmps)
 				{
-				Notification newNoti = new Notification(e.getEmpID(), "You have a new schedule for the week of " +
-						newSched.getStartDate() + " to " +
-						newSched.getEndDate(), "schedule");
+				Notification newNoti = new Notification(e.getEmpID(),
+						"You have a new schedule for the week of " +
+								newSched.getStartDate() + " to " +
+								newSched.getEndDate(), "schedule");
 				
 				nb.create(newNoti, caller);
 				}
@@ -754,9 +778,10 @@ public class ScheduleBroker extends Broker<Schedule>
 				if (newEmps.contains(e))
 					{
 					// Employee is in both schedules, has had their sched changed.
-					Notification newNoti = new Notification(e.getEmpID(), "Your schedule for the week of " +
-							newSched.getStartDate() + " to " +
-							newSched.getEndDate() + "has been changed.", "schedule");
+					Notification newNoti = new Notification(e.getEmpID(),
+							"Your schedule for the week of " +
+									newSched.getStartDate() + " to " +
+									newSched.getEndDate() + "has been changed.", "schedule");
 					
 					nb.create(newNoti, caller);
 					}
@@ -765,7 +790,8 @@ public class ScheduleBroker extends Broker<Schedule>
 					// Emp is in old but not new, was removed from sched.
 					Notification newNoti = new Notification(e.getEmpID(),
 							"You have been removed from a schedule for the week of " +
-									newSched.getStartDate() + " to " + newSched.getEndDate() + ".", "schedule");
+									newSched.getStartDate() + " to " + newSched.getEndDate() + ".",
+							"schedule");
 					
 					nb.create(newNoti, caller);
 					}
@@ -775,9 +801,10 @@ public class ScheduleBroker extends Broker<Schedule>
 				{
 				if (!oldEmps.contains(e))
 					{
-					Notification newNoti = new Notification(e.getEmpID(), "You have a new schedule for the week of " +
-							newSched.getStartDate() + " to " +
-							newSched.getEndDate(), "schedule");
+					Notification newNoti = new Notification(e.getEmpID(),
+							"You have a new schedule for the week of " +
+									newSched.getStartDate() + " to " +
+									newSched.getEndDate(), "schedule");
 					
 					nb.create(newNoti, caller);
 					}
@@ -850,10 +877,12 @@ public class ScheduleBroker extends Broker<Schedule>
 	 * @throws DBException
 	 * @throws DBDownException
 	 */
-	private boolean raceCheck(Schedule old, Employee caller) throws DBChangeException, DBException, DBDownException
+	private boolean raceCheck(Schedule old, Employee caller) throws DBChangeException, DBException,
+			DBDownException
 		{
 		if (old == null || old.getSchedID() == -1)
-			throw new DBException("Unable to validate old schedule template, is null or has no schedTempID.");
+			throw new DBException(
+					"Unable to validate old schedule template, is null or has no schedTempID.");
 		
 		// Get schedule from DB with matching scheduleID.
 		Schedule[] fromDB = this.get(old, caller);
@@ -869,7 +898,8 @@ public class ScheduleBroker extends Broker<Schedule>
 		
 		// Compare dates of old/fetched. SchedID and CreatorID do not need to be
 		// checked.
-		if (!old.getStartDate().equals(fetched.getStartDate()) || !old.getEndDate().equals(fetched.getEndDate()))
+		if (!old.getStartDate().equals(fetched.getStartDate()) ||
+				!old.getEndDate().equals(fetched.getEndDate()))
 			throw new DBChangeException("Schedule dates have been modified.");
 		
 		// Compare number of shifts.
@@ -900,7 +930,8 @@ public class ScheduleBroker extends Broker<Schedule>
 				
 				// Only ID numbers need to be compared.
 				if (!(emp1.getEmpID() == emp2.getEmpID()))
-					throw new DBChangeException("Shift employees changed: " + emp1.getEmpID() + " vs " + emp2.getEmpID());
+					throw new DBChangeException("Shift employees changed: " + emp1.getEmpID() + " vs " +
+							emp2.getEmpID());
 				}
 			}
 		
@@ -919,7 +950,8 @@ public class ScheduleBroker extends Broker<Schedule>
 	 * @throws SQLException if there was an error with the insert statements.
 	 * @throws DBException if there was an error with executing the statements.
 	 */
-	private void insertShift(Shift shift, int schedID, PreparedStatement createShift, PreparedStatement createShiftEmp)
+	private void insertShift(Shift shift, int schedID, PreparedStatement createShift,
+			PreparedStatement createShiftEmp)
 			throws SQLException,
 			DBException
 		{
@@ -950,7 +982,8 @@ public class ScheduleBroker extends Broker<Schedule>
 	 * @param shiftID The shift template ID to use for all shift employees.
 	 * @param createShiftEmp The prepared statement used to execute the inserts.
 	 */
-	private void insertShiftEmployees(Employee[] shiftEmpArr, int shiftID, PreparedStatement createShiftEmp)
+	private void insertShiftEmployees(Employee[] shiftEmpArr, int shiftID,
+			PreparedStatement createShiftEmp)
 			throws DBException, SQLException
 		{
 		if (shiftEmpArr != null)
