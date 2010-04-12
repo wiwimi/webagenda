@@ -237,7 +237,7 @@
 						<!--This should be populated from the database -->
 					    <p>
 							<label id="theSelect" class="theSelect" for="empId">Employee Id: <em class="asterisk"> * </em> </label>
-							<input type="text" size="30" name="empId" class="required" maxLength="30" value="<%=empId%>"/>
+							<input type="text" size="30" name="empId" maxLength="30" value="<%=empId%>"/>
 						</p>
 						
 						<!--This should be populated from the database -->

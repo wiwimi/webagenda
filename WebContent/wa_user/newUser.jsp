@@ -31,13 +31,18 @@
 	    	Permissions perm = perms[0].getLevel_permissions();
 	    	
 	    
-	        if (perm.isCanManageEmployees()==true)
+	        if (perm.isCanManageEmployees()==true && user.getActive()==true)
 			{
 				%>
 					<!-- Includes -->
 					<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
 				<%
 		    }
+	        else if (user.getActive()==false)
+	        {
+	        	response.sendRedirect("../wa_login/login.jsp?message=locked");
+        	    return;
+	        }
 			else
 			{
 				response.sendRedirect("../wa_login/login.jsp");
@@ -245,11 +250,10 @@
 										</select> 
 								</p>
 							</div>				
-							<!--This should be populated from the database -->
 							<div>
 							    <p>
-									<label id="theSelect" class="theSelect" for="empId">Employee Id: <em class="asterisk"> * </em> </label>
-									<input type="text" size="30" name="empId" class="required" maxLength="30" value="<%=empId%>"/>
+									<label id="theSelect" class="theSelect" for="empId">Employee Id: </label>
+									<input type="text" size="30" name="empId" maxLength="30" value="<%=empId%>"/>
 								</p>
 							</div>
 							
@@ -426,16 +430,29 @@
 										Position pos = new Position("",null);
 										Position[] posArray = posBroker.get(pos, user);
 										
-										for(int index = 0; index <posArray.length; index++)
+										if(posArray!=null)
 										{
-									%>
-										<tr>
-										   <td> <b> <%=posArray[index].getName()%> </b> </td>
-											<td><input type="radio" name="pos" value="<%=posArray[index].getName()%>"> </td>
-										</tr>
-									<% 
+											for(int index = 0; index <posArray.length; index++)
+											{
+										%>
+											<tr>
+											   <td> <b> <%=posArray[index].getName()%> </b> </td>
+												<td><input type="radio" name="pos" value="<%=posArray[index].getName()%>"> </td>
+											</tr>
+										<% 
+											}
 										}
-									%>			
+										else
+									   	{
+									   	%>
+									   		<tr>
+									   			<td>
+													No positions available.
+												</td>
+											</tr>
+										<%
+									   	}
+										%>		
 								</tbody>
 							</table>
 					</div> <!-- End User Admin div -->
@@ -454,14 +471,14 @@
 								<thead class="head">
 									<tr class="headerRow">
 										<th>Name</th>
-										<td> <input type="checkbox" name="option"> </td>
+										<th> <input type="checkbox" name="option"> </th>
 									</tr>
 								</thead>
 						
 								<tfoot class="foot">
 									<tr class="headerRow">
 										<th>Name</th>
-										<td> <input type="checkbox" name="option"> </td>
+										<th> <input type="checkbox" name="option"> </th>
 									</tr>
 								</tfoot>
 								<tbody>
@@ -470,20 +487,22 @@
 										int level = user.getLevel();
 										PermissionLevel[] permArray = permBroker.getAllBelow(level);
 									%>
-										<tr>
+										
 										   	<% if (permArray!=null)
 										   	{
 										   		for(int index = 0; index <permArray.length; index++)
 												{
 										   	%>
-										   			<td>
-														<b> <%=(permArray[index].getLevel() + "" + permArray[index].getVersion())%> </b>
-													</td>
-													<td>
-														<input type="checkbox" name="perm" value="<%= (permArray[index].getLevel() + "" + 
-																permArray[index].getVersion()) %>"> 
-																<% System.out.println(permArray[index].getLevel() + "" + permArray[index].getVersion()); %>
-													</td>
+										   	      <tr>
+											   			<td>
+															<b> <%=(permArray[index].getLevel() + "" + permArray[index].getVersion())%> </b>
+														</td>
+														<td>
+															<input type="checkbox" name="perm" value="<%=(permArray[index].getLevel() + "-" + 
+																	permArray[index].getVersion()) %>"> 
+																	<% System.out.println(permArray[index].getLevel() + "" + permArray[index].getVersion()); %>
+														</td>
+												  </tr>	
 										   		
 											<%
 												}
@@ -491,17 +510,15 @@
 										   	else
 										   	{
 										   	%>
-										   		<td>
-													No permissions accessible.
-												</td>
+										   		<tr>
+										   			<td>
+														No permissions accessible.
+													</td>
+												</tr>
 											<%
 										   	}
 											%>
-										</tr>
-									<% 
-										//}
-									%>			
-											
+										
 								</tbody>
 							</table>
 					   </div>

@@ -50,20 +50,25 @@ if(session.getAttribute("username") != null)
 	    	Permissions perm = perms[0].getLevel_permissions();
 	    	
 	    
-	        if (perm.isCanManageEmployees()==true)
+	        if (perm.isCanManageEmployees()==true && e.getActive()==true)
 			{
 			%>
 				<!-- Includes -->
 				<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
 			<%
-				}
-				else
-				{
+			}
+	        else if (e.getActive()==false)
+	        {
+	        	response.sendRedirect("../wa_login/login.jsp?message=locked");
+        	    return;
+	        }
+			else
+			{
 			%>
 					<!--  Includes -->
 				<jsp:include page="../wa_includes/pageLayoutUser.jsp"/>
 			<%
-				}
+			}
         }
 	%>
 </head>

@@ -32,7 +32,7 @@
              <% 
 					if(request.getParameter("message") != null)
 					{
-						if(request.getParameter("message").equals("expired"))
+						if(request.getParameter("message").equals("locked"))
 						{
 							
 			 %>
@@ -41,7 +41,7 @@
 								$(function()
 								    {
 										
-										    $.flashMessenger("Your session has timed out, please login", 
+										    $.flashMessenger("You have locked out of the system", 
 											{ 	
 												modal:true,
 												clsName:"err", 

@@ -12,6 +12,7 @@
 <!-- Plug-ins -->
 <script src="../lib/js/jquery.validate.js" type="text/javascript"></script>
 <script src ="../lib/js/jquery.flashmessenger.js"   type ="text/javascript"> </script>
+<script type="text/javascript" src="../lib/js/jquery-impromptu.3.0.min.js"></script>
 
 
 <%@ page import="persistence.ScheduleBroker" %>
@@ -19,7 +20,7 @@
 <%@ page import="business.*" %>
 <%@ page import="business.schedule.*" %>
 <%@page import="uiConnection.users.UserNotifications"%>
-<%@page import="persistence.EmployeeBroker"%><html>
+<%@page import="persistence.EmployeeBroker"%>
 
 <!-- Javascript Files -->
 <script src="../lib/js/cmxforms.js" type="text/javascript"></script>
@@ -28,8 +29,11 @@
 <script type="text/javascript" src="../lib/js/calendar.js"></script>
 <script type="text/javascript" src="../lib/js/popup.js"></script>
 <script type="text/javascript" src="../lib/js/deleteUser.js"></script>
+<script type="text/javascript" src="../lib/js/helpDisplayUserSchedule.js"></script>
 
 <!--  CSS files -->
+<link rel="stylesheet" href="../CSS/breadcrumb.css" type="text/css" media="screen" />
+<link rel="stylesheet" type="text/css" href="../CSS/Confirmation/confirm.css" media="screen" />
 <link rel="stylesheet" href="../CSS/creationForm.css" type="text/css"></link>
 <link rel="stylesheet" href="CSS/table.css" type="text/css"></link>
 <link rel="stylesheet" href="../CSS/Popup/popup.css" type="text/css"></link>
@@ -112,10 +116,17 @@ function submit(divNum)
 
 </head>
 <body>
+   
+   <div id="crumb">
+	  <ul id="crumbsLonger">
+	    <li><a href="../wa_dashboard/dashboard.jsp">Home</a></li>
+	    <li><b><a href="#">View Schedule</a></b></li>
+	   </ul>
+   </div>
 
 <div id="scheduleWidget" class="fullWidget">
 			<div class="widgetUpperRectangle" id="scheduleUpperRectangle">
-				<div class="widgetTitle" id="scheduleWidgetTitle">Schedule</div>
+				<div class="widgetTitle" id="scheduleWidgetTitle">Schedule <div id="helpIcon"> </div></div>
 			</div>
 			
 			<div class="widgetLowerRectangle" id="scheduleWidgetLowerRectangle">

@@ -18,7 +18,7 @@ $().ready(function() {
 			},
 			// Validate that the user's Id is required and should contain digits only
 			empId:{
-				required: true,
+				required: false,
 				digits: true
 			
 			},

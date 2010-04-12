@@ -2,6 +2,7 @@ package uiConnection.update.user;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.StringTokenizer;
 
 import javax.mail.MessagingException;
 import javax.servlet.ServletException;
@@ -55,13 +56,30 @@ public class AddUser extends HttpServlet {
 				String username = request.getParameter("user");
 				String dob = request.getParameter("dob");
 				
-				//String permLevel = request.getParameter("permLevel");
+				String permission = request.getParameter("perm");
+				String permLevel = "", version="";
+				int permLevelInt =0;
+				char v = ' ' ;
+				if(permission !=null)
+				{
+					// Split the permission to get the level and the version
+					StringTokenizer st = new StringTokenizer(permission , "-");
+					while (st.hasMoreTokens ()) 
+					{
+						permLevel = st.nextToken();
+						version = st.nextToken();
+					}
+					v = version.charAt(0);
+					permLevelInt = Integer.parseInt(permLevel);
+				}
+				
+				
 				String loc= request.getParameter("loc");
 				String empId = request.getParameter("empId");
 				String supId = request.getParameter("supId");
 				String[] emailSendToList = { email };
+				Employee emp = null;
 				
-				int empIdInt = Integer.parseInt(empId);
 				
 				// To determine whether an email should be sent or not
 				
@@ -69,8 +87,16 @@ public class AddUser extends HttpServlet {
 				
 				try 
 				{
-					
-					Employee emp = new Employee(empIdInt,givenName,familyName,username, password, 1,'a');
+					if(empId!=null && !empId.equals(""))
+					{
+						int empIdInt = Integer.parseInt(empId);
+						emp = new Employee(empIdInt,givenName,familyName,username, password, permLevelInt,v);
+						
+					}
+					else
+					{
+						emp = new Employee(-1,givenName,familyName,username, password, permLevelInt,v);
+}
 					if (status.equalsIgnoreCase("enabled"))
 					
 						emp.setActive(true);
@@ -137,8 +163,8 @@ public class AddUser extends HttpServlet {
 							{
 								//Confirm that the user was added
 								response.sendRedirect("wa_user/newUser.jsp?message=true&familyName=" + familyName +"&givenName=" + givenName
-										+ "&username=" + username +  "&email=" + email + "&password=" + password
-										+ "&dob=" + dob + "&empId=" + empId + "&status=" + emp.getActive() + "&sendingOption=" + sendingOption);
+										+ "&username=" + username +  "&email=" + email
+										+ "&dob=" + dob + "&empId=" + empId + "&status=" + emp.getActive() + "v=" +v + "permLevel" + permLevel);
 							}	
 						} 
 						catch (MessagingException e) {
@@ -163,10 +189,12 @@ public class AddUser extends HttpServlet {
 					//out.println(sqlBirthDate + " ");
 					
 					//Even if the user is not created, return the values to the form
+					//Even if the user is not created, return the values to the form
 					response.sendRedirect("wa_user/newUser.jsp?message=false&familyName=" + familyName +"&givenName=" + givenName
-							+ "&username=" + username +  "&email=" + email + "&password=" + password
-							+ "&dob=" + dob + "&empId=" + empId);
-				}
+							+ "&username=" + username +  "&email=" + email
+							+ "&dob=" + dob + "&empId=" + empId + "&status=" + emp.getActive() + "v=" +v + "permLevel" + permLevel);
+				}	
+				
 				catch (DBDownException e) 
 				{
 					e.printStackTrace();
@@ -177,9 +205,9 @@ public class AddUser extends HttpServlet {
 					
 					//Even if the user is not created, return the values to the form
 					response.sendRedirect("wa_user/newUser.jsp?message=false&familyName=" + familyName +"&givenName=" + givenName
-							+ "&username=" + username +  "&email=" + email + "&password=" + password
-							+ "&dob=" + dob + "&empId=" + empId);
-				}
+							+ "&username=" + username +  "&email=" + email
+							+ "&dob=" + dob + "&empId=" + empId + "&status=" + emp.getActive() + "v=" +v + "permLevel" + permLevel);
+				}	
 				catch (InvalidPermissionException  e)
 				{
 					e.printStackTrace();
@@ -188,8 +216,9 @@ public class AddUser extends HttpServlet {
 					//Even if the user is not created, return the values to the form
 					response.sendRedirect("wa_user/newUser.jsp?message=perm&familyName=" + familyName +"&givenName=" + givenName
 							+ "&username=" + username +  "&email=" + email + "&password=" + password
-							+ "&dob=" + dob + "&empId=" + empId);
+							+ "&dob=" + dob + "&empId=" + empId + "&status=" + emp.getActive() + "&sendingOption=" + sendingOption);
 				}
+				
 				catch (PermissionViolationException e) 
 				{
 					e.printStackTrace();
@@ -197,7 +226,8 @@ public class AddUser extends HttpServlet {
 					//Even if the user is not created, return the values to the form
 					response.sendRedirect("wa_user/newUser.jsp?message=perm&familyName=" + familyName +"&givenName=" + givenName
 							+ "&username=" + username +  "&email=" + email + "&password=" + password
-							+ "&dob=" + dob + "&empId=" + empId);
+							+ "&dob=" + dob + "&empId=" + empId + "&status=" + emp.getActive() + "&sendingOption=" + sendingOption);
+				
 				}
 				finally
 				{
