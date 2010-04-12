@@ -108,13 +108,10 @@
 		<div id="creationForm">
 	   		<form class="validatedForm" action="../ActivateSchedule" id="form" method="post">
 			 	<div id="formButtons">
-							<input type="submit" name="submit" class="button" value="Activate Schedule"> 
+								<input type="submit" name="submit" class="button" value="Activate Schedule"> 
 				</div>
-			 	
 			 	<fieldset> 
 					<legend> Generated Schedule</legend>	
-					
-					
 				<% 
 				if(request.getParameter("message") != null)
 				{
@@ -125,76 +122,120 @@
 						session.setAttribute("genSched", genSched);
 						Shift[] shiftList = genSched.getShifts().toArray();
 						
-						for (Shift shift : shiftList)
+						if(shiftList == null)
 						{
-							if(!genSched.equals(null) && genSched!=(null))
-							{
-								Employee[]  emps = null;
+							
+						}
 						
-								if (shift.getEmployees().size() > 0)
+						else
+						{
+					
+							for (Shift shift : shiftList)
+							{
+								if(!genSched.equals(null) && genSched!=(null))
 								{
-									//for (Employee emp : shift.getEmployees().toArray())
-									emps = shift.getEmployees().toArray();
+									Employee[]  emps = null;
+							
+									if (shift.getEmployees().size() > 0)
+									{
+										//for (Employee emp : shift.getEmployees().toArray())
+										emps = shift.getEmployees().toArray();
+										
 									
+						%>
+						
+									<div id="report">
+										    <div id="tableArea">
+												<div class="userAdmin">
+														<table class="sortable" id="userTable">
+																		<thead class="head">
+																			<tr class="headerRow">
+																				<th>Shift - Day: <%=shift.getDay() %></th>
+																				<th colspan=4>Time</th>
+																			</tr>
+																		</thead>
+																		<tfoot class="foot">
+																			<tr class="headerRow">
+																				<th>Shift - Day: <%=shift.getDay() %></th>
+																				<th colspan=4>Time</th>
+																			</tr>
+																		</tfoot>
+																		<tbody>
+																			<tr id="colored">
+																				<th>Employee</th>
+																				<th><%= shift.getStartTime()%> - <%=shift.getEndTime()%></th>
+																			</tr>	
+															  		<%
+																		  	for (Employee emp : emps)
+																			{
+																				//System.out.println("\t\tApplies to: "+emp);
+															  		%>
+																  				<tr>
+																					<td><%=emp.getGivenName() %> , <%=emp.getFamilyName() %> </td>
+																					<td id="center"><%= emp.getPrefPosition()%> / <%= emp.getPrefLocation()%>  </td>
+																  				</tr>
+															  		<%
+																		  	}
+															  		%>
+																		</tbody>
+																</table>
+												   </div>
+										     </div>
+									    </div>	
+					<%
+					    	    	}
+									else 
+									{
+					%>
+					
+											<div id="report">
+										    <div id="tableArea">
+												<div class="userAdmin">
+														<table class="sortable" id="userTable">
+																		<thead class="head">
+																			<tr class="headerRow">
+																				<th>Shift - Day: </th>
+																				<th colspan=4>Time</th>
+																			</tr>
+																		</thead>
+																		<tfoot class="foot">
+																			<tr class="headerRow">
+																				<th>Shift - Day: </th>
+																				<th colspan=4>Time</th>
+																			</tr>
+																		</tfoot>
+																		<tbody>
+																			<tr id="colored">
+																				<th>Employee</th>
+																				<th></th>
+																			</tr>	
+																		<tbody>
+																			<tr >
+																				<td>There are no employees available to assign using the requested templates and date range</td>
+																			</tr>	
+															  		
+																		</tbody>
+													</table>
+												   </div>
+										     </div>
+									    </div>	
+					
+					
+					<%
+									}
+							     }
+							}
+						}
+					%>		 	
 								
-								}
-								else
-								{
-									out.println("No employees available to fill the shifts");
-								}
-				%>
-				
-							<div id="report">
-								    <div id="tableArea">
-										<div class="userAdmin">
-												<table class="sortable" id="userTable">
-																<thead class="head">
-																	<tr class="headerRow">
-																		<th>Shift - Day: <%=shift.getDay() %></th>
-																		<th colspan=4>Time</th>
-																	</tr>
-																</thead>
-																<tfoot class="foot">
-																	<tr class="headerRow">
-																		<th>Shift - Day: <%=shift.getDay() %></th>
-																		<th colspan=4>Time</th>
-																	</tr>
-																</tfoot>
-																<tbody>
-																	<tr id="colored">
-																		<th>Employee</th>
-																		<th><%= shift.getStartTime()%> - <%=shift.getEndTime()%></th>
-																	</tr>	
-													  		<%
-																  	for (Employee emp : emps)
-																	{
-																		//System.out.println("\t\tApplies to: "+emp);
-													  		%>
-														  				<tr>
-																			<td><%=emp.getGivenName() %> , <%=emp.getFamilyName() %> </td>
-																			<td id="center"><%= emp.getPrefPosition()%> / <%= emp.getPrefLocation()%>  </td>
-														  				</tr>
-													  		<%
-																  	}
-													  		%>
-																</tbody>
-														</table>
-										   </div>
-								     </div>
-							    </div>	
-							   		
-				<%
-			    	    	}
-					     }
-				%>		 	
-						<div id="formButtons">
-							<input type="submit" name="submit" class="button" value="Activate Schedule"> 
-						</div>	<hr/>	
-				<%		
-				     } 
-				}
-				%>	
+				   <%
+							}
+				       }
+				    %>	
 		 </fieldset>
+		 <div id="formButtons">
+								<input type="submit" name="submit" class="button" value="Activate Schedule"> 
+		</div>
 	  </form>
     </div>	
   </div>
