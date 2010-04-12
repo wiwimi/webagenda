@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 import exception.DBDownException;
 import exception.DBException;
+import exception.EmptyScheduleException;
 import exception.InvalidPermissionException;
 import application.ScheduleGenerator;
 import business.Employee;
@@ -123,20 +124,24 @@ public class TestScheduleGenerator
 			assertTrue(sb.delete(genSched, user));
 			System.out.println("---------- Delete Successful ----------");
 			}
+		catch (EmptyScheduleException e)
+			{
+			e.printStackTrace();
+			}
 		catch (DBException e)
 			{
 			e.printStackTrace();
-			fail();
+			fail(e.getMessage());
 			}
 		catch (DBDownException e)
 			{
 			e.printStackTrace();
-			fail();
+			fail(e.getMessage());
 			}
 		catch (InvalidPermissionException e)
 			{
 			e.printStackTrace();
-			fail();
+			fail(e.getMessage());
 			}
 		}
 	
