@@ -8,6 +8,8 @@ if(session.getAttribute("username") == null)
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="business.Employee" %>
 <%@ page import="persistence.EmployeeBroker" %>
+<%@ page import="business.permissions.PermissionLevel" %>
+<%@ page import="business.permissions.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- Author: Noorin -->
 <html>
@@ -16,8 +18,35 @@ if(session.getAttribute("username") == null)
 
 <title>Web Agenda- Security Settings</title>
 
-<!--  Includes -->
-<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+     <%
+         Employee user = (Employee) request.getSession().getAttribute("currentEmployee");
+        if (user==null)
+        {
+        	response.sendRedirect("wa_login/login.jsp");
+        	return;
+        }
+        else
+        {
+		
+	    	PermissionBroker pb = PermissionBroker.getBroker();
+	    	PermissionLevel[] perms =  pb.get(user.getLevel(), user.getVersion(), user);
+	    	Permissions perm = perms[0].getLevel_permissions();
+	    	
+	    
+	        if (perm.isCanManageEmployees()==true)
+			{
+				%>
+					<!-- Includes -->
+					<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+				<%
+		    }
+			else
+			{
+		        response.sendRedirect("wa_login/login.jsp");
+		        return;
+			}
+        }
+	%>
 
 <!-- Libraries -->
 <script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
@@ -82,7 +111,7 @@ if(session.getAttribute("username") == null)
 									String load = request.getParameter("load");
 									if(load != null)
 										if(load.equals("y")) {
-											Employee user = (Employee) request.getSession().getAttribute("currentEmployee");
+											user = (Employee) request.getSession().getAttribute("currentEmployee");
 											Employee e = new Employee();
 											
 											Employee[] emps = EmployeeBroker.getBroker().get(e,user);

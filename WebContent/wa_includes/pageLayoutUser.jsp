@@ -53,7 +53,6 @@ if(session.getAttribute("username") == null)
 		
 		<div id = "dashboardLowerRectangle" class = "lowerRectangle">
 			<b> <a href ="../wa_dashboard/dashboard.jsp" > Dashboard  </a> </b> <br>
-			<b> <a href ="../wa_reports/reports.jsp" > Reports </a> </b> <br>
 		</div>
 		
 		<br>
@@ -70,21 +69,6 @@ if(session.getAttribute("username") == null)
 			<b> <a href ="../wa_schedule/displayUserSchedule.jsp" > View Schedule  </a> </b> <br>
 		</div>
 		
-		<br>
-		
-		<!-- Gray colour for rectangles -->
-		
-		<div id ="usersUpperRectangle" class="upperRectangle">
-			<div class="sidebarTitle" id="usersTitle">Users</div>
-		</div>
-		
-		<!-- White Background for boxes-->
-		
-		<div id= "usersLowerRectangle" class = "lowerRectangle">
-			
-			<b> <a href ="../wa_user/newUser.jsp" > Users </a> </b> <br>
-			
-		</div>
 		
 		<br>
 		<!-- Gray colour for rectangles -->

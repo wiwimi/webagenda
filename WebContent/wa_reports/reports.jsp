@@ -1,5 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="business.Employee" %>
+<%@ page import="business.permissions.*" %>
+<%@page import="persistence.PermissionBroker"%>
 <% 
 if(session.getAttribute("username") != null)
 {
@@ -32,22 +34,32 @@ if(session.getAttribute("username") != null)
 <title>Web Agenda - Reports</title>
 
 <%
-	Employee e = (Employee) request.getSession().getAttribute("currentEmployee");
-	if (e.getLevel()==99)
-	{
-%>
-	<!--  Includes -->
-	<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
-<%
-	}
-	else
-	{
-%>
-		<!--  Includes -->
-	<jsp:include page="../wa_includes/pageLayoutUser.jsp"/>
-<%
-	}
-%>
+         Employee user = (Employee) request.getSession().getAttribute("currentEmployee");
+        if (user==null)
+        {
+        	response.sendRedirect("wa_login/login.jsp");
+        }
+        else
+        {
+		
+	    	PermissionBroker pb = PermissionBroker.getBroker();
+	    	PermissionLevel[] perms =  pb.get(user.getLevel(), user.getVersion(), user);
+	    	Permissions perm = perms[0].getLevel_permissions();
+	    	
+	    
+	        if (perm.isCanManageEmployees()==true)
+			{
+				%>
+					<!-- Includes -->
+					<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+				<%
+		    }
+			else
+			{
+		        response.sendRedirect("wa_login/login.jsp");
+			}
+        }
+	%>
 </head>
 <body>
 

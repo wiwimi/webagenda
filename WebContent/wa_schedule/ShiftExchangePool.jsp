@@ -5,7 +5,6 @@
 
 <html>
 <head>
-
 <!--  CSS files -->
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="CSS/schedule.css" type="text/css" media="screen" />

@@ -9,6 +9,8 @@ if(session.getAttribute("username") == null)
 <%@ page import="business.schedule.Location" %>
 <%@ page import="business.Employee" %>
 <%@ page import="java.util.*" %>
+<%@ page import="business.permissions.*" %>
+<%@page import="persistence.PermissionBroker"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- Author: Noorin -->
@@ -18,23 +20,35 @@ if(session.getAttribute("username") == null)
 
 <title>Web Agenda- Report Locations</title>
 
-<%
-	Employee user = (Employee) request.getSession().getAttribute("currentEmployee");
-	if (user.getLevel()==99)
-	{
-%>
-	<!--  Includes -->
-	<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
-<%
-	}
-	else
-	{
-%>
-		<!--  Includes -->
-	<jsp:include page="../wa_includes/pageLayoutUser.jsp"/>
-<%
-	}
-%>
+   <%
+         Employee user = (Employee) request.getSession().getAttribute("currentEmployee");
+        if (user==null)
+        {
+        	response.sendRedirect("wa_login/login.jsp");
+        	return;
+        }
+        else
+        {
+		
+	    	PermissionBroker pb = PermissionBroker.getBroker();
+	    	PermissionLevel[] perms =  pb.get(user.getLevel(), user.getVersion(), user);
+	    	Permissions perm = perms[0].getLevel_permissions();
+	    	
+	    
+	        if (perm.isCanManageEmployees()==true)
+			{
+				%>
+					<!-- Includes -->
+					<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+				<%
+		    }
+			else
+			{
+		        response.sendRedirect("wa_login/login.jsp");
+		        return;
+			}
+        }
+	%>
 
 <!-- Libraries -->
 <script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>

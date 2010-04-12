@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="business.Employee" %>
 <%@ page import="persistence.EmployeeBroker" %>
+<%@ page import="business.permissions.*" %>
+<%@page import="persistence.PermissionBroker"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -10,22 +12,34 @@
 <title>Web Agenda- Updating User</title>
 
 <%
-	Employee user = (Employee) request.getSession().getAttribute("currentEmployee");
-	if (user.getLevel()==99)
-	{
-%>
-	<!-- Includes -->
-	<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
-<%
-	}
-	else
-	{
-%>
-		<!--  Includes -->
-	<jsp:include page="../wa_includes/pageLayoutUser.jsp"/>
-<%
-	}
-%>
+         Employee user = (Employee) request.getSession().getAttribute("currentEmployee");
+        if (user==null)
+        {
+        	response.sendRedirect("wa_login/login.jsp");
+        	return;
+        }
+        else
+        {
+		
+	    	PermissionBroker pb = PermissionBroker.getBroker();
+	    	PermissionLevel[] perms =  pb.get(user.getLevel(), user.getVersion(), user);
+	    	Permissions perm = perms[0].getLevel_permissions();
+	    	
+	    
+	        if (perm.isCanManageEmployees()==true)
+			{
+				%>
+					<!-- Includes -->
+					<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+				<%
+		    }
+			else
+			{
+		        response.sendRedirect("wa_login/login.jsp");
+		        return;
+			}
+        }
+	%>
 
 <!--  CSS files -->
 <link rel="stylesheet" href="CSS/table.css" type="text/css"></link>

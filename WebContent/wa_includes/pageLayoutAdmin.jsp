@@ -76,14 +76,14 @@ if(session.getAttribute("username") == null)
 		<!-- Gray colour for rectangles -->
 		
 		<div id ="usersUpperRectangle" class="upperRectangle">
-			<div class="sidebarTitle" id="usersTitle">Users</div>
+			<div class="sidebarTitle" id="usersTitle">Employees</div>
 		</div>
 		
 		<!-- White Background for boxes-->
 		
 		<div id= "usersLowerRectangle" class = "lowerRectangle">
 			
-			<b> <a href ="../wa_user/newUser.jsp" > Users </a> </b> <br>
+			<b> <a href ="../wa_user/newUser.jsp" > Manage Employees </a> </b> <br>
 			
 		</div>
 		<br>

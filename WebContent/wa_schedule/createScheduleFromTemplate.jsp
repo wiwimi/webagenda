@@ -16,6 +16,8 @@
 <%@ page import="business.Employee" %>
 <%@ page import="persistence.LocationBroker" %>
 <%@ page import="business.schedule.Location" %>
+<%@ page import="business.permissions.*" %>
+<%@page import="persistence.PermissionBroker"%>
 
 <!--  Libraries -->
 <script type ="text/javascript" src ="../lib/js/jquery-1.3.2.min.js"> </script>
@@ -50,27 +52,39 @@
 <title>Web Agenda- Template Schedule</title>
 
 <%
-	Employee user = (Employee) request.getSession().getAttribute("currentEmployee");
-	if (user.getLevel()==99)
-	{
-%>
-	<!-- Includes -->
-	<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
-<%
-	}
-	else
-	{
-%>
-		<!--  Includes -->
-	<jsp:include page="../wa_includes/pageLayoutUser.jsp"/>
-<%
-	}
-%>
+         Employee user = (Employee) request.getSession().getAttribute("currentEmployee");
+        if (user==null)
+        {
+        	response.sendRedirect("wa_login/login.jsp");
+        	return;
+        }
+        else
+        {
+		
+	    	PermissionBroker pb = PermissionBroker.getBroker();
+	    	PermissionLevel[] perms =  pb.get(user.getLevel(), user.getVersion(), user);
+	    	Permissions perm = perms[0].getLevel_permissions();
+	    	
+	    
+	        if (perm.isCanManageEmployees()==true)
+			{
+				%>
+					<!-- Includes -->
+					<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+				<%
+		    }
+			else
+			{
+		        response.sendRedirect("wa_login/login.jsp");
+		        return;
+			}
+        }
+	%>
 
 </head>
 <body>
 
-<% 
+            <% 
 					if(request.getParameter("message") != null)
 					{
 						if(request.getParameter("message").equals("true"))

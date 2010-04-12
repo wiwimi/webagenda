@@ -1,5 +1,7 @@
 <!-- DOCTYPE is always recommended. see: http://www.quirksmode.org/css/quirksmode.html -->
 <%@ page import="business.Employee" %>
+<%@ page import="business.permissions.*" %>
+<%@page import="persistence.PermissionBroker"%>
 <!-- Author: Noorin -->
 <html>
 <head>
@@ -7,21 +9,33 @@
 <title>Web Agenda - Request Shift Change </title>
 	
 	<%
-	Employee user = (Employee) request.getSession().getAttribute("currentEmployee");
-	if (user.getLevel()==99)
-	{
-	%>
-		<!-- Includes -->
-		<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
-	<%
-		}
-		else
-		{
-	%>
-			<!--  Includes -->
-		<jsp:include page="../wa_includes/pageLayoutUser.jsp"/>
-	<%
-		}
+         Employee user = (Employee) request.getSession().getAttribute("currentEmployee");
+        if (user==null)
+        {
+        	response.sendRedirect("wa_login/login.jsp");
+        	return;
+        }
+        else
+        {
+		
+	    	PermissionBroker pb = PermissionBroker.getBroker();
+	    	PermissionLevel[] perms =  pb.get(user.getLevel(), user.getVersion(), user);
+	    	Permissions perm = perms[0].getLevel_permissions();
+	    	
+	    
+	        if (perm.isCanManageEmployees()==true)
+			{
+				%>
+					<!-- Includes -->
+					<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+				<%
+		    }
+			else
+			{
+		        response.sendRedirect("wa_login/login.jsp");
+		        return;
+			}
+        }
 	%>
 	
 	<!-- CSS Files -->

@@ -13,7 +13,10 @@ if(session.getAttribute("username") != null)
 <%@ page import="business.*" %>
 <%@ page import="business.schedule.*" %>
 <%@page import="uiConnection.users.UserNotifications"%>
-<%@page import="persistence.EmployeeBroker"%><html>
+<%@page import="persistence.EmployeeBroker"%>
+<%@ page import="business.permissions.*" %>
+<%@page import="persistence.PermissionBroker"%>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -32,23 +35,36 @@ if(session.getAttribute("username") != null)
 
 <title>Web Agenda - Dashboard</title>
 
-<%
-	Employee e = (Employee) request.getSession().getAttribute("currentEmployee");
-	if (e.getLevel()==99)
-	{
-%>
-	<!--  Includes -->
-	<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
-<%
-	}
-	else
-	{
-%>
-		<!--  Includes -->
-	<jsp:include page="../wa_includes/pageLayoutUser.jsp"/>
-<%
-	}
-%>
+   <%
+         Employee e = (Employee) request.getSession().getAttribute("currentEmployee");
+        if (e==null)
+        {
+        	response.sendRedirect("wa_login/login.jsp");
+        }
+        else
+        {
+		
+	    	PermissionBroker pb = PermissionBroker.getBroker();
+	    	PermissionLevel[] perms =  pb.get(e.getLevel(), e.getVersion(), e);
+	    	Permissions perm = perms[0].getLevel_permissions();
+	    	
+	    
+	        if (perm.isCanManageEmployees()==true)
+			{
+			%>
+				<!-- Includes -->
+				<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
+			<%
+				}
+				else
+				{
+			%>
+					<!--  Includes -->
+				<jsp:include page="../wa_includes/pageLayoutUser.jsp"/>
+			<%
+				}
+        }
+	%>
 </head>
 <body>
 <% 
