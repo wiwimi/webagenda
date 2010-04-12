@@ -19,6 +19,7 @@ import exception.DBChangeException;
 import exception.DBDownException;
 import exception.DBException;
 import exception.DayNotSundayException;
+import exception.EmptyScheduleException;
 import exception.InvalidPermissionException;
 import business.schedule.Schedule;
 import business.schedule.Shift;
@@ -65,10 +66,27 @@ public class ScheduleBroker extends Broker<Schedule>
 	 */
 	@Override
 	public boolean create(Schedule createObj, Employee caller)
-			throws DBException, DBDownException, InvalidPermissionException, DayNotSundayException
+			throws DBException, DBDownException, InvalidPermissionException, DayNotSundayException, EmptyScheduleException
 		{
 		if (createObj == null)
 			throw new NullPointerException("Can not create, given schedule is null.");
+		
+		if (createObj.getStartDate() == null)
+			throw new NullPointerException("Start date required when creating a schedule.");
+		
+		//Ensure schedule has at least one employee assigned to a shift.
+		if (createObj.getShifts().size() == 0)
+			throw new EmptyScheduleException("Can not create schedule, no shifts found.");
+		
+		boolean hasEmployee = false;
+		for (Shift s : createObj.getShifts().toArray())
+			{
+			if (s.getEmployees().size() > 0)
+				hasEmployee = true;
+			}
+		
+		if (!hasEmployee)
+			throw new EmptyScheduleException("Can not create schedule, no assigned employees found.");
 		
 		Calendar cal = Calendar.getInstance();
 		cal.setTimeInMillis(createObj.getStartDate().getTime());
