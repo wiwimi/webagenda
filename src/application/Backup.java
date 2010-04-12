@@ -3,7 +3,10 @@
  */
 package application;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -17,26 +20,41 @@ import java.util.Date;
  */
 public class Backup
 	{
-	
 	/**
 	 * Creates a new backup of the WebAgenda database and all information it
 	 * contains, using the given installation directory for the existing MySQL
 	 * server, and the target save directory.
 	 * 
-	 * @param backupDir the path of the directory to save the new backup.
-	 * @param sqlDir the path of the directory containing MySQL Server programs.
 	 * @return a string containing the absolute path to the newly created sql
 	 *         file
 	 */
-	public static String backupDB(File backupDir, File sqlDir)
+	public static String backupDB()
 		{
-		//Ensure required parameters are not null.
-		if (backupDir == null)
-			throw new NullPointerException("Target backup directory can not be null.");
-		if (sqlDir == null)
-			throw new NullPointerException("MySQL bin directory can not be null.");
+		File backupLocFile = new File("backupLocations.txt");
 		
-		String filePath = null;
+		if (!backupLocFile.exists())
+			throw new NullPointerException("Backup locations file has been removed.");
+		
+		File backupDir = null;
+		File sqlDir = null;
+		try
+			{
+			BufferedReader in = new BufferedReader(new FileReader(backupLocFile));
+			String backupDirString = in.readLine();
+			String sqlDirString = in.readLine();
+			
+			backupDir = new File(backupDirString.substring(backupDirString.indexOf(' ')+1,backupDirString.length()));
+			sqlDir = new File(sqlDirString.substring(sqlDirString.indexOf(' ')+1, sqlDirString.length()));
+			in.close();
+			}
+		catch (FileNotFoundException e1)
+			{
+			e1.printStackTrace();
+			}
+		catch (IOException e1)
+			{
+			e1.printStackTrace();
+			}
 		
 		//Get necessary parameters.
 		SimpleDateFormat format = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
@@ -48,8 +66,8 @@ public class Backup
 		if (!backupDir.exists())
 			backupDir.mkdir();
 		
-		filePath = backupDir+File.separator+formatDate+".sql";
-		String errorLogPath = backupDir+File.separator+"backupErrors.sql";
+		String filePath = backupDir+File.separator+formatDate+".sql";
+		String errorLogPath = backupDir+File.separator+"backupErrors.txt";
 		String command = "mysqldump --databases "+DBName+" -u WABroker -ppassword --single-transaction --skip-extended-insert --complete-insert --log-error="+errorLogPath+" --result-file="+filePath;
 		
 		Runtime rt = Runtime.getRuntime();

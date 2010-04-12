@@ -34,7 +34,7 @@ public class ExportBackup extends HttpServlet {
 		        String destFile = request.getParameter("destFile");
 		        String sqlFile = request.getParameter("sqlFile");
 		     
-				Backup.backupDB(new File(destFile), new File(sqlFile));
+				Backup.backupDB();
 				
 				//Confirm that the backup was done
 				response.sendRedirect("wa_settings/backup.jsp?message=true");
