@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import exception.DBDownException;
 import exception.DBException;
 import exception.DayNotSundayException;
+import exception.EmptyScheduleException;
 
 import application.ScheduleGenerator;
 import business.Employee;
@@ -43,7 +44,7 @@ public class GenerateSchedule extends HttpServlet {
 		        response.setContentType("text/html;charset=UTF-8");
 		        PrintWriter out= response.getWriter();;
 		        EmployeeBroker empBroker;
-		        java.sql.Date  sqlStartDate, sqlEndDate;
+		        java.sql.Date  sqlStartDate;
 		        empBroker = EmployeeBroker.getBroker();
 				empBroker.initConnectionThread();
 				
@@ -87,13 +88,11 @@ public class GenerateSchedule extends HttpServlet {
 					
 					//---------- Send the generated proposal back to the user by displaying it in jsp ----------");
 					
-					Shift[] shiftList = genSched.getShifts().toArray();
-					
 					//Setting the proposed schedule in the session
 					
-					if(genSched!=null && shiftList.length!=0)
+					if(genSched!=null)
 					{
-						//out.println(shiftList.length);
+						
 						session.setAttribute("genSched", genSched);
 						response.sendRedirect("wa_schedule/displayScheduleFromTemplate.jsp?message=true");
 					}
@@ -103,6 +102,10 @@ public class GenerateSchedule extends HttpServlet {
 					}
 					
 					
+				}
+				catch(EmptyScheduleException esx)
+				{
+					response.sendRedirect("wa_schedule/createScheduleFromTemplate.jsp?message=empty");
 				}
 				catch(DayNotSundayException se)
 				{

@@ -128,7 +128,7 @@
 							</script>
 					<%
 						}	else if(request.getParameter("message").equals("sundayError"))
-						{
+						 {
 					%>
 										<script type="text/javascript">
 											$(function()
@@ -144,7 +144,24 @@
 										</script>
 					<%
 							}
-					    }
+						else if(request.getParameter("message").equals("empty"))
+						 {
+					%>
+										<script type="text/javascript">
+											$(function()
+											    {
+													
+											       $.flashMessenger("There were no available employees matching the template for the requested week.",
+											        {
+														   modal:true,
+										    		       clsName:"err", 
+											    		   autoClose:false
+											    	 }); 
+											   }); 
+										</script>
+					<%
+							}
+					     }
 					%>
 
 	<%
