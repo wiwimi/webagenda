@@ -80,24 +80,29 @@ public class GenerateSchedule extends HttpServlet {
 				
 					ScheduleTemplate fromDB = stb.get(get, user)[0];
 					
-					ArrayList<Shift> partialMatches = new ArrayList<Shift>();
+                    ArrayList<Shift> partialMatches = new ArrayList<Shift>();
 					
 					//---------- Generating Schedule ----------
 					Schedule genSched = ScheduleGenerator.generateSchedule(fromDB, sqlStartDate, location, partialMatches, user);
 					
 					//---------- Send the generated proposal back to the user by displaying it in jsp ----------");
 					
+					Shift[] shiftList = genSched.getShifts().toArray();
+					
 					//Setting the proposed schedule in the session
 					
-					if(genSched!=null)
+					if(genSched!=null && shiftList.length!=0)
 					{
+						//out.println(shiftList.length);
 						session.setAttribute("genSched", genSched);
 						response.sendRedirect("wa_schedule/displayScheduleFromTemplate.jsp?message=true");
 					}
 					else
 					{
-						response.sendRedirect("wa_schedule/createScheduleFromTemplate.jsp?message=false");
+						response.sendRedirect("wa_schedule/displayScheduleFromTemplate.jsp?message=false");
 					}
+					
+					
 				}
 				catch(DayNotSundayException se)
 				{

@@ -41,14 +41,12 @@
 #left
 {
 	float:left;
-	margin-right: 200px;
-
+	margin-right:0%;
 }
 #right
 {
 	float:right;
-	width: 200px;
-
+	margin-left:10px;
 }
 
 #report

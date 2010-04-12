@@ -55,13 +55,9 @@
 <link rel="stylesheet" type="text/css" href="../CSS/Popup/popup.css" media="screen"></link>
 <link rel="stylesheet" type="text/css" href="../CSS/Flash/flashmessenger.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="../CSS/Confirmation/confirm.css" media="screen"/>
-
+<link rel="stylesheet" href="../CSS/breadcrumb.css" type="text/css" media="screen" />
 </head>
 <body>
-	<div id="instructions">
-	         Search a location to report.
-	</div>
-	
 	<% 
 		if(request.getParameter("message") != null)
 		{
@@ -100,11 +96,21 @@
 			}
 		}
 	%>
+	<div id="crumb">
+		   <ul id="crumbsLonger">
+		    <li><a href="../wa_dashboard/dashboard.jsp">Home</a></li>
+		    <li><a href="reports.jsp">Reports</a></li>
+		    <li><b><a href="#">Search a Location to Report</a></b></li>
+		   </ul>
+   	   </div>
 	<div id="locationWidget" class="fullWidget">
 		<div class="widgetUpperRectangle" id="locationsUpperRectangle">
 			<div class="widgetTitle" id="locationsWidgetTitle">Locations <div id="helpIcon"></div> </div>
 		</div>
 		<div class="widgetLowerRectangle" id="locationsLowerRectangle">
+		<div id="instructions">
+	         Search a location to report.
+	    </div>
 		
 		<%
 			String locDesc="", locName="";

@@ -51,12 +51,10 @@
 <link rel="stylesheet" type="text/css" href="../CSS/Confirmation/confirm.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="../wa_dashboard/CSS/style.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="../CSS/Flash/flashmessenger.css"  media="screen" />
+<link rel="stylesheet" href="../wa_dashboard/CSS/effects.css" type="text/css" media="screen" />
 
 </head>
 <body>
-<div id="instructions">
-			Click on column headers to sort data through.
-</div>
 		<% 
 			if(request.getParameter("delete") != null)
 			{
@@ -102,6 +100,9 @@
 				<div class="widgetTitle" id="locationsWidgetTitle">Locations <div id="helpIcon"> </div></div>
 			</div>
 			<div class="widgetLowerRectangle" id="locationsLowerRectangle">
+			<div id="instructions">
+				Click on column headers to sort data through.
+			</div>
 				<div id="locationsIcon">
 						<h3>Locations </h3>
 				</div>

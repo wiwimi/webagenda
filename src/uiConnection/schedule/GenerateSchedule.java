@@ -40,9 +40,9 @@ public class GenerateSchedule extends HttpServlet {
 		    throws ServletException, IOException 
 		    {
 		        response.setContentType("text/html;charset=UTF-8");
-		        PrintWriter out= response.getWriter();;
+		        ;
 		        EmployeeBroker empBroker;
-		        java.sql.Date  sqlStartDate, sqlEndDate;
+		        java.sql.Date  sqlStartDate;
 		        empBroker = EmployeeBroker.getBroker();
 				empBroker.initConnectionThread();
 				
@@ -78,11 +78,12 @@ public class GenerateSchedule extends HttpServlet {
 					ScheduleTemplate get = new ScheduleTemplate(1,-1,template);
 				
 					ScheduleTemplate fromDB = stb.get(get, user)[0];
+					PrintWriter out = response.getWriter();
 					
 					ArrayList<Shift> partialMatches = new ArrayList<Shift>();
 					
 					//---------- Generating Schedule ----------
-					Schedule genSched = ScheduleGenerator.generateSchedule(fromDB, Date.valueOf("2010-04-11"), location, partialMatches, user);
+					Schedule genSched = ScheduleGenerator.generateSchedule(fromDB, sqlStartDate, location, partialMatches, user);
 					
 					//---------- Send the generated proposal back to the user by displaying it in jsp ----------");
 					
@@ -90,10 +91,11 @@ public class GenerateSchedule extends HttpServlet {
 					
 					//Setting the proposed schedule in the session
 					
-					if(genSched!=null)
+					if(genSched!=null && shiftList.length!=0)
 					{
-						session.setAttribute("genSched", genSched);
-						response.sendRedirect("wa_schedule/displayScheduleFromTemplate.jsp?message=true");
+						out.println(shiftList.length);
+						//session.setAttribute("genSched", genSched);
+						//response.sendRedirect("wa_schedule/displayScheduleFromTemplate.jsp?message=true");
 					}
 					else
 					{

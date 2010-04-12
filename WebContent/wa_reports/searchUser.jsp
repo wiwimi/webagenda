@@ -62,8 +62,11 @@
 <style type="text/css">@import "../CSS/jquery.datepick.css";</style> 
 <link rel="stylesheet" type="text/css" href="../CSS/Validation/val.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="../CSS/Validation/screen.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="../CSS/Flash/flashmessenger.css" media="screen"/>
 <link rel="stylesheet" type="text/css" href="../CSS/Confirmation/confirm.css" media="screen" />
+<link rel="stylesheet" href="../CSS/breadcrumb.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../CSS/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
+
 		
 </head>
 <body>
@@ -141,10 +144,14 @@
 						}
 					}
 				%>
-		<div id="instructions">
-			Search a user to report.
-		</div>
-
+		
+		<div id="crumb">
+		   <ul id="crumbsLonger">
+		    <li><a href="../wa_dashboard/dashboard.jsp">Home</a></li>
+		    <li><a href="reports.jsp">Reports</a></li>
+		    <li><b><a href="#">Search A User to Report</a></b></li>
+		   </ul>
+   	   </div>
         <div id="usersWidget" class="fullWidget">
 			<div class="widgetUpperRectangle" id="usersUpperRectangle">
 				<div class="widgetTitle" id="usersWidgetTitle">Users <div id="helpIcon"></div></div>
@@ -152,6 +159,10 @@
 		<div class="widgetLowerRectangle" id="usersLowerRectangle">
 		<div id ="creationForm">
 			<form class="validatedForm" action="../AddUser" id="form" method="post">
+				 <div id="instructions">
+					Search a user to report.
+				</div>
+				 
 				 <div id="personal">
 					 	<div id="formButtons">
 							<input type="button" name="submit" class="button" value="Search" onClick="location.href='../wa_user/userSearchResults.jsp?familyName='+ form.familyName.value + '&empId=' + form.empId.value + '&dob=' + form.dob.value + '&givenName=' + form.givenName.value + '&user=' + form.user.value + '&status=' + form.status.value + '&email=' + form.email.value">
@@ -216,271 +227,15 @@
 										</select> 
 								</p>
 							</div>				
-							<!--This should be populated from the database -->
 							<div>
 							    <p>
 									<label id="theSelect" class="theSelect" for="empId">Employee Id: <em class="asterisk"> * </em> </label>
 									<input type="text" size="30" name="empId" class="required" maxLength="30" value="<%=empId%>"/>
 								</p>
 							</div>
-							
-							<!--This should be populated from the database -->
-							<div>
-							    <p>
-									<label id="theSelect" class="theSelect" for="supervisorId">Supervisor Id:</label>
-									<input type="text" size="30" disabled="disabled" value="Edit supervisor Id" maxLength="30" value=""/>
-									<input id="empIdButton" id="supIdButton" type="button" name="submit" class="button" value="Edit"/>
-								</p>
-							</div>
-							
-							<!--This should be populated from MaintainJobType use case -->
-						    <div id="posButton">
-								<p>
-									<label id="theSelect" class="theSelect"> Preferred Position: </label>  
-									<input id="prefPositionBox" type="text" size="30" maxlength="30" disabled="disabled" value="Edit positions" name="prefPositionBox" />
-									<input type="button" name="submit" class="button" value="Edit"/>
-								</p>
-							</div>
-							
-							<!--This should be populated from MaintainLocation use case -->
-							<div id="locationsButton">
-							    <p>		
-									<label id="theSelect" class="theSelect"> Preferred Location: </label>  
-									<input id="prefLocationBox" type="text" size="30" maxlength="30" disabled="disabled" value="Edit locations" name="prefLocationBox" />
-									<input type="button" name="submit" class="button" value="Edit"/>
-							    </p>
-						    </div>
-							
-							<!--This should be populated from MaintainPermission use case -->
-							<div id="permButton">
-								<p>
-									<label id="theSelect" class="theSelect"> Permission level: </label>  
-									<input id="permissionBox" type="text" size="30" maxlength="30" value="Edit permission level" disabled ="disabled" name="permissionBox" />
-								 <input type="button" name="submit" class="button" value="Edit"/>
-								</p>
-						 </div>
-				</fieldset>
-			  </div>
-			  
-			  <div id="formButtons">
-				<input type="button" name="submit" class="button" value="Search" onClick="location.href='../wa_user/userSearchResults.jsp?familyName='+ form.familyName.value + '&empId=' + form.empId.value + '&dob=' + form.dob.value + '&givenName=' + form.givenName.value + '&user=' + form.user.value + '&status=' + form.status.value + '&email=' + form.email.value">
-				<input type="reset" name="clear" class="button" value="Clear Screen" onClick="location.href='newUser.jsp?empId=&familyName=&status=&username=&dob='">
-			</div>
-					
-					<!-- The Pop up Screens -->
-					
-					<div id="locationsPopup">
-				<a id="popupContactClose">x</a>
-				<h1>Locations</h1>
-				<div id="instructions">
-					Closing the screen saves the selected items.
-				</div>
-				<div id="tableArea">
-					<div class="userAdmin">
-						<table class="sortable" id="userTable">
-							<thead class="head">
-								<tr class="headerRow">
-									<th>Name</th>
-									<th> </th>
-								</tr>
-							</thead>
-							<tfoot class="foot">
-								<tr class="headerRow">
-									<th>Name</th>
-									<th></th>
-								</tr>
-							</tfoot>
-							<tbody>
-								<% 
-									LocationBroker locBroker = LocationBroker.getBroker();
-									Location loc= null;
-									loc = new Location("");
-									Location[] locArray = locBroker.get(loc, user);
-									
-									for(int index = 0; index < locArray.length; index++)
-									{
-								%>
-										<tr>
-											<td>
-												<div id="locationImage"> <b> <%=locArray[index].getName()%> </b></div>
-											</td>
-											<td>
-												<input type="radio" name="loc" value="<%=locArray[index].getName()%>"> 
-											</td>
-										</tr>
-								<% 
-									}
-								%>
-								</tbody>
-						</table>
-					</div>
-			</div> <!-- End Table Area -->
-			</div>
-			
-			
-			<div id="idPopup">
-			<a id="idPopupClose">x</a>
-					<h1>Employees</h1>
-						<div id="instructions">
-						Closing the screen saves the selected item.
-					</div>
-				<div id="tableArea" >
-						<div class="userAdmin">
-						<table class="sortable" id="userTable" >
-							 <thead class="head">
-								 <tr class="headerRow">
-									<th>Employee ID</th>
-									<th>Family Name</th>
-									<th>Given Name</th>
-									<th></th>
-								 </tr>
-							  </thead>
-							<tfoot class="foot">
-								<tr class="headerRow">
-									<th>Employee ID</th>
-									<th>Family Name</th>
-									<th>Given Name</th>
-									<th></th>
-								</tr>
-							</tfoot>
-							<tbody>
-								<% 
-									EmployeeBroker empBroker = EmployeeBroker.getBroker();
-								    Employee emp = new Employee();
-									emp.setActive(true);
-									Employee[] empArray = empBroker.get(emp, user);
-									int count = empBroker.getEmpCount();
-									for (int index =0; index<count; index++)
-								{
-								%>
-											<tr>
-												<td><div id="profileImage"> <b> <%= empArray[index].getEmpID() %> </b></div></td>
-												<td><%= empArray[index].getFamilyName() %></td>
-												<td><%= empArray[index].getGivenName() %></td>
-												<td> <input type="radio" name="supId" value="<%= empArray[index].getEmpID() %>"> </td>
-											</tr>
-								<% 
-									}
-								%>			
-							
-								</tbody>
-						</table>
-					</div>
-				</div> <!-- End Table Area -->
-			</div> <!-- End empPopup div -->
-			
-			<div id="positionsPopup">
-					<a id="posPopupClose">x</a>
-					<h1>Positions</h1>
-						<div id="instructions">
-						Closing the screen saves the selected item.
-					</div>
-					<div id="tableArea">
-						<div class="userAdmin">
-							<table class="sortable" id="userTable">
-								<thead class="head">
-									<tr class="headerRow">
-										<th>Name</th>
-										<th></th>
-									</tr>
-								</thead>
-								<tfoot class="foot">
-									<tr class="headerRow">
-										<th>Name</th>
-										<th></th>
-									</tr>
-								</tfoot>
-								<tbody>
-									<% 
-										PositionBroker posBroker = PositionBroker.getBroker();
-										Position pos = new Position("",null);
-										Position[] posArray = posBroker.get(pos, user);
-										
-										for(int index = 0; index <posArray.length; index++)
-										{
-									%>
-										<tr>
-										   <td> <b> <%=posArray[index].getName()%> </b> </td>
-											<td><input type="radio" name="pos" value="<%=posArray[index].getName()%>"> </td>
-										</tr>
-									<% 
-										}
-									%>			
-								</tbody>
-							</table>
-					</div> <!-- End User Admin div -->
-				</div> <!-- End Table Area -->
-			</div> <!-- End positionsPopup div -->
-			
-			<div id="permPopup">
-					<a id="permPopupClose">x</a>
-					<h1>Permissions</h1>
-					<div id="instructions">
-							Closing the screen saves the selected items.
-					</div>
-					<div id="tableArea">
-						<div class="userAdmin">
-							<table class="sortable" id="userTable">
-								<thead class="head">
-									<tr class="headerRow">
-										<th>Name</th>
-										<td> <input type="checkbox" name="option"> </td>
-									</tr>
-								</thead>
-						
-								<tfoot class="foot">
-									<tr class="headerRow">
-										<th>Name</th>
-										<td> <input type="checkbox" name="option"> </td>
-									</tr>
-								</tfoot>
-								<tbody>
-									<% 
-										PermissionBroker permBroker = PermissionBroker.getBroker();
-										int level = user.getLevel();
-										PermissionLevel[] permArray = permBroker.getAllBelow(level);
-									%>
-										<tr>
-										   	<% if (permArray!=null)
-										   	{
-										   		for(int index = 0; index <permArray.length; index++)
-												{
-										   	%>
-										   			<td>
-														<b> <%=(permArray[index].getLevel() + "" + permArray[index].getVersion())%> </b>
-													</td>
-													<td>
-														<input type="checkbox" name="perm" value="<%= (permArray[index].getLevel() + "" + 
-																permArray[index].getVersion()) %>"> 
-																<% System.out.println(permArray[index].getLevel() + "" + permArray[index].getVersion()); %>
-													</td>
-										   		
-											<%
-												}
-										   	}
-										   	else
-										   	{
-										   	%>
-										   		<td>
-													No permissions accessible.
-												</td>
-											<%
-										   	}
-											%>
-										</tr>
-									<% 
-										//}
-									%>			
-											
-								</tbody>
-							</table>
-					   </div>
-				</div> <!-- End Table Area -->
-			</div>
-			
-		
-<div id="backgroundPopup"></div>
-			</form>
+			   </fieldset>
+			   </div>
+		  </form>
 		</div> <!-- End Creation Form -->
 	</div>
 </div>

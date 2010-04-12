@@ -50,6 +50,8 @@
 <script type="text/javascript" src="../lib/js/helpDemo.js"></script>
 
 <!--  CSS files -->
+<link rel="stylesheet" href="../CSS/breadcrumb.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../CSS/breadcrumb.css" type="text/css" media="screen" />
 <link rel="stylesheet" type="text/css" href="../CSS/creationForm.css"/>
 <link rel="stylesheet" type="text/css" href="CSS/table.css"/>
 <link rel="stylesheet" type="text/css" href="../CSS/Popup/popup.css"/>
@@ -63,6 +65,13 @@
 		
 </head>
 <body>
+ <div id="crumb">
+		  <ul id="crumbsLonger">
+		    <li><a href="../wa_dashboard/dashboard.jsp">Home</a></li>
+		    <li><b><a href="#">Demo</a></b></li>
+		   </ul>
+  </div>
+  
  <div id="usersWidget" class="fullWidget">
 		<div class="widgetUpperRectangle" id="usersUpperRectangle">
 			<div class="widgetTitle" id="helpWidgetTitle">Demo <div id="helpIcon"></div></div>
@@ -70,6 +79,7 @@
 		<div class="widgetLowerRectangle" id="usersLowerRectangle">
 		<div id ="creationForm">
 			<form class="validatedForm" id="form" > 
+			
 			<fieldset>
 				<legend> Demo </legend>
 				 	<object width="425" height="344">

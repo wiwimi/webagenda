@@ -44,6 +44,8 @@
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/screen.css" />
 <link rel="stylesheet" href="../CSS/Flash/flashmessenger.css" type="text/css" media="screen"/>
 <link rel="stylesheet" type="text/css" href="../CSS/Confirmation/confirm.css" media="screen" />
+<link rel="stylesheet" href="../wa_dashboard/CSS/effects.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../CSS/breadcrumb.css" type="text/css" media="screen" />
 
 <title>Web Agenda- Template Schedule</title>
 
@@ -158,6 +160,13 @@
 	
 	
 	%>
+	
+<div id="crumb">
+  <ul id="crumbsLonger">
+    <li><a href="../wa_dashboard/dashboard.jsp">Home</a></li>
+    <li><b><a href="#">Create Schedule from Template</a></b></li>
+   </ul>
+</div>
 <div id="scheduleWidget" class="fullWidget">
 			<div class="widgetUpperRectangle" id="scheduleUpperRectangle">
 				<div class="widgetTitle" id="scheduleWidgetTitle">Schedule Generation <div id="helpIcon"></div> </div>

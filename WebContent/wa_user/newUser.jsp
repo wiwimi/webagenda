@@ -63,6 +63,7 @@
 <link rel="stylesheet" type="text/css" href="../CSS/Validation/screen.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="../CSS/Flash/flashmessenger.css" media="screen"/>
 <link rel="stylesheet" type="text/css" href="../CSS/Confirmation/confirm.css" media="screen" />
+<link rel="stylesheet" href="../CSS/breadcrumb.css" type="text/css" media="screen" />
 		
 </head>
 <body>
@@ -140,17 +141,23 @@
 						}
 					}
 				%>
+		<div id="crumb">
+		  <ul id="crumbsLonger">
+		    <li><a href="../wa_dashboard/dashboard.jsp">Home</a></li>
+		    <li><b><a href="#">New User</a></b></li>
+		   </ul>
+		</div>
+		<div id="usersWidget" class="fullWidget">
+			<div class="widgetUpperRectangle" id="usersUpperRectangle">
+				<div class="widgetTitle" id="usersWidgetTitle">Users <div id="helpIcon"></div></div>
+			</div>
+		<div class="widgetLowerRectangle" id="usersLowerRectangle">
+		
 		<div id="instructions">
 			Fields marked with <em class="asterisk" > *</em> are required.
 			By default randomly generated passwords are going to be sent to the employee's e-mail. If that field was missing it will be sent to your e-mail. 
 			You can uncheck this option. 
 		</div>
-
-        <div id="usersWidget" class="fullWidget">
-			<div class="widgetUpperRectangle" id="usersUpperRectangle">
-				<div class="widgetTitle" id="usersWidgetTitle">Users <div id="helpIcon"></div></div>
-			</div>
-		<div class="widgetLowerRectangle" id="usersLowerRectangle">
 		<div id ="creationForm">
 			<form class="validatedForm" action="../AddUser" id="form" method="post">
 				 <div id="personal">

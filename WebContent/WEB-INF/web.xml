@@ -189,4 +189,14 @@
     <servlet-name>Backup</servlet-name>
     <url-pattern>/Backup</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SessionTimer</display-name>
+    <servlet-name>SessionTimer</servlet-name>
+    <servlet-class>ui.SessionTimer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SessionTimer</servlet-name>
+    <url-pattern>/SessionTimer</url-pattern>
+  </servlet-mapping>
 </web-app>

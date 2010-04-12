@@ -54,13 +54,10 @@
 <link rel="stylesheet" type="text/css" href="../CSS/Popup/popup.css" media="screen"></link>
 <link rel="stylesheet" type="text/css" href="../CSS/Flash/flashmessenger.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="../CSS/Confirmation/confirm.css" media="screen"/>
+<link rel="stylesheet" href="../CSS/breadcrumb.css" type="text/css" media="screen" />
 
 </head>
 <body>
-	<div id="instructions">
-	        Fields marked with <em class="asterisk" > *</em> are required.
-	</div>
-	
 	<% 
 		if(request.getParameter("message") != null)
 		{
@@ -99,11 +96,24 @@
 			}
 		}
 	%>
+	
+	<div id="crumb">
+		  <ul id="crumbsLonger">
+		    <li><a href="../wa_dashboard/dashboard.jsp">Home</a></li>
+		    <li><b><a href="#">New Location</a></b></li>
+		   </ul>
+	</div>
+	
 	<div id="locationWidget" class="fullWidget">
 		<div class="widgetUpperRectangle" id="locationsUpperRectangle">
 			<div class="widgetTitle" id="locationsWidgetTitle">Locations <div id="helpIcon"></div> </div>
 		</div>
 		<div class="widgetLowerRectangle" id="locationsLowerRectangle">
+		
+		<div id="instructions">
+	        Fields marked with <em class="asterisk" > *</em> are required.
+	    </div>
+	
 		
 		<%
 			String locDesc="", locName="";

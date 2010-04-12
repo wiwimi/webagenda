@@ -15,13 +15,19 @@ if(session.getAttribute("username") != null)
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="../CSS/style.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="CSS/report.css" type="text/css"/>
+<link rel="stylesheet" href="../CSS/breadcrumb.css" type="text/css" media="screen" />
+<link rel="stylesheet" type="text/css" href="../CSS/Popup/popup.css"/>
+<link rel="stylesheet" type="text/css" href="../CSS/Confirmation/confirm.css" media="screen" />
 
 <!-- Libraries -->
 <script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
-<script src="../lib/js/jquery-ui-1.7.2.custom.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="../lib/js/jquery-impromptu.3.0.min.js"></script>
+
 
 <!-- Javascript Files -->
-<script type="text/javascript" src="../lib/js/dashboard.js"></script>
+
+<script type="text/javascript" src="../lib/js/popup.js"></script>
+<script type="text/javascript" src="../lib/js/helpReports.js"></script>
 
 <title>Web Agenda - Reports</title>
 
@@ -45,39 +51,45 @@ if(session.getAttribute("username") != null)
 </head>
 <body>
 
-	<div id="instructions">
-		Click on an item to generate a report. You can either report a list of items or choose a particular item to report.
-	</div>
-	
+  <div id="crumb">
+	  <ul id="crumbs">
+	    <li><a href="../wa_dashboard/dashboard.jsp">Home</a></li>
+	    <li><b><a href="reports.jsp">Reports</a></b></li>
+	   </ul>
+   </div>
+
 	<!-- Start middle Content div -->
 	<div id="middleContent">
-		<div id="quickLinksWidget" class="fullWidgetDashboard">
-			<div class="widgetUpperRectangle" id="quickLinksUpperRectangle">
-				<div class="widgetTitle" id="quickLinksTitle">Reports</div>
+		
+		<div id="reportsWidget" class="fullWidgetDashboard">
+			<div class="widgetUpperRectangle" id="ReportsUpperRectangle">
+				<div class="widgetTitle" id="quickLinksTitle">Reports <div id="helpIcon"></div> </div>
 			</div>
-			
-			<div class="widgetLowerRectangle" id="quickLinksLowerRectangle">
+			<div class="widgetLowerRectangle" id="reportsLowerRectangle">
 				
+				     <div id="instructions">
+						Click on an item to generate a report. You can either report a list of items or choose a particular item to report.
+					</div>
 					<div id="usersIcon"><h3>Users</h3></div>
-						<ul>
+						<ul >
 							<li> <a href="reportUsers.jsp"> All Active Users </a></li>
 							<li> <a href="reportDisabledUsers.jsp"> All Disabled Users </a></li>
 							<li>  <a href="searchUser.jsp">  A User </a></li>
 						</ul>
 					<div id="locationsIcon"><h3> Locations</h3> </div>
-						<ul>
+						<ul id="list">
 							<li>  <a href="reportLocations.jsp">  All Locations </a> </li>
 							<li>  <a href="searchLocation.jsp">  A Location </a></li>
 						</ul>
 					<div id="schedulesIcon"> <h3> Schedules</h3> </div> 
-						<ul>
+						<ul id="list">
 							<li> <a href="reportSchedules.jsp"> All Schedules </a></li>
 							<li> <a href="reportScheduleDates.jsp"> A Schedule </a> </li>
 						</ul>
 					<div id="positionsIcon"> <h3> Positions </h3> </div>
-						<ul>
+						<ul id="list">
 							<li> <a href="reportPositions.jsp"> All Positions </a> </li>
-							<li> <a href="newPosition.jsp"> A Position </a> </li>
+							<li> <a href="searchPosition.jsp"> A Position </a> </li>
 						</ul>
 					 </div>
 		</div>

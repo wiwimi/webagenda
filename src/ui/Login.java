@@ -25,6 +25,8 @@ import persistence.EmployeeBroker;
 public class Login extends HttpServlet 
 {
 	private static final long serialVersionUID = 1L;
+	private static final String TIMER_KEY = "session.timer";
+
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -47,11 +49,11 @@ public class Login extends HttpServlet
     } 
 
 	/**
+	 *
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		// TODO Auto-generated method stub
 	}
 
 	/**
@@ -87,7 +89,7 @@ public class Login extends HttpServlet
             
             //Noorin - extend the session timeout 
             HttpSession session = request.getSession(); 
-            session.setMaxInactiveInterval(1800);
+       
             
             //redirect the user to the dashbaord
             response.sendRedirect("wa_dashboard/dashboard.jsp");

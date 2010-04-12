@@ -12,7 +12,7 @@
 	vertical-align: top;
 	width:35%;
 }
-#sidebar, #header, #footer, #printerIcon, #excelIcon, #instructions
+#sidebar, #header, #footer, #printerIcon, #excelIcon, #instructions, #crumb
 {
 	display:none
 }

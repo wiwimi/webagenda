@@ -40,10 +40,12 @@ if(session.getAttribute("username") == null)
 <!-- Libraries -->
 <script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
 <script src="../lib/js/jquery.validate.js" type="text/javascript"></script>
+<script type="text/javascript" src="../lib/js/jquery-impromptu.3.0.min.js"></script>
 
 <!-- Javascript Files -->
 <script src="../lib/js/cmxforms.js" type="text/javascript"></script>
 <script src= "../lib/js/val.js" type="text/javascript"> </script>
+<script type="text/javascript" src="../lib/js/helpGeneratedReport.js"></script>
 
 <!--  CSS files -->
 <link rel="stylesheet" type="text/css" href="../CSS/creationForm.css"></link>
@@ -55,14 +57,28 @@ if(session.getAttribute("username") == null)
 <link rel="stylesheet" type="text/css" href="CSS/report.css" media="screen">
 <link rel="stylesheet" type="text/css" href="CSS/print.css"  media="print"/>
 <link rel="stylesheet" type="text/css" href="CSS/table.css"  media="screen"/>
+<link rel="stylesheet" href="../CSS/breadcrumb.css" type="text/css" media="screen" />
+<link rel="stylesheet" type="text/css" href="../CSS/Confirmation/confirm.css" media="screen" />
 
 </head>
 <body>
-	<div id="usersWidget" class="fullWidget">
-				<div class="widgetUpperRectangle" id="locationsUpperRectangle">
-					<div class="widgetTitle" id="locationTitle">Report Location</div>
-				</div>
-				<div id="printerIcon">
+	 <div id="crumb">
+	  <ul id="crumbsLonger">
+	    <li><a href="../wa_dashboard/dashboard.jsp">Home</a></li>
+	    <li><a href="reports.jsp">Reports</a></li>
+	    <li><a href="searchLocation.jsp">Search a Loc to Report</a></li>
+	    <li><a href="../wa_location/locSearchResults.jsp?locName=&locDesc=">Results</a></li>
+	    <li><b><a href="#">Report Location</a></b></li>
+	    
+	   </ul>
+     </div>
+
+     
+		<div id="locationWidget" class="fullWidget">
+			<div class="widgetUpperRectangle" id="locationsUpperRectangle">
+				<div class="widgetTitle" id="locationsWidgetTitle">Locations <div id="helpIcon"></div> </div>
+			</div>
+		       <div id="printerIcon">
 					<a href="javascript:window.print()"> </a>
 				</div>
 			<div class="widgetLowerRectangle" id="passwordLowerRectangle">

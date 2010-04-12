@@ -57,13 +57,12 @@
 <link  type="text/css" rel="stylesheet" href="../CSS/Popup/popup.css"></link>
 <link  type="text/css" rel="stylesheet" href="../CSS/Flash/flashmessenger.css" />
 <link  type="text/css" rel="stylesheet" href="../CSS/Confirmation/confirm.css" />
+<link rel="stylesheet" href="../CSS/breadcrumb.css" type="text/css" media="screen" />
+
 
 
 </head>
 <body>
-	<div id="instructions">
-		Search a position to report.
-	</div>
 	<% 
 		if(request.getParameter("message") != null)
 		{
@@ -119,6 +118,16 @@
 			}
 		}
 	%>
+	
+	 <div id="crumb">
+	  <ul id="crumbsLonger">
+	    <li><a href="../wa_dashboard/dashboard.jsp">Home</a></li>
+	    <li><a href="reports.jsp">Reports</a></li>
+	    <li><b><a href="#">Search a Position to Report</a></b></li>
+	    
+	   </ul>
+     </div>
+     
 	<div id="positionWidget" class="fullWidget">
 		<div class="widgetUpperRectangle" id="positionUpperRectangle">
 			<div class="widgetTitle" id="positionsWidgetTitle">Positions  <div id="helpIcon"></div></div>
@@ -127,10 +136,15 @@
 		<div id ="creationForm">
 			<form class="addPositionForm" action="../AddPosition" id="form" method="post">
 				<div id="position">
+				     <div id="instructions">
+						Search a position to report.
+					</div>
 					<div id="formButtons">
 						<input type="button" name="submit" class="button" value="Search" onClick="location.href='../wa_user/posSearchResults.jsp?posName=' + form.posName.value + '&posDesc=' + form.posDesc.value"> 
 						<input type="reset" name="clear" class="button" value="Clear Screen" onClick="location.href='newPostion.jsp?posName=&posDesc='"> 
 					</div>
+					
+					
 					
 					<%
 						String posName = "", posDesc ="";

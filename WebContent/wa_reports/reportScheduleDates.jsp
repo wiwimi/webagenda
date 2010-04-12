@@ -43,7 +43,7 @@
 <script type="text/javascript" src="../lib/js/sorttable.js" ></script>
 <script type="text/javascript" src="../lib/js/dashboard.js"></script>
 <script type="text/javascript" src="../lib/js/deleteLocation.js"></script>
-<script type="text/javascript" src="../lib/js/helpUserSearchResults.js"></script>
+<script type="text/javascript" src="../lib/js/helpSelectSchedule.js"></script>
 
 <!--  CSS files -->
 <link rel="stylesheet" type="text/css" href="CSS/tableRows.css" ></link>
@@ -51,22 +51,32 @@
 <link rel="stylesheet" type="text/css" href="../CSS/Confirmation/confirm.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="../wa_dashboard/CSS/style.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="../CSS/Flash/flashmessenger.css"  media="screen" />
+<link rel="stylesheet" href="../CSS/breadcrumb.css" type="text/css" media="screen" />
 
 </head>
 <body>
-<div id="instructions">
-			Select a schedule to report. Click on column headers to sort data through.
-</div>
+	  <div id="crumb">
+	  <ul id="crumbsLonger">
+	    <li><a href="../wa_dashboard/dashboard.jsp">Home</a></li>
+	    <li><a href="reports.jsp">Reports</a></li>
+	    <li><b><a href="#">Report Available Schedules</a></b></li>
+	   </ul>
+     </div>
 	
 		
-	   <div id="locationWidget" class="fullWidget"> <div id="backIcon" > <a onClick="history.go(-1);return true;"> Back </a> </div>
+	   <div id="scheduleWidget" class="fullWidget"> 
 			<div class="widgetUpperRectangle" id="locationsUpperRectangle">
-				<div class="widgetTitle" id="locationsWidgetTitle">Locations <div id="helpIcon"> </div></div>
+				<div class="widgetTitle" id="scheduleWidgetTitle"> Report Schedules <div id="helpIcon"> </div></div>
 			</div>
-			<div class="widgetLowerRectangle" id="locationsLowerRectangle">
+			<div class="widgetLowerRectangle" id="scheduleLowerRectangle">
 				<div id="locationsIcon">
 						<h3>Schedules </h3>
 				</div>
+				
+				<div id="instructions">
+					Select a schedule to report. Click on column headers to sort data through.
+				</div>
+
 				<% 
 					        Schedule sched = new Schedule();
 						   	sched.setCreatorID(user.getEmpID());

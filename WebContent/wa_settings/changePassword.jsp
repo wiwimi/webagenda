@@ -13,6 +13,25 @@ if(session.getAttribute("username") == null)
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
+<!-- Libraries -->
+<script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>	
+
+<!-- Plug-ins -->
+<script type="text/javascript" src="../lib/js/jquery.validate.js"></script>
+<script src ="../lib/js/jquery.flashmessenger.js"   type ="text/javascript"> </script>
+<script type="text/javascript" src="../lib/js/jquery-impromptu.3.0.min.js"></script>
+
+<!-- Javascript Files -->
+<script type="text/javascript" src="../lib/js/cmxforms.js"></script>
+<script type="text/javascript" src= "../lib/js/val.js"> </script>
+<script type="text/javascript" src="../lib/js/dashboard.js"></script>
+<script type="text/javascript" src="../lib/js/helpPassword.js"></script>
+
+<!-- CSS Files -->
+<link rel="stylesheet" type="text/css" href="../CSS/Confirmation/confirm.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="../wa_dashboard/CSS/style.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="../CSS/Flash/flashmessenger.css"  media="screen" />
+<link rel="stylesheet" href="../CSS/breadcrumb.css" type="text/css" media="screen" />
 <title>Web Agenda- Change Password</title>
 
 <%
@@ -32,28 +51,35 @@ if(session.getAttribute("username") == null)
 <%
 	}
 %>
-
-<!-- The Jquery Library was taken off from this screen due to conflict errors -->
-
 <!--  CSS files -->
 <link rel="stylesheet" href="../CSS/creationForm.css" type="text/css"></link>
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/val.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/screen.css" />
-
+<link rel="stylesheet" href="../CSS/breadcrumb.css" type="text/css" media="screen" />
 </head>
 <body>
-	<div id="instructions">
-		Fields marked with <em class="asterisk" > * </em> are required.
-		You must retype your password. This helps protect your information. <br>
-		Please use 6-8 alphanumeric characters.
+
+	<div id="crumb">
+		  <ul id="crumbsLonger">
+		    <li><a href="../wa_dashboard/dashboard.jsp">Home</a></li>
+		    <li><b><a href="#">Change Password</a></b></li>
+		   </ul>
 	</div>
-	<div id="usersWidget" class="fullWidget">
+
+    <div id="usersWidget" class="fullWidget">
 				<div class="widgetUpperRectangle" id="passwordsUpperRectangle">
-					<div class="widgetTitle" id="passwordTitle">Password</div>
+					<div class="widgetTitle" id="passwordTitle">Password <div id="helpIcon"> </div></div>
 				</div>
 				
 			<div class="widgetLowerRectangle" id="passwordLowerRectangle">
+			
+			<div id="instructions">
+				Fields marked with <em class="asterisk" > * </em> are required.
+				You must retype your password. This helps protect your information. <br>
+				Please use 6-8 alphanumeric characters.
+			</div>
+	
 				<div id ="creationForm">
 					<form class="validatedForm" action="../ChangePassword" id="form" method="post">
 						<div id="security">
@@ -65,7 +91,7 @@ if(session.getAttribute("username") == null)
 								<legend > Security Settings </legend>
 									<p> <label class ="label"> Old Password: <em class="asterisk"> * </em> </label> <input type="password" name="oldPassword" class="required" size ="7"> </p>
 									<p> <label class ="label"> New Password: <em class="asterisk"> * </em> </label> <input type="password"  name="password"   size ="7"> </p>
-									<p> <label class ="label"> Confirm New Password: <em class="asterisk"> * </em> </label> <input type="password" name="confirm_password"  size ="7"></p>
+									<p> <label class ="label"> Confirm New Password: <em class="asterisk"> * </em> </label> <input type="password" name="confirm"  size ="7"></p>
 						            <%
 						            
 						             	String message = request.getParameter("message");
@@ -86,7 +112,7 @@ if(session.getAttribute("username") == null)
 						            		else
 						            		{
 						            %>
-						            			<div id="success"> The password was successfully created. </div>
+						            			<div id="success"> The password was successfully changed. </div>
 						            <%
 						            		}
 						            	}

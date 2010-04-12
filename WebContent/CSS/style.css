@@ -36,6 +36,11 @@
 		font-family: Cochin;
 		font-size: 2.5em;
 	}
+	#crumb
+	{
+		margin-bottom:5%;
+		margin-top:-10%;
+	}
 	
 	#loginArea 
 	{
@@ -418,11 +423,11 @@
 		font-size:1.2em;
 	}
 	
-	#settingsWidgetTitle:before
+	#settingsTitle:before
 	{
 		position:relative;
 		top:5px;
-		content:url(../lib/images/icons/Color/001_43.png);
+		content:url(../lib/images/icons/BlckWhite/001_43.png);
 	}
 	
 	#usersTitle

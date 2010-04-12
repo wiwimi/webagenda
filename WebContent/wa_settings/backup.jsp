@@ -43,6 +43,7 @@ if(session.getAttribute("username") == null)
 <link rel="stylesheet" type="text/css" href="../CSS/Popup/popup.css" media="screen"></link>
 <link rel="stylesheet" type="text/css" href="../CSS/Flash/flashmessenger.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="../CSS/Confirmation/confirm.css" media="screen"/>
+<link rel="stylesheet" href="../CSS/breadcrumb.css" type="text/css" media="screen" />
 </head>
 <body>
    <% 
@@ -83,6 +84,13 @@ if(session.getAttribute("username") == null)
 			}
 		}
 	%>
+	
+	<div id="crumb">
+		  <ul id="crumbsLonger">
+		    <li><a href="../wa_dashboard/dashboard.jsp">Home</a></li>
+		    <li><b><a href="#">Backup</a></b></li>
+		   </ul>
+	</div>
 
 	<div id="usersWidget" class="fullWidget">
 				<div class="widgetUpperRectangle" id="backupUpperRectangle">

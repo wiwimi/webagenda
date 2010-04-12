@@ -43,6 +43,8 @@
 <link rel="stylesheet" type="text/css" href="../CSS/Confirmation/confirm.css" media="screen"/>
 <link rel="stylesheet" type="text/css" href="../CSS/Flash/flashmessenger.css" media="screen"/>
 <link rel="stylesheet" type="text/css"  href="CSS/icons.css"></link>
+<link rel="stylesheet" href="../wa_dashboard/CSS/effects.css" type="text/css" media="screen" />
+
 
 <!-- Sorttable is under the X11 licence, it is an open source project.-->
 <!-- Javascript Files -->

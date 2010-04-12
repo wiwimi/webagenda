@@ -50,6 +50,7 @@
 <script type="text/javascript" src="../lib/js/helpContactAdmin.js"></script>
 
 <!--  CSS files -->
+<link rel="stylesheet" href="../CSS/breadcrumb.css" type="text/css" media="screen" />
 <link rel="stylesheet" type="text/css" href="../CSS/creationForm.css"/>
 <link rel="stylesheet" type="text/css" href="CSS/table.css"/>
 <link rel="stylesheet" type="text/css" href="../CSS/Popup/popup.css"/>
@@ -137,6 +138,12 @@
 						}
 					}
 				%>
+  <div id="crumb">
+		  <ul id="crumbsLonger">
+		    <li><a href="../wa_dashboard/dashboard.jsp">Home</a></li>
+		    <li><b><a href="#">Contact Admin</a></b></li>
+		   </ul>
+  </div>
  <div id="usersWidget" class="fullWidget">
 		<div class="widgetUpperRectangle" id="usersUpperRectangle">
 			<div class="widgetTitle" id="usersWidgetTitle">Contact <div id="helpIcon"></div></div>

@@ -51,13 +51,18 @@
 <link rel="stylesheet" type="text/css"  href="../CSS/Validation/screen.css" media="screen"/>
 <link rel="stylesheet" type="text/css"  href="../CSS/Flash/flashmessenger.css" media="screen"/>
 <link rel="stylesheet" type="text/css"  href="../CSS/Confirmation/confirm.css" media="screen"  />
+<link rel="stylesheet" href="../CSS/breadcrumb.css" type="text/css" media="screen" />
 
 </head>
 <body>
-		<div id="instructions">
-			Fields marked with <em class="asterisk" > *</em> are required.
-		</div>
-			<% 
+
+			<div id="crumb">
+				  <ul id="crumbsLonger">
+				    <li><a href="../wa_dashboard/dashboard.jsp">Home</a></li>
+				    <li><b><a href="#">New Skill</a></b></li>
+				   </ul>
+			</div>
+		  <% 
 					if(request.getParameter("message") != null)
 					{
 						if(request.getParameter("message").equals("true"))
@@ -100,12 +105,18 @@
 						}
 					}
 				%>
+		
 		<div id="skillWidget" class="fullWidget">
 			<div class="widgetUpperRectangle" id="skillUpperRectangle">
 				<div class="widgetTitle" id="skillWidgetTitle">Skills <div id="helpIcon"></div> </div>
 			</div>
 			
 		<div class="widgetLowerRectangle" id="skillLowerRectangle">
+		
+		<div id="instructions">
+			Fields marked with <em class="asterisk" > *</em> are required.
+		</div>	
+				
 		
         <div id ="creationForm">
 			<form class="addSkillForm" action="../AddSkill" id="form" method="post">

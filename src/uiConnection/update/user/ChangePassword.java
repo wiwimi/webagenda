@@ -52,11 +52,11 @@ public class ChangePassword extends HttpServlet {
 		        
 		        String oldPassword = request.getParameter("oldPassword");
 		        String newPassword = request.getParameter("password");
-		        String confirmPassword = request.getParameter("confirmm_password");
+		        String confirmPassword = request.getParameter("confirm");
 		        
 		        if (!newPassword.equals(confirmPassword))
 		        {
-		        	response.sendRedirect("wa_settings/changePassword.jsp?message=mismatch");
+		        	response.sendRedirect("wa_settings/changePassword.jsp?message=mismatch&password=" + newPassword+ "&confirmPassword=" + confirmPassword);
 		        }
 		        else 
 		        {

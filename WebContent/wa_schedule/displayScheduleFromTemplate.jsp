@@ -40,7 +40,7 @@
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/val.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Validation/screen.css" />
 <link rel="stylesheet" href="../CSS/Flash/flashmessenger.css" type="text/css" media="screen"/>
-
+<link rel="stylesheet" href="../CSS/breadcrumb.css" type="text/css" media="screen" />
 <title>Web Agenda- Template Schedule</title>
 
 <%
@@ -77,6 +77,15 @@
 	
 	
 	%>
+	
+	<div id="crumb">
+		  <ul id="crumbsLonger">
+		    <li><a href="../wa_dashboard/dashboard.jsp">Home</a></li>
+		    <li><a href="createScheduleFromTemplate.jsp">Create Schedule</a></li>
+		    <li><b><a href="#">Activate Schedule</a></b></li>
+		   </ul>
+		</div>
+		
 <div id="scheduleWidget" class="fullWidget">
 	<div class="widgetUpperRectangle" id="scheduleUpperRectangle">
 			<div class="widgetTitle" id="scheduleWidgetTitle">Schedule Generation</div>

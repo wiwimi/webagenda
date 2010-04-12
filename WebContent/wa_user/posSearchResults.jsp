@@ -51,12 +51,10 @@
 <link rel="stylesheet" type="text/css" href="../CSS/Confirmation/confirm.css"  media="screen"/>
 <link rel="stylesheet" type="text/css" href="../CSS/Flash/flashmessenger.css"  media="screen"/>
 <link rel="stylesheet" type="text/css"  href="CSS/icons.css"></link>
+<link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../wa_dashboard/CSS/effects.css" type="text/css" media="screen" />
 </head>
 <body>
-
-<div id="instructions">
-			Click on column headers to sort data through.
-</div>
 			<% 
 					if(request.getParameter("delete") != null)
 					{
@@ -100,11 +98,12 @@
 		</div>
 			
 		<div class="widgetLowerRectangle" id="positionsWidgetLowerRectangle">
-
+			<div id="instructions">
+				Click on column headers to sort data through.
+            </div>
 			<div id="positionsIcon">
 				<h3>Positions</h3>
 			</div>
-			
 			<div id="searchArea">
 			<form id="form">
 				<input type="text" size=30 name="randomSearch">

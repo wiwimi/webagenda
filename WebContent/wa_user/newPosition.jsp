@@ -57,13 +57,13 @@
 <link  type="text/css" rel="stylesheet" href="../CSS/Popup/popup.css"></link>
 <link  type="text/css" rel="stylesheet" href="../CSS/Flash/flashmessenger.css" />
 <link  type="text/css" rel="stylesheet" href="../CSS/Confirmation/confirm.css" />
+<link rel="stylesheet" href="../CSS/breadcrumb.css" type="text/css" media="screen" />
+
 
 
 </head>
 <body>
-	<div id="instructions">
-		Fields marked with <em class="asterisk" > *</em> are required.
-	</div>
+
 	<% 
 		if(request.getParameter("message") != null)
 		{
@@ -119,11 +119,24 @@
 			}
 		}
 	%>
+	
+	<div id="crumb">
+		  <ul id="crumbsLonger">
+		    <li><a href="../wa_dashboard/dashboard.jsp">Home</a></li>
+		    <li><b><a href="#">New Position</a></b></li>
+		   </ul>
+	</div>
+	
 	<div id="positionWidget" class="fullWidget">
 		<div class="widgetUpperRectangle" id="positionUpperRectangle">
 			<div class="widgetTitle" id="positionsWidgetTitle">Positions  <div id="helpIcon"></div></div>
 		</div>
 		<div class="widgetLowerRectangle" id="positionsLowerRectangle">
+		
+		<div id="instructions">
+			Fields marked with <em class="asterisk" > *</em> are required.
+	    </div>
+	
 		<div id ="creationForm">
 			<form class="addPositionForm" action="../AddPosition" id="form" method="post">
 				<div id="position">

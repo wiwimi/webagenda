@@ -36,10 +36,12 @@
 
 <!--  CSS files -->
 <link rel="stylesheet" href="CSS/table.css" type="text/css"></link>
+<link rel="stylesheet" href="../CSS/tableEffects.css" type="text/css"></link>
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Confirmation/confirm.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Flash/flashmessenger.css" />
 <link rel="stylesheet" type="text/css"  href="CSS/icons.css"></link>
+<link rel="stylesheet" href="../wa_dashboard/CSS/effects.css" type="text/css" media="screen" />
 
 <!-- Sorttable is under the X11 licence, it is an open source project.-->
 <!-- Javascript Files -->
@@ -50,10 +52,6 @@
 
 </head>
 <body>
-
-<div id="instructions">
-			Click on column headers to sort data through.
-</div>
 
 		<% 
 					if(request.getParameter("message") != null)
@@ -100,7 +98,9 @@
 		</div>
 			
 		<div class="widgetLowerRectangle" id="usersWidgetLowerRectangle">
-
+			<div id="instructions">
+				Click on column headers to sort data through.
+			</div>
 			<div id="usersIcon">
 				<h3>Users</h3>
 			</div>

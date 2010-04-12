@@ -1,0 +1,56 @@
+/* Simple scalable breadcrumb by Veerle Pieters
+------------------------------------------------------------------*/
+ul, li {
+	list-style-type:none;
+	padding:0;
+	margin:0;
+	}		
+#crumbs {
+	height:2.3em;
+	border:1px solid #dedede;
+	margin: 0;
+	padding: 0;
+	float: left;
+	display: block;
+	height: 21px;
+	overflow: hidden;
+	width: 951px;
+	padding:5px;
+	
+	}
+	#crumbsLonger
+	{
+	height:2.0em;
+	border:1px solid #dedede;
+	margin: 0;
+	padding-top: 0;
+	float: left;
+	display: block;
+	height: 20px;
+	overflow: hidden;
+	width: 981px;
+	padding:5px;
+	
+	}
+#crumbs li, #crumbsLonger li {
+	float:left;
+	line-height:2.3em;
+	color:gray;
+	padding-left:.25em;
+	padding-top:0;
+	}		
+#crumbs li a , #crumbsLonger li a{
+	background:url(../lib/images/icons/Color/crumbs.gif) no-repeat right center;
+	display:block;
+	padding:0 50px 0px;
+	}							
+#crumbs li a:link, #crumbsLonger li a:link,
+#crumbs li a:visited , #crumbsLonger li a:visited{
+	color:#777;
+	text-decoration:none;
+	}	
+#crumbs  a:link, #crumbsLonger a :link,  #crumbs  a:visited, #crumbsLonger a :visited,
+#crumbs li a:hover, #crumbsLonger li a:hover, 
+#crumbs li a:focus , #crumbsLonger li a:focus{
+	color:#dd2c0d;
+	}		
