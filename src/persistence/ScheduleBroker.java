@@ -277,7 +277,9 @@ public class ScheduleBroker extends Broker<Schedule>
 			
 			ResultSet schResults = select.executeQuery();
 			found = parseResults(schResults);
-			fillSched(found, conn);
+			
+			if (found != null)
+				fillSched(found, conn);
 			
 			conn.setAvailable(true);
 			}
@@ -327,7 +329,9 @@ public class ScheduleBroker extends Broker<Schedule>
 			
 			ResultSet schResults = select.executeQuery();
 			found = parseResults(schResults);
-			fillSched(found, conn);
+			
+			if (found != null)
+				fillSched(found, conn);
 			
 			conn.setAvailable(true);
 			}

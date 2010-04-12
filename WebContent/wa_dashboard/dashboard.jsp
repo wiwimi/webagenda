@@ -112,7 +112,7 @@ if(session.getAttribute("username") != null)
 
 	if(empSched == null)
 	{
-		out.println("<td colSpan=\"7\">There are no schedules for you that have been made</td>");
+		out.println("<td colSpan=\"3\">There are no schedules for you that have been made</td>");
 	}
 	else
 	{
