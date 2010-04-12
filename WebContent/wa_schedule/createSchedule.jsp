@@ -90,7 +90,8 @@ function submit(divNum)
          Employee user = (Employee) request.getSession().getAttribute("currentEmployee");
         if (user==null)
         {
-        	response.sendRedirect("wa_login/login.jsp");
+        	response.sendRedirect("../wa_login/login.jsp");
+			return;
         }
         else
         {
@@ -109,7 +110,8 @@ function submit(divNum)
 		    }
 			else
 			{
-		        response.sendRedirect("wa_login/login.jsp");
+				response.sendRedirect("../wa_login/login.jsp");
+				return;
 			}
         }
 	%>
