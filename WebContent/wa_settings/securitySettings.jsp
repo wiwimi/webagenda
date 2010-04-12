@@ -8,8 +8,8 @@ if(session.getAttribute("username") == null)
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="business.Employee" %>
 <%@ page import="persistence.EmployeeBroker" %>
-<%@ page import="business.permissions.PermissionLevel" %>
-<%@ page import="business.permissions.*" %>
+<%@ page import="persistence.PermissionBroker" %>
+<%@ page import="business.permissions.PermissionLevel, business.permissions.Permissions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- Author: Noorin -->
 <html>
@@ -96,7 +96,7 @@ if(session.getAttribute("username") == null)
 							<fieldset>
 								<legend > Security Settings </legend>
 								<% 
-								
+								Permissions pl = null;
 								if(request.getParameter("clear") != null && !request.getParameter("clear").equals(""))
 								{
 									
@@ -104,14 +104,29 @@ if(session.getAttribute("username") == null)
 								else if(request.getParameter("secUser") != null && !request.getParameter("secUser").equals(""))
 								{
 									int empId = -1;
+									Employee clickEmp	= null; 
 									try {
 										empId = Integer.parseInt(request.getParameter("secUser"));
+										clickEmp = new Employee();
+										clickEmp.setEmpID(empId);
+										clickEmp = EmployeeBroker.getBroker().get(clickEmp,user)[0];
+										pl = PermissionBroker.getBroker().get(clickEmp.getLevel(),clickEmp.getVersion(),user)[0].getLevel_permissions();
 									}
 									catch(NumberFormatException nfE) {
 										response.sendRedirect("securitySettings.jsp?clear=y");
+										return;
 									}
+									if(clickEmp == null || pl == null) {
+										response.sendRedirect("securitySettings.jsp?clear=y");
+										return;
+									}
+									
 									%>
-									<input type="text" name="empId" value="<% out.println(empId); %>" id="empid" readonly />"
+									<label>ID:</label>	<input type="text" name="empId" value="<% out.println(empId); %>" id="empid" readonly /><br />
+									<label>Level:</label> <input type="text" name="empPLevel" value="<% out.println(clickEmp.getLevel()); %>" id="empPLevel" readonly /><br />
+									<label>Version:</label> <input type="text" name="empPVer" value="<% out.println(clickEmp.getVersion()); %>" id="empPVer" readonly /><br />
+									<br /><label><b>Permissions List</b></label><br /><br />
+									<label>Can Edit Schedules:</label> <input type="checkbox" name="empCanEditSched" id="empPVer" readonly <% if(pl.isCanEditSchedule()) out.println("checked"); %> %><br />
 									<%
 									out.println("<br /><br /><input type=\"submit\" name=\"update\" value=\"Update Permissions\" id=\"update\" />");
 								}
@@ -119,21 +134,20 @@ if(session.getAttribute("username") == null)
 									String load = request.getParameter("load");
 									if(load != null)
 										if(load.equals("y")) {
-											user = (Employee) request.getSession().getAttribute("currentEmployee");
 											Employee e = new Employee();
 											
 											Employee[] emps = EmployeeBroker.getBroker().get(e,user);
 											for(int i = 0; i < emps.length; i++)
 											{
 												out.println("<a href=\"securitySettings.jsp?secUser=" + emps[i].getEmpID() + " \"> " + emps[i].getGivenName() + " " + 
-														emps[i].getFamilyName() + " </a><br /> ");
+														emps[i].getFamilyName() + " [" + emps[i].getLevel() + emps[i].getVersion() + "]" +  "</a><br /> ");
 											}
 											
 										}
 								}
 								%>	 
 								<br />
-								<br />"
+								<br />
 						   </fieldset>
 					   </div>
 				 </form>
