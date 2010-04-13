@@ -56,7 +56,7 @@ public class UpdateUser extends HttpServlet {
 		        String givenName = request.getParameter("givenName");
 		        
 		        String status =  request.getParameter("status");
-				String pos = request.getParameter("pos");
+				String pos = request.getParameter("positionGroup");
 				String email=request.getParameter("email");
 				String username = request.getParameter("user");
 				String dob = request.getParameter("dob");

@@ -496,14 +496,14 @@
 								<thead class="head">
 									<tr class="headerRow">
 										<th>Name</th>
-										<td> <input type="checkbox" name="option"> </td>
+										<th> <input type="checkbox" name="option"> </th>
 									</tr>
 								</thead>
 						
 								<tfoot class="foot">
 									<tr class="headerRow">
 										<th>Name</th>
-										<td> <input type="checkbox" name="option"> </td>
+										<th> <input type="checkbox" name="option"> </th>
 									</tr>
 								</tfoot>
 								<tbody>

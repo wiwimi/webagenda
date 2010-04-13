@@ -216,7 +216,10 @@
 					<legend > Personal </legend>
 						<p>	<label class ="label"> Given Name:  <em class="asterisk"> * </em> </label> <input type="text" name="givenName" class="required" size="30" maxLength="30" value="<%=givenName%>"/> </p>
 						<p>	<label class ="label"> Family Name: <em class="asterisk"> * </em> </label> <input type="text" name="familyName" class="required" size="30" maxLength="30" value="<%=familyName%>"/> </p>
-						<p>	<label class ="label"> Date of Birth: </label> <input type="text" name ="dob" id="dob" size ="10" value="<%=dob%>"/></p>
+						<p>	
+							<label class ="label"> Date of Birth: </label> <input type="text" name ="dob" id="dob" size ="10" value="<%=dob%>"/>
+							
+						</p>
 						<p>	<label class ="label"> Username: <em class="asterisk"> * </em> </label> <input type="text" name ="user" id="user"  class="required"  size ="30" value="<%=username%>"/></p>
 	                    <p>
 					         <label for="cemail" class="label"> E-Mail:</label>
