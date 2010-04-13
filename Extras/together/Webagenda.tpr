@@ -28,7 +28,7 @@ debugger.SmartStep=true
 Developer.CodingWorkspace={{0,2,-1,0,0,0,0,0,0,1,0,50,75,25,-1,-1,-1,-1}${0,1,-1,0,0,0,0,1,0,1,0,50,75,25,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,66,50,25,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,66,50,25,-1,-1,-1,-1}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,5,-1,0,0,0,0,0,0,1,0,50,50,25,-1,-1,-1,-1}${0,4,-1,0,0,0,0,1,0,1,1,66,50,25,-1,-1,-1,-1}${0,7,-1,0,0,0,0,0,0,1,0,50,50,75,-1,-1,-1,-1}}
 Developer.DebugWorkspace={{0,2,-1,0,0,0,0,0,0,1,0,50,75,25,-1,-1,-1,-1}${0,1,-1,0,0,0,0,1,0,1,1,50,75,25,-1,-1,-1,-1}${0,3,-1,0,0,0,0,0,0,1,0,50,50,25,-1,-1,-1,-1}${0,3,-1,0,0,0,0,0,0,1,0,50,50,25,-1,-1,-1,-1}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,4,-1,0,0,0,0,0,0,1,0,50,50,25,-1,-1,-1,-1}${0,0,-1,0,0,0,0,1,0,1,0,75,5,5,-1,-1,-1,-1}${0,7,-1,0,0,0,0,0,0,1,0,50,50,75,-1,-1,-1,-1}}
 Developer.DesignWorkspace={{0,2,-1,0,0,0,0,1,0,1,0,50,75,22,-1,-1,-1,-1}${0,1,-1,0,0,0,0,0,0,1,0,50,75,22,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,22,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,22,-1,-1,-1,-1}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,4,-1,0,0,0,0,1,0,1,1,50,50,22,-1,-1,-1,-1}${0,0,-1,0,0,0,0,0,0,1,0,75,5,5,-1,-1,-1,-1}${0,7,-1,0,0,0,0,0,0,1,0,50,50,75,-1,-1,-1,-1}}
-Developer.Webagenda={{0,2,-1,0,0,0,0,1,0,1,1,50,75,26,-1,-1,-1,-1}${0,1,-1,0,0,0,0,0,0,1,0,50,75,26,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,26,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,0,50,50,26,-1,-1,-1,-1}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,4,-1,0,0,0,0,1,0,1,0,50,50,26,-1,-1,-1,-1}${0,0,-1,0,0,0,0,0,0,1,0,75,5,5,-1,-1,-1,-1}${0,7,-1,0,0,0,0,0,0,1,0,50,50,75,-1,-1,-1,-1}}
+Developer.Webagenda={{0,2,-1,0,0,0,0,0,0,1,0,50,75,26,-1,-1,-1,-1}${0,1,-1,0,0,0,0,0,0,1,0,50,75,26,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,1,50,50,26,-1,-1,-1,-1}${0,3,-1,0,0,0,0,1,0,1,1,50,50,26,-1,-1,-1,-1}${0,-1,-1,0,0,0,0,0,0,1,0,5,5,5,-1,-1,-1,-1}${0,4,-1,0,0,0,0,1,0,1,0,50,50,26,-1,-1,-1,-1}${0,0,-1,0,0,0,0,0,0,1,0,75,5,5,-1,-1,-1,-1}${0,7,-1,0,0,0,0,0,0,1,0,50,50,75,-1,-1,-1,-1}}
 names.Developer={Webagenda,DesignWorkspace,CodingWorkspace,DebugWorkspace}
 [vcs]
 provider.class=CVS LAN
@@ -37,16 +37,16 @@ cross-bootclasspath=C:/Borland/Together6.2/jdk/jre/lib/rt.jar
 [lastOpenProjectName]
 Developer=Webagenda
 [editor]
-recent.file.0=D:\\Workspaces\\WebAgenda\\WebAgenda\\Extras\\together\\src\\Interface\\GenerateSchedule.java
-recent.file.1=D:\\Workspaces\\WebAgenda\\WebAgenda\\Extras\\together\\src\\Interface\\ActivateSchedule.java
-recent.file.2=D:\\Workspaces\\WebAgenda\\WebAgenda\\Extras\\together\\src\\Interface\\Logout.java
-recent.file.3=D:\\Workspaces\\WebAgenda\\WebAgenda\\Extras\\together\\src\\Interface\\Login.java
-recent.file.4=D:\\Workspaces\\WebAgenda\\WebAgenda\\Extras\\together\\src\\Interface\\user\\AddUser.java
-recent.file.5=D:\\Workspaces\\WebAgenda\\WebAgenda\\Extras\\together\\src\\Interface\\schedule\\ScheduleCreate.java
-recent.file.6=D:\\Workspaces\\WebAgenda\\WebAgenda\\Extras\\together\\src\\Interface\\user\\UpdateUser.java
-recent.file.7=D:\\Workspaces\\WebAgenda\\WebAgenda\\Extras\\together\\src\\Interface\\UpdateUser.java
-recent.file.8=D:\\Workspaces\\WebAgenda\\WebAgenda\\Extras\\together\\src\\Interface\\user\\UpdateAdminProfile.java
-recent.file.9=D:\\Workspaces\\WebAgenda\\WebAgenda\\Extras\\together\\src\\Interface\\UpdateAdminProfile.java
+recent.file.0=D:\\Workspaces\\WebAgenda\\WebAgenda\\Extras\\together\\src\\Business\\Position.java
+recent.file.1=D:\\Workspaces\\WebAgenda\\WebAgenda\\Extras\\together\\src\\Business\\Rule.java
+recent.file.2=D:\\Workspaces\\WebAgenda\\WebAgenda\\Extras\\together\\src\\Business\\Schedule.java
+recent.file.3=D:\\Workspaces\\WebAgenda\\WebAgenda\\Extras\\together\\src\\Business\\ShiftPos.java
+recent.file.4=D:\\Workspaces\\WebAgenda\\WebAgenda\\Extras\\together\\src\\Business\\Employee.java
+recent.file.5=D:\\Workspaces\\WebAgenda\\WebAgenda\\Extras\\together\\src\\Application\\Backup.java
+recent.file.6=D:\\Workspaces\\WebAgenda\\WebAgenda\\Extras\\together\\src\\Persistence\\Broker.java
+recent.file.7=D:\\Workspaces\\WebAgenda\\WebAgenda\\Extras\\together\\src\\Persistence\\SkillBroker.java
+recent.file.8=D:\\Workspaces\\WebAgenda\\WebAgenda\\Extras\\together\\src\\Persistence\\LocationBroker.java
+recent.file.9=D:\\Workspaces\\WebAgenda\\WebAgenda\\Extras\\together\\src\\Interface\\user\\UpdateUser.java
 [newDiagramExpert]
 includeInCurrentDiagram=false
 [findusages]
