@@ -16,8 +16,9 @@ import business.Employee;
 import business.schedule.Location;
 
 /**
- * Servlet implementation class UpdateLocation
+ * This servlet is used to update a location in the location management screen
  * @author Noorin Hasan
+ * edited by:mark
  */
 @WebServlet(name="UpdateLocation", urlPatterns={"/UpdateLocation"})
 public class UpdateLocation extends HttpServlet {

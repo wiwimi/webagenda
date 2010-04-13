@@ -18,8 +18,9 @@ import business.Employee;
 import business.schedule.Location;
 
 /**
- * Servlet implementation class addLocation
+ * This servlet is used to add a location to the database using the location management screen
  * @author Noorin Hasan
+ * edited by:Mark
  */
 @WebServlet(name="AddLocation", urlPatterns={"/AddLocation"})
 public class AddLocation extends HttpServlet {

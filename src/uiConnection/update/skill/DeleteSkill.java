@@ -19,8 +19,9 @@ import exception.DBDownException;
 import exception.DBException;
 
 /**
- * Servlet implementation class DeleteSkill
+ * This servlet will be used to deleted a skill using the delete skill link in the skills management screen
  * @author Noorin Hasan
+ * edited by:mark
  */
 @WebServlet(name="DeleteSkill", urlPatterns={"/DeleteSkill"})
 public class DeleteSkill extends HttpServlet {

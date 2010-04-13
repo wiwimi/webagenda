@@ -11,7 +11,8 @@ import business.schedule.ScheduleTemplate;
 import business.schedule.ShiftTemplate;
 
 /**
- * Servlet implementation class scheduleCreate
+ * This servlet is used to create a schedule from the create schedule screen
+ * @author mark
  */
 public class scheduleCreate extends HttpServlet {
 	private static final long serialVersionUID = 1L;

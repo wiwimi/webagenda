@@ -15,8 +15,9 @@ import exception.DBDownException;
 import exception.DBException;
 
 /**
- * Servlet implementation class DeleteLocation
+ * This servlet is used to delete a location from the system using the delete link in the location management screen
  * @author Noorin Hasan
+ * edited by:mark
  */
 @WebServlet(name="DeleteLocation", urlPatterns={"/DeleteLocation"})
 public class DeleteLocation extends HttpServlet {

@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ConnectSettings
+ * This method will check to see if the passwords match when a change password request has been submitted
  */
 public class ConnectResetPassword extends HttpServlet {
 	private static final long serialVersionUID = 1L;

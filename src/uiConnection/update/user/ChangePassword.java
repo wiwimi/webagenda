@@ -22,8 +22,10 @@ import business.schedule.Location;
 import business.schedule.Position;
 
 /**
- * Servlet implementation class updateUser
+ * This servlet is being used to change the password of a user after being requested from the change password screen
+ * If the passwords do not match there will be a redirection as well as a confirmation redicrection if the passwords match
  * @author Noorin Hasan
+ * Edited By: mark
  */
 @WebServlet(name="ChangePassword", urlPatterns={"/ChangePassword"})
 public class ChangePassword extends HttpServlet {

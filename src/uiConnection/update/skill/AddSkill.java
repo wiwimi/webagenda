@@ -17,8 +17,9 @@ import business.Employee;
 import business.Skill;
 
 /**
- * Servlet implementation class addSkill
+ * This servlet will add a skill to the system using the skills management screen in Web Agenda
  * @author Noorin Hasan
+ * edited by:Mark
  */
 @WebServlet(name="AddSkill", urlPatterns={"/AddSkill"})
 public class AddSkill extends HttpServlet {

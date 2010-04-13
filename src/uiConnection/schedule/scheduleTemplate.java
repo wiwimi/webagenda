@@ -19,7 +19,7 @@ import business.schedule.ShiftTemplate;
 
 /**
  * @author Mark Hazlett
- * Servlet implementation class scheduleTemplate
+ * This servlet is used to create a schedule template using the create schedule template screen
  */
 @WebServlet(name="scheduleTemplate", urlPatterns={"/wa_schedule/scheduleTemplate"})
 public class scheduleTemplate extends HttpServlet {

@@ -13,6 +13,7 @@ import business.Employee;
  * @author dann
  * @version 0.01.00
  * @license GPL 2
+ * Edited by: Mark
  */
 public class UserNotifications {
 

@@ -17,8 +17,10 @@ import business.Skill;
 import business.schedule.Position;;
 
 /**
- * Servlet implementation class UpdateLocation
+ * This servlet is used to update a position that is already in the system using the 
+ * position management screen
  * @author Noorin Hasan
+ * edited by:mark
  */
 @WebServlet(name="UpdatePosition", urlPatterns={"/UpdatePosition"})
 public class UpdatePosition extends HttpServlet {

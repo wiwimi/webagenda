@@ -17,8 +17,9 @@ import exception.DBDownException;
 import exception.DBException;
 
 /**
- * Servlet implementation class DeletePosition
+ * This servlet will be used to delete a position in the system by using the delete link in the position management screen
  * @author Noorin Hasan
+ * edited by:mark
  */
 public class DeletePosition extends HttpServlet {
 	private static final long serialVersionUID = 1L;

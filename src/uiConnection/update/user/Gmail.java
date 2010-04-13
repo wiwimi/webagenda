@@ -4,7 +4,12 @@ import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.*;
 
-
+/**
+ * This method creates a Gmail object for sending mail to a user/supervisor in the system
+ * @author Noorin
+ * Edited By: mark
+ *
+ */
 public class Gmail
 {
 	

@@ -19,8 +19,9 @@ import exception.PermissionViolationException;
 import business.Employee;
 
 /**
- * Servlet implementation class addUser
+ * This servlet will add a user from the requested add user screen. 
  * @author Noorin Hasan
+ * Edited By: mark
  */
 @WebServlet(name="AddUser", urlPatterns={"/AddUser"})
 public class AddUser extends HttpServlet {

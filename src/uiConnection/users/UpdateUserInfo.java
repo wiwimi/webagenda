@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class UpdateUserInfo
+ * This servlet will update the user information from the requested form in the update user screen of Web Agenda.
  * @author Mark Hazlett
  */
 public class UpdateUserInfo extends HttpServlet 

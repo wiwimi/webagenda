@@ -16,8 +16,9 @@ import business.Employee;
 import business.Skill;
 
 /**
- * Servlet implementation class UpdateLocation
+ * This servlet will update a skill in the system using the skill management screen
  * @author Noorin Hasan
+ * edited by:mark
  */
 @WebServlet(name="UpdateSkill", urlPatterns={"/UpdateSkill"})
 public class UpdateSkill extends HttpServlet {

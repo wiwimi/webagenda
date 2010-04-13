@@ -22,8 +22,9 @@ import business.schedule.Location;
 import business.schedule.Position;
 
 /**
- * Servlet implementation class updateUser
+ * This servlet will update an administrators profile in the system, this feature is not available for regular users
  * @author Noorin Hasan
+ * Edited By: Mark
  */
 @WebServlet(name="UpdateAdminProfile", urlPatterns={"/UpdateAdminProfile"})
 public class UpdateAdminProfile extends HttpServlet {

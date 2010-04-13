@@ -22,8 +22,10 @@ import business.schedule.Location;
 import business.schedule.Position;
 
 /**
- * Servlet implementation class updateUser
+ * This servlet is used to update a user's profile in the database
+ * This servlet will be called from the update user screen in Web Agenda
  * @author Noorin Hasan
+ * edited by:mark
  */
 @WebServlet(name="UpdateUser", urlPatterns={"/UpdateUser"})
 public class UpdateUser extends HttpServlet {

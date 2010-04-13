@@ -15,8 +15,9 @@ import exception.DBDownException;
 import exception.DBException;
 
 /**
- * Servlet implementation class DeleteUser
+ * This servlet will Delete a user
  * @author Noorin Hasan
+ * Edited By: Mark
  */
 public class DeleteUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;

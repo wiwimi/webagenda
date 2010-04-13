@@ -14,8 +14,9 @@ import exception.DBDownException;
 import exception.DBException;
 
 /**
- * Servlet implementation class AddPosition
+ * This servlet will update a position in the system using the position management screen
  * @author Noorin Hasan
+ * edited by:mark
  */
 public class AddPosition extends HttpServlet {
 	private static final long serialVersionUID = 1L;

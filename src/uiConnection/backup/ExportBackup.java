@@ -17,7 +17,7 @@ import application.Backup;
 
 
 /**
- * Servlet implementation class addSkill
+ * This servlet is used to perform a system backup to a specified location on the server
  * @author Noorin Hasan
  */
 @WebServlet(name="ExportBackup", urlPatterns={"/ExportBackup"})
