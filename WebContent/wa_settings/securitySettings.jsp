@@ -126,7 +126,16 @@ if(session.getAttribute("username") == null)
 									<label>Level:</label> <input type="text" name="empPLevel" value="<% out.println(clickEmp.getLevel()); %>" id="empPLevel" readonly /><br />
 									<label>Version:</label> <input type="text" name="empPVer" value="<% out.println(clickEmp.getVersion()); %>" id="empPVer" readonly /><br />
 									<br /><label><b>Permissions List</b></label><br /><br />
-									<label>Can Edit Schedules:</label> <input type="checkbox" name="empCanEditSched" id="empPVer" readonly <% if(pl.isCanEditSchedule()) out.println("checked"); %> %><br />
+									<label>Can Edit Schedules:</label> <input type="checkbox" name="empCanEditSched" id="empCanEditSched" readonly <% if(pl.isCanEditSchedule()) out.println("checked"); %> %><br />
+									<label>Can Read Schedules:</label> <input type="checkbox" name="empCanReadSched" id="empCanReadSched" readonly <% if(pl.isCanReadSchedule()) out.println("checked"); %> %><br />
+									<label>Can Read Old Schedules:</label> <input type="checkbox" name="empCanReadOldSched" id="empReadOldSched" readonly <% if(pl.isCanReadOldSchedule()) out.println("checked"); %> %><br />
+									<label>Can View Resources:</label> <input type="checkbox" name="empCanViewResources" id="empCanViewResources" readonly <% if(pl.isCanViewResources()) out.println("checked"); %> %><br />
+									<label>Can Change Permissions:</label> <input type="checkbox" name="empCanChangePermissions" id="empCanChangePermissions" readonly <% if(pl.isCanChangePermissions()) out.println("checked"); %> %><br />
+									<label>Can Read Logs:</label> <input type="checkbox" name="empCanReadLogs" id="empReadLogs" readonly <% if(pl.isCanReadLogs()) out.println("checked"); %> %><br />
+									<label>Can Access Reports:</label> <input type="checkbox" name="empCanAccessReports" id="empCanAccessReports" readonly <% if(pl.isCanAccessReports()) out.println("checked"); %> %><br />
+									<label>Can Request Days Off:</label> <input type="checkbox" name="empCanRequestDaysOff" id="empCanRequestDaysOff" readonly <% if(pl.isCanRequestDaysOff()) out.println("checked"); %> %><br />
+									<label>Max Days Off:</label> <input type="text" name="maxDaysOff" id="maxDaysOff" readonly /><br />
+									
 									<%
 									out.println("<br /><br /><input type=\"submit\" name=\"update\" value=\"Update Permissions\" id=\"update\" />");
 								}
