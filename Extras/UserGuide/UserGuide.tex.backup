@@ -1,0 +1,358 @@
+\documentclass[a4paper,10pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[top=3cm, bottom=2.5cm, left=2cm, right=2cm]{geometry}
+\usepackage{colortbl}
+\usepackage{color}
+% Title Page
+\title{WebAgenda User Guide}
+\author{Daniel Kettle, Noorin Hasan, Mark Hazlett, Daniel Wehr}
+
+\definecolor{note}{rgb}{0,0.35,0} 
+
+\begin{document}
+\maketitle
+\tableofcontents
+\setcounter{chapter}{-1}
+\chapter{Preamble}
+
+\par \noindent \hspace*{1cm} WebAgenda is a Web-Hosted scheduling system that is meant to provide scheduling, employee tracking, and report generation to any business. It is built to fit small to medium businesses, although is not limited by business size.  This User Guide will go through operation and guidelines while using and implementing the system for a business. This manual is aimed at the business owner who has fair experience with computers. It is recommended that they have a server in place or hand this guide off to someone who can set one up for them. Installation is fairly straightfoward and this guide will go over concepts in some depth in an outlined box. Any notes, warnings, or serious issues you may encounter or should consider will be printed in a green, orange, or red font respectively. 
+
+\begin{quote}
+WebAgenda version 0.99 Beta, Copyright (C) 2009-2010 Daniel Kettle, Daniel Wehr, Mark Hazlet, Noorin Hasan.
+WebAgenda comes with ABSOLUTELY NO WARRANTY. \\
+This is free software, and you are welcome to redistribute it under certain conditions. See License section in the Appendix for more information.
+\end{quote}
+
+
+
+\chapter{Installation}
+
+\par \noindent \hspace*{1cm} The \textit{complete} installation requires third-party programs as well as the WebAgenda application. These extra programs are included with the installation discs, but may not be licensed under the same terms nor distributed under the same rules. As such, licenses are displayed in the appendix of this manual and the installer launches each individual program installer independant of itself. Included third-party applications are Windows 32-bit only as the test environment and quite possibly most of the business systems we expect this program to be installed on will be. Apple or *nix server administrators should be able to install the respective \textbf{MySQL},\textbf{Glassfish} and \textbf{Java EE} programs easily. 
+\bigskip
+\par \noindent \hspace*{1cm} The WebAgenda Official Windows Installer is 32-bit only currently and includes Java EE 6 plus Glassfish v3, MySQL 5.1.x RDBMS database, and the actual WebAgenda files. In order to install WebAgenda, you must accept the license agreement of the GNU Public License found in the Appendix section of this guide (text in full).
+
+\section{Minimum Requirements}
+\subsection*{Windows XP and Greater}
+% TODO Re-order reqirements into a standard order
+\begin{itemize}
+ \item 500 MB free space 
+ \item 1024 MB RAM
+ \item 2.0 GHz Dual Core processor
+ \item Network Connectivity, 100 Mbps connection minimum
+ \item 32 MB Video RAM
+ \item UTF-8 Language Support
+\end{itemize}
+
+\subsection*{Mac OS-X 10.5 and Greater}
+
+% See above TODO
+
+\begin{itemize}
+ \item 640 MB free space
+ \item 1024 MB RAM
+ \item 2.0 GHz Dual Core processor
+ \item Network Connectivity, 100 Mbps connection minimum
+ \item 32 MB Video RAM
+ \item UTF-8 Language Support
+\end{itemize}
+
+\subsection*{GNU/Linux (Kernel 2.6+), BSD, Unix}
+
+\begin{itemize}
+ \item 500 MB free space
+ \item 512 - 1024 MB RAM *
+ \item 1.5 - 2.0 GHz Dual Core processor *
+ \item Network Connectivity, 100 Mbps
+ \item 16 - 32 MB Vido RAM *
+ \item UTF-8 Language Support
+\end{itemize}
+
+\begin{small} * Lower requirements if system is command-line only \end{small}
+\paragraph{}
+
+% This is a Note
+\begin{color}{note}
+\begin{center}
+\begin{tabular}{| l |}
+\hline
+  \begin{footnotesize}
+  Mac OS-X should have MySQL installed by default and Apple customizes Java for their machines. 
+  \end{footnotesize} \\
+  \begin{footnotesize}
+  Most GNU/Linux servers should have a respective repository or source code to build from.
+  \end{footnotesize} \\
+  \begin{footnotesize}
+  Unix Systems may not have repositories, but should be able to make use of source code.
+  \end{footnotesize} \\
+  \begin{footnotesize}
+   Solaris and embedded systems have not been tested with WebAgenda.
+  \end{footnotesize} \\
+\hline
+\end{tabular}
+\end{center}
+% End Note
+\end{color}
+\par \noindent \hspace*{1cm} 
+
+
+\chapter{First Run}
+
+\par \noindent \hspace*{1cm} Once the installer has been run and all dependencies are installed, WebAgenda should be accessible. The site can be reached if installed on a local machine at:
+\begin{center}
+ \texttt{http://localhost:8080/WebAgenda/} (might want to change this for final)
+\end{center}
+
+
+\section{Business Components Overview}
+\par \noindent \hspace*{1cm} WebAgenda will require some post-installation setup before it can be used 
+\subsection{Physical Locations}
+
+\par \noindent \hspace*{1cm} Some businesses may be spread over multiple physical locations and have employees not limited to one. The Location that is referred to in WebAgenda is a piece of information that allows a Job to be tied to a physical location, so similiar jobs that are required simultaneouly in different locations can be scheduled.
+\bigskip
+\par \noindent \hspace*{1cm} Locations consist of a name that identifies the location and a description. It is recommended that the address of the physical location be included in the description so that the name can be in an easily accessible short form format.
+\begin{verbatim}
+      Name: SW11
+      Description: Floor 11 of Hotel Sleepwell
+\end{verbatim}
+
+\begin{verbatim}
+      Name: Main Lobby 5392 FAC 
+      Description: 5392 Fake City Dr., Financial Accounting Centre, Main Lobby
+\end{verbatim}
+
+\par \noindent \hspace*{1cm} Of course, a Location does not have to have a description. This can be left blank as long as the name is unique. Searches that are performed based on tags such as \texttt{Lobby, Accounting,} and \texttt{5293} should all return the second example`s Location.
+
+\subsection{Job Roles}
+
+\par \noindent \hspace*{1cm} A Job Role is called a Position by WebAgenda and is basically the job description that is tied to a Location. Multiple Positions can be associated with a Location. Similarly to the Location, a Position has a unique Name and an optional Description.
+
+\begin{verbatim}
+      Name: Cleaner
+      Description: Cleaner for Hotel Sleepwell specific to one floor
+\end{verbatim}
+
+\begin{verbatim}
+      Name: Financial Accountant
+      Description: Someone who does accounting
+\end{verbatim}
+
+\par \noindent \hspace*{1cm} The above examples do not cover all possible scenarios how a Position can be used.
+
+\subsection{Job Skills}
+
+\par \noindent \hspace*{1cm} A Skill is part of a Position; It's an optional requirement when limitations are placed on the Position. Skills mainly affect how the scheduling is performed, the automatic schedule generation in particular. By assigning a Skill to a Position, only Employees who have been assigned that Skill by someone in authority such as their supervisor, manager, or administrator can work that job. One of the more obvious uses for a Skill is when some jobs require handling and / or serving of liquor that requires an Employee to be of proper age. 
+
+\begin{verbatim}
+      Name: Bartender
+      Description: Server liquor to customers in restaurant
+\end{verbatim}
+
+\par \noindent \hspace*{1cm} A Skill does not have to have a description in it, nor does a Position require any skills.
+
+\subsection{Employees}
+
+\par \noindent \hspace*{1cm} Employees contain mostly personal information when they are created along with security attributes, preferred work values, and their status (active, not active). An Employee has the ability to change some of the basic information about them, but much of it is handled by security or higher authorities in the system. Employees will start off with the lowest default security settings.
+\bigskip
+\par \noindent \hspace*{1cm} Most of the required information that is not handled by the system is stated below. While the date of birth of an employee is not required, these employees will not be factored into positions that require age limitations, such as the Bartender job (if applicable). It is important to note how permissions work in the system, which is detailed later on.
+
+\begin{verbatim}
+      First (Given) Name: Joe
+      Last (Family) Name: Smith
+      Date Of Birth (Optional) : yyyy-mm-dd
+      Email : joe.smith@email.com
+      Username : joe_the_man
+      Password : ********
+\end{verbatim}
+
+\subsection{Shifts}
+
+\par \noindent \hspace*{1cm} Shifts are a representation of time that an employee is placed in the schedule for. A Shift can be assigned to a Shift Template counterpart that holds a required position as well as time contstraints. The Template is used for auto-scheduling employees where they must be assigned to specific positions at specific times. As a schedule does not have to be auto-generated and can have employees placed in it manually, Templates are not specifically needed to fill a schedule shift. By manually creating a schedule, there are no dependencies on Positions or Templates, although there is no auto-generating schedule functionality as a result. 
+
+\begin{verbatim}
+      Time Start: 08:00:00
+      Time End: 17:00:00
+      Day of Shift: THURSDAY
+\end{verbatim}
+
+\par \noindent \hspace*{1cm} In addition to Shifts, a Shift Template contains a list of Shifts that is referenced by a Start Time and an End Time. A Template Shift is used in tandem with a Template Schedule to provide the framework for having one or more shifts applied to a Template Shift. 
+\bigskip
+\par \noindent \hspace*{1cm} When a Template Schedule is created, it becomes a blank schedule. By adding Template Shifts to different times on different days, they will mark the times that a shift is required in that time slot for an actual schedule when it is generating. A Template Shift can also associate itself with a Position, meaning that if someone needs to work in the bar every night from 10:00pm until midnight, a Shift Template can be set from 22:00 hours to 24:00 (or 00:00) hours with a required position of Bartender. Then, when generating a schedule (based off the schedule template), the system will look for Employees who can work at Bartending and set them at that point.
+\bigskip
+\par \noindent \hspace*{1cm} More than one Shift can be applied to a Shift Template on a Schedule Template object, but Shift Templates must be unique because there is no need to have multiples. Multiple Shifts can reference the same Template; There is a limit on the number of Employees who can be assigned to a Shift Template.
+\bigskip
+\par \noindent \hspace*{1cm} Shifts reference Shift Templates and Schedules reference Schedule Templates. A Shift Template will not be seen as a Shift.
+
+
+\subsection{Scheduling}
+
+\par \noindent \hspace*{1cm} A Schedule is a series of Shifts that make up the amount of work required within a specified period of time for the business. It is made up of the following values:
+
+\begin{verbatim}
+      Start Date: 2010-04-18
+      End Date: 2010-04-24
+\end{verbatim}
+
+
+\par \noindent \hspace*{1cm} Scheduling is quite simply taking multiple Employees and assigning them to tasks known as Positions (that rely on a Location and possibly Skills) at a certain Time and Day. A schedule is a \textit{collection} of Shifts that relate to Employees involved in the result. The purpose of a Schedule Template is to produce a dynamically generated schedule based on the Employees currently in the system without requiring the labour of individually assigning an Employee to every Position required. Instead of having to create a Schedule every week or month or however the person in charge of creating them decides is best for their company, one template is created that can be generated whenever those Positions at the specified times are required. Create once and deploy multiple times, saving time and labour, therefore money. 
+\bigskip 
+\par \noindent \hspace*{1cm} Multiple Schedule Templates can be saved and used for later. A Christmas schedule, for example, may have vastly different Employee requirements then a summer schedule. In the end, all Templates are supposed to accomplish is to lighten the workload of creating schedules. 
+
+\subsection{Permissions}
+
+\begin{footnotesize}
+\par \noindent \hspace*{1cm} The ability to change and assign permissions is absent in the current stable release; All modifications must be done through the database if they are required. All new Employees start with the lowest functioning set of permissions.
+\end{footnotesize}
+\bigskip
+\par \noindent \hspace*{1cm} Permissions consist of two different parts: a 'level' value and a 'version' value. Most Employees can utilize the system just fine using the lowest permission defaults: a level of 0 and no version. However, once Employees become more specialized, especially in the areas of administration and schedule management, then versions may have useful application. In addition to level and version, there exists a list of permissions that can be toggled or set. All three elements combined are represented as a PermissionLevel, a complete permission entity assigned to an Employee.
+\bigskip
+\par \noindent \hspace*{1cm} The level attribute is an indication of how much authority the Employee has compared to other Employees in the system. Levels are hierarchical so even if the list of permissions are identical, a higher level will have priority and cannot be changed by lower level requests. 
+\bigskip
+\par \noindent \hspace*{1cm} The version represents a different set of Permissions that still retains the hierarchical structure of permission levels, but allows that level to focus on one aspect of the system. For example, if a company has three Employees in its employ, all of which are considered supervisors, one could be in control of scheduling while the other two are focused on hiring and reporting data from the system. It makes more sense to have the one supervisor in charge of scheduling to not have reporting functionality while the other two would lose schedule creation ability. This may negate performance losses from certain Employees attempting to utilize the database for non-critical activities. A version value is specified by an alphabetical character (a - z) or by a space if no version is desired. To emphasize, the version attribute is not taken into account when comparing levels.
+\newpage
+\par \noindent \hspace*{1cm} A PermissionLevel's level and version is not tied down to any particular combination of Permissions. Both levels and versions are based off \textit{explicit permissions} that determine what a user can or cannot do. These are assigned to employees by an administrator or someone with similar authoirty for the purpose of performing the related ability.
+\par \noindent \hspace*{1cm} The following is a list of Permissions that limit how an Employee can use the system if it`s not enabled.
+
+\begin{itemize}
+ \item Can edit current or future schedules saved in the database.
+ \item Can read the schedules. In the event of contract workers, they may not have a schedule.
+ \item Can read past schedules. 
+ \item Can manage employees. Able to change personal data, view permissions, disable login.
+ \item Can view resources. Access to view employee data who have permission levels lower than user.
+ \item Can change permission attributes. Only applicable to employees with levels lower than user.
+ \item Can read logs. If implemented, view server logs on access violations, actions, etc.
+ \item Can read reports generated by users as well as generate their own.
+ \item Can request days off. (not implemented)
+ \item Number of days off. (not implemented)
+ \item Can request vacation days. (not implemented)
+ \item Number of vacation days. (not implemented)
+ \item Can take emergency days off. For adverse situations that cannot be planned.
+ \item Can view inactive employees. 
+ \item Can send notifications. Employees can send messages that show up on the main page after login.
+ \item Trusted level. Temporarily increase a Permission`s level attribute to another user's level. \newline
+ 		(not implemented: Logging of actions while Employee has trusted status)
+\end{itemize}
+
+
+
+\section{Integrating Business Components}
+
+\par \noindent \hspace*{1cm} In order to use WebAgenda, the following items must be set up: Employees, Permissions, Locations, Shifts and Schedules. By their very name, these business objects are self-explanatory. In this section, an example company will determine what of each object will be used in starting up their WebAgenda scheduling system.
+\bigskip
+\par \noindent \hspace*{1cm} There is a hotel startup that wants to be able to have a centralized scheduling system and they have chosen WebAgenda to perform that duty. They installed the software on their company's central server that can be accessed via the Internet and want their Employees to start using the system. This is their first time using the system.
+
+\par \noindent \hspace*{1cm} The hotel is a small operation. There are 4 floors and a lobby as well as some administration offices. There are 30 staff that are employed in total not including the owner, 10 of which will be working at the hotel throughout a 12 hour period. 10 Employees won't be working at any one time unless the others are sick or on leave. As it is a small operation, the owner is lending the admin account of the system to the next highest authority figure in the business to perform scheduling and reporting. He expects the reports to be emailed to him every month. 
+
+\subsection{Adding Employees}
+
+\par \noindent \hspace*{1cm} The first task to getting the system up and running is to add all the employees into the system. The only personal information that is needed to get started is the first and last name, a username and a password. An e-mail is recommended as it can be used to send new passwords to as well as provide updates to schedules as they are made available. An Employee ID is a number value that can vary; 1-999 can be management, 1000-9999 can be regular workers for example.
+\bigskip
+\par \noindent \hspace*{1cm} There should be a Users link on the left sidebar in WebAgenda. That link leads to the page where new Employees can be created. Once the accounts have been set up, if e-mails were provided then the passwords to the accounts can be sent back through those addresses to the Employees. Verify the Employees have been created afterwards by searching for all employees.
+\bigskip
+\par \noindent \hspace*{1cm} By default, the Employees being created will have access to read the schedules and change trivial information about themselves. They will be prevented from accessing administrative abilities. The WebAgenda site should be available through any cellphone with a browser and javascript.
+
+\subsection{Adding Positions}
+
+\par \noindent \hspace*{1cm} Once the resources have been created, the next thing to do is create tasks for them. Tasks are in the form of Positions, places that must be worked. The hotel requires one Employee for every two floors to clean, 2 Employees at the front desk, and one manager in the offices. Each day consists of two 6-hour shifts for a total of 10 Employees. Positions that could gleaned from this example are Cleaners, Receptionists, Administration. Once these have been created, an Employee can be assigned to that Position.
+
+\subsection{Adding Locations}
+
+\par \noindent \hspace*{1cm} Locations, while optional for Positions, are recommended. There will always be two cleaners so it would be easier to recognize when one Employee has a Cleaning job on Floors 1-2 and Floors 3-4, rather than have two Employees who aren't sure of where they work when they arrive at the hotel.
+
+\subsection{Adding Skills}
+
+\par \noindent \hspace*{1cm} In the event that the schedule creator wants to restrict the job to one type of Employee, they can force a Position to require a Skill. A Skill is an attribute assigned to an Employee so that a Position can only be taken by one with that Skill. This tends to work more towards age-restricted jobs and auto-schedule generation.
+
+\subsection{}
+
+\chapter{System Usage}
+
+\chapter{Maintenance}
+
+\section{Delete Instead of Disable Employees}
+
+\par \noindent \hspace*{1cm} Employee data is never truly deleted from the WebAgenda system. Depending on the geographic location and government, records of employement may need to be stored for long periods of time. Tax records for instance, must be kept for 7 years in Canada. Therefore, there is no way to delete actual data from WebAgenda itself. In order to delete the data permanently, one must do so by logging into the database and deleting inactive employees.
+\bigskip
+\par \noindent \hspace*{1cm} It is not recommended that data be deleted directly from the database. There is one caveat with doing such an action: If an Employee is locked out of the WebAgenda scheduling system, perhaps they have been suspended from duty, they will have their account deactivated. The problem with this is a permanent delete would check that deactivated status and delete any non-active Employees. If a delete must be done, check with management to understand if any deactivated accounts are to be re-activated in the future.
+\bigskip
+\par \noindent \hspace*{1cm} To negate the issue stated above, a check can be done to see when the Employee last logged in and delete all the ones with a difference of 7 years (or as desired). See the following steps taken (from the command line) for proceeding with a delete of all inactive Employees. This assumes you have started up cmd.exe as administrator. You must have either the root account for the database or the account that WebAgenda uses. 
+\bigskip
+\par \noindent \hspace*{1cm} This command will delete all inactive employees:
+
+\begin{verbatim}
+ mysql.exe -u root -p
+ Enter password: ***********
+ 
+ mysql> USE WebAgenda;
+ 
+ mysql> DELETE FROM `EMPLOYEE` WHERE active = 0;
+\end{verbatim}
+
+\par \noindent \hspace*{1cm} In order to delete only employees inactive for a certain amount of time, (7 years in this case) use this command:
+
+\begin{verbatim}
+ mysql> DELETE FROM `EMPLOYEE` WHERE active = 0 AND DATEDIFF(lastLogin,CURDATE()) >= (365 * 7);
+\end{verbatim}
+
+\par \noindent \hspace*{1cm} As with all alterations with production systems, you will want a usable backup on hand in case anything goes wrong \textit{before} attempting to delete data from the system directly. You may notice that the above statement does not factor leap years.
+
+\chapter{Backup and Recovery}
+
+\chapter{Potential and Known Issues}
+
+\section{Features Not Implemented}
+
+\section{Bugs and System Limitations}
+
+\chapter{Development and Authors}
+
+\par \noindent \hspace*{1cm} WebAgenda \textcopyright  \space was produced in 2009 - 2010 at the Southern Alberta Institute of Technology (SAIT) as part of the Capstone Project for Information Technology. Copyrights of WebAgenda are held by the following authors and developers in association with SAIT and the project is licensed under the GNU Public License Version 2. (See below)
+
+\section{Mark Hazlett}
+
+
+Interface Developer \newline
+Graphic Designer \newline
+Project Manager \newline
+Mac OS-X Developer
+
+\section{Noorin Hassan}
+
+Quality Assurance \newline
+Interface Developer \newline
+Documentation Assistant \newline
+Windows Developer
+
+\section{Daniel Wehr}
+
+Database Developer \newline
+Programming Lead \newline
+System Designer \newline
+Windows Developer
+
+\section{Daniel Kettle}
+
+Database Designer \newline
+Programming Assistant \newline
+Documentation Lead \newline
+GNU/Linux Developer
+
+
+\appendix
+
+\chapter{Licenses}
+
+\section{GNU Public License v2}
+
+\par \noindent \hspace*{1cm} MySQL Community Edition and WebAgenda are both licensed under the GPL 2 License as follows:
+
+\include{gpl-2.0}
+
+\newpage
+
+\section{Sun Microsystems License}
+
+\par \noindent \hspace*{1cm} Java EE 6 and Glassfish in addition to other components in the installer are licensed as follows:
+
+\include{SunMicroSysLicense}
+
+\end{document}         

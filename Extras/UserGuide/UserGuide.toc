@@ -1,0 +1,34 @@
+\contentsline {chapter}{\numberline {0}Preamble}{2}
+\contentsline {chapter}{\numberline {1}Installation}{3}
+\contentsline {section}{\numberline {1.1}Minimum Requirements}{3}
+\contentsline {paragraph}{}{4}
+\contentsline {chapter}{\numberline {2}First Run}{5}
+\contentsline {section}{\numberline {2.1}Business Components Overview}{5}
+\contentsline {subsection}{\numberline {2.1.1}Physical Locations}{5}
+\contentsline {subsection}{\numberline {2.1.2}Job Roles}{5}
+\contentsline {subsection}{\numberline {2.1.3}Job Skills}{6}
+\contentsline {subsection}{\numberline {2.1.4}Employees}{6}
+\contentsline {subsection}{\numberline {2.1.5}Shifts}{6}
+\contentsline {subsection}{\numberline {2.1.6}Scheduling}{7}
+\contentsline {subsection}{\numberline {2.1.7}Permissions}{7}
+\contentsline {section}{\numberline {2.2}Integrating Business Components}{8}
+\contentsline {subsection}{\numberline {2.2.1}Adding Employees}{9}
+\contentsline {subsection}{\numberline {2.2.2}Adding Positions}{9}
+\contentsline {subsection}{\numberline {2.2.3}Adding Locations}{9}
+\contentsline {subsection}{\numberline {2.2.4}Adding Skills}{9}
+\contentsline {subsection}{\numberline {2.2.5}Final Mention}{9}
+\contentsline {chapter}{\numberline {3}System Usage}{10}
+\contentsline {chapter}{\numberline {4}Maintenance}{11}
+\contentsline {section}{\numberline {4.1}Delete Instead of Disable Employees}{11}
+\contentsline {chapter}{\numberline {5}Backup and Recovery}{12}
+\contentsline {chapter}{\numberline {6}Potential and Known Issues}{13}
+\contentsline {section}{\numberline {6.1}Features Not Implemented}{13}
+\contentsline {section}{\numberline {6.2}Bugs and System Limitations}{13}
+\contentsline {chapter}{\numberline {7}Development and Authors}{14}
+\contentsline {section}{\numberline {7.1}Mark Hazlett}{14}
+\contentsline {section}{\numberline {7.2}Noorin Hassan}{14}
+\contentsline {section}{\numberline {7.3}Daniel Wehr}{14}
+\contentsline {section}{\numberline {7.4}Daniel Kettle}{14}
+\contentsline {chapter}{\numberline {A}Licenses}{15}
+\contentsline {section}{\numberline {A.1}GNU Public License v2}{15}
+\contentsline {section}{\numberline {A.2}Sun Microsystems License}{21}
