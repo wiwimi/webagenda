@@ -5,6 +5,10 @@ package Interface.user;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+/**
+ * Used to change the password of a user after being requested from the change password screen. If the passwords do not match there will be a redirection as well as a confirmation redirection if the passwords match. 
+ */
 public class ChangePassword extends HttpServlet  {
     public String getServletInfo(){
         return "Servlet description";

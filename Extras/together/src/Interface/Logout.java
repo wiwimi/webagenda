@@ -5,6 +5,10 @@ package Interface;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+/**
+ * Used to log a user out of the system and to invalidate the session. 
+ */
 public class Logout extends HttpServlet  {
     public String getServletInfo(){
         return "Servlet description";

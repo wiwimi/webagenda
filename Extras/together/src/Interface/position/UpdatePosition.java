@@ -5,6 +5,10 @@ package Interface.position;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+/**
+ * Used to update a position that is already in the system using the position management screen. 
+ */
 public class UpdatePosition extends HttpServlet  {
     public String getServletInfo(){
         return "Servlet description";

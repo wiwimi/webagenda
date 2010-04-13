@@ -5,6 +5,10 @@ package Interface.user;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+/**
+ * Used to delete a user. 
+ */
 public class DeleteUser extends HttpServlet  {
     public String getServletInfo(){
         return "Servlet description";

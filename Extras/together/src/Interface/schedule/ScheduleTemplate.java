@@ -5,6 +5,10 @@ package Interface.schedule;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+/**
+ * Used to create a schedule template using the create schedule template screen. 
+ */
 public class ScheduleTemplate extends HttpServlet  {
     public String getServletInfo(){
         return "Servlet description";

@@ -5,6 +5,10 @@ package Interface.position;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+/**
+ * Used to delete a position in the system by using the delete link in the position management screen. 
+ */
 public class DeletePosition extends HttpServlet  {
     public String getServletInfo(){
         return "Servlet description";

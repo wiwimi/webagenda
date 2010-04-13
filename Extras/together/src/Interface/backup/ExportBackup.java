@@ -5,6 +5,10 @@ package Interface.backup;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+/**
+ * Used to perform a system backup to a specified location on the server. 
+ */
 public class ExportBackup extends HttpServlet  {
     public String getServletInfo(){
         return "Servlet description";

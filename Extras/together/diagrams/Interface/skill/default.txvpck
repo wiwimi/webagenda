@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <nodeSet version="1.0">
     <link uin="idh67bgg7y3d7jrg7y4b97g.linkidanxc4g7y3d7jrg7y4yntn">
-        <property name="$metaclass" value="Dependency Link"/>
         <participant role="Supplier" referencedUin="design:view:::idal6kug7y3d7jrg7y4anea"/>
         <participant role="Client" referencedUin="design:view:::idh67bgg7y3d7jrg7y4b97g"/>
+        <property name="$metaclass" value="Dependency Link"/>
     </link>
     <view uin="idh67bgg7y3d7jrg7y4b97g">
         <property name="$metaclass" value="Package Diagram"/>

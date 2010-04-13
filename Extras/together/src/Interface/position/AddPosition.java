@@ -5,6 +5,10 @@ package Interface.position;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+/**
+ * Will add a position in the system using the position management screen. 
+ */
 public class AddPosition extends HttpServlet  {
     public String getServletInfo(){
         return "Servlet description";

@@ -5,6 +5,10 @@ package Interface.location;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+/**
+ * Used to delete a location from the system using the delete link in the location management screen. 
+ */
 public class DeleteLocation extends HttpServlet  {
     public String getServletInfo(){
         return "Servlet description";

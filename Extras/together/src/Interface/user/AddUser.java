@@ -5,6 +5,10 @@ package Interface.user;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+/**
+ * Will add a user from the requested add user screen. 
+ */
 public class AddUser extends HttpServlet  {
     public String getServletInfo(){
         return "Servlet description";

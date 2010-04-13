@@ -5,6 +5,10 @@ package Interface.skill;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+/**
+ * Will update a skill in the system using the skill management screen. 
+ */
 public class UpdateSkill extends HttpServlet  {
     public String getServletInfo(){
         return "Servlet description";

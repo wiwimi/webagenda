@@ -35,11 +35,7 @@
         </reference>
         <reference df-class-name="reference20" referencedUin="jdt:e_class:src:Interface.ActivateSchedule">
             <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="280,310,130,133"/>
-        </reference>
-        <reference df-class-name="reference21" referencedUin="jdt:e_class:src:Interface.GenerateSchedule">
-            <property name="$shortcutReference" value="true"/>
-            <property name="bounds" value="420,310,130,117"/>
+            <property name="bounds" value="290,310,130,133"/>
         </reference>
         <reference df-class-name="reference22" referencedUin="design:view:::idah43zg7y3d7jrg7y48ebw">
             <property name="$shortcutReference" value="true"/>
@@ -84,12 +80,21 @@
         <reference df-class-name="reference30" referencedUin="design:view:::id3aah5g7y3d7jrg7y4bfwc">
             <property name="$shortcutReference" value="true"/>
             <property name="@__fqn" value="uml:package:Webagenda:src:Interface.user"/>
-            <property name="bounds" value="10,10,131,184"/>
+            <property name="bounds" value="10,10,131,216"/>
             <reference referencedUin="design:link:::id3aah5g7y3d7jrg7y4bfwc.linkidbugh3g7y3d7jrg7y4yq9r">
                 <property name="sourceAnchor" value="141,57"/>
                 <property name="bendpoints" value=""/>
                 <property name="targetAnchor" value="180,57"/>
             </reference>
+        </reference>
+        <reference df-class-name="reference5" referencedUin="design:view:::id83teag7z877w7g7z8zym0">
+            <property name="$shortcutReference" value="true"/>
+            <property name="@__fqn" value="uml:package:Webagenda:src:Interface.users"/>
+            <property name="bounds" value="610,120,116,120"/>
+        </reference>
+        <reference df-class-name="reference9" referencedUin="jdt:e_class:src:Interface.GenerateSchedule">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="430,310,130,133"/>
         </reference>
         <property name="$defaultDiagram" value=""/>
     </view>

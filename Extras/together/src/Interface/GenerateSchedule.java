@@ -10,21 +10,15 @@ public class GenerateSchedule extends HttpServlet  {
         return "Servlet description";
     }
 
-    public void service(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-        response.setContentType("text/html");
-        PrintWriter out = new PrintWriter(response.getOutputStream());
+    public void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
         //
         //Write your code here
         //
-        out.println("<HTML>");
-        out.println("<HEAD><TITLE>GenerateSchedule Output</TITLE>");
-        out.println("</HEAD>");
-        out.println("<BODY>");
+    }
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
         //
-        //Write your HTML here
+        //Write your code here
         //
-        out.println("</BODY>");
-        out.println("</HTML>");
-        out.flush();
     }
 }

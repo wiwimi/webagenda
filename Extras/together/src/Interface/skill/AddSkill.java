@@ -5,6 +5,10 @@ package Interface.skill;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+/**
+ * Will add a skill to the system using the skills management screen in Web Agenda. 
+ */
 public class AddSkill extends HttpServlet  {
     public String getServletInfo(){
         return "Servlet description";

@@ -5,6 +5,10 @@ package Interface.user;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+/**
+ * Will update an administrators profile in the system, this feature is not available for regular users. 
+ */
 public class UpdateAdminProfile extends HttpServlet  {
     public String getServletInfo(){
         return "Servlet description";

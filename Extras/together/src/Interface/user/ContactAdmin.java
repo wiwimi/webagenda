@@ -5,6 +5,10 @@ package Interface.user;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+/**
+ * Allows users to send e-mails to any of the employees who have e-mails saved in the database. SMTP ports have to be enabled for this to work. 
+ */
 public class ContactAdmin extends HttpServlet  {
     public String getServletInfo(){
         return "Servlet description";

@@ -5,6 +5,10 @@ package Interface.skill;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+/**
+ * Will be used to deleted a skill using the delete skill link in the skills management screen. 
+ */
 public class DeleteSkill extends HttpServlet  {
     public String getServletInfo(){
         return "Servlet description";
