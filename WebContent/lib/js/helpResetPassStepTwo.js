@@ -7,7 +7,7 @@ $('#helpIcon').click(function() {
 			"* The password is emailed to the email found in the form.<br /> " +
 			"* In case the e-mail is empty the password will be emailed to you.<br /> " +
 			"* Make sure your SMTP ports are not blocked before sending." +
-			"* Attempting to send will consume more time." +
+			"* Attempting to send will consume more time. <br /> " +
 			"* For more information, please refer to the Online Help.");
 	});
 });
