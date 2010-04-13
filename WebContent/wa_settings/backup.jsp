@@ -23,7 +23,7 @@ if(session.getAttribute("username") == null)
          Employee user = (Employee) request.getSession().getAttribute("currentEmployee");
         if (user==null)
         {
-        	response.sendRedirect("wa_login/login.jsp");
+        	response.sendRedirect("../wa_login/login.jsp");
         	return;
         }
         else
