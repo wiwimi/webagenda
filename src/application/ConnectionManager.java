@@ -121,7 +121,7 @@ public class ConnectionManager
      */
     private static void getFileSettings()
         {
-        File file = new File("Properties.txt");
+        File file = new File("C:/WebAgendaConfig/Properties.txt");
         
         if (!hasSettings && file.exists())
             {
