@@ -67,7 +67,7 @@ public class TestEmployeeBroker extends TestCase
 		
 		try
 			{
-			newEmp = new Employee(80000,"Bilbo","Baggins","bilb01","password",1,'a');
+			newEmp = new Employee(80000,"Bilbo","Baggins","bilb01","password",0,'a');
 			}
 		catch (DBException e1)
 			{
@@ -128,7 +128,7 @@ public class TestEmployeeBroker extends TestCase
 		Employee newEmp = null;
 		try {
 			newEmp = new Employee(80002,"Bilbo","Baggins","bilb03","password",
-					1,'a');
+					0,'a');
 		} catch (DBException e1) {
 			e1.printStackTrace();
 		}
@@ -279,7 +279,7 @@ public class TestEmployeeBroker extends TestCase
 		
 		Employee newEmp = null;
 		try {
-			newEmp = new Employee(80000,"Bilbo","Baggins","bilb01","password",1,'a');
+			newEmp = new Employee(80000,"Bilbo","Baggins","bilb01","password",0,'a');
 		} catch (DBException e2) {
 			e2.printStackTrace();
 		}
@@ -591,7 +591,7 @@ public void testCreateDeleteEmployeeWithoutPermissions()
 	
 	try
         {
-        newEmp = new Employee(8000, "Bilbo","Baggins","brianAli","password",0,' ');
+        newEmp = new Employee(8000, "Bilbo","Baggins","brianAli","password",0,'a');
         }
     catch (DBException e1)
         {
@@ -650,7 +650,7 @@ public void testCreateDeleteEmployeeDisabling()
 	Employee newEmp = null;
 	
 	try {
-		newEmp = new Employee(8000, "Bilbo","Baggins","brianAli","password",0,' ');
+		newEmp = new Employee(8000, "Bilbo","Baggins","brianAli","password",0,'a');
 		newEmp.setActive(false);
 		
 	} catch (DBException e1) {

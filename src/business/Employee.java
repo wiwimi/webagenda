@@ -157,7 +157,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
         if (lvl > 99)
             throw new DBException("Level is too high to create. 0-99 are acceptable levels");
         this.level = lvl;
-        if (!Character.isLetter(ver) && ver != ' ')
+        if (!Character.isLetter(ver))
             throw new DBException(
                     "Version specified is not a letter character or a non-version (space) character");
         this.version = ver;
@@ -184,7 +184,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
         this.familyName = lname;
         this.username = username;
         this.password = password;
-        this.version = ' ';
+        this.version = 'a';
         this.level = 0;
     }
     
