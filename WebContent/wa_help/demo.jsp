@@ -96,14 +96,35 @@
 			
 			<fieldset>
 				<legend> Demo </legend>
-				 	<object width="425" height="344">
-							<param name="movie" value="http://www.youtube.com/v/GwQMnpUsj8I&hl=en&fs=1">
-							</param><param name="allowFullScreen" value="true">
-							</param><param name="allowscriptaccess" value="always">
-							</param><embed src=http://www.youtube.com/v/GwQMnpUsj8I&hl=en&fs=1 
-							type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344">
-						</embed>
-					</object>
+					<h3>Create a Schedule from a pre-existing template</h3>
+				 	<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/nqn1dicVwzE&hl=en_US&fs=1&"></param>
+				 		<param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param>
+				 		<embed src="http://www.youtube.com/v/nqn1dicVwzE&hl=en_US&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed>
+				 	</object>
+				 	
+				 	<h3>Reporting users using the Excel export</h3>
+				 	<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/dtqh6PeT86c&hl=en_US&fs=1&"></param>
+				 		<param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param>
+				 		<embed src="http://www.youtube.com/v/dtqh6PeT86c&hl=en_US&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed>
+				 	</object>
+				 	
+				 	<h3>Updating a Location</h3>
+				 	<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/CigVIbYdMNY&hl=en_US&fs=1&"></param>
+				 		<param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param>
+				 		<embed src="http://www.youtube.com/v/CigVIbYdMNY&hl=en_US&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed>
+				 	</object>
+				 	
+				 	<h3>Changing a user password</h3>
+				 	<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/Xc5btG8wqGU&hl=en_US&fs=1&"></param>
+				 		<param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param>
+				 		<embed src="http://www.youtube.com/v/Xc5btG8wqGU&hl=en_US&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed>
+				 	</object>
+				 	
+				 	<h3>Viewing a user schedule</h3>
+				 	<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/QduQpJJvf_4&hl=en_US&fs=1&"></param><param name="allowFullScreen" value="true"></param>
+				 		<param name="allowscriptaccess" value="always"></param>
+				 		<embed src="http://www.youtube.com/v/QduQpJJvf_4&hl=en_US&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed>
+				 	</object>
 			</fieldset>
 		  </form>
 	</div> <!-- End Creation Form -->
