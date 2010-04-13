@@ -111,7 +111,7 @@ if(session.getAttribute("username") == null)
 					<hr/>
 					<div id="tableArea">
 					<div class="userAdmin">
-						<table class="sortable" id="userTable">
+						<table class="sortable" id="userTable" border="1">
 							<thead class="head">
 								<tr class="headerRow">
 									<th>Name</th>

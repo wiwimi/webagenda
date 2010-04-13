@@ -154,8 +154,7 @@
 						     <hr/>
 							<div id="tableArea">
 												<div class="userAdmin">
-													<table class="sortable" id="userTable">
-														<thead class="head">
+													<table class="sortable" id="userTable" border="1">														<thead class="head">
 															<tr class="headerRow">
 																<th>Shift - Day: <%=shift.getDay() %></th>
 																<th colspan=4>Time</th>

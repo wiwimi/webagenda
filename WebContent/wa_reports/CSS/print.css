@@ -36,14 +36,6 @@ body
 {
 	display:none;
 }	
-table
-{
-	cellspacing: 30%;
-	cellpadding: 30%;
-	width: 100%;
-	border: 1px solid  #efefef;
-	text-align: left; 
-}
 .center
 {
 	margin:1% 0px; padding:0px;
@@ -120,6 +112,18 @@ thead, tfoot
 .even 
 {
 	background-color: #F0F0F0 ; 
+}
+#usertable
+{
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+	border-collapse: seperate;
+	border-spacing:30%;
+	-moz-border-radius: 3px
+	cellpadding: 30%;
+	width: 100%;
+	text-align: left;
 }
 
 

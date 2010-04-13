@@ -5,6 +5,7 @@ tr
 	border-color: inherit;
 	display: table-row;
 	vertical-align: inherit;
+	border:1px;
 }
 
 thead
@@ -64,7 +65,18 @@ table
 {
 	 background-color:#F8F8F8 ;
 }
-
+#usertable
+{
+	border-style: outset;
+	border-width: 1px;
+	border-color: black;
+	border-collapse: seperate;
+	border-spacing:30%;
+	-moz-border-radius: 1px
+	cellpadding: 30%;
+	width: 100%;
+	text-align: left;
+}
 
 
 
