@@ -160,7 +160,7 @@
   </div>
  <div id="usersWidget" class="fullWidget">
 		<div class="widgetUpperRectangle" id="usersUpperRectangle">
-			<div class="widgetTitle" id="usersWidgetTitle">Contact <div id="helpIcon"></div></div>
+			<div class="widgetTitle" id="mailWidgetTitle">Contact <div id="helpIcon"></div></div>
 		</div>
 		<div class="widgetLowerRectangle" id="usersLowerRectangle">
 		<div id ="creationForm">
