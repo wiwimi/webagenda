@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nodeSet version="1.0">
+    <view uin="id83teag7z877w7g7z8zym0">
+        <property name="$metaclass" value="Package Diagram"/>
+        <property name="@__options" value=""/>
+        <reference df-class-name="reference" referencedUin="jdt:e_class:src:Interface.users.UserNotifications">
+            <property name="$shortcutReference" value="true"/>
+        </reference>
+        <reference df-class-name="reference8" referencedUin="jdt:e_class:src:Interface.users.UpdateUserInfo">
+            <property name="$shortcutReference" value="true"/>
+        </reference>
+        <property name="$defaultDiagram" value=""/>
+    </view>
+</nodeSet>
