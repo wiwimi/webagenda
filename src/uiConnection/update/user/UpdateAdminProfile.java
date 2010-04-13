@@ -65,6 +65,7 @@ public class UpdateAdminProfile extends HttpServlet {
 					result = broker.get(oldEmp, user)[0];
 					newEmp = oldEmp.clone();
 					
+					
 					newEmp.setEmpID(user.getEmpID());
 					newEmp.setPassword(user.getPassword());
 					newEmp.setPrefLocation(user.getPrefLocation());

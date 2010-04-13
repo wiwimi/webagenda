@@ -94,7 +94,7 @@
 								$(function()
 								    {
 										
-										    $.flashMessenger("Your profile has been successfully updated", 
+										    $.flashMessenger("Your profile successfully updated", 
 											{ 	
 												modal:true, 
 												autoClose: false 
@@ -148,23 +148,23 @@
 
         <div id="usersWidget" class="fullWidget">
 			<div class="widgetUpperRectangle" id="usersUpperRectangle">
-				<div class="widgetTitle" id="usersWidgetTitle">Admin's Profile <div id="helpIcon"></div></div>
+				<div class="widgetTitle" id="usersWidgetTitle">User's Profile <div id="helpIcon"></div></div>
 			</div>
 		<div class="widgetLowerRectangle" id="usersLowerRectangle">
 		
 		<div id="instructions">
-			Fields marked with <em class="asterisk" > *</em> are required.
+			For further updates contact your Admin.
 		</div>
 		
 		<div id ="creationForm">
-			<form class="validatedForm" action="../UpdateAdminProfile" id="form" method="post">
+			<form class="validatedForm" action="../UpdateUserProfile" id="form" method="post">
 				 <div id="personal">
 					 	<div id="formButtons">
 					 	    <input type="submit" name="submit" class="button" value="Update"> 
 							<input type="reset" name="clear" class="button" value="Clear Screen" onClick="location.href='adminProfile.jsp?message=clear'">
 						</div>
 				<%
-				 	String givenName = "", familyName ="", dob ="" , username ="", email="", password ="";
+				 	String email="";
 					
 				    EmployeeBroker empBroker = EmployeeBroker.getBroker();
 					user = (Employee)session.getAttribute("currentEmployee");
@@ -179,20 +179,7 @@
 					 
 					Employee[] results = empBroker.get(searchEmp, user);
 					
-					// Retrive the not null fields
-					givenName = results[0].getGivenName();
-					familyName = results[0].getFamilyName();
-					username = results[0].getUsername();
-					
-					//If these fields are not empty, store them
-					if (results[0].getBirthDate()!=null)
-					{
-					    
-						dob = results[0].getBirthDate().toString();
-						dob = dob.substring(5, 7) + '/' + dob.substring(8, dob.length())
-						+'/' + dob.substring(0, 4);		// Reversing the date so that it matches the style used in the calendar
-						
-					}
+				
 					if (results[0].getEmail()!=null)
 						email = results[0].getEmail();
 					
@@ -205,64 +192,20 @@
 					 {
 						 if (request.getParameter("message").equals("clear"))
 						 {
-							 givenName = "";
-							 familyName ="";
-							 dob ="" ;
-							 username ="";
-							 email="";
-							 password="";
+							email="";
 						 }
 					 }
-					 
-					 if(request.getParameter("userID")!=null)
-					 {
-						 if(!request.getParameter("userID").equals(""))
-						 {
-							    empIdInt = Integer.parseInt(request.getParameter("userID"));
-							    searchEmp.setEmpID(empIdInt);
-							    results = empBroker.get(searchEmp, user);
-								
-							    // Retrive the not null fields
-								givenName = results[0].getGivenName();
-								familyName = results[0].getFamilyName();
-								username = results[0].getUsername();
-								
-								if(request.getParameter("dob")!=null)
-								{
-									dob = request.getParameter("dob");
-								}
-								
-								if (results[0].getEmail()!=null)
-									email = results[0].getEmail();
-								
-								oldEmp = new Employee();
-								oldEmp.setEmpID(empIdInt);
-								
-								session.setAttribute("oldEmp", oldEmp);
-								
-						 }
-					 }
-					
+						
 
 				%>
 				<fieldset>
 					<legend > Personal </legend>
-						<p>	<label class ="label"> Given Name:  <em class="asterisk"> * </em> </label> <input type="text" name="givenName" class="required" size="30" maxLength="30" value="<%=givenName%>"/> </p>
-						<p>	<label class ="label"> Family Name: <em class="asterisk"> * </em> </label> <input type="text" name="familyName" class="required" size="30" maxLength="30" value="<%=familyName%>"/> </p>
-						<p>	<label class ="label"> Date of Birth: </label> <input type="text" name ="dob" id="dob" size ="10" value="<%=dob%>"/></p>
 						 <p>
 					         <label for="cemail" class="label"> Personal E-Mail:</label>
 				             <input type="text" id="cemail" name="email" size="30" value="<%=email%>"/>
 				        </p>
 				</fieldset>
-				<fieldset> <legend > Account Settings </legend>
-						
-						<p>	<label class ="label"> Username: <em class="asterisk"> * </em> </label> <input type="text" name ="user" id="user"  class="required"  size ="30" value="<%=username%>"/></p>
-               </fieldset>    
-				</div>
-				<div id="formButtons">
-						<input type="submit" name="submit" class="button" value="Update">
-						<input type="reset" name="clear" class="button" value="Clear Screen" onClick="location.href='updateUser.jsp?empId=&familyName=&status=&username=&dob='">	
+				
 				</div>
 				</form>
 			</div>

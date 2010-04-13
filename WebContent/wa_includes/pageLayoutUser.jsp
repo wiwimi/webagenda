@@ -70,22 +70,6 @@ if(session.getAttribute("username") == null)
 		</div>
 		
 		
-		<br>
-		<!-- Gray colour for rectangles -->
-		
-		<div id="mailUpperRectangle" class="upperRectangle">
-			<div class="sidebarTitle" id="mailTitle"> Mail</div>
-		</div>
-		
-		<!-- White Background for boxes-->
-		
-		<div id="mailLowerRectangle" class = "lowerRectangle">
-			
-			<b> <a href ="../wa_email/inbox.jsp" > Inbox </a> </b> <br>
-			<b> <a href ="../wa_email/compose.jsp"> Compose </a> </b> <br>
-			<b> <a href ="../wa_email/drafts.jsp"> Drafts </a> </b> <br>
-			<b> <a href =" " > Notifications </a> </b> <br>
-		</div>
 		
 		<br>
 		<div id= "helpUpperRectangle" class="upperRectangle">
@@ -109,7 +93,6 @@ if(session.getAttribute("username") == null)
 		
 		<div id= "settingsLowerRectangle" class = "lowerRectangle">
 			<b> <a href ="../wa_settings/changePassword.jsp"> Change Password </a> </b> <br>
-			<b> <a href ="../wa_settings/adminProfile.jsp"> User's Profile </a> </b> <br>
 		</div>
 	</div>
 	

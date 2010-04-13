@@ -144,7 +144,7 @@
 								$(function()
 								    {
 										
-								       $.flashMessenger("The schedule has been successfully activated.",
+								       $.flashMessenger("The schedule has been successfully published and notifications have been sent to all employees involved.",
 								        {
 											   modal:true,
 								    		   autoClose:false

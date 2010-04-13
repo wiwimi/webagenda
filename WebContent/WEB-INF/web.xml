@@ -219,4 +219,14 @@
     <servlet-name>ResetPassword</servlet-name>
     <url-pattern>/ResetPassword</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateUserProfile</display-name>
+    <servlet-name>UpdateUserProfile</servlet-name>
+    <servlet-class>uiConnection.update.user.UpdateUserProfile</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateUserProfile</servlet-name>
+    <url-pattern>/UpdateUserProfile</url-pattern>
+  </servlet-mapping>
 </web-app>
