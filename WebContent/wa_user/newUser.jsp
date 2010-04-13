@@ -174,6 +174,7 @@
 			Fields marked with <em class="asterisk" > *</em> are required.
 			By default randomly generated passwords are going to be sent to the employee's e-mail. If that field was missing it will be sent to your e-mail. 
 			You can uncheck this option. 
+			
 		</div>
 		<div id ="creationForm">
 			<form class="validatedForm" action="../AddUser" id="form" method="post">
@@ -233,6 +234,9 @@
 				        <p>
 				        	<label class="label" >Generate Password: <em class="asterisk"> * </em> </label>
 				        	<input type="text" class="required" name="password" id ="pwd" size="20" value="<%=password%>"/>
+				       		&nbsp	&nbsp	&nbsp	 &nbsp &nbsp
+							<em class="asteriskBlue">**</em>Used for adding users only.<em class="asteriskBlue">**</em>
+				       		
 				       </p>
 				       <p>
 				       		<label class="label"> Send Account Details: </label> <input type="checkbox" checked name="sendingOption" value="send">
@@ -243,11 +247,13 @@
 				<fieldset>
 					<legend> Working Preferences </legend>
 							<div>
-								<p>	<label id="theSelect" class="theSelect"> Status: <em class="asterisk"> * </em> </label> 
+								<p>	<label id="theSelect" class="theSelect"> Status:  </label> 
 										<select name="status">
 											<option value="enabled"> Enabled</option> 
 											<option value="disabled" >Disabled</option>  
-										</select> 
+										</select> 	&nbsp &nbsp	 &nbsp	 &nbsp	 &nbsp			
+										<em class="asteriskBlue">**</em>Used for searching users only.<em class="asteriskBlue">**</em>
+										
 								</p>
 							</div>				
 							<div>

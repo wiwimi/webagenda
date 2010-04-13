@@ -50,7 +50,6 @@ public class AddUser extends HttpServlet {
 		        String givenName = request.getParameter("givenName");
 		        String password = request.getParameter("password");
 		       
-				String status =  request.getParameter("status");
 				String pos = request.getParameter("pos");
 				String email=request.getParameter("email");
 				String username = request.getParameter("user");
@@ -95,7 +94,7 @@ public class AddUser extends HttpServlet {
 						   emp = new Employee(empIdInt,givenName,familyName,username, password, permLevelInt,v);
 						
 						else
-							emp = new Employee(empIdInt,givenName,familyName,username, password);
+							emp = new Employee(empIdInt,givenName,familyName,username, password, 0, 'a');
 						
 						
 					}
@@ -109,16 +108,9 @@ public class AddUser extends HttpServlet {
 						}
 						else
 						{
-							   emp = new Employee(-1,givenName,familyName,username, password);
+							   emp = new Employee(-1,givenName,familyName,username, password, 0, 'a');
 						}
 					}
-					
-					if (status.equalsIgnoreCase("enabled"))
-					    emp.setActive(true);
-					
-					else 
-						emp.setActive(false);
-					
 					
 					// Convert the date of birth from string to util.Date
 					// Then convert the util.Date to sql.Date

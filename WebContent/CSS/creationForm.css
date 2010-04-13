@@ -69,6 +69,12 @@
 	font-style: normal;
 	color: #f00;
 }
+.asteriskBlue
+{
+	font-weight: bold;
+	font-style: normal;
+	color: blue;
+}
 
 input.button
 { 

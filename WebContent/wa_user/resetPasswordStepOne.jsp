@@ -1,18 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page import="persistence.LocationBroker" %>
+<%@ page import="business.schedule.Location" %>
+<%@ page import="business.schedule.Position" %>
+<%@ page import="persistence.PositionBroker" %>
 <%@ page import="business.Employee" %>
 <%@ page import="persistence.EmployeeBroker" %>
 <%@ page import="business.permissions.PermissionBroker" %>
 <%@ page import="business.permissions.PermissionLevel" %>
 <%@ page import="business.permissions.*" %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<!-- Author: Noorin -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Web Agenda- Reset Password</title>
 
-<title>Web Agenda- Updating User</title>
-
- <%
+<%
          Employee user = (Employee) request.getSession().getAttribute("currentEmployee");
         if (user==null)
         {
@@ -27,13 +31,18 @@
 	    	Permissions perm = perms[0].getLevel_permissions();
 	    	
 	    
-	        if (perm.isCanManageEmployees()==true)
+	        if (perm.isCanManageEmployees()==true && user.getActive()==true)
 			{
 				%>
 					<!-- Includes -->
 					<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
 				<%
 		    }
+	        else if (user.getActive()==false)
+	        {
+	        	response.sendRedirect("../wa_login/login.jsp?message=locked");
+        	    return;
+	        }
 			else
 			{
 				response.sendRedirect("../wa_login/login.jsp");
@@ -43,11 +52,23 @@
 	%>
 
 <!-- Libraries -->
-<script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
+<script type ="text/javascript" src ="../lib/js/jquery-1.3.2.min.js"> </script>
 
 <!-- Plug-ins -->
-<script src ="../lib/js/jquery.flashmessenger.js"   type ="text/javascript"> </script>
+<script type="text/javascript" src="../lib/js/jquery.validate.js"></script>
+<script type="text/javascript" src ="../lib/js/jquery.flashmessenger.js"> </script>
 <script type="text/javascript" src="../lib/js/jquery-impromptu.3.0.min.js"></script>
+
+<!-- Javascript Files -->
+<script type="text/javascript" src="../lib/js/cmxforms.js"></script>
+<script type="text/javascript" src= "../lib/js/val.js"> </script>
+<script type="text/javascript" src="../lib/js/jquery.datepick.js"></script>
+<script type="text/javascript" src="../lib/js/calendar.js"></script>
+<script type="text/javascript" src="../lib/js/popup.js"></script>
+<script type="text/javascript" src="../lib/js/deleteUser.js"></script>
+<script type="text/javascript" src="../lib/js/passwordGenerator.js"></script>
+<script type="text/javascript" src="../lib/js/generatePwd.js"></script>
+<script type="text/javascript" src="../lib/js/helpUser.js"></script>
 
 <!--  CSS files -->
 <link rel="stylesheet" href="CSS/table.css" type="text/css"></link>
@@ -57,64 +78,27 @@
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Flash/flashmessenger.css" />
 <link rel="stylesheet" type="text/css"  href="CSS/icons.css"></link>
 <link rel="stylesheet" href="../wa_dashboard/CSS/effects.css" type="text/css" media="screen" />
-
-<!-- Sorttable is under the X11 licence, it is an open source project.-->
-<!-- Javascript Files -->
-<script type ="text/javascript" src="../lib/js/sorttable.js"></script>
-<script type="text/javascript" src="../lib/js/dashboard.js"></script>
-<script type="text/javascript" src="../lib/js/deleteUser.js"></script>
-<script type="text/javascript" src="../lib/js/helpUserSearchResults.js"></script>
+<link rel="stylesheet" href="../CSS/breadcrumb.css" type="text/css" media="screen" />
 
 </head>
 <body>
-
-		<% 
-					if(request.getParameter("message") != null)
-					{
-						if(request.getParameter("message").equals("true"))
-						{
-			 %>
-							<script type="text/javascript">
-											$(function()
-										    {
-												
-												    $.flashMessenger("The user has been successfully deleted", 
-													{ 	
-														modal:true, 
-														autoClose: false 
-													});	
-											});
-							</script>
-			   <% 			   
-						 }
-						else if(request.getParameter("message").equals("false"))
-						{
-				%>
-							<script type="text/javascript">
-								$(function()
-								    {
-										$.flashMessenger("An error occured while deleting the User. Please contact your admin to make sure you have the right set of permissions",
-								        {
-											   modal:true,
-							    		       clsName:"err", 
-								    		   autoClose:false
-								    	 }); 
-								   }); 
-							</script>
-				<%
-						}
-					}
-				%>
-		
-		<div id="usersWidget" class="fullWidget"><div id="backIcon" > <a onClick="history.go(-1);return true;"> Back </a> </div>
-			<div class="widgetUpperRectangle" id="usersWidgetUpperRectangle">
-				<div class="widgetTitle" id="usersWidgetTitle">Users <div id="helpIcon"></div> </div>
-				
+		<div id="crumb">
+		  <ul id="crumbsLonger">
+		    <li><a href="../wa_dashboard/dashboard.jsp">Home</a></li>
+		    <li><b><a href="#">Reset Password (Step One)</a></b></li>
+		   </ul>
+		</div>
+		 <div id="usersWidget" class="fullWidget">
+				<div class="widgetUpperRectangle" id="passwordsUpperRectangle">
+					<div class="widgetTitle" id="passwordTitle">Password <div id="helpIcon"> </div></div>
+				</div>
+			<div class="widgetLowerRectangle" id="passwordLowerRectangle">
+			
 		</div>
 			
 		<div class="widgetLowerRectangle" id="usersWidgetLowerRectangle">
 			<div id="instructions">
-				Click on column headers to sort data through.
+				Select a user to reset the password for.
 			</div>
 			<div id="usersIcon">
 				<h3>Users</h3>
@@ -350,17 +334,8 @@
 											<a href="updateUser.jsp?empId=<%=empArray[index].getEmpID()%>"> <div id="profileImage"> <b><%=empArray[index].getUsername()%> </b></div></a>
 											<div class="row-actions">
 											   <span class='edit'>
-												   <a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"> Edit </a>  
+												   <a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"> Reset Password </a>  
 												</span>  
-												<span class='delete'>
-													<a href="javascript:;" onClick="removeUser('<%=empArray[index].getEmpID()%>');">
-													| Delete
-													</a>
-												</span>
-												<span class='report'> 
-													<a href="../wa_reports/reportUser.jsp?empId=<%=empArray[index].getEmpID()%>"> | Report
-													</a> 
-												</span>
 											</div>
 										</td>
 										<td><a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= empArray[index].getEmpID() %></a></td>
@@ -380,6 +355,5 @@
 		</div>
 </div>
 <div id="footer"></div>
-
 </body>
 </html>

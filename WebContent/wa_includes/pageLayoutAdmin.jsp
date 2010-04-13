@@ -84,6 +84,7 @@ if(session.getAttribute("username") == null)
 		<div id= "usersLowerRectangle" class = "lowerRectangle">
 			
 			<b> <a href ="../wa_user/newUser.jsp" > Manage Employees </a> </b> <br>
+			<b> <a href ="../wa_user/resetPasswordStepOne.jsp" > Reset Password </a> </b> <br>
 			
 		</div>
 		<br>
