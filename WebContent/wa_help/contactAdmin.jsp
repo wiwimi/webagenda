@@ -19,7 +19,7 @@
          Employee e = (Employee) request.getSession().getAttribute("currentEmployee");
         if (e==null)
         {
-        	response.sendRedirect("wa_login/login.jsp");
+        	response.sendRedirect("../wa_login/login.jsp");
         	return;
         }
         else
