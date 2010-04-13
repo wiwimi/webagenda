@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nodeSet version="1.0">
+    <view uin="idah43zg7y3d7jrg7y48ebw">
+        <property name="$metaclass" value="Package Diagram"/>
+        <property name="@__options" value=""/>
+        <reference df-class-name="reference" referencedUin="jdt:e_class:src:Interface.schedule.ScheduleCreate">
+            <property name="$shortcutReference" value="true"/>
+        </reference>
+        <reference df-class-name="reference25" referencedUin="jdt:e_class:src:Interface.schedule.ScheduleTemplate">
+            <property name="$shortcutReference" value="true"/>
+        </reference>
+        <property name="$defaultDiagram" value=""/>
+    </view>
+</nodeSet>

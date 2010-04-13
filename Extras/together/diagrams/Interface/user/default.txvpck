@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nodeSet version="1.0">
+    <link uin="id3aah5g7y3d7jrg7y4bfwc.linkidbugh3g7y3d7jrg7y4yq9r">
+        <property name="$metaclass" value="Dependency Link"/>
+        <participant role="Supplier" referencedUin="design:view:::idal6kug7y3d7jrg7y4anea"/>
+        <participant role="Client" referencedUin="design:view:::id3aah5g7y3d7jrg7y4bfwc"/>
+    </link>
+    <view uin="id3aah5g7y3d7jrg7y4bfwc">
+        <property name="$metaclass" value="Package Diagram"/>
+        <property name="@__options" value=""/>
+        <reference df-class-name="reference" referencedUin="jdt:e_class:src:Interface.user.AddUser">
+            <property name="$shortcutReference" value="true"/>
+        </reference>
+        <reference df-class-name="reference49" referencedUin="jdt:e_class:src:Interface.user.ChangePassword">
+            <property name="$shortcutReference" value="true"/>
+        </reference>
+        <reference df-class-name="reference51" referencedUin="jdt:e_class:src:Interface.user.ContactAdmin">
+            <property name="$shortcutReference" value="true"/>
+        </reference>
+        <reference df-class-name="reference53" referencedUin="jdt:e_class:src:Interface.user.DeleteUser">
+            <property name="$shortcutReference" value="true"/>
+        </reference>
+        <reference df-class-name="reference55" referencedUin="jdt:e_class:src:Interface.user.UpdateAdminProfile">
+            <property name="$shortcutReference" value="true"/>
+        </reference>
+        <reference df-class-name="reference57" referencedUin="jdt:e_class:src:Interface.user.UpdateUser">
+            <property name="$shortcutReference" value="true"/>
+        </reference>
+        <property name="$defaultDiagram" value=""/>
+    </view>
+</nodeSet>

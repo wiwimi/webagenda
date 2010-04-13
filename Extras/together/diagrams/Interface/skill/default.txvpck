@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nodeSet version="1.0">
+    <link uin="idh67bgg7y3d7jrg7y4b97g.linkidanxc4g7y3d7jrg7y4yntn">
+        <property name="$metaclass" value="Dependency Link"/>
+        <participant role="Supplier" referencedUin="design:view:::idal6kug7y3d7jrg7y4anea"/>
+        <participant role="Client" referencedUin="design:view:::idh67bgg7y3d7jrg7y4b97g"/>
+    </link>
+    <view uin="idh67bgg7y3d7jrg7y4b97g">
+        <property name="$metaclass" value="Package Diagram"/>
+        <property name="@__options" value=""/>
+        <reference df-class-name="reference" referencedUin="jdt:e_class:src:Interface.skill.AddSkill">
+            <property name="$shortcutReference" value="true"/>
+        </reference>
+        <reference df-class-name="reference43" referencedUin="jdt:e_class:src:Interface.skill.DeleteSkill">
+            <property name="$shortcutReference" value="true"/>
+        </reference>
+        <reference df-class-name="reference45" referencedUin="jdt:e_class:src:Interface.skill.UpdateSkill">
+            <property name="$shortcutReference" value="true"/>
+        </reference>
+        <property name="$defaultDiagram" value=""/>
+    </view>
+</nodeSet>

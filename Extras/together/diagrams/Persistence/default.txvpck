@@ -156,6 +156,24 @@
                 <property name="targetAnchor" value="390,140"/>
             </reference>
         </reference>
+        <reference df-class-name="reference7" referencedUin="jdt:e_class:src:Persistence.GlobalSettingsBroker">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="749,0,133,82"/>
+            <reference referencedUin="jdt:l_impl:src:Persistence.GlobalSettingsBroker:Persistence.Broker">
+                <property name="sourceAnchor" value="815,82"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="445,140"/>
+            </reference>
+        </reference>
+        <reference df-class-name="reference10" referencedUin="jdt:e_class:src:Persistence.PermissionSetBroker">
+            <property name="$shortcutReference" value="true"/>
+            <property name="bounds" value="748,389,135,82"/>
+            <reference referencedUin="jdt:l_impl:src:Persistence.PermissionSetBroker:Persistence.Broker">
+                <property name="sourceAnchor" value="748,423"/>
+                <property name="bendpoints" value=""/>
+                <property name="targetAnchor" value="500,423"/>
+            </reference>
+        </reference>
         <property name="$defaultDiagram" value=""/>
     </view>
 </nodeSet>
