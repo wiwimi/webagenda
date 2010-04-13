@@ -514,7 +514,7 @@
 		top:5px;
 		content:url(../lib/images/icons/Color/001_57.png);
 	}
-	#helpIcon:before
+	#helpIcon:before, #helpSchedIcon:before, #helpNotificationsIcon:before
 	{
 		content:url(../lib/images/icons/Color/help.png);
 	}

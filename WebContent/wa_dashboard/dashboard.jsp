@@ -21,17 +21,21 @@ if(session.getAttribute("username") != null)
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <!--  CSS files -->
+<link rel="stylesheet" type="text/css" href="../CSS/Popup/popup.css"/>
+<link rel="stylesheet" type="text/css" href="../CSS/Confirmation/confirm.css" media="screen" />
 <link rel="stylesheet" href="CSS/style.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="../CSS/style.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="../CSS/breadcrumb.css" type="text/css" media="screen" />
+
 <!-- Libraries -->
 <script src ="../lib/js/jquery-1.3.2.min.js"   type ="text/javascript"> </script>
-<script src="../lib/js/jquery-ui-1.7.2.custom.min.js" type="text/javascript"></script>
-<script src="../lib/js/js/jquery.easing.1.3.js" type="text/javascript" language="JavaScript"></script>
-<script src="../lib/js/js/jquery.jBreadCrumb.1.1.js" type="text/javascript" language="JavaScript"> </script>
-
+<script type="text/javascript" src="../lib/js/jquery-impromptu.3.0.min.js"></script>
 
 <!-- Javascript Files -->
+<script type="text/javascript" src="../lib/js/helpNotificationsDashboard.js"></script>
+<script type="text/javascript" src="../lib/js/helpSchedDashboard.js"></script>
+
+
 
 <title>Web Agenda - Dashboard</title>
 
@@ -107,7 +111,7 @@ if(session.getAttribute("username") != null)
 		
 		<div id="scheduleWidget" class="fullWidgetDashboard">
 			<div class="widgetUpperRectangle" id="scheduleUpperRectangle">
-				<div class="widgetTitle" id="scheduleWidgetTitle">Schedule</div>
+				<div class="widgetTitle" id="scheduleWidgetTitle">Schedule <div id="helpSchedIcon"> </div></div>
 			</div>
 			
 			<div class="widgetLowerRectangle" id="scheduleWidgetLowerRectangle">
@@ -158,7 +162,7 @@ if(session.getAttribute("username") != null)
 		
 			<div id="notificationsWidget" class="fullWidgetDashboard">
 				<div class="widgetUpperRectangle" id="notificationsUpperRectangle">
-					<div class="widgetTitle" id="notificationsWidgetTitle">Notifications</div>
+					<div class="widgetTitle" id="notificationsWidgetTitle">Notifications <div id="helpNotificationsIcon"> </div> </div>
 				</div>
 			
 				<div class="widgetLowerRectangle" id="notificationsLowerRectangle">
