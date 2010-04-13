@@ -55,8 +55,8 @@ public class UpdatePosition extends HttpServlet {
 						
 						Employee user = (Employee)session.getAttribute("currentEmployee");
 						newPos = new Position(posName, posDesc, skills);
-						results = broker.get(oldPos, user);
 						oldPos = (Position) session.getAttribute("oldPos");
+						results = broker.get(oldPos, user);
 						oldPos = new Position (results[0].getName() , results[0].getDescription(), results[0].getPos_skills());
 						
 						if(results!=null)
@@ -77,8 +77,13 @@ public class UpdatePosition extends HttpServlet {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					
+					
+					out.println(oldPos.getName());
+					out.println(oldPos.getDescription());
+					out.println(newPos.getName());
+					out.println(newPos.getDescription());
 					// Failed to update the position
-					response.sendRedirect("wa_user/updatePosition.jsp?update=false&posName=" + posName + "&posDesc=" + posDesc);
+					//response.sendRedirect("wa_user/updatePosition.jsp?update=false&posName=" + posName + "&posDesc=" + posDesc);
 					
 				} catch (DBDownException e) {
 					
@@ -86,7 +91,7 @@ public class UpdatePosition extends HttpServlet {
 					e.printStackTrace();
 					
 					// Failed to update the position
-					//response.sendRedirect("wa_user/updatePosition.jsp?update=false&posName=" + posName + "&posDesc=" + posDesc);
+					response.sendRedirect("wa_user/updatePosition.jsp?update=false&posName=" + posName + "&posDesc=" + posDesc);
 				}
 				catch(Exception e)
 				{
