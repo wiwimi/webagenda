@@ -99,32 +99,13 @@
 								</script>
 			<% 			   
 						}
-						
-						else if(request.getParameter("message").equals("sent"))
-						{
-							
-			 %>
-				              <script type="text/javascript">
-		
-								$(function()
-								    {
-										
-										    $.flashMessenger("An error occurred while sending the message. Make sure the SMTP ports are not blocked", 
-											{ 	
-												modal:true, 
-												autoClose: false 
-											});	
-									});
-								</script>
-			<% 			   
-						}
 						else if(request.getParameter("message").equals("false"))
 						{
 			%>
 							<script type="text/javascript">
 								$(function()
 								    {
-										$.flashMessenger("A problem had occured while creating the user. Make sure the ID is unique",
+										$.flashMessenger("An error occurred while sending the message. Make sure the SMTP ports are not blocked", 
 								        {
 											   modal:true,
 							    		       clsName:"err", 

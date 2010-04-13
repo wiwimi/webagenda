@@ -18,7 +18,9 @@ import exception.PermissionViolationException;
 import business.Employee;
 
 /**
- * Servlet implementation class addUser
+ * Servlet implementation for contact Admin
+ * Allows users to send e-mails to any of the employees who have e-mails saved in the database
+ * SMTP ports have to be enabled for this to work
  * @author Noorin Hasan
  */
 @WebServlet(name="ContactAdmin", urlPatterns={"/ContactAdmin"})
@@ -44,6 +46,7 @@ public class ContactAdmin extends HttpServlet {
 		        String receipt = request.getParameter("receipt");
 		        String message = request.getParameter("message");
 		        
+		        message = "From " + sender + " " + message; // Adding the sender's name to the message.
 		        String subject = request.getParameter("subject");
 		        String[] emailSendToList = { receipt };
 				
@@ -54,17 +57,15 @@ public class ContactAdmin extends HttpServlet {
 						// Send an email to the Admin
 					    smtpMailSender = new Gmail();
 						smtpMailSender.postMail(emailSendToList, subject, message);
-						System.out.println("Sucessfully Sent mail to Admin");
-							
-							//Confirm that the user was added
-							response.sendRedirect("wa_help/contactAdmin.jsp?message=true");
+						
+						//Confirm that the e-mail was sent
+						response.sendRedirect("wa_help/contactAdmin.jsp?message=true");
 					} 
 					catch (MessagingException e) {
 						// TODO Auto-generated catch block
-						e.printStackTrace();
-						out.println("message exception " + smtpMailSender.getSMTP_AUTH_USER()
-								+ smtpMailSender.getEmailMsgTxt() + " " + smtpMailSender.getEmailSendToList() + " " +
-								smtpMailSender.getSMTP_AUTH_PWD());
+						
+						//e.printStackTrace();
+						response.sendRedirect("wa_help/contactAdmin.jsp?message=false");
 					}
 				empBroker.stopConnectionThread();
 	}
