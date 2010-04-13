@@ -32,7 +32,7 @@ public class Backup
         File backupLocFile = new File("backupLocations.txt");
         
         if (!backupLocFile.exists())
-            throw new NullPointerException("Backup locations file has been removed.");
+            throw new NullPointerException("Backup locations file has been removed: "+backupLocFile.getAbsolutePath());
         
         File backupDir = null;
         File sqlDir = null;

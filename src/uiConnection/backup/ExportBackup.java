@@ -31,9 +31,8 @@ public class ExportBackup extends HttpServlet {
 		    throws ServletException, IOException 
 		    {
 		        response.setContentType("text/html;charset=UTF-8");
-		        String destFile = request.getParameter("destFile");
-		        String sqlFile = request.getParameter("sqlFile");
-		     
+		        
+		        //Backup DB.
 				Backup.backupDB();
 				
 				//Confirm that the backup was done

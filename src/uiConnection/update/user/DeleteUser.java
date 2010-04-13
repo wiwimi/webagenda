@@ -31,7 +31,6 @@ public class DeleteUser extends HttpServlet {
     	  
 		        response.setContentType("text/html;charset=UTF-8");
 		        PrintWriter out = response.getWriter();
-		        Employee delUser = null;
 		        
 		        //Create or get the session object from the HTTPSession object
 		        HttpSession session = request.getSession();
@@ -50,15 +49,20 @@ public class DeleteUser extends HttpServlet {
 						
 						user = (Employee)session.getAttribute("currentEmployee");
 						
+						//Get full user object to delete.
+						Employee getDelUser = new Employee();
+						getDelUser.setEmpID(empIdInt);
 						
-						delUser = new Employee();
-						delUser.setEmpID(empIdInt);
+						results = broker.get(getDelUser, user); 
 						
-						results = broker.get(delUser, user);
-						
-						if(results!=null)
-						success = broker.delete(results[0], user);
-						
+						if (results != null)
+					    {
+					    //Clone retrieved user and use both to update to disabled.
+					    Employee delUser = results[0].clone();
+					    delUser.setActive(false);
+					    
+                        success = broker.update(results[0],delUser, user);
+					    }
 						
 						
 					if (success)
