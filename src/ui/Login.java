@@ -19,7 +19,7 @@ import persistence.EmployeeBroker;
 
 /**
  * @author mark
- * Servlet implementation class Login
+ * servlet used for logging in and creating the user session
  */
 @WebServlet(name="Login", urlPatterns={"/login"})
 public class Login extends HttpServlet 

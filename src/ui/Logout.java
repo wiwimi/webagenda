@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  * @author mark
- * Servlet implementation class Logout
+ * Used to log a user out of the system and to invalidate the session
  */
 public class Logout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
