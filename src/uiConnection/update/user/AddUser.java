@@ -35,7 +35,7 @@ public class AddUser extends HttpServlet {
 		        response.setContentType("text/html;charset=UTF-8");
 		        EmployeeBroker empBroker;
 		        boolean success = false;
-		        java.sql.Date  sqlBirthDate;
+		        java.sql.Date  sqlBirthDate=null;
 		        empBroker = EmployeeBroker.getBroker();
 				empBroker.initConnectionThread();
 		        
@@ -59,7 +59,7 @@ public class AddUser extends HttpServlet {
 				String permission = request.getParameter("perm");
 				String permLevel = "", version="";
 				int permLevelInt =0;
-				char v = ' ' ;
+				char v = ' ';
 				if(permission !=null)
 				{
 					// Split the permission to get the level and the version
@@ -90,16 +90,31 @@ public class AddUser extends HttpServlet {
 					if(empId!=null && !empId.equals(""))
 					{
 						int empIdInt = Integer.parseInt(empId);
-						emp = new Employee(empIdInt,givenName,familyName,username, password, permLevelInt,v);
+						
+						if(permission!=null && !permission.equals(""))
+						   emp = new Employee(empIdInt,givenName,familyName,username, password, permLevelInt,v);
+						
+						else
+							emp = new Employee(empIdInt,givenName,familyName,username, password);
+						
 						
 					}
 					else
 					{
-						emp = new Employee(-1,givenName,familyName,username, password, permLevelInt,v);
-}
-					if (status.equalsIgnoreCase("enabled"))
+						
+						if(permission!=null && !permission.equals(""))
+						{
+							
+							   emp = new Employee(-1,givenName,familyName,username, password, permLevelInt,v);
+						}
+						else
+						{
+							   emp = new Employee(-1,givenName,familyName,username, password);
+						}
+					}
 					
-						emp.setActive(true);
+					if (status.equalsIgnoreCase("enabled"))
+					    emp.setActive(true);
 					
 					else 
 						emp.setActive(false);
@@ -183,16 +198,19 @@ public class AddUser extends HttpServlet {
 					//out.println("DB Exception");
 					//out.println(givenName + " ");
 					//out.println(familyName + " ");
-					//out.println(empIdInt + " ");
+					//out.println( "EMPIDX" + empId + "X");
 					//out.println(password + " ");
-					//out.println(username + "xDOB ");
+					//out.println( "USERNAME " + username + "  ");
 					//out.println(sqlBirthDate + " ");
+					//out.println("V " + v);
+					//out.println("PERM " + permLevelInt);
+					//out.println("PERM " + status);
 					
 					//Even if the user is not created, return the values to the form
 					//Even if the user is not created, return the values to the form
-					response.sendRedirect("wa_user/newUser.jsp?message=false&familyName=" + familyName +"&givenName=" + givenName
-							+ "&username=" + username +  "&email=" + email
-							+ "&dob=" + dob + "&empId=" + empId + "&status=" + emp.getActive() + "v=" +v + "permLevel" + permLevel);
+					//response.sendRedirect("wa_user/newUser.jsp?message=false&familyName=" + familyName +"&givenName=" + givenName
+							//+ "&username=" + username +  "&email=" + email
+							//+ "&dob=" + dob + "&empId=" + empId + "&status=" + emp.getActive() + "v=" +v + "permLevel" + permLevel);
 				}	
 				
 				catch (DBDownException e) 
