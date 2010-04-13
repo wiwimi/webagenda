@@ -125,7 +125,7 @@ public class UpdateUser extends HttpServlet {
 						//Confirm that the user was updated
 						response.sendRedirect("wa_user/updateUser.jsp?message=true&familyName=" + familyName +"&givenName=" + givenName
 								+ "&username=" + username +  "&email=" + email 
-								+ "&dob=" + dob + "&empId=" + empId + "&status=" + newEmp.getActive());
+							+ "&dob=" + dob + "&empId=" + empId + "&status=" + newEmp.getActive());
 					}
 				}
 				catch (DBException e) 
@@ -144,8 +144,8 @@ public class UpdateUser extends HttpServlet {
 					
 					
 					//Even if the user is not updated, return the values to the form
-					//response.sendRedirect("wa_user/updateUser.jsp?message=false&familyName=" + familyName +"&givenName=" + givenName+ "&username=" + username +  "&email=" + email 
-							//+ "&dob=" + dob + "&empId=" + empId);
+					response.sendRedirect("wa_user/updateUser.jsp?message=false&familyName=" + familyName +"&givenName=" + givenName+ "&username=" + username +  "&email=" + email 
+					+ "&dob=" + dob + "&empId=" + empId);
 				}
 				catch (DBDownException e) 
 				{
@@ -156,8 +156,8 @@ public class UpdateUser extends HttpServlet {
 					//out.println(empIdInt);
 					
 					//Even if the user is not created, return the values to the form
-					//response.sendRedirect("wa_user/updateUser.jsp?message=false&familyName=" + familyName +"&givenName=" + givenName
-						//	+ "&username=" + username +  "&email=" + email + "&dob=" + dob + "&empId=" + empId);
+					response.sendRedirect("wa_user/updateUser.jsp?message=false&familyName=" + familyName +"&givenName=" + givenName
+							+ "&username=" + username +  "&email=" + email + "&dob=" + dob + "&empId=" + empId);
 				}
 				catch (InvalidPermissionException  e)
 				{
@@ -167,8 +167,8 @@ public class UpdateUser extends HttpServlet {
 					out.println("Invalid Permission");
 					
 					//Even if the user is not created, return the values to the form
-					//response.sendRedirect("wa_user/updateUser.jsp?message=perm&familyName=" + familyName +"&givenName=" + givenName+ "&username=" + username +  "&email=" + email 
-						//	+ "&dob=" + dob + "&empId=" + empId);
+					response.sendRedirect("wa_user/updateUser.jsp?message=perm&familyName=" + familyName +"&givenName=" + givenName+ "&username=" + username +  "&email=" + email 
+							+ "&dob=" + dob + "&empId=" + empId);
 				}
 				catch (PermissionViolationException e) 
 				{

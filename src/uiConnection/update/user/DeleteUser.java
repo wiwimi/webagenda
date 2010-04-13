@@ -87,10 +87,10 @@ public class DeleteUser extends HttpServlet {
 				}
 				catch(Exception e)
 				{
-					out.println(results[0].getEmpID());
-					out.println(user.getEmpID());
+					//out.println(results[0].getEmpID());
+					//out.println(user.getEmpID());
 					// Failed to add the location
-					//response.sendRedirect("wa_user/userSearchResults.jsp?message=false&empId=" + empIdInt);
+					response.sendRedirect("wa_user/userSearchResults.jsp?message=false&empId=" + empIdInt);
 				}
 				finally
 				{

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import exception.DBDownException;
 import exception.DBException;
+import exception.DBNoChangeException;
 import persistence.PositionBroker;
 import business.Employee;
 import business.Skill;
@@ -46,52 +47,56 @@ public class UpdatePosition extends HttpServlet {
 				Position oldPos=null, newPos=null;
 				//String[] pos_skills = request.getParameterValues("skillSetForm.skill");
 				Skill[] skills = null;
-				
+				Position[]  results = null;
 			
 				try {
 						broker = PositionBroker.getBroker();
 						broker.initConnectionThread();
 						
-						newPos = new Position(posName, posDesc, skills);
-						oldPos = (Position) session.getAttribute("oldPos");
-						
 						Employee user = (Employee)session.getAttribute("currentEmployee");
-						
-						//FIXME pass in the logged in employee object (from session) instead of null.
-						Position[] results = broker.get(oldPos, user);
+						newPos = new Position(posName, posDesc, skills);
+						results = broker.get(oldPos, user);
+						oldPos = (Position) session.getAttribute("oldPos");
+						oldPos = new Position (results[0].getName() , results[0].getDescription(), results[0].getPos_skills());
 						
 						if(results!=null)
-						//FIXME pass in the logged in employee object (from session) instead of null.
 							success = broker.update(oldPos, newPos, user);
 					if (success)
 					{
-						//Confirm that the location was updated
+						//Confirm that the position was updated
 						response.sendRedirect("wa_user/updatePosition.jsp?update=true&posName=" + posName+ "&posDesc=" + posDesc);
 					}
+				}
+				catch (DBNoChangeException dbncE)
+				{
+					response.sendRedirect("wa_user/updatePosition.jsp?update=noChange&posName=" + posName + "&posDesc=" + posDesc);
+
 				}
 				catch (DBException e) {
 					
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					
-					// Failed to update the location
-					response.sendRedirect("wa_user/updatePosition.jsp?update=false&posName=" + posName + "&posDesc" + posDesc);
+					// Failed to update the position
+					response.sendRedirect("wa_user/updatePosition.jsp?update=false&posName=" + posName + "&posDesc=" + posDesc);
 					
 				} catch (DBDownException e) {
 					
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					
-					// Failed to update the location
-					response.sendRedirect("wa_user/updatePosition.jsp?update=false&posName=" + posName + "&posDesc" + posDesc);
+					// Failed to update the position
+					//response.sendRedirect("wa_user/updatePosition.jsp?update=false&posName=" + posName + "&posDesc=" + posDesc);
 				}
 				catch(Exception e)
 				{
 					e.printStackTrace();
 					
-					// Failed to update the location
-					response.sendRedirect("wa_user/updatePosition.jsp?update=false&posName=&posDesc=");
+					
+					// Failed to update the position
+					response.sendRedirect("wa_user/updatePosition.jsp?update=false&posName=" + posName + "&posDesc=" + posDesc);
 				}
+				
 				finally
 				{
 					out.close();

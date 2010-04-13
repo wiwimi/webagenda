@@ -99,6 +99,24 @@
 								</script>
 			<% 			   
 						}
+							if(request.getParameter("update").equals("noChanges"))
+							{
+								//out.println("Position was added");
+				 %>
+					              <script type="text/javascript">
+			
+									$(function()
+									    {
+											
+										    $.flashMessenger("The current position already matches your changes", 
+											{ 	
+												modal:true, 
+												autoClose: false 
+											});	
+										});
+									</script>
+				<% 			   
+							}
 						else if(request.getParameter("update").equals("false"))
 						{
 			%>
@@ -106,7 +124,7 @@
 								$(function()
 								    {
 										
-								       $.flashMessenger("Failed to update the position.",
+								       $.flashMessenger("An error occurred while updating the position. Contact your admin",
 								        {
 											   modal:true,
 							    		       clsName:"err", 
