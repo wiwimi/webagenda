@@ -153,7 +153,7 @@ public class GenTestEmps
 						"insert into `WebAgenda`.`EMPLOYEE` " +
 						"(`empID`,`supID`,`givenName`, `familyName`, `birthDate`, `email`, `username`, `password`, `lastLogin`, `prefPosition`, `prefLocation`, `plevel`, `pversion`, `active`, `passChanged`) " +
 						"values " +
-						"(%d,%d,'%s', '%s', '%s', '%s', '%s', '%s', NULL, '%s', '%s', 0, ' ', true, 1);",
+						"(%d,%d,'%s', '%s', '%s', '%s', '%s', '%s', NULL, '%s', '%s', 0, 'a', true, 1);",
 						i,
 						supervisor,
 						split[0],

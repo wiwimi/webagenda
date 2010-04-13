@@ -119,7 +119,7 @@ public class Employee extends BusinessObject implements Comparable<Employee>
      * and therefore a different goal. Defaults to a space character, or basic
      * version.
      */
-    private char              version          = ' ';
+    private char              version          = 'a';
     
     /**
      * Permission level value that depicts the authority of this Employee over

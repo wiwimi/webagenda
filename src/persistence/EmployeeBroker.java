@@ -131,16 +131,12 @@ public class EmployeeBroker extends Broker<Employee>
         if (caller == null)
             throw new DBException("Cannot parse PermissionLevel when invoking Employee is null");
         
-        PermissionLevel pl = checkPermissions(createEmp, caller); // will throw
-        // exceptions
-        // if
-        // permission
-        // 'levels'
-        // are invalid
-        // (doesn't
-        // detect
-        // individual
-        // ones)
+        /*
+         * will throw exceptions if permission 'levels' are invalid (doesn't
+         * detect individual ones)
+         */
+        PermissionLevel pl = checkPermissions(createEmp, caller); 
+        
         System.out.println(pl + " permission level");
         System.out.println("canManageEmployees: " +
                 pl.getLevel_permissions().isCanManageEmployees() + " " + caller.getGivenName());
@@ -156,18 +152,16 @@ public class EmployeeBroker extends Broker<Employee>
          * are missing.
          */
         String nullMsg = "Missing Required Fields:";
-        if (createEmp.getEmpID() == -1)
-            nullMsg = nullMsg + " EmpID";
         if (createEmp.getGivenName() == null)
-            nullMsg = nullMsg + " GivenName";
+            nullMsg += " GivenName";
         if (createEmp.getFamilyName() == null)
-            nullMsg = nullMsg + " FamilyName";
+            nullMsg += " FamilyName";
         if (createEmp.getUsername() == null)
-            nullMsg = nullMsg + " Username";
+            nullMsg += " Username";
         if (createEmp.getPassword() == null)
-            nullMsg = nullMsg + " Password";
+            nullMsg += " Password";
         if (createEmp.getLevel() < 0)
-            nullMsg = nullMsg + " [negative] PermissionLevel";
+            nullMsg += " [negative] PermissionLevel";
         if (!nullMsg.equals("Missing Required Fields:"))
             throw new DBException(nullMsg);
         
@@ -176,20 +170,19 @@ public class EmployeeBroker extends Broker<Employee>
         try
             {
             // Create insert statement.
-            PreparedStatement insert = conn
-                    .getConnection()
-                    .prepareStatement(
-                            "INSERT INTO `WebAgenda`.`EMPLOYEE`"
-                                    +
-                                    "(`empID`,`supID`,`givenName`,`familyName`,`birthDate`,`email`,"
-                                    +
-                                    "`username`,`password`,`prefPosition`,`prefLocation`,`plevel`,`pversion`) "
-                                    +
-                                    "VALUES " +
-                                    "(?,?,?,?,?,?,?,?,?,?,?,?)");
+            PreparedStatement insert = conn.getConnection().prepareStatement(
+                    "INSERT INTO `WebAgenda`.`EMPLOYEE`" +
+                    "(`empID`,`supID`,`givenName`,`familyName`,`birthDate`,`email`," +
+                    "`username`,`password`,`prefPosition`,`prefLocation`,`plevel`,`pversion`) " +
+                    "VALUES " +
+                    "(?,?,?,?,?,?,?,?,?,?,?,?)");
             
             // Assign variables of new user.
-            insert.setInt(1, createEmp.getEmpID());
+            
+            if (createEmp.getEmpID() == -1)
+                insert.setNull(1, java.sql.Types.INTEGER);
+            else
+                insert.setInt(1, createEmp.getEmpID());
             
             if (createEmp.getSupervisorID() == -1)
                 insert.setNull(2, java.sql.Types.INTEGER);

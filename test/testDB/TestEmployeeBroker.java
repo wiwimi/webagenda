@@ -537,17 +537,9 @@ public void testCreateDeleteEmployeeWithoutID()
 	
 	Employee newEmp = null;
 	
-	try
-		{
-		newEmp = new Employee(-1, "Bilbo","Baggins","brianAli","password",1,'a');
-		}
-	catch (DBException e1)
-		{
-		e1.printStackTrace();
-		fail("Employee constructor failed.");
-		}
+	newEmp = new Employee(-1, "Bilbo","Baggins","brianAli","password");
 	
-  newEmp.setBirthDate(Date.valueOf("2018-03-02"));
+	newEmp.setBirthDate(Date.valueOf("2018-03-02"));
         
 	try
 		{
@@ -597,7 +589,14 @@ public void testCreateDeleteEmployeeWithoutPermissions()
 	
 	Employee newEmp = null;
 	
-	newEmp = new Employee(8000, "Bilbo","Baggins","brianAli","password");
+	try
+        {
+        newEmp = new Employee(8000, "Bilbo","Baggins","brianAli","password",0,' ');
+        }
+    catch (DBException e1)
+        {
+        e1.printStackTrace();
+        }
 	
   newEmp.setBirthDate(Date.valueOf("2018-03-02"));
         
@@ -651,7 +650,7 @@ public void testCreateDeleteEmployeeDisabling()
 	Employee newEmp = null;
 	
 	try {
-		newEmp = new Employee(8000, "Bilbo","Baggins","brianAli","password",1,'a');
+		newEmp = new Employee(8000, "Bilbo","Baggins","brianAli","password",0,' ');
 		newEmp.setActive(false);
 		
 	} catch (DBException e1) {
@@ -659,13 +658,12 @@ public void testCreateDeleteEmployeeDisabling()
 		e1.printStackTrace();
 	}
 	
-  newEmp.setBirthDate(Date.valueOf("2018-03-02"));
+	newEmp.setBirthDate(Date.valueOf("2018-03-02"));
         
 	try
 		{
 		//Add employee
 		assertTrue(empBroker.create(newEmp, user));
-		
 		
 		//Search for employee.
 		Employee empSearch = new Employee();
