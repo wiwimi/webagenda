@@ -49,6 +49,13 @@ if(session.getAttribute("username") != null)
 	    	PermissionLevel[] perms =  pb.get(e.getLevel(), e.getVersion(), e);
 	    	Permissions perm = perms[0].getLevel_permissions();
 	    	
+	    	 if (e.getActive()==false)
+	        {
+	        	
+	        	response.sendRedirect("../wa_login/login.jsp?message=locked");
+        	    return;
+	        }
+	    	
 	    
 	        if (perm.isCanManageEmployees()==true && e.getActive()==true)
 			{
@@ -57,11 +64,7 @@ if(session.getAttribute("username") != null)
 				<jsp:include page="../wa_includes/pageLayoutAdmin.jsp"/>
 			<%
 			}
-	        else if (e.getActive()==false)
-	        {
-	        	response.sendRedirect("../wa_login/login.jsp?message=locked");
-        	    return;
-	        }
+	       
 			else
 			{
 			%>

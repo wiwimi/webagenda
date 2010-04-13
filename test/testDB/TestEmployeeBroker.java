@@ -525,4 +525,179 @@ public class TestEmployeeBroker extends TestCase
 			}
 		System.out.println("---------- End Password Change Test ----------");
 		}
+/**
+ * Test method for {@link persistence.EmployeeBroker#create(business.Employee)},
+ * {@link persistence.EmployeeBroker#disable(business.Employee)} and
+ * {@link persistence.EmployeeBroker#delete(business.Employee)}.
+ */
+@Test
+public void testCreateDeleteEmployeeWithoutID()
+	{
+	System.out.println("******************** CREATE/DELETE TEST ********************");
+	
+	Employee newEmp = null;
+	
+	try
+		{
+		newEmp = new Employee(-1, "Bilbo","Baggins","brianAli","password",1,'a');
+		}
+	catch (DBException e1)
+		{
+		e1.printStackTrace();
+		fail("Employee constructor failed.");
+		}
+	
+  newEmp.setBirthDate(Date.valueOf("2018-03-02"));
+        
+	try
+		{
+		//Add employee
+		assertTrue(empBroker.create(newEmp, user));
+		
+		//Search for employee.
+		Employee empSearch = new Employee();
+		empSearch.setUsername("brianAli");
+		Employee[] results = empBroker.get(empSearch, user);
+		if (results == null)
+			fail("Employee search failed, employee not returned.");
+		
+		//Delete the test user.
+		assertTrue(empBroker.delete(results[0], user));
+		}
+	catch (DBException e)
+		{
+		e.printStackTrace();
+		fail();
+		}
+	catch (DBDownException e)
+		{
+		e.printStackTrace();
+		fail();
+		}
+	catch (InvalidPermissionException  e)
+		{
+		e.printStackTrace();
+		fail();
+		}
+	catch (PermissionViolationException e) 
+		{
+		e.printStackTrace();
+		fail();
+		}
 	}
+/**
+ * Test method for {@link persistence.EmployeeBroker#create(business.Employee)},
+ * {@link persistence.EmployeeBroker#disable(business.Employee)} and
+ * {@link persistence.EmployeeBroker#delete(business.Employee)}.
+ */
+@Test
+public void testCreateDeleteEmployeeWithoutPermissions()
+	{
+	System.out.println("******************** CREATE/DELETE TEST ********************");
+	
+	Employee newEmp = null;
+	
+	newEmp = new Employee(8000, "Bilbo","Baggins","brianAli","password");
+	
+  newEmp.setBirthDate(Date.valueOf("2018-03-02"));
+        
+	try
+		{
+		//Add employee
+		assertTrue(empBroker.create(newEmp, user));
+		
+		//Search for employee.
+		Employee empSearch = new Employee();
+		empSearch.setEmpID(8000);
+		Employee[] results = empBroker.get(empSearch, user);
+		if (results == null)
+			fail("Employee search failed, employee not returned.");
+		
+		//Delete the test user.
+		assertTrue(empBroker.delete(results[0], user));
+		}
+	catch (DBException e)
+		{
+		e.printStackTrace();
+		fail();
+		}
+	catch (DBDownException e)
+		{
+		e.printStackTrace();
+		fail();
+		}
+	catch (InvalidPermissionException  e)
+		{
+		e.printStackTrace();
+		fail();
+		}
+	catch (PermissionViolationException e) 
+		{
+		e.printStackTrace();
+		fail();
+		}
+	}
+
+/**
+ * Test method for {@link persistence.EmployeeBroker#create(business.Employee)},
+ * {@link persistence.EmployeeBroker#disable(business.Employee)} and
+ * {@link persistence.EmployeeBroker#delete(business.Employee)}.
+ */
+@Test
+public void testCreateDeleteEmployeeDisabling()
+	{
+	System.out.println("******************** CREATE/DELETE TEST ********************");
+	
+	Employee newEmp = null;
+	
+	try {
+		newEmp = new Employee(8000, "Bilbo","Baggins","brianAli","password",1,'a');
+		newEmp.setActive(false);
+		
+	} catch (DBException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+	
+  newEmp.setBirthDate(Date.valueOf("2018-03-02"));
+        
+	try
+		{
+		//Add employee
+		assertTrue(empBroker.create(newEmp, user));
+		
+		
+		//Search for employee.
+		Employee empSearch = new Employee();
+		empSearch.setEmpID(8000);
+		Employee[] results = empBroker.get(empSearch, user);
+		if (results == null)
+			fail("Employee search failed, employee not returned.");
+		
+		System.out.println("+++++++++++" + results[0].getActive());
+		//Delete the test user.
+		assertTrue(empBroker.delete(results[0], user));
+		}
+	catch (DBException e)
+		{
+		e.printStackTrace();
+		fail();
+		}
+	catch (DBDownException e)
+		{
+		e.printStackTrace();
+		fail();
+		}
+	catch (InvalidPermissionException  e)
+		{
+		e.printStackTrace();
+		fail();
+		}
+	catch (PermissionViolationException e) 
+		{
+		e.printStackTrace();
+		fail();
+		}
+	}
+}
+

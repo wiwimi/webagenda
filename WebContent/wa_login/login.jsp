@@ -28,33 +28,6 @@
 <title>Web Agenda - Login</title>
 </head>
 <body>
-
-             <% 
-					if(request.getParameter("message") != null)
-					{
-						if(request.getParameter("message").equals("locked"))
-						{
-							
-			 %>
-				              <script type="text/javascript">
-		
-								$(function()
-								    {
-										
-										    $.flashMessenger("You have locked out of the system", 
-											{ 	
-												modal:true,
-												clsName:"err", 
-												autoClose: false 
-											});	
-									});
-								</script>
-			<% 			   
-						}
-					}
-
-			%>
-
 <div id="container">
 <div id="header">
 <div id="headerTitle">Deerfoot Inn and Casino</div>
@@ -71,6 +44,17 @@
 				out.println("<div id=\"errorMessage\">");
 				out.println("There was an error with your username and password combination. Please try again");
 				out.println("</div>");
+			}
+		%>
+		<%
+			if(request.getParameter("message") != null)
+			{
+				if(request.getParameter("message").equals("locked"))
+				{
+					out.println("<div id=\"errorMessage\">");
+					out.println("You have been locked out of the system. Contact your Admin.");
+					out.println("</div>");
+				}
 			}
 		%>
 		

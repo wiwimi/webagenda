@@ -367,7 +367,7 @@
 										<td><a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= empArray[index].getFamilyName() %></a></td>
 										<td> <a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= empArray[index].getGivenName() %></a> </td>
 										<td> <a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= position %></a> </td>
-										<td> <a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= email %></a> </td>
+										<td> <a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= empArray[index] %></a> </td>
 								   </tr>
 							<% 
 								}

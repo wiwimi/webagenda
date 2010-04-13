@@ -208,9 +208,9 @@ public class AddUser extends HttpServlet {
 					
 					//Even if the user is not created, return the values to the form
 					//Even if the user is not created, return the values to the form
-					//response.sendRedirect("wa_user/newUser.jsp?message=false&familyName=" + familyName +"&givenName=" + givenName
-							//+ "&username=" + username +  "&email=" + email
-							//+ "&dob=" + dob + "&empId=" + empId + "&status=" + emp.getActive() + "v=" +v + "permLevel" + permLevel);
+					response.sendRedirect("wa_user/newUser.jsp?message=false&familyName=" + familyName +"&givenName=" + givenName
+							+ "&username=" + username +  "&email=" + email
+							+ "&dob=" + dob + "&empId=" + empId + "&status=" + emp.getActive() + "v=" +v + "permLevel" + permLevel + "user=" + user.getEmpID());
 				}	
 				
 				catch (DBDownException e) 
