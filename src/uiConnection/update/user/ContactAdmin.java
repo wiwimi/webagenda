@@ -47,12 +47,12 @@ public class ContactAdmin extends HttpServlet {
 		        String subject = request.getParameter("subject");
 		        String[] emailSendToList = { receipt };
 				
-				GoogleTest3 smtpMailSender = null;
+		        Gmail smtpMailSender = null;
 						
 					try 
 					{
 						// Send an email to the Admin
-					    smtpMailSender = new GoogleTest3();
+					    smtpMailSender = new Gmail();
 						smtpMailSender.postMail(emailSendToList, subject, message);
 						System.out.println("Sucessfully Sent mail to Admin");
 							

@@ -85,7 +85,7 @@
 		<div id="crumb">
 		  <ul id="crumbsLonger">
 		    <li><a href="../wa_dashboard/dashboard.jsp">Home</a></li>
-		    <li><b><a href="#">Reset Password (Step One)</a></b></li>
+		    <li><b><a href="#">Reset Password (Step 1 of 2)</a></b></li>
 		   </ul>
 		</div>
 		 <div id="usersWidget" class="fullWidget">
@@ -93,10 +93,7 @@
 					<div class="widgetTitle" id="passwordTitle">Password <div id="helpIcon"> </div></div>
 				</div>
 			<div class="widgetLowerRectangle" id="passwordLowerRectangle">
-			
-		</div>
-			
-		<div class="widgetLowerRectangle" id="usersWidgetLowerRectangle">
+		
 			<div id="instructions">
 				Select a user to reset the password for.
 			</div>
@@ -104,12 +101,7 @@
 				<h3>Users</h3>
 			</div>
 			
-			<div id="searchArea">
-			<form id="form">
-					<input type="text" size=30 name="randomSearch" value=""/>
-					<input type="button" name="submit"  class="button" value="Search" onClick="location.href='userSearchResults.jsp?randomSearch=' + form.randomSearch.value">
-			</form>
-			</div>
+			
 			<div id="tableArea">
 				<div class="userAdmin">
 						<% 
@@ -126,157 +118,48 @@
 						    //System.out.println(request.getParameter("user") + " user");
 						    //System.out.println(request.getParameter("email") + " email");
 						    
-						    // Search by Employee Id
-						      if((request.getParameter("empId")!=(null)) 
-							    		&& (request.getParameter("familyName")!=(null))
-							    		&& (request.getParameter("givenName")!=(null))
-							    		&& (request.getParameter("user")!=(null))
-							    		&& (request.getParameter("email")!=(null)))
-							{
+						   
+					            if((request.getParameter("familyName")!=(null))
+						    		&& (request.getParameter("givenName")!=(null))
+						    		&& (request.getParameter("user")!=(null))
+						    		&& (request.getParameter("email")!=(null)))
+								{
 						    
-								    if((!request.getParameter("empId").equals("")) 
-								    		&& (request.getParameter("familyName").equals(""))
-								    		&& (request.getParameter("givenName").equals(""))
-								    		&& (request.getParameter("user").equals(""))
-								    		&& (request.getParameter("dob").equals(""))
-								    		&& (request.getParameter("email").equals("")))
-									{
-								    	  int empInteger = Integer.parseInt(request.getParameter("empId"));
-										   emp.setEmpID(empInteger);
-										   empArray = broker.get(emp, user);
-									}
-							    // Search by Enabled Users 
-							    else if((request.getParameter("empId").equals("")) 
-						    		&& (request.getParameter("familyName").equals("")) 
-						    		&& (request.getParameter("givenName").equals("")) 
-						    		&& (request.getParameter("user").equals("")) 
-						    		&& (request.getParameter("email").equals(""))
-						    		&& (request.getParameter("status").equalsIgnoreCase("enabled"))
-						    		&& (request.getParameter("dob").equals("")))
-							    {
-							    	//out.println(request.getParameter("status"));
-							    	emp.setActive(true);
-									empArray = broker.get(emp, user);
-							    }
-							    // Search by disabled Users
-							      else if((request.getParameter("empId").equals("")) 
-						    		&& (request.getParameter("familyName").equals("")) 
-						    		&& (request.getParameter("givenName").equals("")) 
-						    		&& (request.getParameter("user").equals("")) 
-						    		&& (request.getParameter("email").equals(""))
-						    		&& (request.getParameter("dob").equals(""))
-						    		&& (request.getParameter("status").equalsIgnoreCase("disabled")))
-							    {
-							    	emp.setActive(false);
-									empArray = broker.get(emp, user);
-							    }
-								else
-								{
-									// Search based on parameters that are not blank or null
-									
-									if(!request.getParameter("empId").equals(""))
-									{
-										int empInteger = Integer.parseInt(request.getParameter("empId"));
-										emp.setEmpID(empInteger);
-									}
-									
-									if(!request.getParameter("familyName").equals(""))
-										emp.setFamilyName(request.getParameter("familyName"));
-									
-									if(!request.getParameter("givenName").equals(""))
-										emp.setGivenName(request.getParameter("givenName"));
-									
-									if(!request.getParameter("dob").equals(""))
-									{
-										String dob = request.getParameter("dob");
-										
-										String revDob = dob.substring(6, dob.length()) + '-' + dob.substring(0, 2)
-										+'-' + dob.substring(3, 5); // Reverse the dob to match the backend.
-										java.sql.Date sqlBirthDate = java.sql.Date.valueOf(revDob);
-										emp.setBirthDate(sqlBirthDate);
-									}
-									
-									if(!request.getParameter("user").equals(""))
-									{
-										emp.setUsername(request.getParameter("user"));
-									}
-									
-									if(!request.getParameter("email").equals(""))
-										emp.setEmail(request.getParameter("email"));
-									
-									
-									empArray = broker.get(emp, user);
-									
-								}
-							}
-						     //System.out.println(request.getParameter("randomSearch"));
-							if(request.getParameter("randomSearch")!=null)
-							{
-								emp= new Employee();
-								if((!request.getParameter("randomSearch").equals("")))
-								{
-											String randomSearch = request.getParameter("randomSearch");
+									    if((request.getParameter("familyName").equals(""))
+									    		&& (request.getParameter("givenName").equals(""))
+									    		&& (request.getParameter("user").equals(""))
+									    		&& (request.getParameter("email").equals("")))
+										{
+									    	
+								    			//out.println(request.getParameter("status"));
+								    			emp.setActive(true);
+												empArray = broker.get(emp, user);
+								    	}
+							            else
+										{
+											// Search based on parameters that are not blank or null
 											
-											for (int i = 0; i < randomSearch.length(); i++) 
-											{
-										           if(Character.isDigit(randomSearch.charAt(i)))
-										           {
-										        	   // Search by ID since it is a digits field
-										        	   int empInteger = Integer.parseInt(request.getParameter("randomSearch"));
-													   emp.setEmpID(empInteger);
-													   empArray = broker.get(emp, user);
-													   
-										           }
-										           else
-												   {
-														emp.setFamilyName("randomSearch");
-														Employee [] familyNameArray = broker.get(emp, user);
-														
-														emp.setGivenName("randomSearch");
-														Employee [] givenNameArray = broker.get(emp, user);
-														
-														emp.setUsername("randomSearch");
-														Employee [] usernameArray = broker.get(emp, user);
-														
-														emp.setEmail("randomSearch");
-														Employee [] emailArray = broker.get(emp, user);
-														
-														
-														if(familyNameArray!=null && givenNameArray!=null)
-														{
-															int strlength = familyNameArray.length + givenNameArray.length;
-															
-															empArray = new Employee[strlength];
-															System.arraycopy(familyNameArray, 0, empArray, 0, familyNameArray.length);
-															System.arraycopy(givenNameArray, 0, empArray, familyNameArray.length, givenNameArray.length);
-															
-														}
-														if (familyNameArray!=null)
-														{
-															empArray = familyNameArray;
-														}
-														if (givenNameArray!=null)
-														{
-															empArray = givenNameArray;
-														}
-														if (usernameArray!=null)
-														{
-															empArray = usernameArray;
-														}
-													}
-										     }
-									}
-									else if ((request.getParameter("randomSearch").equals("")))
-									{
-										emp.setActive(true);
-										empArray = broker.get(emp, user);
-									}
-								}
+											if(!request.getParameter("familyName").equals(""))
+												emp.setFamilyName(request.getParameter("familyName"));
+											
+											if(!request.getParameter("givenName").equals(""))
+												emp.setGivenName(request.getParameter("givenName"));
+											
+											if(!request.getParameter("user").equals(""))
+											    emp.setUsername(request.getParameter("user"));
+											
+											if(!request.getParameter("email").equals(""))
+												emp.setEmail(request.getParameter("email"));
+											
+											empArray = broker.get(emp, user);
+											
+										}
+							 }
+						   
 							 else
 						    {
 						    	emp.setActive(true);
 								empArray = broker.get(emp, user);
-						    	  
 						    }
 							if(empArray==null)
 							{
@@ -328,21 +211,22 @@
 									{
 										position = empArray[index].getPrefPosition();
 									}
+								
 						%>
 									<tr>
 										<td>
-											<a href="updateUser.jsp?empId=<%=empArray[index].getEmpID()%>"> <div id="profileImage"> <b><%=empArray[index].getUsername()%> </b></div></a>
+											<a href="resetPasswordStepTwo.jsp?empUsername=<%=empArray[index].getUsername()%>"> <div id="profileImage"> <b><%=empArray[index].getUsername()%> </b></div></a>
 											<div class="row-actions">
 											   <span class='edit'>
-												   <a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"> Reset Password </a>  
+												   <a href="resetPasswordStepTwo.jsp?empUsername=<%= empArray[index].getUsername() %>"> Reset Password </a>  
 												</span>  
 											</div>
 										</td>
-										<td><a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= empArray[index].getEmpID() %></a></td>
-										<td><a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= empArray[index].getFamilyName() %></a></td>
-										<td> <a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= empArray[index].getGivenName() %></a> </td>
-										<td> <a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= position %></a> </td>
-										<td> <a href="updateUser.jsp?empId=<%= empArray[index].getEmpID() %>"><%= email %></a> </td>
+										<td><a href="resetPasswordStepTwo.jsp?empUsername=<%= empArray[index].getUsername() %>"><%= empArray[index].getEmpID() %></a></td>
+										<td><a href="resetPasswordStepTwo.jsp?empUsername=<%= empArray[index].getUsername() %>"><%= empArray[index].getFamilyName() %></a></td>
+										<td> <a href="resetPasswordStepTwo.jsp?empUsername=<%= empArray[index].getUsername() %>"><%= empArray[index].getGivenName() %></a> </td>
+										<td> <a href="resetPasswordStepTwo.jsp?empUsername=<%= empArray[index].getUsername() %>"><%= position %></a> </td>
+										<td> <a href="resetPasswordStepTwo.jsp?empUsername=<%= empArray[index].getUsername() %>"><%= email %></a> </td>
 								   </tr>
 							<% 
 								}

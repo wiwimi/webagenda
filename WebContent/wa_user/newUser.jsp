@@ -123,7 +123,26 @@
 									});
 								</script>
 			<% 			   
-						}
+						 }
+						else if(request.getParameter("message").equals("sentError"))
+						{
+							
+			 %>
+				              <script type="text/javascript">
+		
+								$(function()
+								    {
+										
+										    $.flashMessenger("Your ports are blocked, you can't send an e-mail, please uncheck the sending option and try again.", 
+											{ 	
+												modal:true, 
+												clsName:"err",
+												autoClose: false 
+											});	
+									});
+								</script>
+			<% 			   
+						 }
 						else if(request.getParameter("message").equals("false"))
 						{
 			%>

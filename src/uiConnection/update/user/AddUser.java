@@ -76,6 +76,12 @@ public class AddUser extends HttpServlet {
 				String loc= request.getParameter("loc");
 				String empId = request.getParameter("empId");
 				String supId = request.getParameter("supId");
+				
+				// If the email is empty, send the user details to the admin who is creating the account 
+				if(email==null || email.equals(""))
+				{
+					email = user.getEmail();
+				}
 				String[] emailSendToList = { email };
 				Employee emp = null;
 				
@@ -95,8 +101,6 @@ public class AddUser extends HttpServlet {
 						
 						else
 							emp = new Employee(empIdInt,givenName,familyName,username, password, 0, 'a');
-						
-						
 					}
 					else
 					{
@@ -149,14 +153,14 @@ public class AddUser extends HttpServlet {
 					
 					if (success)
 					{
-						GoogleTest3 smtpMailSender = null;
+						Gmail smtpMailSender = null;
 						
 						try 
 						{
 							// Send an email with the account's details and confirm the user with the results
 							if(sendingOption!=null) 
 							{
-								smtpMailSender = new GoogleTest3();
+								smtpMailSender = new Gmail();
 								smtpMailSender.postMail(emailSendToList, "Deerfoot Account Details", password);
 								System.out.println("Sucessfully Sent mail to All Users test");
 								
@@ -177,9 +181,11 @@ public class AddUser extends HttpServlet {
 						catch (MessagingException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
-							out.println("message exception " + smtpMailSender.getSMTP_AUTH_USER()
-									+ smtpMailSender.getEmailMsgTxt() +dob + " " + smtpMailSender.getEmailSendToList() + " " +
-									smtpMailSender.getSMTP_AUTH_PWD() + sendingOption);
+							
+							// If the ports are blocked, inform the user and return all their details back
+							response.sendRedirect("wa_user/resetPasswordStepTwo.jsp?message=sentError&familyName=" + familyName +"&givenName=" + givenName
+										+ "&username=" + username +  "&email=" + email
+										+ "&dob=" + dob + "&empId=" + empId + "&status=" + emp.getActive() + "v=" +v + "permLevel" + permLevel);
 							
 						}
 					}
@@ -187,18 +193,8 @@ public class AddUser extends HttpServlet {
 				catch (DBException e) 
 				{
 					e.printStackTrace();
-					//out.println("DB Exception");
-					//out.println(givenName + " ");
-					//out.println(familyName + " ");
-					//out.println( "EMPIDX" + empId + "X");
-					//out.println(password + " ");
-					//out.println( "USERNAME " + username + "  ");
-					//out.println(sqlBirthDate + " ");
-					//out.println("V " + v);
-					//out.println("PERM " + permLevelInt);
-					//out.println("PERM " + status);
 					
-					//Even if the user is not created, return the values to the form
+					
 					//Even if the user is not created, return the values to the form
 					response.sendRedirect("wa_user/newUser.jsp?message=false&familyName=" + familyName +"&givenName=" + givenName
 							+ "&username=" + username +  "&email=" + email
@@ -208,10 +204,6 @@ public class AddUser extends HttpServlet {
 				catch (DBDownException e) 
 				{
 					e.printStackTrace();
-					//out.println("DB Down Exception");
-					//out.println(givenName);
-					//out.println(familyName);
-					//out.println(empIdInt);
 					
 					//Even if the user is not created, return the values to the form
 					response.sendRedirect("wa_user/newUser.jsp?message=false&familyName=" + familyName +"&givenName=" + givenName
@@ -221,7 +213,7 @@ public class AddUser extends HttpServlet {
 				catch (InvalidPermissionException  e)
 				{
 					e.printStackTrace();
-					//out.println("Invalid Permisi");
+					
 					
 					//Even if the user is not created, return the values to the form
 					response.sendRedirect("wa_user/newUser.jsp?message=perm&familyName=" + familyName +"&givenName=" + givenName
@@ -232,7 +224,7 @@ public class AddUser extends HttpServlet {
 				catch (PermissionViolationException e) 
 				{
 					e.printStackTrace();
-					//out.println("Perm Viol");
+					
 					//Even if the user is not created, return the values to the form
 					response.sendRedirect("wa_user/newUser.jsp?message=perm&familyName=" + familyName +"&givenName=" + givenName
 							+ "&username=" + username +  "&email=" + email + "&password=" + password

@@ -209,4 +209,14 @@
     <servlet-name>EmpPermission</servlet-name>
     <url-pattern>/EmpPermission</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ResetPassword</display-name>
+    <servlet-name>ResetPassword</servlet-name>
+    <servlet-class>uiConnection.update.user.ResetPassword</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ResetPassword</servlet-name>
+    <url-pattern>/ResetPassword</url-pattern>
+  </servlet-mapping>
 </web-app>
