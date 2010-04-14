@@ -121,7 +121,7 @@ public class ConnectionManager
      */
     private static void getFileSettings()
         {
-        File file = new File("C:/Program Files/WebAgenda/config/mysqlConnection.txt");
+        File file = new File("C:/Program Files/WebAgenda/config/mysqlConnection.ini");
         
         if (!hasSettings && file.exists())
             {
