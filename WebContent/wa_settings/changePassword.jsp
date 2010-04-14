@@ -4,13 +4,14 @@ if(session.getAttribute("username") == null)
 	response.sendRedirect("../wa_login/login.jsp");
 }
 %>
+<!-- Author: Noorin  Hasan-->
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page import="business.Employee" %>
 <%@ page import="business.permissions.PermissionLevel" %>
 <%@ page import="business.permissions.*" %>
-<!-- Author: Noorin -->
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -76,6 +77,45 @@ if(session.getAttribute("username") == null)
 <link rel="stylesheet" href="../CSS/breadcrumb.css" type="text/css" media="screen" />
 </head>
 <body>
+
+ <% 
+		if(request.getParameter("message") != null)
+		{
+			if(request.getParameter("message").equals("true"))
+			{
+	%>
+				<script type="text/javascript">
+					$(function()
+					{
+						$.flashMessenger("The password was successfully changed", 
+						{ 	
+							modal:true, 
+							autoClose: false 
+						});	
+					});
+				</script>
+	<% 			   
+			}
+			else if(request.getParameter("message").equals("false"))
+			{
+	%>
+				<script type="text/javascript">
+					$(function()
+					{
+
+						$.flashMessenger("An error occurred while changing the password, make sure the old password is correct",
+
+						{
+							modal:true,
+							clsName:"err", 
+							autoClose:false
+						}); 
+					}); 
+				</script>
+	<%
+			}
+		}
+	%>
 
 	<div id="crumb">
 		  <ul id="crumbsLonger">

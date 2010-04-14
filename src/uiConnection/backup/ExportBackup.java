@@ -33,10 +33,22 @@ public class ExportBackup extends HttpServlet {
 		        response.setContentType("text/html;charset=UTF-8");
 		        
 		        //Backup DB.
-				Backup.backupDB();
+		        try
+		        {
+		        	Backup.backupDB();
+		        	
+		        	//Confirm that the backup was done
+					response.sendRedirect("wa_settings/backup.jsp?message=true");
+		        }
+		        catch(Exception e)
+		        {
+		        	//Confirm that the backup was done
+					response.sendRedirect("wa_settings/backup.jsp?message=false");
+		        	
+		        }
+		        
 				
-				//Confirm that the backup was done
-				response.sendRedirect("wa_settings/backup.jsp?message=true");
+				
 		   
 		    }
     public ExportBackup() {
