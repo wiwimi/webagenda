@@ -29,7 +29,7 @@ public class Backup
      */
     public static String backupDB()
         {
-        File backupLocFile = new File("C:/WebAgendaConfig/backupLocations.txt");
+        File backupLocFile = new File("C:/Program Files/WebAgenda/config/backupLocations.txt");
         
         if (!backupLocFile.exists())
             throw new NullPointerException("Backup locations file has been removed: "+backupLocFile.getAbsolutePath());
