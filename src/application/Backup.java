@@ -67,7 +67,7 @@ public class Backup
         if (!backupDir.exists())
             backupDir.mkdir();
         
-        String filePath = backupDir + File.separator + formatDate + ".sql";
+        String filePath = backupDir + File.separator + "WABackup_" + formatDate + ".sql";
         String errorLogPath = backupDir + File.separator + "backupErrors.txt";
         String command = "mysqldump --databases " +
                 DBName +
