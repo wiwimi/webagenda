@@ -157,7 +157,7 @@
 									<!--This should be populated from the database -->
 									<div>
 									    <p>
-											<label id="theSelect" class="theSelect" for="supervisorId">Receipt: <em class="asterisk"> * </em> </label> 
+											<label id="theSelect" class="theSelect" for="supervisorId">Recipient: <em class="asterisk"> * </em> </label> 
 											<input type="text" size="30" disabled="disabled" value="Edit supervisor Id" maxLength="30" class="required"/>
 											<input id="empIdButton" id="supIdButton" type="button" name="submit" class="button" value="Edit"/>
 										</p>
