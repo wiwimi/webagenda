@@ -208,13 +208,13 @@
 									<thead class="head">
 										<tr class="headerRow">
 											<th>Name</th>
-											<th>Description</th>
+											<th></th>
 										</tr>
 									</thead>
 									<tfoot class="foot">
 										<tr class="headerRow">
 											<th>Name</th>
-											<th>Description</th>
+											<th></th>
 										</tr>
 									</tfoot>
 									<tbody>
@@ -231,7 +231,7 @@
 														<a href="newSkill.jsp?=<%=skillArray[index].getName()%>"> <b> <%=skillArray[index].getName()%> </b></a>
 													</td>
 													<td>
-														<input type="checkbox" name="skillCheck" value="<%=skillArray[index].getName()%>"> 
+														<input type="checkbox" name="skillGroup" value="<%=skillArray[index].getName()%>"> 
 													</td>
 												</tr>
 										<% 

@@ -72,11 +72,21 @@
 <link rel="stylesheet" type="text/css" href="../CSS/Popup/popup.css"/>
 <link rel="stylesheet" type="text/css" href="../CSS/Confirmation/confirm.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="CSS/icons.css" ></link>
+<link rel="stylesheet" href="../CSS/breadcrumb.css" type="text/css" media="screen" />
 
 
 </head>
 <body>
-	<div id="scheduleWidget" class="fullWidget"> <div id="backIcon" > <a onClick="history.go(-1);return true;"> Back </a> </div>
+
+<div id="crumb">
+	  <ul id="crumbs">
+	    <li><a href="../wa_dashboard/dashboard.jsp">Home</a></li>
+	    <li><a href="reports.jsp">Reports</a></li>
+	    <li><b><a href="#">Report Schedules</a></b></li>
+	   </ul>
+     </div>
+     
+	<div id="scheduleWidget" class="fullWidget"> 
 			<div class="widgetUpperRectangle" id="scheduleUpperRectangle">
 				<div class="widgetTitle" id="scheduleWidgetTitle">Report Schedules <div id="helpIcon"> </div></div>
 			</div>

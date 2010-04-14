@@ -148,7 +148,7 @@
 			Fields marked with <em class="asterisk" > *</em> are required.
 		</div>
 		<div id ="creationForm">
-			<form class="addPositionForm" action="../UpdatePosition" id="form" method="post">
+			<form class="updatePositionForm" action="../UpdatePosition" id="form" method="post">
 			<div id="position">
 				<div id="formButtons">
 						<input type="submit" name="submit" class="button" value="Update"> 
@@ -203,13 +203,13 @@
 								<thead class="head">
 									<tr class="headerRow">
 										<th>Name</th>
-										<th>Description</th>
+										<th></th>
 									</tr>
 								</thead>
 								<tfoot class="foot">
 									<tr class="headerRow">
 										<th>Name</th>
-										<th>Description</th>
+										<th></th>
 									</tr>
 								</tfoot>
 								<tbody>

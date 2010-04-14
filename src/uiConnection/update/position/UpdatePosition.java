@@ -45,8 +45,18 @@ public class UpdatePosition extends HttpServlet {
 				boolean success=false;
 				PositionBroker broker = null;
 				Position oldPos=null, newPos=null;
-				//String[] pos_skills = request.getParameterValues("skillSetForm.skill");
+				String[] pos_skills = request.getParameterValues("updatePositionForm.skillGroup");
 				Skill[] skills = null;
+				
+				if (pos_skills!=null)
+				{
+					for (int i=0; i<pos_skills.length; i++)
+					{
+						Skill skill = new Skill(pos_skills[i]);
+						skills[i] = skill;
+					}
+					
+				}
 				Position[]  results = null;
 			
 				try {
@@ -77,13 +87,14 @@ public class UpdatePosition extends HttpServlet {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					
-					
-					out.println(oldPos.getName());
-					out.println(oldPos.getDescription());
-					out.println(newPos.getName());
-					out.println(newPos.getDescription());
+					//DEBUGGING
+					//out.println(oldPos.getName());
+					///out.println(oldPos.getDescription());
+					//out.println(newPos.getName());
+					//out.println(newPos.getDescription());
+					//out.println(newPos.getPos_skills());
 					// Failed to update the position
-					//response.sendRedirect("wa_user/updatePosition.jsp?update=false&posName=" + posName + "&posDesc=" + posDesc);
+					response.sendRedirect("wa_user/updatePosition.jsp?update=false&posName=" + posName + "&posDesc=" + posDesc);
 					
 				} catch (DBDownException e) {
 					
