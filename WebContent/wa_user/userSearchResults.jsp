@@ -57,7 +57,7 @@
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Flash/flashmessenger.css" />
 <link rel="stylesheet" type="text/css"  href="CSS/icons.css"></link>
 <link rel="stylesheet" href="../wa_dashboard/CSS/effects.css" type="text/css" media="screen" />
-
+<link rel="stylesheet" type="text/css" href="../CSS/creationForm.css"/>
 <!-- Sorttable is under the X11 licence, it is an open source project.-->
 <!-- Javascript Files -->
 <script type ="text/javascript" src="../lib/js/sorttable.js"></script>
@@ -114,18 +114,18 @@
 			
 		<div class="widgetLowerRectangle" id="usersWidgetLowerRectangle">
 			<div id="instructions">
-				Click on column headers to sort data through.
+				<br></br> <em class="asteriskBlue">**</em> Click on column headers to sort data through.
 			</div>
 			<div id="usersIcon">
 				<h3>Users</h3>
 			</div>
 			
-			<div id="searchArea">
+			<!--<div id="searchArea">
 			<form id="form">
 					<input type="text" size=30 name="randomSearch" value=""/>
 					<input type="button" name="submit"  class="button" value="Search" onClick="location.href='userSearchResults.jsp?randomSearch=' + form.randomSearch.value">
 			</form>
-			</div>
+			</div>-->
 			<div id="tableArea">
 				<div class="userAdmin">
 						<% 

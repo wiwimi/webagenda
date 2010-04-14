@@ -143,11 +143,11 @@ if(session.getAttribute("username") == null)
 		<!-- White Background for boxes-->
 		
 		<div id= "settingsLowerRectangle" class = "lowerRectangle">
-			<b> <a href ="../wa_settings/securitySettings.jsp"> Security </a> </b> <br>
+			<!--<b> <a href ="../wa_settings/securitySettings.jsp"> Security </a> </b> <br>-->
 			<b> <a href ="../wa_settings/changePassword.jsp"> Change Password </a> </b> <br>
 			<b> <a href ="../wa_settings/adminProfile.jsp"> Admin's Profile </a> </b> <br>
 			<b> <a href ="../wa_settings/backup.jsp"> Backup </a> </b> <br>
-			<b> <a href ="../wa_settings/corporateSettings.jsp" > Corporate's Profile </a> </b> <br>
+			<!--<b> <a href ="../wa_settings/corporateSettings.jsp" > Corporate's Profile </a> </b> <br>-->
 		</div>
 	</div>
 	

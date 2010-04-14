@@ -73,6 +73,7 @@
 <!--  CSS files -->
 <link rel="stylesheet" href="CSS/table.css" type="text/css"></link>
 <link rel="stylesheet" href="../CSS/tableEffects.css" type="text/css"></link>
+<link rel="stylesheet" href="../CSS/creationForm.css" type="text/css"></link>
 <link rel="stylesheet" href="../wa_dashboard/CSS/style.css" type="text/css" media="screen" />
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Confirmation/confirm.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="../CSS/Flash/flashmessenger.css" />
@@ -94,8 +95,10 @@
 				</div>
 			<div class="widgetLowerRectangle" id="passwordLowerRectangle">
 		
+			
 			<div id="instructions">
-				Select a user to reset the password for.
+				<br></br> <em class="asteriskBlue">**</em> Click on column headers to sort data through.
+				<br></br> <em class="asteriskBlue">**</em> Select a user to reset the password for.
 			</div>
 			<div id="usersIcon">
 				<h3>Users</h3>

@@ -119,7 +119,7 @@
 			
 		<div class="widgetLowerRectangle" id="skillLowerRectangle">
 		
-		<div id="instructions">
+		<div id="instructions"> <br>
 			Fields marked with <em class="asterisk" > *</em> are required.
 		</div>
 		

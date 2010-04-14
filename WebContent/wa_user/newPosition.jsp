@@ -148,7 +148,7 @@
 		</div>
 		<div class="widgetLowerRectangle" id="positionsLowerRectangle">
 		
-		<div id="instructions">
+		<div id="instructions"> <br></br>
 			Fields marked with <em class="asterisk" > *</em> are required.
 	    </div>
 	

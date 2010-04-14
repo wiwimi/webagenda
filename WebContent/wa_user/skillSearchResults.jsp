@@ -54,6 +54,7 @@
 
 <!--  CSS files -->
 <link rel="stylesheet" type="text/css" href="CSS/table.css"></link>
+<link rel="stylesheet" type="text/css" href="../CSS/creationForm.css" media="screen"/>
 <link rel="stylesheet" type="text/css" href="../wa_dashboard/CSS/style.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="../CSS/Confirmation/confirm.css" media="screen"/>
 <link rel="stylesheet" type="text/css" href="../CSS/Flash/flashmessenger.css" media="screen"/>
@@ -117,15 +118,20 @@
 				<div class="widgetTitle" id="skillsTitle">Skills <div id="helpIcon"></div> </div>
 		</div>
 		<div class="widgetLowerRectangle" id="skillsWidgetLowerRectangle">
+		
+		<div id="instructions">
+				<br></br> <em class="asteriskBlue">**</em> Click on column headers to sort data through.
+		</div>
+			
 		<div id="skillsIcon">
 				<h3>Skills</h3>
 			</div>
-			<div id="searchArea">
+			<!--<div id="searchArea">
 			<form id="form">
-				<input type="text" size=30/ name="randomSearch">
-				<input type="button" name="submit"  class="button" value="Search" onClick="location.href='skillSearchResults.jsp?randomSearch=' + form.randomSearch.value"> 
+					<input type="text" size=30 name="randomSearch" value=""/>
+					<input type="button" name="submit"  class="button" value="Search" onClick="location.href='userSearchResults.jsp?randomSearch=' + form.randomSearch.value">
 			</form>
-			</div>
+			</div>-->
 			
 						<% 
 							SkillBroker broker = SkillBroker.getBroker();

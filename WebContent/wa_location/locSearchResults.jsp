@@ -61,6 +61,7 @@
 
 <!--  CSS files -->
 <link rel="stylesheet" type="text/css" href="CSS/table.css" ></link>
+<link rel="stylesheet" type="text/css" href="../CSS/creationForm.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="CSS/icons.css" ></link>
 <link rel="stylesheet" type="text/css" href="../CSS/Confirmation/confirm.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="../wa_dashboard/CSS/style.css" media="screen" />
@@ -115,7 +116,7 @@
 			</div>
 			<div class="widgetLowerRectangle" id="locationsLowerRectangle">
 			<div id="instructions">
-				Click on column headers to sort data through.
+				<br></br> <em class="asteriskBlue">**</em> Click on column headers to sort data through.
 			</div>
 				<div id="locationsIcon">
 						<h3>Locations </h3>

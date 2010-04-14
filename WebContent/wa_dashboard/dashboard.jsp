@@ -165,7 +165,7 @@ if(session.getAttribute("username") != null)
 					<div class="widgetTitle" id="notificationsWidgetTitle">Notifications <div id="helpNotificationsIcon"> </div> </div>
 				</div>
 			
-				<div class="widgetLowerRectangle" id="notificationsLowerRectangle">
+				<div class="widgetLowerRectangle" id="notificationLowerRectangle">
 					<% 
 						
 					if(e != null) {

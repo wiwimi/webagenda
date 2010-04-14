@@ -184,7 +184,7 @@
 				</div>
 			<div class="widgetLowerRectangle" id="passwordLowerRectangle">
 		
-		<div id="instructions">
+		<div id="instructions"> <br></br> 
 			Fields marked with <em class="asterisk" > *</em> are required.
 			By default randomly generated passwords are going to be sent to the employee's e-mail. If that field was missing it will be sent to your e-mail. 
 			You can uncheck this option. 

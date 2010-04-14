@@ -160,8 +160,13 @@
 					<legend > Position Details </legend>
 					
 					<%
-						String posName = request.getParameter("posName");
-					    String posDesc = request.getParameter("posDesc");
+						String posName ="", posDesc ="";
+						
+						if(request.getParameter("posName")!=null)
+					    posName = request.getParameter("posName");
+						
+						if(request.getParameter("posDesc")!=null)
+					    posDesc = request.getParameter("posDesc");
 					    
 					   	Position oldPos = new Position(posName);
 					   	PositionBroker posBroker = PositionBroker.getBroker();

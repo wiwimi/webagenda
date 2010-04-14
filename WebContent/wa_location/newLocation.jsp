@@ -126,7 +126,7 @@
 		</div>
 		<div class="widgetLowerRectangle" id="locationsLowerRectangle">
 		
-		<div id="instructions">
+		<div id="instructions"> <br></br> 
 	        Fields marked with <em class="asterisk" > *</em> are required.
 	    </div>
 	
