@@ -3,6 +3,7 @@
 \usepackage[top=3cm, bottom=2.5cm, left=2cm, right=2cm]{geometry}
 \usepackage{colortbl}
 \usepackage{color}
+\usepackage[pdftex]{graphicx}
 % Title Page
 \title{WebAgenda User Guide}
 \author{Daniel Kettle, Noorin Hasan, Mark Hazlett, Daniel Wehr}
@@ -299,7 +300,86 @@ This is free software, and you are welcome to redistribute it under certain cond
 
 \par \noindent \hspace*{1cm} As with all alterations with production systems, you will want a usable backup on hand in case anything goes wrong \textit{before} attempting to delete data from the system directly. You may notice that the above statement does not factor leap years.
 
+
+
 \chapter{Backup and Recovery}
+
+\par \noindent \hspace*{1cm} Backups of all data stored by WebAgenda can be created either through the web interface, or manually.  This chapter will detail how to create backups through both methods, as well as how to restore the data in these backups to WebAgenda when recovery is needed.
+
+\section{Creating Backups}
+
+\par \noindent \hspace*{1cm} While this guide explains how to create backups manually, it is highly recommended that users create backups with the WebAgenda system to avoid any issues that may occur due to user error. Using the methods described here allow backups to be made while the WebAgenda is active and in use, without impacting current users or needing to take the database down.
+\bigskip
+\par \noindent \hspace*{1cm} Backups that are created automatically will be stored as \verb|"WABackup_YYYY_MM_DD_hh_mm_ss.sql|".  The fields in the filename contain the date and time the backup was made, and use the following format:
+\begin{enumerate}
+\item YYYY - Year.
+\item MM - Month.
+\item DD - Day.
+\item hh - Hours.
+\item mm - Minutes.
+\item ss - Seconds.
+\end{enumerate}
+
+\subsection{Backing Up Data With WebAgenda}
+
+\par \noindent \hspace*{1cm} Using the WebAgenda system is the easiest way to backup all stored data. In addition, it allows backups to be made remotely, though the created backup files will still be stored on the server.
+\bigskip
+\par \noindent \hspace*{1cm} To start, log into WebAgenda.  Once on the dashboard, click on the backup link in the settings section of the side menu.
+\bigskip
+\par \noindent \hspace*{1cm} You will now be viewing the backup screen.  To create a backup, simply click the backup button on the right side of the page (Figure~\ref{backupButton}), and the backup file will be created for you.
+\bigskip
+\par \noindent \hspace*{1cm} If successful, you will be presented with the confirmation screen as shown in  Figure~\ref{backupConfirmation}. To dismiss the confirmation, click the "X" in the top right of the green confirmation window.  If the backup settings for WebAgenda have not been changed, you will find the backup file in the default directory of "\verb|C:\WebAgendaBackups\|".  If the backup directory was changed during the installation process (see page X) or was changed manually, the path to the backup directory can be found in the backup config file at "\verb|C:\WebAgendaConfig\backupLocations.txt|".
+
+\begin{figure}[h!]
+	\begin{center}
+	\includegraphics{backupButton.png}
+	\end{center}
+	\caption{The backup button.}
+	\label{backupButton}
+\end{figure}
+\begin{figure}[h!]
+	\begin{center}
+	\includegraphics{backupConfirmation.png}
+	\end{center}
+	\caption{The backup confirmation message.}
+	\label{backupConfirmation}
+\end{figure}
+
+\subsection{Backing Up Data Manually}
+\label{sec:manualBackup}
+
+\par \noindent \hspace*{1cm} Users are also able to create backups manually through MySQL.  This method should only be used by advanced users that are comfortable using the windows command line.  To begin, open a command prompt and navigate to the \verb|bin| directory of your current MySQL installation.  If you do not know where the MySQL installation directory is, please consult the person that installed it. Figure~\ref{binPath} shows an example containing a possible default location.
+
+\begin{figure}[h!]
+	\begin{center}
+	\includegraphics{backupPath.png}
+	\end{center}
+	\caption{A possible location of the MySQL bin directory.}
+	\label{binPath}
+\end{figure}
+
+\par \noindent \hspace*{1cm} To create a new backup, enter the following command. Ensure you replace \verb|[outputPath]| with the full path and file location you want for the new backup file, and it should end with the \verb|.sql| extension for easy restoration at a later date. Replace \verb|[errorLogPath]| with the path and file where you would like to keep a log of any errors that may occur during the backup process.
+\bigskip
+\par \noindent \textbf{mysqldump --databases WebAgenda -u WABroker -ppassword --single-transaction --skip-extended-insert --complete-insert --log-error=[errorLogPath] --result-file=[outputPath]}
+\bigskip
+\par \noindent \hspace*{1cm} Any errors in either the structure of the command, or in MySQL as it attempts to process the backup will be printed to the command line.  Troubleshooting these errors is outside the scope of this document.  If there are no errors, the command will complete silently and the new backup file will be created
+
+\section{Restoring Backups} 
+
+\par \noindent \hspace*{1cm} Backup restorations can not be done remotely.  Users must be physically at the server to restore backups, ensuring that if there are problems during the restoration they will be able to troubleshoot and fix them. As with manual backups, restorations should only be carried out by users comfortable with the command line, and that are also skilled in the use of MySQL Server and database maintenance.
+\bigskip
+\par \noindent \hspace*{1cm} Unlike the commands used to create backups, restorations will immediately affect any users that are currently using WebAgenda, and it is \textit{highly} recommended that the WebAgenda system be temporarly brought offline in Glassfish Server until the restoration is complete.
+\bigskip
+\par \noindent \hspace*{1cm} Any new data that has been created in WebAgenda since the last backup was made will be \textbf{lost} when restoring to a previous state.  As such it is recommended that these backups only be used when absolutely necessary, after normal database recovery procedures have failed to fix a damaged database.
+\bigskip
+\par \noindent \hspace*{1cm} To restore a backup, navigate to the MySQL \verb|bin| directory as described in Section \ref{sec:manualBackup}.  From here, you may import the backup in one of two ways.
+
+\begin{itemize}
+ \item From the Windows command-line. To do this, enter the command "\verb|mysql -u root -p < [backupFile]|", replacing \verb|[backupFile]| with the absolute path to your backup file.
+ \item From the MySQL command-line.  First enter MySQL by using the command "\verb|mysql|" without any arguments/options. You will be required to enter a username/password.  Once on the MySQL command-line, issue the command "\verb|source [backupFile]|", replacing \verb|[backupFile]| with the absolute path to your backup file.
+\end{itemize}
+
+\par \noindent \hspace*{1cm} For either option, the command must be run with the \verb|root| user, or a user in the MySQL database that has the permissions required on the WebAgenda database to \verb|ADD| or \verb|DROP| tables, and \verb|INSERT| new data.  If successful, the commands will execute silently and without error.  All data should now be rolled back to its state at the time the backup was made.
 
 \chapter{Potential and Known Issues}
 

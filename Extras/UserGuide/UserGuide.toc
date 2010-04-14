@@ -21,14 +21,18 @@
 \contentsline {chapter}{\numberline {4}Maintenance}{11}
 \contentsline {section}{\numberline {4.1}Delete Instead of Disable Employees}{11}
 \contentsline {chapter}{\numberline {5}Backup and Recovery}{12}
-\contentsline {chapter}{\numberline {6}Potential and Known Issues}{13}
-\contentsline {section}{\numberline {6.1}Features Not Implemented}{13}
-\contentsline {section}{\numberline {6.2}Bugs and System Limitations}{13}
-\contentsline {chapter}{\numberline {7}Development and Authors}{14}
-\contentsline {section}{\numberline {7.1}Mark Hazlett}{14}
-\contentsline {section}{\numberline {7.2}Noorin Hassan}{14}
-\contentsline {section}{\numberline {7.3}Daniel Wehr}{14}
-\contentsline {section}{\numberline {7.4}Daniel Kettle}{14}
-\contentsline {chapter}{\numberline {A}Licenses}{15}
-\contentsline {section}{\numberline {A.1}GNU Public License v2}{15}
-\contentsline {section}{\numberline {A.2}Sun Microsystems License}{21}
+\contentsline {section}{\numberline {5.1}Creating Backups}{12}
+\contentsline {subsection}{\numberline {5.1.1}Backing Up Data With WebAgenda}{12}
+\contentsline {subsection}{\numberline {5.1.2}Backing Up Data Manually}{13}
+\contentsline {section}{\numberline {5.2}Restoring Backups}{14}
+\contentsline {chapter}{\numberline {6}Potential and Known Issues}{15}
+\contentsline {section}{\numberline {6.1}Features Not Implemented}{15}
+\contentsline {section}{\numberline {6.2}Bugs and System Limitations}{15}
+\contentsline {chapter}{\numberline {7}Development and Authors}{16}
+\contentsline {section}{\numberline {7.1}Mark Hazlett}{16}
+\contentsline {section}{\numberline {7.2}Noorin Hassan}{16}
+\contentsline {section}{\numberline {7.3}Daniel Wehr}{16}
+\contentsline {section}{\numberline {7.4}Daniel Kettle}{16}
+\contentsline {chapter}{\numberline {A}Licenses}{17}
+\contentsline {section}{\numberline {A.1}GNU Public License v2}{17}
+\contentsline {section}{\numberline {A.2}Sun Microsystems License}{23}
