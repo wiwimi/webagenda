@@ -54,7 +54,7 @@ public class DeleteSkill extends HttpServlet {
 						
 						delSkill = new Skill(skillName, skillDesc);
 						Skill[] results = broker.get(delSkill, user);
-						
+						out.println(results[0].getName());
 						if(results!=null)
 						success = broker.delete(results[0], user);
 						
@@ -73,13 +73,13 @@ public class DeleteSkill extends HttpServlet {
 				} catch (DBDownException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-					// Failed to add the location
+					// Failed to delete  the location
 					response.sendRedirect("wa_user/skillSearchResults.jsp?delete=false&skillName=&skillDesc=");
 				}
 				catch(Exception e)
 				{
-					// Failed to add the location
-					response.sendRedirect("wa_user/skillSearchResults.jsp?message=false&skillName=&skillDesc=");
+					// Failed to delete the location
+					response.sendRedirect("wa_user/skillSearchResults.jsp?delete=false&skillName=&skillDesc=");
 				}
 				finally
 				{
