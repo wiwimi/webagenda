@@ -125,44 +125,53 @@ if(session.getAttribute("username") == null)
 							</tfoot>
 							<tbody>
 								<% 
-									for(int index = 0; index < reportedArray.length; index++)
-									{
-										
-								%>
-										<tr>
-											<td>
-												<%=reportedArray[index].getName()%> 
-											</td>
-											<td>
-								<%
-										if (reportedArray[index].getDesc()!=null)
+								    if(reportedArray!=null)
+								    {
+										for(int index = 0; index < reportedArray.length; index++)
 										{
-											if (reportedArray[index].getDesc().length()>2)
+											
+									%>
+											<tr>
+												<td>
+													<%=reportedArray[index].getName()%> 
+												</td>
+												<td>
+									<%
+											if (reportedArray[index].getDesc()!=null)
 											{
-								%>	
-												<%=reportedArray[index].getDesc().substring(0, 1)%>
-								<%
+												if (reportedArray[index].getDesc().length()>2)
+												{
+									%>	
+													<%=reportedArray[index].getDesc().substring(0, 1)%>
+									<%
+												}
+											
+												else
+												{
+									%>
+													<%=reportedArray[index].getDesc()%>
+									<%
+												}
 											}
-										
 											else
 											{
-								%>
-												<%=reportedArray[index].getDesc()%>
-								<%
+									%>	
+												NA
+									<%	
 											}
+									%>	
+												</td>
+											</tr>
+									<% 
 										}
-										else
-										{
-								%>	
-											NA
-								<%	
-										}
-								%>	
-											</td>
-										</tr>
-								<% 
-									}
-								%>
+								    }
+									else
+									{
+									%>
+										  <tr><td> There are no locations to report</td></tr>  
+								     <%    
+								     }
+								    %>
 								</tbody>
 						</table>
 					</div>

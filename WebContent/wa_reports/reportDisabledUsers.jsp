@@ -92,7 +92,7 @@ if(session.getAttribute("username") == null)
 			<div class="widgetLowerRectangle" id="userLowerRectangle">
 				<%
 					Employee emp = new Employee();
-					emp.setActive(true);
+					emp.setActive(false);
 					EmployeeBroker broker = EmployeeBroker.getBroker();
 					broker.initConnectionThread();
 					Employee[] reportedArray = broker.get(emp, user);
@@ -134,8 +134,11 @@ if(session.getAttribute("username") == null)
 							</tfoot>
 							<tbody>
 								<% 
+								if(reportedArray!=null)
+								{
 									for(int index = 0; index < reportedArray.length; index++)
 									{
+										
 								%>
 										<tr>
 											<td>
@@ -208,6 +211,17 @@ if(session.getAttribute("username") == null)
 										<% 
 										
 										   }
+										}
+										else
+										{
+										%>
+										<tr>
+											<td> There are no employees to report</td>
+										</tr>
+										
+										<%
+										}
+								
 									    %>
 								</tbody>
 						</table>

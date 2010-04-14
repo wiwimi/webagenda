@@ -112,7 +112,7 @@ if(session.getAttribute("username") == null)
 				
 				<div id="reportHeader">
 					<div id="titleHeader">
-						<h2 id="name"> <%= reported[0].getName()%> </h2>
+						<h2 id="name"> Location Report: <%= reported[0].getName()%> </h2>
 						<div id="date"><%= new java.util.Date()%></div>
 					</div>
 				</div>

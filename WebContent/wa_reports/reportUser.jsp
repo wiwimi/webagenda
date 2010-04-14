@@ -82,7 +82,7 @@ if(session.getAttribute("username") == null)
     </div>
 	<div id="usersWidget" class="fullWidget">
 			<div class="widgetUpperRectangle" id="usersUpperRectangle">
-				<div class="widgetTitle" id="usersWidgetTitle">User Report <div id="helpIcon"></div></div>
+				<div class="widgetTitle" id="usersWidgetTitle">Employee Report <div id="helpIcon"></div></div>
 			</div>
 			<%
 					Employee emp = new Employee();
@@ -103,7 +103,7 @@ if(session.getAttribute("username") == null)
 			<div class="widgetLowerRectangle" id="userLowerRectangle">
 			    <div id="reportHeader">
 					<div id="userName">
-						<h2 id="name">Employee ID: <%= reported[0].getEmpID()%> </h2>
+						<h2 id="name">Employee  Report: <%= reported[0].getEmpID()%> </h2>
 						<div id="date"><%= new java.util.Date()%></div>
 					</div>
 				</div>

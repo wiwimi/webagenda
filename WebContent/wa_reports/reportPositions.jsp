@@ -126,6 +126,8 @@ if(session.getAttribute("username") == null)
 							</tfoot>
 							<tbody>
 								<% 
+								if(reportedArray!=null)
+								{
 									for(int index = 0; index < reportedArray.length; index++)
 									{
 										
@@ -163,6 +165,13 @@ if(session.getAttribute("username") == null)
 										</tr>
 								<% 
 									}
+								}
+									else
+									{
+								%>
+										  <tr><td> There are no positions to report</td></tr>  
+								<%    
+								    }
 								%>
 								</tbody>
 						</table>
