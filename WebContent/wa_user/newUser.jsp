@@ -496,14 +496,14 @@
 								<thead class="head">
 									<tr class="headerRow">
 										<th>Name</th>
-										<th> <input type="checkbox" name="option"> </th>
+										<th>  </th>
 									</tr>
 								</thead>
 						
 								<tfoot class="foot">
 									<tr class="headerRow">
 										<th>Name</th>
-										<th> <input type="checkbox" name="option"> </th>
+										<th>  </th>
 									</tr>
 								</tfoot>
 								<tbody>
@@ -523,7 +523,7 @@
 															<b> <%=(permArray[index].getLevel() + "" + permArray[index].getVersion())%> </b>
 														</td>
 														<td>
-															<input type="checkbox" name="perm" value="<%=(permArray[index].getLevel() + "-" + 
+															<input type="radio" name="perm" value="<%=(permArray[index].getLevel() + "-" + 
 																	permArray[index].getVersion()) %>"> 
 																	<% System.out.println(permArray[index].getLevel() + "" + permArray[index].getVersion()); %>
 														</td>
